@@ -6,6 +6,7 @@ mod jetpack_view;
 mod loader_animation;
 mod overlay;
 mod presentdrop_view;
+mod profile;
 mod render;
 mod selfie_view;
 mod ski_view;
@@ -23,6 +24,8 @@ struct Options {
     mute: bool,
     screenshot: Option<PathBuf>,
     frames: Option<u32>,
+    profile: Option<PathBuf>,
+    profile_frames: usize,
     advance: f64,
     scene: String,
     scroll: f32,
@@ -45,6 +48,8 @@ fn options() -> Result<Option<Options>, String> {
         mute: false,
         screenshot: None,
         frames: None,
+        profile: None,
+        profile_frames: 240,
         advance: 0.,
         scene: "modvil".into(),
         scroll: 0.,
@@ -62,10 +67,21 @@ fn options() -> Result<Option<Options>, String> {
     while let Some(arg) = args.next() {
         match arg.as_str() {
             "--help" | "-h" => {
-                println!("Santa Tracker — native Rust port (in development)\n\nAvailable: village, Runner, Elf Jetpack, Santa Selfie, Elf Ski and Present Drop.\n\n--assets PATH       Original static assets directory\n--seed TEXT         Deterministic game seed\n--mute              Start without audio\n--scene NAME        modvil, runner, jetpack, santaselfie, elfski or presentdrop\n--scroll PIXELS     Initial village scroll position\n--beard-file PATH   Restore an original-format saved beard\n--advance SECONDS   Advance the selected scene before rendering\n--frames COUNT      Exit after COUNT frames (for native render checks)\n--screenshot PATH   Save the final rendered frame (or F12 live)\n--width PIXELS      Initial window width\n--height PIXELS     Initial window height\n--clock-ms EPOCH    Deterministic countdown clock for comparisons\n\nControls: Space/Up jump (twice), Down slide, P pause, R restart, M mute, Escape home");
+                println!("Santa Tracker — native Rust port (in development)\n\nAvailable: village, Runner, Elf Jetpack, Santa Selfie, Elf Ski and Present Drop.\n\n--assets PATH       Original static assets directory\n--seed TEXT         Deterministic game seed\n--mute              Start without audio\n--scene NAME        modvil, runner, jetpack, santaselfie, elfski or presentdrop\n--scroll PIXELS     Initial village scroll position\n--beard-file PATH   Restore an original-format saved beard\n--advance SECONDS   Advance the selected scene before rendering\n--frames COUNT      Exit after COUNT frames (for native render checks)\n--screenshot PATH   Save the final rendered frame (or F12 live)\n--width PIXELS      Initial window width\n--height PIXELS     Initial window height\n--clock-ms EPOCH    Deterministic countdown clock for comparisons\n--profile PATH      Measure live frame intervals and CPU work to JSON\n--profile-frames N  Measured live frames after 30 warmup frames (default 240)\n\nControls: Space/Up jump (twice), Down slide, P pause, R restart, M mute, Escape home");
                 return Ok(None);
             }
             "--mute" => out.mute = true,
+            "--profile" => out.profile = Some(args.next().ok_or("Missing profile path")?.into()),
+            "--profile-frames" => {
+                out.profile_frames = args
+                    .next()
+                    .ok_or("Missing profile count")?
+                    .parse()
+                    .map_err(|_| "Invalid profile count")?;
+                if out.profile_frames == 0 {
+                    return Err("Profile count must be positive".into());
+                }
+            }
             "--clock-ms" => {
                 out.clock_ms = Some(
                     args.next()
@@ -135,6 +151,9 @@ fn options() -> Result<Option<Options>, String> {
             }
             _ => return Err(format!("Unknown option: {arg}")),
         }
+    }
+    if out.profile.is_some() && out.frames.is_some() {
+        return Err("Use either live --profile or frozen --frames, not both".into());
     }
     if !out.assets.join("scenes/runner/img/hero.svg").is_file() {
         return Err("Cannot find original art; use --assets /path/to/static".into());
@@ -222,7 +241,9 @@ async fn run(opts: Options) {
     let mut loader_animation = loader_animation::LoaderAnimation::new(assets.root.clone());
     let mut overlay = overlay::Overlay::new().expect("Original pause overlay");
     let mut scene_filter = overlay::SceneFilter::new().expect("Original disabled scene filter");
+    let mut profiling = opts.profile.as_ref().map(|_| profile::Profile::new());
     loop {
+        let frame_start = std::time::Instant::now();
         village.play_route = next_games.play.clone();
         overlay.set_recommendations(next_games.cards.clone());
         if let Some((scene, result)) = assets.poll_scene_load() {
@@ -232,7 +253,7 @@ async fn run(opts: Options) {
             }
             loaded.insert(scene);
         }
-        if is_key_pressed(KeyCode::Escape) {
+        if opts.profile.is_none() && is_key_pressed(KeyCode::Escape) {
             if unavailable.is_some() {
                 unavailable = None;
             } else if selfie_view.export_open {
@@ -256,10 +277,10 @@ async fn run(opts: Options) {
             loaded.insert(route.clone());
             just_loaded = true;
         }
-        if is_key_pressed(KeyCode::M) {
+        if opts.profile.is_none() && is_key_pressed(KeyCode::M) {
             sound.mute();
         }
-        let restart = is_key_pressed(KeyCode::R) && route != "modvil";
+        let restart = opts.profile.is_none() && is_key_pressed(KeyCode::R) && route != "modvil";
         if restart {
             sound.stop();
             match route.as_str() {
@@ -281,7 +302,7 @@ async fn run(opts: Options) {
             }
             accumulated = 0.;
         }
-        if is_key_pressed(KeyCode::P) {
+        if opts.profile.is_none() && is_key_pressed(KeyCode::P) {
             match route.as_str() {
                 "runner" => {
                     runner.paused = !runner.paused;
@@ -313,19 +334,24 @@ async fn run(opts: Options) {
             };
         let mut jet_input = (0., 0.);
         if active {
-            match route.as_str() {
-                "runner" => {
-                    runner.visible_width = screen_width() as f64 * 1.5;
-                    runner_view.input(&mut runner);
+            if route == "runner" {
+                runner.visible_width = screen_width() as f64 * 1.5;
+            } else if route == "jetpack" {
+                let (w, h) = jetpack_view::JetpackView::dimensions();
+                jetpack.resize(w, h);
+            }
+            if opts.profile.is_none() {
+                match route.as_str() {
+                    "runner" => {
+                        runner_view.input(&mut runner);
+                    }
+                    "presentdrop" => drop_view.input(&mut drop_game),
+                    "jetpack" => {
+                        jet_input = jet_view.input();
+                    }
+                    "santaselfie" => selfie_view.input(&mut selfie, opts.frames.is_some()),
+                    _ => {}
                 }
-                "presentdrop" => drop_view.input(&mut drop_game),
-                "jetpack" => {
-                    jet_input = jet_view.input();
-                    let (w, h) = jetpack_view::JetpackView::dimensions();
-                    jetpack.resize(w, h);
-                }
-                "santaselfie" => selfie_view.input(&mut selfie, opts.frames.is_some()),
-                _ => {}
             }
             if opts.frames.is_none() && !just_loaded {
                 accumulated += get_frame_time() as f64;
@@ -340,7 +366,14 @@ async fn run(opts: Options) {
                     "runner" => runner.step(tick),
                     "jetpack" => jetpack.step(tick, jet_input),
                     "presentdrop" => drop_game.step(tick),
-                    "elfski" => ski.step(tick, ski_view::SkiView::input()),
+                    "elfski" => ski.step(
+                        tick,
+                        if opts.profile.is_some() {
+                            None
+                        } else {
+                            ski_view::SkiView::input()
+                        },
+                    ),
                     "santaselfie" => selfie.step(),
                     _ => {}
                 }
@@ -352,6 +385,7 @@ async fn run(opts: Options) {
                 runner.wall_time += get_frame_time() as f64;
             }
         }
+        let update_end = std::time::Instant::now();
         clear_background(BLACK);
         let mut selected = None;
         match route.as_str() {
@@ -400,10 +434,15 @@ async fn run(opts: Options) {
                 for event in selfie.sounds.drain(..) {
                     sound.trigger(event, &assets.root);
                 }
-                selfie_view.draw(&assets, &selfie, opts.frames.is_some());
+                selfie_view.draw(
+                    &assets,
+                    &selfie,
+                    opts.frames.is_some() || opts.profile.is_some(),
+                );
             }
             _ => {}
         }
+        let scene_end = std::time::Instant::now();
         if ["runner", "jetpack", "elfski", "presentdrop"].contains(&route.as_str()) {
             let (paused, gameover) = if route == "runner" {
                 (runner.paused, !runner.playing)
@@ -414,8 +453,9 @@ async fn run(opts: Options) {
             } else {
                 (jetpack.paused, !jetpack.playing)
             };
-            if let Some(action) =
-                overlay.draw(&mut assets, &chrome, &mut village, &route, paused, gameover)
+            if let Some(action) = overlay
+                .draw(&mut assets, &chrome, &mut village, &route, paused, gameover)
+                .filter(|_| opts.profile.is_none())
             {
                 match action {
                     overlay::Action::Resume => {
@@ -502,7 +542,10 @@ async fn run(opts: Options) {
             }),
             _ => None,
         };
-        if let Some(action) = chrome.draw(hud, sound.is_muted()) {
+        if let Some(action) = chrome
+            .draw(hud, sound.is_muted())
+            .filter(|_| opts.profile.is_none())
+        {
             match action {
                 chrome::Action::Home => selected = Some("modvil".into()),
                 chrome::Action::Menu => village.menu = !village.menu,
@@ -547,7 +590,7 @@ async fn run(opts: Options) {
         for event in chrome.sounds.drain(..) {
             sound.trigger(event, &assets.root);
         }
-        if let Some(target) = selected {
+        if let Some(target) = selected.filter(|_| opts.profile.is_none()) {
             if [
                 "modvil",
                 "runner",
@@ -690,6 +733,27 @@ async fn run(opts: Options) {
                 if let Err(error) = capture::save_png(&get_screen_data(), path) {
                     eprintln!("Screenshot: {error}");
                 }
+            }
+        }
+        if let Some(profile) = profiling.as_mut() {
+            let end = std::time::Instant::now();
+            profile.record(profile::Frame {
+                interval_ms: get_frame_time() as f64 * 1000.,
+                update_ms: (update_end - frame_start).as_secs_f64() * 1000.,
+                scene_ms: (scene_end - update_end).as_secs_f64() * 1000.,
+                ui_ms: (end - scene_end).as_secs_f64() * 1000.,
+                work_ms: (end - frame_start).as_secs_f64() * 1000.,
+            });
+            if profile.frames.len() >= opts.profile_frames {
+                profile
+                    .save(
+                        opts.profile.as_ref().unwrap(),
+                        &route,
+                        screen_width(),
+                        screen_height(),
+                    )
+                    .expect("Write frame profile");
+                break;
             }
         }
         frames += 1;

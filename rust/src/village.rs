@@ -315,7 +315,7 @@ impl<'a> Village<'a> {
         };
         let width = r.w.ceil().clamp(1., 1920.) as u32;
         let height = r.h.ceil().clamp(1., 1920.) as u32;
-        if (anim.last_frame - frame).abs() >= 0.5
+        if (anim.last_frame - frame).abs() >= 0.001
             || anim.width != width
             || anim.height != height
             || anim.texture.is_none()

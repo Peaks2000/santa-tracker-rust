@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maintain Rust Santa Tracker"
+  short_description: "Track feedback and improve native Santa Tracker parity"
+  default_prompt: "Use $maintain-rust-santa-tracker to read my feedback and continue improving native Santa Tracker parity."

@@ -113,6 +113,8 @@ enum LoadEvent {
 fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
     let path = root.join(key);
     let data = std::fs::read(&path).map_err(|e| format!("{}: {e}", path.display()))?;
+    let premultiplied =
+        key.starts_with("scenes/santaselfie/") || key.starts_with("scenes/_shared/img/button/");
     let mut image = if key.ends_with(".svg") {
         let options = resvg::usvg::Options {
             resources_dir: path.parent().map(Path::to_path_buf),
@@ -141,10 +143,12 @@ fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
             &mut pixels.as_mut(),
         );
         let mut rgba = pixels.data().to_vec();
-        for p in rgba.chunks_exact_mut(4) {
-            if p[3] > 0 {
-                for i in 0..3 {
-                    p[i] = (u32::from(p[i]) * 255 / u32::from(p[3])).min(255) as u8;
+        if !premultiplied {
+            for p in rgba.chunks_exact_mut(4) {
+                if p[3] > 0 {
+                    for i in 0..3 {
+                        p[i] = (u32::from(p[i]) * 255 / u32::from(p[3])).min(255) as u8;
+                    }
                 }
             }
         }
@@ -154,11 +158,16 @@ fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
             height: size.height() as u16,
         }
     } else {
-        Image::from_file_with_format(&data, None).map_err(|e| format!("{key}: {e}"))?
+        let mut image =
+            Image::from_file_with_format(&data, None).map_err(|e| format!("{key}: {e}"))?;
+        if premultiplied {
+            santa_tracker::image_alpha::premultiply(&mut image.bytes);
+        }
+        image
     };
     // All CSS-style 2D images share the same straight-alpha filtering issue.
     // Leave the source 3D maps alone: their mipmaps follow THREE's renderer.
-    if !key.starts_with("scenes/elfski/") {
+    if !premultiplied && !key.starts_with("scenes/elfski/") {
         santa_tracker::image_alpha::bleed_edges(
             &mut image.bytes,
             image.width as usize,

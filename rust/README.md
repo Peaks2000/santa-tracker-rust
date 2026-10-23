@@ -19,6 +19,16 @@ The application runs native Rust window, rendering, input, simulation, Ogg decod
 
 Most scenes still do not have native gameplay implementations. The six available scenes still have visual/interaction differences and have not passed full visual and behavioral parity. The original blur is approximated by a native Gaussian sampling shader; platform font rasterization, overlay detail, mobile tray layout and full website behavior still have differences. An unavailable activity reports that it is unavailable instead of silently opening another game. Maps/live tracking, videos, translations, accessibility, gamepad support, all remaining games and complete shared overlays still require work. Passing the current tests is not evidence of whole-site parity.
 
+## Feedback and continuing work
+
+Edit [PARITY-STATUS.json](PARITY-STATUS.json) to record your verdict for each of the 55 scenes: `user_happy` can be `unreviewed`, `yes`, `partly` or `no`; put details in `user_notes` and choose a `priority`. There are also overall happiness/notes fields. Codex preserves your feedback and updates the separate `agent_*` evidence/progress fields. Six scenes currently have partial native implementations; 49 remain unported.
+
+The project skill is [maintain-rust-santa-tracker](skills/maintain-rust-santa-tracker/SKILL.md), also installed locally under `~/.codex/skills/maintain-rust-santa-tracker`. It tells future work to read your feedback, compare original source/captures, preserve gameplay during optimization, and publish only the native distribution.
+
+Recent rendering fixes preserve Lottie art proportions in recommendation/menu/village cards, retain premultiplied Selfie images through filtering, and stop discarding fractional animation updates. Selfie also skips repainting an unchanged beard surface and avoids repeated constraint-list allocations. Gameplay steps, solver order and RNG behavior are unchanged. These fixes do not establish complete visual parity.
+
+For live frame diagnostics, run `rust/target/release/santa-tracker --scene santaselfie --mute --profile /tmp/selfie-frames.json --profile-frames 240`. The first 30 frames are warmup. The report separates main-thread update, scene, UI and total work from observed presentation intervals. Game actions are disabled for this diagnostic run; hover visuals can still respond to the pointer. Use an unobscured window with comparable desktop load. This is not an input-to-photon latency measurement. `--profile` cannot be combined with frozen `--frames` captures. First-use village decoding and Ogg decoding still need performance work.
+
 ## Build and run
 
 ```sh
@@ -52,10 +62,11 @@ P pauses, R restarts/resets, M toggles audio, and Escape returns to the village.
 
 ```sh
 cargo test --manifest-path rust/Cargo.toml
-cargo run --manifest-path rust/Cargo.toml --example runner_reference -- slide /tmp/runner-slide.png
+cargo run --manifest-path rust/Cargo.toml --example runner_reference -- idle /tmp/runner.png
+cargo run --manifest-path rust/Cargo.toml --example lottie_reference -- img/card/jetpack.json 238 72 0 /tmp/card.png
 ```
 
-The JavaScript reference exporters/browser capture tools live only in the separate upstream development workspace and are deliberately excluded from this Rust-only repository. Their exported JSON/SVG fixtures are included for the Rust tests. They are not used by the native application. `reference.cjs` loads the original Runner classes, coordinator, scoreboard and random generator; its output is checked by Rust tests to a numeric tolerance of `1e-7`. `focus-reference.cjs` does the same for the original Jetpack classes/scoreboard and Selfie cloth/point/tool operations. Additional tests check beard encoding, invalid input rejection and tool sound transitions. UI reference tests cover 516 original countdown inputs, card-player reversals and measured responsive card geometry; a sprite-filtering test checks that alpha and visible source artwork remain unchanged. The native animation test checks that an original section animates rather than rendering a static poster and stays premultiplied through filtering. The audio tests check looping, pause/resume, channel output, delayed starts, fades and source stops. The countdown test checks the original UTC deadline. Runner also checks the live delayed level transitions and original canvas offsets, and its layout is checked at five viewport sizes.
+The JavaScript reference tools mentioned below remain in the separate original-source development checkout and are not shipped in this repository or used by the native application. `reference.cjs` loads the original Runner classes, coordinator, scoreboard and random generator; its output is checked by Rust tests to a numeric tolerance of `1e-7`. `focus-reference.cjs` does the same for the original Jetpack classes/scoreboard and Selfie cloth/point/tool operations. Additional tests check beard encoding, invalid input rejection and tool sound transitions. UI reference tests cover 516 original countdown inputs, card-player reversals and measured responsive card geometry; a sprite-filtering test checks that alpha and visible source artwork remain unchanged. The native animation test checks that an original section animates rather than rendering a static poster and stays premultiplied through filtering. The audio tests check looping, pause/resume, channel output, delayed starts, fades and source stops. The countdown test checks the original UTC deadline. Runner also checks the live delayed level transitions and original canvas offsets, and its layout is checked at five viewport sizes.
 
 Original browser captures go into `rust/target/`, with measured layout data in `data/*layout-reference.json` and Selfie expression measurements in `data/selfie-expression-reference.json`. Native screenshots can be produced using:
 

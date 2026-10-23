@@ -19,11 +19,6 @@ varying vec2 uv;
 varying vec4 color;
 void main(){gl_Position=Projection*Model*vec4(position,1.0);uv=texcoord;color=color0/255.0;}
 "#;
-const PREMULT: &str = r#"#version 100
-precision mediump float;
-varying vec2 uv;varying vec4 color;uniform sampler2D Texture;
-void main(){vec4 c=texture2D(Texture,uv)*color;gl_FragColor=vec4(c.rgb*c.a,c.a);}
-"#;
 const COPY: &str = r#"#version 100
 precision mediump float;
 varying vec2 uv;varying vec4 color;uniform sampler2D Texture;
@@ -42,9 +37,11 @@ const DECORATIONS: [(&str, f32, f32); 4] = [
 pub struct SelfieView {
     hair: Texture2D,
     target: Option<RenderTarget>,
+    beard_pixels: Vec<(f64, f64, f64, bool, Option<u8>, Option<u8>)>,
     hair_material: Material,
     spray_material: Material,
     copy_material: Material,
+    image_material: Material,
     font: Font,
     pub export_open: bool,
     pub export_message: String,
@@ -65,6 +62,11 @@ fn rect_image(t: &Texture2D, r: Rect) {
             ..Default::default()
         },
     );
+}
+fn premult_image(material: &Material, t: &Texture2D, r: Rect) {
+    gl_use_material(material);
+    rect_image(t, r);
+    gl_use_default_material();
 }
 impl SelfieView {
     pub fn new() -> Result<Self, String> {
@@ -115,7 +117,7 @@ impl SelfieView {
         let spray_material = load_material(
             ShaderSource::Glsl {
                 vertex: VERTEX,
-                fragment: PREMULT,
+                fragment: COPY,
             },
             MaterialParams {
                 pipeline_params: PipelineParams {
@@ -161,9 +163,11 @@ impl SelfieView {
         Ok(Self {
             hair,
             target: None,
+            beard_pixels: vec![],
             hair_material,
             spray_material,
             copy_material,
+            image_material: crate::ui_render::premultiplied_material()?,
             font: load_ttf_font_from_bytes(include_bytes!(
                 "../assets/fonts/GoogleSans-Regular.ttf"
             ))
@@ -365,71 +369,89 @@ impl SelfieView {
     fn beard(&mut self, assets: &Assets, game: &Selfie, rect: Rect, s: f32) {
         let width = (1200. * s).floor().max(1.) as u32;
         let height = (1400. * s).floor().max(1.) as u32;
-        if self.target.as_ref().is_none_or(|r| {
+        let resized = self.target.as_ref().is_none_or(|r| {
             r.texture.width() != width as f32 || r.texture.height() != height as f32
-        }) {
+        });
+        if resized {
             let target = render_target(width, height);
             target.texture.set_filter(FilterMode::Linear);
             self.target = Some(target);
         }
         let target = self.target.as_ref().unwrap();
-        let mut camera =
-            Camera2D::from_display_rect(Rect::new(0., 0., width as f32, height as f32));
-        camera.render_target = Some(target.clone());
-        set_camera(&camera);
-        clear_background(BLANK);
-        let hair_w = (53. * s).floor();
-        let hair_h = (52. * s).floor();
-        gl_use_material(&self.hair_material);
-        for p in game
-            .points
-            .iter()
-            .rev()
-            .filter(|p| p.draw && p.x.is_finite() && p.y.is_finite())
-        {
-            draw_texture_ex(
-                &self.hair,
-                p.x as f32 * s - hair_w / 2.,
-                p.y as f32 * s - hair_h / 2.,
-                WHITE,
-                DrawTextureParams {
-                    dest_size: Some(vec2(hair_w, hair_h)),
-                    rotation: p.rotation as f32,
-                    ..Default::default()
-                },
-            );
-        }
-        gl_use_material(&self.spray_material);
-        for p in game.points.iter().rev().filter(|p| p.draw) {
-            if let Some(spray) = p.spray {
-                let key = format!("tools/sprays/{}.png", SPRAYS[spray as usize]);
-                rect_image(
-                    assets.scene("santaselfie", &key),
-                    Rect::new(
-                        (p.x as f32 - 64.) * s,
-                        (p.y as f32 - 64.) * s,
-                        128. * s,
-                        128. * s,
-                    ),
+        // A faster display may present several times per 16ms cloth tick.
+        // Reuse only identical pixels; composite at the current face position
+        // every frame, and repaint immediately after any tool/physics change.
+        let state = |p: &santa_tracker::selfie::Point| {
+            (p.x, p.y, p.rotation, p.draw, p.spray, p.decoration)
+        };
+        let changed = resized
+            || self.beard_pixels.len() != game.points.len()
+            || !self
+                .beard_pixels
+                .iter()
+                .copied()
+                .eq(game.points.iter().map(state));
+        if changed {
+            self.beard_pixels.clear();
+            self.beard_pixels.extend(game.points.iter().map(state));
+            let mut camera =
+                Camera2D::from_display_rect(Rect::new(0., 0., width as f32, height as f32));
+            camera.render_target = Some(target.clone());
+            set_camera(&camera);
+            clear_background(BLANK);
+            let hair_w = (53. * s).floor();
+            let hair_h = (52. * s).floor();
+            gl_use_material(&self.hair_material);
+            for p in game
+                .points
+                .iter()
+                .rev()
+                .filter(|p| p.draw && p.x.is_finite() && p.y.is_finite())
+            {
+                draw_texture_ex(
+                    &self.hair,
+                    p.x as f32 * s - hair_w / 2.,
+                    p.y as f32 * s - hair_h / 2.,
+                    WHITE,
+                    DrawTextureParams {
+                        dest_size: Some(vec2(hair_w, hair_h)),
+                        rotation: p.rotation as f32,
+                        ..Default::default()
+                    },
                 );
             }
-        }
-        gl_use_material(&self.hair_material);
-        for p in game.points.iter().rev().filter(|p| p.draw) {
-            if let Some(decoration) = p.decoration {
-                let (name, w, h) = DECORATIONS[decoration as usize];
-                rect_image(
-                    assets.scene("santaselfie", &format!("tools/decorations/{name}.svg")),
-                    Rect::new(
-                        (p.x as f32 - w / 2.) * s,
-                        (p.y as f32 - h / 2.) * s,
-                        w * s,
-                        h * s,
-                    ),
-                );
+            gl_use_material(&self.spray_material);
+            for p in game.points.iter().rev().filter(|p| p.draw) {
+                if let Some(spray) = p.spray {
+                    let key = format!("tools/sprays/{}.png", SPRAYS[spray as usize]);
+                    rect_image(
+                        assets.scene("santaselfie", &key),
+                        Rect::new(
+                            (p.x as f32 - 64.) * s,
+                            (p.y as f32 - 64.) * s,
+                            128. * s,
+                            128. * s,
+                        ),
+                    );
+                }
             }
+            gl_use_material(&self.copy_material);
+            for p in game.points.iter().rev().filter(|p| p.draw) {
+                if let Some(decoration) = p.decoration {
+                    let (name, w, h) = DECORATIONS[decoration as usize];
+                    rect_image(
+                        assets.scene("santaselfie", &format!("tools/decorations/{name}.svg")),
+                        Rect::new(
+                            (p.x as f32 - w / 2.) * s,
+                            (p.y as f32 - h / 2.) * s,
+                            w * s,
+                            h * s,
+                        ),
+                    );
+                }
+            }
+            set_default_camera();
         }
-        set_default_camera();
         gl_use_material(&self.copy_material);
         draw_texture_ex(
             &target.texture,
@@ -449,7 +471,9 @@ impl SelfieView {
         let h = screen_height();
         let time = game.time as f32;
         clear_background(Color::from_hex(0x00adeb));
-        let draw = |name: &str, r: Rect| rect_image(assets.scene("santaselfie", name), r);
+        let material = self.image_material.clone();
+        let draw =
+            |name: &str, r: Rect| premult_image(&material, assets.scene("santaselfie", name), r);
         let mirror = Rect::new(w / 2. - 1092.4 * s / 2., h - 852. * s, 1092.4 * s, 732. * s);
         draw("background/mirror.svg", mirror);
         draw(
@@ -613,7 +637,8 @@ impl SelfieView {
             self.shapes
                 .circle(center, radius, Color::from_hex(0xad00ad), 0.);
             let icon = if screen_width() >= 768. { 30. } else { 22. };
-            rect_image(
+            premult_image(
+                &self.image_material,
                 assets.texture(&format!("scenes/_shared/img/button/{key}.svg")),
                 Rect::new(center.x - icon / 2., center.y - icon / 2., icon, icon),
             );
@@ -664,11 +689,13 @@ impl SelfieView {
     fn draw_tools(&self, assets: &Assets, game: &Selfie, mouse: Vec2, s: f32) {
         let desktop = screen_width() >= 800. && screen_height() >= 690.;
         if desktop {
-            rect_image(
+            premult_image(
+                &self.image_material,
                 assets.scene("santaselfie", "tray_lg.svg"),
                 Rect::new(20., screen_height() / 2. - 290., 232.3, 580.),
             );
-            rect_image(
+            premult_image(
+                &self.image_material,
                 assets.scene("santaselfie", "tray_ornament_lg.svg"),
                 Rect::new(
                     17. + 232.3 * 0.05,
@@ -698,7 +725,8 @@ impl SelfieView {
                 _ => "clipper",
             };
             if desktop {
-                rect_image(
+                premult_image(
+                    &self.image_material,
                     assets.scene("santaselfie", &format!("tools/shadows/{shadow}.svg")),
                     Rect::new(
                         r.x + (r.w - tw + 1.) / 2.,
@@ -709,7 +737,8 @@ impl SelfieView {
                 );
             }
             if game.tool != *tool {
-                rect_image(
+                premult_image(
+                    &self.image_material,
                     assets.scene("santaselfie", &format!("tools/{file}")),
                     Rect::new(r.x + (r.w - tw) / 2., r.y + (r.h - th) / 2., *tw, *th),
                 );
@@ -770,6 +799,7 @@ impl SelfieView {
         let offset = if flip { width - ox } else { ox };
         let x = mouse.x - offset * s;
         let y = mouse.y - oy * s;
+        gl_use_material(&self.image_material);
         draw_texture_ex(
             assets.scene("santaselfie", &file),
             x,
@@ -781,6 +811,7 @@ impl SelfieView {
                 ..Default::default()
             },
         );
+        gl_use_default_material();
         if game.mouse.down {
             let (sprite, fw, fh, frames, duration, px, py) = match game.tool {
                 Tool::Clipper if game.near_beard => {
@@ -795,6 +826,7 @@ impl SelfieView {
                 return;
             }
             let frame = ((age / duration).fract() * frames).floor();
+            gl_use_material(&self.image_material);
             draw_texture_ex(
                 assets.scene("santaselfie", sprite),
                 x + px * s,
@@ -807,6 +839,7 @@ impl SelfieView {
                     ..Default::default()
                 },
             );
+            gl_use_default_material();
         }
     }
 }

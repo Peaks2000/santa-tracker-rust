@@ -275,8 +275,11 @@ impl Selfie {
                     self.points[i].y = self.points[i].py;
                     continue;
                 }
-                let constraints = self.points[i].constraints.clone();
-                for j in constraints.into_iter().rev() {
+                // The constraint list does not change during a solver pass.
+                // Read its index before borrowing the two points, avoiding a
+                // heap allocation for every point in each of the three passes.
+                for constraint in (0..self.points[i].constraints.len()).rev() {
+                    let j = self.points[i].constraints[constraint];
                     if !self.points[i].constrain {
                         continue;
                     }

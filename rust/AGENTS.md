@@ -1,0 +1,1 @@
+For this native Santa Tracker project, apply [maintain-rust-santa-tracker](skills/maintain-rust-santa-tracker/SKILL.md). Read [PARITY-STATUS.json](PARITY-STATUS.json) and preserve user feedback before editing agent progress. Original browser/reference code must stay outside the Rust-only distribution.

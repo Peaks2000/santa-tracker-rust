@@ -62,3 +62,13 @@ mod tests {
         }
     }
 }
+
+/// Convert straight RGBA into the representation browsers filter/composite.
+/// RGB is multiplied once at upload; the premultiplied shader uses ONE blending.
+pub fn premultiply(rgba: &mut [u8]) {
+    for p in rgba.chunks_exact_mut(4) {
+        for c in 0..3 {
+            p[c] = ((u16::from(p[c]) * u16::from(p[3]) + 127) / 255) as u8;
+        }
+    }
+}

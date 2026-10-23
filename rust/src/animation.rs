@@ -1,12 +1,14 @@
 //! Native playback of the original Lottie artwork; no browser is involved.
 use std::path::Path;
-use thorvg::{Animation, ColorSpace, Paint, Thorvg};
+use thorvg::{Animation, ColorSpace, Matrix, Paint, Thorvg};
 
 pub struct Clip<'a> {
     engine: &'a Thorvg,
     animation: Animation<'a>,
     pub frames: f32,
     pub duration: f32,
+    pub intrinsic: (f32, f32),
+    buffer: Vec<u32>,
 }
 
 #[cfg(test)]
@@ -31,6 +33,26 @@ mod tests {
             "Animation must advance rather than display a static poster"
         );
     }
+    #[test]
+    fn wide_card_keeps_art_proportions_and_centers_it() {
+        let engine = Thorvg::init(0).unwrap();
+        let path = Path::new(env!("CARGO_MANIFEST_DIR")).join("../static/img/card/jetpack.json");
+        let mut clip = Clip::load(&engine, &path).unwrap();
+        let fitted = clip.rasterize(128, 100, 0.).unwrap();
+        let wide = clip.rasterize(256, 100, 0.).unwrap();
+        for y in 0..100 {
+            assert_eq!(
+                &wide[(y * 256 + 64) * 4..(y * 256 + 192) * 4],
+                &fitted[y * 128 * 4..(y + 1) * 128 * 4]
+            );
+            assert!(wide[y * 256 * 4..(y * 256 + 64) * 4]
+                .chunks_exact(4)
+                .all(|p| p[3] == 0));
+            assert!(wide[(y * 256 + 192) * 4..(y + 1) * 256 * 4]
+                .chunks_exact(4)
+                .all(|p| p[3] == 0));
+        }
+    }
 }
 impl<'a> Clip<'a> {
     pub fn load(engine: &'a Thorvg, path: &Path) -> Result<Self, String> {
@@ -39,6 +61,7 @@ impl<'a> Clip<'a> {
             .picture_mut()
             .load_from_str(&path.to_string_lossy())
             .map_err(|e| format!("{}: {e}", path.display()))?;
+        let intrinsic = animation.picture().size().map_err(|e| e.to_string())?;
         let frames = animation.total_frame().map_err(|e| e.to_string())?;
         let duration = animation.duration().map_err(|e| e.to_string())?;
         if frames <= 0. || duration <= 0. {
@@ -49,6 +72,8 @@ impl<'a> Clip<'a> {
             animation,
             frames,
             duration,
+            intrinsic,
+            buffer: vec![],
         })
     }
     pub fn rasterize(&mut self, width: u32, height: u32, frame: f32) -> Result<Vec<u8>, String> {
@@ -59,11 +84,22 @@ impl<'a> Clip<'a> {
         if (self.animation.frame().map_err(|e| e.to_string())? - frame).abs() >= 0.001 {
             self.animation.set_frame(frame).map_err(|e| e.to_string())?;
         }
+        // Lottie-web uses xMidYMid meet. ThorVG's Lottie loader applies
+        // independent X/Y scales despite the Rust wrapper's documentation.
+        let scale = (width as f32 / self.intrinsic.0).min(height as f32 / self.intrinsic.1);
+        let fitted = (self.intrinsic.0 * scale, self.intrinsic.1 * scale);
         self.animation
             .picture_mut()
-            .set_size(width as f32, height as f32)
+            .set_size(fitted.0, fitted.1)
             .map_err(|e| e.to_string())?;
-        let mut buffer = vec![0u32; (width * height) as usize];
+        self.animation
+            .picture_mut()
+            .set_transform(&Matrix::IDENTITY.translate(
+                (width as f32 - fitted.0) / 2.,
+                (height as f32 - fitted.1) / 2.,
+            ))
+            .map_err(|e| e.to_string())?;
+        self.buffer.resize((width * height) as usize, 0);
         {
             let mut canvas = self
                 .engine
@@ -71,8 +107,10 @@ impl<'a> Clip<'a> {
                 .map_err(|e| e.to_string())?;
             // The allocation is never resized, and the canvas is synchronously
             // destroyed before we inspect or release its target buffer.
-            unsafe { canvas.set_target(&mut buffer, width, width, height, ColorSpace::ABGR8888) }
-                .map_err(|e| e.to_string())?;
+            unsafe {
+                canvas.set_target(&mut self.buffer, width, width, height, ColorSpace::ABGR8888)
+            }
+            .map_err(|e| e.to_string())?;
             let picture = self
                 .animation
                 .picture()
@@ -82,6 +120,6 @@ impl<'a> Clip<'a> {
             canvas.draw(true).map_err(|e| e.to_string())?;
             canvas.sync().map_err(|e| e.to_string())?;
         }
-        Ok(buffer.into_iter().flat_map(u32::to_le_bytes).collect())
+        Ok(self.buffer.iter().flat_map(|p| p.to_le_bytes()).collect())
     }
 }

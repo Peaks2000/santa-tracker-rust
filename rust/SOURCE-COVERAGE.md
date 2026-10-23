@@ -122,3 +122,47 @@ of unseen options, a documented fallback chooses an older playable activity
 instead of reproducing the original algorithm's undefined result on an
 undersized list. Remote Firebase locks/featured scheduling and localStorage
 featured-played persistence remain unimplemented.
+
+## Shared art fitting, Selfie compositing and performance review (2026-10-23)
+
+Reviewed the full `santa-card-player.js`, `santa-card.js`, `santa-card.scss` and
+`deps/lottie.js`, the Selfie background/responsive styles and mouse scale function,
+and rechecked Cloth drawHairShape/draw and Point drawHair/drawSpray/drawDecoration.
+The installed ThorVG 1.1.0 Lottie loader independently scales X/Y in `resize()`;
+its Rust wrapper's preserve-aspect documentation does not describe this backend.
+Native Clip now uses a uniform fitted size plus centered translation, matching
+lottie-web's default xMidYMid meet. A regression test compares a fitted 128x100
+render with the center of a 256x100 render and checks the transparent sides.
+The separate browser card fixture is an isolated **280x120** host under modvil's
+minimum-width rules; its canvas is 238x72. It is not an overlay host-size oracle.
+Native/source Jetpack idle art bounds in that canvas were (87,7,140,59) and
+(87,7,140,58), respectively. Full overlay fonts and layout remain partial.
+`examples/lottie_reference.rs` provides a native CPU PNG comparison renderer.
+
+Selfie SVG uploads now retain resvg's premultiplied bytes; decoded raster images
+are premultiplied once. Tool/background/cursor/sprite draws and beard decorations
+use ONE source-over blending. Spray remains source-atop using destination alpha
+and preserving beard alpha. Hair remains straight white with correct separate
+alpha accumulation. Captured native tool edges and a restored red beard after
+these changes; small source rasterization differences remain. Other scene views
+still use straight assets plus shared transparent-edge bleed; these were not
+silently converted without changing their matching materials.
+
+The beard surface cache checks x/y/rotation/draw/spray/decoration for every point
+and its target dimensions; it still composites at the current face position on
+every display frame. Constraint indices are read in the same reverse order with
+no per-point cloned vector. The original seeded physics/tool scenarios still pass
+at 1e-7. No simulation step or input buffering delay was added. Lottie playback
+now accepts fractional frame changes >=0.001 instead of dropping changes <0.5.
+A reusable ThorVG target buffer reduces allocation churn; each draw clears it.
+
+Opt-in `--profile` records live CPU stages and observed frame intervals after
+30 warmup frames. A pre-change 240-frame 1440x800 muted idle Selfie run measured
+CPU work p95 0.857ms, p99 0.908ms; interval p95 18.114ms. A village scroll=2200
+baseline had CPU p95 4.790ms, p99 8.899ms. Post-change runs experienced long
+presentation waits in this desktop session (including ~1s intervals); they are
+not evidence of a speedup or input latency reduction. Cold village image/clip
+loading and first-use Ogg decode remain synchronous and require separate work.
+Validation: release build; 25 native tests; original Selfie/card browser capture;
+native frozen Selfie and restored colored-beard captures. No additional native
+gamemode was completed in this shared rendering/performance pass.
