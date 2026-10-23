@@ -10,7 +10,7 @@ The product is a native Rust recreation of the entire original Google Santa Trac
 ## Find the project and feedback
 
 - Development/reference checkout: `/home/finn/rustsantatracker`, native crate `rust/`. Original source is in `static/` and `static/entrypoint.js` here.
-- Clean distribution checkout: `/home/finn/santa-tracker-rust`, private GitHub `Peaks2000/santa-tracker-rust`. The development checkout's origin is the original web repository; **never push that history to the Rust repository**.
+- Clean distribution checkout: `/home/finn/santa-tracker-rust`, public GitHub `Peaks2000/santa-tracker-rust`. The development checkout's origin is the original web repository; **never push that history to the Rust repository**.
 - In another checkout, locate `rust/Cargo.toml`, `rust/PARITY-STATUS.json` and `rust/SOURCE-COVERAGE.md`; use paths relative to that checkout. Find/fetch original source separately if needed, keeping the distributed repository free of browser code.
 
 Read `PARITY-STATUS.json` before choosing work. The user edits `user_overall_happy`, `user_overall_notes`, each mode's `user_happy`, `user_notes`, and `priority`. Preserve these and unknown user-added fields exactly in meaning. Only the user can approve a mode; tests or agent judgment do not turn an unreviewed/no/partly value into yes. Read the latest file again before updating agent fields so concurrent user edits survive. Keep feedback in one maintained file, not duplicate trackers.
@@ -29,6 +29,6 @@ Do not close or replace a window the user is testing. Smoke checks should own an
 
 On this machine the isolated toolchain is `/tmp/santa-cargo` and `/tmp/santa-rustup`. Use `RUSTUP_HOME=/tmp/santa-rustup CARGO_HOME=/tmp/santa-cargo CARGO=/tmp/santa-cargo/bin/cargo ./rust/build.sh --offline`. Tests use that cargo with `BINDGEN_EXTRA_CLANG_ARGS=-I/usr/lib/clang/22/include` and `--manifest-path rust/Cargo.toml`. Native screenshot controls and comparison tooling are documented in `rust/README.md`; `--frames` freezes simulation, while `--advance` pre-simulates.
 
-The clean distribution contains native Rust, fixtures, fonts, shader code, licenses and required original assets. Development `rust/tools/*.cjs` and original JS/HTML/CSS/SCSS stay out. Preserve the clean repository's user-edited root README. Before an authorized push, verify staged file names/history and keep GitHub private unless the user explicitly changes that preference. Include this skill's vendored copy and the feedback file in the Rust-only repository; installed skill updates belong in `~/.codex/skills/maintain-rust-santa-tracker` too.
+The clean distribution contains native Rust, fixtures, fonts, shader code, licenses and required original assets. Development `rust/tools/*.cjs` and original JS/HTML/CSS/SCSS stay out. Preserve the clean repository's user-edited root README. Before an authorized push, verify staged file names/history and keep GitHub public. The user explicitly corrected the earlier private preference: do not make the repository private again unless they request it. Include this skill's vendored copy and the feedback file in the Rust-only repository; installed skill updates belong in `~/.codex/skills/maintain-rust-santa-tracker` too.
 
 Report tested changes and remaining limits candidly. Passing current snapshots does not establish whole-site or whole-mode 1:1 parity.
