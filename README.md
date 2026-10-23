@@ -6,7 +6,7 @@ The native Rust application is in [`rust/`](rust/README.md). It currently includ
 
 
 
-[[https://i.postimg.cc/qv3kdFRr/Screenshot-From-2026-10-23-23-36-53.png]]
+[![alt text](https://i.postimg.cc/qv3kdFRr/Screenshot-From-2026-10-23-23-36-53.png)
 
 
 
