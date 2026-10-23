@@ -122,6 +122,8 @@ impl Drop for Device {
 pub struct Sound {
     device: Option<Device>,
     config: Value,
+    jamband_voices: Vec<(usize, f64, f64, f64, Option<f64>)>,
+    maker_switches: usize,
     samples: HashMap<String, Arc<Sample>>,
     commands: Sender<Command>,
     muted: bool,
@@ -143,6 +145,8 @@ impl Sound {
         Self {
             device,
             config: serde_json::from_str(include_str!("../data/audio.json")).unwrap(),
+            jamband_voices: vec![],
+            maker_switches: 0,
             samples: HashMap::new(),
             commands,
             muted,
@@ -172,13 +176,161 @@ impl Sound {
             })
             .ok();
     }
+    fn preload_keys(&mut self, keys: &[&str], root: &Path) {
+        if self.device.is_none() {
+            return;
+        }
+        let mut pending = keys.iter().map(|s| (*s).to_owned()).collect::<Vec<_>>();
+        while let Some(key) = pending.pop() {
+            let a = &self.config["audio"][&key];
+            if let Some(children) = a["content"].as_array() {
+                pending.extend(children.iter().filter_map(Value::as_str).map(str::to_owned));
+                continue;
+            }
+            if self.samples.contains_key(&key) {
+                continue;
+            }
+            if let Some(file) = self.config["files"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .find(|f| f["id"] == a["file_id"])
+            {
+                if let Some(url) = file["url"].as_str() {
+                    match Sample::load(&root.join("audio").join(format!("{url}.ogg"))) {
+                        Ok(s) => {
+                            self.samples.insert(key, Arc::new(s));
+                        }
+                        Err(e) => eprintln!("Preload {url}: {e}"),
+                    }
+                }
+            }
+        }
+    }
+    pub fn maker_start(&mut self, root: &Path) {
+        self.preload_keys(&["h54h", "diiL", "h9jl", "Cc2y", "HQfD", "OckO"], root);
+        self.trigger("music_start_scene", root);
+    }
+    pub fn jamband_start(&mut self, root: &Path) {
+        if self.device.is_none() {
+            return;
+        }
+        self.preload_keys(
+            &[
+                "EPDs", "QcJi", "Du2o", "OSie", "Px11", "QLAo", "LdQ0", "uARB", "Jdmw", "SdSp",
+                "ZBDz", "J9C5",
+            ],
+            root,
+        );
+        self.jamband_voices.clear();
+        self.play_source("J9C5", root, 0., 1., true);
+    }
+    pub fn jamband_event(&mut self, event: santa_tracker::jamband::SoundEvent, root: &Path) {
+        use santa_tracker::jamband::SoundEvent;
+        if self.device.is_none() {
+            return;
+        }
+        const GROUPS: [&str; 10] = [
+            "EPDs", "QcJi", "Du2o", "OSie", "Px11", "QLAo", "LdQ0", "uARB", "Jdmw", "SdSp",
+        ];
+        match event {
+            SoundEvent::Preview(i) => {
+                let keys = self.config["audio"]["ZBDz"]["content"]
+                    .as_array()
+                    .unwrap()
+                    .iter()
+                    .map(|v| v.as_str().unwrap().to_owned())
+                    .collect::<Vec<_>>();
+                for k in &keys {
+                    self.commands
+                        .send(Command::StopSource {
+                            id: k.clone(),
+                            fade: 1.,
+                        })
+                        .ok();
+                }
+                let p = [0, 3, 1, 2, 4, 5, 6, 7, 8, 9][i];
+                self.play_source(&keys[p], root, 0., 0., true);
+            }
+            SoundEvent::Track {
+                instrument,
+                pattern,
+                volume,
+            } => {
+                let now = macroquad::time::get_time();
+                self.jamband_voices
+                    .retain(|v| v.4.is_none_or(|end| end > now));
+                let position = self
+                    .jamband_voices
+                    .iter()
+                    .map(|v| (v.2 + now - v.1).rem_euclid(v.3))
+                    .fold(0.0_f64, f64::max);
+                for v in &mut self.jamband_voices {
+                    if v.0 == instrument && v.4.is_none() {
+                        v.4 = Some(now + 0.2);
+                    }
+                }
+                let keys = self.config["audio"][GROUPS[instrument]]["content"]
+                    .as_array()
+                    .unwrap()
+                    .iter()
+                    .map(|v| v.as_str().unwrap().to_owned())
+                    .collect::<Vec<_>>();
+                for k in &keys {
+                    self.commands
+                        .send(Command::StopSource {
+                            id: k.clone(),
+                            fade: 0.2,
+                        })
+                        .ok();
+                }
+                if pattern >= 0 {
+                    let key = &keys[pattern as usize];
+                    let old = self.config["audio"][key].clone();
+                    let mut source = old.clone();
+                    let duration = self.config["files"]
+                        .as_array()
+                        .unwrap()
+                        .iter()
+                        .find(|f| f["id"] == source["file_id"])
+                        .and_then(|f| f["duration"].as_f64())
+                        .unwrap_or(16.);
+                    let end = source["loop_end"]
+                        .as_f64()
+                        .filter(|v| *v > 0.)
+                        .unwrap_or(duration);
+                    source["offset"] = serde_json::json!(position);
+                    source["volume"] = serde_json::json!(volume);
+                    source["retrig"] = serde_json::json!(true);
+                    self.config["audio"][key] = source;
+                    self.play_source(key, root, 0., 0., true);
+                    self.config["audio"][key] = old;
+                    self.jamband_voices
+                        .push((instrument, now, position, end, None));
+                }
+            }
+        }
+    }
     pub fn trigger(&mut self, event: &str, root: &Path) {
+        if event == "elfmaker_switch_item" {
+            self.maker_switches += 1;
+            self.play_source("diiL", root, 0., 0., true);
+            if self.maker_switches % 8 == 0 {
+                self.play_source("h9jl", root, 0., 0., true);
+            }
+            return;
+        }
+
         if self.device.is_none() {
             return;
         }
         // Native translations of the original focused scenes' Klang actions.
         // An empty action stays empty; stop actions never restart their sources.
         let actions: Option<&[(&str, bool, f64, f64)]> = match event {
+            "music_start_scene" => Some(&[("OckO", true, 0., 0.2)]),
+            "elfmaker_switch_type" => Some(&[("h54h", true, 0., 0.)]),
+            "elfmaker_switch_color" => Some(&[("Cc2y", true, 0., 0.)]),
+            "elfmaker_photo" => Some(&[("HQfD", true, 0., 0.)]),
             "bl_game_start" => Some(&[("uVNy", true, 0., 0.)]),
             "bl_game_stop" => Some(&[("uVNy", false, 0., 0.3)]),
             "bl_shoot" => Some(&[("dSUn", true, 0., 0.), ("KRJ2", false, 0., 0.)]),

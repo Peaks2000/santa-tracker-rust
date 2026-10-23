@@ -2,7 +2,10 @@ mod assets;
 mod boatload_view;
 mod capture;
 mod chrome;
+mod elf_shadow;
+mod elfmaker_view;
 mod interlude;
+mod jamband_view;
 mod jetpack_view;
 mod loader_animation;
 mod overlay;
@@ -32,6 +35,8 @@ struct Options {
     scene: String,
     scroll: f32,
     beard_file: Option<PathBuf>,
+    elf_file: Option<PathBuf>,
+    band_file: Option<PathBuf>,
     clock_ms: Option<u64>,
     width: i32,
     height: i32,
@@ -56,6 +61,8 @@ fn options() -> Result<Option<Options>, String> {
         scene: "modvil".into(),
         scroll: 0.,
         beard_file: None,
+        elf_file: None,
+        band_file: None,
         clock_ms: None,
         width: 1440,
         height: 800,
@@ -69,7 +76,7 @@ fn options() -> Result<Option<Options>, String> {
     while let Some(arg) = args.next() {
         match arg.as_str() {
             "--help" | "-h" => {
-                println!("Santa Tracker — native Rust port (in development)\n\nAvailable: village, Runner, Elf Jetpack, Santa Selfie, Elf Ski, Present Drop and Gift Slingshot.\n\n--assets PATH       Original static assets directory\n--seed TEXT         Deterministic game seed\n--mute              Start without audio\n--scene NAME        modvil, runner, jetpack, santaselfie, elfski, presentdrop or boatload\n--scroll PIXELS     Initial village scroll position\n--beard-file PATH   Restore an original-format saved beard\n--advance SECONDS   Advance the selected scene before rendering\n--frames COUNT      Exit after COUNT frames (for native render checks)\n--screenshot PATH   Save the final rendered frame (or F12 live)\n--width PIXELS      Initial window width\n--height PIXELS     Initial window height\n--clock-ms EPOCH    Deterministic countdown clock for comparisons\n--profile PATH      Measure live frame intervals and CPU work to JSON\n--profile-frames N  Measured live frames after 30 warmup frames (default 240)\n\nControls: Space/Up jump (twice), Down slide, P pause, R restart, M mute, Escape home");
+                println!("Santa Tracker — native Rust port (in development)\n\nAvailable: village, Runner, Elf Jetpack, Santa Selfie, Elf Ski, Present Drop, Gift Slingshot, Elf Maker and Elf Jamband.\n\n--assets PATH       Original static assets directory\n--seed TEXT         Deterministic game seed\n--mute              Start without audio\n--scene NAME        modvil, runner, jetpack, santaselfie, elfski, presentdrop, boatload, elfmaker or jamband\n--scroll PIXELS     Initial village scroll position\n--beard-file PATH   Restore an original-format saved beard\n--elf-file PATH     Restore an original-format saved elf\n--band-file PATH    Restore an original-format saved band\n--advance SECONDS   Advance the selected scene before rendering\n--frames COUNT      Exit after COUNT frames (for native render checks)\n--screenshot PATH   Save the final rendered frame (or F12 live)\n--width PIXELS      Initial window width\n--height PIXELS     Initial window height\n--clock-ms EPOCH    Deterministic countdown clock for comparisons\n--profile PATH      Measure live frame intervals and CPU work to JSON\n--profile-frames N  Measured live frames after 30 warmup frames (default 240)\n\nControls: Space/Up jump (twice), Down slide, P pause, R restart, M mute, Escape home");
                 return Ok(None);
             }
             "--mute" => out.mute = true,
@@ -108,11 +115,13 @@ fn options() -> Result<Option<Options>, String> {
                 }
             }
             "--assets" | "--seed" | "--scene" | "--advance" | "--frames" | "--screenshot"
-            | "--scroll" | "--beard-file" => {
+            | "--scroll" | "--beard-file" | "--elf-file" | "--band-file" => {
                 let value = args.next().ok_or_else(|| format!("{arg} needs a value"))?;
                 match arg.as_str() {
                     "--assets" => out.assets = value.into(),
                     "--beard-file" => out.beard_file = Some(value.into()),
+                    "--elf-file" => out.elf_file = Some(value.into()),
+                    "--band-file" => out.band_file = Some(value.into()),
                     "--seed" => out.seed = value,
                     "--scene" => {
                         if ![
@@ -123,6 +132,8 @@ fn options() -> Result<Option<Options>, String> {
                             "elfski",
                             "presentdrop",
                             "boatload",
+                            "elfmaker",
+                            "jamband",
                         ]
                         .contains(&value.as_str())
                         {
@@ -244,6 +255,28 @@ async fn run(opts: Options) {
         }
         _ => {}
     }
+    let mut maker = santa_tracker::elfmaker::ElfMaker::new(&opts.seed);
+    let mut maker_view = elfmaker_view::ElfMakerView::new().expect("Elf Maker view");
+    let mut jam = santa_tracker::jamband::Jamband::new(&opts.seed);
+    let mut jam_view = jamband_view::JambandView::new().expect("Jamband view");
+    if let Some(path) = opts.elf_file {
+        let code = std::fs::read_to_string(path).expect("Saved elf state");
+        maker
+            .restore(code.trim())
+            .expect("Original elf state format");
+    }
+    if let Some(path) = opts.band_file {
+        let code = std::fs::read_to_string(path).expect("Saved band state");
+        jam.restore(code.trim());
+    }
+    if route == "elfmaker" {
+        sound.maker_start(&assets.root);
+        maker.advance(opts.advance);
+    }
+    if route == "jamband" {
+        jam.advance(opts.advance);
+        sound.jamband_start(&assets.root);
+    }
     let mut loaded = std::collections::HashSet::new();
     let mut unavailable: Option<String> = None;
     let mut accumulated = 0.;
@@ -297,6 +330,16 @@ async fn run(opts: Options) {
         if restart {
             sound.stop();
             match route.as_str() {
+                "elfmaker" => {
+                    maker = santa_tracker::elfmaker::ElfMaker::new(&opts.seed);
+                    maker_view.reset();
+                    sound.maker_start(&assets.root);
+                }
+                "jamband" => {
+                    jam.reset();
+                    jam_view.reset();
+                    sound.jamband_start(&assets.root);
+                }
                 "boatload" => boat.restart(),
                 "runner" => runner.restart(),
                 "elfski" => {
@@ -349,7 +392,7 @@ async fn run(opts: Options) {
                 "runner" => runner.playing && !runner.paused,
                 "jetpack" => jetpack.playing && !jetpack.paused,
                 "santaselfie" => !selfie.paused && !selfie_view.export_open,
-                "elfski" | "presentdrop" | "boatload" => true,
+                "elfski" | "presentdrop" | "boatload" | "elfmaker" | "jamband" => true,
                 _ => false,
             };
         if route == "santaselfie" && opts.frames.is_none() && !just_loaded {
@@ -379,6 +422,14 @@ async fn run(opts: Options) {
                 active && (tutorial_playing || route == "presentdrop"),
                 tutorial_mouse,
             );
+        }
+        if opts.frames.is_none() && !just_loaded && !interlude.busy() {
+            if route == "elfmaker" {
+                maker.advance(get_frame_time() as f64);
+            }
+            if route == "jamband" {
+                jam.advance(get_frame_time() as f64);
+            }
         }
         let mut jet_input = (0., 0.);
         if active {
@@ -494,6 +545,26 @@ async fn run(opts: Options) {
                 scene_filter.begin();
                 ski_view.draw(&assets, &mut ski).expect("Elf Ski rendering");
                 scene_filter.finish(!ski.playing);
+            }
+            "elfmaker" => {
+                maker_view.draw(
+                    &assets,
+                    &mut maker,
+                    active && opts.frames.is_none() && !interlude.busy() && !village.menu,
+                );
+                for event in maker.sounds.drain(..) {
+                    sound.trigger(event, &assets.root);
+                }
+            }
+            "jamband" => {
+                jam_view.draw(
+                    &assets,
+                    &mut jam,
+                    active && opts.frames.is_none() && !interlude.busy() && !village.menu,
+                );
+                for event in jam.sounds.drain(..) {
+                    sound.jamband_event(event, &assets.root);
+                }
             }
             "santaselfie" => {
                 for event in selfie.sounds.drain(..) {
@@ -686,6 +757,8 @@ async fn run(opts: Options) {
                 "elfski",
                 "presentdrop",
                 "boatload",
+                "elfmaker",
+                "jamband",
             ]
             .contains(&target.as_str())
             {
@@ -724,6 +797,8 @@ async fn run(opts: Options) {
                 "elfski",
                 "presentdrop",
                 "boatload",
+                "elfmaker",
+                "jamband",
             ]
             .contains(&target.as_str())
             {
@@ -757,6 +832,16 @@ async fn run(opts: Options) {
                             screen_width() as f64,
                             screen_height() as f64,
                         )
+                    }
+                    "elfmaker" => {
+                        maker = santa_tracker::elfmaker::ElfMaker::new(&opts.seed);
+                        maker_view.reset();
+                        sound.maker_start(&assets.root);
+                    }
+                    "jamband" => {
+                        jam = santa_tracker::jamband::Jamband::new(&opts.seed);
+                        jam_view.reset();
+                        sound.jamband_start(&assets.root);
                     }
                     "presentdrop" => drop_game = PresentDrop::new(&opts.seed),
                     "santaselfie" => {

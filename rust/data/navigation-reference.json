@@ -19,7 +19,7 @@
     "route": "modvil",
     "cards": [
       "jetpack",
-      "presentdrop"
+      "runner"
     ],
     "play": "jetpack"
   },
@@ -35,7 +35,7 @@
     "route": "modvil",
     "cards": [
       "elfski",
-      "boatload"
+      "elfmaker"
     ],
     "play": "elfski"
   }

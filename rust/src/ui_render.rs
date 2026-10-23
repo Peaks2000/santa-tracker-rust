@@ -21,12 +21,28 @@ float v=abs(z);float t=1.0/(1.0+0.2316419*v);float tail=0.39894228*exp(-0.5*v*v)
 alpha=z>0.0?tail:1.0-tail;}
 gl_FragColor=vec4(Tint.rgb,Tint.a*alpha);}
 "#;
-pub struct Shapes {
+// Only weakly retain the cache: the last view releases its GPU resources
+// before the window/context closes. Uniform writes break batches in Macroquad.
+thread_local! {static SHAPE_CACHE:std::cell::RefCell<std::rc::Weak<ShapeMaterials>>=std::cell::RefCell::new(std::rc::Weak::new());}
+#[derive(Clone)]
+pub struct Shapes(std::rc::Rc<ShapeMaterials>);
+#[doc(hidden)]
+pub struct ShapeMaterials {
     material: Material,
     image_material: Material,
 }
+impl std::ops::Deref for Shapes {
+    type Target = ShapeMaterials;
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
 impl Shapes {
     pub fn new() -> Result<Self, String> {
+        if let Some(shared) = SHAPE_CACHE.with(|c| c.borrow().upgrade()) {
+            return Ok(Self(shared));
+        }
         let uniforms = vec![
             UniformDesc::new("Size", UniformType::Float2),
             UniformDesc::new("Radius", UniformType::Float1),
@@ -63,10 +79,12 @@ attribute vec3 position;attribute vec2 texcoord;uniform mat4 Model;uniform mat4 
 void main(){gl_Position=Projection*Model*vec4(position,1.0);uv=texcoord;point=position.xy;}"#,fragment:r#"#version 100
 precision highp float;varying vec2 uv;varying vec2 point;uniform sampler2D Texture;uniform vec4 Bounds;uniform float Radius;uniform float Opacity;uniform float Gradient;
 void main(){vec2 q=abs(point-Bounds.xy-Bounds.zw*0.5)-Bounds.zw*0.5+Radius;float d=length(max(q,vec2(0.0)))+min(max(q.x,q.y),0.0)-Radius;vec4 c=texture2D(Texture,uv);float y=(point.y-Bounds.y)/Bounds.w;c.rgb*=1.0-Gradient*0.33*clamp((y-0.3)/0.4,0.0,1.0);c.a*=Opacity*(1.0-smoothstep(-0.5,0.5,d));gl_FragColor=c;}"#},MaterialParams {uniforms:vec![UniformDesc::new("Bounds",UniformType::Float4),UniformDesc::new("Radius",UniformType::Float1),UniformDesc::new("Opacity",UniformType::Float1),UniformDesc::new("Gradient",UniformType::Float1)],pipeline_params:PipelineParams {color_blend:Some(BlendState::new(Equation::Add,BlendFactor::Value(BlendValue::SourceAlpha),BlendFactor::OneMinusValue(BlendValue::SourceAlpha))),..Default::default()},..Default::default()}).map_err(|e|e.to_string())?;
-        Ok(Self {
+        let shared = std::rc::Rc::new(ShapeMaterials {
             material,
             image_material,
-        })
+        });
+        SHAPE_CACHE.with(|c| *c.borrow_mut() = std::rc::Rc::downgrade(&shared));
+        Ok(Self(shared))
     }
     pub fn rounded(&self, r: Rect, radius: f32, c: Color, blur: f32) {
         if r.w <= 0. || r.h <= 0. || c.a <= 0. {

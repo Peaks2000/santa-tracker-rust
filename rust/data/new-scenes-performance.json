@@ -1,0 +1,95 @@
+{
+  "scope": "Local desktop release profiles; no end-to-end input latency claim. Same seed and requested 1440x800 viewport. Profiles are idle and do not certify every tool, costume or band combination.",
+  "profiles": {
+    "maker_before": {
+      "scene": "elfmaker",
+      "width": 1440.0,
+      "height": 800.0,
+      "frames": 90,
+      "warmup_frames": 30,
+      "elapsed_seconds": 7.41286279,
+      "interval_ms": {
+        "max": 78.51910591125488,
+        "mean": 60.16021304660373,
+        "p50": 58.92610549926758,
+        "p95": 71.17938995361328,
+        "p99": 75.92248916625977
+      },
+      "scene_ms": {
+        "max": 77.577837,
+        "mean": 59.02052197777776,
+        "p50": 57.929067,
+        "p95": 70.269837,
+        "p99": 74.98057
+      },
+      "work_ms": {
+        "max": 77.60503800000001,
+        "mean": 59.05189247777779,
+        "p50": 57.956819,
+        "p95": 70.301086,
+        "p99": 75.009113
+      },
+      "scope": "Main-thread work and observed presentation intervals; not input-to-photon latency. No gameplay timing changes."
+    },
+    "maker_after": {
+      "scene": "elfmaker",
+      "width": 1440.0,
+      "height": 800.0,
+      "frames": 90,
+      "warmup_frames": 30,
+      "elapsed_seconds": 2.079581878,
+      "interval_ms": {
+        "max": 24.42026138305664,
+        "mean": 16.591474745008682,
+        "p50": 16.678571701049805,
+        "p95": 17.75050163269043,
+        "p99": 18.043041229248047
+      },
+      "scene_ms": {
+        "max": 1.768117,
+        "mean": 1.3597022222222224,
+        "p50": 1.36635,
+        "p95": 1.7368780000000001,
+        "p99": 1.747528
+      },
+      "work_ms": {
+        "max": 1.804425,
+        "mean": 1.387543611111111,
+        "p50": 1.3915380000000002,
+        "p95": 1.765472,
+        "p99": 1.77479
+      },
+      "scope": "Main-thread work and observed presentation intervals; not input-to-photon latency. No gameplay timing changes."
+    },
+    "jamband_idle": {
+      "scene": "jamband",
+      "width": 1440.0,
+      "height": 800.0,
+      "frames": 90,
+      "warmup_frames": 30,
+      "elapsed_seconds": 2.305477723,
+      "interval_ms": {
+        "max": 19.374370574951172,
+        "mean": 16.7297813627455,
+        "p50": 16.742706298828125,
+        "p95": 17.43602752685547,
+        "p99": 17.99178123474121
+      },
+      "scene_ms": {
+        "max": 0.556547,
+        "mean": 0.4674396222222223,
+        "p50": 0.473952,
+        "p95": 0.530038,
+        "p99": 0.555475
+      },
+      "work_ms": {
+        "max": 0.611831,
+        "mean": 0.5076675555555556,
+        "p50": 0.514688,
+        "p95": 0.575593,
+        "p99": 0.599588
+      },
+      "scope": "Main-thread work and observed presentation intervals; not input-to-photon latency. No gameplay timing changes."
+    }
+  }
+}

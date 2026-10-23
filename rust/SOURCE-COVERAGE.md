@@ -284,3 +284,91 @@ Release validation: 33 tests pass; offline release build succeeds. An owned
 Boatload window exercised tutorial display, pause/resume, next queued hint and
 keyboard dismissal; all captured final surfaces had alpha 255. Desktop capture
 can stall, so this smoke is not evidence of minimum input latency.
+
+
+## Elf Maker and Elf Jamband native ports (2026-10-24)
+
+Reviewed the complete Elf Maker index.js/index.html, defs.js geometry functions
+and embedded SVG definitions, maker-control/chooser/elf/photo JavaScript and
+all four Sass files, plus shared santa-choice input/scroll handling and styles,
+santa-button behavior/styles and the corresponding Klang actions. Native model
+covers category order, seven saved choices/seven colours, weighted randomization,
+source SVG colour classes, base64 comma/nonce format, restore and all eight motion
+sequences. Arm targets preserve the source's false/right versus render-left
+naming quirk, sinusoidal target sway and sine interpolation from the old pose.
+Blink uses the 5.234s alternating source keyframes; unused old dance helpers and
+_isDancing do not affect the source render and are not invented as new movement.
+The original 7 bodies, 39 hairstyles, 3 glasses, 9 earrings, 10 hats/accessories/
+backgrounds are retained as SVG/image data. Geometry is generated in Rust.
+21 original control states match choices, colours and serialization; 35 body/
+pose cases compare original versus Rust-generated SVG rasters (total byte error
+under 100 per 400x560 image). Desktop/mobile layout measurements are bundled in
+elfmaker-layout-reference.json. Camera/export, flash, floating photo, category/
+colour/preview selection, desktop drag/held-arrow/wheel scrolling and native
+saved-code restore are implemented. Invalid out-of-range category codes are
+clamped rather than allowing the original's later undefined-body render crash.
+
+Reviewed all Jamband game/audio/instruments/dragdrop/drawer/lights JavaScript,
+extern declarations, full HTML/layer order and all seven Sass partials plus
+shared legacy button styles. Native model translates 120 BPM next-bar scheduling,
+callback cancellation, six pattern/volume positions, drag swap/replace/return,
+reset, Fisher-Yates randomization, duplicate-ID restore and empty-band encoding.
+19 original browser action/state cases exercise the real Draggable handlers;
+programmatic putOnStage alone does not perform their swap logic. Ten characters
+retain their nested original SVG layers (including Sax and Xylo child transforms),
+waiting/playing classes, both patterns and CSS timing/origins. 1,568 browser
+part-transform/opacity samples pass within 0.02 source pixels/matrix coefficients
+and 0.001 opacity. Stage/drawer boxes at 1440x800 are exported separately. Source
+keyframe and art data is interpreted by Rust; no browser/JS is shipped or used
+at runtime. Native lighting thresholds, fades, paused/resumed floor motion,
+crowd/background animation, drawer hide/scroll and collapsing containers exist;
+further full-scene phase/capture checks remain necessary.
+
+Read Klang's jamband_play_track and preview_instrument actions completely:
+native uses the two exact loop sources per instrument, 0.2s fade-outs, stage
+volumes, maximum active loop position for joining tracks and one-second preview
+fade-outs. Original crowd loop is included. Elf Maker has source switch type/
+colour/photo actions and the switch-item counter's extra sound every eighth
+call, plus lounge music. Samples are decoded on scene entry, avoiding decoding
+at the first musical bar; cold entry can still block. Full global mixer/bus
+transition fidelity and audio-device timing are not certified. The source
+n6Xc process started by these scenes has an empty action.
+
+Known native differences: file export replaces host URL/link sharing; Maker's
+photo floating/perspective/reveal/hide and save-button transitions need complete
+source matching; full touch, keyboard focus/accessibility and all responsive
+sizes have not been verified. Jamband drawer scroll easing and every drag/light
+transition still need review. Selected idle captures and per-part matrices do
+not establish whole-mode 1:1 parity. Both modes remain partial.
+
+A release smoke exposed Macroquad's 32-pipeline limit when every view was
+constructed together. Identical Shapes materials now share weakly cached GPU
+resources; uniforms still break batches before each draw. Weak ownership lets
+the last view release the resources before its GL context closes.
+
+Performance follow-up: the first Maker renderer spent about 59ms/frame in scene
+CPU work (90 measured frames after 30 warmup). A CPU-only diagnostic isolated
+its SVG Gaussian drop-shadow: 67.584ms with premultiplied output, versus 0.569ms
+for the same unfiltered SVG. The runtime now retains premultiplied raster pixels
+and applies the same 4px/4px, sigma-2 shadow with a GPU Gaussian alpha kernel;
+it does not change pose calculations, animation clocks or movement. The matched
+1440x800 idle mean RGB error is 0.393/255 (previous software-filter capture 0.408).
+Jamband's initial idle profile showed 16.73ms mean intervals and 0.47ms scene
+CPU work. These are local measurements, not input-to-photon latency guarantees.
+
+After the shadow change, the same Maker idle release profile (90 frames after
+30 warmup, 1440x800, seed test1234) averaged 16.59ms frame intervals, 1.36ms
+scene CPU work and 1.39ms total CPU work. Mean intervals before were 60.16ms.
+Full summary statistics are in data/new-scenes-performance.json. These results
+cover the tested idle costume, not every costume/photo/input path.
+
+Live release interaction checks passed for Maker category selection, randomize,
+photo reveal/save (640x1000 PNG plus original-format state), and Jamband drawer
+drag-to-stage, delayed playing, band export, hide/open and randomize. Audio ran
+through SDL's dummy device for decoder/mixer smoke; this is not an audible A/B
+comparison. Shared-material GPU check creates 64 Shapes views and verifies
+distinct per-draw colours and the unchanged-RGB opaque output pass.
+
+Final regression: all 37 tests pass in the clean Rust-only distribution; the
+offline release build succeeds. All nine scenes start and save opaque captures
+using only distribution assets. No browser/reference source is required.

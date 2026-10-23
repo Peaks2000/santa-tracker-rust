@@ -1,13 +1,15 @@
 //! entrypoint.js updatePlayNextCards: biased selection, recent-route buffer,
 //! and a shared Play destination / two recommendation cards.
 use crate::random::Random;
-pub const PLAYABLE: [&str; 6] = [
+pub const PLAYABLE: [&str; 8] = [
     "santaselfie",
     "jetpack",
     "elfski",
     "presentdrop",
     "runner",
     "boatload",
+    "elfmaker",
+    "jamband",
 ];
 pub struct NextGames {
     random: Random,

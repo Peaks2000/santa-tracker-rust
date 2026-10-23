@@ -8,7 +8,7 @@ The application runs native Rust window, rendering, input, simulation, Ogg decod
 
 - Village: original four background layers, exported sprite geometry/keyframes, original fonts/logo, eased Play/Family Guide controls and positions, eleven scrolling sections, native playback of their Lottie files, activity cards, a navigation grid, and snow/cloud simulation. Village animation includes the glitch elf, water-spout clipping, sprite keyframes, card hover/reverse motion and occasional card animations. Module/card geometry is compared against the original browser at 1440, 768 and 375 pixels.
 - Shared controls: original toolbar SVG paths and sizes, eased press/release shadows, hover/press audio, keyboard focus, home/pause/restart controls and a score/time badge with level/score transitions. The December 24 10:00 UTC countdown uses the original split arithmetic, responsive hiding, shaped ends, font weights and rolling/fading digit transitions.
-- Shared pause/game-over: original elf/trophy artwork, resume/restart/home buttons, two recommended activities, entrance/exit motion and the disabled scene's greyscale, brightness, blur and scaling. The selector uses the repository's original navigation defaults, adds Elf Ski and Present Drop explicitly, and reveals its cards together. Home Play and overlay recommendations share the original biased choice/recent-games behavior, filtered to the six native activities; Play no longer always launches Runner. Opaque offscreen scenes are copied without reapplying sprite-edge alpha, preventing dark outlines.
+- Shared pause/game-over: original elf/trophy artwork, resume/restart/home buttons, two recommended activities, entrance/exit motion and the disabled scene's greyscale, brightness, blur and scaling. The selector uses the repository's original navigation defaults, adds Elf Ski and Present Drop explicitly, and reveals its cards together. Home Play and overlay recommendations share the original biased choice/recent-games behavior, filtered to the eight native activities; Play no longer always launches Runner. Opaque offscreen scenes are copied without reapplying sprite-edge alpha, preventing dark outlines.
 - Scene changes: original four coloured interlude layers and Santa/Mrs Claus Lottie illustration. Illustration rendering and scene image decoding run on background threads; GPU uploads are bounded per frame to keep the window responsive.
 - Runner: Rust physics, seeded random generation, entity spawning, platforms, collisions, scoring, time boosts, magnet attraction, timers, pause and restart. The renderer now follows the original layer origin, discrete responsive scales/portrait ceiling, stretched background canvas, original run/slide frames, rollers/wires, machinery, belts/gears, hit/pickup/magnet effects and Lobster speedometer with level stripes. Five original simulation scenarios, live level timers/canvas movement, and DOM layout at five viewport sizes are compared with the source. See [source coverage](SOURCE-COVERAGE.md).
 - Elf Jetpack: original elf/item/cloud artwork, animated flames and sparks, sprite frames, sway/rotation, sky transitions with clouds/level numbers and the finish goal. Flame scaling follows the original eased transition, player/hit rotation uses the CSS transform origin, and transparent sprite RGB is extended to prevent dark filtering fringes. Native movement, collisions, pickups, clock bonuses, hazards, levels and spawning follow the original classes. Three seeded scenarios are checked against the original simulation.
@@ -74,7 +74,7 @@ cargo run --manifest-path rust/Cargo.toml --example status_report
 cargo run --manifest-path rust/Cargo.toml --example opaque_surface_reference
 ```
 
-The JavaScript reference exporters and browser capture tools live only in the separate development/reference checkout; they are deliberately omitted from this Rust-only distribution. They are not used by the native application. `reference.cjs` loads the original Runner classes, coordinator, scoreboard and random generator; its output is checked by Rust tests to a numeric tolerance of `1e-7`. `focus-reference.cjs` does the same for the original Jetpack classes/scoreboard and Selfie cloth/point/tool operations. Additional tests check beard encoding, invalid input rejection and tool sound transitions. UI reference tests cover 516 original countdown inputs, card-player reversals and measured responsive card geometry; a sprite-filtering test checks that alpha and visible source artwork remain unchanged. The native animation test checks that an original section animates rather than rendering a static poster and stays premultiplied through filtering. The audio tests check looping, pause/resume, channel output, delayed starts, fades and source stops. The countdown test checks the original UTC deadline. Runner also checks the live delayed level transitions and original canvas offsets, and its layout is checked at five viewport sizes.
+The JavaScript reference exporters and browser capture tools live only in the separate development/reference checkout; they are omitted from this Rust-only distribution. They are not used by the native application. `reference.cjs` loads the original Runner classes, coordinator, scoreboard and random generator; its output is checked by Rust tests to a numeric tolerance of `1e-7`. `focus-reference.cjs` does the same for the original Jetpack classes/scoreboard and Selfie cloth/point/tool operations. Additional tests check beard encoding, invalid input rejection and tool sound transitions. UI reference tests cover 516 original countdown inputs, card-player reversals and measured responsive card geometry; a sprite-filtering test checks that alpha and visible source artwork remain unchanged. The native animation test checks that an original section animates rather than rendering a static poster and stays premultiplied through filtering. The audio tests check looping, pause/resume, channel output, delayed starts, fades and source stops. The countdown test checks the original UTC deadline. Runner also checks the live delayed level transitions and original canvas offsets, and its layout is checked at five viewport sizes.
 
 Original browser captures go into `rust/target/`, with measured layout data in `data/*layout-reference.json` and Selfie expression measurements in `data/selfie-expression-reference.json`. Native screenshots can be produced using:
 
@@ -99,3 +99,34 @@ The native Rust-only visual comparison harness can render Runner states without 
 Tutorial prompts now use the original queue/dismiss timing, input artwork and cloud clip in the five native action games. Elf Ski uses a frame atlas derived from the original video with its sample aspect ratio preserved. Desktop keyboard prompts are the tested input profile; full touch/pressure behavior remains incomplete.
 
 Recent fidelity checks cover Selfie wall-clock blinking while paused, mobile toolbox wrapping, eye artwork and SVG background aspect fitting; shared pause/game-over geometry covers 18 original browser cases. Original/native captures still have small raster/font differences. The final opaque-window pass is GPU-checked to preserve every RGB byte while setting output alpha to opaque. This prevents applying surface transparency twice; it does not certify that every image edge matches the browser.
+
+
+## Elf Maker and Elf Jamband
+
+Launch `./rust/run.sh --scene elfmaker` or `./rust/run.sh --scene jamband`.
+Both are native Rust scenes, with original vector artwork; no browser engine is embedded.
+
+Elf Maker includes all seven body types, 39 hairstyles, three glasses choices,
+nine earrings, ten hats, ten accessories and ten backgrounds, plus the source
+colour palettes, weighted randomization, arm moves and blink timing. Select a
+category, colour and preview; scroll or drag the desktop preview strip to see
+more choices. Click the elf to request a move. Camera takes a photo; Save writes
+`elfmaker.png` (640x1000) and `elfmaker.elf`. Share uses local export in this native
+application. Restore a saved original-format code with
+`--scene elfmaker --elf-file elfmaker.elf`.
+
+Elf Jamband includes all ten instruments and six stage positions. Drag an elf
+from the drawer onto a stage; music starts on the next bar at 120 BPM. Moving
+between occupied stages swaps their elves; dropping offstage returns the elf
+to the drawer. Stage position selects the original pattern and volume. The
+arrows/wheel scroll the drawer, its tab hides/opens it, and Shuffle fills the
+stages. Share writes an original-format `jamband.band`; restore it with
+`--scene jamband --band-file jamband.band`. The native file-sharing flow differs
+from the website's link-sharing overlay.
+
+These scenes are **partial, not certified 1:1**. Source comparisons cover Maker
+randomization/serialization and 35 SVG geometry cases, Jamband placement/bar
+callbacks and 1,568 browser instrument-animation samples. Further responsive,
+photo/lighting transition, touch/accessibility, audio-mix and raster checks
+remain. Audio is decoded on scene entry to avoid first-note decoding during a
+performance; initial scene loading can still block. See SOURCE-COVERAGE.md.

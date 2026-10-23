@@ -126,7 +126,9 @@ fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
         };
         let tree =
             resvg::usvg::Tree::from_data(&data, &options).map_err(|e| format!("{key}: {e}"))?;
-        let render_scale = if key.ends_with("jetpack/img/levelclouds.svg") {
+        let render_scale = if key.starts_with("scenes/_shared/img/button/") {
+            4.
+        } else if key.ends_with("jetpack/img/levelclouds.svg") {
             5.
         } else {
             1.
@@ -200,6 +202,17 @@ fn scene_keys(root: &Path, scene: &str) -> Result<Vec<String>, String> {
 
     if scene == "elfski" {
         keys.push("scenes/elfski/models/elf-tidy.png".into());
+    }
+    if scene == "elfmaker" || scene == "jamband" {
+        keys.extend(
+            [
+                "shuffle.svg",
+                "share.svg",
+                "arrow-key-left-dark.svg",
+                "arrow-key-right-dark.svg",
+            ]
+            .map(|s| format!("scenes/_shared/img/button/{s}")),
+        );
     }
     if scene == "santaselfie" {
         keys.extend([
