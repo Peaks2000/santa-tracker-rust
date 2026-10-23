@@ -2,7 +2,7 @@
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
 task_needs_build=0
-for task_source in Cargo.toml Cargo.lock src/*.rs data/* assets/fonts/*.ttf; do
+for task_source in Cargo.toml Cargo.lock src/*.rs data/* assets/fonts/*.ttf assets/shaders/*; do
   if [[ "$task_source" -nt target/release/santa-tracker ]]; then
     task_needs_build=1
   fi

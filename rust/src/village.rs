@@ -54,6 +54,7 @@ pub struct Village<'a> {
     pub notice: Option<String>,
     pub sounds: Vec<&'static str>,
     shapes: Shapes,
+    animation_material: Material,
     play_motion: Transition<4>,
     play_ripple: Transition<2>,
     play_hover: bool,
@@ -168,6 +169,7 @@ fn svg_texture(bytes: &[u8], width: u16, height: u16) -> Result<Texture2D, Strin
             }
         }
     }
+    santa_tracker::image_alpha::bleed_edges(&mut rgba, width as usize, height as usize);
     Ok(Texture2D::from_rgba8(width, height, &rgba))
 }
 impl<'a> Village<'a> {
@@ -223,6 +225,7 @@ impl<'a> Village<'a> {
             notice: None,
             sounds: vec!["music_start_village", "village_start"],
             shapes: Shapes::new()?,
+            animation_material: crate::ui_render::premultiplied_material()?,
             play_motion: Transition::new([-5., 3., 5., 13.]),
             play_ripple: Transition::new([1., 0.05]),
             play_hover: false,
@@ -340,6 +343,7 @@ impl<'a> Village<'a> {
             }
         }
         if let Some(texture) = &anim.texture {
+            gl_use_material(&self.animation_material);
             draw_texture_ex(
                 texture,
                 r.x,
@@ -350,6 +354,7 @@ impl<'a> Village<'a> {
                     ..Default::default()
                 },
             );
+            gl_use_default_material();
         }
     }
     pub fn overlay_cards(

@@ -5,8 +5,10 @@ mod interlude;
 mod jetpack_view;
 mod loader_animation;
 mod overlay;
+mod presentdrop_view;
 mod render;
 mod selfie_view;
+mod ski_view;
 mod sound;
 mod ui_render;
 mod village;
@@ -60,7 +62,7 @@ fn options() -> Result<Option<Options>, String> {
     while let Some(arg) = args.next() {
         match arg.as_str() {
             "--help" | "-h" => {
-                println!("Santa Tracker — native Rust port (in development)\n\nAvailable: village, Runner, Elf Jetpack and Santa Selfie.\n\n--assets PATH       Original static assets directory\n--seed TEXT         Deterministic game seed\n--mute              Start without audio\n--scene NAME        modvil, runner, jetpack or santaselfie\n--scroll PIXELS     Initial village scroll position\n--beard-file PATH   Restore an original-format saved beard\n--advance SECONDS   Advance the selected scene before rendering\n--frames COUNT      Exit after COUNT frames (for native render checks)\n--screenshot PATH   Save the final rendered frame (or F12 live)\n--width PIXELS      Initial window width\n--height PIXELS     Initial window height\n--clock-ms EPOCH    Deterministic countdown clock for comparisons\n\nControls: Space/Up jump (twice), Down slide, P pause, R restart, M mute, Escape home");
+                println!("Santa Tracker — native Rust port (in development)\n\nAvailable: village, Runner, Elf Jetpack, Santa Selfie, Elf Ski and Present Drop.\n\n--assets PATH       Original static assets directory\n--seed TEXT         Deterministic game seed\n--mute              Start without audio\n--scene NAME        modvil, runner, jetpack, santaselfie, elfski or presentdrop\n--scroll PIXELS     Initial village scroll position\n--beard-file PATH   Restore an original-format saved beard\n--advance SECONDS   Advance the selected scene before rendering\n--frames COUNT      Exit after COUNT frames (for native render checks)\n--screenshot PATH   Save the final rendered frame (or F12 live)\n--width PIXELS      Initial window width\n--height PIXELS     Initial window height\n--clock-ms EPOCH    Deterministic countdown clock for comparisons\n\nControls: Space/Up jump (twice), Down slide, P pause, R restart, M mute, Escape home");
                 return Ok(None);
             }
             "--mute" => out.mute = true,
@@ -95,7 +97,15 @@ fn options() -> Result<Option<Options>, String> {
                     "--beard-file" => out.beard_file = Some(value.into()),
                     "--seed" => out.seed = value,
                     "--scene" => {
-                        if !["runner", "modvil", "jetpack", "santaselfie"].contains(&value.as_str())
+                        if ![
+                            "runner",
+                            "modvil",
+                            "jetpack",
+                            "santaselfie",
+                            "elfski",
+                            "presentdrop",
+                        ]
+                        .contains(&value.as_str())
                         {
                             return Err(format!("Scene '{value}' has not been ported to Rust yet"));
                         }
@@ -152,7 +162,7 @@ fn main() {
     }
 }
 async fn run(opts: Options) {
-    use santa_tracker::{jetpack::Jetpack, selfie::Selfie};
+    use santa_tracker::{jetpack::Jetpack, presentdrop::PresentDrop, selfie::Selfie, ski::Ski};
     let mut assets = assets::Assets::new(opts.assets);
     let mut sound = sound::Sound::new(opts.mute);
     let engine = thorvg::Thorvg::init(0).expect("Native animation engine initialization");
@@ -164,6 +174,14 @@ async fn run(opts: Options) {
     let (width, height) = jetpack_view::JetpackView::dimensions();
     let mut jetpack = Jetpack::new(&opts.seed, width, height);
     let mut selfie = Selfie::new(&opts.seed);
+    let mut drop_game = PresentDrop::new(&opts.seed);
+    let mut drop_view = presentdrop_view::PresentDropView::new().expect("Present Drop font");
+    let mut ski = Ski::new(
+        &opts.seed,
+        (screen_width() + 80.) as f64,
+        (screen_height() + 80.) as f64,
+    );
+    let mut ski_view = ski_view::SkiView::new().expect("Original Elf Ski model and shaders");
     if let Some(path) = opts.beard_file {
         match std::fs::read_to_string(&path)
             .map_err(|e| e.to_string())
@@ -184,6 +202,8 @@ async fn run(opts: Options) {
     match route.as_str() {
         "runner" => runner.advance(opts.advance),
         "jetpack" => jetpack.advance(opts.advance, (0., 0.)),
+        "elfski" => ski.advance(opts.advance, Some(0.)),
+        "presentdrop" => drop_game.advance(opts.advance),
         "santaselfie" => {
             for _ in 0..(opts.advance * 1000. / 16.) as u64 {
                 selfie.step();
@@ -239,11 +259,19 @@ async fn run(opts: Options) {
             sound.stop();
             match route.as_str() {
                 "runner" => runner = Runner::new(&opts.seed),
+                "elfski" => {
+                    ski = Ski::new(
+                        &opts.seed,
+                        (screen_width() + 80.) as f64,
+                        (screen_height() + 80.) as f64,
+                    )
+                }
                 "jetpack" => {
                     let (w, h) = jetpack_view::JetpackView::dimensions();
                     jetpack = Jetpack::new(&opts.seed, w, h);
                 }
                 "santaselfie" => selfie.reset(),
+                "presentdrop" => drop_game.restart(),
                 _ => {}
             }
             accumulated = 0.;
@@ -258,6 +286,10 @@ async fn run(opts: Options) {
                     jetpack.paused = !jetpack.paused;
                     sound.paused(jetpack.paused);
                 }
+                "presentdrop" => {
+                    drop_game.paused = !drop_game.paused;
+                    sound.paused(drop_game.paused);
+                }
                 "santaselfie" => {
                     selfie.paused = !selfie.paused;
                     sound.paused(selfie.paused);
@@ -271,6 +303,7 @@ async fn run(opts: Options) {
                 "runner" => runner.playing && !runner.paused,
                 "jetpack" => jetpack.playing && !jetpack.paused,
                 "santaselfie" => !selfie.paused && !selfie_view.export_open,
+                "elfski" | "presentdrop" => true,
                 _ => false,
             };
         let mut jet_input = (0., 0.);
@@ -287,6 +320,7 @@ async fn run(opts: Options) {
                         runner.end_slide();
                     }
                 }
+                "presentdrop" => drop_view.input(&mut drop_game),
                 "jetpack" => {
                     jet_input = jet_view.input();
                     let (w, h) = jetpack_view::JetpackView::dimensions();
@@ -307,6 +341,8 @@ async fn run(opts: Options) {
                 match route.as_str() {
                     "runner" => runner.step(tick),
                     "jetpack" => jetpack.step(tick, jet_input),
+                    "presentdrop" => drop_game.step(tick),
+                    "elfski" => ski.step(tick, ski_view::SkiView::input()),
                     "santaselfie" => selfie.step(),
                     _ => {}
                 }
@@ -340,6 +376,25 @@ async fn run(opts: Options) {
                 jet_view.draw(&assets, &jetpack);
                 scene_filter.finish(jetpack.paused || !jetpack.playing);
             }
+            "presentdrop" => {
+                for event in drop_game.sounds.drain(..) {
+                    sound.trigger(event, &assets.root);
+                }
+                for pan in drop_game.pan_events.drain(..) {
+                    sound.presentdrop_pan(pan);
+                }
+                scene_filter.begin();
+                drop_view.draw(&assets, &drop_game);
+                scene_filter.finish(drop_game.paused || !drop_game.playing);
+            }
+            "elfski" => {
+                for event in ski.sounds.drain(..) {
+                    sound.trigger(event, &assets.root);
+                }
+                scene_filter.begin();
+                ski_view.draw(&assets, &mut ski).expect("Elf Ski rendering");
+                scene_filter.finish(!ski.playing);
+            }
             "santaselfie" => {
                 for event in selfie.sounds.drain(..) {
                     sound.trigger(event, &assets.root);
@@ -348,9 +403,13 @@ async fn run(opts: Options) {
             }
             _ => {}
         }
-        if route == "runner" || route == "jetpack" {
+        if ["runner", "jetpack", "elfski", "presentdrop"].contains(&route.as_str()) {
             let (paused, gameover) = if route == "runner" {
                 (runner.paused, !runner.playing)
+            } else if route == "presentdrop" {
+                (drop_game.paused, !drop_game.playing)
+            } else if route == "elfski" {
+                (false, !ski.playing)
             } else {
                 (jetpack.paused, !jetpack.playing)
             };
@@ -361,6 +420,8 @@ async fn run(opts: Options) {
                     overlay::Action::Resume => {
                         if route == "runner" {
                             runner.paused = false;
+                        } else if route == "presentdrop" {
+                            drop_game.paused = false;
                         } else {
                             jetpack.paused = false;
                         }
@@ -370,6 +431,14 @@ async fn run(opts: Options) {
                         sound.stop();
                         if route == "runner" {
                             runner = Runner::new(&opts.seed);
+                        } else if route == "presentdrop" {
+                            drop_game.restart();
+                        } else if route == "elfski" {
+                            ski = Ski::new(
+                                &opts.seed,
+                                (screen_width() + 80.) as f64,
+                                (screen_height() + 80.) as f64,
+                            );
                         } else {
                             let (w, h) = jetpack_view::JetpackView::dimensions();
                             jetpack = Jetpack::new(&opts.seed, w, h);
@@ -403,6 +472,24 @@ async fn run(opts: Options) {
                 badge: true,
                 can_pause: true,
             }),
+            "presentdrop" => Some(chrome::GameHud {
+                playing: drop_game.playing,
+                paused: drop_game.paused,
+                score: drop_game.score,
+                countdown: drop_game.countdown.ceil(),
+                level: Some(drop_game.level + 1),
+                badge: true,
+                can_pause: true,
+            }),
+            "elfski" => Some(chrome::GameHud {
+                playing: ski.playing,
+                paused: false,
+                score: ski.last_score,
+                countdown: ski.score_time,
+                level: None,
+                badge: true,
+                can_pause: false,
+            }),
             "santaselfie" => Some(chrome::GameHud {
                 playing: true,
                 paused: selfie.paused,
@@ -420,6 +507,10 @@ async fn run(opts: Options) {
                 chrome::Action::Menu => village.menu = !village.menu,
                 chrome::Action::Mute => sound.mute(),
                 chrome::Action::Pause => match route.as_str() {
+                    "presentdrop" => {
+                        drop_game.paused = !drop_game.paused;
+                        sound.paused(drop_game.paused);
+                    }
                     "runner" => {
                         runner.paused = !runner.paused;
                         sound.paused(runner.paused);
@@ -433,7 +524,15 @@ async fn run(opts: Options) {
                 chrome::Action::Restart => {
                     sound.stop();
                     match route.as_str() {
+                        "presentdrop" => drop_game.restart(),
                         "runner" => runner = Runner::new(&opts.seed),
+                        "elfski" => {
+                            ski = Ski::new(
+                                &opts.seed,
+                                (screen_width() + 80.) as f64,
+                                (screen_height() + 80.) as f64,
+                            )
+                        }
                         "jetpack" => {
                             let (w, h) = jetpack_view::JetpackView::dimensions();
                             jetpack = Jetpack::new(&opts.seed, w, h);
@@ -448,7 +547,16 @@ async fn run(opts: Options) {
             sound.trigger(event, &assets.root);
         }
         if let Some(target) = selected {
-            if ["modvil", "runner", "jetpack", "santaselfie"].contains(&target.as_str()) {
+            if [
+                "modvil",
+                "runner",
+                "jetpack",
+                "santaselfie",
+                "elfski",
+                "presentdrop",
+            ]
+            .contains(&target.as_str())
+            {
                 if !interlude.busy() {
                     if target != "modvil" && !loaded.contains(&target) {
                         if let Err(error) = assets.start_scene_load(&target) {
@@ -476,7 +584,16 @@ async fn run(opts: Options) {
         if let Some(target) = if scene_ready { interlude.ready() } else { None } {
             interlude.hide();
 
-            if ["modvil", "runner", "jetpack", "santaselfie"].contains(&target.as_str()) {
+            if [
+                "modvil",
+                "runner",
+                "jetpack",
+                "santaselfie",
+                "elfski",
+                "presentdrop",
+            ]
+            .contains(&target.as_str())
+            {
                 sound.stop();
                 accumulated = 0.;
                 village.menu = false;
@@ -487,10 +604,18 @@ async fn run(opts: Options) {
                             .extend(["music_start_village", "village_start"]);
                     }
                     "runner" => runner = Runner::new(&opts.seed),
+                    "elfski" => {
+                        ski = Ski::new(
+                            &opts.seed,
+                            (screen_width() + 80.) as f64,
+                            (screen_height() + 80.) as f64,
+                        )
+                    }
                     "jetpack" => {
                         let (w, h) = jetpack_view::JetpackView::dimensions();
                         jetpack = Jetpack::new(&opts.seed, w, h);
                     }
+                    "presentdrop" => drop_game = PresentDrop::new(&opts.seed),
                     "santaselfie" => {
                         selfie = Selfie::new(&opts.seed);
                         sound.trigger("music_start_ingame", &assets.root);

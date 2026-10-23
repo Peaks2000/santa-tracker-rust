@@ -226,3 +226,13 @@ impl Button {
         delta
     }
 }
+
+/// Browser-style interpolation for native Lottie surfaces. RGB is already
+/// multiplied by alpha before filtering; apply opacity once, then source-over.
+pub fn premultiplied_material() -> Result<Material, String> {
+    load_material(ShaderSource::Glsl {vertex:r#"#version 100
+attribute vec3 position;attribute vec2 texcoord;attribute vec4 color0;uniform mat4 Model;uniform mat4 Projection;varying vec2 uv;varying vec4 tint;
+void main(){gl_Position=Projection*Model*vec4(position,1.0);uv=texcoord;tint=color0/255.0;}"#,fragment:r#"#version 100
+precision highp float;varying vec2 uv;varying vec4 tint;uniform sampler2D Texture;
+void main(){vec4 c=texture2D(Texture,uv);gl_FragColor=vec4(c.rgb*tint.rgb*tint.a,c.a*tint.a);}"#},MaterialParams {pipeline_params:PipelineParams {color_blend:Some(BlendState::new(Equation::Add,BlendFactor::One,BlendFactor::OneMinusValue(BlendValue::SourceAlpha))),alpha_blend:Some(BlendState::new(Equation::Add,BlendFactor::One,BlendFactor::OneMinusValue(BlendValue::SourceAlpha))),..Default::default()},..Default::default()}).map_err(|e|e.to_string())
+}

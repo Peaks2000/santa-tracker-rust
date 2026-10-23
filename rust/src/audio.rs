@@ -49,6 +49,10 @@ pub enum Command {
         offset: f64,
         end: Option<f64>,
     },
+    PanSource {
+        id: String,
+        pan: f32,
+    },
     StopSource {
         id: String,
         fade: f64,
@@ -60,6 +64,7 @@ pub enum Command {
 struct Voice {
     pausable: bool,
     id: String,
+    pan: Option<f32>,
     delay: usize,
     age: usize,
     fade_in: usize,
@@ -76,6 +81,7 @@ pub struct Mixer {
     voices: Vec<Voice>,
     paused: bool,
     gain: f32,
+    pans: std::collections::HashMap<String, f32>,
 }
 impl Mixer {
     pub fn new(commands: Receiver<Command>) -> Self {
@@ -84,12 +90,20 @@ impl Mixer {
             voices: Vec::with_capacity(64),
             paused: false,
             gain: 1.,
+            pans: std::collections::HashMap::new(),
         }
     }
     pub fn mix(&mut self, output: &mut [f32]) {
         for command in self.commands.try_iter() {
             match command {
                 Command::Stop => self.voices.clear(),
+                Command::PanSource { id, pan } => {
+                    let pan = pan.clamp(-1., 1.);
+                    for voice in self.voices.iter_mut().filter(|v| v.id == id) {
+                        voice.pan = Some(pan);
+                    }
+                    self.pans.insert(id, pan);
+                }
                 Command::StopSource { id, fade } => {
                     for voice in self.voices.iter_mut().filter(|v| v.id == id) {
                         let frames = (fade.max(0.) * 48000.) as usize;
@@ -126,6 +140,7 @@ impl Mixer {
                     let loop_start = loop_start.map(|p| (p * sr).clamp(0., (end - 1.).max(0.)));
                     self.voices.push(Voice {
                         pausable,
+                        pan: self.pans.get(&id).copied(),
                         id,
                         delay: (delay.max(0.) * 48000.) as usize,
                         age: 0,
@@ -180,11 +195,33 @@ impl Mixer {
                 let index = voice.position.floor() as usize;
                 let fraction = voice.position.fract() as f32;
                 let next = (index + 1).min(voice.sample.frames() - 1);
-                for (channel, out) in frame.iter_mut().enumerate() {
-                    let channel = channel.min(voice.sample.channels - 1);
-                    let a = voice.sample.samples[index * voice.sample.channels + channel];
-                    let b = voice.sample.samples[next * voice.sample.channels + channel];
-                    *out += (a + (b - a) * fraction) * voice.volume * self.gain * envelope;
+                let mut channels = [0.; 2];
+                for (channel, out) in channels.iter_mut().enumerate() {
+                    let c = channel.min(voice.sample.channels - 1);
+                    let a = voice.sample.samples[index * voice.sample.channels + c];
+                    let b = voice.sample.samples[next * voice.sample.channels + c];
+                    *out = a + (b - a) * fraction;
+                }
+                if let Some(pan) = voice.pan {
+                    if voice.sample.channels == 1 {
+                        let angle = (pan + 1.) * std::f32::consts::FRAC_PI_4;
+                        channels = [channels[0] * angle.cos(), channels[0] * angle.sin()];
+                    } else if pan <= 0. {
+                        let angle = (pan + 1.) * std::f32::consts::FRAC_PI_2;
+                        channels = [
+                            channels[0] + channels[1] * angle.cos(),
+                            channels[1] * angle.sin(),
+                        ];
+                    } else {
+                        let angle = pan * std::f32::consts::FRAC_PI_2;
+                        channels = [
+                            channels[0] * angle.cos(),
+                            channels[1] + channels[0] * angle.sin(),
+                        ];
+                    }
+                }
+                for (out, sample) in frame.iter_mut().zip(channels) {
+                    *out += sample * voice.volume * self.gain * envelope;
                 }
                 voice.position += voice.step;
             }
@@ -197,6 +234,51 @@ impl Mixer {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn stereo_pan_moves_audio_without_advancing_or_restarting_it() {
+        let (tx, rx) = std::sync::mpsc::channel();
+        let mut mixer = Mixer::new(rx);
+        tx.send(Command::PanSource {
+            id: "sled".into(),
+            pan: -1.,
+        })
+        .unwrap();
+        tx.send(Command::Play {
+            pausable: true,
+            id: "sled".into(),
+            retrigger: false,
+            delay: 0.,
+            fade_in: 0.,
+            sample: Arc::new(Sample {
+                samples: vec![0.1, 0.2, 0.3, 0.4, 0.5, 0.6],
+                channels: 2,
+                rate: 48000,
+            }),
+            volume: 1.,
+            rate: 1.,
+            loop_start: None,
+            offset: 0.,
+            end: None,
+        })
+        .unwrap();
+        let mut frame = [0.; 2];
+        mixer.mix(&mut frame);
+        assert!((frame[0] - 0.3).abs() < 1e-6 && frame[1].abs() < 1e-6);
+        tx.send(Command::PanSource {
+            id: "sled".into(),
+            pan: 1.,
+        })
+        .unwrap();
+        mixer.mix(&mut frame);
+        assert!(frame[0].abs() < 1e-6 && (frame[1] - 0.7).abs() < 1e-6);
+        tx.send(Command::PanSource {
+            id: "sled".into(),
+            pan: 0.,
+        })
+        .unwrap();
+        mixer.mix(&mut frame);
+        assert!((frame[0] - 0.5).abs() < 1e-6 && (frame[1] - 0.6).abs() < 1e-6);
+    }
     #[test]
     fn mixing_pause_and_loop_preserve_position() {
         let (tx, rx) = std::sync::mpsc::channel();

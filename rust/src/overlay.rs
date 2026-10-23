@@ -268,6 +268,7 @@ pub struct SceneFilter {
     target: Option<RenderTarget>,
     filtered: Option<RenderTarget>,
     material: Material,
+    opaque_copy: Material,
     amount: Transition<1>,
     cached: f32,
 }
@@ -276,6 +277,21 @@ impl SceneFilter {
         Ok(Self {
             target: None,
             filtered: None,
+            // The scene is opaque, but Macroquad's default sprite blending
+            // also blends alpha with SourceAlpha. Edge texels therefore leave
+            // alpha below one in the offscreen target. Applying that alpha a
+            // second time at presentation produces a dark outline. Copy RGB
+            // opaquely, just as an opaque browser scene is composited.
+            opaque_copy: load_material(
+                ShaderSource::Glsl {
+                    vertex: VERTEX,
+                    fragment: r#"#version 100
+precision highp float;varying vec2 uv;uniform sampler2D Texture;
+void main(){gl_FragColor=vec4(texture2D(Texture,uv).rgb,1.0);}"#,
+                },
+                MaterialParams::default(),
+            )
+            .map_err(|e| e.to_string())?,
             material: load_material(
                 ShaderSource::Glsl {
                     vertex: VERTEX,
@@ -302,7 +318,14 @@ impl SceneFilter {
             .as_ref()
             .is_none_or(|t| t.texture.width() != w as f32 || t.texture.height() != h as f32)
         {
-            self.target = Some(render_target(w, h));
+            self.target = Some(render_target_ex(
+                w,
+                h,
+                RenderTargetParams {
+                    depth: true,
+                    ..Default::default()
+                },
+            ));
             self.filtered = Some(render_target(w, h));
             self.cached = -1.;
         }
@@ -347,6 +370,7 @@ impl SceneFilter {
         set_default_camera();
         let scale = 1. + amount * 0.05;
         let size = vec2(screen_width(), screen_height()) * scale;
+        gl_use_material(&self.opaque_copy);
         draw_texture_ex(
             if amount > 0.001 {
                 &filtered.texture
@@ -362,5 +386,6 @@ impl SceneFilter {
                 ..Default::default()
             },
         );
+        gl_use_default_material();
     }
 }

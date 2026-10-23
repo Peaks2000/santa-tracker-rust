@@ -1,0 +1,5 @@
+Open Sans Bold (system-distributed static font)
+Digitized data copyright © 2010-2011, Google Corporation.
+Licensed under the Apache License, Version 2.0.
+See ../../../LICENSE and http://www.apache.org/licenses/LICENSE-2.0
+The font's embedded license metadata contains the same attribution.

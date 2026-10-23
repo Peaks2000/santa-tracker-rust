@@ -10,6 +10,7 @@ pub struct LoaderAnimation {
     frames: mpsc::Receiver<(u32, u32, Vec<u8>)>,
     worker: Option<thread::JoinHandle<()>>,
     texture: Option<Texture2D>,
+    material: Material,
 }
 impl LoaderAnimation {
     pub fn new(root: PathBuf) -> Self {
@@ -55,6 +56,8 @@ impl LoaderAnimation {
             frames,
             worker: Some(worker),
             texture: None,
+            material: crate::ui_render::premultiplied_material()
+                .expect("Loader compositing material"),
         }
     }
     pub fn draw(&mut self, y: f32, ratio: f32) {
@@ -82,6 +85,7 @@ impl LoaderAnimation {
             }
         }
         if let Some(texture) = &self.texture {
+            gl_use_material(&self.material);
             draw_texture_ex(
                 texture,
                 (screen_width() - width as f32) / 2.,
@@ -92,6 +96,7 @@ impl LoaderAnimation {
                     ..Default::default()
                 },
             );
+            gl_use_default_material();
         }
     }
 }

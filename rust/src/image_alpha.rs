@@ -2,6 +2,9 @@
 //! filtering's dark fringe without changing any visible artwork or alpha.
 pub fn bleed_edges(rgba: &mut [u8], width: usize, height: usize) {
     assert_eq!(rgba.len(), width * height * 4);
+    if rgba.chunks_exact(4).all(|p| p[3] > 0) {
+        return;
+    }
     let mut known: Vec<bool> = rgba.chunks_exact(4).map(|p| p[3] > 0).collect();
     for _ in 0..2 {
         let original = rgba.to_vec();

@@ -163,6 +163,15 @@ impl Sound {
         let index = macroquad::rand::gen_range(0, content.len());
         self.source(content[index].as_str()?, depth + 1)
     }
+    pub fn presentdrop_pan(&mut self, position: f64) {
+        let pan = position.clamp(-0.5, 0.5) as f32;
+        self.commands
+            .send(Command::PanSource {
+                id: "cwIe".into(),
+                pan,
+            })
+            .ok();
+    }
     pub fn trigger(&mut self, event: &str, root: &Path) {
         if self.device.is_none() {
             return;
@@ -170,6 +179,18 @@ impl Sound {
         // Native translations of the original focused scenes' Klang actions.
         // An empty action stays empty; stop actions never restart their sources.
         let actions: Option<&[(&str, bool, f64, f64)]> = match event {
+            "pd_item_drop" => Some(&[("NuNw", true, 0., 0.)]),
+            "pd_item_miss" => Some(&[("ZE1O", true, 0., 0.)]),
+            "pd_player_level_up" => Some(&[("lUXp", true, 0., 0.)]),
+            "pd_player_present_pickup" => Some(&[("p7Sm", true, 0., 0.)]),
+            "pd_pull_start" => Some(&[("cwIe", true, 0., 0.1)]),
+            "pd_pull_stop" | "pd_game_over" => Some(&[("cwIe", false, 0., 0.)]),
+            "pd_end_game" => Some(&[("cwIe", false, 0., 0.4)]),
+            "pd_start_game" | "pd_player_crash" | "pd_game_pause" | "pd_game_unpause"
+            | "pd_landing_page" | "pd_sled_position" => Some(&[]),
+            "elfski_loop_start" => Some(&[("jbIP", true, 0., 0.1)]),
+            "elfski_loop_stop" => Some(&[("jbIP", false, 0., 0.1)]),
+            "elfski_crash" => Some(&[("dk0G", true, 0., 0.), ("jbIP", false, 0., 0.1)]),
             "jetpack_clock" => Some(&[("OZ9t", true, 0., 0.)]),
             "jetpack_hit" => Some(&[("dk0G", true, 0., 0.)]),
             "jp_back_to_screen" => Some(&[("PBoz", true, 0., 0.)]),
@@ -300,7 +321,8 @@ impl Sound {
                 delay,
                 fade_in,
                 sample: Arc::clone(&self.samples[&id]),
-                volume: source["volume"].as_f64().unwrap_or(1.) as f32,
+                volume: (source["volume"].as_f64().unwrap_or(1.)
+                    * if key == "cwIe" { 0.7 } else { 1. }) as f32,
                 rate: source["playback_rate"].as_f64().unwrap_or(1.),
                 loop_start: if source["loop"].as_bool().unwrap_or(false) {
                     Some(source["loop_start"].as_f64().unwrap_or(0.))

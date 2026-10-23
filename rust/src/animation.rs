@@ -22,6 +22,10 @@ mod tests {
         let b = clip.rasterize(320, 289, clip.frames * 0.5).unwrap();
         assert_eq!(a.len(), 320 * 289 * 4);
         assert!(a.chunks_exact(4).any(|p| p[3] > 0));
+        assert!(
+            a.chunks_exact(4).all(|p| p[..3].iter().all(|c| *c <= p[3])),
+            "Lottie surfaces must stay premultiplied through texture filtering"
+        );
         assert_ne!(
             a, b,
             "Animation must advance rather than display a static poster"
@@ -67,7 +71,7 @@ impl<'a> Clip<'a> {
                 .map_err(|e| e.to_string())?;
             // The allocation is never resized, and the canvas is synchronously
             // destroyed before we inspect or release its target buffer.
-            unsafe { canvas.set_target(&mut buffer, width, width, height, ColorSpace::ABGR8888S) }
+            unsafe { canvas.set_target(&mut buffer, width, width, height, ColorSpace::ABGR8888) }
                 .map_err(|e| e.to_string())?;
             let picture = self
                 .animation

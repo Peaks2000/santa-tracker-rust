@@ -22,7 +22,7 @@ impl Assets {
             return Ok(());
         }
         let texture = Texture2D::from_image(&decode_image(&self.root, key)?);
-        texture.set_filter(FilterMode::Linear);
+        configure_texture(key, &texture);
         self.textures.insert(key.into(), texture);
         Ok(())
     }
@@ -65,7 +65,7 @@ impl Assets {
             match event {
                 Ok(LoadEvent::Image(key, image)) => {
                     let texture = Texture2D::from_image(&image);
-                    texture.set_filter(FilterMode::Linear);
+                    configure_texture(&key, &texture);
                     self.textures.insert(key, texture);
                 }
                 Ok(LoadEvent::Done(result)) => {
@@ -113,7 +113,7 @@ enum LoadEvent {
 fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
     let path = root.join(key);
     let data = std::fs::read(&path).map_err(|e| format!("{}: {e}", path.display()))?;
-    let image = if key.ends_with(".svg") {
+    let mut image = if key.ends_with(".svg") {
         let options = resvg::usvg::Options {
             resources_dir: path.parent().map(Path::to_path_buf),
             ..Default::default()
@@ -153,22 +153,25 @@ fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
             width: size.width() as u16,
             height: size.height() as u16,
         }
-    } else if key.starts_with("scenes/jetpack/") && key.ends_with(".png") {
-        let mut image =
-            Image::from_file_with_format(&data, None).map_err(|e| format!("{key}: {e}"))?;
+    } else {
+        Image::from_file_with_format(&data, None).map_err(|e| format!("{key}: {e}"))?
+    };
+    // All CSS-style 2D images share the same straight-alpha filtering issue.
+    // Leave the source 3D maps alone: their mipmaps follow THREE's renderer.
+    if !key.starts_with("scenes/elfski/") {
         santa_tracker::image_alpha::bleed_edges(
             &mut image.bytes,
             image.width as usize,
             image.height as usize,
         );
-        image
-    } else {
-        Image::from_file_with_format(&data, None).map_err(|e| format!("{key}: {e}"))?
-    };
+    }
     Ok(image)
 }
 fn scene_keys(root: &Path, scene: &str) -> Result<Vec<String>, String> {
     let mut keys = vec![];
+    if scene == "elfski" {
+        keys.push("scenes/elfski/models/elf-tidy.png".into());
+    }
     if scene == "santaselfie" {
         keys.extend([
             "scenes/_shared/img/button/share.svg".into(),
@@ -196,4 +199,23 @@ fn scene_keys(root: &Path, scene: &str) -> Result<Vec<String>, String> {
     }
     keys.sort();
     Ok(keys)
+}
+
+/// THREE TextureLoader/GLTFLoader use trilinear mipmaps for these 3D maps.
+/// Using only the full-size atlas changes the tree outlines at half scale.
+pub fn configure_texture(key: &str, texture: &Texture2D) {
+    texture.set_filter(FilterMode::Linear);
+    if key.starts_with("scenes/elfski/") {
+        let id = texture.raw_miniquad_id();
+        // Upload is complete and no draw references a newly created texture.
+        unsafe {
+            let gl = get_internal_gl();
+            gl.quad_context.texture_generate_mipmaps(id);
+            gl.quad_context.texture_set_min_filter(
+                id,
+                FilterMode::Linear,
+                macroquad::miniquad::MipmapFilterMode::Linear,
+            );
+        }
+    }
 }
