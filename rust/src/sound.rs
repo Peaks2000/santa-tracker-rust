@@ -215,7 +215,7 @@ impl Sound {
         if let Some(actions) = actions {
             for &(id, play, delay, fade) in actions {
                 if play {
-                    self.play_source(id, root, delay, fade);
+                    self.play_source(id, root, delay, fade, true);
                 } else {
                     self.commands
                         .send(Command::StopSource {
@@ -251,9 +251,17 @@ impl Sound {
         else {
             return;
         };
-        self.play_source(&id, root, 0., 0.);
+        self.play_source(
+            &id,
+            root,
+            0.,
+            0.,
+            !(event.starts_with("generic_")
+                || event.starts_with("nav_")
+                || event.starts_with("menu_")),
+        );
     }
-    fn play_source(&mut self, key: &str, root: &Path, delay: f64, fade_in: f64) {
+    fn play_source(&mut self, key: &str, root: &Path, delay: f64, fade_in: f64, pausable: bool) {
         let Some(id) = self.source(key, 0) else {
             return;
         };
@@ -286,6 +294,7 @@ impl Sound {
         }
         self.commands
             .send(Command::Play {
+                pausable,
                 id: id.clone(),
                 retrigger: source["retrig"].as_bool().unwrap_or(true),
                 delay,

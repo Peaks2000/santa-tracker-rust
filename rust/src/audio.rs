@@ -37,6 +37,7 @@ impl Sample {
 }
 pub enum Command {
     Play {
+        pausable: bool,
         id: String,
         retrigger: bool,
         delay: f64,
@@ -57,6 +58,7 @@ pub enum Command {
     Gain(f32),
 }
 struct Voice {
+    pausable: bool,
     id: String,
     delay: usize,
     age: usize,
@@ -97,6 +99,7 @@ impl Mixer {
                 Command::Paused(p) => self.paused = p,
                 Command::Gain(g) => self.gain = g,
                 Command::Play {
+                    pausable,
                     id,
                     retrigger,
                     delay,
@@ -122,6 +125,7 @@ impl Mixer {
                     let position = (offset * sr).clamp(0., end);
                     let loop_start = loop_start.map(|p| (p * sr).clamp(0., (end - 1.).max(0.)));
                     self.voices.push(Voice {
+                        pausable,
                         id,
                         delay: (delay.max(0.) * 48000.) as usize,
                         age: 0,
@@ -138,11 +142,11 @@ impl Mixer {
             }
         }
         output.fill(0.);
-        if self.paused {
-            return;
-        }
         for frame in output.chunks_exact_mut(2) {
             for voice in &mut self.voices {
+                if self.paused && voice.pausable {
+                    continue;
+                }
                 if voice.delay > 0 {
                     voice.delay -= 1;
                     continue;
@@ -203,6 +207,7 @@ mod tests {
             rate: 48000,
         });
         tx.send(Command::Play {
+            pausable: true,
             id: "test".into(),
             retrigger: true,
             delay: 0.,
@@ -235,6 +240,7 @@ mod tests {
             rate: 48000,
         });
         tx.send(Command::Play {
+            pausable: true,
             id: "dryer".into(),
             retrigger: false,
             delay: 2. / 48000.,
@@ -258,5 +264,37 @@ mod tests {
         mixer.mix(&mut out);
         assert_eq!(out, [1., 1., 0.5, 0.5, 0., 0., 0., 0., 0., 0., 0., 0.]);
         assert!(mixer.voices.is_empty());
+    }
+    #[test]
+    fn ui_audio_plays_while_game_audio_remains_paused() {
+        let (tx, rx) = std::sync::mpsc::channel();
+        let mut mixer = Mixer::new(rx);
+        for (id, value, pausable) in [("game", 0.3, true), ("button", 0.1, false)] {
+            tx.send(Command::Play {
+                id: id.into(),
+                pausable,
+                retrigger: true,
+                delay: 0.,
+                fade_in: 0.,
+                sample: Arc::new(Sample {
+                    samples: vec![value; 4],
+                    channels: 1,
+                    rate: 48000,
+                }),
+                volume: 1.,
+                rate: 1.,
+                loop_start: None,
+                offset: 0.,
+                end: None,
+            })
+            .unwrap();
+        }
+        tx.send(Command::Paused(true)).unwrap();
+        let mut output = [0.; 8];
+        mixer.mix(&mut output);
+        assert_eq!(output, [0.1; 8]);
+        tx.send(Command::Paused(false)).unwrap();
+        mixer.mix(&mut output);
+        assert_eq!(output, [0.3; 8]);
     }
 }
