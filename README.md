@@ -1,6 +1,6 @@
 # Santa Tracker Rust rewrite (in progress)
 
-The reason rust is in its own folder is because I was working with the java script with the rust folder inside it but only uploaded the rust files so thats why it is that way, sorry for how messy it is!
+The reason "rust" is in its own folder is because I was working with the java script with the rust folder inside it but only uploaded the rust files so thats why it is that way, sorry for how messy it is!
 
 Using the javascript code of Google Santa Tracker I remade the logic function by function in rust delivering an almost 1:1 experience!
 
