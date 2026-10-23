@@ -1,0 +1,1938 @@
+{
+  "sprites": [
+    {
+      "name": "elfski1",
+      "layer": 2,
+      "asset": "scenes/modvil/img/village/elfski1.svg",
+      "x": 1040,
+      "center": true,
+      "y": 130,
+      "width": 58,
+      "height": 67,
+      "animation": "modvil-village__elfski",
+      "duration": 5,
+      "delay": 0,
+      "ease": "linear",
+      "mobile_y": 280
+    },
+    {
+      "name": "elfski2",
+      "layer": 2,
+      "asset": "scenes/modvil/img/village/elfski2.svg",
+      "x": 1050,
+      "center": true,
+      "y": 110,
+      "width": 58,
+      "height": 67,
+      "animation": "modvil-village__elfski",
+      "duration": 5,
+      "delay": 0.08,
+      "ease": "linear",
+      "mobile_y": 260
+    },
+    {
+      "name": "elfbike4",
+      "layer": 3,
+      "asset": "scenes/modvil/img/village/elfbike4.svg",
+      "x": 15,
+      "center": true,
+      "y": 540,
+      "width": 104,
+      "height": 113,
+      "animation": "elfbike4",
+      "duration": 14,
+      "delay": 0,
+      "ease": "linear",
+      "mobile_y": 690
+    },
+    {
+      "name": "elfbike6",
+      "layer": 3,
+      "asset": "scenes/modvil/img/village/elfbike6.svg",
+      "x": -265,
+      "center": true,
+      "y": 550,
+      "width": 104,
+      "height": 119,
+      "animation": "elfbike6",
+      "duration": 14,
+      "delay": 0,
+      "ease": "linear",
+      "mobile_y": 700
+    },
+    {
+      "name": "elfbike2",
+      "layer": 3,
+      "asset": "scenes/modvil/img/village/elfbike2.svg",
+      "x": -85,
+      "center": true,
+      "y": 580,
+      "width": 77,
+      "height": 78,
+      "animation": "elfbike2",
+      "duration": 14,
+      "delay": 0,
+      "ease": "linear",
+      "mobile_y": 730
+    },
+    {
+      "name": "elfbike3",
+      "layer": 3,
+      "asset": "scenes/modvil/img/village/elfbike3.svg",
+      "x": 243,
+      "center": true,
+      "y": 580,
+      "width": 81,
+      "height": 93,
+      "animation": "elfbike3",
+      "duration": 14,
+      "delay": 0,
+      "ease": "linear",
+      "mobile_y": 730
+    },
+    {
+      "name": "elfbike5",
+      "layer": 3,
+      "asset": "scenes/modvil/img/village/elfbike5.svg",
+      "x": 125,
+      "center": true,
+      "y": 560,
+      "width": 103,
+      "height": 120,
+      "animation": "elfbike5",
+      "duration": 14,
+      "delay": 0,
+      "ease": "linear",
+      "mobile_y": 710
+    },
+    {
+      "name": "elfbike1",
+      "layer": 3,
+      "asset": "scenes/modvil/img/village/elfbike1.svg",
+      "x": -165,
+      "center": true,
+      "y": 590,
+      "width": 80,
+      "height": 94,
+      "animation": "elfbike1",
+      "duration": 14,
+      "delay": 0,
+      "ease": "linear",
+      "mobile_y": 740
+    },
+    {
+      "name": "elfchair",
+      "layer": 3,
+      "asset": "scenes/modvil/img/village/elfchair.svg",
+      "x": 392,
+      "center": true,
+      "y": 620,
+      "width": 97,
+      "height": 77,
+      "animation": "elfchair",
+      "duration": 14,
+      "delay": 0,
+      "ease": "linear",
+      "mobile_y": 770
+    },
+    {
+      "name": "elfboard1",
+      "layer": 3,
+      "asset": "scenes/modvil/img/village/elfboard1.svg",
+      "x": 449,
+      "center": true,
+      "y": 636,
+      "width": 72,
+      "height": 108,
+      "animation": "elfboard1",
+      "duration": 14,
+      "delay": 0,
+      "ease": "linear",
+      "mobile_y": 786
+    },
+    {
+      "name": "elfboard2",
+      "layer": 3,
+      "asset": "scenes/modvil/img/village/elfboard2.svg",
+      "x": 545,
+      "center": true,
+      "y": 624,
+      "width": 65,
+      "height": 94,
+      "animation": "elfboard2",
+      "duration": 14,
+      "delay": 0,
+      "ease": "linear",
+      "mobile_y": 744
+    },
+    {
+      "name": "peekaboo-elf",
+      "layer": 4,
+      "asset": "scenes/modvil/img/village/tree-elf.svg",
+      "x": -506,
+      "center": true,
+      "y": 630,
+      "width": 73,
+      "height": 95,
+      "animation": "peekaboo",
+      "duration": 8,
+      "delay": 0,
+      "ease": "ease-in-out",
+      "mobile_y": 780
+    },
+    {
+      "name": "peekaboo-tree",
+      "layer": 4,
+      "asset": "scenes/modvil/img/village/tree.svg",
+      "x": -494,
+      "center": true,
+      "y": 619,
+      "width": 98,
+      "height": 161,
+      "animation": "",
+      "duration": 0,
+      "delay": 0,
+      "ease": "linear",
+      "mobile_y": 769
+    },
+    {
+      "name": "waterspout-bottom",
+      "layer": 4,
+      "asset": "scenes/modvil/img/village/waterspout-bottom.svg",
+      "x": -2,
+      "center": true,
+      "y": 661,
+      "width": 9,
+      "height": 79,
+      "animation": "waterspout-bottom",
+      "duration": 5,
+      "delay": 0,
+      "ease": "ease-in-out",
+      "mobile_y": 811
+    },
+    {
+      "name": "waterspout-top",
+      "layer": 4,
+      "asset": "scenes/modvil/img/village/waterspout-top.svg",
+      "x": -55,
+      "center": true,
+      "y": 607,
+      "width": 116,
+      "height": 82,
+      "animation": "waterspout-top",
+      "duration": 5,
+      "delay": 0,
+      "ease": "ease-in-out",
+      "mobile_y": 757
+    },
+    {
+      "name": "snowman-build-bottom",
+      "layer": 4,
+      "asset": "scenes/modvil/img/village/snowman-build-bottom.svg",
+      "x": 20,
+      "center": true,
+      "y": 807,
+      "width": 122,
+      "height": 188,
+      "animation": "",
+      "duration": 0,
+      "delay": 0,
+      "ease": "linear",
+      "mobile_y": 957
+    },
+    {
+      "name": "snowman-build-top",
+      "layer": 4,
+      "asset": "scenes/modvil/img/village/snowman-build-top.svg",
+      "x": 20,
+      "center": true,
+      "y": 807,
+      "width": 122,
+      "height": 188,
+      "animation": "heavy-snow",
+      "duration": 7,
+      "delay": 0,
+      "ease": "ease-in-out",
+      "mobile_y": 957
+    }
+  ],
+  "frames": {
+    "modvil-village__elfski": [
+      {
+        "at": 0,
+        "x": 0,
+        "y": 0,
+        "rotation": 10,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.3,
+        "x": -500,
+        "y": 20,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.4,
+        "x": -750,
+        "y": 190,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.5,
+        "x": -1000,
+        "y": 260,
+        "rotation": 10,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 1,
+        "x": -2150,
+        "y": 260,
+        "rotation": 10,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      }
+    ],
+    "glitch-anim-1-horizontal": [
+      {
+        "at": 0,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 2%, 100% 2%, 100% 5%, 0 5%)"
+      },
+      {
+        "at": 0.1,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 15%, 100% 15%, 100% 15%, 0 15%)"
+      },
+      {
+        "at": 0.2,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 10%, 100% 10%, 100% 20%, 0 20%)"
+      },
+      {
+        "at": 0.3,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 1%, 100% 1%, 100% 2%, 0 2%)"
+      },
+      {
+        "at": 0.4,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 33%, 100% 33%, 100% 33%, 0 33%)"
+      },
+      {
+        "at": 0.5,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 44%, 100% 44%, 100% 44%, 0 44%)"
+      },
+      {
+        "at": 0.6,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 50%, 100% 50%, 100% 20%, 0 20%)"
+      },
+      {
+        "at": 0.7,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 70%, 100% 70%, 100% 70%, 0 70%)"
+      },
+      {
+        "at": 0.8,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 80%, 100% 80%, 100% 80%, 0 80%)"
+      },
+      {
+        "at": 0.9,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 50%, 100% 50%, 100% 55%, 0 55%)"
+      },
+      {
+        "at": 1,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 70%, 100% 70%, 100% 80%, 0 80%)"
+      }
+    ],
+    "glitch-anim-2-horizontal": [
+      {
+        "at": 0,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 25%, 100% 25%, 100% 30%, 0 30%)"
+      },
+      {
+        "at": 0.15,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 3%, 100% 3%, 100% 3%, 0 3%)"
+      },
+      {
+        "at": 0.22,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 5%, 100% 5%, 100% 20%, 0 20%)"
+      },
+      {
+        "at": 0.31,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 20%, 100% 20%, 100% 20%, 0 20%)"
+      },
+      {
+        "at": 0.45,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 40%, 100% 40%, 100% 40%, 0 40%)"
+      },
+      {
+        "at": 0.51,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 52%, 100% 52%, 100% 59%, 0 59%)"
+      },
+      {
+        "at": 0.63,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 60%, 100% 60%, 100% 60%, 0 60%)"
+      },
+      {
+        "at": 0.76,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 75%, 100% 75%, 100% 75%, 0 75%)"
+      },
+      {
+        "at": 0.81,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 65%, 100% 65%, 100% 40%, 0 40%)"
+      },
+      {
+        "at": 0.94,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 45%, 100% 45%, 100% 50%, 0 50%)"
+      },
+      {
+        "at": 1,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 14%, 100% 14%, 100% 33%, 0 33%)"
+      }
+    ],
+    "glitch-anim-3-horizontal": [
+      {
+        "at": 0,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 1%, 100% 1%, 100% 3%, 0 3%)"
+      },
+      {
+        "at": 0.05,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 10%, 100% 10%, 100% 9%, 0 9%)"
+      },
+      {
+        "at": 0.1,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 5%, 100% 5%, 100% 6%, 0 6%)"
+      },
+      {
+        "at": 0.25,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 20%, 100% 20%, 100% 20%, 0 20%)"
+      },
+      {
+        "at": 0.27,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 10%, 100% 10%, 100% 10%, 0 10%)"
+      },
+      {
+        "at": 0.3,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 30%, 100% 30%, 100% 25%, 0 25%)"
+      },
+      {
+        "at": 0.33,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 15%, 100% 15%, 100% 16%, 0 16%)"
+      },
+      {
+        "at": 0.37,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 40%, 100% 40%, 100% 39%, 0 39%)"
+      },
+      {
+        "at": 0.4,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 20%, 100% 20%, 100% 21%, 0 21%)"
+      },
+      {
+        "at": 0.45,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 60%, 100% 60%, 100% 55%, 0 55%)"
+      },
+      {
+        "at": 0.5,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 30%, 100% 30%, 100% 31%, 0 31%)"
+      },
+      {
+        "at": 0.53,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 70%, 100% 70%, 100% 69%, 0 69%)"
+      },
+      {
+        "at": 0.57,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 40%, 100% 40%, 100% 41%, 0 41%)"
+      },
+      {
+        "at": 0.6,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 80%, 100% 80%, 100% 75%, 0 75%)"
+      },
+      {
+        "at": 0.65,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 50%, 100% 50%, 100% 51%, 0 51%)"
+      },
+      {
+        "at": 0.7,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 90%, 100% 90%, 100% 90%, 0 90%)"
+      },
+      {
+        "at": 0.73,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 60%, 100% 60%, 100% 60%, 0 60%)"
+      },
+      {
+        "at": 0.8,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 100%, 100% 100%, 100% 99%, 0 99%)"
+      },
+      {
+        "at": 1,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": "polygon(0 70%, 100% 70%, 100% 71%, 0 71%)"
+      }
+    ],
+    "elfbike1": [
+      {
+        "at": 0,
+        "x": -945,
+        "y": -145,
+        "rotation": 20,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.1,
+        "x": -945,
+        "y": -145,
+        "rotation": 20,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.25,
+        "x": -425,
+        "y": 25,
+        "rotation": -10,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.5,
+        "x": 335,
+        "y": -15,
+        "rotation": 10,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.65,
+        "x": 745,
+        "y": 75,
+        "rotation": 30,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.9,
+        "x": 1005,
+        "y": 465,
+        "rotation": 50,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 1,
+        "x": 1005,
+        "y": 465,
+        "rotation": 50,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      }
+    ],
+    "elfbike2": [
+      {
+        "at": 0,
+        "x": -1015,
+        "y": -45,
+        "rotation": 15,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.16,
+        "x": -1015,
+        "y": -45,
+        "rotation": 15,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.33,
+        "x": -495,
+        "y": 55,
+        "rotation": 2,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.49,
+        "x": 115,
+        "y": -35,
+        "rotation": 2,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.62,
+        "x": 465,
+        "y": -25,
+        "rotation": 12,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.85,
+        "x": 875,
+        "y": 485,
+        "rotation": 52,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 1,
+        "x": 875,
+        "y": 485,
+        "rotation": 52,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      }
+    ],
+    "elfbike3": [
+      {
+        "at": 0,
+        "x": -1355,
+        "y": -56,
+        "rotation": 5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.14,
+        "x": -1355,
+        "y": -56,
+        "rotation": 5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.32,
+        "x": -695,
+        "y": 50,
+        "rotation": -5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.5,
+        "x": -205,
+        "y": -3,
+        "rotation": 3,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.65,
+        "x": 275,
+        "y": 47,
+        "rotation": 13,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.9,
+        "x": 685,
+        "y": 477,
+        "rotation": 33,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 1,
+        "x": 685,
+        "y": 477,
+        "rotation": 33,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      }
+    ],
+    "elfbike4": [
+      {
+        "at": 0,
+        "x": -1135,
+        "y": -75,
+        "rotation": 15,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.26,
+        "x": -1135,
+        "y": -75,
+        "rotation": 15,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.48,
+        "x": -655,
+        "y": 55,
+        "rotation": -5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.7,
+        "x": -35,
+        "y": -35,
+        "rotation": 2,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.84,
+        "x": 435,
+        "y": 65,
+        "rotation": 2,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.99,
+        "x": 1015,
+        "y": 515,
+        "rotation": 42,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 1,
+        "x": 1015,
+        "y": 515,
+        "rotation": 42,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      }
+    ],
+    "elfbike5": [
+      {
+        "at": 0,
+        "x": -1255,
+        "y": -65,
+        "rotation": 2,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.2,
+        "x": -1255,
+        "y": -65,
+        "rotation": 2,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.4,
+        "x": -615,
+        "y": 15,
+        "rotation": 2,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.6,
+        "x": -45,
+        "y": -15,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.75,
+        "x": 445,
+        "y": 15,
+        "rotation": 18,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.95,
+        "x": 715,
+        "y": 505,
+        "rotation": 29,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 1,
+        "x": 715,
+        "y": 505,
+        "rotation": 29,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      }
+    ],
+    "elfbike6": [
+      {
+        "at": 0,
+        "x": -865,
+        "y": -115,
+        "rotation": 19,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.2,
+        "x": -865,
+        "y": -115,
+        "rotation": 19,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.45,
+        "x": -245,
+        "y": 65,
+        "rotation": -1,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.65,
+        "x": 325,
+        "y": -45,
+        "rotation": 3,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.8,
+        "x": 785,
+        "y": 65,
+        "rotation": 16,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.97,
+        "x": 1215,
+        "y": 515,
+        "rotation": 36,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 1,
+        "x": 1215,
+        "y": 515,
+        "rotation": 36,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      }
+    ],
+    "rotate": [
+      {
+        "at": 0,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 1,
+        "x": 0,
+        "y": 0,
+        "rotation": 360,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      }
+    ],
+    "elfchair": [
+      {
+        "at": 0,
+        "x": -1555,
+        "y": -165,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.01,
+        "x": -1555,
+        "y": -165,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.15,
+        "x": -965,
+        "y": 35,
+        "rotation": -6,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.4,
+        "x": -25,
+        "y": -45,
+        "rotation": -6,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.47,
+        "x": 204,
+        "y": 35,
+        "rotation": 8,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.65,
+        "x": 534,
+        "y": 435,
+        "rotation": 15,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 1,
+        "x": 534,
+        "y": 435,
+        "rotation": 15,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      }
+    ],
+    "elfboard1": [
+      {
+        "at": 0,
+        "x": -1555,
+        "y": -175,
+        "rotation": 5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.06,
+        "x": -1555,
+        "y": -175,
+        "rotation": 5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.25,
+        "x": -935,
+        "y": -15,
+        "rotation": -15,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.475,
+        "x": -215,
+        "y": -115,
+        "rotation": 15,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.6,
+        "x": 150,
+        "y": 0,
+        "rotation": -5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.72,
+        "x": 305,
+        "y": 415,
+        "rotation": 5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 1,
+        "x": 305,
+        "y": 415,
+        "rotation": 5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      }
+    ],
+    "elfboard2": [
+      {
+        "at": 0,
+        "x": -1650,
+        "y": -150,
+        "rotation": 5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.04,
+        "x": -1650,
+        "y": -150,
+        "rotation": 5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.2,
+        "x": -1060,
+        "y": -10,
+        "rotation": -15,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.4,
+        "x": -500,
+        "y": -50,
+        "rotation": 15,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.55,
+        "x": 0,
+        "y": 0,
+        "rotation": -5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.7,
+        "x": 410,
+        "y": 430,
+        "rotation": 5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 1,
+        "x": 410,
+        "y": 430,
+        "rotation": 5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      }
+    ],
+    "waterspout-bottom": [
+      {
+        "at": 0,
+        "x": 0,
+        "y": 130,
+        "rotation": 0,
+        "sx": 0.6,
+        "sy": 0.6,
+        "clip": null
+      },
+      {
+        "at": 0.3,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.8,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 1,
+        "x": 0,
+        "y": 130,
+        "rotation": 0,
+        "sx": 0.6,
+        "sy": 0.6,
+        "clip": null
+      }
+    ],
+    "waterspout-top": [
+      {
+        "at": 0,
+        "x": 0,
+        "y": 145,
+        "rotation": 5,
+        "sx": 0,
+        "sy": 0,
+        "clip": null
+      },
+      {
+        "at": 0.33,
+        "x": 0,
+        "y": 0,
+        "rotation": -5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.4,
+        "x": 0,
+        "y": 5,
+        "rotation": 5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.5,
+        "x": 0,
+        "y": 0,
+        "rotation": -5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.6,
+        "x": 0,
+        "y": 5,
+        "rotation": 5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.7,
+        "x": 0,
+        "y": 0,
+        "rotation": -5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.8,
+        "x": 0,
+        "y": 5,
+        "rotation": 5,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 1,
+        "x": 0,
+        "y": 145,
+        "rotation": 5,
+        "sx": 0,
+        "sy": 0,
+        "clip": null
+      }
+    ],
+    "heavy-snow": [
+      {
+        "at": 0,
+        "x": 0,
+        "y": 3,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.5,
+        "x": -20,
+        "y": 11,
+        "rotation": -30,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 1,
+        "x": 0,
+        "y": 3,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      }
+    ],
+    "peekaboo": [
+      {
+        "at": 0,
+        "x": 20,
+        "y": 28,
+        "rotation": 39,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.1,
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.5,
+        "x": 20,
+        "y": 28,
+        "rotation": 39,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 0.6,
+        "x": 53,
+        "y": 0,
+        "rotation": 40,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      },
+      {
+        "at": 1,
+        "x": 20,
+        "y": 28,
+        "rotation": 39,
+        "sx": 1,
+        "sy": 1,
+        "clip": null
+      }
+    ]
+  },
+  "modules": [
+    {
+      "id": "movies",
+      "color": "#6900ff",
+      "parts": [
+        "static-png",
+        "cards",
+        "loop"
+      ],
+      "no_divider": false,
+      "cards": [
+        {
+          "id": "likealight",
+          "title": "Out Like A Light",
+          "x": 0.25,
+          "y": 0.5
+        },
+        {
+          "id": "yulelog",
+          "title": "Yule Log",
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "id": "penguinproof",
+          "title": "Penguin Proof",
+          "x": 0.75,
+          "y": 0.5
+        }
+      ]
+    },
+    {
+      "id": "transithub",
+      "color": "#d4f1fe",
+      "parts": [
+        "static-png",
+        "cards",
+        "loop",
+        "scroll"
+      ],
+      "no_divider": false,
+      "cards": [
+        {
+          "id": "santaselfie",
+          "title": "Santa Selfie",
+          "x": 0.185,
+          "y": 0.5
+        },
+        {
+          "id": "elfmaker",
+          "title": "Elf Maker",
+          "x": 0.5,
+          "y": 0.36
+        },
+        {
+          "id": "storybook",
+          "title": "Ollie Under The Sea",
+          "x": 0.815,
+          "y": 0.22
+        }
+      ]
+    },
+    {
+      "id": "sciencelab",
+      "color": "#3499ff",
+      "parts": [
+        "static-svg",
+        "loop",
+        "scroll",
+        "cards"
+      ],
+      "no_divider": false,
+      "cards": [
+        {
+          "id": "codelab",
+          "title": "Code Lab",
+          "x": 0.17,
+          "y": 0.15
+        },
+        {
+          "id": "gumball",
+          "title": "Gumball Tilt",
+          "x": 0.38,
+          "y": 0.75
+        },
+        {
+          "id": "railroad",
+          "title": "Railroad Ride",
+          "x": 0.81,
+          "y": 0.31
+        }
+      ]
+    },
+    {
+      "id": "toymaking",
+      "color": "#00c1f2",
+      "parts": [
+        "static-png",
+        "static-png",
+        "scroll",
+        "cards",
+        "static-png"
+      ],
+      "no_divider": false,
+      "cards": [
+        {
+          "id": "presentbounce",
+          "title": "Present Bounce",
+          "x": 0.28,
+          "y": 0.17
+        },
+        {
+          "id": "buildandbolt",
+          "title": "Build & Bolt",
+          "x": 0.18,
+          "y": 0.475
+        },
+        {
+          "id": "snowball",
+          "title": "Snowball Storm",
+          "x": 0.81,
+          "y": 0.27
+        }
+      ]
+    },
+    {
+      "id": "kitchen",
+      "color": "#fdb0ca",
+      "parts": [
+        "static-png",
+        "loop",
+        "static-png",
+        "cards",
+        "static-png"
+      ],
+      "no_divider": false,
+      "cards": [
+        {
+          "id": "traditions",
+          "title": "Holiday Traditions",
+          "x": 0.19399999999999998,
+          "y": 0.177
+        },
+        {
+          "id": "translations",
+          "title": "Translations",
+          "x": 0.35600000000000004,
+          "y": 0.608
+        },
+        {
+          "id": "snowdodgeball",
+          "title": "Snow Dodgeball",
+          "x": 0.743,
+          "y": 0.237
+        }
+      ]
+    },
+    {
+      "id": "nursery",
+      "color": "#6bb4fd",
+      "parts": [
+        "static-png",
+        "loop",
+        "cards",
+        "scroll"
+      ],
+      "no_divider": false,
+      "cards": [
+        {
+          "id": "speedsketch",
+          "title": "Quick Draw",
+          "x": 0.264,
+          "y": 0.42100000000000004
+        },
+        {
+          "id": "santascanvas",
+          "title": "Santa's Canvas",
+          "x": 0.7290000000000001,
+          "y": 0.231
+        },
+        {
+          "id": "snowbox",
+          "title": "Snowbox",
+          "x": 0.625,
+          "y": 0.638
+        }
+      ]
+    },
+    {
+      "id": "greenhouse",
+      "color": "#94dae4",
+      "parts": [
+        "static-png",
+        "loop",
+        "scroll",
+        "static-png",
+        "cards"
+      ],
+      "no_divider": false,
+      "cards": [
+        {
+          "id": "jetpack",
+          "title": "Elf Jetpack",
+          "x": 0.192,
+          "y": 0.589
+        },
+        {
+          "id": "santasearch",
+          "title": "Santa Search",
+          "x": 0.787,
+          "y": 0.235
+        },
+        {
+          "id": "penguindash",
+          "title": "Penguin Dash",
+          "x": 0.787,
+          "y": 0.815
+        }
+      ]
+    },
+    {
+      "id": "wrapping",
+      "color": "#5203c0",
+      "parts": [
+        "static-svg",
+        "loop",
+        "scroll",
+        "static-svg",
+        "cards"
+      ],
+      "no_divider": false,
+      "cards": [
+        {
+          "id": "elfski",
+          "title": "Elf Ski",
+          "x": 0.19399999999999998,
+          "y": 0.184
+        },
+        {
+          "id": "seasonofgiving",
+          "title": "Season of Giving",
+          "x": 0.34299999999999997,
+          "y": 0.825
+        },
+        {
+          "id": "racer",
+          "title": "Rudolph Racer",
+          "x": 0.7759999999999999,
+          "y": 0.419
+        }
+      ]
+    },
+    {
+      "id": "disco",
+      "color": "#e5e5e5",
+      "parts": [
+        "static-png",
+        "loop",
+        "scroll",
+        "cards"
+      ],
+      "no_divider": false,
+      "cards": [
+        {
+          "id": "codeboogie",
+          "title": "Code Boogie",
+          "x": 0.18,
+          "y": 0.17
+        },
+        {
+          "id": "jamband",
+          "title": "Elf Jamband",
+          "x": 0.26,
+          "y": 0.8
+        },
+        {
+          "id": "wrapbattle",
+          "title": "Wrap Battle",
+          "x": 0.82,
+          "y": 0.5
+        }
+      ]
+    },
+    {
+      "id": "gym",
+      "color": "#e5e5e5",
+      "parts": [
+        "static-png",
+        "loop",
+        "loop",
+        "cards"
+      ],
+      "no_divider": false,
+      "cards": [
+        {
+          "id": "mercator",
+          "title": "Map Quiz",
+          "x": 0.215,
+          "y": 0.25
+        },
+        {
+          "id": "glider",
+          "title": "Elf Glider",
+          "x": 0.225,
+          "y": 0.83
+        },
+        {
+          "id": "runner",
+          "title": "Reindeer Runner",
+          "x": 0.82,
+          "y": 0.5
+        }
+      ]
+    },
+    {
+      "id": "footer",
+      "color": "#8ab8d4",
+      "parts": [
+        "static-svg",
+        "cards"
+      ],
+      "no_divider": true,
+      "cards": [
+        {
+          "id": "presentdrop",
+          "title": "Present Drop",
+          "x": 0.7,
+          "y": 0.25
+        }
+      ]
+    }
+  ],
+  "strings": {
+    "santatracker": "Santa Tracker",
+    "village_explore": "Explore, play and learn with Santa's elves all December long",
+    "play": "Play",
+    "scene_family": "Family Guide"
+  },
+  "sceneNames": {
+    "airport": "North Pole Airport",
+    "blimp": "Present Reload",
+    "boatload": "Gift Slingshot",
+    "briefing": "Mrs. Claus' Briefing",
+    "build": "Build & Bolt",
+    "buildandbolt": "Build & Bolt",
+    "carpool": "Elf Car",
+    "citylights": "City Lights",
+    "codeboogie": "Code Boogie",
+    "codelab": "Code Lab",
+    "commandcentre": "Mission Control",
+    "comroom": "Command Room",
+    "elfexpress": "Elf Express",
+    "elfmaker": "Elf Maker",
+    "elfski": "Elf Ski",
+    "factory": "Candy Factory",
+    "familyguide": "Family Guide",
+    "glider": "Elf Glider",
+    "gumball": "Gumball Tilt",
+    "holidayslopes": "Elf Ski",
+    "icecave": "Ice Cave",
+    "island": "Island",
+    "jamband": "Elf Jamband",
+    "jetpack": "Elf Jetpack",
+    "jingle": "Jingle Elves",
+    "latlong": "Present Delivery",
+    "liftoff": "Santa's Takeoff",
+    "likealight": "Out Like A Light",
+    "matching": "Memory Match",
+    "mercator": "Map Quiz",
+    "museum": "A Day at the Museum",
+    "office": "Office Prank",
+    "onvacation": "Still on Vacation",
+    "penguindash": "Penguin Dash",
+    "penguinproof": "Penguin Proof",
+    "playground": "North Pole Playground",
+    "poseboogie": "Pose Boogie",
+    "postcard": "Santa Postcards",
+    "presentbounce": "Present Bounce",
+    "presentdrop": "Present Drop",
+    "racer": "Rudolph Racer",
+    "reindeerworries": "Reindeer Worries",
+    "railroad": "Railroad Ride",
+    "reload": "Present Reload",
+    "rollercoaster": "Elf Rollercoaster",
+    "runner": "Reindeer Runner",
+    "santasback": "Santa's Back",
+    "santascanvas": "Santa's Canvas",
+    "santasearch": "Santa Search",
+    "santaselfie": "Santa Selfie",
+    "satellite": "Satellite",
+    "seasonofgiving": "Season of Giving",
+    "selfies": "Santa Selfies",
+    "slackingoff": "Slacking Off",
+    "smatch": "Gift Matcher",
+    "snowball": "Snowball Storm",
+    "snowdodgeball": "Snow Dodgeball",
+    "snowbox": "Snowbox",
+    "snowflake": "Code a Snowflake",
+    "speedsketch": "Quick Draw",
+    "streetview": "Street View",
+    "storybook": "Ollie Under The Sea",
+    "takeoff": "Take Off",
+    "temptation": "Temptation",
+    "tired": "Tired Reindeer",
+    "tracker": "Track Santa",
+    "traditions": "Holiday Traditions",
+    "translations": "Translations",
+    "underconstruction": "Under Construction",
+    "undersea": "Undersea",
+    "village": "Santa's Village",
+    "yulelog": "Yule Log",
+    "wheressanta": "Where's Santa?",
+    "windtunnel": "Wind Tunnel",
+    "workshop": "Santa's Workshop",
+    "wrapbattle": "Wrap Battle",
+    "@cityquiz": "City Quiz",
+    "@dasherdancer": "Dasher Dancer",
+    "@penguinswim": "Penguin Swim",
+    "@presenttoss": "Present Toss",
+    "@rocketsleigh": "Rocket Sleigh",
+    "@snowballrun": "Snowball Run",
+    "@tracker": "Track Santa"
+  },
+  "colors": {
+    "boatload": "#57c4e9",
+    "buildandbolt": "#f8c328",
+    "codeboogie": "#f8c328",
+    "codelab": "#2a57ad",
+    "elfmaker": "#3399ff",
+    "elfski": "#1b69c1",
+    "glider": "#7f54fa",
+    "gumball": "#bf8f68",
+    "havoc": "#587e9c",
+    "jamband": "#6bb4fd",
+    "jetpack": "#9d87f5",
+    "mercator": "#bf8f68",
+    "penguindash": "#93dae4",
+    "presentbounce": "#29b6f6",
+    "presentdrop": "#2c84db",
+    "racer": "#2a57ad",
+    "railroad": "#8053fa",
+    "runner": "#d92626",
+    "santascanvas": "#1b69c1",
+    "santasearch": "#e7ad03",
+    "santaselfie": "#6bb4fd",
+    "seasonofgiving": "#32a658",
+    "snowball": "#93dae4",
+    "snowdodgeball": "#f8c328",
+    "snowbox": "#1b69c1",
+    "snowflake": "#d92626",
+    "speedsketch": "#32a658",
+    "traditions": "#93dae4",
+    "translations": "#32a658",
+    "windtunnel": "#7f54fa",
+    "wrapbattle": "#2a57ad",
+    "@penguinswim": "#079aad",
+    "@rocketsleigh": "#9d87f5",
+    "@dasherdancer": "#6bb4fd",
+    "@snowballrun": "#93dae4",
+    "@presenttoss": "#6f00ff",
+    "@cityquiz": "#e7ad03"
+  }
+}

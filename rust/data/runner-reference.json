@@ -1,0 +1,2849 @@
+[
+  {
+    "name": "idle",
+    "steps": [
+      {
+        "action": "advance",
+        "value": 0.1,
+        "state": {
+          "time": 0.1,
+          "distance": 35.00000000000001,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 119.9,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 0,
+          "jumps": 0,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 4,
+        "state": {
+          "time": 4.1,
+          "distance": 1435.0000000000005,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 115.90000000000022,
+          "playing": true,
+          "magnet": false,
+          "x": 385.9027777777769,
+          "y": 0,
+          "y_speed": 0,
+          "state": 3,
+          "jumps": 0,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "house--10",
+              "x": 3400,
+              "y": 0,
+              "width": 400,
+              "height": 165,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 11,
+        "state": {
+          "time": 15.100000000000213,
+          "distance": 5284.99999999994,
+          "speed": 350,
+          "level": 0,
+          "score": 400,
+          "countdown": 104.90000000000097,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 0,
+          "jumps": 0,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 5428,
+              "y": -129,
+              "width": 30,
+              "height": 34,
+              "collected": true
+            },
+            {
+              "style": "present--1",
+              "x": 5503,
+              "y": -204,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 5578,
+              "y": -124.5,
+              "width": 22,
+              "height": 25,
+              "collected": true
+            },
+            {
+              "style": "present--1",
+              "x": 5653,
+              "y": -204,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 5728,
+              "y": -129,
+              "width": 30,
+              "height": 34,
+              "collected": true
+            },
+            {
+              "style": "present--2",
+              "x": 5803,
+              "y": -199.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 5878,
+              "y": -129,
+              "width": 30,
+              "height": 34,
+              "collected": true
+            },
+            {
+              "style": "present--1",
+              "x": 5953,
+              "y": -204,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 7028,
+              "y": -141.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 7103,
+              "y": -216.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 7178,
+              "y": -141.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 7253,
+              "y": -216.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 7328,
+              "y": -141.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 7403,
+              "y": -221,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 7478,
+              "y": -146,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 7553,
+              "y": -216.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 7628,
+              "y": -146,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 7703,
+              "y": -221,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 15,
+        "state": {
+          "time": 30.09999999999913,
+          "distance": 10755.499999999885,
+          "speed": 455,
+          "level": 1,
+          "score": 900,
+          "countdown": 89.90000000000215,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 0,
+          "jumps": 0,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "boost--magnet",
+              "x": 11778,
+              "y": -589,
+              "width": 60,
+              "height": 60,
+              "collected": false
+            },
+            {
+              "style": "platform-short--4",
+              "x": 12838,
+              "y": 0,
+              "width": 392,
+              "height": 270,
+              "collected": false
+            },
+            {
+              "style": "platform-short--2",
+              "x": 13237,
+              "y": 0,
+              "width": 392,
+              "height": 270,
+              "collected": false
+            },
+            {
+              "style": "chimney--1",
+              "x": 13495.72,
+              "y": -270,
+              "width": 72,
+              "height": 112,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 13516.72,
+              "y": -497,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 40,
+        "state": {
+          "time": 70.09999999999786,
+          "distance": 30225.99999999888,
+          "speed": 560,
+          "level": 2,
+          "score": 3100,
+          "countdown": 49.90000000000344,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 0,
+          "jumps": 0,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "boost--time",
+              "x": 30278,
+              "y": -244,
+              "width": 60,
+              "height": 60,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31338,
+              "y": -343,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31413,
+              "y": -418,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 31488,
+              "y": -338.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 31563,
+              "y": -413.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31638,
+              "y": -343,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31713,
+              "y": -418,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31788,
+              "y": -343,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31863,
+              "y": -418,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "platform-short--3",
+              "x": 32938,
+              "y": 0,
+              "width": 392,
+              "height": 270,
+              "collected": false
+            },
+            {
+              "style": "platform-tall--2",
+              "x": 33187,
+              "y": 0,
+              "width": 392,
+              "height": 538,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 60,
+        "state": {
+          "time": 120.01666666666169,
+          "distance": 61541.08333333849,
+          "speed": 665,
+          "level": 3,
+          "score": 4800,
+          "countdown": 0,
+          "playing": false,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 0,
+          "jumps": 0,
+          "entities": []
+        }
+      }
+    ]
+  },
+  {
+    "name": "jumps",
+    "steps": [
+      {
+        "action": "advance",
+        "value": 0.1,
+        "state": {
+          "time": 0.1,
+          "distance": 35.00000000000001,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 119.9,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 0,
+          "jumps": 0,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "jump",
+        "state": {
+          "time": 0.1,
+          "distance": 35.00000000000001,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 119.9,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 4,
+          "jumps": 1,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 0.1,
+        "state": {
+          "time": 0.2,
+          "distance": 70.00000000000003,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 119.80000000000001,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": -26.13333333333335,
+          "y_speed": -784,
+          "state": 4,
+          "jumps": 1,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "jump",
+        "state": {
+          "time": 0.2,
+          "distance": 70.00000000000003,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 119.80000000000001,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": -26.13333333333335,
+          "y_speed": -784,
+          "state": 4,
+          "jumps": 2,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 0.1,
+        "state": {
+          "time": 0.3,
+          "distance": 105.00000000000001,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 119.70000000000002,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": -147.2666666666667,
+          "y_speed": -1124,
+          "state": 2,
+          "jumps": 2,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 0.6,
+        "state": {
+          "time": 0.9000000000000009,
+          "distance": 314.99999999999994,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 119.10000000000005,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": -401.66666666666663,
+          "y_speed": 315.9999999999996,
+          "state": 2,
+          "jumps": 2,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "house--10",
+              "x": 3400,
+              "y": 0,
+              "width": 400,
+              "height": 165,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "jump",
+        "state": {
+          "time": 0.9000000000000009,
+          "distance": 314.99999999999994,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 119.10000000000005,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": -401.66666666666663,
+          "y_speed": 315.9999999999996,
+          "state": 2,
+          "jumps": 2,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "house--10",
+              "x": 3400,
+              "y": 0,
+              "width": 400,
+              "height": 165,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 0.1,
+        "state": {
+          "time": 1.000000000000001,
+          "distance": 349.99999999999983,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 119.00000000000006,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": -360.0666666666667,
+          "y_speed": 555.9999999999995,
+          "state": 2,
+          "jumps": 2,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "house--10",
+              "x": 3400,
+              "y": 0,
+              "width": 400,
+              "height": 165,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 0.5,
+        "state": {
+          "time": 1.4999999999999993,
+          "distance": 524.9999999999994,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 118.50000000000009,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 0,
+          "jumps": 0,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "house--10",
+              "x": 3400,
+              "y": 0,
+              "width": 400,
+              "height": 165,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "jump",
+        "state": {
+          "time": 1.4999999999999993,
+          "distance": 524.9999999999994,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 118.50000000000009,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 4,
+          "jumps": 1,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "house--10",
+              "x": 3400,
+              "y": 0,
+              "width": 400,
+              "height": 165,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 0.1,
+        "state": {
+          "time": 1.599999999999999,
+          "distance": 559.9999999999997,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 118.40000000000009,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": -26.13333333333335,
+          "y_speed": -784,
+          "state": 4,
+          "jumps": 1,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "house--10",
+              "x": 3400,
+              "y": 0,
+              "width": 400,
+              "height": 165,
+              "collected": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "slide",
+    "steps": [
+      {
+        "action": "down",
+        "state": {
+          "time": 0,
+          "distance": 0,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 120,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 1,
+          "jumps": 0,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 1,
+        "state": {
+          "time": 1,
+          "distance": 349.9999999999994,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 119.00000000000006,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 1,
+          "jumps": 0,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "house--10",
+              "x": 3400,
+              "y": 0,
+              "width": 400,
+              "height": 165,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "end_slide",
+        "state": {
+          "time": 1,
+          "distance": 349.9999999999994,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 119.00000000000006,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 0,
+          "jumps": 0,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "house--10",
+              "x": 3400,
+              "y": 0,
+              "width": 400,
+              "height": 165,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 0.1,
+        "state": {
+          "time": 1.0999999999999996,
+          "distance": 384.99999999999926,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 118.90000000000006,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 0,
+          "jumps": 0,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "house--10",
+              "x": 3400,
+              "y": 0,
+              "width": 400,
+              "height": 165,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "jump",
+        "state": {
+          "time": 1.0999999999999996,
+          "distance": 384.99999999999926,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 118.90000000000006,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 4,
+          "jumps": 1,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "house--10",
+              "x": 3400,
+              "y": 0,
+              "width": 400,
+              "height": 165,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 0.2,
+        "state": {
+          "time": 1.299999999999999,
+          "distance": 454.99999999999903,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 118.70000000000007,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": -157.00000000000006,
+          "y_speed": -1099.9999999999998,
+          "state": 2,
+          "jumps": 1,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "house--10",
+              "x": 3400,
+              "y": 0,
+              "width": 400,
+              "height": 165,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "down",
+        "state": {
+          "time": 1.299999999999999,
+          "distance": 454.99999999999903,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 118.70000000000007,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": -157.00000000000006,
+          "y_speed": -599.9999999999998,
+          "state": 2,
+          "jumps": 1,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "house--10",
+              "x": 3400,
+              "y": 0,
+              "width": 400,
+              "height": 165,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 1,
+        "state": {
+          "time": 2.299999999999994,
+          "distance": 805.0000000000002,
+          "speed": 350,
+          "level": 0,
+          "score": 0,
+          "countdown": 117.70000000000013,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 0,
+          "jumps": 0,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "house--7",
+              "x": 2000,
+              "y": 0,
+              "width": 400,
+              "height": 160,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2031.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 2136.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2233.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 2338.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "house--10",
+              "x": 3400,
+              "y": 0,
+              "width": 400,
+              "height": 165,
+              "collected": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "magnet",
+    "steps": [
+      {
+        "action": "advance",
+        "value": 30.4,
+        "state": {
+          "time": 30.4,
+          "distance": 10892.000000000286,
+          "speed": 455,
+          "level": 1,
+          "score": 900,
+          "countdown": 89.60000000000129,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 0,
+          "jumps": 0,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "boost--magnet",
+              "x": 11778,
+              "y": -589,
+              "width": 60,
+              "height": 60,
+              "collected": false
+            },
+            {
+              "style": "platform-short--4",
+              "x": 12838,
+              "y": 0,
+              "width": 392,
+              "height": 270,
+              "collected": false
+            },
+            {
+              "style": "platform-short--2",
+              "x": 13237,
+              "y": 0,
+              "width": 392,
+              "height": 270,
+              "collected": false
+            },
+            {
+              "style": "chimney--1",
+              "x": 13495.72,
+              "y": -270,
+              "width": 72,
+              "height": 112,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 13516.72,
+              "y": -497,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "jump",
+        "state": {
+          "time": 30.4,
+          "distance": 10892.000000000286,
+          "speed": 455,
+          "level": 1,
+          "score": 900,
+          "countdown": 89.60000000000129,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 4,
+          "jumps": 1,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "boost--magnet",
+              "x": 11778,
+              "y": -589,
+              "width": 60,
+              "height": 60,
+              "collected": false
+            },
+            {
+              "style": "platform-short--4",
+              "x": 12838,
+              "y": 0,
+              "width": 392,
+              "height": 270,
+              "collected": false
+            },
+            {
+              "style": "platform-short--2",
+              "x": 13237,
+              "y": 0,
+              "width": 392,
+              "height": 270,
+              "collected": false
+            },
+            {
+              "style": "chimney--1",
+              "x": 13495.72,
+              "y": -270,
+              "width": 72,
+              "height": 112,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 13516.72,
+              "y": -497,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 0.3,
+        "state": {
+          "time": 30.69999999999998,
+          "distance": 11028.500000000296,
+          "speed": 455,
+          "level": 1,
+          "score": 900,
+          "countdown": 89.3000000000013,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": -257.00000000000006,
+          "y_speed": -859.9999999999999,
+          "state": 2,
+          "jumps": 1,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "boost--magnet",
+              "x": 11778,
+              "y": -589,
+              "width": 60,
+              "height": 60,
+              "collected": false
+            },
+            {
+              "style": "platform-short--4",
+              "x": 12838,
+              "y": 0,
+              "width": 392,
+              "height": 270,
+              "collected": false
+            },
+            {
+              "style": "platform-short--2",
+              "x": 13237,
+              "y": 0,
+              "width": 392,
+              "height": 270,
+              "collected": false
+            },
+            {
+              "style": "chimney--1",
+              "x": 13495.72,
+              "y": -270,
+              "width": 72,
+              "height": 112,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 13516.72,
+              "y": -497,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "jump",
+        "state": {
+          "time": 30.69999999999998,
+          "distance": 11028.500000000296,
+          "speed": 455,
+          "level": 1,
+          "score": 900,
+          "countdown": 89.3000000000013,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": -257.00000000000006,
+          "y_speed": -859.9999999999999,
+          "state": 4,
+          "jumps": 2,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "boost--magnet",
+              "x": 11778,
+              "y": -589,
+              "width": 60,
+              "height": 60,
+              "collected": false
+            },
+            {
+              "style": "platform-short--4",
+              "x": 12838,
+              "y": 0,
+              "width": 392,
+              "height": 270,
+              "collected": false
+            },
+            {
+              "style": "platform-short--2",
+              "x": 13237,
+              "y": 0,
+              "width": 392,
+              "height": 270,
+              "collected": false
+            },
+            {
+              "style": "chimney--1",
+              "x": 13495.72,
+              "y": -270,
+              "width": 72,
+              "height": 112,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 13516.72,
+              "y": -497,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 0.8,
+        "state": {
+          "time": 31.499999999999936,
+          "distance": 11392.500000000324,
+          "speed": 455,
+          "level": 1,
+          "score": 900,
+          "countdown": 88.50000000000135,
+          "playing": true,
+          "magnet": true,
+          "x": 450,
+          "y": -518.6666666666672,
+          "y_speed": 659.9999999999983,
+          "state": 2,
+          "jumps": 2,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "boost--magnet",
+              "x": 11778,
+              "y": -589,
+              "width": 60,
+              "height": 60,
+              "collected": true
+            },
+            {
+              "style": "platform-short--4",
+              "x": 12838,
+              "y": 0,
+              "width": 392,
+              "height": 270,
+              "collected": false
+            },
+            {
+              "style": "platform-short--2",
+              "x": 13237,
+              "y": 0,
+              "width": 392,
+              "height": 270,
+              "collected": false
+            },
+            {
+              "style": "chimney--1",
+              "x": 13495.72,
+              "y": -270,
+              "width": 72,
+              "height": 112,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 13516.72,
+              "y": -497,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 14486,
+              "y": -127.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 14561,
+              "y": -207,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 14486,
+              "y": -282,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 14561,
+              "y": -357,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "candy",
+              "x": 14636,
+              "y": -132,
+              "width": 56,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 14711,
+              "y": -207,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 14636,
+              "y": -282,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 14711,
+              "y": -357,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 14786,
+              "y": -132,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 14861,
+              "y": -207,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 14786,
+              "y": -282,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 14861,
+              "y": -352.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 14936,
+              "y": -132,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 15011,
+              "y": -202.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 14936,
+              "y": -282,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 15011,
+              "y": -357,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 21,
+        "state": {
+          "time": 52.49999999999866,
+          "distance": 20947.499999999953,
+          "speed": 455,
+          "level": 1,
+          "score": 5200,
+          "countdown": 67.50000000000263,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 0,
+          "jumps": 0,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "platform-short--1",
+              "x": 22785,
+              "y": 0,
+              "width": 392,
+              "height": 270,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 22812.5,
+              "y": -87.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 22909.5,
+              "y": -92,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 23014.5,
+              "y": -92,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 23119.5,
+              "y": -92,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "platform-short--3",
+              "x": 23184,
+              "y": 0,
+              "width": 392,
+              "height": 270,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 23211.5,
+              "y": -357.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 23308.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 23413.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 23518.5,
+              "y": -362,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "platform-tall--3",
+              "x": 23433,
+              "y": 0,
+              "width": 392,
+              "height": 538,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 23456.5,
+              "y": -632,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 23561.5,
+              "y": -632,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 23666.5,
+              "y": -632,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 23771.5,
+              "y": -632,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "time",
+    "steps": [
+      {
+        "action": "advance",
+        "value": 69,
+        "state": {
+          "time": 69.00000000000001,
+          "distance": 29610.00000000007,
+          "speed": 560,
+          "level": 2,
+          "score": 3100,
+          "countdown": 51.000000000001286,
+          "playing": true,
+          "magnet": false,
+          "x": 384.86111111126496,
+          "y": 0,
+          "y_speed": 0,
+          "state": 0,
+          "jumps": 0,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "boost--time",
+              "x": 30278,
+              "y": -244,
+              "width": 60,
+              "height": 60,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31338,
+              "y": -343,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31413,
+              "y": -418,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 31488,
+              "y": -338.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 31563,
+              "y": -413.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31638,
+              "y": -343,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31713,
+              "y": -418,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31788,
+              "y": -343,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31863,
+              "y": -418,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "jump",
+        "state": {
+          "time": 69.00000000000001,
+          "distance": 29610.00000000007,
+          "speed": 560,
+          "level": 2,
+          "score": 3100,
+          "countdown": 51.000000000001286,
+          "playing": true,
+          "magnet": false,
+          "x": 384.86111111126496,
+          "y": 0,
+          "y_speed": 0,
+          "state": 4,
+          "jumps": 1,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 60900,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "boost--time",
+              "x": 30278,
+              "y": -244,
+              "width": 60,
+              "height": 60,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31338,
+              "y": -343,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31413,
+              "y": -418,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 31488,
+              "y": -338.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 31563,
+              "y": -413.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31638,
+              "y": -343,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31713,
+              "y": -418,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31788,
+              "y": -343,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31863,
+              "y": -418,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            }
+          ]
+        }
+      },
+      {
+        "action": "advance",
+        "value": 1.5,
+        "state": {
+          "time": 70.49999999999993,
+          "distance": 30449.99999999996,
+          "speed": 560,
+          "level": 2,
+          "score": 3100,
+          "countdown": 59.50000000000137,
+          "playing": true,
+          "magnet": false,
+          "x": 450,
+          "y": 0,
+          "y_speed": 0,
+          "state": 0,
+          "jumps": 0,
+          "entities": [
+            {
+              "style": "finish",
+              "x": 67550,
+              "y": 0,
+              "width": 300,
+              "height": 265,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31338,
+              "y": -343,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31413,
+              "y": -418,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 31488,
+              "y": -338.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--2",
+              "x": 31563,
+              "y": -413.5,
+              "width": 22,
+              "height": 25,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31638,
+              "y": -343,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31713,
+              "y": -418,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31788,
+              "y": -343,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "present--1",
+              "x": 31863,
+              "y": -418,
+              "width": 30,
+              "height": 34,
+              "collected": false
+            },
+            {
+              "style": "platform-short--3",
+              "x": 32938,
+              "y": 0,
+              "width": 392,
+              "height": 270,
+              "collected": false
+            },
+            {
+              "style": "platform-tall--2",
+              "x": 33187,
+              "y": 0,
+              "width": 392,
+              "height": 538,
+              "collected": false
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

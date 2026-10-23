@@ -1,0 +1,20 @@
+[
+  {
+    "classes": "Face Face--happy Face--alarmed",
+    "mouth": {
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/mouth--breath.svg\")",
+      "width": "46.2812px",
+      "height": "46.2812px",
+      "left": "203.452px"
+    }
+  },
+  {
+    "classes": "Face Face--happy Face--hairdryerCenter",
+    "mouth": {
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/mouth--breath.svg\")",
+      "width": "32.4844px",
+      "height": "32.4844px",
+      "left": "210.355px"
+    }
+  }
+]

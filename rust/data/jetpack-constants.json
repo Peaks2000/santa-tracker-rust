@@ -1,0 +1,147 @@
+{
+  "INITIAL_COUNTDOWN": 60,
+  "TOTAL_LEVELS": 10,
+  "ITEM_SPAWN_INTERVAL": 2,
+  "ITEM_SPAWN_VARIANCE": 2,
+  "ITEM_SPAWN_MULTIPLY_EACH_LEVEL": 0.95,
+  "ITEM_SPEED_MULTIPLY_EACH_LEVEL": 1.15,
+  "CLOCK_SPAWN_INTERVAL": 10,
+  "CLOCK_SPAWN_VARIANCE": 2,
+  "CLOCK_SPAWN_MULTIPLY_EACH_LEVEL": 0.95,
+  "CLOCK_SPEED_MULTIPLY_EACH_LEVEL": 1.15,
+  "ITEM_SPEED_NORMAL": 75,
+  "ITEM_SPEED_FAST": 150,
+  "ITEM_SPEED_FASTER": 225,
+  "ITEM_SCORE_NORMAL": 50,
+  "ITEM_SCORE_FAST": 75,
+  "ITEM_TIME_NORMAL": 5,
+  "ITEM_TIME_FAST": 10,
+  "DANGER_LEVEL_START": 2,
+  "DANGER_SPEED_SCALE": 1.5,
+  "DANGER_SPAWN_INTERVAL": 10,
+  "DANGER_SPAWN_VARIANCE": 3,
+  "DANGER_SCORE_RETRACTION_FAST": -10,
+  "DANGER_SCORE_RETRACTION_SLOW": -5,
+  "ITEM_MIN_DISTANCE": 75,
+  "COUNTDOWN_TRACK_LENGTH": 60,
+  "COUNTDOWN_TRACK_MAX_X": 150,
+  "COUNTDOWN_FLASH": 10,
+  "PLAYER_MAX_SPEED": 900,
+  "PLAYER_ACCELERATION": 3,
+  "PLAYER_MAX_ROTATION": 15,
+  "PLAYER_MAX_FIRESCALE": 1.25,
+  "PLAYER_HIT_DURATION": 1,
+  "PLAYER_CENTER": 150,
+  "PLAYER_MIN_X": 225,
+  "PLAYER_MAX_X": 680,
+  "PLAYER_MIN_Y": 100,
+  "PLAYER_MAX_Y": 500,
+  "TOUCH_SENSITIVITY": 70,
+  "SCENE_WIDTH": 980,
+  "SCENE_HEIGHT": 600,
+  "CLOUD_SPAWN_INTERVAL": 1.7,
+  "CLOUD_SPAWN_VARIANCE": 2.5,
+  "LEVEL_DURATION": 21,
+  "GOAL_DURATION": 3.5,
+  "TUTORIAL_LEFTRIGHT_TIMEOUT": 5000,
+  "TUTORIAL_UPDOWN_TIMEOUT": 3000,
+  "ITEM_TYPES": [
+    {
+      "css": "item-present item-present--1",
+      "weight": 2.5,
+      "fast": false
+    },
+    {
+      "css": "item-present item-present--2",
+      "weight": 2.5,
+      "fast": false
+    },
+    {
+      "css": "item-present item-present--3",
+      "weight": 1.5,
+      "fast": true
+    },
+    {
+      "css": "item-present item-present--4",
+      "weight": 2.5,
+      "fast": false
+    },
+    {
+      "css": "item-ball item-ball--1",
+      "weight": 1,
+      "fast": true
+    },
+    {
+      "css": "item-ball item-ball--2",
+      "weight": 1,
+      "fast": true
+    },
+    {
+      "css": "item-ball item-ball--3",
+      "weight": 1,
+      "fast": true
+    },
+    {
+      "css": "item-ball item-ball--4",
+      "weight": 1,
+      "fast": true
+    },
+    {
+      "css": "item-candy item-candy--1",
+      "weight": 1,
+      "fast": true
+    },
+    {
+      "css": "item-candy item-candy--2",
+      "weight": 1,
+      "fast": true
+    },
+    {
+      "css": "item-candy item-candy--3",
+      "weight": 1,
+      "fast": true
+    },
+    {
+      "css": "item-candy item-candy--4",
+      "weight": 1,
+      "fast": true
+    }
+  ],
+  "CLOCK_TYPES": [
+    {
+      "css": "item-clock item-clock--1",
+      "weight": 2,
+      "fast": false
+    },
+    {
+      "css": "item-clock item-clock--2",
+      "weight": 1,
+      "fast": true
+    }
+  ],
+  "DANGER_TYPES": [
+    {
+      "css": "item-danger item-danger--1",
+      "weight": 1,
+      "faster": true
+    },
+    {
+      "css": "item-danger item-danger--2",
+      "weight": 2,
+      "fast": true
+    },
+    {
+      "css": "item-danger item-danger--3",
+      "weight": 1.5,
+      "fast": false
+    },
+    {
+      "css": "item-danger item-danger--4",
+      "weight": 1.5,
+      "fast": false
+    }
+  ],
+  "DANGER_WEIGHT": 6,
+  "ITEM_WEIGHT": 17,
+  "CLOCK_WEIGHT": 3
+}
