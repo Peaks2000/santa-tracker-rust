@@ -8,6 +8,9 @@ Using the javascript code of Google Santa Tracker I remade the logic function by
 [![alt text](https://i.postimg.cc/qv3kdFRr/Screenshot-From-2026-10-23-23-36-53.png)
 
 
+#running localy
+
+or grab from releases
 
 ```sh
 ./rust/build.sh
