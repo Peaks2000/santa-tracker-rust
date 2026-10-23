@@ -69,6 +69,7 @@ pub struct Village<'a> {
     menu_changed: f64,
     last_menu: bool,
     pending_route: Option<(String, f64)>,
+    pub play_route: String,
 }
 fn color(s: &str) -> Color {
     let n = u32::from_str_radix(s.trim_start_matches('#'), 16).unwrap_or(0);
@@ -240,6 +241,7 @@ impl<'a> Village<'a> {
             menu_changed: 0.,
             last_menu: false,
             pending_route: None,
+            play_route: "santaselfie".into(),
         })
     }
     fn text(&self, s: &str, x: f32, y: f32, size: f32, title: bool, c: Color, center: bool) {
@@ -799,7 +801,7 @@ impl<'a> Village<'a> {
         if !self.menu && self.clicked(r) {
             self.pressed = None;
             self.play_active = true;
-            self.pending_route = Some(("runner".into(), now + 0.3));
+            self.pending_route = Some((self.play_route.clone(), now + 0.3));
         }
         let family = Rect::new(
             base + if screen_width() <= 768. { 12. } else { 32. },

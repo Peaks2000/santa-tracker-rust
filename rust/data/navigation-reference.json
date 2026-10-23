@@ -1,0 +1,42 @@
+[
+  {
+    "route": "modvil",
+    "cards": [
+      "santaselfie",
+      "jetpack"
+    ],
+    "play": "santaselfie"
+  },
+  {
+    "route": "santaselfie",
+    "cards": [
+      "jetpack",
+      "elfski"
+    ],
+    "play": "jetpack"
+  },
+  {
+    "route": "modvil",
+    "cards": [
+      "jetpack",
+      "presentdrop"
+    ],
+    "play": "jetpack"
+  },
+  {
+    "route": "jetpack",
+    "cards": [
+      "elfski",
+      "presentdrop"
+    ],
+    "play": "elfski"
+  },
+  {
+    "route": "modvil",
+    "cards": [
+      "runner",
+      "elfski"
+    ],
+    "play": "runner"
+  }
+]

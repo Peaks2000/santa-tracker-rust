@@ -75,5 +75,50 @@ all seven gameplay JS files and imported shared `pools.js`, `utils.js` and
 
 ## Next scene reviews
 
-Reindeer Runner visual/animation parity is the next priority requested by the
-user. Boatload remains selected for a later complete source review and port.
+Boatload remains selected for a later complete source review and port. The
+Runner parity pass below addresses the user's next requested priority.
+
+## Reindeer Runner parity pass
+
+Read every line of `index.html`, `runner-scene.scss`, all 13 SCSS partials,
+and all 12 files in `js/`. Also reviewed complete shared Coordinator, pools,
+scoreboard, random and utility sources used by these games.
+
+| Source | Review and resulting native behavior |
+| --- | --- |
+| `constants.js` | All collision dimensions remain distinct from the larger SVG art dimensions. The duplicate tall-tree entry/type in the original table is retained. |
+| `game.js` | Constructor/preloadPools, start/restart, pause/resume/freeze/unfreeze, gameover/dispose, step/advanceTime/onFrame, delayed updateLevel and stripes, scene size, every spawning helper, score/time/finish relocation and setLevelClass checked. Native live timers now have a separate source oracle, alongside the existing five manual-time scenarios. Visible spawn width follows viewport width * 1.5. Restart preserves the RNG, background object and running animation clock. |
+| `player.js` | Constructor/reset/newState, up/down/endSlide, every integration branch in onFrame, draw/hit cloud/magnet placement, toggleMagnet, all collision/platform helpers, land/getHitbox checked. Visuals use the hitbox-derived positions, eased cloud/magnet effects and correct state-specific sprite phases. The two-second touch slide has a native coordinator timer. |
+| `controls.js` | Handle dispatch, shared Space/Up gate, Down/release, GUI touch rejection, touch start/move/end and touch lookup checked. Native mouse release maps the touch tap/up/down thresholds; actual multi-touch IDs and tutorials remain gaps. |
+| `canvas.js` | imageLoader count/error/callback handling, constructor, drawDefaultImage and every draw/wrap/clear condition in onFrame reviewed. Native mountain/tree offsets preserve the source per-frame increments and wrap points. The CSS stretches the 670px canvas buffer into an 810px element; that stretch and central-only mountain clipping are now preserved. Filesystem decoding replaces asynchronous browser Image objects. |
+| `ceiling.js` | Constructor/resize handler reviewed. CSS media-query scales, quantized wall height, portrait ceiling offset and stage origin are compared against original DOM geometry at five viewport sizes. |
+| `present.js` | Constructor/pool/init/dispose/onFrame/hit/draw/getHitbox/setXPos/distanceFromPlayer checked. Native pickup growth/fade follows CSS ease; animation starts at spawn, magnet attraction retains its frame-dependent source arithmetic. |
+| `boost.js` | Constructor/pool/init/dispose/onFrame/hit/draw/getHitbox checked. Native time/magnet groups use source geometry, spin and eased pickup effects; time bonus text has its delayed fade. |
+| `platform.js`, `obstacle.js` | All constructors, pools, init/dispose/draw/frame/hit/getHitbox methods reviewed. Native renderer includes the long/short rollers and their wires, correct art sizes and obstacle bottom offset; trashcan art switches to its hit frame. |
+| `finish.js` | Constructor/place/onFrame/hit/getHitbox checked. Collision height stays 265 while art is 380px tall, preserving the original finish jump. |
+| `timer.js` | Constructor, pause and resume reviewed. Separate live-level snapshots exercise the delayed 200ms/2s transition path. Coordinator-driven gameplay pauses; CSS opacity/scale transitions use a separate wall clock. |
+| SCSS/HTML | Correct layer origin (352.5px before the stage), discrete responsive scales, background sizing/cover/repeat, clipping and stacking, cogs/pillars, missing foreground gears/cooling station, 40px ceiling repeat, treadmill belts/negative gear delays, run/slide step-start frames, hit cloud/magnet/boost text, pickup ease and Lobster speedometer restored. Warning shape is vector geometry exported from the original CSS transforms, including its rounded corner. The source scenery speed selector does not match the root level class, so treadmill speed remains at its original constant. |
+| Klang | All runner_ actions read, including empty processes and the game-over source fade. Native hit/jump/pickup IDs are explicit. Full shared bus/music/group semantics remain incomplete. |
+
+Original/native captures now cover idle, moving, jump and slide references;
+a separate native smoke window exercised jump/double-jump/down, pause/resume,
+level changes, restart/slide and return home. The actual home Play button was
+also clicked twice, opening Selfie and then Jetpack after returning home.
+The native SVG/font rasterizers still differ from Chromium, and the speedometer
+warning's synthetic bold glyph, full touch/tutorial/accessibility behavior,
+rare mid-transition restart cases and all shared website functionality still
+need parity work. This pass is not a claim that Runner or the site is fully 1:1.
+
+## Home Play and recommendations
+
+Read `modvil/index.html`'s data listener/button handler and the complete
+recommendation closure in `static/entrypoint.js` (recent routes, biased sampling,
+featured override and Play payload). Native `navigation.rs` now supplies both
+home Play and the two overlay cards from one state object. It preserves the
+source pow(random,4) bias, ordered recent-route buffer and no-replacement draws.
+A source-executed fixture checks initial navigation and repeated home/game
+visits. The native pool contains only five playable activities; when it runs out
+of unseen options, a documented fallback chooses an older playable activity
+instead of reproducing the original algorithm's undefined result on an
+undersized list. Remote Firebase locks/featured scheduling and localStorage
+featured-played persistence remain unimplemented.

@@ -2,6 +2,7 @@ pub mod animation;
 pub mod audio;
 pub mod image_alpha;
 pub mod jetpack;
+pub mod navigation;
 pub mod presentdrop;
 pub mod random;
 pub mod runner;

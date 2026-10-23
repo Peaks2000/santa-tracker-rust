@@ -504,7 +504,7 @@ impl Chrome {
                 );
                 self.text("TIME", left + widths[0] as f32 / 2., top + 34., 9, false);
             }
-            if show_right {
+            if show_right && widths[0] > 0.1 && widths[1] > 0.1 {
                 draw_rectangle(
                     left + widths[0] as f32 - 1.,
                     top + 6.,

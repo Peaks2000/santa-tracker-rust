@@ -171,6 +171,7 @@ async fn run(opts: Options) {
     let mut jet_view = jetpack_view::JetpackView::new().expect("Jetpack fonts");
     let mut selfie_view = selfie_view::SelfieView::new().expect("Selfie rendering materials");
     let mut runner = Runner::new(&opts.seed);
+    let mut runner_view = render::View::new();
     let (width, height) = jetpack_view::JetpackView::dimensions();
     let mut jetpack = Jetpack::new(&opts.seed, width, height);
     let mut selfie = Selfie::new(&opts.seed);
@@ -195,6 +196,8 @@ async fn run(opts: Options) {
         }
     }
     let mut route = opts.scene;
+    let mut next_games = santa_tracker::navigation::NextGames::new(&opts.seed);
+    next_games.on_route(&route);
     if route == "santaselfie" {
         sound.trigger("music_start_ingame", &assets.root);
     }
@@ -220,6 +223,8 @@ async fn run(opts: Options) {
     let mut overlay = overlay::Overlay::new().expect("Original pause overlay");
     let mut scene_filter = overlay::SceneFilter::new().expect("Original disabled scene filter");
     loop {
+        village.play_route = next_games.play.clone();
+        overlay.set_recommendations(next_games.cards.clone());
         if let Some((scene, result)) = assets.poll_scene_load() {
             if let Err(error) = result {
                 eprintln!("Scene {scene}: {error}");
@@ -258,7 +263,7 @@ async fn run(opts: Options) {
         if restart {
             sound.stop();
             match route.as_str() {
-                "runner" => runner = Runner::new(&opts.seed),
+                "runner" => runner.restart(),
                 "elfski" => {
                     ski = Ski::new(
                         &opts.seed,
@@ -310,15 +315,8 @@ async fn run(opts: Options) {
         if active {
             match route.as_str() {
                 "runner" => {
-                    if is_key_pressed(KeyCode::Space) || is_key_pressed(KeyCode::Up) {
-                        runner.jump();
-                    }
-                    if is_key_pressed(KeyCode::Down) {
-                        runner.down();
-                    }
-                    if is_key_released(KeyCode::Down) {
-                        runner.end_slide();
-                    }
+                    runner.visible_width = screen_width() as f64 * 1.5;
+                    runner_view.input(&mut runner);
                 }
                 "presentdrop" => drop_view.input(&mut drop_game),
                 "jetpack" => {
@@ -350,6 +348,9 @@ async fn run(opts: Options) {
             }
         } else {
             accumulated = 0.;
+            if route == "runner" && opts.frames.is_none() {
+                runner.wall_time += get_frame_time() as f64;
+            }
         }
         clear_background(BLACK);
         let mut selected = None;
@@ -365,7 +366,7 @@ async fn run(opts: Options) {
                     sound.trigger(event, &assets.root);
                 }
                 scene_filter.begin();
-                render::View::new().runner(&assets, &runner);
+                runner_view.runner(&assets, &runner);
                 scene_filter.finish(runner.paused || !runner.playing);
             }
             "jetpack" => {
@@ -430,7 +431,7 @@ async fn run(opts: Options) {
                     overlay::Action::Restart => {
                         sound.stop();
                         if route == "runner" {
-                            runner = Runner::new(&opts.seed);
+                            runner.restart();
                         } else if route == "presentdrop" {
                             drop_game.restart();
                         } else if route == "elfski" {
@@ -525,7 +526,7 @@ async fn run(opts: Options) {
                     sound.stop();
                     match route.as_str() {
                         "presentdrop" => drop_game.restart(),
-                        "runner" => runner = Runner::new(&opts.seed),
+                        "runner" => runner.restart(),
                         "elfski" => {
                             ski = Ski::new(
                                 &opts.seed,
@@ -603,7 +604,10 @@ async fn run(opts: Options) {
                             .sounds
                             .extend(["music_start_village", "village_start"]);
                     }
-                    "runner" => runner = Runner::new(&opts.seed),
+                    "runner" => {
+                        runner = Runner::new(&opts.seed);
+                        runner_view.reset_input();
+                    }
                     "elfski" => {
                         ski = Ski::new(
                             &opts.seed,
@@ -623,6 +627,7 @@ async fn run(opts: Options) {
                     _ => {}
                 }
                 route = target;
+                next_games.on_route(&route);
                 sound.trigger("menu_transition_game_out", &assets.root);
             } else {
                 unavailable = Some(

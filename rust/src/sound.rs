@@ -179,6 +179,12 @@ impl Sound {
         // Native translations of the original focused scenes' Klang actions.
         // An empty action stays empty; stop actions never restart their sources.
         let actions: Option<&[(&str, bool, f64, f64)]> = match event {
+            "runner_hit" => Some(&[("dk0G", true, 0., 0.)]),
+            "runner_jump_1" => Some(&[("s5Rs", true, 0., 0.)]),
+            "runner_jump_2" => Some(&[("nMr5", true, 0., 0.)]),
+            "runner_present" => Some(&[("NvN6", true, 0., 0.)]),
+            "runner_game_over" => Some(&[("Kzah", false, 0., 0.3)]),
+            "runner_start" | "runner_end" | "runner_hurry_up" | "runner_hurry_up_end" => Some(&[]),
             "pd_item_drop" => Some(&[("NuNw", true, 0., 0.)]),
             "pd_item_miss" => Some(&[("ZE1O", true, 0., 0.)]),
             "pd_player_level_up" => Some(&[("lUXp", true, 0., 0.)]),

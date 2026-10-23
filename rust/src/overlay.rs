@@ -6,10 +6,7 @@ use crate::{
     village::Village,
 };
 use macroquad::prelude::*;
-use santa_tracker::{
-    random::Random,
-    ui::{Ease, Transition},
-};
+use santa_tracker::ui::{Ease, Transition};
 
 pub enum Action {
     Resume,
@@ -26,7 +23,6 @@ pub struct Overlay {
     below: Transition<1>,
     recommendations: [String; 2],
     scene: String,
-    random: Random,
     focus: usize,
     title: Font,
     pub sounds: Vec<&'static str>,
@@ -44,12 +40,14 @@ impl Overlay {
             below: Transition::new([0.5]),
             recommendations: ["santaselfie".into(), "jetpack".into()],
             scene: String::new(),
-            random: Random::seeded("play-next"),
             focus: 0,
             title: load_ttf_font_from_bytes(include_bytes!("../assets/fonts/Lobster-Regular.ttf"))
                 .map_err(|e| e.to_string())?,
             sounds: vec![],
         })
+    }
+    pub fn set_recommendations(&mut self, cards: [String; 2]) {
+        self.recommendations = cards;
     }
     pub fn draw(
         &mut self,
@@ -62,24 +60,7 @@ impl Overlay {
     ) -> Option<Action> {
         let now = get_time();
         let visible = paused || gameover;
-        if self.scene != scene {
-            self.scene = scene.into();
-            let nav: serde_json::Value =
-                serde_json::from_str(include_str!("../data/navigation.json")).unwrap();
-            let mut choices: Vec<String> = nav["cards"]
-                .as_array()
-                .unwrap()
-                .iter()
-                .filter_map(|v| v.as_str())
-                .filter(|id| *id != scene)
-                .map(str::to_owned)
-                .collect();
-            for slot in &mut self.recommendations {
-                let i = ((self.random.next().powi(4) * choices.len() as f64) as usize)
-                    .min(choices.len() - 1);
-                *slot = choices.remove(i);
-            }
-        }
+        self.scene = scene.into();
         if visible != self.visible {
             self.visible = visible;
             self.focus = 0;

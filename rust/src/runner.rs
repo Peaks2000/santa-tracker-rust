@@ -1,5 +1,8 @@
 // Behavioral port of static/scenes/runner/js. Original: Google, Apache-2.0.
-use crate::random::Random;
+use crate::{
+    random::Random,
+    ui::{Ease, Transition},
+};
 use serde::{Deserialize, Serialize};
 use std::sync::OnceLock;
 
@@ -106,6 +109,9 @@ pub struct Entity {
     pub height: f64,
     pub collected: bool,
     pub collected_at: f64,
+    pub collected_wall_at: f64,
+    pub born: f64,
+    pub hit: bool,
     pub score: u32,
     pub hit_bottom: f64,
     pub hit_width: Option<f64>,
@@ -122,6 +128,9 @@ impl Entity {
             height: spec.height,
             collected: false,
             collected_at: 0.,
+            collected_wall_at: 0.,
+            born: 0.,
+            hit: false,
             score: spec.score,
             hit_bottom: spec.hit_bottom,
             hit_width: spec.hit_width,
@@ -147,6 +156,7 @@ enum TimerAction {
     Recover,
     CloudOff,
     MagnetOff,
+    EndSlide,
 }
 
 pub struct Runner {
@@ -173,6 +183,15 @@ pub struct Runner {
     hurry: bool,
     pub transition: f64,
     pub immediate_levels: bool,
+    pub animation_time: f64,
+    pub wall_time: f64,
+    pub cloud_since: f64,
+    pub magnet_visual: Transition<1>,
+    pub visible_width: f64,
+    pub mountain_x: f64,
+    pub trees_x: f64,
+    next_mountain: f64,
+    next_trees: f64,
 }
 impl Runner {
     pub fn new(seed: &str) -> Self {
@@ -209,7 +228,37 @@ impl Runner {
             hurry: false,
             transition: 0.,
             immediate_levels: false,
+            animation_time: 0.,
+            wall_time: 0.,
+            cloud_since: 0.,
+            magnet_visual: Transition::new([0.]),
+            visible_width: 2115.,
+            mountain_x: 0.,
+            trees_x: 0.,
+            next_mountain: -0.25,
+            next_trees: 0.,
         }
+    }
+    pub fn restart(&mut self) {
+        let mut next = Self::new("unused-restart-seed");
+        next.random = self.random.clone();
+        next.animation_time = self.animation_time;
+        next.wall_time = self.wall_time;
+        next.visible_width = self.visible_width;
+        next.mountain_x = self.mountain_x;
+        next.trees_x = self.trees_x;
+        next.next_mountain = self.next_mountain;
+        next.next_trees = self.next_trees;
+        next.player.state_since = if self.player.state == State::Running {
+            self.player.state_since
+        } else {
+            self.animation_time
+        };
+        *self = next;
+    }
+    pub fn player_hitbox(&self) -> (f64, f64, f64, f64) {
+        let h = self.player.hitbox();
+        (h.x, h.y, h.width, h.height)
     }
     fn state(&mut self, next: State, recover: bool, falling: bool) {
         if self.player.state == State::Collision && !recover {
@@ -218,7 +267,7 @@ impl Runner {
         let prev = self.player.state;
         self.player.state = next;
         if prev != next {
-            self.player.state_since = self.time;
+            self.player.state_since = self.animation_time;
         }
         if next == State::Running && prev != State::Running {
             self.player.jumps = 0;
@@ -234,6 +283,7 @@ impl Runner {
             self.player.x_speed = -200.;
             self.player.y_speed = -500.;
             self.cloud = true;
+            self.cloud_since = self.wall_time;
             self.timers.push((0.5, TimerAction::CloudOff));
             self.timers.push((2., TimerAction::Recover));
         }
@@ -254,6 +304,13 @@ impl Runner {
             self.state(State::Jumping, false, false);
             self.player.y_speed += 500.;
             self.player.jump_end = true;
+        }
+    }
+    pub fn down_for(&mut self, duration: f64) {
+        let running = self.player.state == State::Running;
+        self.down();
+        if running && duration > 0. {
+            self.timers.push((duration, TimerAction::EndSlide));
         }
     }
     pub fn end_slide(&mut self) {
@@ -280,6 +337,18 @@ impl Runner {
             return;
         }
         self.time += dt;
+        self.animation_time += dt;
+        self.wall_time += dt;
+        if self.next_mountain < 352.5 - 1490. {
+            self.next_mountain = 352.5;
+        }
+        if self.next_trees < -2980. {
+            self.next_trees = 0.;
+        }
+        self.mountain_x = self.next_mountain;
+        self.trees_x = self.next_trees;
+        self.next_mountain -= 0.25;
+        self.next_trees -= 0.5;
         if self.transition > 0. {
             self.transition -= dt;
             if self.transition <= 0. {
@@ -302,7 +371,12 @@ impl Runner {
                 match action {
                     TimerAction::Recover => self.state(State::Running, true, false),
                     TimerAction::CloudOff => self.cloud = false,
-                    TimerAction::MagnetOff => self.magnet = false,
+                    TimerAction::EndSlide => self.end_slide(),
+                    TimerAction::MagnetOff => {
+                        self.magnet = false;
+                        self.magnet_visual
+                            .set(self.wall_time, [0.], 0.5, Ease::Default);
+                    }
                 }
             } else {
                 i += 1;
@@ -401,24 +475,29 @@ impl Runner {
                     Kind::Present if !e.collected => {
                         e.collected = true;
                         e.collected_at = self.time;
+                        e.collected_wall_at = self.wall_time;
                         self.score += e.score;
                         self.sounds.push("runner_present");
                     }
                     Kind::Time | Kind::Magnet if !e.collected => {
                         e.collected = true;
                         e.collected_at = self.time;
+                        e.collected_wall_at = self.wall_time;
                         let time = e.kind == Kind::Time;
                         self.sounds.push("runner_present");
                         if time {
                             self.add_time(10.);
                         } else {
                             self.magnet = true;
+                            self.magnet_visual
+                                .set(self.wall_time, [1.], 0.5, Ease::Default);
                             self.timers.push((20., TimerAction::MagnetOff));
                         }
                     }
                     Kind::Obstacle => {
                         if let Some(w) = e.hit_width {
                             e.width = w;
+                            e.hit = true;
                         } else {
                             self.state(State::Collision, false, false);
                             self.sounds.push("runner_hit");
@@ -456,7 +535,9 @@ impl Runner {
         };
         let spec = self.pick(table);
         let y = -height - spec.height / 2.;
-        Entity::from_spec(Kind::Present, spec, x, y)
+        let mut e = Entity::from_spec(Kind::Present, spec, x, y);
+        e.born = self.animation_time;
+        e
     }
     fn add_presents(
         &mut self,
@@ -552,7 +633,7 @@ impl Runner {
     }
     fn spawn_entities(&mut self) {
         let pos = self.last_entity + 1000.;
-        if pos >= self.finish_x - 1500. || self.last_entity >= self.distance + 2115. {
+        if pos >= self.finish_x - 1500. || self.last_entity >= self.distance + self.visible_width {
             return;
         }
         let random = self.random.next();
@@ -588,12 +669,14 @@ impl Runner {
                     hit_width: None,
                     presents_height: None,
                 };
-                self.entities.push(Entity::from_spec(
+                let mut e = Entity::from_spec(
                     if time { Kind::Time } else { Kind::Magnet },
                     spec,
                     pos,
                     -height - 30.,
-                ));
+                );
+                e.born = self.animation_time;
+                self.entities.push(e);
                 self.last_boost = pos + 60.;
                 self.last_boost
             }
@@ -603,5 +686,121 @@ impl Runner {
     }
     pub fn snapshot(&self) -> serde_json::Value {
         serde_json::json!({"time":self.time,"distance":self.distance,"speed":self.speed,"level":self.level,"score":self.score,"countdown":self.countdown,"playing":self.playing,"magnet":self.magnet,"x":self.player.x,"y":self.player.y,"y_speed":self.player.y_speed,"state":self.player.state as u8,"jumps":self.player.jumps,"entities":self.entities.iter().map(|e|serde_json::json!({"style":e.style,"x":e.x,"y":e.y,"width":e.width,"height":e.height,"collected":e.collected})).collect::<Vec<_>>()})
+    }
+}
+
+/// The scene uses CSS media-query scale steps, not continuous letterboxing.
+#[derive(Clone, Copy, Debug)]
+pub struct Layout {
+    pub scale: f64,
+    pub top: f64,
+    pub stage_left: f64,
+    pub wrap_left: f64,
+    pub ground: f64,
+    pub wall_height: f64,
+}
+impl Layout {
+    pub fn new(width: f64, height: f64) -> Self {
+        let mut scale: f64 = 1.;
+        for (w, h, s) in [
+            (1550., 926., 0.9),
+            (1400., 836., 0.8),
+            (1200., 717., 0.7),
+            (1100., 657., 0.63),
+            (1000., 597., 0.55),
+            (800., 478., 0.4),
+            (600., 358., 0.35),
+            (400., 239., 0.25),
+        ] {
+            if width <= w || height <= h {
+                scale = s;
+            }
+        }
+        if width >= 2180. && height >= 1295. {
+            scale = 1.5;
+        }
+        let wall_height = (810. * scale * 64.).floor() / 64.;
+        let top = if height > wall_height * 1.5 {
+            ((height - wall_height) * 0.35 * 64.).floor() / 64.
+        } else {
+            0.
+        };
+        let stage_left = width / 2. - 705. * scale;
+        Self {
+            scale,
+            top,
+            stage_left,
+            wrap_left: stage_left - 352.5 * scale,
+            ground: top + 810. * scale,
+            wall_height,
+        }
+    }
+}
+#[cfg(test)]
+mod visual_tests {
+    use super::*;
+    #[test]
+    fn layout_matches_original_browser_at_five_viewports() {
+        let data: serde_json::Value =
+            serde_json::from_str(include_str!("../data/runner-layout-reference.json")).unwrap();
+        for (w, v) in data.as_object().unwrap() {
+            let width = w.parse::<f64>().unwrap();
+            let height = if width == 2400. { 1400. } else { 800. };
+            let l = Layout::new(width, height);
+            for (a, b) in [
+                (l.top, v[".game"]["y"].as_f64().unwrap()),
+                (l.stage_left, v[".stage"]["x"].as_f64().unwrap()),
+                (l.top + 140. * l.scale, v[".stage"]["y"].as_f64().unwrap()),
+                (
+                    l.wrap_left + 450. * l.scale,
+                    v[".reindeer"]["x"].as_f64().unwrap(),
+                ),
+                (
+                    l.ground - 170. * l.scale,
+                    v[".reindeer"]["y"].as_f64().unwrap(),
+                ),
+            ] {
+                assert!((a - b).abs() < 0.03, "{width}: {a} vs {b}");
+            }
+        }
+    }
+}
+
+#[cfg(test)]
+mod live_tests {
+    use super::*;
+    fn compare(a: &serde_json::Value, b: &serde_json::Value, p: &str) {
+        match (a, b) {
+            (serde_json::Value::Number(a), serde_json::Value::Number(b)) => assert!(
+                (a.as_f64().unwrap() - b.as_f64().unwrap()).abs() < 1e-7,
+                "{p}: {a} != {b}"
+            ),
+            (serde_json::Value::Array(a), serde_json::Value::Array(b)) => {
+                assert_eq!(a.len(), b.len(), "{p}");
+                for (i, (a, b)) in a.iter().zip(b).enumerate() {
+                    compare(a, b, &format!("{p}/{i}"));
+                }
+            }
+            (serde_json::Value::Object(a), serde_json::Value::Object(b)) => {
+                for (k, b) in b {
+                    compare(&a[k], b, &format!("{p}/{k}"));
+                }
+            }
+            _ => assert_eq!(a, b, "{p}"),
+        }
+    }
+    #[test]
+    fn live_level_timers_and_background_match_source_helpers() {
+        let cases: serde_json::Value =
+            serde_json::from_str(include_str!("../data/runner-live-reference.json")).unwrap();
+        let mut g = Runner::new("test1234");
+        for (i, step) in cases.as_array().unwrap().iter().enumerate() {
+            if step["op"].as_str() == Some("restart") {
+                g.restart();
+            }
+            g.advance(step["duration"].as_f64().unwrap());
+            let actual = serde_json::json!({"game":g.snapshot(),"mountain":g.mountain_x,"trees":g.trees_x,"updating":g.transition>0.});
+            compare(&actual, &step["state"], &i.to_string());
+        }
     }
 }
