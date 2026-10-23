@@ -1,0 +1,3412 @@
+[
+  {
+    "name": "idle",
+    "steps": [
+      {
+        "action": "wait",
+        "duration": 0.01,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 0,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 59.99,
+          "level": 0,
+          "nextLevel": 20.99,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 7.040604016277939,
+          "nextIceberg": 3.319238624535501,
+          "playing": true,
+          "boats": [
+            {
+              "y": 799.4,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.1544456720305607
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 0.78,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      },
+      {
+        "action": "wait",
+        "duration": 1,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 0,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 58.99000000000006,
+          "level": 0,
+          "nextLevel": 19.990000000000055,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 6.040604016277944,
+          "nextIceberg": 2.319238624535506,
+          "playing": true,
+          "boats": [
+            {
+              "y": 739.4000000000001,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.010132360531329043
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 78.77999999999982,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      },
+      {
+        "action": "wait",
+        "duration": 7,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 0,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 51.99000000000046,
+          "level": 0,
+          "nextLevel": 12.990000000000132,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 6.118901990540329,
+          "nextIceberg": 0.8333333333333328,
+          "playing": true,
+          "boats": [
+            {
+              "y": 319.4000000000001,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.07463057294099906
+            },
+            {
+              "y": 751.6666666666645,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.012441893297558064
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 624.7799999999992,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 252.9000000000011,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      },
+      {
+        "action": "wait",
+        "duration": 15,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 0,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 36.99000000000163,
+          "level": 1,
+          "nextLevel": 19.000000000000437,
+          "boatSpeed": 60,
+          "icebergSpeed": 65,
+          "nextBoat": 4.465195755785042,
+          "nextIceberg": 0.6000000000003227,
+          "playing": true,
+          "boats": [
+            {
+              "y": -18.499999999989136,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.11450755270540822
+            },
+            {
+              "y": 428.53333333336406,
+              "height": 195,
+              "width": 89,
+              "speed": 0.8,
+              "hits": 0,
+              "nextBubble": 0.11619497108383212
+            },
+            {
+              "y": 696.5333333333547,
+              "height": 195,
+              "width": 89,
+              "speed": 0.8,
+              "hits": 0,
+              "nextBubble": 0.13512789267813788
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 428.47801762400195,
+              "y": 592.8666666666555,
+              "height": 120,
+              "width": 111,
+              "speed": 0.8,
+              "presents": 0
+            },
+            {
+              "x": 491.09194363700226,
+              "y": 206.17499999998043,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      },
+      {
+        "action": "wait",
+        "duration": 36,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 0,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 0.9900000000024488,
+          "level": 2,
+          "nextLevel": 4.016666666666568,
+          "boatSpeed": 70,
+          "icebergSpeed": 70,
+          "nextBoat": 6.585816413785022,
+          "nextIceberg": 3.157223792374138,
+          "playing": true,
+          "boats": [
+            {
+              "y": 207.33333333333889,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.048161474470980514
+            },
+            {
+              "y": 770.6000000000005,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.07289439239073547
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 421.3834280380979,
+              "y": 831.59999999999,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            },
+            {
+              "x": 429.4608896016143,
+              "y": 449.4000000000032,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            },
+            {
+              "x": 475.0437148613855,
+              "y": 70.34999999999991,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      },
+      {
+        "action": "wait",
+        "duration": 2,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 0,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 0,
+          "level": 2,
+          "nextLevel": 3.0166666666665716,
+          "boatSpeed": 70,
+          "icebergSpeed": 70,
+          "nextBoat": 5.585816413785025,
+          "nextIceberg": 2.1572237923741415,
+          "playing": false,
+          "boats": [
+            {
+              "y": 137.33333333333945,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.11431302428555987
+            },
+            {
+              "y": 686.6000000000018,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.014765548255139368
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 421.3834280380979,
+              "y": 894.5999999999873,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            },
+            {
+              "x": 429.4608896016143,
+              "y": 512.4000000000038,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            },
+            {
+              "x": 475.0437148613855,
+              "y": 133.34999999999982,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      },
+      {
+        "action": "restart",
+        "duration": 0.2,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 0,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 59.80000000000001,
+          "level": 0,
+          "nextLevel": 20.80000000000001,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 7.8420177514354386,
+          "nextIceberg": 2.5053729999500023,
+          "playing": true,
+          "boats": [
+            {
+              "y": 789.9999999999995,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.07539644855540248
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 600.2986913663335,
+              "y": 13.199999999999998,
+              "height": 124,
+              "width": 95,
+              "speed": 1.1,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      },
+      {
+        "action": "wait",
+        "duration": 8,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 0,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 51.800000000000466,
+          "level": 0,
+          "nextLevel": 12.800000000000125,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 7.715648820996285,
+          "nextIceberg": 3.581930068942408,
+          "playing": true,
+          "boats": [
+            {
+              "y": 389.9999999999897,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.011094883467691684
+            },
+            {
+              "y": 793.3333333333337,
+              "height": 195,
+              "width": 89,
+              "speed": 0.8,
+              "hits": 0,
+              "nextBubble": 0.08291800127985578
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 600.2986913663335,
+              "y": 541.2000000000049,
+              "height": 124,
+              "width": 95,
+              "speed": 1.1,
+              "presents": 0
+            },
+            {
+              "x": 535.0260486011393,
+              "y": 243.00000000000105,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            },
+            {
+              "x": 591.7787282378413,
+              "y": 4.8,
+              "height": 120,
+              "width": 111,
+              "speed": 0.8,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      },
+      {
+        "action": "resize",
+        "duration": 1,
+        "state": {
+          "y": 326.66666666666663,
+          "target": 326.66666666666663,
+          "distance": 0,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 50.80000000000052,
+          "level": 0,
+          "nextLevel": 11.800000000000077,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 6.71564882099629,
+          "nextIceberg": 2.581930068942413,
+          "playing": true,
+          "boats": [
+            {
+              "y": 339.9999999999909,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.11211739499044435
+            },
+            {
+              "y": 753.333333333336,
+              "height": 195,
+              "width": 89,
+              "speed": 0.8,
+              "hits": 0,
+              "nextBubble": 0.08096445402208235
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 600.2986913663335,
+              "y": 607.2000000000062,
+              "height": 124,
+              "width": 95,
+              "speed": 1.1,
+              "presents": 0
+            },
+            {
+              "x": 535.0260486011393,
+              "y": 297.00000000000006,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            },
+            {
+              "x": 591.7787282378413,
+              "y": 52.799999999999876,
+              "height": 120,
+              "width": 111,
+              "speed": 0.8,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      }
+    ]
+  },
+  {
+    "name": "shoot",
+    "steps": [
+      {
+        "action": "wait",
+        "duration": 1,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 0,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 59.00000000000006,
+          "level": 0,
+          "nextLevel": 20.000000000000057,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 6.057270682944611,
+          "nextIceberg": 2.3359052912021725,
+          "playing": true,
+          "boats": [
+            {
+              "y": 740.0000000000001,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.02679902719799571
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 77.99999999999982,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      },
+      {
+        "action": "prepare",
+        "duration": 0.35,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 58.65000000000008,
+          "level": 0,
+          "nextLevel": 19.650000000000077,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 5.707270682944612,
+          "nextIceberg": 1.9859052912021737,
+          "playing": true,
+          "boats": [
+            {
+              "y": 719.0000000000001,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.08103320778968436
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 105.29999999999976,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.7,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 57.95000000000012,
+          "level": 0,
+          "nextLevel": 18.950000000000117,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 5.007270682944616,
+          "nextIceberg": 1.2859052912021767,
+          "playing": true,
+          "boats": [
+            {
+              "y": 677.0000000000001,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.04408855828146194
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 159.89999999999992,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 375.9999999999996,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.3162650602409633,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "prepare",
+        "duration": 0.35,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 57.600000000000136,
+          "level": 0,
+          "nextLevel": 18.600000000000136,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 4.657270682944617,
+          "nextIceberg": 0.9359052912021775,
+          "playing": true,
+          "boats": [
+            {
+              "y": 656.0000000000001,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.12949741712383306
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 187.20000000000016,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 498.4999999999992,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.4992469879518084,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.7,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 56.900000000000176,
+          "level": 0,
+          "nextLevel": 17.900000000000176,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 3.95727068294462,
+          "nextIceberg": 0.23590529120217668,
+          "playing": true,
+          "boats": [
+            {
+              "y": 614.0000000000001,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.10353001091008436
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 241.80000000000058,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 743.5000000000005,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.1302710843373487,
+              "velocity": 1050
+            },
+            {
+              "x": 375.9999999999996,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.3162650602409633,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "prepare",
+        "duration": 0.35,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 56.550000000000196,
+          "level": 0,
+          "nextLevel": 17.550000000000196,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 3.607270682944621,
+          "nextIceberg": 4.3887691186741,
+          "playing": true,
+          "boats": [
+            {
+              "y": 593.0000000000001,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.011889415450859843
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 269.1000000000008,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 6.300000000000001,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 498.4999999999992,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.4992469879518084,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.7,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 55.850000000000236,
+          "level": 0,
+          "nextLevel": 16.850000000000236,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 2.907270682944624,
+          "nextIceberg": 3.6887691186741027,
+          "playing": true,
+          "boats": [
+            {
+              "y": 551.0000000000001,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.05779879919641395
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 323.70000000000124,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 44.09999999999993,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 743.5000000000005,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.1302710843373487,
+              "velocity": 1050
+            },
+            {
+              "x": 375.9999999999996,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.3162650602409633,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "prepare",
+        "duration": 0.35,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 55.500000000000256,
+          "level": 0,
+          "nextLevel": 16.500000000000256,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 2.5572706829446252,
+          "nextIceberg": 3.338769118674104,
+          "playing": true,
+          "boats": [
+            {
+              "y": 530.0000000000001,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.11120090901696436
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 351.0000000000015,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 62.9999999999999,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 498.4999999999992,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.4992469879518084,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.7,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 54.800000000000296,
+          "level": 0,
+          "nextLevel": 15.800000000000276,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 1.8572706829446282,
+          "nextIceberg": 2.638769118674107,
+          "playing": true,
+          "boats": [
+            {
+              "y": 488.00000000000017,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.11449342706784038
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 405.6000000000019,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 100.8000000000001,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 743.5000000000005,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.1302710843373487,
+              "velocity": 1050
+            },
+            {
+              "x": 375.9999999999996,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.3162650602409633,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "prepare",
+        "duration": 0.35,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 54.450000000000315,
+          "level": 0,
+          "nextLevel": 15.450000000000259,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 1.5072706829446294,
+          "nextIceberg": 2.288769118674108,
+          "playing": true,
+          "boats": [
+            {
+              "y": 467.00000000000017,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.005616646367901344
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 432.90000000000214,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 119.70000000000022,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 498.4999999999992,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.4992469879518084,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.7,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 53.750000000000355,
+          "level": 0,
+          "nextLevel": 14.750000000000226,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 0.8072706829446311,
+          "nextIceberg": 1.588769118674111,
+          "playing": true,
+          "boats": [
+            {
+              "y": 425.0000000000002,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.07985242109202521
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 487.50000000000256,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 157.50000000000043,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 375.9999999999996,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.3162650602409633,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "prepare",
+        "duration": 0.35,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 53.400000000000375,
+          "level": 0,
+          "nextLevel": 14.400000000000208,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 0.4572706829446302,
+          "nextIceberg": 1.2387691186741123,
+          "playing": true,
+          "boats": [
+            {
+              "y": 404.0000000000002,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.13097384607652204
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 514.8000000000027,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 176.40000000000055,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 498.4999999999992,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.4992469879518084,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.7,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 52.700000000000415,
+          "level": 0,
+          "nextLevel": 13.700000000000175,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 6.835568657206994,
+          "nextIceberg": 0.5387691186741123,
+          "playing": true,
+          "boats": [
+            {
+              "y": 362.0000000000003,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.09416329566466984
+            },
+            {
+              "y": 787.4999999999995,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.019997173236528335
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 569.4000000000008,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 214.20000000000076,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 743.5000000000005,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.1302710843373487,
+              "velocity": 1050
+            },
+            {
+              "x": 375.9999999999996,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.3162650602409633,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "prepare",
+        "duration": 0.35,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 100,
+          "countdown": 54.350000000000435,
+          "level": 0,
+          "nextLevel": 13.350000000000158,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 6.485568657206995,
+          "nextIceberg": 0.18876911867411222,
+          "playing": true,
+          "boats": [
+            {
+              "y": 341.0000000000003,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 1,
+              "nextBubble": 0.021004507530791108
+            },
+            {
+              "y": 769.9999999999987,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.09850621682048466
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 596.6999999999998,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 233.10000000000088,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 498.4999999999992,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.4992469879518084,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.7,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 100,
+          "countdown": 53.650000000000475,
+          "level": 0,
+          "nextLevel": 12.650000000000125,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 5.785568657206999,
+          "nextIceberg": 0.499999999999999,
+          "playing": true,
+          "boats": [
+            {
+              "y": 299.00000000000034,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 1,
+              "nextBubble": 0.033182293509599364
+            },
+            {
+              "y": 734.9999999999973,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.11130061531361865
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 651.2999999999979,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 270.90000000000066,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 743.5000000000005,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.1302710843373487,
+              "velocity": 1050
+            },
+            {
+              "x": 375.9999999999996,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.3162650602409633,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "prepare",
+        "duration": 0.35,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 300,
+          "countdown": 54.300000000000495,
+          "level": 0,
+          "nextLevel": 12.300000000000107,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 5.435568657207,
+          "nextIceberg": 0.14999999999999908,
+          "playing": true,
+          "boats": [
+            {
+              "y": 278.00000000000034,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 2,
+              "nextBubble": 0.08026597498993704
+            },
+            {
+              "y": 717.4999999999965,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.03592455923712505
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 678.599999999997,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 289.8000000000002,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 498.4999999999992,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.4992469879518084,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.7,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 300,
+          "countdown": 53.600000000000534,
+          "level": 0,
+          "nextLevel": 11.600000000000074,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 4.735568657207003,
+          "nextIceberg": 0.449999999999999,
+          "playing": true,
+          "boats": [
+            {
+              "y": 236.00000000000037,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 2,
+              "nextBubble": 0.08271570426023928
+            },
+            {
+              "y": 682.499999999995,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.15340050876373426
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 733.199999999995,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 327.5999999999992,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 743.5000000000005,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.1302710843373487,
+              "velocity": 1050
+            },
+            {
+              "x": 375.9999999999996,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.3162650602409633,
+              "velocity": 1050
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "movement",
+    "steps": [
+      {
+        "action": "up",
+        "duration": 0.2,
+        "state": {
+          "y": 250,
+          "target": 120,
+          "distance": 0,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 59.80000000000001,
+          "level": 0,
+          "nextLevel": 20.80000000000001,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 6.857270682944606,
+          "nextIceberg": 3.1359052912021683,
+          "playing": true,
+          "boats": [
+            {
+              "y": 788,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.13282457592741898
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 15.600000000000003,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      },
+      {
+        "action": "prepare",
+        "duration": 0.4,
+        "state": {
+          "y": 120,
+          "target": 120,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 59.400000000000034,
+          "level": 0,
+          "nextLevel": 20.400000000000034,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 6.457270682944608,
+          "nextIceberg": 2.7359052912021697,
+          "playing": true,
+          "boats": [
+            {
+              "y": 764,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.1194697339118769
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 46.799999999999976,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.2,
+        "state": {
+          "y": 120,
+          "target": 120,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": true,
+          "throwing": false,
+          "has_present": false,
+          "score": 0,
+          "countdown": 59.200000000000045,
+          "level": 0,
+          "nextLevel": 20.200000000000045,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 6.2572706829446085,
+          "nextIceberg": 2.5359052912021705,
+          "playing": true,
+          "boats": [
+            {
+              "y": 752,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.08396243934131542
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 62.39999999999994,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 201.00000000000006,
+              "y": 110,
+              "addX": 0,
+              "scale": 1.052710843373494,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "down",
+        "duration": 0.8,
+        "state": {
+          "y": 656,
+          "target": 656,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 58.40000000000009,
+          "level": 0,
+          "nextLevel": 19.40000000000009,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 5.457270682944612,
+          "nextIceberg": 1.735905291202174,
+          "playing": true,
+          "boats": [
+            {
+              "y": 704,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.11445065534518484
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 124.79999999999976,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 480.9999999999992,
+              "y": 110,
+              "addX": 0,
+              "scale": 1.4743975903614446,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "stop",
+        "duration": 0.5,
+        "state": {
+          "y": 656,
+          "target": 656,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 57.90000000000012,
+          "level": 0,
+          "nextLevel": 18.90000000000012,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 4.957270682944614,
+          "nextIceberg": 1.2359052912021757,
+          "playing": true,
+          "boats": [
+            {
+              "y": 674,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.136909484078642
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 163.80000000000007,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            }
+          ],
+          "presents": []
+        }
+      },
+      {
+        "action": "wait",
+        "duration": 5,
+        "state": {
+          "y": 656,
+          "target": 656,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 52.900000000000404,
+          "level": 0,
+          "nextLevel": 13.90000000000018,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 7.035568657206992,
+          "nextIceberg": 0.738769118674111,
+          "playing": true,
+          "boats": [
+            {
+              "y": 374,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.021879571838459646
+            },
+            {
+              "y": 797.4999999999999,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.07877886678247403
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 553.8000000000017,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 203.4000000000008,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      }
+    ]
+  },
+  {
+    "name": "ice-hit",
+    "steps": [
+      {
+        "action": "wait",
+        "duration": 4,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 0,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 56.00000000000023,
+          "level": 0,
+          "nextLevel": 17.000000000000227,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 3.05727068294462,
+          "nextIceberg": 3.8387691186741018,
+          "playing": true,
+          "boats": [
+            {
+              "y": 560,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.054132940421501824
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 312.0000000000014,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 35.99999999999997,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      },
+      {
+        "action": "prepare",
+        "duration": 0.35,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 55.65000000000025,
+          "level": 0,
+          "nextLevel": 16.650000000000247,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 2.707270682944621,
+          "nextIceberg": 3.488769118674103,
+          "playing": true,
+          "boats": [
+            {
+              "y": 539,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.11907842942280696
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 339.30000000000166,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 54.89999999999994,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.7,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 54.95000000000029,
+          "level": 0,
+          "nextLevel": 15.950000000000284,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 2.007270682944624,
+          "nextIceberg": 2.788769118674106,
+          "playing": true,
+          "boats": [
+            {
+              "y": 497.00000000000006,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.13212857363124741
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 393.9000000000021,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 92.70000000000007,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 375.9999999999996,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.3162650602409633,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "prepare",
+        "duration": 0.35,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 54.60000000000031,
+          "level": 0,
+          "nextLevel": 15.600000000000266,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 1.6572706829446253,
+          "nextIceberg": 2.438769118674107,
+          "playing": true,
+          "boats": [
+            {
+              "y": 476.00000000000006,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.02881125932248933
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 421.2000000000023,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 111.6000000000002,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 498.4999999999992,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.4992469879518084,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.7,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 53.90000000000035,
+          "level": 0,
+          "nextLevel": 14.900000000000233,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 0.957270682944628,
+          "nextIceberg": 1.73876911867411,
+          "playing": true,
+          "boats": [
+            {
+              "y": 434.0000000000001,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.112157667609863
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 475.80000000000274,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 149.4000000000004,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 375.9999999999996,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.3162650602409633,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "prepare",
+        "duration": 0.35,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 53.55000000000037,
+          "level": 0,
+          "nextLevel": 14.550000000000216,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 0.6072706829446269,
+          "nextIceberg": 1.3887691186741113,
+          "playing": true,
+          "boats": [
+            {
+              "y": 413.0000000000001,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.010051808893525381
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 503.100000000003,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 168.30000000000052,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 498.4999999999992,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.4992469879518084,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.7,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 52.850000000000406,
+          "level": 0,
+          "nextLevel": 13.850000000000183,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 6.9855686572069935,
+          "nextIceberg": 0.6887691186741123,
+          "playing": true,
+          "boats": [
+            {
+              "y": 371.00000000000017,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.13307048514563022
+            },
+            {
+              "y": 794.9999999999999,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.028778866782474547
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 557.7000000000014,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 206.10000000000073,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 743.5000000000005,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.1302710843373487,
+              "velocity": 1050
+            },
+            {
+              "x": 375.9999999999996,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.3162650602409633,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "prepare",
+        "duration": 0.35,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 100,
+          "countdown": 54.500000000000426,
+          "level": 0,
+          "nextLevel": 13.500000000000165,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 6.635568657206995,
+          "nextIceberg": 0.33876911867411175,
+          "playing": true,
+          "boats": [
+            {
+              "y": 350.00000000000017,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 1,
+              "nextBubble": 0.03067432805662978
+            },
+            {
+              "y": 777.4999999999991,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.10319515309451771
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 585.0000000000005,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 225.00000000000085,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 498.4999999999992,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.4992469879518084,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.7,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 100,
+          "countdown": 53.800000000000466,
+          "level": 0,
+          "nextLevel": 12.800000000000132,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 5.935568657206998,
+          "nextIceberg": 0.6499999999999995,
+          "playing": true,
+          "boats": [
+            {
+              "y": 308.0000000000002,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 1,
+              "nextBubble": 0.0345668357983237
+            },
+            {
+              "y": 742.4999999999976,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.1037670047984774
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 639.5999999999985,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 262.80000000000086,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 743.5000000000005,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.1302710843373487,
+              "velocity": 1050
+            },
+            {
+              "x": 375.9999999999996,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.3162650602409633,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "prepare",
+        "duration": 0.35,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 300,
+          "countdown": 54.450000000000486,
+          "level": 0,
+          "nextLevel": 12.450000000000115,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 5.585568657206999,
+          "nextIceberg": 0.2999999999999991,
+          "playing": true,
+          "boats": [
+            {
+              "y": 287.0000000000002,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 2,
+              "nextBubble": 0.07225419015080359
+            },
+            {
+              "y": 724.9999999999968,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.05511296860563261
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 666.8999999999976,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 281.7000000000004,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 498.4999999999992,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.4992469879518084,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.7,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 300,
+          "countdown": 53.750000000000526,
+          "level": 0,
+          "nextLevel": 11.750000000000082,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 4.885568657207003,
+          "nextIceberg": 0.5999999999999993,
+          "playing": true,
+          "boats": [
+            {
+              "y": 245.00000000000026,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 2,
+              "nextBubble": 0.06993769741694805
+            },
+            {
+              "y": 689.9999999999953,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.005283399604571901
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 721.4999999999957,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 319.49999999999943,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 743.5000000000005,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.1302710843373487,
+              "velocity": 1050
+            },
+            {
+              "x": 375.9999999999996,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.3162650602409633,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "prepare",
+        "duration": 0.35,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 700,
+          "countdown": 54.400000000000546,
+          "level": 0,
+          "nextLevel": 11.400000000000064,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 4.535568657207004,
+          "nextIceberg": 0.2499999999999991,
+          "playing": true,
+          "boats": [
+            {
+              "y": 224.00000000000026,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 3,
+              "nextBubble": 0.0173691015838025
+            },
+            {
+              "y": 672.4999999999945,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.09016206414594007
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 748.7999999999947,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 338.39999999999895,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 498.4999999999992,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.4992469879518084,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.7,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 700,
+          "countdown": 53.700000000000585,
+          "level": 0,
+          "nextLevel": 10.700000000000031,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 3.835568657207007,
+          "nextIceberg": 0.5499999999999992,
+          "playing": true,
+          "boats": [
+            {
+              "y": 182.00000000000028,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 3,
+              "nextBubble": 0.11052987457873972
+            },
+            {
+              "y": 637.4999999999931,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.01495201685000264
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 803.3999999999928,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 376.199999999998,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 743.5000000000005,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.1302710843373487,
+              "velocity": 1050
+            },
+            {
+              "x": 375.9999999999996,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.3162650602409633,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "prepare",
+        "duration": 0.35,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 700,
+          "countdown": 53.350000000000605,
+          "level": 0,
+          "nextLevel": 10.350000000000014,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 3.485568657207008,
+          "nextIceberg": 0.19999999999999912,
+          "playing": true,
+          "boats": [
+            {
+              "y": 161.00000000000028,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 3,
+              "nextBubble": 0.07156536969045801
+            },
+            {
+              "y": 619.9999999999923,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.12004336697592713
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 830.6999999999919,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 395.0999999999975,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 498.4999999999992,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.4992469879518084,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.7,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 700,
+          "countdown": 52.650000000000645,
+          "level": 0,
+          "nextLevel": 9.64999999999998,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 2.785568657207011,
+          "nextIceberg": 2.0317003461532317,
+          "playing": true,
+          "boats": [
+            {
+              "y": 119.00000000000031,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 3,
+              "nextBubble": 0.0586880171702559
+            },
+            {
+              "y": 584.9999999999908,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.08430678460591837
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 885.29999999999,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 1
+            },
+            {
+              "x": 517.7720935898833,
+              "y": 432.89999999999657,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            },
+            {
+              "x": 428.47801762400195,
+              "y": 24.799999999999986,
+              "height": 120,
+              "width": 111,
+              "speed": 0.8,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 743.5000000000005,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.1302710843373487,
+              "velocity": 1050
+            },
+            {
+              "x": 375.9999999999996,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.3162650602409633,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "prepare",
+        "duration": 0.35,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 700,
+          "countdown": 52.300000000000665,
+          "level": 0,
+          "nextLevel": 9.299999999999963,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 2.4355686572070123,
+          "nextIceberg": 1.681700346153233,
+          "playing": true,
+          "boats": [
+            {
+              "y": 98.00000000000031,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 3,
+              "nextBubble": 0.07890550162332755
+            },
+            {
+              "y": 567.49999999999,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.08862329521526895
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 517.7720935898833,
+              "y": 451.7999999999961,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            },
+            {
+              "x": 428.47801762400195,
+              "y": 41.59999999999996,
+              "height": 120,
+              "width": 111,
+              "speed": 0.8,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 498.4999999999992,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.4992469879518084,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.7,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 700,
+          "countdown": 51.600000000000705,
+          "level": 0,
+          "nextLevel": 8.59999999999993,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 1.7355686572070153,
+          "nextIceberg": 0.9817003461532358,
+          "playing": true,
+          "boats": [
+            {
+              "y": 56.00000000000034,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 3,
+              "nextBubble": 0.09816860724162985
+            },
+            {
+              "y": 532.4999999999885,
+              "height": 164,
+              "width": 81,
+              "speed": 1,
+              "hits": 0,
+              "nextBubble": 0.05480970067748231
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 517.7720935898833,
+              "y": 489.59999999999513,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 1
+            },
+            {
+              "x": 428.47801762400195,
+              "y": 75.19999999999982,
+              "height": 120,
+              "width": 111,
+              "speed": 0.8,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 375.9999999999996,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.3162650602409633,
+              "velocity": 1050
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "restart-refill",
+    "steps": [
+      {
+        "action": "prepare",
+        "duration": 0.35,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 59.65000000000002,
+          "level": 0,
+          "nextLevel": 20.65000000000002,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 6.707270682944607,
+          "nextIceberg": 2.985905291202169,
+          "playing": true,
+          "boats": [
+            {
+              "y": 779,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.09439536541777975
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 27.300000000000008,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.15,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": true,
+          "throwing": false,
+          "has_present": false,
+          "score": 0,
+          "countdown": 59.50000000000003,
+          "level": 0,
+          "nextLevel": 20.50000000000003,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 6.5572706829446075,
+          "nextIceberg": 2.8359052912021694,
+          "playing": true,
+          "boats": [
+            {
+              "y": 770,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.07015939502278346
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 521.8755129026249,
+              "y": 38.99999999999999,
+              "height": 87,
+              "width": 84,
+              "speed": 1.3,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 183.50000000000003,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.026355421686747,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "restart",
+        "duration": 0.01,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 59.99,
+          "level": 0,
+          "nextLevel": 20.99,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 7.745456023141742,
+          "nextIceberg": 4.423355726990849,
+          "playing": true,
+          "boats": [
+            {
+              "y": 799.6,
+              "height": 195,
+              "width": 89,
+              "speed": 0.8,
+              "hits": 0,
+              "nextBubble": 0.11407895227428527
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 603.1455300399102,
+              "y": 0.48,
+              "height": 120,
+              "width": 111,
+              "speed": 0.8,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      },
+      {
+        "action": "prepare",
+        "duration": 0.35,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": true,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 59.64000000000002,
+          "level": 0,
+          "nextLevel": 20.64000000000002,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 7.395456023141743,
+          "nextIceberg": 4.07335572699085,
+          "playing": true,
+          "boats": [
+            {
+              "y": 785.6000000000008,
+              "height": 195,
+              "width": 89,
+              "speed": 0.8,
+              "hits": 0,
+              "nextBubble": 0.0036098807033462174
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 603.1455300399102,
+              "y": 17.280000000000005,
+              "height": 120,
+              "width": 111,
+              "speed": 0.8,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      },
+      {
+        "action": "release",
+        "duration": 0.2,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": true,
+          "throwing": false,
+          "has_present": false,
+          "score": 0,
+          "countdown": 59.44000000000003,
+          "level": 0,
+          "nextLevel": 20.44000000000003,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 7.195456023141744,
+          "nextIceberg": 3.8733557269908507,
+          "playing": true,
+          "boats": [
+            {
+              "y": 777.6000000000013,
+              "height": 195,
+              "width": 89,
+              "speed": 0.8,
+              "hits": 0,
+              "nextBubble": 0.08376330052968117
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 603.1455300399102,
+              "y": 26.880000000000013,
+              "height": 120,
+              "width": 111,
+              "speed": 0.8,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 201.00000000000006,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.052710843373494,
+              "velocity": 1050
+            }
+          ]
+        }
+      },
+      {
+        "action": "wait",
+        "duration": 0.7,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 3,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 58.74000000000007,
+          "level": 0,
+          "nextLevel": 19.74000000000007,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 6.495456023141747,
+          "nextIceberg": 3.1733557269908537,
+          "playing": true,
+          "boats": [
+            {
+              "y": 749.6000000000029,
+              "height": 195,
+              "width": 89,
+              "speed": 0.8,
+              "hits": 0,
+              "nextBubble": 0.09002633275153787
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 603.1455300399102,
+              "y": 60.4799999999999,
+              "height": 120,
+              "width": 111,
+              "speed": 0.8,
+              "presents": 0
+            }
+          ],
+          "presents": [
+            {
+              "x": 445.9999999999994,
+              "y": 390,
+              "addX": 0,
+              "scale": 1.4216867469879508,
+              "velocity": 1050
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "finish",
+    "steps": [
+      {
+        "action": "wait",
+        "duration": 210.1,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 0,
+          "prepared": false,
+          "preparing": false,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 150.00000000001023,
+          "level": 9,
+          "nextLevel": -8.943540352746027e-14,
+          "boatSpeed": 140,
+          "icebergSpeed": 105,
+          "nextBoat": 2.9250000000000105,
+          "nextIceberg": 0.13333333333333192,
+          "playing": false,
+          "boats": [
+            {
+              "y": 315.60000000000383,
+              "height": 173,
+              "width": 81,
+              "speed": 1.2,
+              "hits": 0,
+              "nextBubble": 0.03761866008009146
+            }
+          ],
+          "icebergs": [
+            {
+              "x": 570.4280725331046,
+              "y": 820.3999999999916,
+              "height": 120,
+              "width": 111,
+              "speed": 0.8,
+              "presents": 0
+            },
+            {
+              "x": 388.29081429867074,
+              "y": 502.42499999999745,
+              "height": 162,
+              "width": 98,
+              "speed": 0.9,
+              "presents": 0
+            }
+          ],
+          "presents": []
+        }
+      }
+    ]
+  },
+  {
+    "name": "charge100",
+    "steps": [
+      {
+        "action": "charge100",
+        "duration": 0,
+        "state": {
+          "y": 400,
+          "target": 400,
+          "distance": 1.4999999999999998,
+          "prepared": false,
+          "preparing": true,
+          "waiting": false,
+          "throwing": false,
+          "has_present": true,
+          "score": 0,
+          "countdown": 60,
+          "level": 0,
+          "nextLevel": 21,
+          "boatSpeed": 50,
+          "icebergSpeed": 60,
+          "nextBoat": 0,
+          "nextIceberg": 0,
+          "playing": true,
+          "boats": [],
+          "icebergs": [],
+          "presents": []
+        }
+      }
+    ]
+  }
+]

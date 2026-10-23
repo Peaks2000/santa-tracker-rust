@@ -166,3 +166,70 @@ loading and first-use Ogg decode remain synchronous and require separate work.
 Validation: release build; 25 native tests; original Selfie/card browser capture;
 native frozen Selfie and restored colored-beard captures. No additional native
 gamemode was completed in this shared rendering/performance pass.
+
+## Gift Slingshot / Boatload (2026-10-23)
+
+Read in full: scene `index.html`, `boatload-scene.scss`, all six scene Sass
+partials and all eight JavaScript files (`game`, `controls`, `player`, `present`,
+`boat`, `iceberg`, `bubble`, `constants`). Re-read the shared pools, Coordinator
+and Scoreboard implementations and the active animWithClass helper. Native
+locations: `boatload.rs`, `boatload_view.rs`, `main.rs`, `sound.rs`.
+
+| Source | Functions/behavior accounted for | Evidence/limits |
+| --- | --- | --- |
+| Game | Constructor state, resize/watchSceneSize/setScale, start/restart/preloaded FIFO pools, step/onFrame/manual advance, boat candidate/collision scheduling, iceberg spacing rejection, level speeds/countdown, dropPresent/hitBoat/missedBoat, pause/resume/gameover and effects | Seven source-executed scenarios compare state to 1e-7, including 100ms of original Controls interval ticks, boat hits, ice attachments, misses, all ten levels, timer and level game over, restart, resize and overlapping refill callbacks after rapid restart. Live native simulation uses display delta like source onFrame; deterministic advance uses the source 60Hz test helper. |
+| Player | Reset/rail dimensions and retained distance/flags, target clamping, up/down/stop, arrival overshoot, touch dropWhenStopped, prepare/reverse-throw Coordinator callbacks, addX/rope/elf transforms, autoPrepare, delayed refill | Source timer callbacks are distinct and continue while paused. Restart retains pooled/random state; new scene navigation creates a new game. The unused soundFrameCounter does not trigger audio in source and isn't exported as a native observable. |
+| Present | Constructor type RNG, onInit/dispose, flight speed/3, pre-step end test, endpoint clamp, all-entity collision order, scaling arc, missed Coordinator drift/sink | Native visible/pool state is separate from active entities so presents attached to ice continue drawing/moving. OnInit type stays fixed across reuse. Original inline rectangle/ribbon SVG geometry is drawn natively. |
+| Boat/Iceberg | Type geometry, hitboxes, movement/disposal, nextBubble RNG, repeat-hit multipliers/time bonus, ice attached-present cleanup and motion | FIFO pools preserve reuse. Logic dimensions retain the original one-pixel differences from CSS art boxes. |
+| Bubble | Constructor type RNG, pooled reuse, position and 600ms opacity transition | onInit overrides the namespaced CSS animation with unresolved `bubble-left`; native keeps the source's stationary fading behavior rather than inventing motion. |
+| Controls | Source Up precedence, Down/stop targets, Space/Right shared latch, 10ms charge ticks of 0.15 capped at 3, prepare/release, touch target/release semantics | Native mouse emulates the original touch path. Multi-touch identifier bookkeeping has no separate native multi-touch implementation. Tutorial prompt dismissal calls are reviewed; the tutorial overlay itself remains unported. |
+| HTML/SCSS | Image preloads, layer order, 42% stage/transform origin, responsive scale/minimum scene size, river border/shadow, repeating rail/side strokes, original tree/boat/iceberg art, crossbow/elf/rope geometry, inline present colors, effects and frozen classes | A browser/native 1440x800, seed test1234, advance .5s idle comparison had full-image mean RGB error 0.282/255. This is one idle capture, not full visual parity. Score pop-up text/animation and all effect/responsive phases still need matched captures. |
+| Audio | Read Klang action bodies for bl_game_start/stop, bl_shoot, bl_hit_ice/water, bl_score_yellow/red, bl_rope_stretch and p_rope_stretch_stop | Native explicit source play/stop/fade actions retain rope-stop side effects. Full mixer/music bus fidelity is still incomplete. |
+
+Analytics calls are not sent by the native application. DOM listener binding,
+requestAnimationFrame cancellation and pools.empty on iframe destruction become
+native input/window ownership and reconstructing a scene; no JS runs in product.
+The optional source `?level=` debug override and tutorial are not implemented.
+The shared LevelUp object is constructed by source but never shown by its level
+update path; native does not invent a level-up screen. Coverage is **partial**.
+
+## Christmas route engine and visibility (2026-10-23)
+
+Read all of `modvil/elements/maputils.js`, `src/api/spherical.js`,
+`src/core/season.js`, `modvil-tracker.js`, `modvil-tracker-stats.js` and their
+tracker/stat Sass, plus the scene's tracker construction/config handler and
+`prod/src/remote-config-defaults.js` route settings. The original configured
+English route URL was reachable and returned 420 destinations. Its schedule
+is from 2019; source fetchRoute deliberately skews that schedule to the current
+year's Dec 24 10:00 UTC through Dec 25 11:00 UTC. The bundled route retains
+the complete original JSON, including photo/attribution metadata for future UI
+work; provenance is recorded beside it. Native currently reads DataManager and
+timezone fields.
+
+`tracker.rs` translates route skew (including zero timestamp preservation),
+DataManager index advancement/backward reset, home/stop/flight details,
+30% transit / 70% city present interpolation with JS rounding, cumulative and
+partial great-circle distance, heading, spherical interpolation's small-angle
+fallback, geographic nearest arrival and timezone/midnight fallback. A separate
+visibility-gated entry returns None outside the delivery window and rebases
+for later years. The user requested delivery-only visibility; the source's
+broader Dec 1-25 season check PLUS remote showTracker flag is not conflated
+with that flight interval. Boundary tests cover before takeoff, takeoff,
+just before return, return, off-season and a new year.
+
+3,020 states executed from the original fetchRoute/DataManager (every stop's
+arrival/departure +/-1ms, 500 flight samples, reverse time and home endpoints)
+match gifts, flags and stop ID exactly; distance/heading/next within 1e-6 and
+coordinates within 1e-9. Enabling serde_json float_roundtrip was necessary to
+avoid decimal epoch-ms parsing losing one ULP and shifting an interpolated
+position. This improves JSON numerical fidelity; all existing native source
+oracles still pass.
+
+**Not implemented:** native tracking map/screen, Google Maps integration,
+StopManager markers/trails, map focus/zoom/resizing, feed/photos, remote config,
+online route refresh, destination cache and geolocation. `tracker_reference`
+is a headless diagnostic only. Do not describe the Christmas tracker screen
+as working based on these engine tests. The source's fallback fetch typo and
+negative stop-index bug were reviewed; native does not reproduce broken network
+calls or expose that unused negative-index accessor. There is no fake map or
+always-visible tracker added to the normal village.

@@ -1,4 +1,5 @@
 mod assets;
+mod boatload_view;
 mod capture;
 mod chrome;
 mod interlude;
@@ -67,7 +68,7 @@ fn options() -> Result<Option<Options>, String> {
     while let Some(arg) = args.next() {
         match arg.as_str() {
             "--help" | "-h" => {
-                println!("Santa Tracker — native Rust port (in development)\n\nAvailable: village, Runner, Elf Jetpack, Santa Selfie, Elf Ski and Present Drop.\n\n--assets PATH       Original static assets directory\n--seed TEXT         Deterministic game seed\n--mute              Start without audio\n--scene NAME        modvil, runner, jetpack, santaselfie, elfski or presentdrop\n--scroll PIXELS     Initial village scroll position\n--beard-file PATH   Restore an original-format saved beard\n--advance SECONDS   Advance the selected scene before rendering\n--frames COUNT      Exit after COUNT frames (for native render checks)\n--screenshot PATH   Save the final rendered frame (or F12 live)\n--width PIXELS      Initial window width\n--height PIXELS     Initial window height\n--clock-ms EPOCH    Deterministic countdown clock for comparisons\n--profile PATH      Measure live frame intervals and CPU work to JSON\n--profile-frames N  Measured live frames after 30 warmup frames (default 240)\n\nControls: Space/Up jump (twice), Down slide, P pause, R restart, M mute, Escape home");
+                println!("Santa Tracker — native Rust port (in development)\n\nAvailable: village, Runner, Elf Jetpack, Santa Selfie, Elf Ski, Present Drop and Gift Slingshot.\n\n--assets PATH       Original static assets directory\n--seed TEXT         Deterministic game seed\n--mute              Start without audio\n--scene NAME        modvil, runner, jetpack, santaselfie, elfski, presentdrop or boatload\n--scroll PIXELS     Initial village scroll position\n--beard-file PATH   Restore an original-format saved beard\n--advance SECONDS   Advance the selected scene before rendering\n--frames COUNT      Exit after COUNT frames (for native render checks)\n--screenshot PATH   Save the final rendered frame (or F12 live)\n--width PIXELS      Initial window width\n--height PIXELS     Initial window height\n--clock-ms EPOCH    Deterministic countdown clock for comparisons\n--profile PATH      Measure live frame intervals and CPU work to JSON\n--profile-frames N  Measured live frames after 30 warmup frames (default 240)\n\nControls: Space/Up jump (twice), Down slide, P pause, R restart, M mute, Escape home");
                 return Ok(None);
             }
             "--mute" => out.mute = true,
@@ -120,6 +121,7 @@ fn options() -> Result<Option<Options>, String> {
                             "santaselfie",
                             "elfski",
                             "presentdrop",
+                            "boatload",
                         ]
                         .contains(&value.as_str())
                         {
@@ -189,6 +191,12 @@ async fn run(opts: Options) {
     let mut chrome = chrome::Chrome::new(opts.clock_ms).expect("Original toolbar icons and fonts");
     let mut jet_view = jetpack_view::JetpackView::new().expect("Jetpack fonts");
     let mut selfie_view = selfie_view::SelfieView::new().expect("Selfie rendering materials");
+    let mut boat = santa_tracker::boatload::Boatload::new(
+        &opts.seed,
+        screen_width() as f64,
+        screen_height() as f64,
+    );
+    let mut boat_view = boatload_view::BoatloadView::new().expect("Gift Slingshot renderer");
     let mut runner = Runner::new(&opts.seed);
     let mut runner_view = render::View::new();
     let (width, height) = jetpack_view::JetpackView::dimensions();
@@ -222,6 +230,7 @@ async fn run(opts: Options) {
     }
     village.scroll = opts.scroll;
     match route.as_str() {
+        "boatload" => boat.advance(opts.advance),
         "runner" => runner.advance(opts.advance),
         "jetpack" => jetpack.advance(opts.advance, (0., 0.)),
         "elfski" => ski.advance(opts.advance, Some(0.)),
@@ -284,6 +293,7 @@ async fn run(opts: Options) {
         if restart {
             sound.stop();
             match route.as_str() {
+                "boatload" => boat.restart(),
                 "runner" => runner.restart(),
                 "elfski" => {
                     ski = Ski::new(
@@ -304,6 +314,10 @@ async fn run(opts: Options) {
         }
         if opts.profile.is_none() && is_key_pressed(KeyCode::P) {
             match route.as_str() {
+                "boatload" => {
+                    boat.paused = !boat.paused;
+                    sound.paused(boat.paused);
+                }
                 "runner" => {
                     runner.paused = !runner.paused;
                     sound.paused(runner.paused);
@@ -329,9 +343,15 @@ async fn run(opts: Options) {
                 "runner" => runner.playing && !runner.paused,
                 "jetpack" => jetpack.playing && !jetpack.paused,
                 "santaselfie" => !selfie.paused && !selfie_view.export_open,
-                "elfski" | "presentdrop" => true,
+                "elfski" | "presentdrop" | "boatload" => true,
                 _ => false,
             };
+        if route == "boatload" {
+            boat.resize(screen_width() as f64, screen_height() as f64);
+        }
+        if route == "boatload" && opts.frames.is_none() && !just_loaded {
+            boat.wall_step(get_frame_time() as f64);
+        }
         let mut jet_input = (0., 0.);
         if active {
             if route == "runner" {
@@ -345,6 +365,7 @@ async fn run(opts: Options) {
                     "runner" => {
                         runner_view.input(&mut runner);
                     }
+                    "boatload" => boat_view.input(&mut boat),
                     "presentdrop" => drop_view.input(&mut drop_game),
                     "jetpack" => {
                         jet_input = jet_view.input();
@@ -354,7 +375,11 @@ async fn run(opts: Options) {
                 }
             }
             if opts.frames.is_none() && !just_loaded {
-                accumulated += get_frame_time() as f64;
+                if route == "boatload" {
+                    boat.step(get_frame_time() as f64);
+                } else {
+                    accumulated += get_frame_time() as f64;
+                }
             }
             let tick = if route == "santaselfie" {
                 0.016
@@ -411,6 +436,14 @@ async fn run(opts: Options) {
                 jet_view.draw(&assets, &jetpack);
                 scene_filter.finish(jetpack.paused || !jetpack.playing);
             }
+            "boatload" => {
+                for event in boat.sounds.drain(..) {
+                    sound.trigger(event, &assets.root);
+                }
+                scene_filter.begin();
+                boat_view.draw(&assets, &boat);
+                scene_filter.finish(boat.paused || !boat.playing);
+            }
             "presentdrop" => {
                 for event in drop_game.sounds.drain(..) {
                     sound.trigger(event, &assets.root);
@@ -443,8 +476,10 @@ async fn run(opts: Options) {
             _ => {}
         }
         let scene_end = std::time::Instant::now();
-        if ["runner", "jetpack", "elfski", "presentdrop"].contains(&route.as_str()) {
-            let (paused, gameover) = if route == "runner" {
+        if ["runner", "jetpack", "elfski", "presentdrop", "boatload"].contains(&route.as_str()) {
+            let (paused, gameover) = if route == "boatload" {
+                (boat.paused, !boat.playing)
+            } else if route == "runner" {
                 (runner.paused, !runner.playing)
             } else if route == "presentdrop" {
                 (drop_game.paused, !drop_game.playing)
@@ -459,7 +494,9 @@ async fn run(opts: Options) {
             {
                 match action {
                     overlay::Action::Resume => {
-                        if route == "runner" {
+                        if route == "boatload" {
+                            boat.paused = false;
+                        } else if route == "runner" {
                             runner.paused = false;
                         } else if route == "presentdrop" {
                             drop_game.paused = false;
@@ -470,7 +507,9 @@ async fn run(opts: Options) {
                     }
                     overlay::Action::Restart => {
                         sound.stop();
-                        if route == "runner" {
+                        if route == "boatload" {
+                            boat.restart();
+                        } else if route == "runner" {
                             runner.restart();
                         } else if route == "presentdrop" {
                             drop_game.restart();
@@ -495,6 +534,15 @@ async fn run(opts: Options) {
             }
         }
         let hud = match route.as_str() {
+            "boatload" => Some(chrome::GameHud {
+                playing: boat.playing,
+                paused: boat.paused,
+                score: boat.score as i64,
+                countdown: boat.countdown.ceil(),
+                level: Some(boat.level + 1),
+                badge: true,
+                can_pause: true,
+            }),
             "runner" => Some(chrome::GameHud {
                 playing: runner.playing,
                 paused: runner.paused,
@@ -551,6 +599,10 @@ async fn run(opts: Options) {
                 chrome::Action::Menu => village.menu = !village.menu,
                 chrome::Action::Mute => sound.mute(),
                 chrome::Action::Pause => match route.as_str() {
+                    "boatload" => {
+                        boat.paused = !boat.paused;
+                        sound.paused(boat.paused);
+                    }
                     "presentdrop" => {
                         drop_game.paused = !drop_game.paused;
                         sound.paused(drop_game.paused);
@@ -569,6 +621,7 @@ async fn run(opts: Options) {
                     sound.stop();
                     match route.as_str() {
                         "presentdrop" => drop_game.restart(),
+                        "boatload" => boat.restart(),
                         "runner" => runner.restart(),
                         "elfski" => {
                             ski = Ski::new(
@@ -598,6 +651,7 @@ async fn run(opts: Options) {
                 "santaselfie",
                 "elfski",
                 "presentdrop",
+                "boatload",
             ]
             .contains(&target.as_str())
             {
@@ -635,6 +689,7 @@ async fn run(opts: Options) {
                 "santaselfie",
                 "elfski",
                 "presentdrop",
+                "boatload",
             ]
             .contains(&target.as_str())
             {
@@ -661,6 +716,13 @@ async fn run(opts: Options) {
                     "jetpack" => {
                         let (w, h) = jetpack_view::JetpackView::dimensions();
                         jetpack = Jetpack::new(&opts.seed, w, h);
+                    }
+                    "boatload" => {
+                        boat = santa_tracker::boatload::Boatload::new(
+                            &opts.seed,
+                            screen_width() as f64,
+                            screen_height() as f64,
+                        )
                     }
                     "presentdrop" => drop_game = PresentDrop::new(&opts.seed),
                     "santaselfie" => {

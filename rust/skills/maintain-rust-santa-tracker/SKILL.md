@@ -13,7 +13,7 @@ The product is a native Rust recreation of the entire original Google Santa Trac
 - Clean distribution checkout: `/home/finn/santa-tracker-rust`, public GitHub `Peaks2000/santa-tracker-rust`. The development checkout's origin is the original web repository; **never push that history to the Rust repository**.
 - In another checkout, locate `rust/Cargo.toml`, `rust/PARITY-STATUS.json` and `rust/SOURCE-COVERAGE.md`; use paths relative to that checkout. Find/fetch original source separately if needed, keeping the distributed repository free of browser code.
 
-Read `PARITY-STATUS.json` before choosing work. The user edits `user_overall_happy`, `user_overall_notes`, each mode's `user_happy`, `user_notes`, and `priority`. Preserve these and unknown user-added fields exactly in meaning. Only the user can approve a mode; tests or agent judgment do not turn an unreviewed/no/partly value into yes. Read the latest file again before updating agent fields so concurrent user edits survive. Keep feedback in one maintained file, not duplicate trackers.
+Read `PARITY-STATUS.json` before choosing work. The user edits `user_overall_happy`, `user_overall_notes`, each mode's `user_happy`, `user_notes`, and `priority`. Preserve these and unknown user-added fields exactly in meaning. Only the user can approve a mode; tests or agent judgment do not turn an unreviewed/no/partly value into yes. Read the latest file again before updating agent fields so concurrent user edits survive. Keep feedback in one maintained file, not duplicate trackers. Regenerate the human-readable `PARITY-REPORT.txt` with `cargo run --manifest-path rust/Cargo.toml --example status_report` after updating progress; that report is derived, and user feedback is edited in the JSON file.
 
 Read `SOURCE-COVERAGE.md` for existing checks and parity gaps. Work on explicit user corrections first, then their priority/notes, then shared bugs and remaining native modes. Record concrete progress, unresolved issues and evidence in the mode's `agent_*` fields. Keep incomplete modes marked partial/not_started as appropriate.
 
@@ -24,6 +24,8 @@ Read every function and line of the selected scene's JS, HTML, styles and active
 The user wants optimizations to preserve gameplay, appearance and animation timing. Profile first; distinguish startup/loading, steady frames, simulation, input sampling, rendering, GPU presentation and audio decoding. Preserve fixed simulation rules unless evidence from the source warrants a correction. Never present frame-time measurements as end-to-end input latency. Keep original asset edges/shadows; fix alpha/filtering/compositing errors instead of removing outlines from the art. Check recommendation-card aspect ratios as well as card box dimensions.
 
 Do not close or replace a window the user is testing. Smoke checks should own and terminate their own process. Screenshots of the original and native app are authorized for this project.
+
+Christmas tracking must only be exposed during the delivery flight (Dec 24 10:00 UTC to Dec 25 11:00 UTC, end exclusive), per the user. The original web season helper additionally permits Dec 1-25 subject to remote config; distinguish that from the user-requested delivery visibility. Route math/gating is currently in `tracker.rs`; its passing oracle tests do not mean the unfinished native map/UI works. Preserve that distinction in reports.
 
 ## Build, check and publish
 

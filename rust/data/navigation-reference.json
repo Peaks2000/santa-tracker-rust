@@ -34,9 +34,9 @@
   {
     "route": "modvil",
     "cards": [
-      "runner",
-      "elfski"
+      "elfski",
+      "boatload"
     ],
-    "play": "runner"
+    "play": "elfski"
   }
 ]

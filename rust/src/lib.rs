@@ -1,5 +1,6 @@
 pub mod animation;
 pub mod audio;
+pub mod boatload;
 pub mod image_alpha;
 pub mod jetpack;
 pub mod navigation;
@@ -8,6 +9,7 @@ pub mod random;
 pub mod runner;
 pub mod selfie;
 pub mod ski;
+pub mod tracker;
 pub mod ui;
 pub mod village_data;
 pub mod weather;

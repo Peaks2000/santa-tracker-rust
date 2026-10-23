@@ -1,0 +1,9 @@
+{
+  "source": "prod/src/remote-config-defaults.js routeUrl",
+  "url": "https://firebasestorage.googleapis.com/v0/b/santa-tracker-firebase.appspot.com/o/route%2Fsanta_en.json?alt=media&2018b",
+  "retrieved": "2026-10-23",
+  "stops": 420,
+  "source_schedule_year": 2019,
+  "adaptation": "Retain the complete original JSON route, including photos and attribution fields for future tracker UI work. Rust currently reads the DataManager/timezone fields; the source fetchRoute shifts the schedule to each year and a 25-hour flight.",
+  "license": "Original Santa Tracker data; see repository attribution. No browser code."
+}

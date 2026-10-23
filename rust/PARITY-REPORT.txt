@@ -1,0 +1,112 @@
+SANTA TRACKER RUST — FUNCTIONALITY AND PARITY STATUS
+
+Generated from PARITY-STATUS.json. Edit that file for your verdicts and notes.
+This report is evidence/progress, not a claim of complete 1:1 accuracy.
+
+Native scenes playable, with parity gaps: 7/55
+Whole modes certified 1:1: 0
+Your overall verdict: unreviewed
+
+PLAYABLE — STILL PARTIAL
+
+Gift Slingshot [boatload] — your verdict: unreviewed
+  Progress: Playable native Gift Slingshot: source-driven charge/release, vertical keyboard/touch targeting, boat and iceberg spawning/collisions, pooled presents, scores/time bonuses, 10 levels, pause/restart/resize (including overlapping refill callbacks after rapid restart and the full ten-level finish) and original assets/audio actions. Seven original-JavaScript scenarios match at 1e-7; original/native idle capture mean RGB error 0.282/255 at 1440x800.
+  Remaining: Tutorial prompts are not yet implemented.
+  Remaining: Score pop-up typography/animation, all effect phases and responsive captures need further browser comparisons.
+  Remaining: No claim of whole-mode 1:1 parity; audio actions translated but full music/bus fidelity remains partial.
+
+Elf Ski [elfski] — your verdict: unreviewed
+  Progress: Native implementation exists; full 1:1 parity not established.
+  Remaining: Tutorial/touch pressure and shared music remain incomplete.
+
+Elf Jetpack [jetpack] — your verdict: unreviewed
+  Progress: Native implementation exists; full 1:1 parity not established.
+
+modvil [modvil] — your verdict: unreviewed
+  Progress: Native implementation exists; full 1:1 parity not established. Corrected card art aspect and enabled fractional Lottie frame updates; first-use loading hitches remain.
+  Remaining: Frame pacing and card/loader rendering need profiling.
+
+Present Drop [presentdrop] — your verdict: unreviewed
+  Progress: Native implementation exists; full 1:1 parity not established.
+  Remaining: Flag font and full touch/tutorial parity remain incomplete.
+
+Reindeer Runner [runner] — your verdict: unreviewed
+  Progress: Native implementation exists; full 1:1 parity not established.
+  Remaining: Continue visual comparisons beyond current scenarios.
+
+Santa Selfie [santaselfie] — your verdict: unreviewed
+  Progress: Native implementation exists; full 1:1 parity not established. Updated premultiplied image rendering, spray/decor compositing and identical-beard surface reuse; removed constraint-list allocations without changing the source physics oracle.
+  Remaining: User reports subtle dark edges; compare original/native tools, face and beard.
+  Remaining: Frame pacing and input latency need measurement.
+  Remaining: Small SVG/filtering differences still need user review; no claim of complete edge parity.
+  Remaining: Background/mirror placement and mobile tool tray still need matched source checks.
+
+CHRISTMAS TRACKING — CORE TESTED; MAP/UI NOT IMPLEMENTED
+
+420 original scheduled stops; 3,020 source-JavaScript state comparisons pass.
+Position, heading, gifts, distance, stop/flight timing and yearly route skew
+are implemented. Visibility is restricted to Dec 24 10:00 UTC through
+Dec 25 11:00 UTC (end exclusive), as requested. Outside this window the
+route entry point returns no tracking details. This is currently a library
+and headless diagnostic, not a working tracking screen in the application.
+Google Maps, stop markers/trails, feed/photos, focus/zoom and online refresh
+are still missing. The bundled data is the original configured endpoint's
+2019 schedule shifted to the selected year, as in the original fetchRoute.
+
+NOT IMPLEMENTED AS NATIVE SCENES
+
+- North Pole Airport [airport] — no native scene; your verdict: unreviewed
+- Mrs. Claus' Briefing [briefing] — no native scene; your verdict: unreviewed
+- Build & Bolt [buildandbolt] — no native scene; your verdict: unreviewed
+- Code Boogie [codeboogie] — no native scene; your verdict: unreviewed
+- Code Lab [codelab] — no native scene; your verdict: unreviewed
+- Mission Control [commandcentre] — no native scene; your verdict: unreviewed
+- dashboard [dashboard] — no native scene; your verdict: unreviewed
+- demoscene [demoscene] — no native scene; your verdict: unreviewed
+- Elf Express [elfexpress] — no native scene; your verdict: unreviewed
+- Elf Maker [elfmaker] — no native scene; your verdict: unreviewed
+- Candy Factory [factory] — no native scene; your verdict: unreviewed
+- Family Guide [familyguide] — no native scene; your verdict: unreviewed
+- Elf Glider [glider] — no native scene; your verdict: unreviewed
+- Gumball Tilt [gumball] — no native scene; your verdict: unreviewed
+- Elf Ski [holidayslopes] — no native scene; your verdict: unreviewed
+- Island [island] — no native scene; your verdict: unreviewed
+- Elf Jamband [jamband] — no native scene; your verdict: unreviewed
+- languagematch [languagematch] — no native scene; your verdict: unreviewed
+- Present Delivery [latlong] — no native scene; your verdict: unreviewed
+- Memory Match [matching] — no native scene; your verdict: unreviewed
+- Map Quiz [mercator] — no native scene; your verdict: unreviewed
+- notices [notices] — no native scene; your verdict: unreviewed
+- Penguin Dash [penguindash] — no native scene; your verdict: unreviewed
+- North Pole Playground [playground] — no native scene; your verdict: unreviewed
+- Pose Boogie [poseboogie] — no native scene; your verdict: unreviewed
+- Santa Postcards [postcard] — no native scene; your verdict: unreviewed
+- Present Bounce [presentbounce] — no native scene; your verdict: unreviewed
+- Rudolph Racer [racer] — no native scene; your verdict: unreviewed
+- Railroad Ride [railroad] — no native scene; your verdict: unreviewed
+- retro [retro] — no native scene; your verdict: unreviewed
+- Elf Rollercoaster [rollercoaster] — no native scene; your verdict: unreviewed
+- routedev [routedev] — no native scene; your verdict: unreviewed
+- Santa's Canvas [santascanvas] — no native scene; your verdict: unreviewed
+- Santa Search [santasearch] — no native scene; your verdict: unreviewed
+- Season of Giving [seasonofgiving] — no native scene; your verdict: unreviewed
+- Snowball Storm [snowball] — no native scene; your verdict: unreviewed
+- Snowbox [snowbox] — no native scene; your verdict: unreviewed
+- Snow Dodgeball [snowdodgeball] — no native scene; your verdict: unreviewed
+- Quick Draw [speedsketch] — no native scene; your verdict: unreviewed
+- Ollie Under The Sea [storybook] — no native scene; your verdict: unreviewed
+- Street View [streetview] — no native scene; your verdict: unreviewed
+- Holiday Traditions [traditions] — no native scene; your verdict: unreviewed
+- Translations [translations] — no native scene; your verdict: unreviewed
+- Under Construction [underconstruction] — no native scene; your verdict: unreviewed
+- Undersea [undersea] — no native scene; your verdict: unreviewed
+- video [video] — no native scene; your verdict: unreviewed
+- Wind Tunnel [windtunnel] — no native scene; your verdict: unreviewed
+- Wrap Battle [wrapbattle] — no native scene; your verdict: unreviewed
+
+SHARED LIMITS
+
+Subtle image/font edges, overlay details and responsive layouts still need
+review. Cold village image/Lottie loads and first-use Ogg decoding remain
+synchronous. Frame profiling does not establish input-to-photon latency.
+Source comparison details and outstanding gaps: SOURCE-COVERAGE.md.
