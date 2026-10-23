@@ -1,9 +1,11 @@
 pub mod animation;
 pub mod audio;
+pub mod image_alpha;
 pub mod jetpack;
 pub mod random;
 pub mod runner;
 pub mod selfie;
+pub mod ui;
 pub mod village_data;
 pub mod weather;
 

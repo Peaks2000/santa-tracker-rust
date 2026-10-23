@@ -1,5 +1,6 @@
 use crate::assets::Assets;
 use macroquad::prelude::*;
+use santa_tracker::ui::{Ease, Transition};
 use santa_tracker::{
     jetpack::{Jetpack, Kind},
     village_data::ease_in_out,
@@ -9,17 +10,21 @@ pub struct JetpackView {
     font: Font,
     title: Font,
     touch: Option<Vec2>,
+    fire: Transition<1>,
+    last_time: f64,
 }
 impl JetpackView {
     pub fn new() -> Result<Self, String> {
         Ok(Self {
             font: load_ttf_font_from_bytes(include_bytes!(
-                "../assets/fonts/GoogleSans-Regular.ttf"
+                "../assets/fonts/OpenSans-ExtraBold.ttf"
             ))
             .map_err(|e| e.to_string())?,
             title: load_ttf_font_from_bytes(include_bytes!("../assets/fonts/Lobster-Regular.ttf"))
                 .map_err(|e| e.to_string())?,
             touch: None,
+            fire: Transition::new([1.]),
+            last_time: 0.,
         })
     }
     pub fn dimensions() -> (f64, f64) {
@@ -51,11 +56,18 @@ impl JetpackView {
         }
         input
     }
-    pub fn draw(&self, assets: &Assets, game: &Jetpack) {
+    pub fn draw(&mut self, assets: &Assets, game: &Jetpack) {
         let scale = (screen_width() / 980.).min(1.);
         let left = (screen_width() - 980.) / 2.;
         let anchor = vec2(left + 490. * (1. - scale), 0.);
         let time = game.time as f32;
+        if game.time < self.last_time {
+            self.fire = Transition::new([1.]);
+        }
+        self.last_time = game.time;
+        self.fire
+            .set(game.time, [game.player.fire_scale], 0.2, Ease::Default);
+        let fire_scale = self.fire.value(game.time)[0] as f32;
         let colors = [
             0x90d4f5, 0xad95f5, 0xf59393, 0xebca46, 0xed5b37, 0xc93c3c, 0x9719d1, 0x4d2dc2,
             0x51057a, 0x04266e, 0x04266e,
@@ -81,9 +93,9 @@ impl JetpackView {
                 );
             }
             let cloud = assets.scene("jetpack", "levelclouds.svg");
-            let w = if screen_width() > 1025. {
+            let w = if screen_width() >= 1025. {
                 3000.
-            } else if screen_width() > 661. {
+            } else if screen_width() >= 661. {
                 2000.
             } else {
                 1150.
@@ -91,10 +103,38 @@ impl JetpackView {
             draw_texture_ex(
                 cloud,
                 (screen_width() - w) / 2.,
-                y + screen_height() * 1.5,
+                y + screen_height() * 1.5
+                    - 0.75
+                        * if screen_width() > 1024. {
+                            400.
+                        } else if screen_width() > 660. {
+                            280.
+                        } else {
+                            160.
+                        },
                 Color::new(1., 1., 1., 0.3),
                 DrawTextureParams {
                     dest_size: Some(vec2(w, w * cloud.height() / cloud.width())),
+                    ..Default::default()
+                },
+            );
+            let size = if screen_width() > 1024. {
+                400.
+            } else if screen_width() > 660. {
+                280.
+            } else {
+                160.
+            };
+            let text = (game.background_level + 2).to_string();
+            let width = measure_text(&text, Some(&self.title), size as u16, 1.).width;
+            draw_text_ex(
+                &text,
+                (screen_width() - width) / 2.,
+                y + screen_height() * 1.5 - 0.75 * size + size,
+                TextParams {
+                    font: Some(&self.title),
+                    font_size: size as u16,
+                    color: Color::new(1., 1., 1., 0.3),
                     ..Default::default()
                 },
             );
@@ -147,7 +187,7 @@ impl JetpackView {
         for e in game.entities.iter().filter(|e| e.kind != Kind::Cloud) {
             if e.hit {
                 let elapsed = (game.time - e.hit_at) as f32;
-                let alpha = 1. - ((elapsed - 0.5) / 1.5).clamp(0., 1.);
+                let alpha = 1. - Ease::Default.at(((elapsed - 0.5) / 1.5) as f64) as f32;
                 let text = &e.message;
                 let size = 40. * scale;
                 let width = measure_text(text, Some(&self.font), size as u16, 1.).width;
@@ -290,9 +330,14 @@ impl JetpackView {
         let h = if p.hit { 215. } else { 216. };
         let mx = if p.hit { -94. } else { -43. };
         let my = if p.hit { -111. } else { -104. };
-        let parent = Mat4::from_translation((anchor + center * scale).extend(0.))
+        let pivot = center
+            + vec2(
+                mx + (w + if p.hit { 4. } else { 0. }) / 2.,
+                my + (h + if p.hit { 8. } else { 0. }) * 0.48,
+            );
+        let parent = Mat4::from_translation((anchor + pivot * scale).extend(0.))
             * Mat4::from_rotation_z(rot)
-            * Mat4::from_translation(-(anchor + center * scale).extend(0.));
+            * Mat4::from_translation(-(anchor + pivot * scale).extend(0.));
         unsafe {
             get_internal_gl().quad_gl.push_model_matrix(parent);
         }
@@ -317,7 +362,7 @@ impl JetpackView {
             None,
         );
         if p.hit {
-            let phase = (time / 0.6).fract();
+            let phase = (p.hit_duration as f32 / 0.6).fract();
             let t = if phase < 0.5 {
                 phase * 2.
             } else {
@@ -344,7 +389,7 @@ impl JetpackView {
         } else {
             (1. - phase) * 2.
         };
-        let orange = (0.95 + phase * 0.1) * p.fire_scale as f32;
+        let orange = (0.95 + phase * 0.1) * fire_scale;
         draw(
             "fire.png",
             fire_x + (33. - 33. * orange) / 2.,
@@ -363,11 +408,11 @@ impl JetpackView {
         } else {
             (1. - phase) * 2.
         };
-        let yellow = (0.6 + ease_in_out(phase) * 0.15) * p.fire_scale as f32;
+        let yellow = (0.6 + ease_in_out(phase) * 0.15) * fire_scale;
         draw(
             "fire.png",
             fire_x + 7. + (19. - 19. * yellow) / 2.,
-            fire_y + 5.,
+            fire_y + 5. * fire_scale,
             19. * yellow,
             60. * yellow,
             Some(Rect::new(39., 20., 19., 60.)),
@@ -415,50 +460,16 @@ impl JetpackView {
             get_internal_gl().quad_gl.pop_model_matrix();
         }
         if game.finished {
-            let target = screen_height() - 412. - screen_height() * 0.1;
+            let target = (game.height as f32 - 412. - game.height as f32 * 0.1) * scale;
+            let width = 452f32.min(game.width as f32 / 2.) * scale;
             let progress = (game.goal_time as f32 / 3.).clamp(0., 1.);
             draw_texture_ex(
                 assets.scene("jetpack", "goal.png"),
-                screen_width() - 452.,
-                -412. + (target + 412.) * progress,
+                screen_width() - width,
+                -412. * scale + (target + 412. * scale) * progress,
                 WHITE,
                 DrawTextureParams {
-                    dest_size: Some(vec2(452., 412.)),
-                    ..Default::default()
-                },
-            );
-        }
-        if !game.playing || game.paused {
-            draw_rectangle(
-                0.,
-                0.,
-                screen_width(),
-                screen_height(),
-                Color::new(0., 0., 0., 0.5),
-            );
-            let text = if game.paused { "Paused" } else { "Game Over" };
-            let w = measure_text(text, Some(&self.title), 72, 1.).width;
-            draw_text_ex(
-                text,
-                (screen_width() - w) / 2.,
-                screen_height() / 2.,
-                TextParams {
-                    font: Some(&self.title),
-                    font_size: 72,
-                    color: WHITE,
-                    ..Default::default()
-                },
-            );
-            let text = "Press R or the restart button to play again";
-            let w = measure_text(text, Some(&self.font), 24, 1.).width;
-            draw_text_ex(
-                text,
-                (screen_width() - w) / 2.,
-                screen_height() / 2. + 52.,
-                TextParams {
-                    font: Some(&self.font),
-                    font_size: 24,
-                    color: WHITE,
+                    dest_size: Some(vec2(width, width * 412. / 452.)),
                     ..Default::default()
                 },
             );

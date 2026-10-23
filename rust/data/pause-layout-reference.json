@@ -1,0 +1,122 @@
+{
+  "host": {
+    "rect": {
+      "x": 488,
+      "y": 171,
+      "width": 464,
+      "height": 458
+    },
+    "font": "16px \"Times New Roman\"",
+    "transform": "none",
+    "opacity": "1",
+    "background": "rgba(0, 0, 0, 0)"
+  },
+  "parts": [
+    {
+      "class": "backdrop",
+      "rect": {
+        "x": 488,
+        "y": 171,
+        "width": 464,
+        "height": 458
+      },
+      "font": "16px \"Times New Roman\"",
+      "transform": "none",
+      "opacity": "1",
+      "background": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "class": "",
+      "rect": {
+        "x": 600,
+        "y": 171,
+        "width": 240,
+        "height": 290
+      },
+      "font": "16px \"Google Sans\", Arial, sans-serif",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "opacity": "1",
+      "background": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "class": "hero pause",
+      "rect": {
+        "x": 600,
+        "y": 171,
+        "width": 240,
+        "height": 218
+      },
+      "font": "16px \"Google Sans\", Arial, sans-serif",
+      "transform": "none",
+      "opacity": "1",
+      "background": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "class": "",
+      "rect": {
+        "x": 600,
+        "y": 389,
+        "width": 240,
+        "height": 72
+      },
+      "font": "16px \"Google Sans\", Arial, sans-serif",
+      "transform": "none",
+      "opacity": "1",
+      "background": "rgba(255, 255, 255, 0.25)"
+    },
+    {
+      "class": "buttons",
+      "rect": {
+        "x": 616,
+        "y": 401,
+        "width": 208,
+        "height": 48
+      },
+      "font": "16px \"Google Sans\", Arial, sans-serif",
+      "transform": "none",
+      "opacity": "1",
+      "background": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "class": "below",
+      "rect": {
+        "x": 504,
+        "y": 477,
+        "width": 432,
+        "height": 136
+      },
+      "font": "16px \"Times New Roman\"",
+      "transform": "none",
+      "opacity": "1",
+      "background": "rgba(0, 0, 0, 0)"
+    }
+  ],
+  "cards": [
+    {
+      "scene": "seasonofgiving",
+      "rect": {
+        "x": 512,
+        "y": 485,
+        "width": 200,
+        "height": 120
+      },
+      "font": "16px \"Times New Roman\"",
+      "transform": "none",
+      "opacity": "1",
+      "background": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "scene": "likealight",
+      "rect": {
+        "x": 728,
+        "y": 485,
+        "width": 200,
+        "height": 120
+      },
+      "font": "16px \"Times New Roman\"",
+      "transform": "none",
+      "opacity": "1",
+      "background": "rgba(0, 0, 0, 0)"
+    }
+  ]
+}

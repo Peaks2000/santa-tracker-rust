@@ -1,5 +1,7 @@
 //! Shared toolbar based on santa-chrome, santa-button and santa-badge.
+use crate::ui_render::{Button, Shapes};
 use macroquad::prelude::*;
+use santa_tracker::ui::{Counter, Ease, Transition};
 use std::collections::HashMap;
 
 pub enum Action {
@@ -22,11 +24,28 @@ pub struct GameHud {
 pub struct Chrome {
     icons: HashMap<String, Texture2D>,
     font: Font,
+    label_font: Font,
+    countdown_font: Font,
     title: Font,
-    pressed: Option<usize>,
+    buttons: [Button; 3],
+    shapes: Shapes,
+    end: Texture2D,
+    counter: Counter,
+    started: f64,
+    epoch_ms: u64,
+    fixed_clock: bool,
+    focused: Option<usize>,
+    keyboard_pressed: Option<usize>,
+    action_reveal: Transition<1>,
+    last_action: &'static str,
+    last_level: Option<u32>,
+    level_changed: f64,
+    badge_alt: Transition<1>,
+    badge_width: Transition<2>,
+    pub sounds: Vec<&'static str>,
 }
 impl Chrome {
-    pub fn new() -> Result<Self, String> {
+    pub fn new(clock_ms: Option<u64>) -> Result<Self, String> {
         let paths: HashMap<String, String> =
             serde_json::from_str(include_str!("../data/chrome-icons.json"))
                 .map_err(|e| e.to_string())?;
@@ -55,16 +74,67 @@ impl Chrome {
             texture.set_filter(FilterMode::Linear);
             icons.insert(name, texture);
         }
+        let started = get_time();
+        let epoch_ms = clock_ms.unwrap_or_else(|| {
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap_or_default()
+                .as_millis() as u64
+        });
+        let deadline = deadline(epoch_ms / 1000) * 1000;
+        let tree = resvg::usvg::Tree::from_data(
+            include_bytes!("../data/countdown-end.svg"),
+            &Default::default(),
+        )
+        .map_err(|e| e.to_string())?;
+        let mut pix = resvg::tiny_skia::Pixmap::new(60, 240).ok_or("Counter shape allocation")?;
+        resvg::render(
+            &tree,
+            resvg::tiny_skia::Transform::from_scale(4., 4.),
+            &mut pix.as_mut(),
+        );
+        let mut pixels = pix.data().to_vec();
+        for p in pixels.chunks_exact_mut(4) {
+            p[0] = 255;
+            p[1] = 255;
+            p[2] = 255;
+        }
+        let end = Texture2D::from_rgba8(60, 240, &pixels);
+        end.set_filter(FilterMode::Linear);
         Ok(Self {
             icons,
-            font: load_ttf_font_from_bytes(include_bytes!(
-                "../assets/fonts/GoogleSans-Regular.ttf"
+            font: load_ttf_font_from_bytes(include_bytes!("../assets/fonts/GoogleSans-Medium.ttf"))
+                .map_err(|e| e.to_string())?,
+            label_font: load_ttf_font_from_bytes(include_bytes!(
+                "../assets/fonts/GoogleSans-Bold.ttf"
+            ))
+            .map_err(|e| e.to_string())?,
+            countdown_font: load_ttf_font_from_bytes(include_bytes!(
+                "../assets/fonts/Roboto-SemiBold.ttf"
             ))
             .map_err(|e| e.to_string())?,
             title: load_ttf_font_from_bytes(include_bytes!("../assets/fonts/Lobster-Regular.ttf"))
                 .map_err(|e| e.to_string())?,
-            pressed: None,
+            buttons: std::array::from_fn(|_| Button::new(Color::from_hex(0xff3333))),
+            shapes: Shapes::new()?,
+            end,
+            counter: Counter::new(epoch_ms, deadline, started),
+            started,
+            epoch_ms,
+            fixed_clock: clock_ms.is_some(),
+            focused: None,
+            keyboard_pressed: None,
+            action_reveal: Transition::new([0.]),
+            last_action: "pause",
+            last_level: None,
+            level_changed: -10.,
+            badge_alt: Transition::new([0.]),
+            badge_width: Transition::new([0., 0.]),
+            sounds: vec![],
         })
+    }
+    pub fn icon(&self, key: &str) -> &Texture2D {
+        &self.icons[key]
     }
     fn text(&self, text: &str, x: f32, y: f32, size: u16, title: bool) {
         let font = if title { &self.title } else { &self.font };
@@ -81,7 +151,183 @@ impl Chrome {
             },
         );
     }
+    fn label(&self, text: &str, x: f32, y: f32, size: u16, alpha: f32, spacing: f32) {
+        let font = if size == 8 {
+            &self.countdown_font
+        } else if size == 9 {
+            &self.label_font
+        } else {
+            &self.font
+        };
+        let widths: Vec<f32> = text
+            .chars()
+            .map(|c| measure_text(&c.to_string(), Some(font), size, 1.).width)
+            .collect();
+        let width = widths.iter().sum::<f32>() + spacing * (widths.len().saturating_sub(1)) as f32;
+        let mut left = x - width / 2.;
+        for (c, width) in text.chars().zip(widths) {
+            draw_text_ex(
+                &c.to_string(),
+                left,
+                y,
+                TextParams {
+                    font: Some(font),
+                    font_size: size,
+                    color: Color::new(1., 1., 1., alpha),
+                    ..Default::default()
+                },
+            );
+            left += width + spacing;
+        }
+    }
+    fn counter_number(&self, value: u64, x: f32, top: f32, height: f32, size: u16, alpha: f32) {
+        // CSS line boxes center the font's ascender/descender within line-height.
+        let text = format!("{value:02}");
+        let metrics = measure_text(&text, Some(&self.title), size, 1.);
+        let baseline = top + (height - 8. - size as f32) / 2. + size as f32 * 0.82;
+        let widths: Vec<f32> = text
+            .chars()
+            .map(|c| measure_text(&c.to_string(), Some(&self.title), size, 1.).width)
+            .collect();
+        let total = widths.iter().sum::<f32>() - widths.len().saturating_sub(1) as f32;
+        let mut left = x - total / 2.;
+        let _ = metrics;
+        for (c, width) in text.chars().zip(widths) {
+            draw_text_ex(
+                &c.to_string(),
+                left,
+                baseline,
+                TextParams {
+                    font: Some(&self.title),
+                    font_size: size,
+                    color: Color::new(1., 1., 1., alpha),
+                    ..Default::default()
+                },
+            );
+            left += width - 1.;
+        }
+    }
+    fn draw_counter(&mut self, now: f64, side: f32, y: f32) -> f32 {
+        let elapsed = (now - self.started).max(0.);
+        let clock_ms = if self.fixed_clock {
+            self.epoch_ms + (elapsed * 1000.) as u64
+        } else {
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap_or_default()
+                .as_millis() as u64
+        };
+        self.counter.update(now, clock_ms);
+        let split = self.counter.current;
+        if split.count == 0 {
+            return 0.;
+        }
+        let desktop = screen_width() >= 768.;
+        let height = if desktop { 60. } else { 52. };
+        let visible = split.visible(screen_width() as f64);
+        let values = split.values();
+        let previous = self.counter.previous.values();
+        let widths: Vec<(usize, f32)> = visible
+            .iter()
+            .enumerate()
+            .filter(|(_, v)| **v)
+            .map(|(i, _)| {
+                (
+                    i,
+                    if i == 0 && split.days >= 100 {
+                        if desktop {
+                            52.
+                        } else {
+                            48.
+                        }
+                    } else if desktop {
+                        44.
+                    } else {
+                        40.
+                    },
+                )
+            })
+            .collect();
+        let inner =
+            widths.iter().map(|(_, w)| *w).sum::<f32>() + (widths.len().saturating_sub(1)) as f32;
+        let edge = height / 4.;
+        let total = inner + 2. * (edge - 14.);
+        let left = screen_width() - side - total;
+        let top = y + 22. - height / 2.;
+        let bar = Color::from_hex(0xff3333);
+        let draw_bg = |offset: Vec2, c: Color| {
+            draw_rectangle(
+                left + edge - 14. + 6. + offset.x,
+                top + offset.y,
+                (inner - 12.).max(0.),
+                height,
+                c,
+            );
+            for (x, flip) in [(left - 7., false), (left + edge - 14. + inner - 7., true)] {
+                draw_texture_ex(
+                    &self.end,
+                    x + offset.x,
+                    top + offset.y,
+                    c,
+                    DrawTextureParams {
+                        dest_size: Some(vec2(edge, height)),
+                        flip_x: flip,
+                        ..Default::default()
+                    },
+                );
+            }
+        };
+        draw_bg(vec2(3., 8.), Color::new(0., 0., 0., 0.1));
+        draw_bg(Vec2::ZERO, bar);
+        let phase = self.counter.phase(now) as f32;
+        let animating = now - self.counter.tick_at < 0.6;
+        let mut x = left + edge - 14.;
+        for (index, width) in widths {
+            if x > left + edge - 14. + 0.5 {
+                draw_rectangle(
+                    x - 1.,
+                    top + 7.,
+                    1.,
+                    height - 14.,
+                    Color::new(0., 0., 0., 0.25),
+                );
+            }
+            let center = x + width / 2.;
+            let size = if desktop { 26 } else { 22 };
+            if animating && self.counter.changed[index] {
+                self.counter_number(
+                    values[index],
+                    center,
+                    top + (1. - phase) * height / 2.,
+                    height,
+                    size,
+                    phase,
+                );
+                self.counter_number(
+                    previous[index],
+                    center,
+                    top - phase * height / 2.,
+                    height,
+                    size,
+                    1. - phase,
+                );
+            } else {
+                self.counter_number(values[index], center, top, height, size, 1.);
+            }
+            self.label(
+                ["DAYS", "HRS", "MIN", "SEC"][index],
+                center,
+                top + height - 8.,
+                8,
+                0.8,
+                1.,
+            );
+            x += width + 1.;
+        }
+        total
+    }
     pub fn draw(&mut self, game: Option<GameHud>, muted: bool) -> Option<Action> {
+        let now = get_time();
         for y in 0..64 {
             draw_rectangle(
                 0.,
@@ -91,11 +337,9 @@ impl Chrome {
                 Color::new(0., 0., 0., 0.2 * (1. - y as f32 / 64.)),
             );
         }
-        let small = screen_width() < 768.;
-        let x = if small { 10. } else { screen_width() * 0.05 };
-        let y = if small { 10. } else { 20. };
+        let (x, y) = toolbar_origin();
         let first = if game.is_some() { "home" } else { "menu" };
-        let state = game.filter(|g| g.can_pause).map(|g| {
+        let action = game.filter(|g| g.can_pause).map(|g| {
             if !g.playing {
                 "restart"
             } else if g.paused {
@@ -104,64 +348,93 @@ impl Chrome {
                 "pause"
             }
         });
+        if let Some(action) = action {
+            self.last_action = action;
+        }
+        self.action_reveal
+            .set(now, [f64::from(action.is_some())], 0.25, Ease::InOut);
+        let enabled = if action.is_some() { 3 } else { 2 };
+        if is_key_pressed(KeyCode::Tab) {
+            self.focused = Some(match self.focused {
+                Some(index)
+                    if is_key_down(KeyCode::LeftShift) || is_key_down(KeyCode::RightShift) =>
+                {
+                    (index + enabled - 1) % enabled
+                }
+                Some(index) => (index + 1) % enabled,
+                None => 0,
+            });
+        }
+        if is_mouse_button_pressed(MouseButton::Left) {
+            self.focused = None;
+        }
+        if is_key_pressed(KeyCode::Space) || is_key_pressed(KeyCode::Enter) {
+            self.keyboard_pressed = self.focused;
+        }
+        let released = is_key_released(KeyCode::Space) || is_key_released(KeyCode::Enter);
+        let key_held = is_key_down(KeyCode::Space) || is_key_down(KeyCode::Enter);
+        let names = [
+            first,
+            if muted { "unmute" } else { "mute" },
+            self.last_action,
+        ];
         let mut result = None;
-        let mouse = Vec2::from(mouse_position());
-        for (i, name) in [
-            Some(first),
-            Some(if muted { "unmute" } else { "mute" }),
-            state,
-        ]
-        .into_iter()
-        .enumerate()
-        {
-            let Some(name) = name else {
-                continue;
-            };
-            let bx = x + i as f32 * 56. + 2.;
-            let by = y + 2.;
-            let rect = Rect::new(bx, by, 44., 44.);
-            let hover = rect.contains(mouse);
-            if hover && is_mouse_button_pressed(MouseButton::Left) {
-                self.pressed = Some(i);
-            }
-            let down = hover && self.pressed == Some(i) && is_mouse_button_down(MouseButton::Left);
-            let delta = if down { vec2(0., 0.) } else { vec2(-3., -5.) };
-            let c = if muted && i == 1 {
-                Color::from_hex(0xad00ad)
-            } else {
-                Color::from_hex(0xff3333)
-            };
-            if !down {
-                draw_poly(
-                    bx + 27.,
-                    by + 24.,
-                    96,
-                    24.,
-                    0.,
-                    Color::new(0., 0., 0., 0.24),
-                );
-                draw_poly(
-                    bx + 22.,
-                    by + 22.,
-                    96,
-                    22.,
-                    0.,
-                    Color::new(c.r * 0.7, c.g * 0.7, c.b * 0.7, 1.),
-                );
-            }
-            draw_poly(bx + 22. + delta.x, by + 22. + delta.y, 96, 22., 0., c);
-            draw_texture_ex(
-                &self.icons[name],
-                bx + 10. + delta.x,
-                by + 10. + delta.y,
-                WHITE,
-                DrawTextureParams {
-                    dest_size: Some(vec2(24., 24.)),
-                    ..Default::default()
-                },
+        for (i, name) in names.iter().enumerate() {
+            let rect = toolbar_rect(i);
+            let usable = i < enabled;
+            let interact = self.buttons[i].update(
+                rect,
+                now,
+                usable,
+                self.keyboard_pressed == Some(i) && key_held,
+                self.keyboard_pressed == Some(i) && released,
             );
-            if hover && is_mouse_button_released(MouseButton::Left) && self.pressed == Some(i) {
-                result = Some(match name {
+            if interact.entered {
+                self.sounds.push("generic_button_over");
+            }
+            if interact.pressed
+                || self.keyboard_pressed == Some(i)
+                    && (is_key_pressed(KeyCode::Space) || is_key_pressed(KeyCode::Enter))
+            {
+                self.sounds.push("generic_button_click");
+            }
+            self.buttons[i].theme(
+                if muted && i == 1 {
+                    Color::from_hex(0xad00ad)
+                } else {
+                    Color::from_hex(0xff3333)
+                },
+                now,
+            );
+            let visibility = if i == 2 {
+                self.action_reveal.value(now)[0] as f32
+            } else {
+                1.
+            };
+            if visibility > 0. {
+                // Header button disabled state translates up 100px and fades.
+                let mut draw_rect = rect;
+                draw_rect.y -= 100. * (1. - visibility);
+                let delta = self.buttons[i].draw(
+                    &self.shapes,
+                    draw_rect,
+                    now,
+                    self.focused == Some(i),
+                    visibility,
+                );
+                draw_texture_ex(
+                    &self.icons[*name],
+                    draw_rect.x + 10. + delta.x,
+                    draw_rect.y + 10. + delta.y,
+                    Color::new(1., 1., 1., visibility),
+                    DrawTextureParams {
+                        dest_size: Some(vec2(24., 24.)),
+                        ..Default::default()
+                    },
+                );
+            }
+            if interact.clicked {
+                result = Some(match *name {
                     "home" => Action::Home,
                     "menu" => Action::Menu,
                     "mute" | "unmute" => Action::Mute,
@@ -170,92 +443,123 @@ impl Chrome {
                 });
             }
         }
-        if is_mouse_button_released(MouseButton::Left) {
-            self.pressed = None;
+        if released {
+            self.keyboard_pressed = None;
         }
+        let counter_width = self.draw_counter(now, x, y);
         if let Some(game) = game.filter(|g| g.badge) {
-            let cells = if game.score > 0 || game.level.is_some() {
-                2
-            } else {
-                1
-            };
-            let width = 56. * cells as f32;
-            let left = screen_width() / 2. - width / 2.;
-            draw_rectangle(left + 3., y + 10., width, 40., Color::new(0., 0., 0., 0.1));
-            draw_rectangle(left, y + 2., width, 40., Color::from_hex(0x6f00ff));
-            let seconds = game.countdown.ceil().max(0.) as u32;
-            self.text(
-                &format!("{}:{:02}", seconds / 60, seconds % 60),
-                left + 28.,
-                y + 23.,
-                17,
-                false,
+            if game.level != self.last_level {
+                self.last_level = game.level;
+                self.level_changed = now;
+            }
+            let alt = game.level.is_some() && (now - self.level_changed < 2. || game.score <= 0);
+            self.badge_alt
+                .set(now, [f64::from(alt)], 0.4, Ease::Default);
+            let time = game.countdown.clamp(0., 599.).floor() as u32;
+            let show_right = game.level.is_some() || game.score != 0;
+            self.badge_width.set(
+                now,
+                [
+                    if time > 0 {
+                        if show_right {
+                            57.
+                        } else {
+                            56.
+                        }
+                    } else {
+                        0.
+                    },
+                    if show_right { 56. } else { 0. },
+                ],
+                0.5,
+                Ease::InOut,
             );
-            self.text("TIME", left + 28., y + 36., 9, false);
-            if cells == 2 {
-                draw_rectangle(left + 56., y + 8., 1., 28., Color::new(0., 0., 0., 0.25));
+            let widths = self.badge_width.value(now);
+            let width = (widths[0] + widths[1]) as f32;
+            // The original flex toolbar gives each grow item half the remaining
+            // space after all three buttons (including the disabled action).
+            let group = (screen_width() - 2. * x - 3. * 56. - counter_width - width) / 2.;
+            let left = x + 3. * 56. + group;
+            let top = y + 2.;
+            self.shapes.rounded(
+                Rect::new(left + 3., top + 8., width, 40.),
+                4.,
+                Color::new(0., 0., 0., 0.1),
+                0.,
+            );
+            self.shapes.rounded(
+                Rect::new(left, top, width, 40.),
+                4.,
+                Color::from_hex(0x6f00ff),
+                0.,
+            );
+            if widths[0] > 0.1 {
+                self.label(
+                    &format!("{}:{:02}", time / 60, time % 60),
+                    left + widths[0] as f32 / 2.,
+                    top + 21.,
+                    17,
+                    1.,
+                    -1.,
+                );
+                self.text("TIME", left + widths[0] as f32 / 2., top + 34., 9, false);
+            }
+            if show_right {
+                draw_rectangle(
+                    left + widths[0] as f32 - 1.,
+                    top + 6.,
+                    1.,
+                    28.,
+                    Color::new(0., 0., 0., 0.25),
+                );
+            }
+            if widths[1] > 0.1 {
+                let middle = left + widths[0] as f32 + 28.;
+                let t = self.badge_alt.value(now)[0] as f32;
                 let score = if game.score < 10000 {
                     game.score.to_string()
                 } else if game.score < 1000000 {
                     format!("{}k", game.score / 1000)
-                } else {
+                } else if game.score < 1000000000 {
                     format!("{}m", game.score / 1000000)
-                };
-                if game.score <= 0 && game.level.is_some() {
-                    self.text(
-                        &format!("{}·10", game.level.unwrap()),
-                        left + 84.,
-                        y + 23.,
-                        17,
-                        false,
-                    );
-                    self.text("LEVEL", left + 84., y + 36., 9, false);
                 } else {
-                    self.text(&score, left + 84., y + 23., 17, false);
-                    self.text("SCORE", left + 84., y + 36., 9, false);
+                    "?".into()
+                };
+                // Clip the two sliding labels to the original .item box.
+                unsafe {
+                    get_internal_gl().quad_gl.scissor(Some((
+                        (left + widths[0] as f32) as i32,
+                        top as i32,
+                        widths[1] as i32,
+                        40,
+                    )));
                 }
-            }
-        }
-        let now = std::time::SystemTime::now()
-            .duration_since(std::time::UNIX_EPOCH)
-            .unwrap_or_default()
-            .as_secs();
-        let remaining = countdown(now);
-        if remaining > 0 && screen_width() > 500. {
-            let days = remaining / 86400;
-            let values = [
-                days,
-                (remaining / 3600) % 24,
-                (remaining / 60) % 60,
-                remaining % 60,
-            ];
-            let cw = if days >= 100 { 48. } else { 40. };
-            let w = cw + 120.;
-            let left = screen_width() - x - w;
-            draw_rectangle(left + 3., y, w, 60., Color::new(0., 0., 0., 0.1));
-            draw_rectangle(left, y - 8., w, 60., Color::from_hex(0xff3333));
-            for (i, value) in values.iter().enumerate() {
-                let offset = if i == 0 {
-                    0.
-                } else {
-                    cw + (i - 1) as f32 * 40.
-                };
-                let width = if i == 0 { cw } else { 40. };
-                let mid = left + offset + width / 2.;
-                self.text(&format!("{value:02}"), mid, y + 23., 22, true);
-                self.text(["DAYS", "HRS", "MIN", "SEC"][i], mid, y + 41., 8, false);
-                if i > 0 {
-                    draw_rectangle(left + offset, y, 1., 44., Color::new(0., 0., 0., 0.25));
+                self.label(&score, middle + 56. * t, top + 21., 17, 1. - t, -1.);
+                self.label("SCORE", middle + 56. * t, top + 34., 9, 1. - t, 0.);
+                if let Some(level) = game.level {
+                    self.label(
+                        &format!("{level}·10"),
+                        middle,
+                        top + 21. - 40. * (1. - t),
+                        17,
+                        t,
+                        -1.,
+                    );
+                    self.label("LEVEL", middle, top + 34. - 40. * (1. - t), 9, t, 0.);
+                }
+                unsafe {
+                    get_internal_gl().quad_gl.scissor(None);
                 }
             }
         }
         result
     }
 }
+
 fn leap(year: u64) -> bool {
     year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
 }
-pub fn countdown(now: u64) -> u64 {
+pub fn deadline(now: u64) -> u64 {
     let mut year = 1970;
     let mut start = 0;
     while start + (if leap(year) { 366 } else { 365 }) * 86400 <= now {
@@ -263,8 +567,13 @@ pub fn countdown(now: u64) -> u64 {
         year += 1;
     }
     let day = 334 + u64::from(leap(year)) + 23;
-    (start + day * 86400 + 10 * 3600).saturating_sub(now)
+    start + day * 86400 + 10 * 3600
 }
+#[cfg(test)]
+pub fn countdown(now: u64) -> u64 {
+    deadline(now).saturating_sub(now)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -277,9 +586,23 @@ mod tests {
 
 /// Hit area shared with the native scenes so the toolbar does not consume
 /// the entire top band of the game (Santa's scalp is interactive there).
+pub fn toolbar_origin() -> (f32, f32) {
+    if screen_width() < 768. {
+        (10., 10.)
+    } else {
+        (screen_width() * 0.05, 20.)
+    }
+}
+pub fn toolbar_rect(index: usize) -> Rect {
+    let (x, y) = toolbar_origin();
+    let spacing = if screen_width() <= 400. { 48. } else { 56. };
+    Rect::new(
+        x + index as f32 * spacing + if screen_width() <= 400. { 0. } else { 2. },
+        y,
+        44.,
+        44.,
+    )
+}
 pub fn over_controls(mouse: Vec2, count: usize) -> bool {
-    let small = screen_width() < 768.;
-    let x = if small { 10. } else { screen_width() * 0.05 };
-    let y = if small { 10. } else { 20. };
-    (0..count).any(|i| Rect::new(x + i as f32 * 56. + 2., y + 2., 44., 44.).contains(mouse))
+    (0..count).any(|i| toolbar_rect(i).contains(mouse))
 }

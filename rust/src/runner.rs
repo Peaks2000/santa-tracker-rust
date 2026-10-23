@@ -46,6 +46,7 @@ pub struct Player {
     pub jumps: u32,
     pub jump_end: bool,
     pub state: State,
+    pub state_since: f64,
 }
 impl Default for Player {
     fn default() -> Self {
@@ -59,6 +60,7 @@ impl Default for Player {
             jumps: 0,
             jump_end: false,
             state: State::Running,
+            state_since: 0.,
         }
     }
 }
@@ -215,6 +217,9 @@ impl Runner {
         }
         let prev = self.player.state;
         self.player.state = next;
+        if prev != next {
+            self.player.state_since = self.time;
+        }
         if next == State::Running && prev != State::Running {
             self.player.jumps = 0;
             self.player.jump_end = false;

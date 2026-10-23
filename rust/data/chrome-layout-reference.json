@@ -1,0 +1,3284 @@
+{
+  "initial": {
+    "header": {
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 64
+      },
+      "transform": "none",
+      "boxShadow": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "width": "1296px",
+      "height": "44px",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "padding": "0px 72px",
+      "margin": "0px"
+    },
+    "buttons": [
+      {
+        "host": {
+          "rect": {
+            "x": 72,
+            "y": 18,
+            "width": 48,
+            "height": 48
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "2px",
+          "margin": "0px 8px 0px 0px"
+        },
+        "button": {
+          "rect": {
+            "x": 71,
+            "y": 15,
+            "width": 44,
+            "height": 44
+          },
+          "transform": "matrix(1, 0, 0, 1, -3, -5)",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 3px 5px 0px 0px, rgb(255, 51, 51) 3px 5px 0px 0px, rgba(0, 0, 0, 0.24) 8px 7px 0px 2px",
+          "color": "rgb(255, 51, 51)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        }
+      },
+      {
+        "host": {
+          "rect": {
+            "x": 128,
+            "y": 18,
+            "width": 48,
+            "height": 48
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "2px",
+          "margin": "0px 8px 0px 0px"
+        },
+        "button": {
+          "rect": {
+            "x": 127,
+            "y": 15,
+            "width": 44,
+            "height": 44
+          },
+          "transform": "matrix(1, 0, 0, 1, -3, -5)",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 3px 5px 0px 0px, rgb(255, 51, 51) 3px 5px 0px 0px, rgba(0, 0, 0, 0.24) 8px 7px 0px 2px",
+          "color": "rgb(255, 51, 51)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        }
+      },
+      {
+        "host": {
+          "rect": {
+            "x": 184,
+            "y": -82,
+            "width": 48,
+            "height": 48
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, -100)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "2px",
+          "margin": "0px 8px 0px 0px"
+        },
+        "button": {
+          "rect": {
+            "x": 183,
+            "y": -85,
+            "width": 44,
+            "height": 44
+          },
+          "transform": "matrix(1, 0, 0, 1, -3, -5)",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 3px 5px 0px 0px, rgb(255, 51, 51) 3px 5px 0px 0px, rgba(0, 0, 0, 0.24) 8px 7px 0px 2px",
+          "color": "rgb(255, 51, 51)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        }
+      }
+    ],
+    "counter": {
+      "host": {
+        "rect": {
+          "x": 1187,
+          "y": 12,
+          "width": 181,
+          "height": 60
+        },
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "boxShadow": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "width": "181px",
+        "height": "60px",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "padding": "0px",
+        "margin": "0px"
+      },
+      "main": {
+        "rect": {
+          "x": 1187,
+          "y": -38,
+          "width": 181,
+          "height": 160
+        },
+        "transform": "none",
+        "boxShadow": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "width": "181px",
+        "height": "60px",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "padding": "50px 0px",
+        "margin": "-50px 0px"
+      },
+      "children": [
+        {
+          "tag": "svg",
+          "cls": null,
+          "text": "",
+          "rect": {
+            "x": 1180,
+            "y": 12,
+            "width": 15,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "15px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px -7px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "inner",
+          "text": "61\n      \n      Days\n    \n    \n      21\n      \n      Hrs\n    \n    \n      24\n      \n      Min\n    \n    \n      51\n      \n      Sec",
+          "rect": {
+            "x": 1188,
+            "y": 12,
+            "width": 179,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "179px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box  ",
+          "text": "61\n      \n      Days",
+          "rect": {
+            "x": 1188,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "61",
+          "rect": {
+            "x": 1188,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1188,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Days",
+          "rect": {
+            "x": 1188,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box ",
+          "text": "21\n      \n      Hrs",
+          "rect": {
+            "x": 1233,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px 0px 0px 1px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "21",
+          "rect": {
+            "x": 1233,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1233,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Hrs",
+          "rect": {
+            "x": 1233,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box ",
+          "text": "24\n      \n      Min",
+          "rect": {
+            "x": 1278,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px 0px 0px 1px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "24",
+          "rect": {
+            "x": 1278,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1278,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Min",
+          "rect": {
+            "x": 1278,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box ",
+          "text": "51\n      \n      Sec",
+          "rect": {
+            "x": 1323,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px 0px 0px 1px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "51",
+          "rect": {
+            "x": 1323,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1323,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Sec",
+          "rect": {
+            "x": 1323,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "svg",
+          "cls": null,
+          "text": "",
+          "rect": {
+            "x": 1360,
+            "y": 12,
+            "width": 15,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "15px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px -7px"
+        }
+      ]
+    }
+  },
+  "down25": {
+    "header": {
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 64
+      },
+      "transform": "none",
+      "boxShadow": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "width": "1296px",
+      "height": "44px",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "padding": "0px 72px",
+      "margin": "0px"
+    },
+    "buttons": [
+      {
+        "host": {
+          "rect": {
+            "x": 72,
+            "y": 18,
+            "width": 48,
+            "height": 48
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "2px",
+          "margin": "0px 8px 0px 0px"
+        },
+        "button": {
+          "rect": {
+            "x": 71,
+            "y": 15,
+            "width": 44,
+            "height": 44
+          },
+          "transform": "matrix(1, 0, 0, 1, -3, -5)",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 3px 5px 0px 0px, rgb(255, 51, 51) 3px 5px 0px 0px, rgba(0, 0, 0, 0.24) 8px 7px 0px 2px",
+          "color": "rgb(255, 51, 51)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        }
+      },
+      {
+        "host": {
+          "rect": {
+            "x": 128,
+            "y": 18,
+            "width": 48,
+            "height": 48
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "2px",
+          "margin": "0px 8px 0px 0px"
+        },
+        "button": {
+          "rect": {
+            "x": 127,
+            "y": 15,
+            "width": 44,
+            "height": 44
+          },
+          "transform": "matrix(1, 0, 0, 1, -3, -5)",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 3px 5px 0px 0px, rgb(255, 51, 51) 3px 5px 0px 0px, rgba(0, 0, 0, 0.24) 8px 7px 0px 2px",
+          "color": "rgb(255, 51, 51)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        }
+      },
+      {
+        "host": {
+          "rect": {
+            "x": 184,
+            "y": -82,
+            "width": 48,
+            "height": 48
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, -100)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "2px",
+          "margin": "0px 8px 0px 0px"
+        },
+        "button": {
+          "rect": {
+            "x": 183,
+            "y": -85,
+            "width": 44,
+            "height": 44
+          },
+          "transform": "matrix(1, 0, 0, 1, -3, -5)",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 3px 5px 0px 0px, rgb(255, 51, 51) 3px 5px 0px 0px, rgba(0, 0, 0, 0.24) 8px 7px 0px 2px",
+          "color": "rgb(255, 51, 51)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        }
+      }
+    ],
+    "counter": {
+      "host": {
+        "rect": {
+          "x": 1187,
+          "y": 12,
+          "width": 181,
+          "height": 60
+        },
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "boxShadow": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "width": "181px",
+        "height": "60px",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "padding": "0px",
+        "margin": "0px"
+      },
+      "main": {
+        "rect": {
+          "x": 1187,
+          "y": -38,
+          "width": 181,
+          "height": 160
+        },
+        "transform": "none",
+        "boxShadow": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "width": "181px",
+        "height": "60px",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "padding": "50px 0px",
+        "margin": "-50px 0px"
+      },
+      "children": [
+        {
+          "tag": "svg",
+          "cls": null,
+          "text": "",
+          "rect": {
+            "x": 1180,
+            "y": 12,
+            "width": 15,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "15px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px -7px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "inner",
+          "text": "61\n      \n      Days\n    \n    \n      21\n      \n      Hrs\n    \n    \n      24\n      \n      Min\n    \n    \n      51\n      \n      Sec",
+          "rect": {
+            "x": 1188,
+            "y": 12,
+            "width": 179,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "179px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box  ",
+          "text": "61\n      \n      Days",
+          "rect": {
+            "x": 1188,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "61",
+          "rect": {
+            "x": 1188,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1188,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Days",
+          "rect": {
+            "x": 1188,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box ",
+          "text": "21\n      \n      Hrs",
+          "rect": {
+            "x": 1233,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px 0px 0px 1px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "21",
+          "rect": {
+            "x": 1233,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1233,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Hrs",
+          "rect": {
+            "x": 1233,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box ",
+          "text": "24\n      \n      Min",
+          "rect": {
+            "x": 1278,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px 0px 0px 1px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "24",
+          "rect": {
+            "x": 1278,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1278,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Min",
+          "rect": {
+            "x": 1278,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box ",
+          "text": "51\n      \n      Sec",
+          "rect": {
+            "x": 1323,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px 0px 0px 1px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "51",
+          "rect": {
+            "x": 1323,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1323,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Sec",
+          "rect": {
+            "x": 1323,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "svg",
+          "cls": null,
+          "text": "",
+          "rect": {
+            "x": 1360,
+            "y": 12,
+            "width": 15,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "15px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px -7px"
+        }
+      ]
+    }
+  },
+  "down50": {
+    "header": {
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 64
+      },
+      "transform": "none",
+      "boxShadow": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "width": "1296px",
+      "height": "44px",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "padding": "0px 72px",
+      "margin": "0px"
+    },
+    "buttons": [
+      {
+        "host": {
+          "rect": {
+            "x": 72,
+            "y": 18,
+            "width": 48,
+            "height": 48
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "2px",
+          "margin": "0px 8px 0px 0px"
+        },
+        "button": {
+          "rect": {
+            "x": 71,
+            "y": 15,
+            "width": 44,
+            "height": 44
+          },
+          "transform": "matrix(1, 0, 0, 1, -3, -5)",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 3px 5px 0px 0px, rgb(255, 51, 51) 3px 5px 0px 0px, rgba(0, 0, 0, 0.24) 8px 7px 0px 2px",
+          "color": "rgb(255, 51, 51)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        }
+      },
+      {
+        "host": {
+          "rect": {
+            "x": 128,
+            "y": 18,
+            "width": 48,
+            "height": 48
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "2px",
+          "margin": "0px 8px 0px 0px"
+        },
+        "button": {
+          "rect": {
+            "x": 128.5364532470703,
+            "y": 17.56076431274414,
+            "width": 44.00001525878906,
+            "height": 44
+          },
+          "transform": "matrix(1, 0, 0, 1, -1.46354, -2.43923)",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 1.46354px 2.43923px 0px 0px, rgb(255, 51, 51) 1.46354px 2.43923px 0px 0px, rgba(0, 0, 0, 0.2) 3.90278px 3.41493px 0.512153px 0.975694px",
+          "color": "rgb(255, 51, 51)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        }
+      },
+      {
+        "host": {
+          "rect": {
+            "x": 184,
+            "y": -82,
+            "width": 48,
+            "height": 48
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, -100)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "2px",
+          "margin": "0px 8px 0px 0px"
+        },
+        "button": {
+          "rect": {
+            "x": 183,
+            "y": -85,
+            "width": 44,
+            "height": 44
+          },
+          "transform": "matrix(1, 0, 0, 1, -3, -5)",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 3px 5px 0px 0px, rgb(255, 51, 51) 3px 5px 0px 0px, rgba(0, 0, 0, 0.24) 8px 7px 0px 2px",
+          "color": "rgb(255, 51, 51)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        }
+      }
+    ],
+    "counter": {
+      "host": {
+        "rect": {
+          "x": 1187,
+          "y": 12,
+          "width": 181,
+          "height": 60
+        },
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "boxShadow": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "width": "181px",
+        "height": "60px",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "padding": "0px",
+        "margin": "0px"
+      },
+      "main": {
+        "rect": {
+          "x": 1187,
+          "y": -38,
+          "width": 181,
+          "height": 160
+        },
+        "transform": "none",
+        "boxShadow": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "width": "181px",
+        "height": "60px",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "padding": "50px 0px",
+        "margin": "-50px 0px"
+      },
+      "children": [
+        {
+          "tag": "svg",
+          "cls": null,
+          "text": "",
+          "rect": {
+            "x": 1180,
+            "y": 12,
+            "width": 15,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "15px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px -7px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "inner",
+          "text": "61\n      \n      Days\n    \n    \n      21\n      \n      Hrs\n    \n    \n      24\n      \n      Min\n    \n    \n      51\n      \n      Sec",
+          "rect": {
+            "x": 1188,
+            "y": 12,
+            "width": 179,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "179px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box  ",
+          "text": "61\n      \n      Days",
+          "rect": {
+            "x": 1188,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "61",
+          "rect": {
+            "x": 1188,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1188,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Days",
+          "rect": {
+            "x": 1188,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box ",
+          "text": "21\n      \n      Hrs",
+          "rect": {
+            "x": 1233,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px 0px 0px 1px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "21",
+          "rect": {
+            "x": 1233,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1233,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Hrs",
+          "rect": {
+            "x": 1233,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box ",
+          "text": "24\n      \n      Min",
+          "rect": {
+            "x": 1278,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px 0px 0px 1px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "24",
+          "rect": {
+            "x": 1278,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1278,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Min",
+          "rect": {
+            "x": 1278,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box ",
+          "text": "51\n      \n      Sec",
+          "rect": {
+            "x": 1323,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px 0px 0px 1px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "51",
+          "rect": {
+            "x": 1323,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1323,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Sec",
+          "rect": {
+            "x": 1323,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "svg",
+          "cls": null,
+          "text": "",
+          "rect": {
+            "x": 1360,
+            "y": 12,
+            "width": 15,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "15px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px -7px"
+        }
+      ]
+    }
+  },
+  "up50": {
+    "header": {
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 64
+      },
+      "transform": "none",
+      "boxShadow": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "width": "1296px",
+      "height": "44px",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "padding": "0px 72px",
+      "margin": "0px"
+    },
+    "buttons": [
+      {
+        "host": {
+          "rect": {
+            "x": 72,
+            "y": 18,
+            "width": 48,
+            "height": 48
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "2px",
+          "margin": "0px 8px 0px 0px"
+        },
+        "button": {
+          "rect": {
+            "x": 71,
+            "y": 15,
+            "width": 44,
+            "height": 44
+          },
+          "transform": "matrix(1, 0, 0, 1, -3, -5)",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 3px 5px 0px 0px, rgb(255, 51, 51) 3px 5px 0px 0px, rgba(0, 0, 0, 0.24) 8px 7px 0px 2px",
+          "color": "rgb(255, 51, 51)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        }
+      },
+      {
+        "host": {
+          "rect": {
+            "x": 128,
+            "y": 18,
+            "width": 48,
+            "height": 48
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "2px",
+          "margin": "0px 8px 0px 0px"
+        },
+        "button": {
+          "rect": {
+            "x": 130,
+            "y": 20,
+            "width": 44,
+            "height": 44
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 0px 0px 0px 0px, rgb(255, 51, 51) 0px 0px 0px 0px, rgba(0, 0, 0, 0.16) 0px 0px 1px 0px",
+          "color": "rgb(255, 51, 51)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        }
+      },
+      {
+        "host": {
+          "rect": {
+            "x": 184,
+            "y": -82,
+            "width": 48,
+            "height": 48
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, -100)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "2px",
+          "margin": "0px 8px 0px 0px"
+        },
+        "button": {
+          "rect": {
+            "x": 183,
+            "y": -85,
+            "width": 44,
+            "height": 44
+          },
+          "transform": "matrix(1, 0, 0, 1, -3, -5)",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 3px 5px 0px 0px, rgb(255, 51, 51) 3px 5px 0px 0px, rgba(0, 0, 0, 0.24) 8px 7px 0px 2px",
+          "color": "rgb(255, 51, 51)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        }
+      }
+    ],
+    "counter": {
+      "host": {
+        "rect": {
+          "x": 1187,
+          "y": 12,
+          "width": 181,
+          "height": 60
+        },
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "boxShadow": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "width": "181px",
+        "height": "60px",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "padding": "0px",
+        "margin": "0px"
+      },
+      "main": {
+        "rect": {
+          "x": 1187,
+          "y": -38,
+          "width": 181,
+          "height": 160
+        },
+        "transform": "none",
+        "boxShadow": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "width": "181px",
+        "height": "60px",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "padding": "50px 0px",
+        "margin": "-50px 0px"
+      },
+      "children": [
+        {
+          "tag": "svg",
+          "cls": null,
+          "text": "",
+          "rect": {
+            "x": 1180,
+            "y": 12,
+            "width": 15,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "15px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px -7px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "inner",
+          "text": "61\n      \n      Days\n    \n    \n      21\n      \n      Hrs\n    \n    \n      24\n      \n      Min\n    \n    \n      51\n      \n      Sec",
+          "rect": {
+            "x": 1188,
+            "y": 12,
+            "width": 179,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "179px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box  ",
+          "text": "61\n      \n      Days",
+          "rect": {
+            "x": 1188,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "61",
+          "rect": {
+            "x": 1188,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1188,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Days",
+          "rect": {
+            "x": 1188,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box ",
+          "text": "21\n      \n      Hrs",
+          "rect": {
+            "x": 1233,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px 0px 0px 1px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "21",
+          "rect": {
+            "x": 1233,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1233,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Hrs",
+          "rect": {
+            "x": 1233,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box ",
+          "text": "24\n      \n      Min",
+          "rect": {
+            "x": 1278,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px 0px 0px 1px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "24",
+          "rect": {
+            "x": 1278,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1278,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Min",
+          "rect": {
+            "x": 1278,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box ",
+          "text": "51\n      \n      Sec",
+          "rect": {
+            "x": 1323,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px 0px 0px 1px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "51",
+          "rect": {
+            "x": 1323,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1323,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Sec",
+          "rect": {
+            "x": 1323,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "svg",
+          "cls": null,
+          "text": "",
+          "rect": {
+            "x": 1360,
+            "y": 12,
+            "width": 15,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "15px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px -7px"
+        }
+      ]
+    }
+  },
+  "up125": {
+    "header": {
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 64
+      },
+      "transform": "none",
+      "boxShadow": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "width": "1296px",
+      "height": "44px",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "padding": "0px 72px",
+      "margin": "0px"
+    },
+    "buttons": [
+      {
+        "host": {
+          "rect": {
+            "x": 72,
+            "y": 18,
+            "width": 48,
+            "height": 48
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "2px",
+          "margin": "0px 8px 0px 0px"
+        },
+        "button": {
+          "rect": {
+            "x": 71,
+            "y": 15,
+            "width": 44,
+            "height": 44
+          },
+          "transform": "matrix(1, 0, 0, 1, -3, -5)",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 3px 5px 0px 0px, rgb(255, 51, 51) 3px 5px 0px 0px, rgba(0, 0, 0, 0.24) 8px 7px 0px 2px",
+          "color": "rgb(255, 51, 51)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        }
+      },
+      {
+        "host": {
+          "rect": {
+            "x": 128,
+            "y": 18,
+            "width": 48,
+            "height": 48
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "2px",
+          "margin": "0px 8px 0px 0px"
+        },
+        "button": {
+          "rect": {
+            "x": 129.91171264648438,
+            "y": 19.85284423828125,
+            "width": 44,
+            "height": 44
+          },
+          "transform": "matrix(1, 0, 0, 1, -0.0882933, -0.147156)",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 0.0882933px 0.147156px 0px 0px, rgb(255, 51, 51) 0.0882933px 0.147156px 0px 0px, rgba(0, 0, 0, 0.165) 0.235449px 0.206018px 0.970569px 0.0588622px",
+          "color": "rgb(255, 51, 51)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        }
+      },
+      {
+        "host": {
+          "rect": {
+            "x": 184,
+            "y": -82,
+            "width": 48,
+            "height": 48
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, -100)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "2px",
+          "margin": "0px 8px 0px 0px"
+        },
+        "button": {
+          "rect": {
+            "x": 183,
+            "y": -85,
+            "width": 44,
+            "height": 44
+          },
+          "transform": "matrix(1, 0, 0, 1, -3, -5)",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 3px 5px 0px 0px, rgb(255, 51, 51) 3px 5px 0px 0px, rgba(0, 0, 0, 0.24) 8px 7px 0px 2px",
+          "color": "rgb(255, 51, 51)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        }
+      }
+    ],
+    "counter": {
+      "host": {
+        "rect": {
+          "x": 1187,
+          "y": 12,
+          "width": 181,
+          "height": 60
+        },
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "boxShadow": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "width": "181px",
+        "height": "60px",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "padding": "0px",
+        "margin": "0px"
+      },
+      "main": {
+        "rect": {
+          "x": 1187,
+          "y": -38,
+          "width": 181,
+          "height": 160
+        },
+        "transform": "none",
+        "boxShadow": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "width": "181px",
+        "height": "60px",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "padding": "50px 0px",
+        "margin": "-50px 0px"
+      },
+      "children": [
+        {
+          "tag": "svg",
+          "cls": null,
+          "text": "",
+          "rect": {
+            "x": 1180,
+            "y": 12,
+            "width": 15,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "15px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px -7px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "inner",
+          "text": "61\n      \n      Days\n    \n    \n      21\n      \n      Hrs\n    \n    \n      24\n      \n      Min\n    \n    \n      51\n      \n      Sec",
+          "rect": {
+            "x": 1188,
+            "y": 12,
+            "width": 179,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "179px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box  ",
+          "text": "61\n      \n      Days",
+          "rect": {
+            "x": 1188,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "61",
+          "rect": {
+            "x": 1188,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1188,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Days",
+          "rect": {
+            "x": 1188,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box ",
+          "text": "21\n      \n      Hrs",
+          "rect": {
+            "x": 1233,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px 0px 0px 1px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "21",
+          "rect": {
+            "x": 1233,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1233,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Hrs",
+          "rect": {
+            "x": 1233,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box ",
+          "text": "24\n      \n      Min",
+          "rect": {
+            "x": 1278,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px 0px 0px 1px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "24",
+          "rect": {
+            "x": 1278,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1278,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Min",
+          "rect": {
+            "x": 1278,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box ",
+          "text": "51\n      \n      Sec",
+          "rect": {
+            "x": 1323,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px 0px 0px 1px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "51",
+          "rect": {
+            "x": 1323,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1323,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Sec",
+          "rect": {
+            "x": 1323,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "svg",
+          "cls": null,
+          "text": "",
+          "rect": {
+            "x": 1360,
+            "y": 12,
+            "width": 15,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "15px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px -7px"
+        }
+      ]
+    }
+  },
+  "up250": {
+    "header": {
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 64
+      },
+      "transform": "none",
+      "boxShadow": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "width": "1296px",
+      "height": "44px",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "padding": "0px 72px",
+      "margin": "0px"
+    },
+    "buttons": [
+      {
+        "host": {
+          "rect": {
+            "x": 72,
+            "y": 18,
+            "width": 48,
+            "height": 48
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "2px",
+          "margin": "0px 8px 0px 0px"
+        },
+        "button": {
+          "rect": {
+            "x": 71,
+            "y": 15,
+            "width": 44,
+            "height": 44
+          },
+          "transform": "matrix(1, 0, 0, 1, -3, -5)",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 3px 5px 0px 0px, rgb(255, 51, 51) 3px 5px 0px 0px, rgba(0, 0, 0, 0.24) 8px 7px 0px 2px",
+          "color": "rgb(255, 51, 51)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        }
+      },
+      {
+        "host": {
+          "rect": {
+            "x": 128,
+            "y": 18,
+            "width": 48,
+            "height": 48
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "2px",
+          "margin": "0px 8px 0px 0px"
+        },
+        "button": {
+          "rect": {
+            "x": 129.68487548828125,
+            "y": 19.47479248046875,
+            "width": 44,
+            "height": 44
+          },
+          "transform": "matrix(1, 0, 0, 1, -0.315125, -0.525208)",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 0.315125px 0.525208px 0px 0px, rgb(255, 51, 51) 0.315125px 0.525208px 0px 0px, rgba(0, 0, 0, 0.17) 0.840332px 0.735291px 0.894958px 0.210083px",
+          "color": "rgb(255, 51, 51)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        }
+      },
+      {
+        "host": {
+          "rect": {
+            "x": 184,
+            "y": -82,
+            "width": 48,
+            "height": 48
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, -100)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "2px",
+          "margin": "0px 8px 0px 0px"
+        },
+        "button": {
+          "rect": {
+            "x": 183,
+            "y": -85,
+            "width": 44,
+            "height": 44
+          },
+          "transform": "matrix(1, 0, 0, 1, -3, -5)",
+          "boxShadow": "rgba(0, 0, 0, 0.3) 3px 5px 0px 0px, rgb(255, 51, 51) 3px 5px 0px 0px, rgba(0, 0, 0, 0.24) 8px 7px 0px 2px",
+          "color": "rgb(255, 51, 51)",
+          "width": "44px",
+          "height": "44px",
+          "fontSize": "32px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        }
+      }
+    ],
+    "counter": {
+      "host": {
+        "rect": {
+          "x": 1187,
+          "y": 12,
+          "width": 181,
+          "height": 60
+        },
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "boxShadow": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "width": "181px",
+        "height": "60px",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "padding": "0px",
+        "margin": "0px"
+      },
+      "main": {
+        "rect": {
+          "x": 1187,
+          "y": -38,
+          "width": 181,
+          "height": 160
+        },
+        "transform": "none",
+        "boxShadow": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "width": "181px",
+        "height": "60px",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "padding": "50px 0px",
+        "margin": "-50px 0px"
+      },
+      "children": [
+        {
+          "tag": "svg",
+          "cls": null,
+          "text": "",
+          "rect": {
+            "x": 1180,
+            "y": 12,
+            "width": 15,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "15px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px -7px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "inner",
+          "text": "61\n      \n      Days\n    \n    \n      21\n      \n      Hrs\n    \n    \n      24\n      \n      Min\n    \n    \n      51\n      \n      Sec",
+          "rect": {
+            "x": 1188,
+            "y": 12,
+            "width": 179,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "179px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box  ",
+          "text": "61\n      \n      Days",
+          "rect": {
+            "x": 1188,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "61",
+          "rect": {
+            "x": 1188,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1188,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Days",
+          "rect": {
+            "x": 1188,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box ",
+          "text": "21\n      \n      Hrs",
+          "rect": {
+            "x": 1233,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px 0px 0px 1px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "21",
+          "rect": {
+            "x": 1233,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1233,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Hrs",
+          "rect": {
+            "x": 1233,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box ",
+          "text": "24\n      \n      Min",
+          "rect": {
+            "x": 1278,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px 0px 0px 1px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "24",
+          "rect": {
+            "x": 1278,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1278,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Min",
+          "rect": {
+            "x": 1278,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "counter-box ",
+          "text": "51\n      \n      Sec",
+          "rect": {
+            "x": 1323,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px 0px 0px 1px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder active",
+          "text": "51",
+          "rect": {
+            "x": 1323,
+            "y": 12,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "DIV",
+          "cls": "holder prev",
+          "text": "",
+          "rect": {
+            "x": 1323,
+            "y": 72,
+            "width": 44,
+            "height": 60
+          },
+          "transform": "matrix(1, 0, 0, 1, 0, 60)",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "60px",
+          "fontSize": "26px",
+          "lineHeight": "52px",
+          "padding": "0px",
+          "margin": "0px 0px 8px"
+        },
+        {
+          "tag": "H2",
+          "cls": null,
+          "text": "Sec",
+          "rect": {
+            "x": 1323,
+            "y": 56,
+            "width": 44,
+            "height": 8
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "44px",
+          "height": "8px",
+          "fontSize": "8px",
+          "lineHeight": "8px",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        {
+          "tag": "svg",
+          "cls": null,
+          "text": "",
+          "rect": {
+            "x": 1360,
+            "y": 12,
+            "width": 15,
+            "height": 60
+          },
+          "transform": "none",
+          "boxShadow": "none",
+          "color": "rgba(0, 0, 0, 0)",
+          "width": "15px",
+          "height": "60px",
+          "fontSize": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "margin": "0px -7px"
+        }
+      ]
+    }
+  }
+}

@@ -130,9 +130,10 @@ impl View {
         {
             self.entity(a, g, e, sx, ground);
         }
+        let state_time = (g.time - g.player.state_since) as f32;
         let (image, frame) = match g.player.state {
             State::Running => {
-                let phase = (time / (0.75 / speed)).fract();
+                let phase = (state_time / (0.75 / speed)).fract();
                 (
                     "hero.svg",
                     if phase >= 0.88 {
@@ -142,12 +143,15 @@ impl View {
                     },
                 )
             }
-            State::Sliding => ("hero-slide.svg", ((time / 0.5).fract() * 4.).floor() as u32),
+            State::Sliding => (
+                "hero-slide.svg",
+                ((state_time / 0.5).fract() * 4.).floor() as u32,
+            ),
             State::Jumping | State::JumpStart => ("hero-jump-01.svg", 0),
             State::Collision => ("hero-crash.svg", 0),
         };
         let alpha = if g.player.state == State::Collision {
-            0.5 + 0.5 * (time / 0.2).fract()
+            0.5 + 0.5 * (state_time / 0.2).fract()
         } else {
             1.
         };
@@ -288,17 +292,6 @@ impl View {
             );
         }
         self.text(&format!("{}", g.level), sx - 91., ground - 65., 40., WHITE);
-        if g.paused || !g.playing {
-            self.rect(0., 55., 1800., 945., Color::new(0., 0., 0., 0.55));
-            self.text(
-                if g.paused { "Paused" } else { "Game Over" },
-                680.,
-                450.,
-                80.,
-                WHITE,
-            );
-            self.text("Press R to play again", 670., 530., 36., WHITE);
-        }
     }
     fn entity(&self, a: &Assets, g: &Runner, e: &Entity, sx: f32, ground: f32) {
         let x = sx + (e.x - g.distance) as f32;

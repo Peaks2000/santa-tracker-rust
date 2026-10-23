@@ -1,10 +1,14 @@
 mod assets;
 mod capture;
 mod chrome;
+mod interlude;
 mod jetpack_view;
+mod loader_animation;
+mod overlay;
 mod render;
 mod selfie_view;
 mod sound;
+mod ui_render;
 mod village;
 
 use macroquad::prelude::*;
@@ -21,6 +25,9 @@ struct Options {
     scene: String,
     scroll: f32,
     beard_file: Option<PathBuf>,
+    clock_ms: Option<u64>,
+    width: i32,
+    height: i32,
 }
 fn options() -> Result<Option<Options>, String> {
     let mut args = std::env::args().skip(1);
@@ -40,6 +47,9 @@ fn options() -> Result<Option<Options>, String> {
         scene: "modvil".into(),
         scroll: 0.,
         beard_file: None,
+        clock_ms: None,
+        width: 1440,
+        height: 800,
     };
     let exe = std::env::current_exe().map_err(|e| e.to_string())?;
     if let Some(dir) = exe.parent() {
@@ -50,10 +60,33 @@ fn options() -> Result<Option<Options>, String> {
     while let Some(arg) = args.next() {
         match arg.as_str() {
             "--help" | "-h" => {
-                println!("Santa Tracker — native Rust port (in development)\n\nAvailable: village, Runner, Elf Jetpack and Santa Selfie.\n\n--assets PATH       Original static assets directory\n--seed TEXT         Deterministic game seed\n--mute              Start without audio\n--scene NAME        modvil, runner, jetpack or santaselfie\n--scroll PIXELS     Initial village scroll position\n--beard-file PATH   Restore an original-format saved beard\n--advance SECONDS   Advance the selected scene before rendering\n--frames COUNT      Exit after COUNT frames (for native render checks)\n--screenshot PATH   Save the final rendered frame\n\nControls: Space/Up jump (twice), Down slide, P pause, R restart, M mute, Escape home");
+                println!("Santa Tracker — native Rust port (in development)\n\nAvailable: village, Runner, Elf Jetpack and Santa Selfie.\n\n--assets PATH       Original static assets directory\n--seed TEXT         Deterministic game seed\n--mute              Start without audio\n--scene NAME        modvil, runner, jetpack or santaselfie\n--scroll PIXELS     Initial village scroll position\n--beard-file PATH   Restore an original-format saved beard\n--advance SECONDS   Advance the selected scene before rendering\n--frames COUNT      Exit after COUNT frames (for native render checks)\n--screenshot PATH   Save the final rendered frame (or F12 live)\n--width PIXELS      Initial window width\n--height PIXELS     Initial window height\n--clock-ms EPOCH    Deterministic countdown clock for comparisons\n\nControls: Space/Up jump (twice), Down slide, P pause, R restart, M mute, Escape home");
                 return Ok(None);
             }
             "--mute" => out.mute = true,
+            "--clock-ms" => {
+                out.clock_ms = Some(
+                    args.next()
+                        .ok_or("Missing clock milliseconds")?
+                        .parse()
+                        .map_err(|_| "Invalid clock milliseconds")?,
+                )
+            }
+            "--width" | "--height" => {
+                let value: i32 = args
+                    .next()
+                    .ok_or("Missing window size")?
+                    .parse()
+                    .map_err(|_| "Invalid window size")?;
+                if !(320..=4096).contains(&value) {
+                    return Err("Window size must be between 320 and 4096".into());
+                }
+                if arg == "--width" {
+                    out.width = value;
+                } else {
+                    out.height = value;
+                }
+            }
             "--assets" | "--seed" | "--scene" | "--advance" | "--frames" | "--screenshot"
             | "--scroll" | "--beard-file" => {
                 let value = args.next().ok_or_else(|| format!("{arg} needs a value"))?;
@@ -103,8 +136,8 @@ fn main() {
         Ok(Some(opts)) => macroquad::Window::from_config(
             Conf {
                 window_title: "Santa Tracker — Rust port in development".into(),
-                window_width: 1440,
-                window_height: 800,
+                window_width: opts.width,
+                window_height: opts.height,
                 high_dpi: true,
                 sample_count: 4,
                 ..Default::default()
@@ -124,7 +157,7 @@ async fn run(opts: Options) {
     let mut sound = sound::Sound::new(opts.mute);
     let engine = thorvg::Thorvg::init(0).expect("Native animation engine initialization");
     let mut village = village::Village::new(&engine).expect("Original village fonts and data");
-    let mut chrome = chrome::Chrome::new().expect("Original toolbar icons and fonts");
+    let mut chrome = chrome::Chrome::new(opts.clock_ms).expect("Original toolbar icons and fonts");
     let mut jet_view = jetpack_view::JetpackView::new().expect("Jetpack fonts");
     let mut selfie_view = selfie_view::SelfieView::new().expect("Selfie rendering materials");
     let mut runner = Runner::new(&opts.seed);
@@ -162,7 +195,18 @@ async fn run(opts: Options) {
     let mut unavailable: Option<String> = None;
     let mut accumulated = 0.;
     let mut frames = 0;
+    let mut interlude = interlude::Interlude::new();
+    let mut loader_animation = loader_animation::LoaderAnimation::new(assets.root.clone());
+    let mut overlay = overlay::Overlay::new().expect("Original pause overlay");
+    let mut scene_filter = overlay::SceneFilter::new().expect("Original disabled scene filter");
     loop {
+        if let Some((scene, result)) = assets.poll_scene_load() {
+            if let Err(error) = result {
+                eprintln!("Scene {scene}: {error}");
+                std::process::exit(1);
+            }
+            loaded.insert(scene);
+        }
         if is_key_pressed(KeyCode::Escape) {
             if unavailable.is_some() {
                 unavailable = None;
@@ -171,11 +215,9 @@ async fn run(opts: Options) {
             } else if village.menu {
                 village.menu = false;
             } else if route != "modvil" {
-                route = "modvil".into();
-                sound.stop();
-                village
-                    .sounds
-                    .extend(["music_start_village", "village_start"]);
+                if interlude.begin("modvil".into()) {
+                    sound.trigger("menu_transition_game_in", &assets.root);
+                }
             } else {
                 break;
             }
@@ -224,6 +266,7 @@ async fn run(opts: Options) {
             }
         }
         let active = unavailable.is_none()
+            && !interlude.busy()
             && match route.as_str() {
                 "runner" => runner.playing && !runner.paused,
                 "jetpack" => jetpack.playing && !jetpack.paused,
@@ -285,13 +328,17 @@ async fn run(opts: Options) {
                 for event in runner.sounds.drain(..) {
                     sound.trigger(event, &assets.root);
                 }
+                scene_filter.begin();
                 render::View::new().runner(&assets, &runner);
+                scene_filter.finish(runner.paused || !runner.playing);
             }
             "jetpack" => {
                 for event in jetpack.sounds.drain(..) {
                     sound.trigger(event, &assets.root);
                 }
+                scene_filter.begin();
                 jet_view.draw(&assets, &jetpack);
+                scene_filter.finish(jetpack.paused || !jetpack.playing);
             }
             "santaselfie" => {
                 for event in selfie.sounds.drain(..) {
@@ -301,12 +348,48 @@ async fn run(opts: Options) {
             }
             _ => {}
         }
+        if route == "runner" || route == "jetpack" {
+            let (paused, gameover) = if route == "runner" {
+                (runner.paused, !runner.playing)
+            } else {
+                (jetpack.paused, !jetpack.playing)
+            };
+            if let Some(action) =
+                overlay.draw(&mut assets, &chrome, &mut village, &route, paused, gameover)
+            {
+                match action {
+                    overlay::Action::Resume => {
+                        if route == "runner" {
+                            runner.paused = false;
+                        } else {
+                            jetpack.paused = false;
+                        }
+                        sound.paused(false);
+                    }
+                    overlay::Action::Restart => {
+                        sound.stop();
+                        if route == "runner" {
+                            runner = Runner::new(&opts.seed);
+                        } else {
+                            let (w, h) = jetpack_view::JetpackView::dimensions();
+                            jetpack = Jetpack::new(&opts.seed, w, h);
+                        }
+                        accumulated = 0.;
+                    }
+                    overlay::Action::Home => selected = Some("modvil".into()),
+                    overlay::Action::Route(target) => selected = Some(target),
+                }
+            }
+            for event in overlay.sounds.drain(..) {
+                sound.trigger(event, &assets.root);
+            }
+        }
         let hud = match route.as_str() {
             "runner" => Some(chrome::GameHud {
                 playing: runner.playing,
                 paused: runner.paused,
                 score: runner.score as i64,
-                countdown: runner.countdown,
+                countdown: runner.countdown.ceil(),
                 level: None,
                 badge: true,
                 can_pause: true,
@@ -315,7 +398,7 @@ async fn run(opts: Options) {
                 playing: jetpack.playing,
                 paused: jetpack.paused,
                 score: jetpack.score,
-                countdown: jetpack.countdown,
+                countdown: jetpack.countdown.ceil(),
                 level: Some(jetpack.level + 1),
                 badge: true,
                 can_pause: true,
@@ -360,9 +443,39 @@ async fn run(opts: Options) {
                     accumulated = 0.;
                 }
             }
-            sound.trigger("generic_button_click", &assets.root);
+        }
+        for event in chrome.sounds.drain(..) {
+            sound.trigger(event, &assets.root);
         }
         if let Some(target) = selected {
+            if ["modvil", "runner", "jetpack", "santaselfie"].contains(&target.as_str()) {
+                if !interlude.busy() {
+                    if target != "modvil" && !loaded.contains(&target) {
+                        if let Err(error) = assets.start_scene_load(&target) {
+                            eprintln!("Scene {target}: {error}");
+                            std::process::exit(1);
+                        }
+                    }
+                    interlude.begin(target);
+                    sound.trigger("menu_transition_game_in", &assets.root);
+                }
+            } else {
+                unavailable = Some(
+                    village
+                        .data
+                        .scene_names
+                        .get(&target)
+                        .cloned()
+                        .unwrap_or(target),
+                );
+            }
+        }
+        let scene_ready = interlude
+            .target()
+            .is_some_and(|target| target == "modvil" || loaded.contains(target));
+        if let Some(target) = if scene_ready { interlude.ready() } else { None } {
+            interlude.hide();
+
             if ["modvil", "runner", "jetpack", "santaselfie"].contains(&target.as_str()) {
                 sound.stop();
                 accumulated = 0.;
@@ -385,6 +498,7 @@ async fn run(opts: Options) {
                     _ => {}
                 }
                 route = target;
+                sound.trigger("menu_transition_game_out", &assets.root);
             } else {
                 unavailable = Some(
                     village
@@ -430,6 +544,15 @@ async fn run(opts: Options) {
                         ..Default::default()
                     },
                 );
+            }
+        }
+        if let Some(layers) = interlude.layers() {
+            for (y, color) in layers {
+                if let Some(color) = color {
+                    draw_rectangle(0., y, screen_width(), screen_height(), color);
+                } else {
+                    loader_animation.draw(y, interlude.animation_ratio(99. / 24.));
+                }
             }
         }
         if is_key_pressed(KeyCode::F12) {

@@ -259,6 +259,8 @@
   "frames": {
     "modvil-village__elfski": [
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0,
         "x": 0,
         "y": 0,
@@ -268,6 +270,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.3,
         "x": -500,
         "y": 20,
@@ -277,6 +281,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.4,
         "x": -750,
         "y": 190,
@@ -286,6 +292,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.5,
         "x": -1000,
         "y": 260,
@@ -295,6 +303,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 1,
         "x": -2150,
         "y": 260,
@@ -306,6 +316,8 @@
     ],
     "glitch-anim-1-horizontal": [
       {
+        "clip_top": 0.02,
+        "clip_bottom": 0.05,
         "at": 0,
         "x": 0,
         "y": 0,
@@ -315,6 +327,8 @@
         "clip": "polygon(0 2%, 100% 2%, 100% 5%, 0 5%)"
       },
       {
+        "clip_top": 0.15,
+        "clip_bottom": 0.15,
         "at": 0.1,
         "x": 0,
         "y": 0,
@@ -324,6 +338,8 @@
         "clip": "polygon(0 15%, 100% 15%, 100% 15%, 0 15%)"
       },
       {
+        "clip_top": 0.1,
+        "clip_bottom": 0.2,
         "at": 0.2,
         "x": 0,
         "y": 0,
@@ -333,6 +349,8 @@
         "clip": "polygon(0 10%, 100% 10%, 100% 20%, 0 20%)"
       },
       {
+        "clip_top": 0.01,
+        "clip_bottom": 0.02,
         "at": 0.3,
         "x": 0,
         "y": 0,
@@ -342,6 +360,8 @@
         "clip": "polygon(0 1%, 100% 1%, 100% 2%, 0 2%)"
       },
       {
+        "clip_top": 0.33,
+        "clip_bottom": 0.33,
         "at": 0.4,
         "x": 0,
         "y": 0,
@@ -351,6 +371,8 @@
         "clip": "polygon(0 33%, 100% 33%, 100% 33%, 0 33%)"
       },
       {
+        "clip_top": 0.44,
+        "clip_bottom": 0.44,
         "at": 0.5,
         "x": 0,
         "y": 0,
@@ -360,6 +382,8 @@
         "clip": "polygon(0 44%, 100% 44%, 100% 44%, 0 44%)"
       },
       {
+        "clip_top": 0.5,
+        "clip_bottom": 0.2,
         "at": 0.6,
         "x": 0,
         "y": 0,
@@ -369,6 +393,8 @@
         "clip": "polygon(0 50%, 100% 50%, 100% 20%, 0 20%)"
       },
       {
+        "clip_top": 0.7,
+        "clip_bottom": 0.7,
         "at": 0.7,
         "x": 0,
         "y": 0,
@@ -378,6 +404,8 @@
         "clip": "polygon(0 70%, 100% 70%, 100% 70%, 0 70%)"
       },
       {
+        "clip_top": 0.8,
+        "clip_bottom": 0.8,
         "at": 0.8,
         "x": 0,
         "y": 0,
@@ -387,6 +415,8 @@
         "clip": "polygon(0 80%, 100% 80%, 100% 80%, 0 80%)"
       },
       {
+        "clip_top": 0.5,
+        "clip_bottom": 0.55,
         "at": 0.9,
         "x": 0,
         "y": 0,
@@ -396,6 +426,8 @@
         "clip": "polygon(0 50%, 100% 50%, 100% 55%, 0 55%)"
       },
       {
+        "clip_top": 0.7,
+        "clip_bottom": 0.8,
         "at": 1,
         "x": 0,
         "y": 0,
@@ -407,6 +439,8 @@
     ],
     "glitch-anim-2-horizontal": [
       {
+        "clip_top": 0.25,
+        "clip_bottom": 0.3,
         "at": 0,
         "x": 0,
         "y": 0,
@@ -416,6 +450,8 @@
         "clip": "polygon(0 25%, 100% 25%, 100% 30%, 0 30%)"
       },
       {
+        "clip_top": 0.03,
+        "clip_bottom": 0.03,
         "at": 0.15,
         "x": 0,
         "y": 0,
@@ -425,6 +461,8 @@
         "clip": "polygon(0 3%, 100% 3%, 100% 3%, 0 3%)"
       },
       {
+        "clip_top": 0.05,
+        "clip_bottom": 0.2,
         "at": 0.22,
         "x": 0,
         "y": 0,
@@ -434,6 +472,8 @@
         "clip": "polygon(0 5%, 100% 5%, 100% 20%, 0 20%)"
       },
       {
+        "clip_top": 0.2,
+        "clip_bottom": 0.2,
         "at": 0.31,
         "x": 0,
         "y": 0,
@@ -443,6 +483,8 @@
         "clip": "polygon(0 20%, 100% 20%, 100% 20%, 0 20%)"
       },
       {
+        "clip_top": 0.4,
+        "clip_bottom": 0.4,
         "at": 0.45,
         "x": 0,
         "y": 0,
@@ -452,6 +494,8 @@
         "clip": "polygon(0 40%, 100% 40%, 100% 40%, 0 40%)"
       },
       {
+        "clip_top": 0.52,
+        "clip_bottom": 0.59,
         "at": 0.51,
         "x": 0,
         "y": 0,
@@ -461,6 +505,8 @@
         "clip": "polygon(0 52%, 100% 52%, 100% 59%, 0 59%)"
       },
       {
+        "clip_top": 0.6,
+        "clip_bottom": 0.6,
         "at": 0.63,
         "x": 0,
         "y": 0,
@@ -470,6 +516,8 @@
         "clip": "polygon(0 60%, 100% 60%, 100% 60%, 0 60%)"
       },
       {
+        "clip_top": 0.75,
+        "clip_bottom": 0.75,
         "at": 0.76,
         "x": 0,
         "y": 0,
@@ -479,6 +527,8 @@
         "clip": "polygon(0 75%, 100% 75%, 100% 75%, 0 75%)"
       },
       {
+        "clip_top": 0.65,
+        "clip_bottom": 0.4,
         "at": 0.81,
         "x": 0,
         "y": 0,
@@ -488,6 +538,8 @@
         "clip": "polygon(0 65%, 100% 65%, 100% 40%, 0 40%)"
       },
       {
+        "clip_top": 0.45,
+        "clip_bottom": 0.5,
         "at": 0.94,
         "x": 0,
         "y": 0,
@@ -497,6 +549,8 @@
         "clip": "polygon(0 45%, 100% 45%, 100% 50%, 0 50%)"
       },
       {
+        "clip_top": 0.14,
+        "clip_bottom": 0.33,
         "at": 1,
         "x": 0,
         "y": 0,
@@ -508,6 +562,8 @@
     ],
     "glitch-anim-3-horizontal": [
       {
+        "clip_top": 0.01,
+        "clip_bottom": 0.03,
         "at": 0,
         "x": 0,
         "y": 0,
@@ -517,6 +573,8 @@
         "clip": "polygon(0 1%, 100% 1%, 100% 3%, 0 3%)"
       },
       {
+        "clip_top": 0.1,
+        "clip_bottom": 0.09,
         "at": 0.05,
         "x": 0,
         "y": 0,
@@ -526,6 +584,8 @@
         "clip": "polygon(0 10%, 100% 10%, 100% 9%, 0 9%)"
       },
       {
+        "clip_top": 0.05,
+        "clip_bottom": 0.06,
         "at": 0.1,
         "x": 0,
         "y": 0,
@@ -535,6 +595,8 @@
         "clip": "polygon(0 5%, 100% 5%, 100% 6%, 0 6%)"
       },
       {
+        "clip_top": 0.2,
+        "clip_bottom": 0.2,
         "at": 0.25,
         "x": 0,
         "y": 0,
@@ -544,6 +606,8 @@
         "clip": "polygon(0 20%, 100% 20%, 100% 20%, 0 20%)"
       },
       {
+        "clip_top": 0.1,
+        "clip_bottom": 0.1,
         "at": 0.27,
         "x": 0,
         "y": 0,
@@ -553,6 +617,8 @@
         "clip": "polygon(0 10%, 100% 10%, 100% 10%, 0 10%)"
       },
       {
+        "clip_top": 0.3,
+        "clip_bottom": 0.25,
         "at": 0.3,
         "x": 0,
         "y": 0,
@@ -562,6 +628,8 @@
         "clip": "polygon(0 30%, 100% 30%, 100% 25%, 0 25%)"
       },
       {
+        "clip_top": 0.15,
+        "clip_bottom": 0.16,
         "at": 0.33,
         "x": 0,
         "y": 0,
@@ -571,6 +639,8 @@
         "clip": "polygon(0 15%, 100% 15%, 100% 16%, 0 16%)"
       },
       {
+        "clip_top": 0.4,
+        "clip_bottom": 0.39,
         "at": 0.37,
         "x": 0,
         "y": 0,
@@ -580,6 +650,8 @@
         "clip": "polygon(0 40%, 100% 40%, 100% 39%, 0 39%)"
       },
       {
+        "clip_top": 0.2,
+        "clip_bottom": 0.21,
         "at": 0.4,
         "x": 0,
         "y": 0,
@@ -589,6 +661,8 @@
         "clip": "polygon(0 20%, 100% 20%, 100% 21%, 0 21%)"
       },
       {
+        "clip_top": 0.6,
+        "clip_bottom": 0.55,
         "at": 0.45,
         "x": 0,
         "y": 0,
@@ -598,6 +672,8 @@
         "clip": "polygon(0 60%, 100% 60%, 100% 55%, 0 55%)"
       },
       {
+        "clip_top": 0.3,
+        "clip_bottom": 0.31,
         "at": 0.5,
         "x": 0,
         "y": 0,
@@ -607,6 +683,8 @@
         "clip": "polygon(0 30%, 100% 30%, 100% 31%, 0 31%)"
       },
       {
+        "clip_top": 0.7,
+        "clip_bottom": 0.69,
         "at": 0.53,
         "x": 0,
         "y": 0,
@@ -616,6 +694,8 @@
         "clip": "polygon(0 70%, 100% 70%, 100% 69%, 0 69%)"
       },
       {
+        "clip_top": 0.4,
+        "clip_bottom": 0.41,
         "at": 0.57,
         "x": 0,
         "y": 0,
@@ -625,6 +705,8 @@
         "clip": "polygon(0 40%, 100% 40%, 100% 41%, 0 41%)"
       },
       {
+        "clip_top": 0.8,
+        "clip_bottom": 0.75,
         "at": 0.6,
         "x": 0,
         "y": 0,
@@ -634,6 +716,8 @@
         "clip": "polygon(0 80%, 100% 80%, 100% 75%, 0 75%)"
       },
       {
+        "clip_top": 0.5,
+        "clip_bottom": 0.51,
         "at": 0.65,
         "x": 0,
         "y": 0,
@@ -643,6 +727,8 @@
         "clip": "polygon(0 50%, 100% 50%, 100% 51%, 0 51%)"
       },
       {
+        "clip_top": 0.9,
+        "clip_bottom": 0.9,
         "at": 0.7,
         "x": 0,
         "y": 0,
@@ -652,6 +738,8 @@
         "clip": "polygon(0 90%, 100% 90%, 100% 90%, 0 90%)"
       },
       {
+        "clip_top": 0.6,
+        "clip_bottom": 0.6,
         "at": 0.73,
         "x": 0,
         "y": 0,
@@ -661,6 +749,8 @@
         "clip": "polygon(0 60%, 100% 60%, 100% 60%, 0 60%)"
       },
       {
+        "clip_top": 1,
+        "clip_bottom": 0.99,
         "at": 0.8,
         "x": 0,
         "y": 0,
@@ -670,6 +760,8 @@
         "clip": "polygon(0 100%, 100% 100%, 100% 99%, 0 99%)"
       },
       {
+        "clip_top": 0.7,
+        "clip_bottom": 0.71,
         "at": 1,
         "x": 0,
         "y": 0,
@@ -681,6 +773,8 @@
     ],
     "elfbike1": [
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0,
         "x": -945,
         "y": -145,
@@ -690,6 +784,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.1,
         "x": -945,
         "y": -145,
@@ -699,6 +795,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.25,
         "x": -425,
         "y": 25,
@@ -708,6 +806,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.5,
         "x": 335,
         "y": -15,
@@ -717,6 +817,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.65,
         "x": 745,
         "y": 75,
@@ -726,6 +828,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.9,
         "x": 1005,
         "y": 465,
@@ -735,6 +839,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 1,
         "x": 1005,
         "y": 465,
@@ -746,6 +852,8 @@
     ],
     "elfbike2": [
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0,
         "x": -1015,
         "y": -45,
@@ -755,6 +863,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.16,
         "x": -1015,
         "y": -45,
@@ -764,6 +874,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.33,
         "x": -495,
         "y": 55,
@@ -773,6 +885,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.49,
         "x": 115,
         "y": -35,
@@ -782,6 +896,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.62,
         "x": 465,
         "y": -25,
@@ -791,6 +907,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.85,
         "x": 875,
         "y": 485,
@@ -800,6 +918,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 1,
         "x": 875,
         "y": 485,
@@ -811,6 +931,8 @@
     ],
     "elfbike3": [
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0,
         "x": -1355,
         "y": -56,
@@ -820,6 +942,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.14,
         "x": -1355,
         "y": -56,
@@ -829,6 +953,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.32,
         "x": -695,
         "y": 50,
@@ -838,6 +964,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.5,
         "x": -205,
         "y": -3,
@@ -847,6 +975,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.65,
         "x": 275,
         "y": 47,
@@ -856,6 +986,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.9,
         "x": 685,
         "y": 477,
@@ -865,6 +997,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 1,
         "x": 685,
         "y": 477,
@@ -876,6 +1010,8 @@
     ],
     "elfbike4": [
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0,
         "x": -1135,
         "y": -75,
@@ -885,6 +1021,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.26,
         "x": -1135,
         "y": -75,
@@ -894,6 +1032,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.48,
         "x": -655,
         "y": 55,
@@ -903,6 +1043,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.7,
         "x": -35,
         "y": -35,
@@ -912,6 +1054,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.84,
         "x": 435,
         "y": 65,
@@ -921,6 +1065,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.99,
         "x": 1015,
         "y": 515,
@@ -930,6 +1076,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 1,
         "x": 1015,
         "y": 515,
@@ -941,6 +1089,8 @@
     ],
     "elfbike5": [
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0,
         "x": -1255,
         "y": -65,
@@ -950,6 +1100,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.2,
         "x": -1255,
         "y": -65,
@@ -959,6 +1111,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.4,
         "x": -615,
         "y": 15,
@@ -968,6 +1122,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.6,
         "x": -45,
         "y": -15,
@@ -977,6 +1133,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.75,
         "x": 445,
         "y": 15,
@@ -986,6 +1144,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.95,
         "x": 715,
         "y": 505,
@@ -995,6 +1155,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 1,
         "x": 715,
         "y": 505,
@@ -1006,6 +1168,8 @@
     ],
     "elfbike6": [
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0,
         "x": -865,
         "y": -115,
@@ -1015,6 +1179,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.2,
         "x": -865,
         "y": -115,
@@ -1024,6 +1190,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.45,
         "x": -245,
         "y": 65,
@@ -1033,6 +1201,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.65,
         "x": 325,
         "y": -45,
@@ -1042,6 +1212,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.8,
         "x": 785,
         "y": 65,
@@ -1051,6 +1223,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.97,
         "x": 1215,
         "y": 515,
@@ -1060,6 +1234,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 1,
         "x": 1215,
         "y": 515,
@@ -1071,6 +1247,8 @@
     ],
     "rotate": [
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0,
         "x": 0,
         "y": 0,
@@ -1080,6 +1258,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 1,
         "x": 0,
         "y": 0,
@@ -1091,6 +1271,8 @@
     ],
     "elfchair": [
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0,
         "x": -1555,
         "y": -165,
@@ -1100,6 +1282,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.01,
         "x": -1555,
         "y": -165,
@@ -1109,6 +1293,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.15,
         "x": -965,
         "y": 35,
@@ -1118,6 +1304,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.4,
         "x": -25,
         "y": -45,
@@ -1127,6 +1315,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.47,
         "x": 204,
         "y": 35,
@@ -1136,6 +1326,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.65,
         "x": 534,
         "y": 435,
@@ -1145,6 +1337,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 1,
         "x": 534,
         "y": 435,
@@ -1156,6 +1350,8 @@
     ],
     "elfboard1": [
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0,
         "x": -1555,
         "y": -175,
@@ -1165,6 +1361,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.06,
         "x": -1555,
         "y": -175,
@@ -1174,6 +1372,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.25,
         "x": -935,
         "y": -15,
@@ -1183,6 +1383,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.475,
         "x": -215,
         "y": -115,
@@ -1192,6 +1394,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.6,
         "x": 150,
         "y": 0,
@@ -1201,6 +1405,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.72,
         "x": 305,
         "y": 415,
@@ -1210,6 +1416,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 1,
         "x": 305,
         "y": 415,
@@ -1221,6 +1429,8 @@
     ],
     "elfboard2": [
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0,
         "x": -1650,
         "y": -150,
@@ -1230,6 +1440,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.04,
         "x": -1650,
         "y": -150,
@@ -1239,6 +1451,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.2,
         "x": -1060,
         "y": -10,
@@ -1248,6 +1462,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.4,
         "x": -500,
         "y": -50,
@@ -1257,6 +1473,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.55,
         "x": 0,
         "y": 0,
@@ -1266,6 +1484,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.7,
         "x": 410,
         "y": 430,
@@ -1275,6 +1495,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 1,
         "x": 410,
         "y": 430,
@@ -1286,6 +1508,8 @@
     ],
     "waterspout-bottom": [
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0,
         "x": 0,
         "y": 130,
@@ -1295,6 +1519,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.3,
         "x": 0,
         "y": 0,
@@ -1304,6 +1530,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.8,
         "x": 0,
         "y": 0,
@@ -1313,6 +1541,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 1,
         "x": 0,
         "y": 130,
@@ -1324,6 +1554,8 @@
     ],
     "waterspout-top": [
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0,
         "x": 0,
         "y": 145,
@@ -1333,6 +1565,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.33,
         "x": 0,
         "y": 0,
@@ -1342,6 +1576,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.4,
         "x": 0,
         "y": 5,
@@ -1351,6 +1587,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.5,
         "x": 0,
         "y": 0,
@@ -1360,6 +1598,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.6,
         "x": 0,
         "y": 5,
@@ -1369,6 +1609,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.7,
         "x": 0,
         "y": 0,
@@ -1378,6 +1620,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.8,
         "x": 0,
         "y": 5,
@@ -1387,6 +1631,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 1,
         "x": 0,
         "y": 145,
@@ -1398,6 +1644,8 @@
     ],
     "heavy-snow": [
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0,
         "x": 0,
         "y": 3,
@@ -1407,6 +1655,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.5,
         "x": -20,
         "y": 11,
@@ -1416,6 +1666,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 1,
         "x": 0,
         "y": 3,
@@ -1427,6 +1679,8 @@
     ],
     "peekaboo": [
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0,
         "x": 20,
         "y": 28,
@@ -1436,6 +1690,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.1,
         "x": 0,
         "y": 0,
@@ -1445,6 +1701,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.5,
         "x": 20,
         "y": 28,
@@ -1454,6 +1712,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 0.6,
         "x": 53,
         "y": 0,
@@ -1463,6 +1723,8 @@
         "clip": null
       },
       {
+        "clip_top": 0,
+        "clip_bottom": 1,
         "at": 1,
         "x": 20,
         "y": 28,

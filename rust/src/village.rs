@@ -1,4 +1,23 @@
-use crate::assets::Assets;
+use crate::{assets::Assets, ui_render::Shapes};
+use santa_tracker::ui::{CardPlayer, Ease, Transition};
+struct CardMotion {
+    lift: Transition<1>,
+    player: CardPlayer,
+    hover: bool,
+    auto_until: f64,
+    last_seen: f64,
+}
+impl Default for CardMotion {
+    fn default() -> Self {
+        Self {
+            lift: Transition::new([0.]),
+            player: CardPlayer::default(),
+            hover: false,
+            auto_until: 0.,
+            last_seen: 0.,
+        }
+    }
+}
 use macroquad::prelude::*;
 use santa_tracker::{
     animation::Clip,
@@ -34,7 +53,21 @@ pub struct Village<'a> {
     drag_start: Option<Vec2>,
     pub notice: Option<String>,
     pub sounds: Vec<&'static str>,
-    hovered: String,
+    shapes: Shapes,
+    play_motion: Transition<4>,
+    play_ripple: Transition<2>,
+    play_hover: bool,
+    play_active: bool,
+    family_motion: Transition<3>,
+    family_hover: bool,
+    cards: HashMap<String, CardMotion>,
+    random: santa_tracker::random::Random,
+    next_twiddle: f64,
+    draw_alpha: f32,
+    menu_opacity: Transition<1>,
+    menu_changed: f64,
+    last_menu: bool,
+    pending_route: Option<(String, f64)>,
 }
 fn color(s: &str) -> Color {
     let n = u32::from_str_radix(s.trim_start_matches('#'), 16).unwrap_or(0);
@@ -189,7 +222,21 @@ impl<'a> Village<'a> {
             drag_start: None,
             notice: None,
             sounds: vec!["music_start_village", "village_start"],
-            hovered: String::new(),
+            shapes: Shapes::new()?,
+            play_motion: Transition::new([-5., 3., 5., 13.]),
+            play_ripple: Transition::new([1., 0.05]),
+            play_hover: false,
+            play_active: false,
+            family_motion: Transition::new([0., 2., 2.]),
+            family_hover: false,
+            cards: HashMap::new(),
+            random: santa_tracker::random::Random::seeded("village-ui"),
+            next_twiddle: 8.,
+            draw_alpha: 1.,
+            menu_opacity: Transition::new([0.]),
+            menu_changed: 0.,
+            last_menu: false,
+            pending_route: None,
         })
     }
     fn text(&self, s: &str, x: f32, y: f32, size: f32, title: bool, c: Color, center: bool) {
@@ -209,7 +256,10 @@ impl<'a> Village<'a> {
                 font: Some(font),
                 font_size: pixels,
                 font_scale,
-                color: c,
+                color: Color {
+                    a: c.a * self.draw_alpha,
+                    ..c
+                },
                 ..Default::default()
             },
         );
@@ -290,8 +340,42 @@ impl<'a> Village<'a> {
             }
         }
         if let Some(texture) = &anim.texture {
-            image(texture, r);
+            draw_texture_ex(
+                texture,
+                r.x,
+                r.y,
+                Color::new(1., 1., 1., self.draw_alpha),
+                DrawTextureParams {
+                    dest_size: Some(r.size()),
+                    ..Default::default()
+                },
+            );
         }
+    }
+    pub fn overlay_cards(
+        &mut self,
+        assets: &mut Assets,
+        ids: &[String; 2],
+        rects: [Rect; 2],
+        opacity: f32,
+    ) -> Option<String> {
+        self.time += get_frame_time();
+        self.pressed = if is_mouse_button_released(MouseButton::Left) {
+            Some(Vec2::from(mouse_position()))
+        } else {
+            None
+        };
+        let mut result = None;
+        for (id, rect) in ids.iter().zip(rects) {
+            let card = Card {
+                id: id.clone(),
+                title: self.data.scene_names.get(id).cloned().unwrap_or(id.clone()),
+                x: 0.,
+                y: 0.,
+            };
+            result = result.or(self.card(assets, &card, rect, false, opacity, true));
+        }
+        result
     }
     fn clicked(&self, r: Rect) -> bool {
         self.pressed.is_some_and(|p| r.contains(p))
@@ -319,6 +403,23 @@ impl<'a> Village<'a> {
         let y = ((if mobile { s.mobile_y } else { s.y }) + key.y) * scale - self.scroll;
         let w = s.width * scale;
         let h = s.height * scale;
+        let viewport = Rect::new(
+            base,
+            0.,
+            width,
+            if mobile { 720. } else { 1050. } - self.scroll,
+        );
+        if s.name.starts_with("waterspout-") {
+            let r = Rect::new(
+                base + width / 2. - 55. * scale,
+                (607. + if mobile { 150. } else { 0. }) * scale - self.scroll,
+                117. * scale,
+                132. * scale,
+            );
+            let top = r.y.max(0.);
+            let bottom = r.bottom().min(viewport.h);
+            clip(Some(Rect::new(r.x, top, r.w, (bottom - top).max(0.))));
+        }
         if let Some(t) = self.texture(assets, &s.asset) {
             draw_texture_ex(
                 t,
@@ -333,6 +434,9 @@ impl<'a> Village<'a> {
                     ..Default::default()
                 },
             );
+        }
+        if s.name.starts_with("waterspout-") {
+            clip(Some(viewport));
         }
         if s.name == "elfchair" {
             let angle = key.rotation.to_radians();
@@ -379,7 +483,7 @@ impl<'a> Village<'a> {
             );
             draw_rectangle(base, y as f32 - self.scroll, width, 1.1, c);
         }
-        self.weather_time += get_frame_time().min(0.1);
+        self.weather_time += get_frame_time();
         while self.weather_time >= 1. / 60. || self.weather.flakes.is_empty() {
             self.weather.step(width as f64, height as f64);
             self.weather_time -= 1. / 60.;
@@ -435,6 +539,81 @@ impl<'a> Village<'a> {
                     Rect::new(base + (width - w) / 2., height - h - self.scroll, w, h),
                 );
             }
+            if layer == 3 {
+                let r = Rect::new(
+                    base + width / 2. - 477. * scale,
+                    (494. + if mobile { 150. } else { 0. }) * scale - self.scroll,
+                    84. * scale,
+                    133. * scale,
+                );
+                let glitch = self.time.rem_euclid(15.) < 5.;
+                if let Some(t) =
+                    self.texture(assets, "scenes/modvil/img/village/elf-glitch-front.svg")
+                {
+                    image(t, r);
+                }
+                if glitch {
+                    let t = self.time.rem_euclid(15.);
+                    let phase = (t / 3.).rem_euclid(2.);
+                    let phase = if phase > 1. { 2. - phase } else { phase };
+                    for (track, dx, dy, flip) in [
+                        ("glitch-anim-1-horizontal", 3., 0., false),
+                        ("glitch-anim-2-horizontal", -3., 0., false),
+                        ("glitch-anim-3-horizontal", 0., -7., true),
+                    ] {
+                        if let Some(frames) = self.data.frames.get(track) {
+                            let key = sample(frames, phase, "linear");
+                            let (top, bottom) = if flip {
+                                (
+                                    1. - key.clip_top.max(key.clip_bottom),
+                                    1. - key.clip_top.min(key.clip_bottom),
+                                )
+                            } else {
+                                (
+                                    key.clip_top.min(key.clip_bottom),
+                                    key.clip_top.max(key.clip_bottom),
+                                )
+                            };
+                            let bounds = Rect::new(
+                                r.x + dx * scale,
+                                (r.y + dy * scale + top * r.h).max(0.),
+                                r.w,
+                                ((bottom - top) * r.h).max(0.),
+                            );
+                            clip(Some(bounds));
+                            if let Some(tex) = self
+                                .texture(assets, "scenes/modvil/img/village/elf-glitch-front.svg")
+                            {
+                                draw_texture_ex(
+                                    tex,
+                                    r.x + dx * scale,
+                                    r.y + dy * scale,
+                                    WHITE,
+                                    DrawTextureParams {
+                                        dest_size: Some(r.size()),
+                                        flip_x: flip,
+                                        flip_y: flip,
+                                        ..Default::default()
+                                    },
+                                );
+                            }
+                        }
+                    }
+                    clip(Some(Rect::new(
+                        base,
+                        0.,
+                        width,
+                        (height - self.scroll).max(0.),
+                    )));
+                    // The fifth child has an unresolved flash animation in the
+                    // original stylesheet, so it remains the unmodified image.
+                    if let Some(t) =
+                        self.texture(assets, "scenes/modvil/img/village/elf-glitch-front.svg")
+                    {
+                        image(t, r);
+                    }
+                }
+            }
             for s in self
                 .data
                 .sprites
@@ -444,24 +623,12 @@ impl<'a> Village<'a> {
             {
                 self.sprite(assets, s, scale, base, width, mobile);
             }
-            if layer == 3 {
-                let r = Rect::new(
-                    base + width / 2. - 477. * scale,
-                    (494. + if mobile { 150. } else { 0. }) * scale - self.scroll,
-                    84. * scale,
-                    133. * scale,
-                );
-                if let Some(t) =
-                    self.texture(assets, "scenes/modvil/img/village/elf-glitch-front.svg")
-                {
-                    image(t, r);
-                }
-            }
         }
         clip(None);
         let center = base + width / 2.;
         if let Some(t) = self.texture(assets, "scenes/modvil/img/ornament.svg") {
-            image(t, Rect::new(center - 225., -self.scroll, 450., 250.));
+            let w = 250. * t.width() / t.height();
+            image(t, Rect::new(center - w / 2., -self.scroll, w, 250.));
         }
         let title_size = if screen_width() < 768. { 44. } else { 72. };
         image(
@@ -540,49 +707,71 @@ impl<'a> Village<'a> {
             true,
         );
         let r = Rect::new(center - 60., 261.171875 - self.scroll, 120., 120.);
-        draw_poly(
-            r.x + 60.,
-            r.y + 60.,
-            128,
-            65.,
-            0.,
-            Color::new(1., 1., 1., 0.1),
+        let mouse = Vec2::from(mouse_position());
+        let now = self.time as f64;
+        let hover = !self.menu && r.contains(mouse);
+        if hover && !self.play_hover {
+            self.sounds.push("generic_button_over");
+        }
+        if hover && is_mouse_button_pressed(MouseButton::Left) {
+            self.sounds.push("generic_button_click");
+        }
+        self.play_hover = hover;
+        let down = self.drag_start.is_some_and(|p| r.contains(p))
+            && is_mouse_button_down(MouseButton::Left);
+        let active = down || self.play_active;
+        self.play_motion.set(
+            now,
+            if active {
+                [0., 0., 0., 0.]
+            } else if hover {
+                [-7., 3., 7., 18.]
+            } else {
+                [-5., 3., 5., 13.]
+            },
+            if active { 0.15 } else { 0.25 },
+            Ease::InOut,
         );
-        draw_poly(
-            r.x + 60.,
-            r.y + 60.,
-            128,
-            65.,
-            0.,
-            Color::new(0., 0., 0., 0.05),
+        self.play_ripple.set(
+            now,
+            if active { [25., 0.] } else { [1., 0.05] },
+            if active { 0.3 } else { 0. },
+            Ease::Out,
         );
-        draw_poly(
-            r.x + 68.,
-            r.y + 68.,
-            128,
+        let m = self.play_motion.value(now);
+        let ripple = self.play_ripple.value(now);
+        let c = r.center();
+        self.shapes.circle(c, 76., Color::new(0., 0., 0., 0.05), 0.);
+        self.shapes.circle(
+            c,
+            65. + ripple[0] as f32,
+            Color::new(0., 0., 0., ripple[1] as f32),
+            0.,
+        );
+        self.shapes.circle(c, 65., WHITE, 0.);
+        let front = c + Vec2::splat(m[0] as f32);
+        self.shapes.circle(
+            front + Vec2::splat(m[3] as f32),
             60.,
-            0.,
             Color::new(0., 0., 0., 0.1),
-        );
-        draw_poly(r.x + 60., r.y + 60., 128, 65., 0., WHITE);
-        draw_poly(
-            r.x + 60.,
-            r.y + 60.,
-            128,
-            61.,
             0.,
-            Color::from_hex(0xe70058),
         );
-        draw_poly(
-            r.x + 55.,
-            r.y + 55.,
-            128,
+        self.shapes.circle(
+            front + Vec2::splat(m[2] as f32),
             60.,
+            Color::from_hex(0xe70058),
             0.,
-            Color::from_hex(0xff0160),
         );
+        self.shapes.circle(
+            front + Vec2::splat(m[1] as f32),
+            60. + (m[1] / 3.) as f32,
+            Color::from_hex(0xe70058),
+            0.,
+        );
+        self.shapes
+            .circle(front, 60., Color::from_hex(0xff0160), 0.);
         let angle = (-5f32).to_radians();
-        let o = vec3(center - 5., r.y + 55., 0.);
+        let o = vec3(center + m[0] as f32, r.y + 60. + m[0] as f32, 0.);
         unsafe {
             get_internal_gl().quad_gl.push_model_matrix(
                 Mat4::from_translation(o)
@@ -592,8 +781,8 @@ impl<'a> Village<'a> {
         }
         self.text(
             &self.data.strings["play"],
-            center - 5.,
-            r.y + 66.,
+            center + m[0] as f32,
+            r.y + 71. + m[0] as f32,
             32.,
             true,
             WHITE,
@@ -602,9 +791,10 @@ impl<'a> Village<'a> {
         unsafe {
             get_internal_gl().quad_gl.pop_model_matrix();
         }
-        if self.clicked(r) {
+        if !self.menu && self.clicked(r) {
             self.pressed = None;
-            self.notice = Some("runner".into());
+            self.play_active = true;
+            self.pending_route = Some(("runner".into(), now + 0.3));
         }
         let family = Rect::new(
             base + if screen_width() <= 768. { 12. } else { 32. },
@@ -612,12 +802,50 @@ impl<'a> Village<'a> {
             139.,
             40.,
         );
-        rounded(
-            Rect::new(family.x, family.y + 2., family.w, family.h),
-            20.,
-            Color::from_hex(0x4a7eaf),
+        let hover = !self.menu && family.contains(mouse);
+        if hover && !self.family_hover {
+            self.sounds.push("generic_button_over");
+        }
+        if hover && is_mouse_button_pressed(MouseButton::Left) {
+            self.sounds.push("generic_button_click");
+        }
+        self.family_hover = hover;
+        let down = self.drag_start.is_some_and(|p| family.contains(p))
+            && is_mouse_button_down(MouseButton::Left);
+        self.family_motion.set(
+            now,
+            if down {
+                [2., 0., 0.]
+            } else if hover {
+                [-2., 4., 3.]
+            } else {
+                [0., 2., 2.]
+            },
+            0.2,
+            Ease::Default,
         );
-        rounded(family, 20., Color::from_hex(0x6bb4fd));
+        let motion = self.family_motion.value(now);
+        let mut family = family;
+        family.y += motion[0] as f32;
+        self.shapes.rounded(
+            Rect::new(
+                family.x + motion[2] as f32,
+                family.y + motion[1] as f32 + motion[2] as f32,
+                family.w,
+                family.h,
+            ),
+            20.,
+            Color::new(0., 0., 0., 0.1),
+            0.,
+        );
+        self.shapes.rounded(
+            Rect::new(family.x, family.y + motion[1] as f32, family.w, family.h),
+            20.,
+            Color::from_hex(0x4b7eb1),
+            0.,
+        );
+        self.shapes
+            .rounded(family, 20., Color::from_hex(0x6bb4fd), 0.);
         if let Some(t) = self.texture(assets, "scenes/modvil/img/family-icon.png") {
             image(t, Rect::new(family.x + 5., family.y + 4., 32., 32.));
         }
@@ -630,55 +858,134 @@ impl<'a> Village<'a> {
             WHITE,
             false,
         );
-        if self.clicked(family) {
+        if !self.menu && self.clicked(family) {
             self.pressed = None;
             self.notice = Some("familyguide".into());
         }
     }
-    fn card(&mut self, assets: &mut Assets, card: &Card, mut rect: Rect) -> Option<String> {
-        let hover = rect.contains(Vec2::from(mouse_position()));
-        if hover {
-            rect.y -= 4.;
-            if self.hovered != card.id {
-                self.hovered = card.id.clone();
-                self.sounds.push("menu_over");
-            }
+    fn card(
+        &mut self,
+        assets: &mut Assets,
+        card: &Card,
+        mut rect: Rect,
+        menu: bool,
+        opacity: f32,
+        overlay: bool,
+    ) -> Option<String> {
+        self.draw_alpha = opacity;
+        let now = self.time as f64;
+        let hover = rect.contains(Vec2::from(mouse_position())) && (menu || !self.menu);
+        let key = format!("{}:{}", if menu { "menu" } else { "village" }, card.id);
+        let state = self.cards.entry(key.clone()).or_default();
+        state.last_seen = now;
+        if hover && !state.hover {
+            self.sounds.push("menu_over");
+        } else if !hover && state.hover {
+            self.sounds.push("menu_out");
         }
-        rounded(
-            Rect::new(rect.x, rect.y + 3., rect.w, rect.h),
-            20.,
-            Color::new(0., 0., 0., 0.2),
+        state.hover = hover;
+        state
+            .lift
+            .set(now, [if hover { -4. } else { 0. }], 0.16, Ease::Default);
+        let lift = state.lift.value(now)[0] as f32;
+        rect.y += lift;
+        let radius = if overlay {
+            if screen_width() <= 400. || screen_height() <= 400. {
+                10.
+            } else {
+                12.
+            }
+        } else if menu {
+            if screen_width() < 768. {
+                20.
+            } else {
+                30.
+            }
+        } else {
+            20.
+        };
+        let h = (-lift / 4.).clamp(0., 1.);
+        self.shapes.rounded(
+            Rect::new(rect.x, rect.y + 2. + 4. * h, rect.w, rect.h),
+            radius,
+            Color::new(0., 0., 0., 0.3 * opacity),
+            8. + 4. * h,
         );
-        rounded(
+        self.shapes.rounded(
             rect,
-            20.,
-            self.data
-                .colors
-                .get(&card.id)
-                .map(|s| color(s))
-                .unwrap_or(Color::from_hex(0x2a57ad)),
+            radius,
+            Color {
+                a: opacity,
+                ..self
+                    .data
+                    .colors
+                    .get(&card.id)
+                    .map(|s| color(s))
+                    .unwrap_or(Color::from_hex(0x2a57ad))
+            },
+            0.,
         );
+        let size = if overlay {
+            if screen_width() <= 400. || screen_height() <= 400. {
+                15.36
+            } else {
+                19.2
+            }
+        } else if !menu
+            && screen_width() <= 600.
+            && ["likealight", "yulelog", "penguinproof"].contains(&card.id.as_str())
+        {
+            16.8
+        } else if menu {
+            if screen_width() < 768. {
+                16.8
+            } else {
+                24.
+            }
+        } else if screen_width() > 1024. {
+            31.2
+        } else {
+            26.4
+        };
+        let line_height = size;
+        let art_top = (rect.h - rect.h * 0.6 - size * 1.5) / 2.;
         let art = Rect::new(
             rect.x + rect.w * 0.075,
-            rect.y + rect.h * 0.06,
+            rect.y + art_top,
             rect.w * 0.85,
             rect.h * 0.6,
         );
         let animation = format!("img/card/{}.json", card.id);
         if assets.root.join(&animation).is_file() {
-            self.animation(
-                assets,
-                &animation,
-                art,
-                Some(if hover { (self.time * 0.5).fract() } else { 0. }),
-            );
+            let duration = if let Some(anim) = self.animations.get(&animation) {
+                anim.clip.duration as f64
+            } else {
+                std::fs::read_to_string(assets.root.join(&animation))
+                    .ok()
+                    .and_then(|text| serde_json::from_str::<serde_json::Value>(&text).ok())
+                    .map(|v| {
+                        (v["op"].as_f64().unwrap_or(60.) - v["ip"].as_f64().unwrap_or(0.))
+                            / v["fr"].as_f64().unwrap_or(60.)
+                    })
+                    .unwrap_or(1.)
+            };
+            let state = self.cards.get_mut(&key).unwrap();
+            state
+                .player
+                .set(now, hover || now < state.auto_until, duration);
+            let frame = state.player.frame(now, duration);
+            self.animation(assets, &animation, art, Some(frame));
         } else {
-            let key = format!("img/scenes/{}_1x.png", card.id);
+            let preferred = format!("img/scenes/{}_1x.png", card.id);
+            let key = if assets.root.join(&preferred).is_file() {
+                preferred
+            } else {
+                "img/unknown.png".into()
+            };
             if let Some(t) = self.texture(assets, &key) {
-                cover(t, Rect::new(rect.x, rect.y, rect.w, rect.h * 0.72));
+                self.shapes.cover(t, rect, radius, opacity, true);
             }
         }
-        let size = if rect.w <= 220. { 24. } else { 30. };
         let words = card.title.split_whitespace().collect::<Vec<_>>();
         let mut lines = vec![String::new()];
         for word in words {
@@ -701,14 +1008,15 @@ impl<'a> Village<'a> {
             self.text(
                 line,
                 rect.x + rect.w / 2.,
-                rect.y + rect.h * 0.76 + i as f32 * size,
+                art.bottom() + size * 1.05 + i as f32 * line_height,
                 size,
                 true,
                 WHITE,
                 true,
             );
         }
-        if self.clicked(rect) {
+        self.draw_alpha = 1.;
+        if (menu || !self.menu) && self.clicked(Rect::new(rect.x, rect.y - lift, rect.w, rect.h)) {
             self.pressed = None;
             self.sounds.push("generic_button_click");
             Some(card.id.clone())
@@ -717,7 +1025,48 @@ impl<'a> Village<'a> {
         }
     }
     pub fn input(&mut self, total: f32) {
+        let old_time = self.time;
         self.time += get_frame_time();
+        for (seconds, event) in [
+            (5., "village_top_skier"),
+            (14., "village_top_bikeride"),
+            (8., "village_top_surprise"),
+            (5., "village_top_fountain"),
+        ] {
+            if (old_time / seconds).floor() < (self.time / seconds).floor() && !self.menu {
+                self.sounds.push(event);
+            }
+        }
+        let now = self.time as f64;
+        if now >= self.next_twiddle {
+            self.next_twiddle = now + 8.;
+            let mut visible: Vec<String> = self
+                .cards
+                .iter()
+                .filter(|(_, s)| now - s.last_seen < 0.2)
+                .map(|(k, _)| k.clone())
+                .collect();
+            visible.sort();
+            let mut factor = 0.5;
+            for key in visible {
+                if self.random.next() > factor {
+                    self.cards.get_mut(&key).unwrap().auto_until = now + 1.5 + self.random.next();
+                    break;
+                }
+                factor *= 0.5;
+            }
+        }
+        if self.menu != self.last_menu {
+            self.last_menu = self.menu;
+            self.menu_changed = now;
+            self.sounds
+                .push(if self.menu { "nav_open" } else { "nav_close" });
+            if self.menu {
+                self.menu_scroll = 0.;
+            }
+        }
+        self.menu_opacity
+            .set(now, [f64::from(self.menu)], 0.25, Ease::Sidebar);
         self.pressed = None;
         let mouse = Vec2::from(mouse_position());
         if is_mouse_button_pressed(MouseButton::Left) {
@@ -763,7 +1112,23 @@ impl<'a> Village<'a> {
         let base = (screen_width() - width) / 2.;
         let hero = if screen_width() <= 1024. { 720. } else { 1050. };
         let h = (width * 0.9).max(800.);
-        let total = hero + 72. + self.data.modules.len() as f32 * (h + 72.);
+        let total = hero
+            + 72.
+            + self
+                .data
+                .modules
+                .iter()
+                .map(|m| {
+                    let mh = if m.id == "movies" {
+                        (width * 0.55555555).max(800.)
+                    } else if m.id == "footer" {
+                        (width * 0.694).max(800.)
+                    } else {
+                        h
+                    };
+                    mh + if m.no_divider { 0. } else { 72. }
+                })
+                .sum::<f32>();
         self.input(total);
         let mut route = None;
         clear_background(Color::from_hex(0xe9f9fd));
@@ -781,6 +1146,14 @@ impl<'a> Village<'a> {
         }
         y += 72.;
         for module in self.data.modules.clone() {
+            let width = width.max(414.);
+            let h = if module.id == "movies" {
+                (width * 0.55555555).max(800.)
+            } else if module.id == "footer" {
+                (width * 0.694).max(800.)
+            } else {
+                (width * 0.9).max(800.)
+            };
             let rect = Rect::new(base, y, width, h);
             if y < screen_height() && y + h > 0. {
                 clip(Some(Rect::new(
@@ -812,29 +1185,19 @@ impl<'a> Village<'a> {
                         }
                         "cards" => {
                             for (i, card) in module.cards.iter().enumerate() {
-                                let w = (width * 0.3).max(280.).min(420.);
-                                let ch = w * 0.75;
-                                let r = if module.id == "movies" {
-                                    Rect::new(
-                                        base + width / 2.
-                                            - (module.cards.len() as f32 * w
-                                                + (module.cards.len() - 1) as f32 * 20.)
-                                                / 2.
-                                            + i as f32 * (w + 20.),
-                                        y + h / 2. - ch / 2.,
-                                        w,
-                                        ch,
-                                    )
-                                } else {
-                                    Rect::new(
-                                        base + width * card.x - w / 2.,
-                                        y + h * card.y - ch / 2.,
-                                        w,
-                                        ch,
-                                    )
-                                };
+                                let [x, cy, w, ch] = santa_tracker::ui::card_rect(
+                                    &module.id,
+                                    i,
+                                    module.cards.len(),
+                                    (card.x, card.y),
+                                    width,
+                                    screen_width(),
+                                    y,
+                                );
+                                let r = Rect::new(base + x, cy, w, ch);
                                 if r.y < screen_height() && r.bottom() > 0. {
-                                    route = route.or_else(|| self.card(assets, card, r));
+                                    route = route
+                                        .or_else(|| self.card(assets, card, r, false, 1., false));
                                 }
                             }
                         }
@@ -859,8 +1222,17 @@ impl<'a> Village<'a> {
                 y += 72.;
             }
         }
-        if self.menu {
-            route = route.or_else(|| self.draw_menu(assets));
+        if self.menu || self.menu_opacity.value(self.time as f64)[0] > 0.001 {
+            route = self.draw_menu(assets).or(route);
+        }
+        if self
+            .pending_route
+            .as_ref()
+            .is_some_and(|(_, at)| self.time as f64 >= *at)
+        {
+            let (target, _) = self.pending_route.take().unwrap();
+            self.play_active = false;
+            route = Some(target);
         }
         route.or_else(|| self.notice.take())
     }
@@ -870,34 +1242,78 @@ impl<'a> Village<'a> {
             0.,
             screen_width(),
             screen_height(),
-            Color::new(72. / 255., 3. / 255., 184. / 255., 0.95),
+            Color::new(
+                72. / 255.,
+                3. / 255.,
+                184. / 255.,
+                0.95 * self.menu_opacity.value(self.time as f64)[0] as f32,
+            ),
         );
         let small = screen_width() < 768.;
         let size = if small { 130. } else { 200. };
         let cols = ((screen_width() / (size + 20.)).floor() as usize).clamp(2, 6);
-        let mut cards = self
-            .data
-            .modules
+        let nav: serde_json::Value =
+            serde_json::from_str(include_str!("../data/navigation.json")).unwrap();
+        let videos = nav["videos"].as_array().unwrap();
+        let mut order = 0usize;
+        let mut available = std::collections::VecDeque::new();
+        let mut cards = Vec::new();
+        for id in nav["cards"]
+            .as_array()
+            .unwrap()
             .iter()
-            .flat_map(|m| m.cards.clone())
-            .collect::<Vec<_>>();
-        cards.insert(
-            0,
-            Card {
-                id: "modvil".into(),
-                title: "Santa's Village".into(),
-                x: 0.,
-                y: 0.,
-            },
-        );
+            .filter_map(serde_json::Value::as_str)
+        {
+            let wide = videos.iter().any(|v| v == id);
+            let mut slot = order;
+            if wide {
+                order += 2;
+                if slot % cols + 1 == cols {
+                    available.push_back(slot);
+                    slot += 1;
+                    order += 1;
+                }
+            } else if let Some(previous) = available.pop_front() {
+                slot = previous;
+            } else {
+                order += 1;
+            }
+            cards.push((
+                slot,
+                wide,
+                Card {
+                    id: id.into(),
+                    title: self.data.scene_names.get(id).cloned().unwrap_or(id.into()),
+                    x: 0.,
+                    y: 0.,
+                },
+            ));
+        }
+        cards.sort_by_key(|(slot, _, _)| *slot);
         let mut result = None;
-        for (i, card) in cards.iter().enumerate() {
+        for (i, wide, card) in &cards {
+            let i = *i;
             let x = (screen_width() - cols as f32 * (size + 20.)) / 2.
                 + 10.
                 + (i % cols) as f32 * (size + 20.);
-            let y = 100. + (i / cols) as f32 * (size + 20.) - self.menu_scroll;
+            let reveal = if self.menu {
+                Ease::Out.at((self.time as f64 - self.menu_changed - 0.2) / 0.2) as f32
+            } else {
+                0.
+            };
+            let y = 90. + (i / cols) as f32 * (size + 20.) - self.menu_scroll + 32. * (1. - reveal);
+            if reveal <= 0. {
+                continue;
+            }
             if y < screen_height() && y + size > 0. {
-                if let Some(route) = self.card(assets, card, Rect::new(x, y, size, size)) {
+                if let Some(route) = self.card(
+                    assets,
+                    card,
+                    Rect::new(x, y, if *wide { size * 2. + 20. } else { size }, size),
+                    true,
+                    reveal,
+                    false,
+                ) {
                     result = Some(route);
                 }
             }

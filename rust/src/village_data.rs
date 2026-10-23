@@ -9,6 +9,13 @@ pub struct Keyframe {
     pub rotation: f32,
     pub sx: f32,
     pub sy: f32,
+    #[serde(default)]
+    pub clip_top: f32,
+    #[serde(default = "one")]
+    pub clip_bottom: f32,
+}
+fn one() -> f32 {
+    1.
 }
 impl Default for Keyframe {
     fn default() -> Self {
@@ -19,6 +26,8 @@ impl Default for Keyframe {
             rotation: 0.,
             sx: 1.,
             sy: 1.,
+            clip_top: 0.,
+            clip_bottom: 1.,
         }
     }
 }
@@ -107,6 +116,8 @@ pub fn sample(track: &[Keyframe], phase: f32, ease: &str) -> Keyframe {
                 rotation: lerp(a.rotation, b.rotation),
                 sx: lerp(a.sx, b.sx),
                 sy: lerp(a.sy, b.sy),
+                clip_top: lerp(a.clip_top, b.clip_top),
+                clip_bottom: lerp(a.clip_bottom, b.clip_bottom),
             };
         }
     }

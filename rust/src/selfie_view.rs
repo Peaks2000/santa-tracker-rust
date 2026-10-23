@@ -1,9 +1,13 @@
 use crate::assets::Assets;
+use crate::ui_render::Shapes;
 use macroquad::{
     miniquad::{BlendFactor, BlendState, BlendValue, Equation},
     prelude::*,
 };
-use santa_tracker::selfie::{Selfie, Tool};
+use santa_tracker::{
+    selfie::{Selfie, Tool},
+    ui::{Ease, Transition},
+};
 
 const VERTEX: &str = r#"#version 100
 attribute vec3 position;
@@ -46,6 +50,9 @@ pub struct SelfieView {
     pub export_message: String,
     export_pending: bool,
     tool_used: f64,
+    button_motion: [Transition<1>; 2],
+    button_held: Option<usize>,
+    shapes: Shapes,
 }
 fn rect_image(t: &Texture2D, r: Rect) {
     draw_texture_ex(
@@ -165,6 +172,9 @@ impl SelfieView {
             export_pending: false,
             export_message: String::new(),
             tool_used: -100.,
+            button_motion: std::array::from_fn(|_| Transition::new([0.])),
+            button_held: None,
+            shapes: Shapes::new()?,
         })
     }
     pub fn scale() -> f32 {
@@ -243,6 +253,17 @@ impl SelfieView {
             )
         }
     }
+    fn action_rect(index: usize) -> Rect {
+        let desktop = screen_width() >= 768.;
+        let size = if desktop { 55. } else { 42. };
+        let top = if screen_width() <= 768. { 75. } else { 105. };
+        Rect::new(
+            screen_width() - 20. - size - 7.,
+            top - 6. + index as f32 * (size + 15.),
+            size,
+            size,
+        )
+    }
     pub fn input(&mut self, game: &mut Selfie, deterministic: bool) {
         let mouse = if deterministic {
             vec2(0., 0.)
@@ -266,18 +287,37 @@ impl SelfieView {
                 return;
             }
         }
-        let reset = Rect::new(screen_width() - 82., 99., 55., 55.);
-        let share = Rect::new(screen_width() - 82., 169., 55., 55.);
-        if pressed && reset.contains(mouse) {
-            game.reset();
-            game.sounds.push("selfie_click");
-            return;
+        let now = get_time();
+        for index in 0..2 {
+            let rect = Self::action_rect(index);
+            if pressed && rect.contains(mouse) {
+                self.button_held = Some(index);
+                game.mouse.down = false;
+                game.update_tool_sounds(mouse.x as f64, false);
+            }
+            let down = self.button_held == Some(index) && is_mouse_button_down(MouseButton::Left);
+            self.button_motion[index].set(
+                now,
+                [f64::from(down)],
+                if down { 0.05 } else { 0.25 },
+                Ease::InOut,
+            );
+            if released && self.button_held == Some(index) {
+                self.button_held = None;
+                if rect.contains(mouse) {
+                    game.sounds.push("selfie_click");
+                    if index == 0 {
+                        game.reset();
+                    } else {
+                        self.export_open = true;
+                        self.export_pending = true;
+                        game.tool = Tool::Hand;
+                    }
+                    return;
+                }
+            }
         }
-        if pressed && share.contains(mouse) {
-            self.export_open = true;
-            self.export_pending = true;
-            game.tool = Tool::Hand;
-            game.sounds.push("selfie_click");
+        if self.button_held.is_some() {
             return;
         }
         if is_key_pressed(KeyCode::Key0) {
@@ -553,38 +593,29 @@ impl SelfieView {
             Rect::new(face.x + mx * s, face.y + 295. * s, mw * s, mh * s),
         );
         self.draw_tools(assets, game, mouse, s);
-        for (y, key) in [(105., "refresh"), (175., "share")] {
-            let mouse = if deterministic {
-                Vec2::ZERO
-            } else {
-                Vec2::from(mouse_position())
-            };
-            let pressed = is_mouse_button_down(MouseButton::Left)
-                && Rect::new(w - 82., y - 6., 55., 55.).contains(mouse);
-            let offset = if pressed { vec2(3., 6.) } else { Vec2::ZERO };
-            let center = vec2(w - 54.5, y + 21.5) + offset;
-            if !pressed {
-                draw_poly(
-                    center.x + 8.,
-                    center.y + 9.,
-                    96,
-                    27.5,
-                    0.,
-                    Color::new(0., 0., 0., 0.16),
-                );
-                draw_poly(
-                    center.x + 3.,
-                    center.y + 6.,
-                    96,
-                    27.5,
-                    0.,
-                    Color::from_hex(0x8f0093),
-                );
-            }
-            draw_poly(center.x, center.y, 96, 27.5, 0., Color::from_hex(0xad00ad));
+        for (index, key) in ["refresh", "share"].iter().enumerate() {
+            let rect = Self::action_rect(index);
+            let p = self.button_motion[index].value(get_time())[0] as f32;
+            let center = rect.center() + vec2(3., 6.) * p;
+            let radius = rect.w / 2.;
+            self.shapes.circle(
+                center + vec2(8., 9.) * (1. - p),
+                radius,
+                Color::new(0., 0., 0., 0.16),
+                p * 2.,
+            );
+            self.shapes.circle(
+                center + vec2(3., 6.) * (1. - p),
+                radius,
+                Color::from_hex(0x8f0093),
+                0.,
+            );
+            self.shapes
+                .circle(center, radius, Color::from_hex(0xad00ad), 0.);
+            let icon = if screen_width() >= 768. { 30. } else { 22. };
             rect_image(
                 assets.texture(&format!("scenes/_shared/img/button/{key}.svg")),
-                Rect::new(center.x - 15., center.y - 15., 30., 30.),
+                Rect::new(center.x - icon / 2., center.y - icon / 2., icon, icon),
             );
         }
         if self.export_open {

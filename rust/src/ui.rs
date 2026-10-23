@@ -1,0 +1,421 @@
+//! Native translations of santa-button/card-player transitions and lib/time.js.
+//! Original behavior: Copyright 2020 Google LLC, Apache-2.0 (see LICENSE).
+use serde::Serialize;
+
+#[derive(Clone, Copy, Debug)]
+pub enum Ease {
+    Linear,
+    Default,
+    In,
+    Out,
+    InOut,
+    Sidebar,
+    InterludeOut,
+    OverlayIn,
+    OverlayOut,
+}
+impl Ease {
+    pub fn at(self, x: f64) -> f64 {
+        let x = x.clamp(0., 1.);
+        if x == 0. || x == 1. {
+            return x;
+        }
+        let (a, b, c, d) = match self {
+            Self::Linear => return x,
+            Self::Default => (0.25, 0.1, 0.25, 1.),
+            Self::In => (0.42, 0., 1., 1.),
+            Self::Out => (0., 0., 0.58, 1.),
+            Self::InOut => (0.42, 0., 0.58, 1.),
+            Self::Sidebar => (0.215, 0.610, 0.355, 1.),
+            Self::InterludeOut => (0.645, 0., 0.785, 0.390),
+            Self::OverlayIn => (0., 1.52, 0.295, 0.86),
+            Self::OverlayOut => (0.83, 0.02, 1., 0.01),
+        };
+        let cubic = |t: f64, a: f64, b: f64| {
+            3. * (1. - t).powi(2) * t * a + 3. * (1. - t) * t * t * b + t * t * t
+        };
+        let (mut lo, mut hi) = (0., 1.);
+        for _ in 0..48 {
+            let t = (lo + hi) * 0.5;
+            if cubic(t, a, c) < x {
+                lo = t;
+            } else {
+                hi = t;
+            }
+        }
+        cubic((lo + hi) * 0.5, b, d)
+    }
+}
+#[derive(Clone, Debug)]
+pub struct Transition<const N: usize> {
+    from: [f64; N],
+    target: [f64; N],
+    start: f64,
+    duration: f64,
+    ease: Ease,
+    reversing_start: [f64; N],
+    shortening: f64,
+}
+impl<const N: usize> Transition<N> {
+    pub fn new(value: [f64; N]) -> Self {
+        Self {
+            from: value,
+            target: value,
+            start: 0.,
+            duration: 0.,
+            ease: Ease::Linear,
+            reversing_start: value,
+            shortening: 1.,
+        }
+    }
+    pub fn value(&self, now: f64) -> [f64; N] {
+        let t = if self.duration <= 0. {
+            1.
+        } else {
+            self.ease.at((now - self.start) / self.duration)
+        };
+        std::array::from_fn(|i| self.from[i] + (self.target[i] - self.from[i]) * t)
+    }
+    pub fn set(&mut self, now: f64, target: [f64; N], duration: f64, ease: Ease) {
+        if target == self.target {
+            return;
+        }
+        let value = self.value(now);
+        let reversing = now < self.start + self.duration && target == self.reversing_start;
+        let shortening = if reversing {
+            (self.ease.at((now - self.start) / self.duration) * self.shortening
+                + (1. - self.shortening))
+                .abs()
+                .clamp(0., 1.)
+        } else {
+            1.
+        };
+        self.reversing_start = if reversing { self.target } else { value };
+        self.from = value;
+        self.target = target;
+        self.start = now;
+        self.duration = duration * shortening;
+        self.shortening = shortening;
+        self.ease = ease;
+    }
+}
+#[derive(Clone, Copy, Debug, PartialEq, Serialize)]
+pub struct Split {
+    pub days: u64,
+    pub hours: u64,
+    pub minutes: u64,
+    pub seconds: u64,
+    pub count: u8,
+}
+impl Split {
+    pub fn values(self) -> [u64; 4] {
+        [self.days, self.hours, self.minutes, self.seconds]
+    }
+    pub fn from_ms(ms: f64) -> Self {
+        let ms = if ms.is_nan() { 0. } else { ms.max(0.) };
+        // Preserve the original arithmetic order, including JS floating-point boundaries.
+        let days_x = ms / 86400000.;
+        let days = days_x.floor() as u64;
+        let hours_x = (days_x - days as f64) * 24.;
+        let hours = hours_x.floor() as u64;
+        let minutes_x = (hours_x - hours as f64) * 60.;
+        let minutes = minutes_x.floor() as u64;
+        let seconds = ((minutes_x - minutes as f64) * 60.).floor() as u64;
+        let count = if days > 0 {
+            4
+        } else if hours > 0 {
+            3
+        } else if minutes > 0 {
+            2
+        } else if seconds > 0 {
+            1
+        } else {
+            0
+        };
+        Self {
+            days,
+            hours,
+            minutes,
+            seconds,
+            count,
+        }
+    }
+    pub fn visible(self, width: f64) -> [bool; 4] {
+        let huge = self.days >= 300;
+        std::array::from_fn(|i| {
+            let value = 4 - i as u8;
+            if huge && value < 4 {
+                return false;
+            }
+            let order = value as i32 - self.count as i32 + 4;
+            order <= 4
+                && !(order == 3 && width <= 386.
+                    || order == 2 && width <= 422.
+                    || order == 1 && width <= 458.)
+        })
+    }
+}
+pub struct Counter {
+    pub current: Split,
+    pub previous: Split,
+    pub changed: [bool; 4],
+    pub tick_at: f64,
+    pub until_ms: u64,
+    next_tick: f64,
+}
+impl Counter {
+    pub fn new(now_ms: u64, until_ms: u64, time: f64) -> Self {
+        let current = Split::from_ms(until_ms.saturating_sub(now_ms) as f64);
+        Self {
+            current,
+            previous: current,
+            changed: [false; 4],
+            tick_at: time,
+            until_ms,
+            next_tick: time + 1.,
+        }
+    }
+    pub fn update(&mut self, time: f64, now_ms: u64) {
+        if time < self.next_tick {
+            return;
+        }
+        self.next_tick += ((time - self.next_tick).floor() + 1.).max(1.);
+        self.previous = self.current;
+        self.current = Split::from_ms(self.until_ms.saturating_sub(now_ms) as f64);
+        let old = self.previous.values();
+        let new = self.current.values();
+        self.changed = std::array::from_fn(|i| old[i] != new[i]);
+        self.tick_at = time;
+    }
+    pub fn phase(&self, time: f64) -> f64 {
+        Ease::Default.at((time - self.tick_at) / 0.6)
+    }
+}
+/// Original card player: exponential one-way motion, reversing at the current frame.
+pub struct CardPlayer {
+    pub active: bool,
+    start: Option<f64>,
+    held: f32,
+}
+impl Default for CardPlayer {
+    fn default() -> Self {
+        Self {
+            active: false,
+            start: None,
+            held: 0.,
+        }
+    }
+}
+impl CardPlayer {
+    pub fn set(&mut self, time: f64, active: bool, duration: f64) {
+        if active == self.active {
+            return;
+        }
+        if let Some(start) = self.start {
+            let ratio = (time - start) / duration;
+            if ratio < 1. {
+                let adjusted = out_expo(ratio);
+                let start_at = -(adjusted.max(f64::MIN_POSITIVE)).log2() / 10.;
+                self.start = Some(time - start_at * duration);
+            } else {
+                self.start = Some(time);
+            }
+        } else {
+            self.start = Some(time);
+        }
+        self.active = active;
+    }
+    pub fn frame(&mut self, time: f64, duration: f64) -> f32 {
+        let Some(start) = self.start else {
+            return self.held;
+        };
+        let ratio = (time - start) / duration.max(0.001);
+        if ratio >= 1. {
+            self.start = None;
+        }
+        let raw = out_expo(ratio);
+        {
+            self.held = (if self.active { raw } else { 1. - raw }) as f32;
+            self.held
+        }
+    }
+}
+fn out_expo(n: f64) -> f64 {
+    if n == 1. {
+        n
+    } else {
+        1. - 2f64.powf(-10. * n)
+    }
+}
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn countdown_and_card_motion_match_original_javascript() {
+        let reference: serde_json::Value =
+            serde_json::from_str(include_str!("../data/ui-reference.json")).unwrap();
+        for entry in reference["splits"].as_array().unwrap() {
+            assert_eq!(
+                serde_json::to_value(Split::from_ms(entry["ms"].as_f64().unwrap())).unwrap(),
+                entry["state"]
+            );
+        }
+        let mut player = CardPlayer::default();
+        let mut samples = reference["samples"].as_array().unwrap().iter();
+        for action in reference["actions"].as_array().unwrap() {
+            let now = action[1].as_f64().unwrap();
+            if action[0] == "active" {
+                player.set(now, action[2].as_bool().unwrap(), 2.);
+            } else {
+                let expected = samples.next().unwrap()["frame"].as_f64().unwrap();
+                let actual = player.frame(now, 2.) as f64;
+                assert!(
+                    (actual - expected).abs() < 1e-6,
+                    "card {now}: {actual} != {expected}"
+                );
+            }
+        }
+    }
+    #[test]
+    fn responsive_countdown_and_tick_animation() {
+        let mut counter = Counter::new(0, 86401250, 0.);
+        assert_eq!(counter.current.values(), [1, 0, 0, 1]);
+        counter.update(1., 1000);
+        assert_eq!(counter.current.values(), [1, 0, 0, 0]);
+        assert_eq!(counter.changed, [false, false, false, true]);
+        assert_eq!(counter.phase(1.), 0.);
+        assert_eq!(counter.phase(1.6), 1.);
+        assert_eq!(counter.current.visible(1440.), [true; 4]);
+        assert_eq!(counter.current.visible(375.), [true, false, false, false]);
+        assert_eq!(
+            Split::from_ms(300. * 86400000.).visible(1440.),
+            [true, false, false, false]
+        );
+        assert_eq!(
+            Split::from_ms(45000.).visible(375.),
+            [false, false, false, true]
+        );
+    }
+    #[test]
+    fn rapid_press_reversal_is_continuous_and_shortens_duration() {
+        let mut t = Transition::new([0.]);
+        t.set(0., [1.], 0.05, Ease::In);
+        let halfway = t.value(0.025)[0];
+        t.set(0.025, [0.], 0.25, Ease::In);
+        assert_eq!(t.value(0.025)[0], halfway);
+        assert!((t.duration - 0.25 * halfway).abs() < 1e-12);
+        assert_eq!(t.value(1.), [0.]);
+    }
+}
+/// modvil-module.scss and the host's responsive card rules.
+pub fn module_height(id: &str, width: f32) -> f32 {
+    let width = width.max(414.);
+    (width
+        * match id {
+            "movies" => 0.55555555,
+            "footer" => 0.694,
+            _ => 0.9,
+        })
+    .max(800.)
+}
+pub fn card_rect(
+    module: &str,
+    index: usize,
+    count: usize,
+    position: (f32, f32),
+    width: f32,
+    screen: f32,
+    y: f32,
+) -> [f32; 4] {
+    let width = width.max(414.);
+    let h = module_height(module, width);
+    if module == "movies" {
+        let w = if screen <= 768. { 240. } else { 280. };
+        let ch = if screen <= 768. { 200. } else { 210. };
+        let host = ch + 20.;
+        if screen <= 1024. {
+            [
+                (width - w) / 2.,
+                y + (h - count as f32 * host) / 2. + index as f32 * host,
+                w,
+                ch,
+            ]
+        } else {
+            let gap = 52.;
+            let group = count as f32 * w + (count - 1) as f32 * gap;
+            [
+                (width - group) / 2. + index as f32 * (w + gap),
+                y + (h - host) / 2.,
+                w,
+                ch,
+            ]
+        }
+    } else if screen <= 768. {
+        let parent = (screen * 0.85).min(420.).max(280.);
+        let w = (parent * 0.8).min(280.);
+        let x = (width - parent) / 2. + if index % 2 == 1 { parent - w } else { 0. };
+        [
+            x,
+            y + (h - count as f32 * 220.) / 2. + index as f32 * 220.,
+            w,
+            200.,
+        ]
+    } else {
+        let w = (width * 0.3).max(280.);
+        let ch = w * 0.75;
+        [
+            width * position.0 - w / 2.,
+            y + h * position.1 - ch / 2.,
+            w,
+            ch,
+        ]
+    }
+}
+#[cfg(test)]
+mod layout_tests {
+    use super::*;
+    #[test]
+    fn home_layout_matches_browser_at_three_viewports() {
+        let reference: serde_json::Value =
+            serde_json::from_str(include_str!("../data/home-module-layout-reference.json"))
+                .unwrap();
+        let data = crate::village_data::VillageData::original();
+        for width in [1440., 768., 375.] {
+            let mut y = if width <= 1024. { 792. } else { 1122. };
+            for measured in reference[(width as u32).to_string()].as_array().unwrap() {
+                let module = data
+                    .modules
+                    .iter()
+                    .find(|m| m.id == measured["id"].as_str().unwrap())
+                    .unwrap();
+                assert!(
+                    (y - measured["y"].as_f64().unwrap() as f32).abs() < 0.03,
+                    "{} y at {width}",
+                    module.id
+                );
+                for (index, card) in module.cards.iter().enumerate() {
+                    let native = card_rect(
+                        &module.id,
+                        index,
+                        module.cards.len(),
+                        (card.x, card.y),
+                        width,
+                        width,
+                        y,
+                    );
+                    let original = &measured["cards"][index]["main"];
+                    for (i, key) in ["x", "y", "width", "height"].iter().enumerate() {
+                        assert!(
+                            (native[i] - original[*key].as_f64().unwrap() as f32).abs() < 0.03,
+                            "{} {key} at {width}: {} != {}",
+                            card.id,
+                            native[i],
+                            original[*key]
+                        );
+                    }
+                }
+                y += module_height(&module.id, width) + if module.no_divider { 0. } else { 72. };
+            }
+        }
+    }
+}
