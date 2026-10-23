@@ -31,7 +31,7 @@ impl PresentDropView {
             screen_height() / 2. - 5.5 - 324.5 * s,
         )
     }
-    pub fn input(&mut self, g: &mut PresentDrop) {
+    pub fn input(&mut self, g: &mut PresentDrop, block_mouse: bool) {
         // Source key handlers update targets on key changes, including pause.
         if [KeyCode::Left, KeyCode::Right, KeyCode::Space, KeyCode::Down]
             .into_iter()
@@ -45,7 +45,8 @@ impl PresentDropView {
         {
             g.drop_present();
         }
-        if is_mouse_button_pressed(MouseButton::Left)
+        if !block_mouse
+            && is_mouse_button_pressed(MouseButton::Left)
             && g.playing
             && !g.paused
             && !crate::chrome::over_controls(Vec2::from(mouse_position()), 3)
@@ -53,9 +54,9 @@ impl PresentDropView {
             self.touch = true;
         }
         if self.touch {
-            if is_mouse_button_down(MouseButton::Left) && g.playing && !g.paused {
+            if !block_mouse && is_mouse_button_down(MouseButton::Left) && g.playing && !g.paused {
                 g.set_x(((mouse_position().0 - Self::stage().x) / Self::scale()) as f64);
-            } else if is_mouse_button_released(MouseButton::Left) {
+            } else if !block_mouse && is_mouse_button_released(MouseButton::Left) {
                 self.touch = false;
                 g.touch_ended();
             }

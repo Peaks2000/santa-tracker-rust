@@ -21,6 +21,7 @@ pub struct Overlay {
     opacity: Transition<1>,
     offset: Transition<1>,
     below: Transition<1>,
+    below_opacity: Transition<1>,
     recommendations: [String; 2],
     scene: String,
     focus: usize,
@@ -38,6 +39,7 @@ impl Overlay {
             opacity: Transition::new([0.]),
             offset: Transition::new([-1.]),
             below: Transition::new([0.5]),
+            below_opacity: Transition::new([0.]),
             recommendations: ["santaselfie".into(), "jetpack".into()],
             scene: String::new(),
             focus: 0,
@@ -58,7 +60,18 @@ impl Overlay {
         paused: bool,
         gameover: bool,
     ) -> Option<Action> {
-        let now = get_time();
+        self.draw_at(assets, chrome, village, scene, paused, gameover, get_time())
+    }
+    pub fn draw_at(
+        &mut self,
+        assets: &mut Assets,
+        chrome: &Chrome,
+        village: &mut Village,
+        scene: &str,
+        paused: bool,
+        gameover: bool,
+        now: f64,
+    ) -> Option<Action> {
         let visible = paused || gameover;
         self.scene = scene.into();
         if visible != self.visible {
@@ -82,6 +95,8 @@ impl Overlay {
             );
             self.below
                 .set(now, [if visible { 0. } else { 0.5 }], 0.4, Ease::Default);
+            self.below_opacity
+                .set(now, [f64::from(visible)], 0.4, Ease::Default);
         }
         let opacity = self.opacity.value(now)[0] as f32;
         if opacity < 0.001 {
@@ -89,23 +104,11 @@ impl Overlay {
         }
         let h = screen_height();
         let w = screen_width();
-        let compact = w <= 400. || h <= 400.;
-        let vertical = w <= 500.;
-        let hero_h = if h >= 500. { 218. } else { 136. };
-        let (cw, ch, margin) = if compact {
-            (160., 100., 4.)
-        } else {
-            (200., 120., 8.)
-        };
-        let below_h = if vertical {
-            2. * (ch + 2. * margin) + 32.
-        } else {
-            ch + 2. * margin + 32.
-        };
-        let main_h = hero_h + 72.;
-        let top = (h - main_h - below_h) / 2.;
+        let layout = santa_tracker::ui::overlay_layout(w, h);
         let shift = self.offset.value(now)[0] as f32 * h;
-        let hero = Rect::new(w / 2. - 120., top + shift, 240., hero_h);
+        let r = layout.hero;
+        let hero = Rect::new(r[0], r[1] + shift, r[2], r[3]);
+        let center = hero.x + hero.w / 2.;
         let file = if paused { "pause" } else { "gameover" };
         let key = format!("img/overlay/{file}.svg");
         if let Err(error) = assets.load(&key) {
@@ -127,13 +130,13 @@ impl Overlay {
             },
         );
         if gameover {
-            let text = "Game Over";
+            let text = "Game Over!";
             let widths: Vec<f32> = text
                 .chars()
                 .map(|c| measure_text(&c.to_string(), Some(&self.title), 42, 1.).width)
                 .collect();
             let width = widths.iter().sum::<f32>() - 2. * (widths.len() - 1) as f32;
-            let mut x = (w - width) / 2.;
+            let mut x = center - width / 2.;
             for (c, cw) in text.chars().zip(widths) {
                 for (dx, dy, color) in [
                     (1., 2., Color::new(0., 0., 0., 0.13 * opacity)),
@@ -143,7 +146,7 @@ impl Overlay {
                     draw_text_ex(
                         &c.to_string(),
                         x + dx,
-                        hero.y + 38. + dy,
+                        hero.y + 36.75 + dy,
                         TextParams {
                             font: Some(&self.title),
                             font_size: 42,
@@ -155,7 +158,8 @@ impl Overlay {
                 x += cw - 2.;
             }
         }
-        let nav = Rect::new(w / 2. - 120., top + hero_h + shift, 240., 72.);
+        let r = layout.nav;
+        let nav = Rect::new(r[0], r[1] + shift, r[2], r[3]);
         self.shapes
             .rounded(nav, 12., Color::new(1., 1., 1., 0.25 * opacity), 0.);
         let mut result = None;
@@ -170,7 +174,7 @@ impl Overlay {
         }
         for (i, name) in names.iter().enumerate() {
             let rect = Rect::new(
-                w / 2. - count as f32 * 28. + i as f32 * 56. + 6.,
+                center - count as f32 * 28. + i as f32 * 56. + 6.,
                 nav.y + 14.,
                 44.,
                 44.,
@@ -212,25 +216,26 @@ impl Overlay {
                 });
             }
         }
-        let below_top = top + main_h + 16. + self.below.value(now)[0] as f32 * below_h;
-        let rects = std::array::from_fn(|i| {
-            if vertical {
-                Rect::new(
-                    (w - cw) / 2.,
-                    below_top + margin + i as f32 * (ch + 2. * margin),
-                    cw,
-                    ch,
-                )
-            } else {
-                Rect::new(
-                    w / 2. - (cw + margin) + i as f32 * (cw + 2. * margin),
-                    below_top + margin,
-                    cw,
-                    ch,
-                )
-            }
+        let delta = self.below.value(now)[0] as f32;
+        let rects = layout.cards.map(|r| {
+            Rect::new(
+                r[0] + if layout.row {
+                    delta * layout.below[2]
+                } else {
+                    0.
+                },
+                r[1] + if layout.row {
+                    0.
+                } else {
+                    delta * layout.below[3]
+                },
+                r[2],
+                r[3],
+            )
         });
-        if let Some(route) = village.overlay_cards(assets, &self.recommendations, rects, opacity) {
+        let card_alpha = opacity * self.below_opacity.value(now)[0] as f32;
+        if let Some(route) = village.overlay_cards(assets, &self.recommendations, rects, card_alpha)
+        {
             if visible {
                 result = Some(Action::Route(route));
             }

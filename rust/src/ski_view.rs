@@ -211,8 +211,9 @@ impl SkiView {
             colors,
         })
     }
-    pub fn input() -> Option<f64> {
-        if is_mouse_button_down(MouseButton::Left)
+    pub fn input(block_mouse: bool) -> Option<f64> {
+        if !block_mouse
+            && is_mouse_button_down(MouseButton::Left)
             && !crate::chrome::over_controls(Vec2::from(mouse_position()), 3)
         {
             return Some(

@@ -12,6 +12,7 @@ mod render;
 mod selfie_view;
 mod ski_view;
 mod sound;
+mod tutorial_view;
 mod ui_render;
 mod village;
 
@@ -237,6 +238,7 @@ async fn run(opts: Options) {
         "presentdrop" => drop_game.advance(opts.advance),
         "santaselfie" => {
             for _ in 0..(opts.advance * 1000. / 16.) as u64 {
+                selfie.wall_step(0.016);
                 selfie.step();
             }
         }
@@ -250,6 +252,8 @@ async fn run(opts: Options) {
     let mut loader_animation = loader_animation::LoaderAnimation::new(assets.root.clone());
     let mut overlay = overlay::Overlay::new().expect("Original pause overlay");
     let mut scene_filter = overlay::SceneFilter::new().expect("Original disabled scene filter");
+    let mut tutorial = tutorial_view::TutorialView::new().expect("Original tutorial overlay");
+    let surface = ui_render::OpaqueSurface::new().expect("Opaque window output");
     let mut profiling = opts.profile.as_ref().map(|_| profile::Profile::new());
     loop {
         let frame_start = std::time::Instant::now();
@@ -312,6 +316,8 @@ async fn run(opts: Options) {
             }
             accumulated = 0.;
         }
+        tutorial.route(&route, get_time());
+        tutorial.prepare(&assets, get_time());
         if opts.profile.is_none() && is_key_pressed(KeyCode::P) {
             match route.as_str() {
                 "boatload" => {
@@ -346,11 +352,33 @@ async fn run(opts: Options) {
                 "elfski" | "presentdrop" | "boatload" => true,
                 _ => false,
             };
+        if route == "santaselfie" && opts.frames.is_none() && !just_loaded {
+            selfie.wall_step(get_frame_time() as f64);
+        }
         if route == "boatload" {
             boat.resize(screen_width() as f64, screen_height() as f64);
         }
         if route == "boatload" && opts.frames.is_none() && !just_loaded {
             boat.wall_step(get_frame_time() as f64);
+        }
+        let tutorial_playing = match route.as_str() {
+            "runner" => runner.playing && !runner.paused,
+            "jetpack" => jetpack.playing && !jetpack.paused,
+            "presentdrop" => drop_game.playing && !drop_game.paused,
+            "boatload" => boat.playing && !boat.paused,
+            "elfski" => ski.playing,
+            _ => false,
+        };
+        let tutorial_mouse = opts.profile.is_none()
+            && opts.frames.is_none()
+            && tutorial.button_input(get_time(), tutorial_playing && !interlude.busy());
+        if opts.profile.is_none() && opts.frames.is_none() {
+            tutorial.controls(
+                &route,
+                get_time(),
+                active && (tutorial_playing || route == "presentdrop"),
+                tutorial_mouse,
+            );
         }
         let mut jet_input = (0., 0.);
         if active {
@@ -363,12 +391,12 @@ async fn run(opts: Options) {
             if opts.profile.is_none() {
                 match route.as_str() {
                     "runner" => {
-                        runner_view.input(&mut runner);
+                        runner_view.input(&mut runner, tutorial_mouse);
                     }
-                    "boatload" => boat_view.input(&mut boat),
-                    "presentdrop" => drop_view.input(&mut drop_game),
+                    "boatload" => boat_view.input(&mut boat, tutorial_mouse),
+                    "presentdrop" => drop_view.input(&mut drop_game, tutorial_mouse),
                     "jetpack" => {
-                        jet_input = jet_view.input();
+                        jet_input = jet_view.input(tutorial_mouse);
                     }
                     "santaselfie" => selfie_view.input(&mut selfie, opts.frames.is_some()),
                     _ => {}
@@ -378,7 +406,11 @@ async fn run(opts: Options) {
                 if route == "boatload" {
                     boat.step(get_frame_time() as f64);
                 } else {
-                    accumulated += get_frame_time() as f64;
+                    accumulated += if route == "santaselfie" {
+                        (get_frame_time() as f64).min(1.)
+                    } else {
+                        get_frame_time() as f64
+                    };
                 }
             }
             let tick = if route == "santaselfie" {
@@ -396,7 +428,7 @@ async fn run(opts: Options) {
                         if opts.profile.is_some() {
                             None
                         } else {
-                            ski_view::SkiView::input()
+                            ski_view::SkiView::input(tutorial_mouse)
                         },
                     ),
                     "santaselfie" => selfie.step(),
@@ -475,6 +507,8 @@ async fn run(opts: Options) {
             }
             _ => {}
         }
+        tutorial.prepare(&assets, get_time());
+        tutorial.draw(&assets, get_time(), tutorial_playing);
         let scene_end = std::time::Instant::now();
         if ["runner", "jetpack", "elfski", "presentdrop", "boatload"].contains(&route.as_str()) {
             let (paused, gameover) = if route == "boatload" {
@@ -790,6 +824,7 @@ async fn run(opts: Options) {
                 }
             }
         }
+        surface.draw();
         if is_key_pressed(KeyCode::F12) {
             if let Some(path) = &opts.screenshot {
                 if let Err(error) = capture::save_png(&get_screen_data(), path) {

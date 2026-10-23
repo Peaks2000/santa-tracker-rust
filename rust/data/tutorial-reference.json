@@ -1,0 +1,238 @@
+[
+  {
+    "name": "ordered delays and dismiss",
+    "steps": [
+      {
+        "op": "filter",
+        "value": "keys",
+        "now": 0,
+        "active": null,
+        "visible": false
+      },
+      {
+        "op": "queue",
+        "names": [
+          "touch-updown",
+          "keys-space",
+          "keys-updown"
+        ],
+        "now": 0,
+        "active": "keys-space",
+        "visible": false
+      },
+      {
+        "op": "load",
+        "ok": true,
+        "now": 0.1,
+        "active": "keys-space",
+        "visible": false
+      },
+      {
+        "op": "wait",
+        "now": 1.499,
+        "active": "keys-space",
+        "visible": false
+      },
+      {
+        "op": "wait",
+        "now": 1.5,
+        "active": "keys-space",
+        "visible": true
+      },
+      {
+        "op": "dismiss",
+        "names": [
+          "keys-space"
+        ],
+        "now": 2,
+        "active": "keys-updown",
+        "visible": false
+      },
+      {
+        "op": "load",
+        "ok": true,
+        "now": 2.1,
+        "active": "keys-updown",
+        "visible": false
+      },
+      {
+        "op": "wait",
+        "now": 3.5,
+        "active": "keys-updown",
+        "visible": true
+      },
+      {
+        "op": "dismiss",
+        "names": [
+          "keys-space"
+        ],
+        "now": 4,
+        "active": "keys-updown",
+        "visible": true
+      },
+      {
+        "op": "queue",
+        "names": [
+          "keys-updown"
+        ],
+        "now": 5,
+        "active": "keys-updown",
+        "visible": true
+      },
+      {
+        "op": "dismiss",
+        "names": [
+          "keys-updown"
+        ],
+        "now": 6,
+        "active": null,
+        "visible": false
+      }
+    ]
+  },
+  {
+    "name": "filter changes do not refresh and reset preserves filter",
+    "steps": [
+      {
+        "op": "queue",
+        "names": [
+          "keys-space"
+        ],
+        "now": 0,
+        "active": null,
+        "visible": false
+      },
+      {
+        "op": "filter",
+        "value": "keys",
+        "now": 1,
+        "active": null,
+        "visible": false
+      },
+      {
+        "op": "queue",
+        "names": [
+          "keys-space"
+        ],
+        "now": 2,
+        "active": null,
+        "visible": false
+      },
+      {
+        "op": "queue",
+        "names": [
+          "keys-updown"
+        ],
+        "now": 3,
+        "active": "keys-space",
+        "visible": false
+      },
+      {
+        "op": "load",
+        "ok": true,
+        "now": 3.1,
+        "active": "keys-space",
+        "visible": false
+      },
+      {
+        "op": "wait",
+        "now": 4.5,
+        "active": "keys-space",
+        "visible": true
+      },
+      {
+        "op": "reset",
+        "now": 5,
+        "active": null,
+        "visible": false
+      },
+      {
+        "op": "queue",
+        "names": [
+          "keys-space"
+        ],
+        "now": 6,
+        "active": "keys-space",
+        "visible": false
+      },
+      {
+        "op": "load",
+        "ok": true,
+        "now": 6.1,
+        "active": "keys-space",
+        "visible": false
+      },
+      {
+        "op": "wait",
+        "now": 7.5,
+        "active": "keys-space",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "name": "failed and late assets",
+    "steps": [
+      {
+        "op": "filter",
+        "value": "touch",
+        "now": 0,
+        "active": null,
+        "visible": false
+      },
+      {
+        "op": "queue",
+        "names": [
+          "device-tilt",
+          "elfski.mp4",
+          "touch-updown"
+        ],
+        "now": 0,
+        "active": "device-tilt",
+        "visible": false
+      },
+      {
+        "op": "load",
+        "ok": false,
+        "now": 0.1,
+        "active": "elfski.mp4",
+        "visible": false
+      },
+      {
+        "op": "load",
+        "ok": true,
+        "now": 3,
+        "active": "elfski.mp4",
+        "visible": true
+      },
+      {
+        "op": "wait",
+        "now": 3.1,
+        "active": "elfski.mp4",
+        "visible": true
+      },
+      {
+        "op": "dismiss",
+        "names": [
+          "elfski.mp4"
+        ],
+        "now": 4,
+        "active": "touch-updown",
+        "visible": false
+      },
+      {
+        "op": "load",
+        "ok": true,
+        "now": 4.1,
+        "active": "touch-updown",
+        "visible": false
+      },
+      {
+        "op": "wait",
+        "now": 5.5,
+        "active": "touch-updown",
+        "visible": true
+      }
+    ]
+  }
+]

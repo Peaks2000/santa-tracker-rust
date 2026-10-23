@@ -58,7 +58,7 @@ impl View {
         self.jump_down = false;
         self.touch_start = None;
     }
-    pub fn input(&mut self, g: &mut Runner) {
+    pub fn input(&mut self, g: &mut Runner, block_mouse: bool) {
         if (is_key_pressed(KeyCode::Up) || is_key_pressed(KeyCode::Space)) && !self.jump_down {
             g.jump();
             self.jump_down = true;
@@ -72,12 +72,13 @@ impl View {
         if is_key_released(KeyCode::Down) {
             g.end_slide();
         }
-        if is_mouse_button_pressed(MouseButton::Left)
+        if !block_mouse
+            && is_mouse_button_pressed(MouseButton::Left)
             && !crate::chrome::over_controls(Vec2::from(mouse_position()), 3)
         {
             self.touch_start = Some(mouse_position().1);
         }
-        if is_mouse_button_released(MouseButton::Left) {
+        if !block_mouse && is_mouse_button_released(MouseButton::Left) {
             if let Some(start) = self.touch_start.take() {
                 let diff = start - mouse_position().1;
                 if diff >= 0. {

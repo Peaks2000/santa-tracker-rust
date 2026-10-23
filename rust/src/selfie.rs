@@ -45,6 +45,8 @@ pub struct Selfie {
     pub mouse: Mouse,
     pub paused: bool,
     pub time: f64,
+    pub wall_time: f64,
+    blink_end: f64,
     pub selected_at: f64,
     pub sounds: Vec<&'static str>,
     pub near_beard: bool,
@@ -65,6 +67,8 @@ impl Selfie {
             },
             paused: false,
             time: 0.,
+            wall_time: 0.,
+            blink_end: 0.,
             selected_at: 0.,
             sounds: vec!["selfie_start"],
             near_beard: false,
@@ -75,7 +79,7 @@ impl Selfie {
             sound_active: [false; 6],
         };
         out.reset();
-        out.next_blink = (out.random.next() * 8.).max(1.);
+        out.next_blink = (out.random.next() * 8000.).max(1000.).floor() / 1000.;
         out
     }
     fn point(&mut self, x: f64, y: f64, pinned: bool, draw: bool, constraints: Vec<usize>) {
@@ -150,7 +154,7 @@ impl Selfie {
         }
     }
     pub fn select(&mut self, tool: Tool) {
-        self.selected_at = self.time;
+        self.selected_at = self.wall_time;
         if self.tool == Tool::Clipper && tool != Tool::Clipper {
             self.sounds.push("selfie_happy");
         }
@@ -257,17 +261,25 @@ impl Selfie {
             }
         }
     }
+    /// Face.start's window timers run even while the cloth loop is frozen.
+    pub fn wall_step(&mut self, dt: f64) {
+        self.wall_time += dt;
+        if self.wall_time + 1e-12 >= self.next_blink {
+            self.blink_end = self.wall_time + 0.2;
+            self.next_blink =
+                self.wall_time + (self.random.next() * 8000.).max(1000.).floor() / 1000.;
+        }
+        self.blink_remaining = if self.wall_time + 1e-12 >= self.blink_end {
+            0.
+        } else {
+            self.blink_end - self.wall_time
+        };
+    }
     pub fn step(&mut self) {
         if self.paused {
             return;
         }
         self.time += 0.016;
-        self.next_blink -= 0.016;
-        self.blink_remaining = (self.blink_remaining - 0.016).max(0.);
-        if self.next_blink <= 0. {
-            self.blink_remaining = 0.2;
-            self.next_blink = (self.random.next() * 8.).max(1.);
-        }
         for _ in 0..3 {
             for i in (0..self.points.len()).rev() {
                 if self.points[i].pinned {
@@ -449,6 +461,28 @@ mod tests {
             assert!(game.restore(invalid).is_err());
             assert_eq!(game.snapshot(), before);
         }
+    }
+    #[test]
+    fn face_wall_timers_match_source_while_cloth_is_paused() {
+        let data: serde_json::Value =
+            serde_json::from_str(include_str!("../data/selfie-wall-reference.json")).unwrap();
+        let mut g = Selfie::new("test1234");
+        for frame in data["frames"].as_array().unwrap() {
+            g.paused = frame["paused"].as_bool().unwrap();
+            let before = g.time;
+            g.wall_step(data["dt"].as_f64().unwrap());
+            g.step();
+            if g.paused {
+                assert_eq!(g.time, before);
+            }
+            assert_eq!(
+                g.blink_remaining > 0.,
+                frame["blink"].as_bool().unwrap(),
+                "wall time {}",
+                g.wall_time
+            );
+        }
+        assert_eq!(g.random.next(), data["probe"].as_f64().unwrap());
     }
     #[test]
     fn continuous_tool_audio_starts_once_and_stops_on_release() {

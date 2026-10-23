@@ -419,3 +419,236 @@ mod layout_tests {
         }
     }
 }
+
+/// santa-overlay.scss's column/row media queries and slotted-card margins.
+#[derive(Debug)]
+pub struct OverlayLayout {
+    pub main: [f32; 4],
+    pub hero: [f32; 4],
+    pub nav: [f32; 4],
+    pub below: [f32; 4],
+    pub cards: [[f32; 4]; 2],
+    pub row: bool,
+}
+pub fn overlay_layout(w: f32, h: f32) -> OverlayLayout {
+    let compact = w <= 400. || h <= 400.;
+    let row = h <= 500. && w > 500.;
+    let vertical = w <= 500. || row;
+    let (cw, ch, m) = if compact {
+        (160., 100., 4.)
+    } else {
+        (200., 120., 8.)
+    };
+    let hero_h = if h >= 500. { 218. } else { 136. };
+    let main_h = hero_h + 72.;
+    let bw = if vertical {
+        cw + 2. * m
+    } else {
+        2. * (cw + 2. * m)
+    };
+    let bh = if vertical {
+        2. * (ch + 2. * m)
+    } else {
+        ch + 2. * m
+    };
+    let mx = if row {
+        (w - 240. - bw - 32.) / 2.
+    } else {
+        (w - 240.) / 2.
+    };
+    let my = if row {
+        (h - main_h) / 2.
+    } else {
+        (h - main_h - bh - 32.) / 2.
+    };
+    let bx = if row { mx + 240. + 16. } else { (w - bw) / 2. };
+    let by = if row {
+        (h - bh) / 2.
+    } else {
+        my + main_h + 16.
+    };
+    OverlayLayout {
+        main: [mx, my, 240., main_h],
+        hero: [mx, my, 240., hero_h],
+        nav: [mx, my + hero_h, 240., 72.],
+        below: [bx, by, bw, bh],
+        cards: std::array::from_fn(|i| {
+            [
+                bx + m
+                    + if vertical {
+                        0.
+                    } else {
+                        i as f32 * (cw + 2. * m)
+                    },
+                by + m
+                    + if vertical {
+                        i as f32 * (ch + 2. * m)
+                    } else {
+                        0.
+                    },
+                cw,
+                ch,
+            ]
+        }),
+        row,
+    }
+}
+
+/// The Selfie toolbox's actual flex wrapping, hidden mobile items and relative offsets.
+#[derive(Debug)]
+pub struct SelfieToolsLayout {
+    pub tray: [f32; 4],
+    pub rects: [Option<[f32; 4]>; 16],
+    pub plain: bool,
+    pub desktop: bool,
+}
+pub fn selfie_tools_layout(w: f32, h: f32) -> SelfieToolsLayout {
+    let desktop = w >= 800. && h >= 690.;
+    let plain = w <= 800. || h <= 690.;
+    let padding = if plain { 5. } else { 0. };
+    let content = if plain {
+        320.
+    } else {
+        (232.3f32 * 64.).floor() / 64.
+    };
+    let mut row_w = [0f32; 16];
+    let mut row_h = [0f32; 16];
+    let mut row_of = [usize::MAX; 16];
+    let mut widths = [0f32; 16];
+    let mut heights = [0f32; 16];
+    let mut row = 0;
+    for i in 0..16 {
+        if !desktop && ![0, 1, 3, 4, 7, 8].contains(&i) {
+            continue;
+        }
+        let (ew, eh) = if desktop {
+            if i < 4 {
+                (104., 156.)
+            } else {
+                (52., 78.)
+            }
+        } else {
+            (48., 48.)
+        };
+        if row_w[row] > 0. && row_w[row] + ew > content {
+            row += 1;
+        }
+        row_of[i] = row;
+        widths[i] = ew;
+        heights[i] = eh;
+        row_w[row] += ew;
+        row_h[row] = row_h[row].max(eh + if desktop && i == 12 { 20. } else { 0. });
+    }
+    let count = row + 1;
+    let total = row_h[..count].iter().sum::<f32>();
+    let extra = if plain {
+        0.
+    } else {
+        (580. - total) / count as f32
+    };
+    let tray_h = if plain { total + 2. * padding } else { 580. };
+    let tx = if desktop {
+        20.
+    } else {
+        w - content - 2. * padding - if w >= 1024. { 50. } else { 0. }
+    };
+    let ty = if desktop { h / 2. - 290. } else { h - tray_h };
+    let mut x_offsets = [0f32; 16];
+    let rects = std::array::from_fn(|i| {
+        let row = row_of[i];
+        if row == usize::MAX {
+            return None;
+        }
+        let x = tx + padding + content - row_w[row] + x_offsets[row] - 15.;
+        x_offsets[row] += widths[i];
+        let y = ty
+            + padding
+            + row_h[..row].iter().sum::<f32>()
+            + row as f32 * extra
+            + if desktop && i < 2 {
+                30.
+            } else if desktop && i >= 4 {
+                -15.
+            } else {
+                0.
+            };
+        Some([x, y, widths[i], heights[i]])
+    });
+    SelfieToolsLayout {
+        tray: [tx, ty, content + 2. * padding, tray_h],
+        rects,
+        plain,
+        desktop,
+    }
+}
+#[cfg(test)]
+mod overlay_parity_tests {
+    use super::*;
+    #[test]
+    fn overlay_geometry_matches_original_media_queries() {
+        let cases: serde_json::Value =
+            serde_json::from_str(include_str!("../data/overlay-layout-reference.json")).unwrap();
+        for c in cases.as_array().unwrap() {
+            let layout = overlay_layout(
+                c["w"].as_f64().unwrap() as f32,
+                c["h"].as_f64().unwrap() as f32,
+            );
+            for (key, r) in [
+                ("main", layout.main),
+                ("hero", layout.hero),
+                ("nav", layout.nav),
+                ("below", layout.below),
+            ] {
+                for (i, a) in r.into_iter().enumerate() {
+                    assert!(
+                        (a as f64 - c[key][i].as_f64().unwrap()).abs() < 0.02,
+                        "{key} {:?} {c}",
+                        r
+                    );
+                }
+            }
+            for (i, r) in layout.cards.iter().enumerate() {
+                for (j, a) in r.iter().enumerate() {
+                    assert!((*a as f64 - c["cards"][i][j].as_f64().unwrap()).abs() < 0.02);
+                }
+            }
+        }
+    }
+}
+#[cfg(test)]
+mod selfie_tools_parity_tests {
+    use super::*;
+    #[test]
+    fn toolbox_flex_geometry_matches_original_desktop_mobile_and_boundary_rules() {
+        let cases: serde_json::Value =
+            serde_json::from_str(include_str!("../data/selfie-parity-layout-reference.json"))
+                .unwrap();
+        for (key, c) in cases.as_object().unwrap() {
+            let l = selfie_tools_layout(
+                c["w"].as_f64().unwrap() as f32,
+                c["h"].as_f64().unwrap() as f32,
+            );
+            let t = &c[".Tools--scrollable"];
+            for (i, k) in ["x", "y", "w", "h"].iter().enumerate() {
+                assert!(
+                    (l.tray[i] as f64 - t[*k].as_f64().unwrap()).abs() < 0.03,
+                    "{key} tray {k}"
+                );
+            }
+            for (i, r) in l.rects.iter().enumerate() {
+                match r {
+                    None => assert!(c["tools"][i].is_null()),
+                    Some(r) => {
+                        for (j, a) in r.iter().enumerate() {
+                            assert!(
+                                (*a as f64 - c["tools"][i][j].as_f64().unwrap()).abs() < 0.03,
+                                "{key} tool {i} field {j}: {a} != {}",
+                                c["tools"][i][j]
+                            );
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

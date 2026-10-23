@@ -34,20 +34,19 @@ impl JetpackView {
             (screen_height() / scale) as f64,
         )
     }
-    pub fn input(&mut self) -> (f64, f64) {
+    pub fn input(&mut self, block_mouse: bool) -> (f64, f64) {
         let mut input = (
-            f64::from(is_key_down(KeyCode::Right) || is_key_down(KeyCode::D))
-                - f64::from(is_key_down(KeyCode::Left) || is_key_down(KeyCode::A)),
-            f64::from(is_key_down(KeyCode::Down) || is_key_down(KeyCode::S))
-                - f64::from(is_key_down(KeyCode::Up) || is_key_down(KeyCode::W)),
+            f64::from(is_key_down(KeyCode::Right)) - f64::from(is_key_down(KeyCode::Left)),
+            f64::from(is_key_down(KeyCode::Down)) - f64::from(is_key_down(KeyCode::Up)),
         );
-        if is_mouse_button_pressed(MouseButton::Left)
+        if !block_mouse
+            && is_mouse_button_pressed(MouseButton::Left)
             && !crate::chrome::over_controls(Vec2::from(mouse_position()), 3)
         {
             self.touch = Some(Vec2::from(mouse_position()));
         }
         if let Some(start) = self.touch {
-            if is_mouse_button_down(MouseButton::Left) {
+            if !block_mouse && is_mouse_button_down(MouseButton::Left) {
                 let delta = (Vec2::from(mouse_position()) - start) / 70.;
                 input = (delta.x as f64, delta.y as f64);
             } else {

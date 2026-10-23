@@ -10,6 +10,7 @@ pub mod runner;
 pub mod selfie;
 pub mod ski;
 pub mod tracker;
+pub mod tutorial;
 pub mod ui;
 pub mod village_data;
 pub mod weather;

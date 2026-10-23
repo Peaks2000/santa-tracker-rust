@@ -112,7 +112,11 @@ enum LoadEvent {
 }
 fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
     let path = root.join(key);
-    let data = std::fs::read(&path).map_err(|e| format!("{}: {e}", path.display()))?;
+    let data = if key == "native/tutorial/elfski.png" {
+        include_bytes!("../assets/tutorial/elfski.png").to_vec()
+    } else {
+        std::fs::read(&path).map_err(|e| format!("{}: {e}", path.display()))?
+    };
     let premultiplied =
         key.starts_with("scenes/santaselfie/") || key.starts_with("scenes/_shared/img/button/");
     let mut image = if key.ends_with(".svg") {
@@ -178,6 +182,22 @@ fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
 }
 fn scene_keys(root: &Path, scene: &str) -> Result<Vec<String>, String> {
     let mut keys = vec![];
+    let tutorials: &[&str] = match scene {
+        "runner" => &["touch-updown", "keys-updown"],
+        "jetpack" => &["touch-updown", "keys-leftright", "keys-updown"],
+        "presentdrop" => &["touch-leftright", "keys-space", "keys-leftright"],
+        "boatload" => &["touch-updown", "keys-space", "keys-updown"],
+        _ => &[],
+    };
+    keys.extend(
+        tutorials
+            .iter()
+            .map(|name| format!("img/tutorial/input/{name}.svg")),
+    );
+    if scene == "elfski" {
+        keys.push("native/tutorial/elfski.png".into());
+    }
+
     if scene == "elfski" {
         keys.push("scenes/elfski/models/elf-tidy.png".into());
     }

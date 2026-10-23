@@ -1,0 +1,23 @@
+{
+  "source": "static/img/tutorial/elfski.mp4",
+  "source_sha256": "a35f775f7f3c0b188849698fcdbbbfdb4b8aeddd971c1b05ba91fb08c7ab4469",
+  "frames": 95,
+  "frames_per_second": 16,
+  "source_coded_dimensions": [
+    1432,
+    1080
+  ],
+  "sample_aspect_ratio": "54:65",
+  "atlas_dimensions": [
+    3580,
+    2700
+  ],
+  "tile_dimensions": [
+    358,
+    270
+  ],
+  "columns": 10,
+  "conversion": "ffmpeg -i elfski.mp4 -vf scale=358:270 -vsync 0 frame-%03d.png; pack frames left-to-right in a 10-column RGBA PNG",
+  "display": "Respect original sample aspect ratio when cropping to the 275x270 tutorial viewport. Runtime reads only the atlas; FFmpeg is not a runtime dependency.",
+  "license": "Original Google Santa Tracker artwork; see repository license notices."
+}

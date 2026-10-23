@@ -20,7 +20,7 @@ impl BoatloadView {
             space_down: false,
         })
     }
-    pub fn input(&mut self, g: &mut Boatload) {
+    pub fn input(&mut self, g: &mut Boatload, block_mouse: bool) {
         if !g.playing || g.paused {
             return;
         }
@@ -38,7 +38,8 @@ impl BoatloadView {
             self.space_down = false;
             g.release(false);
         }
-        if is_mouse_button_pressed(MouseButton::Left)
+        if !block_mouse
+            && is_mouse_button_pressed(MouseButton::Left)
             && !crate::chrome::over_controls(Vec2::from(mouse_position()), 3)
         {
             self.touch = true;
@@ -46,10 +47,10 @@ impl BoatloadView {
             g.begin_charge();
         }
         if self.touch {
-            if is_mouse_button_down(MouseButton::Left) {
+            if !block_mouse && is_mouse_button_down(MouseButton::Left) {
                 g.set_y(mouse_position().1 as f64 / g.scale);
             }
-            if is_mouse_button_released(MouseButton::Left) {
+            if !block_mouse && is_mouse_button_released(MouseButton::Left) {
                 self.touch = false;
                 g.release(true);
             }

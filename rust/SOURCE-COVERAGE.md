@@ -233,3 +233,54 @@ as working based on these engine tests. The source's fallback fetch typo and
 negative stop-index bug were reviewed; native does not reproduce broken network
 calls or expose that unused negative-index accessor. There is no fake map or
 always-visible tracker added to the normal village.
+
+
+## Shared tutorial, Selfie and overlay follow-up (2026-10-23)
+
+Reviewed every line of `_shared/js/tutorial.js`, `src/elements/santa-tutorial.js`
+and its Sass, media/prefix helpers, global input-filter configuration, loader
+holder styles, and the five native games' queue/dismiss handlers. `tutorial.rs`
+translates ordered queues, persistent dismissals, reset, filter/duplicate quirks,
+load failures and the 1500ms display delay. Three original-class scenarios in
+`data/tutorial-reference.json` pass. The renderer uses original SVG strips,
+cloud mask, source steps/end timing, group opacity and shadow. The original Ski
+video is a 95-frame/16fps atlas, preserving its 54:65 sample aspect ratio; see
+`assets/tutorial/elfski.provenance.json`. No video decoder or JavaScript runs in
+product. Desktop keyboard is the tested profile; touch/pressure remains partial.
+Earlier statements that native action-game tutorials are absent are superseded.
+
+Re-read Selfie background/tools/santa/expressions styles, HTML, game timing,
+Mouse scaling, full Face/Utils and hair drawing. Wall-clock blink deadlines and
+RNG now match 1200 original frames including paused cloth. Eyes contain the
+original blink/closed artwork, dryer expressions use source branches, and hair
+uses the source backing-canvas dimensions. The six-tool mobile tray, flex wrap,
+short-desktop offset and exact media-query boundaries match exported DOM boxes.
+SVG background fitting preserves the mirror/chair aspect; nose scaleY is applied
+after fitting. `data/selfie-parity-layout-reference.json` and the toolbox unit
+test cover desktop, mobile and boundary sizes. The matched 1440x800 idle mean
+RGB error improved from 1.225 to 0.610/255. These are controlled captures, not
+complete visual certification or a performance/input-latency measurement.
+
+Re-read full `santa-overlay.js`/Sass. `overlay-layout-reference.json` has 18
+pause/game-over DOM cases over nine viewport sizes. Rust geometry tests cover
+compact cards, column/row breakpoints, hero/navigation and recommendations.
+The below-content transition now uses its own opacity and correct translation
+axis; short landscape puts recommendations to the right. Game-over text uses
+the source exclamation mark. A matched 1440x400 game-over capture has mean RGB
+error 0.679/255. Font raster/bold treatment, card asset loading/fades, all
+transition phases and further viewport captures remain incomplete.
+
+Tutorial captures at 1440x800 have mean RGB errors 0.301 (space frame 0), 0.312
+(space frame 1), 0.247 (up/down frame 1), and 0.221/255 (Ski at 2.5s).
+These numbers describe only those captures. Examples `tutorial_reference`,
+`selfie_reference` and `overlay_reference` render production Rust views.
+The separate GPU `opaque_surface_reference` verifies byte-identical RGB and
+alpha=255 after sealing 30,896 previously translucent output pixels. This fixes
+unintended window/output transparency without erasing source artwork outlines.
+Small SVG/filter/font differences still need review. All seven scenes remain
+partial; full audio/music, touch, sharing and whole-site parity are unfinished.
+
+Release validation: 33 tests pass; offline release build succeeds. An owned
+Boatload window exercised tutorial display, pause/resume, next queued hint and
+keyboard dismissal; all captured final surfaces had alpha 255. Desktop capture
+can stall, so this smoke is not evidence of minimum input latency.

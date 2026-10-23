@@ -10,36 +10,35 @@ Your overall verdict: unreviewed
 PLAYABLE — STILL PARTIAL
 
 Gift Slingshot [boatload] — your verdict: unreviewed
-  Progress: Playable native Gift Slingshot: source-driven charge/release, vertical keyboard/touch targeting, boat and iceberg spawning/collisions, pooled presents, scores/time bonuses, 10 levels, pause/restart/resize (including overlapping refill callbacks after rapid restart and the full ten-level finish) and original assets/audio actions. Seven original-JavaScript scenarios match at 1e-7; original/native idle capture mean RGB error 0.282/255 at 1440x800.
-  Remaining: Tutorial prompts are not yet implemented.
+  Progress: Playable native Gift Slingshot: source-driven charge/release, vertical keyboard/touch targeting, boat and iceberg spawning/collisions, pooled presents, scores/time bonuses, 10 levels, pause/restart/resize (including overlapping refill callbacks after rapid restart and the full ten-level finish) and original assets/audio actions. Seven original-JavaScript scenarios match at 1e-7; original/native idle capture mean RGB error 0.282/255 at 1440x800. Original queued desktop tutorial now implemented with source delay, dismissal and animation artwork.
   Remaining: Score pop-up typography/animation, all effect phases and responsive captures need further browser comparisons.
   Remaining: No claim of whole-mode 1:1 parity; audio actions translated but full music/bus fidelity remains partial.
 
 Elf Ski [elfski] — your verdict: unreviewed
-  Progress: Native implementation exists; full 1:1 parity not established.
-  Remaining: Tutorial/touch pressure and shared music remain incomplete.
+  Progress: Native implementation exists; full 1:1 parity not established. Original queued desktop tutorial now implemented with source delay, dismissal and animation artwork.
+  Remaining: Touch pressure and shared music remain incomplete.
 
 Elf Jetpack [jetpack] — your verdict: unreviewed
-  Progress: Native implementation exists; full 1:1 parity not established.
+  Progress: Native implementation exists; full 1:1 parity not established. Original queued desktop tutorial now implemented with source delay, dismissal and animation artwork.
 
 modvil [modvil] — your verdict: unreviewed
   Progress: Native implementation exists; full 1:1 parity not established. Corrected card art aspect and enabled fractional Lottie frame updates; first-use loading hitches remain.
   Remaining: Frame pacing and card/loader rendering need profiling.
 
 Present Drop [presentdrop] — your verdict: unreviewed
-  Progress: Native implementation exists; full 1:1 parity not established.
-  Remaining: Flag font and full touch/tutorial parity remain incomplete.
+  Progress: Native implementation exists; full 1:1 parity not established. Original queued desktop tutorial now implemented with source delay, dismissal and animation artwork.
+  Remaining: Flag font and full touch parity remain incomplete.
 
 Reindeer Runner [runner] — your verdict: unreviewed
-  Progress: Native implementation exists; full 1:1 parity not established.
+  Progress: Native implementation exists; full 1:1 parity not established. Original queued desktop tutorial now implemented with source delay, dismissal and animation artwork.
   Remaining: Continue visual comparisons beyond current scenarios.
 
 Santa Selfie [santaselfie] — your verdict: unreviewed
-  Progress: Native implementation exists; full 1:1 parity not established. Updated premultiplied image rendering, spray/decor compositing and identical-beard surface reuse; removed constraint-list allocations without changing the source physics oracle.
+  Progress: Native implementation exists; full 1:1 parity not established. Updated premultiplied image rendering, spray/decor compositing and identical-beard surface reuse; removed constraint-list allocations without changing the source physics oracle. Corrected mirror/chair SVG aspect fitting, mobile tool tray/media boundaries, eye image fitting, source-resolution hair raster and wall-clock blink/RNG during pause. Matched desktop idle capture mean RGB error 0.610/255.
   Remaining: User reports subtle dark edges; compare original/native tools, face and beard.
   Remaining: Frame pacing and input latency need measurement.
   Remaining: Small SVG/filtering differences still need user review; no claim of complete edge parity.
-  Remaining: Background/mirror placement and mobile tool tray still need matched source checks.
+  Remaining: All effect phases/viewports and original URL sharing remain incomplete.
 
 CHRISTMAS TRACKING — CORE TESTED; MAP/UI NOT IMPLEMENTED
 

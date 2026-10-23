@@ -36,6 +36,7 @@ const DECORATIONS: [(&str, f32, f32); 4] = [
 
 pub struct SelfieView {
     hair: Texture2D,
+    hair_scale: f32,
     target: Option<RenderTarget>,
     beard_pixels: Vec<(f64, f64, f64, bool, Option<u8>, Option<u8>)>,
     hair_material: Material,
@@ -70,27 +71,7 @@ fn premult_image(material: &Material, t: &Texture2D, r: Rect) {
 }
 impl SelfieView {
     pub fn new() -> Result<Self, String> {
-        let tree = resvg::usvg::Tree::from_data(
-            include_bytes!("../data/selfie-hair.svg"),
-            &Default::default(),
-        )
-        .map_err(|e| e.to_string())?;
-        let mut pix = resvg::tiny_skia::Pixmap::new(212, 208).ok_or("Hair allocation failed")?;
-        resvg::render(
-            &tree,
-            resvg::tiny_skia::Transform::from_scale(4., 4.),
-            &mut pix.as_mut(),
-        );
-        let mut bytes = pix.data().to_vec();
-        for p in bytes.chunks_exact_mut(4) {
-            // Straight-alpha filtering must see white even in transparent
-            // texels; black RGB there produces dark speckles between hairs.
-            p[0] = 255;
-            p[1] = 255;
-            p[2] = 255;
-        }
-        let hair = Texture2D::from_rgba8(212, 208, &bytes);
-        hair.set_filter(FilterMode::Linear);
+        let hair = Self::hair_texture(Self::scale())?;
         let hair_material = load_material(
             ShaderSource::Glsl {
                 vertex: VERTEX,
@@ -162,6 +143,7 @@ impl SelfieView {
         .map_err(|e| e.to_string())?;
         Ok(Self {
             hair,
+            hair_scale: Self::scale(),
             target: None,
             beard_pixels: vec![],
             hair_material,
@@ -180,6 +162,28 @@ impl SelfieView {
             button_held: None,
             shapes: Shapes::new()?,
         })
+    }
+    fn hair_texture(scale: f32) -> Result<Texture2D, String> {
+        let tree = resvg::usvg::Tree::from_data(
+            include_bytes!("../data/selfie-hair.svg"),
+            &Default::default(),
+        )
+        .map_err(|e| e.to_string())?;
+        let width = (53. * scale).floor().max(1.) as u32;
+        let height = (52. * scale).floor().max(1.) as u32;
+        let mut p = resvg::tiny_skia::Pixmap::new(width, height).ok_or("Hair allocation failed")?;
+        resvg::render(
+            &tree,
+            resvg::tiny_skia::Transform::from_scale(scale, scale),
+            &mut p.as_mut(),
+        );
+        let mut rgba = p.data().to_vec();
+        for pixel in rgba.chunks_exact_mut(4) {
+            pixel[..3].fill(255);
+        }
+        let t = Texture2D::from_rgba8(width as u16, height as u16, &rgba);
+        t.set_filter(FilterMode::Linear);
+        Ok(t)
     }
     pub fn scale() -> f32 {
         ((screen_width() + 1420.) / 3340.).min(screen_height() / 985.)
@@ -226,36 +230,15 @@ impl SelfieView {
         ]);
         tools
     }
+    fn tool_visible(index: usize) -> bool {
+        santa_tracker::ui::selfie_tools_layout(screen_width(), screen_height()).rects[index]
+            .is_some()
+    }
     fn tool_rect(index: usize) -> Rect {
-        if screen_width() < 800. || screen_height() < 690. {
-            let x = screen_width() - 330.;
-            let y = screen_height() - 106.;
-            return Rect::new(
-                x + (index % 8) as f32 * 40.,
-                y + (index / 8) as f32 * 48.,
-                40.,
-                48.,
-            );
-        }
-        let x = 20. + 232.3 - 208. - 15.;
-        let top = screen_height() / 2. - 290.;
-        let row_gap = (580. - (2. * 156. + 3. * 78. + 20.)) / 5.;
-        if index < 4 {
-            Rect::new(
-                x + (index % 2) as f32 * 104.,
-                top + (index / 2) as f32 * (156. + row_gap) + if index < 2 { 30. } else { 0. },
-                104.,
-                156.,
-            )
-        } else {
-            let i = index - 4;
-            Rect::new(
-                x + (i % 4) as f32 * 52.,
-                top + 2. * (156. + row_gap) - 15. + (i / 4) as f32 * (78. + row_gap),
-                52.,
-                78.,
-            )
-        }
+        let r = santa_tracker::ui::selfie_tools_layout(screen_width(), screen_height()).rects
+            [index]
+            .unwrap_or([-99999., -99999., 0., 0.]);
+        Rect::new(r[0], r[1], r[2], r[3])
     }
     fn action_rect(index: usize) -> Rect {
         let desktop = screen_width() >= 768.;
@@ -283,11 +266,11 @@ impl SelfieView {
             return;
         }
         for (i, (tool, _, _, _)) in Self::tools().iter().enumerate() {
-            if pressed && Self::tool_rect(i).contains(mouse) {
+            if pressed && Self::tool_visible(i) && Self::tool_rect(i).contains(mouse) {
                 game.select(*tool);
                 game.mouse.down = false;
                 game.update_tool_sounds(mouse.x as f64, false);
-                self.tool_used = game.time;
+                self.tool_used = game.wall_time;
                 return;
             }
         }
@@ -350,7 +333,7 @@ impl SelfieView {
         let over_tool = Self::tools()
             .iter()
             .enumerate()
-            .any(|(i, _)| Self::tool_rect(i).contains(mouse));
+            .any(|(i, _)| Self::tool_visible(i) && Self::tool_rect(i).contains(mouse));
         let down = is_mouse_button_down(MouseButton::Left)
             && !crate::chrome::over_controls(mouse, 2)
             && !over_tool;
@@ -363,10 +346,16 @@ impl SelfieView {
         );
         game.update_tool_sounds(mouse.x as f64, down);
         if pressed && down {
-            self.tool_used = game.time;
+            self.tool_used = game.wall_time;
         }
     }
     fn beard(&mut self, assets: &Assets, game: &Selfie, rect: Rect, s: f32) {
+        let hair_changed = self.hair_scale != s;
+        if hair_changed {
+            self.hair = Self::hair_texture(s).expect("Original hair path");
+            self.hair_scale = s;
+        }
+
         let width = (1200. * s).floor().max(1.) as u32;
         let height = (1400. * s).floor().max(1.) as u32;
         let resized = self.target.as_ref().is_none_or(|r| {
@@ -385,6 +374,7 @@ impl SelfieView {
             (p.x, p.y, p.rotation, p.draw, p.spray, p.decoration)
         };
         let changed = resized
+            || hair_changed
             || self.beard_pixels.len() != game.points.len()
             || !self
                 .beard_pixels
@@ -466,14 +456,46 @@ impl SelfieView {
         gl_use_default_material();
     }
     pub fn draw(&mut self, assets: &Assets, game: &Selfie, deterministic: bool) {
+        let mouse = if deterministic {
+            Vec2::ZERO
+        } else {
+            Vec2::from(mouse_position())
+        };
+        self.draw_with_mouse(assets, game, mouse);
+    }
+    pub fn draw_with_mouse(&mut self, assets: &Assets, game: &Selfie, mouse: Vec2) {
         let s = Self::scale();
         let w = screen_width();
         let h = screen_height();
-        let time = game.time as f32;
+        let time = game.wall_time as f32;
         clear_background(Color::from_hex(0x00adeb));
         let material = self.image_material.clone();
-        let draw =
-            |name: &str, r: Rect| premult_image(&material, assets.scene("santaselfie", name), r);
+        let draw = |name: &str, r: Rect| {
+            let texture = assets.scene("santaselfie", name);
+            // External SVG backgrounds preserve their viewBox aspect inside
+            // the CSS background-size viewport. Apply the nose's CSS scaleY
+            // after fitting, rather than fitting into the squashed bounds.
+            let is_nose = name == "face/nose.svg";
+            let sy = if is_nose { r.h / (104. * s) } else { 1. };
+            let viewport = if is_nose {
+                Rect::new(r.x, r.y - (104. * s - r.h) / 2., r.w, 104. * s)
+            } else {
+                r
+            };
+            let factor = (viewport.w / texture.width()).min(viewport.h / texture.height());
+            let size = vec2(texture.width(), texture.height()) * factor;
+            let mut fitted = Rect::new(
+                viewport.center().x - size.x / 2.,
+                viewport.center().y - size.y / 2.,
+                size.x,
+                size.y,
+            );
+            if is_nose {
+                fitted.y = viewport.center().y + (fitted.y - viewport.center().y) * sy;
+                fitted.h *= sy;
+            }
+            premult_image(&material, texture, fitted);
+        };
         let mirror = Rect::new(w / 2. - 1092.4 * s / 2., h - 852. * s, 1092.4 * s, 732. * s);
         draw("background/mirror.svg", mirror);
         draw(
@@ -532,32 +554,37 @@ impl SelfieView {
                 1068. * s,
             ),
         );
-        let mouse = if deterministic {
-            Vec2::ZERO
-        } else {
-            Vec2::from(mouse_position())
-        };
         let rel = vec2(2. * mouse.x / w - 1., 2. * mouse.y / h - 1.);
         let face = Self::face_rect(game, mouse);
         draw("santa/face.svg", face);
         let dryer = game.tool == Tool::Dryer && game.mouse.down;
+        let rel_x = 2. * mouse.x as f64 / w as f64 - 1.;
+        let dryer_center = dryer && rel_x.abs() < 0.3;
+        let dryer_left = dryer && rel_x < -0.3;
+        let dryer_right = dryer && rel_x > 0.3;
         let alarmed = game.tool == Tool::Clipper;
         for side in 0..2 {
             let ex = if side == 0 { 164. } else { 359. };
-            let closed = game.blink_remaining > 0.
-                || dryer
-                    && (rel.x.abs() < 0.3 || side == 0 && rel.x < -0.3 || side == 1 && rel.x > 0.3);
+            let blink = game.blink_remaining > 0.
+                || (side == 0 && dryer_left)
+                || (side == 1 && dryer_right);
+            let name = if dryer_center {
+                "face/eye--closed.svg"
+            } else if blink {
+                "face/eye--blink.svg"
+            } else {
+                "face/eye.svg"
+            };
+            let texture = assets.scene("santaselfie", name);
+            let factor = (35. * s / texture.width()).min(35. * s / texture.height());
+            let size = vec2(texture.width(), texture.height()) * factor;
             draw(
-                if closed {
-                    "face/eye--blink.svg"
-                } else {
-                    "face/eye.svg"
-                },
+                name,
                 Rect::new(
-                    face.x + (ex + rel.x * 10.) * s,
-                    face.y + (145. + rel.y * 5.) * s,
-                    35. * s,
-                    35. * s,
+                    face.x + (ex + rel.x * 10.) * s + (35. * s - size.x) / 2.,
+                    face.y + (145. + rel.y * 5.) * s + (35. * s - size.y) / 2.,
+                    size.x,
+                    size.y,
                 ),
             );
             let brow_x = if side == 0 { 132. } else { 333. };
@@ -596,12 +623,12 @@ impl SelfieView {
         );
         let (mouth, mx, mw, mh) = if alarmed {
             ("face/mouth--breath.svg", 250.5, 57., 57.)
-        } else if dryer {
+        } else if dryer_center || dryer_left || dryer_right {
             (
                 "face/mouth--breath.svg",
-                if rel.x < -0.3 {
+                if dryer_left {
                     304.
-                } else if rel.x > 0.3 {
+                } else if dryer_right {
                     234.
                 } else {
                     259.
@@ -687,8 +714,9 @@ impl SelfieView {
         }
     }
     fn draw_tools(&self, assets: &Assets, game: &Selfie, mouse: Vec2, s: f32) {
-        let desktop = screen_width() >= 800. && screen_height() >= 690.;
-        if desktop {
+        let layout = santa_tracker::ui::selfie_tools_layout(screen_width(), screen_height());
+        let desktop = layout.desktop;
+        if !layout.plain {
             premult_image(
                 &self.image_material,
                 assets.scene("santaselfie", "tray_lg.svg"),
@@ -705,15 +733,13 @@ impl SelfieView {
                 ),
             );
         } else {
-            draw_rectangle(
-                screen_width() - 330.,
-                screen_height() - 106.,
-                330.,
-                106.,
-                Color::from_hex(0xb444bb),
-            );
+            let r = layout.tray;
+            draw_rectangle(r[0], r[1], r[2], r[3], Color::from_hex(0xb444bb));
         }
         for (i, (tool, file, tw, th)) in Self::tools().iter().enumerate() {
+            if !Self::tool_visible(i) {
+                continue;
+            }
             let r = Self::tool_rect(i);
             let shadow = match tool {
                 Tool::Clipper => "clipper",
@@ -724,27 +750,42 @@ impl SelfieView {
                 Tool::Decoration(n) => DECORATIONS[*n as usize].0,
                 _ => "clipper",
             };
+            let fit = |t: &Texture2D, w: f32, h: f32| {
+                let scale = (w / t.width()).min(h / t.height());
+                let size = vec2(t.width(), t.height()) * scale;
+                Rect::new(
+                    r.center().x - size.x / 2.,
+                    r.center().y - size.y / 2.,
+                    size.x,
+                    size.y,
+                )
+            };
             if desktop {
+                let texture = assets.scene("santaselfie", &format!("tools/shadows/{shadow}.svg"));
                 premult_image(
                     &self.image_material,
-                    assets.scene("santaselfie", &format!("tools/shadows/{shadow}.svg")),
-                    Rect::new(
-                        r.x + (r.w - tw + 1.) / 2.,
-                        r.y + (r.h - th + 1.) / 2.,
-                        tw - 1.,
-                        th - 1.,
-                    ),
+                    texture,
+                    fit(texture, tw - 1., th - 1.),
                 );
             }
             if game.tool != *tool {
-                premult_image(
-                    &self.image_material,
-                    assets.scene("santaselfie", &format!("tools/{file}")),
-                    Rect::new(r.x + (r.w - tw) / 2., r.y + (r.h - th) / 2., *tw, *th),
-                );
+                let texture = assets.scene("santaselfie", &format!("tools/{file}"));
+                let tile = if desktop {
+                    vec2(*tw, *th)
+                } else {
+                    r.size() * 0.9
+                };
+                premult_image(&self.image_material, texture, fit(texture, tile.x, tile.y));
             }
         }
         if game.tool == Tool::Hand {
+            return;
+        }
+        if !Self::tools()
+            .iter()
+            .enumerate()
+            .any(|(i, (tool, _, _, _))| *tool == game.tool && Self::tool_visible(i))
+        {
             return;
         }
         let rel = 2. * mouse.x / screen_width() - 1.;
@@ -821,7 +862,7 @@ impl SelfieView {
                 Tool::Grow => ("sprites/hairgrow.png", 350., 350., 8., 0.23, -50., -140.),
                 _ => return,
             };
-            let age = (game.time - self.tool_used) as f32;
+            let age = (game.wall_time - self.tool_used) as f32;
             if game.tool == Tool::Grow && age > duration {
                 return;
             }

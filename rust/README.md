@@ -20,7 +20,7 @@ The application runs native Rust window, rendering, input, simulation, Ogg decod
 
 Most scenes still do not have native gameplay implementations. The six available scenes still have visual/interaction differences and have not passed full visual and behavioral parity. The original blur is approximated by a native Gaussian sampling shader; platform font rasterization, overlay detail, mobile tray layout and full website behavior still have differences. An unavailable activity reports that it is unavailable instead of silently opening another game. Maps/live tracking, videos, translations, accessibility, gamepad support, all remaining games and complete shared overlays still require work. Passing the current tests is not evidence of whole-site parity.
 
-Gift Slingshot is now playable with `--scene boatload`: Up/Down move; hold Space/Right to charge, release to throw. Mouse press/drag/release follows the original touch-target behavior. Source simulation scenarios include collisions, level changes, restart, resize and overlapping refill timers. Its tutorial and complete effect/viewport comparisons remain unfinished.
+Gift Slingshot is now playable with `--scene boatload`: Up/Down move; hold Space/Right to charge, release to throw. Mouse press/drag/release follows the original touch-target behavior. Source simulation scenarios include collisions, level changes, restart, resize and overlapping refill timers. Its original queued tutorial is implemented; complete effect/viewport comparisons remain unfinished.
 
 Christmas tracking has a tested Rust route engine and delivery-only gate; **the native tracking map/UI is not implemented yet**. `cargo run --manifest-path rust/Cargo.toml --example tracker_reference -- 1798110000000` checks a simulated Christmas route state. It uses the original configured endpoint's bundled 420-stop schedule, shifted to the selected year like the source. It does not yet refresh a live remote route.
 
@@ -62,7 +62,7 @@ Elf Ski: hold Down to begin skiing; Left/Right steer, and holding Down with a si
 
 Present Drop: Left/Right move the sled; Space/Down drops a present. Hold/move the mouse and release to use the original touch targeting/drop behavior.
 
-Runner controls: Space/Up jumps, Down slides. Jetpack: arrow keys/WASD, or hold and drag the mouse. Santa Selfie: select a tool in the tray, then hold/drag on Santa; release the growth spray to regrow hair. The reset button restores the beard. Share saves `santa-selfie.png` and `santa-selfie.beard` in the working directory. This native file export differs from the original site's URL sharing/photocard flow. Restore with `--scene santaselfie --beard-file santa-selfie.beard`.
+Runner controls: Space/Up jumps, Down slides. Jetpack: arrow keys, or hold and drag the mouse. Santa Selfie: select a tool in the tray, then hold/drag on Santa; release the growth spray to regrow hair. The reset button restores the beard. Share saves `santa-selfie.png` and `santa-selfie.beard` in the working directory. This native file export differs from the original site's URL sharing/photocard flow. Restore with `--scene santaselfie --beard-file santa-selfie.beard`.
 
 P pauses, R restarts/resets, M toggles audio, and Escape returns to the village. Village supports mouse wheel/drag scrolling, activity cards and the toolbar menu. For live capture, pass `--screenshot /tmp/scene.png` and press F12; `--frames` captures a frozen deterministic frame after `--advance`.
 
@@ -70,12 +70,11 @@ P pauses, R restarts/resets, M toggles audio, and Escape returns to the village.
 
 ```sh
 cargo test --manifest-path rust/Cargo.toml
-cargo run --manifest-path rust/Cargo.toml --example boatload_reference -- /tmp/boatload.png
-cargo run --manifest-path rust/Cargo.toml --example tracker_reference -- 1798110000000
 cargo run --manifest-path rust/Cargo.toml --example status_report
+cargo run --manifest-path rust/Cargo.toml --example opaque_surface_reference
 ```
 
-The JavaScript reference tools mentioned below remain in the separate original-source development checkout and are not shipped in this repository or used by the native application. `reference.cjs` loads the original Runner classes, coordinator, scoreboard and random generator; its output is checked by Rust tests to a numeric tolerance of `1e-7`. `focus-reference.cjs` does the same for the original Jetpack classes/scoreboard and Selfie cloth/point/tool operations. Additional tests check beard encoding, invalid input rejection and tool sound transitions. UI reference tests cover 516 original countdown inputs, card-player reversals and measured responsive card geometry; a sprite-filtering test checks that alpha and visible source artwork remain unchanged. The native animation test checks that an original section animates rather than rendering a static poster and stays premultiplied through filtering. The audio tests check looping, pause/resume, channel output, delayed starts, fades and source stops. The countdown test checks the original UTC deadline. Runner also checks the live delayed level transitions and original canvas offsets, and its layout is checked at five viewport sizes.
+The JavaScript reference exporters and browser capture tools live only in the separate development/reference checkout; they are deliberately omitted from this Rust-only distribution. They are not used by the native application. `reference.cjs` loads the original Runner classes, coordinator, scoreboard and random generator; its output is checked by Rust tests to a numeric tolerance of `1e-7`. `focus-reference.cjs` does the same for the original Jetpack classes/scoreboard and Selfie cloth/point/tool operations. Additional tests check beard encoding, invalid input rejection and tool sound transitions. UI reference tests cover 516 original countdown inputs, card-player reversals and measured responsive card geometry; a sprite-filtering test checks that alpha and visible source artwork remain unchanged. The native animation test checks that an original section animates rather than rendering a static poster and stays premultiplied through filtering. The audio tests check looping, pause/resume, channel output, delayed starts, fades and source stops. The countdown test checks the original UTC deadline. Runner also checks the live delayed level transitions and original canvas offsets, and its layout is checked at five viewport sizes.
 
 Original browser captures go into `rust/target/`, with measured layout data in `data/*layout-reference.json` and Selfie expression measurements in `data/selfie-expression-reference.json`. Native screenshots can be produced using:
 
@@ -95,3 +94,8 @@ Lobster was obtained from the [Google Fonts repository](https://github.com/googl
 Elf Ski lighting shaders derive from THREE.js r110 (MIT); the license is included at `assets/shaders/THREE-LICENSE`. Its Perlin noise source is public domain, credited to Stefan Gustavson, Peter Eastman and Joseph Gentle.
 
 The native Rust-only visual comparison harness can render Runner states without browser code: `cargo run --manifest-path rust/Cargo.toml --example runner_reference -- slide /tmp/runner-slide.png`. It draws the actual renderer after the same input/simulation actions as the browser reference.
+
+
+Tutorial prompts now use the original queue/dismiss timing, input artwork and cloud clip in the five native action games. Elf Ski uses a frame atlas derived from the original video with its sample aspect ratio preserved. Desktop keyboard prompts are the tested input profile; full touch/pressure behavior remains incomplete.
+
+Recent fidelity checks cover Selfie wall-clock blinking while paused, mobile toolbox wrapping, eye artwork and SVG background aspect fitting; shared pause/game-over geometry covers 18 original browser cases. Original/native captures still have small raster/font differences. The final opaque-window pass is GPU-checked to preserve every RGB byte while setting output alpha to opaque. This prevents applying surface transparency twice; it does not certify that every image edge matches the browser.

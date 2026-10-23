@@ -236,3 +236,45 @@ void main(){gl_Position=Projection*Model*vec4(position,1.0);uv=texcoord;tint=col
 precision highp float;varying vec2 uv;varying vec4 tint;uniform sampler2D Texture;
 void main(){vec4 c=texture2D(Texture,uv);gl_FragColor=vec4(c.rgb*tint.rgb*tint.a,c.a*tint.a);}"#},MaterialParams {pipeline_params:PipelineParams {color_blend:Some(BlendState::new(Equation::Add,BlendFactor::One,BlendFactor::OneMinusValue(BlendValue::SourceAlpha))),alpha_blend:Some(BlendState::new(Equation::Add,BlendFactor::One,BlendFactor::OneMinusValue(BlendValue::SourceAlpha))),..Default::default()},..Default::default()}).map_err(|e|e.to_string())
 }
+
+/// The native window is opaque, like the original page. Default sprite/font
+/// blending can lower destination alpha; don't let a desktop compositor or PNG
+/// reader apply that alpha to already-composited scene RGB a second time.
+pub struct OpaqueSurface {
+    material: Material,
+}
+impl OpaqueSurface {
+    pub fn new() -> Result<Self, String> {
+        Ok(Self {
+            material: load_material(
+                ShaderSource::Glsl {
+                    vertex: VERTEX,
+                    fragment: r#"#version 100
+precision lowp float;void main(){gl_FragColor=vec4(0.0,0.0,0.0,1.0);}"#,
+                },
+                MaterialParams {
+                    pipeline_params: PipelineParams {
+                        color_blend: Some(BlendState::new(
+                            Equation::Add,
+                            BlendFactor::Zero,
+                            BlendFactor::One,
+                        )),
+                        alpha_blend: Some(BlendState::new(
+                            Equation::Add,
+                            BlendFactor::One,
+                            BlendFactor::Zero,
+                        )),
+                        ..Default::default()
+                    },
+                    ..Default::default()
+                },
+            )
+            .map_err(|e| e.to_string())?,
+        })
+    }
+    pub fn draw(&self) {
+        gl_use_material(&self.material);
+        draw_rectangle(0., 0., screen_width(), screen_height(), WHITE);
+        gl_use_default_material();
+    }
+}

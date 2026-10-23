@@ -1,0 +1,1766 @@
+{
+  "1440-idle": {
+    "w": 1440,
+    "h": 800,
+    "tools": [
+      [
+        29.296875,
+        140,
+        104,
+        156
+      ],
+      [
+        133.296875,
+        140,
+        104,
+        156
+      ],
+      [
+        29.296875,
+        268.796875,
+        104,
+        156
+      ],
+      [
+        133.296875,
+        268.796875,
+        104,
+        156
+      ],
+      [
+        29.296875,
+        412.59375,
+        52,
+        78
+      ],
+      [
+        81.296875,
+        412.59375,
+        52,
+        78
+      ],
+      [
+        133.296875,
+        412.59375,
+        52,
+        78
+      ],
+      [
+        185.296875,
+        412.59375,
+        52,
+        78
+      ],
+      [
+        29.296875,
+        493.40625,
+        52,
+        78
+      ],
+      [
+        81.296875,
+        493.40625,
+        52,
+        78
+      ],
+      [
+        133.296875,
+        493.40625,
+        52,
+        78
+      ],
+      [
+        185.296875,
+        493.40625,
+        52,
+        78
+      ],
+      [
+        29.296875,
+        574.203125,
+        52,
+        78
+      ],
+      [
+        81.296875,
+        574.203125,
+        52,
+        78
+      ],
+      [
+        133.296875,
+        574.203125,
+        52,
+        78
+      ],
+      [
+        185.296875,
+        574.203125,
+        52,
+        78
+      ]
+    ],
+    ".scene": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 800,
+      "fontSize": "0.812183px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Background-mirror": {
+      "x": 276.390625,
+      "y": 108.03125,
+      "w": 887.21875,
+      "h": 594.515625,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/background/mirror.svg\")",
+      "backgroundSize": "887.228px 594.518px",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Face": {
+      "x": 485.268798828125,
+      "y": 51.1890869140625,
+      "w": 453.1875,
+      "h": 403.640625,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/santa/face.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    "#beard": {
+      "x": 224.862548828125,
+      "y": -315.4984130859375,
+      "w": 974,
+      "h": 1137,
+      "fontSize": "0.812183px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".eye--left": {
+      "x": 610.33447265625,
+      "y": 164.893798828125,
+      "w": 28.421875,
+      "h": 28.421875,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    ".eye--right": {
+      "x": 768.72509765625,
+      "y": 164.893798828125,
+      "w": 28.421875,
+      "h": 28.421875,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    ".Tools--scrollable": {
+      "x": 20,
+      "y": 110,
+      "w": 232.296875,
+      "h": 580,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/tray_lg.svg\")",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    }
+  },
+  "1440-dryer-center": {
+    "w": 1440,
+    "h": 800,
+    "tools": [
+      [
+        29.296875,
+        140,
+        104,
+        156
+      ],
+      [
+        133.296875,
+        140,
+        104,
+        156
+      ],
+      [
+        29.296875,
+        268.796875,
+        104,
+        156
+      ],
+      [
+        133.296875,
+        268.796875,
+        104,
+        156
+      ],
+      [
+        29.296875,
+        412.59375,
+        52,
+        78
+      ],
+      [
+        81.296875,
+        412.59375,
+        52,
+        78
+      ],
+      [
+        133.296875,
+        412.59375,
+        52,
+        78
+      ],
+      [
+        185.296875,
+        412.59375,
+        52,
+        78
+      ],
+      [
+        29.296875,
+        493.40625,
+        52,
+        78
+      ],
+      [
+        81.296875,
+        493.40625,
+        52,
+        78
+      ],
+      [
+        133.296875,
+        493.40625,
+        52,
+        78
+      ],
+      [
+        185.296875,
+        493.40625,
+        52,
+        78
+      ],
+      [
+        29.296875,
+        574.203125,
+        52,
+        78
+      ],
+      [
+        81.296875,
+        574.203125,
+        52,
+        78
+      ],
+      [
+        133.296875,
+        574.203125,
+        52,
+        78
+      ],
+      [
+        185.296875,
+        574.203125,
+        52,
+        78
+      ]
+    ],
+    ".scene": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 800,
+      "fontSize": "0.812183px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Background-mirror": {
+      "x": 276.390625,
+      "y": 108.03125,
+      "w": 887.21875,
+      "h": 594.515625,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/background/mirror.svg\")",
+      "backgroundSize": "887.228px 594.518px",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Face": {
+      "x": 493.390625,
+      "y": 55.25,
+      "w": 453.1875,
+      "h": 403.640625,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/santa/face.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    "#beard": {
+      "x": 232.984375,
+      "y": -311.4375,
+      "w": 974,
+      "h": 1137,
+      "fontSize": "0.812183px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".eye--left": {
+      "x": 626.578125,
+      "y": 173.015625,
+      "w": 28.421875,
+      "h": 28.421875,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye--closed.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "50% 50%"
+    },
+    ".eye--right": {
+      "x": 784.96875,
+      "y": 173.015625,
+      "w": 28.421875,
+      "h": 28.421875,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye--closed.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "50% 50%"
+    },
+    ".Tools--scrollable": {
+      "x": 20,
+      "y": 110,
+      "w": 232.296875,
+      "h": 580,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/tray_lg.svg\")",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    }
+  },
+  "1440-dryer-left": {
+    "w": 1440,
+    "h": 800,
+    "tools": [
+      [
+        29.296875,
+        140,
+        104,
+        156
+      ],
+      [
+        133.296875,
+        140,
+        104,
+        156
+      ],
+      [
+        29.296875,
+        268.796875,
+        104,
+        156
+      ],
+      [
+        133.296875,
+        268.796875,
+        104,
+        156
+      ],
+      [
+        29.296875,
+        412.59375,
+        52,
+        78
+      ],
+      [
+        81.296875,
+        412.59375,
+        52,
+        78
+      ],
+      [
+        133.296875,
+        412.59375,
+        52,
+        78
+      ],
+      [
+        185.296875,
+        412.59375,
+        52,
+        78
+      ],
+      [
+        29.296875,
+        493.40625,
+        52,
+        78
+      ],
+      [
+        81.296875,
+        493.40625,
+        52,
+        78
+      ],
+      [
+        133.296875,
+        493.40625,
+        52,
+        78
+      ],
+      [
+        185.296875,
+        493.40625,
+        52,
+        78
+      ],
+      [
+        29.296875,
+        574.203125,
+        52,
+        78
+      ],
+      [
+        81.296875,
+        574.203125,
+        52,
+        78
+      ],
+      [
+        133.296875,
+        574.203125,
+        52,
+        78
+      ],
+      [
+        185.296875,
+        574.203125,
+        52,
+        78
+      ]
+    ],
+    ".scene": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 800,
+      "fontSize": "0.812183px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Background-mirror": {
+      "x": 276.390625,
+      "y": 108.03125,
+      "w": 887.21875,
+      "h": 594.515625,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/background/mirror.svg\")",
+      "backgroundSize": "887.228px 594.518px",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Face": {
+      "x": 485.268798828125,
+      "y": 55.25,
+      "w": 453.1875,
+      "h": 403.640625,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/santa/face.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    "#beard": {
+      "x": 224.862548828125,
+      "y": -311.4375,
+      "w": 974,
+      "h": 1137,
+      "fontSize": "0.812183px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".eye--left": {
+      "x": 610.33447265625,
+      "y": 173.015625,
+      "w": 28.421875,
+      "h": 28.421875,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye--blink.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "50% 50%"
+    },
+    ".eye--right": {
+      "x": 768.72509765625,
+      "y": 173.015625,
+      "w": 28.421875,
+      "h": 28.421875,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    ".Tools--scrollable": {
+      "x": 20,
+      "y": 110,
+      "w": 232.296875,
+      "h": 580,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/tray_lg.svg\")",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    }
+  },
+  "1440-blink": {
+    "w": 1440,
+    "h": 800,
+    "tools": [
+      [
+        29.296875,
+        140,
+        104,
+        156
+      ],
+      [
+        133.296875,
+        140,
+        104,
+        156
+      ],
+      [
+        29.296875,
+        268.796875,
+        104,
+        156
+      ],
+      [
+        133.296875,
+        268.796875,
+        104,
+        156
+      ],
+      [
+        29.296875,
+        412.59375,
+        52,
+        78
+      ],
+      [
+        81.296875,
+        412.59375,
+        52,
+        78
+      ],
+      [
+        133.296875,
+        412.59375,
+        52,
+        78
+      ],
+      [
+        185.296875,
+        412.59375,
+        52,
+        78
+      ],
+      [
+        29.296875,
+        493.40625,
+        52,
+        78
+      ],
+      [
+        81.296875,
+        493.40625,
+        52,
+        78
+      ],
+      [
+        133.296875,
+        493.40625,
+        52,
+        78
+      ],
+      [
+        185.296875,
+        493.40625,
+        52,
+        78
+      ],
+      [
+        29.296875,
+        574.203125,
+        52,
+        78
+      ],
+      [
+        81.296875,
+        574.203125,
+        52,
+        78
+      ],
+      [
+        133.296875,
+        574.203125,
+        52,
+        78
+      ],
+      [
+        185.296875,
+        574.203125,
+        52,
+        78
+      ]
+    ],
+    ".scene": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 800,
+      "fontSize": "0.812183px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Background-mirror": {
+      "x": 276.390625,
+      "y": 108.03125,
+      "w": 887.21875,
+      "h": 594.515625,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/background/mirror.svg\")",
+      "backgroundSize": "887.228px 594.518px",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Face": {
+      "x": 485.268798828125,
+      "y": 51.1890869140625,
+      "w": 453.1875,
+      "h": 403.640625,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/santa/face.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    "#beard": {
+      "x": 224.862548828125,
+      "y": -315.4984130859375,
+      "w": 974,
+      "h": 1137,
+      "fontSize": "0.812183px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".eye--left": {
+      "x": 610.33447265625,
+      "y": 164.893798828125,
+      "w": 28.421875,
+      "h": 28.421875,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye--blink.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "50% 50%"
+    },
+    ".eye--right": {
+      "x": 768.72509765625,
+      "y": 164.893798828125,
+      "w": 28.421875,
+      "h": 28.421875,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye--blink.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "50% 50%"
+    },
+    ".Tools--scrollable": {
+      "x": 20,
+      "y": 110,
+      "w": 232.296875,
+      "h": 580,
+      "fontSize": "0.812183px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/tray_lg.svg\")",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    }
+  },
+  "768-idle": {
+    "w": 768,
+    "h": 800,
+    "tools": [
+      [
+        460,
+        747,
+        48,
+        48
+      ],
+      [
+        508,
+        747,
+        48,
+        48
+      ],
+      null,
+      [
+        556,
+        747,
+        48,
+        48
+      ],
+      [
+        604,
+        747,
+        48,
+        48
+      ],
+      null,
+      null,
+      [
+        652,
+        747,
+        48,
+        48
+      ],
+      [
+        700,
+        747,
+        48,
+        48
+      ],
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    ".scene": {
+      "x": 0,
+      "y": 0,
+      "w": 768,
+      "h": 800,
+      "fontSize": "0.65509px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Background-mirror": {
+      "x": 26.1953125,
+      "y": 241.875,
+      "w": 715.609375,
+      "h": 479.515625,
+      "fontSize": "0.65509px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/background/mirror.svg\")",
+      "backgroundSize": "715.62px 479.526px",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Face": {
+      "x": 194.6756591796875,
+      "y": 196.02142333984375,
+      "w": 365.53125,
+      "h": 325.578125,
+      "fontSize": "0.65509px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/santa/face.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    "#beard": {
+      "x": -15.5587158203125,
+      "y": -99.69732666015625,
+      "w": 786,
+      "h": 917,
+      "fontSize": "0.65509px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".eye--left": {
+      "x": 295.546630859375,
+      "y": 287.7303466796875,
+      "w": 22.921875,
+      "h": 22.921875,
+      "fontSize": "0.65509px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    ".eye--right": {
+      "x": 423.312255859375,
+      "y": 287.7303466796875,
+      "w": 22.921875,
+      "h": 22.921875,
+      "fontSize": "0.65509px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    ".Tools--scrollable": {
+      "x": 438,
+      "y": 742,
+      "w": 330,
+      "h": 58,
+      "fontSize": "0.65509px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    }
+  },
+  "375-idle": {
+    "w": 375,
+    "h": 800,
+    "tools": [
+      [
+        67,
+        747,
+        48,
+        48
+      ],
+      [
+        115,
+        747,
+        48,
+        48
+      ],
+      null,
+      [
+        163,
+        747,
+        48,
+        48
+      ],
+      [
+        211,
+        747,
+        48,
+        48
+      ],
+      null,
+      null,
+      [
+        259,
+        747,
+        48,
+        48
+      ],
+      [
+        307,
+        747,
+        48,
+        48
+      ],
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    ".scene": {
+      "x": 0,
+      "y": 0,
+      "w": 375,
+      "h": 800,
+      "fontSize": "0.537425px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Background-mirror": {
+      "x": -106.0390625,
+      "y": 342.125,
+      "w": 587.078125,
+      "h": 393.390625,
+      "fontSize": "0.537425px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/background/mirror.svg\")",
+      "backgroundSize": "587.083px 393.395px",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Face": {
+      "x": 32.18043518066406,
+      "y": 304.5159912109375,
+      "w": 299.875,
+      "h": 267.09375,
+      "fontSize": "0.537425px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/santa/face.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    "#beard": {
+      "x": -139.88206481933594,
+      "y": 62.0628662109375,
+      "w": 644,
+      "h": 752,
+      "fontSize": "0.537425px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".eye--left": {
+      "x": 114.93118286132812,
+      "y": 379.750732421875,
+      "w": 18.796875,
+      "h": 18.796875,
+      "fontSize": "0.537425px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    ".eye--right": {
+      "x": 219.75930786132812,
+      "y": 379.750732421875,
+      "w": 18.796875,
+      "h": 18.796875,
+      "fontSize": "0.537425px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    ".Tools--scrollable": {
+      "x": 45,
+      "y": 742,
+      "w": 330,
+      "h": 58,
+      "fontSize": "0.537425px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    }
+  },
+  "800-idle": {
+    "w": 800,
+    "h": 800,
+    "tools": [
+      [
+        18,
+        145,
+        104,
+        156
+      ],
+      [
+        122,
+        145,
+        104,
+        156
+      ],
+      [
+        226,
+        115,
+        104,
+        156
+      ],
+      [
+        18,
+        271,
+        104,
+        156
+      ],
+      [
+        122,
+        256,
+        52,
+        78
+      ],
+      [
+        174,
+        256,
+        52,
+        78
+      ],
+      [
+        226,
+        256,
+        52,
+        78
+      ],
+      [
+        278,
+        256,
+        52,
+        78
+      ],
+      [
+        18,
+        412,
+        52,
+        78
+      ],
+      [
+        70,
+        412,
+        52,
+        78
+      ],
+      [
+        122,
+        412,
+        52,
+        78
+      ],
+      [
+        174,
+        412,
+        52,
+        78
+      ],
+      [
+        226,
+        412,
+        52,
+        78
+      ],
+      [
+        278,
+        412,
+        52,
+        78
+      ],
+      [
+        226,
+        510,
+        52,
+        78
+      ],
+      [
+        278,
+        510,
+        52,
+        78
+      ]
+    ],
+    ".scene": {
+      "x": 0,
+      "y": 0,
+      "w": 800,
+      "h": 800,
+      "fontSize": "0.664671px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Background-mirror": {
+      "x": 36.9609375,
+      "y": 233.71875,
+      "w": 726.078125,
+      "h": 486.53125,
+      "fontSize": "0.664671px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/background/mirror.svg\")",
+      "backgroundSize": "726.086px 486.539px",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Face": {
+      "x": 207.91580200195312,
+      "y": 187.19227600097656,
+      "w": 370.8749694824219,
+      "h": 330.328125,
+      "fontSize": "0.664671px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/santa/face.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    "#beard": {
+      "x": -5.146697998046875,
+      "y": -112.65147399902344,
+      "w": 797,
+      "h": 930,
+      "fontSize": "0.664671px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".eye--left": {
+      "x": 310.26910400390625,
+      "y": 280.2439270019531,
+      "w": 23.25,
+      "h": 23.25,
+      "fontSize": "0.664671px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    ".eye--right": {
+      "x": 439.89410400390625,
+      "y": 280.2439270019531,
+      "w": 23.25,
+      "h": 23.25,
+      "fontSize": "0.664671px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    ".Tools--scrollable": {
+      "x": 20,
+      "y": 110,
+      "w": 330,
+      "h": 498,
+      "fontSize": "0.664671px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    }
+  },
+  "1024x690-idle": {
+    "w": 1024,
+    "h": 690,
+    "tools": [
+      [
+        18,
+        90,
+        104,
+        156
+      ],
+      [
+        122,
+        90,
+        104,
+        156
+      ],
+      [
+        226,
+        60,
+        104,
+        156
+      ],
+      [
+        18,
+        216,
+        104,
+        156
+      ],
+      [
+        122,
+        201,
+        52,
+        78
+      ],
+      [
+        174,
+        201,
+        52,
+        78
+      ],
+      [
+        226,
+        201,
+        52,
+        78
+      ],
+      [
+        278,
+        201,
+        52,
+        78
+      ],
+      [
+        18,
+        357,
+        52,
+        78
+      ],
+      [
+        70,
+        357,
+        52,
+        78
+      ],
+      [
+        122,
+        357,
+        52,
+        78
+      ],
+      [
+        174,
+        357,
+        52,
+        78
+      ],
+      [
+        226,
+        357,
+        52,
+        78
+      ],
+      [
+        278,
+        357,
+        52,
+        78
+      ],
+      [
+        226,
+        455,
+        52,
+        78
+      ],
+      [
+        278,
+        455,
+        52,
+        78
+      ]
+    ],
+    ".scene": {
+      "x": 0,
+      "y": 0,
+      "w": 1024,
+      "h": 690,
+      "fontSize": "0.700508px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Background-mirror": {
+      "x": 129.3828125,
+      "y": 93.1875,
+      "w": 765.234375,
+      "h": 512.765625,
+      "fontSize": "0.700508px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/background/mirror.svg\")",
+      "backgroundSize": "765.234px 512.772px",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Face": {
+      "x": 309.54962158203125,
+      "y": 44.15371322631836,
+      "w": 390.875,
+      "h": 348.140625,
+      "fontSize": "0.700508px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/santa/face.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    "#beard": {
+      "x": 84.98710632324219,
+      "y": -271.7837829589844,
+      "w": 840,
+      "h": 980,
+      "fontSize": "0.700508px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".eye--left": {
+      "x": 417.4195251464844,
+      "y": 142.2136688232422,
+      "w": 24.515655517578125,
+      "h": 24.515625,
+      "fontSize": "0.700508px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    ".eye--right": {
+      "x": 554.0289306640625,
+      "y": 142.2136688232422,
+      "w": 24.515625,
+      "h": 24.515625,
+      "fontSize": "0.700508px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    ".Tools--scrollable": {
+      "x": 20,
+      "y": 55,
+      "w": 330,
+      "h": 498,
+      "fontSize": "0.700508px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    }
+  },
+  "1440x400-idle": {
+    "w": 1440,
+    "h": 400,
+    "tools": [
+      [
+        1082,
+        347,
+        48,
+        48
+      ],
+      [
+        1130,
+        347,
+        48,
+        48
+      ],
+      null,
+      [
+        1178,
+        347,
+        48,
+        48
+      ],
+      [
+        1226,
+        347,
+        48,
+        48
+      ],
+      null,
+      null,
+      [
+        1274,
+        347,
+        48,
+        48
+      ],
+      [
+        1322,
+        347,
+        48,
+        48
+      ],
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    ".scene": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 400,
+      "fontSize": "0.406091px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Background-mirror": {
+      "x": 498.1953125,
+      "y": 54.03125,
+      "w": 443.609375,
+      "h": 297.25,
+      "fontSize": "0.406091px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/background/mirror.svg\")",
+      "backgroundSize": "443.614px 297.259px",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Face": {
+      "x": 602.6343994140625,
+      "y": 25.61016845703125,
+      "w": 226.59375,
+      "h": 201.8125,
+      "fontSize": "0.406091px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/santa/face.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    "#beard": {
+      "x": 472.4312744140625,
+      "y": -157.48358154296875,
+      "w": 487,
+      "h": 568,
+      "fontSize": "0.406091px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".eye--left": {
+      "x": 665.167236328125,
+      "y": 82.4547119140625,
+      "w": 14.203125,
+      "h": 14.203125,
+      "fontSize": "0.406091px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    ".eye--right": {
+      "x": 744.370361328125,
+      "y": 82.4547119140625,
+      "w": 14.203125,
+      "h": 14.203125,
+      "fontSize": "0.406091px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    ".Tools--scrollable": {
+      "x": 1060,
+      "y": 342,
+      "w": 330,
+      "h": 58,
+      "fontSize": "0.406091px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    }
+  },
+  "1440x400-dryer-center": {
+    "w": 1440,
+    "h": 400,
+    "tools": [
+      [
+        1082,
+        347,
+        48,
+        48
+      ],
+      [
+        1130,
+        347,
+        48,
+        48
+      ],
+      null,
+      [
+        1178,
+        347,
+        48,
+        48
+      ],
+      [
+        1226,
+        347,
+        48,
+        48
+      ],
+      null,
+      null,
+      [
+        1274,
+        347,
+        48,
+        48
+      ],
+      [
+        1322,
+        347,
+        48,
+        48
+      ],
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    ".scene": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 400,
+      "fontSize": "0.406091px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Background-mirror": {
+      "x": 498.1953125,
+      "y": 54.03125,
+      "w": 443.609375,
+      "h": 297.25,
+      "fontSize": "0.406091px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/background/mirror.svg\")",
+      "backgroundSize": "443.614px 297.259px",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Face": {
+      "x": 606.6953125,
+      "y": 29.67108154296875,
+      "w": 226.59375,
+      "h": 201.8125,
+      "fontSize": "0.406091px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/santa/face.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    "#beard": {
+      "x": 476.4921875,
+      "y": -153.42266845703125,
+      "w": 487,
+      "h": 568,
+      "fontSize": "0.406091px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".eye--left": {
+      "x": 673.2890625,
+      "y": 90.5765380859375,
+      "w": 14.203125,
+      "h": 14.203125,
+      "fontSize": "0.406091px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye--closed.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "50% 50%"
+    },
+    ".eye--right": {
+      "x": 752.4921875,
+      "y": 90.5765380859375,
+      "w": 14.203125,
+      "h": 14.203125,
+      "fontSize": "0.406091px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye--closed.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "50% 50%"
+    },
+    ".Tools--scrollable": {
+      "x": 1060,
+      "y": 342,
+      "w": 330,
+      "h": 58,
+      "fontSize": "0.406091px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    }
+  },
+  "1440x400-dryer-left": {
+    "w": 1440,
+    "h": 400,
+    "tools": [
+      [
+        1082,
+        347,
+        48,
+        48
+      ],
+      [
+        1130,
+        347,
+        48,
+        48
+      ],
+      null,
+      [
+        1178,
+        347,
+        48,
+        48
+      ],
+      [
+        1226,
+        347,
+        48,
+        48
+      ],
+      null,
+      null,
+      [
+        1274,
+        347,
+        48,
+        48
+      ],
+      [
+        1322,
+        347,
+        48,
+        48
+      ],
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    ".scene": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 400,
+      "fontSize": "0.406091px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Background-mirror": {
+      "x": 498.1953125,
+      "y": 54.03125,
+      "w": 443.609375,
+      "h": 297.25,
+      "fontSize": "0.406091px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/background/mirror.svg\")",
+      "backgroundSize": "443.614px 297.259px",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Face": {
+      "x": 602.6343994140625,
+      "y": 29.67108154296875,
+      "w": 226.59375,
+      "h": 201.8125,
+      "fontSize": "0.406091px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/santa/face.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    "#beard": {
+      "x": 472.4312744140625,
+      "y": -153.42266845703125,
+      "w": 487,
+      "h": 568,
+      "fontSize": "0.406091px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".eye--left": {
+      "x": 665.167236328125,
+      "y": 90.5765380859375,
+      "w": 14.203125,
+      "h": 14.203125,
+      "fontSize": "0.406091px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye--blink.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "50% 50%"
+    },
+    ".eye--right": {
+      "x": 744.370361328125,
+      "y": 90.5765380859375,
+      "w": 14.203125,
+      "h": 14.203125,
+      "fontSize": "0.406091px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    ".Tools--scrollable": {
+      "x": 1060,
+      "y": 342,
+      "w": 330,
+      "h": 58,
+      "fontSize": "0.406091px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    }
+  },
+  "1440x400-blink": {
+    "w": 1440,
+    "h": 400,
+    "tools": [
+      [
+        1082,
+        347,
+        48,
+        48
+      ],
+      [
+        1130,
+        347,
+        48,
+        48
+      ],
+      null,
+      [
+        1178,
+        347,
+        48,
+        48
+      ],
+      [
+        1226,
+        347,
+        48,
+        48
+      ],
+      null,
+      null,
+      [
+        1274,
+        347,
+        48,
+        48
+      ],
+      [
+        1322,
+        347,
+        48,
+        48
+      ],
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    ".scene": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 400,
+      "fontSize": "0.406091px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Background-mirror": {
+      "x": 498.1953125,
+      "y": 54.03125,
+      "w": 443.609375,
+      "h": 297.25,
+      "fontSize": "0.406091px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/background/mirror.svg\")",
+      "backgroundSize": "443.614px 297.259px",
+      "backgroundPosition": "0% 0%"
+    },
+    ".Face": {
+      "x": 602.6343994140625,
+      "y": 25.61016845703125,
+      "w": 226.59375,
+      "h": 201.8125,
+      "fontSize": "0.406091px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/santa/face.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "0px 0px"
+    },
+    "#beard": {
+      "x": 472.4312744140625,
+      "y": -157.48358154296875,
+      "w": 487,
+      "h": 568,
+      "fontSize": "0.406091px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    },
+    ".eye--left": {
+      "x": 665.167236328125,
+      "y": 82.4547119140625,
+      "w": 14.203125,
+      "h": 14.203125,
+      "fontSize": "0.406091px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye--blink.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "50% 50%"
+    },
+    ".eye--right": {
+      "x": 744.370361328125,
+      "y": 82.4547119140625,
+      "w": 14.203125,
+      "h": 14.203125,
+      "fontSize": "0.406091px",
+      "background": "url(\"http://127.0.0.1:9102/st/scenes/santaselfie/img/face/eye--blink.svg\")",
+      "backgroundSize": "contain",
+      "backgroundPosition": "50% 50%"
+    },
+    ".Tools--scrollable": {
+      "x": 1060,
+      "y": 342,
+      "w": 330,
+      "h": 58,
+      "fontSize": "0.406091px",
+      "background": "none",
+      "backgroundSize": "auto",
+      "backgroundPosition": "0% 0%"
+    }
+  }
+}
