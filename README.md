@@ -18,19 +18,63 @@ Similar means faithful and plays similar but their may be some obvious issues
 
 | Name | State |
 | --- | --- |
-| Village / Home | 1:1 |
-| Reindeer Runner | Very similar |
-| Elf Jetpack | 1:1 |
-| Santa Selfie | 1:1 |
-| Elf Ski | Almost 1:1 |
-| Present Drop | Very similar |
-| Gift Slingshot | Very similar |
-| Elf Maker | Almost 1:1 |
-| Elf Jamband | Very similar |
-| Elf Glider | Almost 1:1 |
-| Penguin Dash | Almost 1:1 |
-| Santa Tracking Animation Preview | Partially alike |
+| Build & Bolt | Unplayable |
+| Candy Factory | Unplayable |
 | Christmas Tracking | Unplayable |
+| Code Boogie | Unplayable |
+| Code Lab | Unplayable |
+| Dashboard | Unplayable |
+| Demo Scene | Unplayable |
+| Elf Express | Unplayable |
+| Elf Glider | Almost 1:1 |
+| Elf Jamband | Very similar |
+| Elf Jetpack | 1:1 |
+| Elf Maker | Almost 1:1 |
+| Elf Rollercoaster | Unplayable |
+| Elf Ski | Almost 1:1 |
+| Elf Ski (Holiday Slopes) | Unplayable |
+| Family Guide | Unplayable |
+| Gift Slingshot | Very similar |
+| Gumball Tilt | Unplayable |
+| Holiday Traditions | Unplayable |
+| Island | Unplayable |
+| Language Match | Unplayable |
+| Map Quiz | Unplayable |
+| Memory Match | Unplayable |
+| Mission Control | Unplayable |
+| Mrs. Claus' Briefing | Unplayable |
+| North Pole Airport | Unplayable |
+| North Pole Playground | Unplayable |
+| Notices | Unplayable |
+| Ollie Under The Sea | Unplayable |
+| Penguin Dash | Almost 1:1 |
+| Pose Boogie | Unplayable |
+| Present Bounce | Unplayable |
+| Present Delivery | Unplayable |
+| Present Drop | Very similar |
+| Quick Draw | Unplayable |
+| Railroad Ride | Unplayable |
+| Reindeer Runner | Very similar |
+| Retro | Unplayable |
+| Route Development | Unplayable |
+| Rudolph Racer | Unplayable |
+| Santa Postcards | Unplayable |
+| Santa Search | Unplayable |
+| Santa Selfie | 1:1 |
+| Santa Tracking Animation Preview | Partially alike |
+| Santa's Canvas | Unplayable |
+| Season of Giving | Unplayable |
+| Snow Dodgeball | Unplayable |
+| Snowball Storm | Unplayable |
+| Snowbox | Unplayable |
+| Street View | Unplayable |
+| Translations | Unplayable |
+| Under Construction | Unplayable |
+| Undersea | Unplayable |
+| Video | Unplayable |
+| Village / Home | 1:1 |
+| Wind Tunnel | Unplayable |
+| Wrap Battle | Unplayable |
 
 # Running locally
 
