@@ -29,11 +29,11 @@ Validate behavior against the original code and, when relevant, its actual bundl
 
 ## README faithfulness categories
 
-Keep the GitHub root README scene list as exactly two columns, **Name** and **State**, with concise category values: **1:1**, **Almost 1:1**, **Resembles**, **Partially alike**, **Unplayable**. Keep detailed evidence/issues in the existing feedback file and coverage ledger, not table prose.
+Keep the GitHub root README scene list as exactly two columns, **Name** and **State**, with concise category values: **1:1**, **Almost 1:1**, **Very similar**, **Partially alike**, **Unplayable**. Keep detailed evidence/issues in the existing feedback file and coverage ledger, not table prose.
 
 - **1:1**: every active behavior, animation, image/proportion, sound and applicable input path has been matched to the original, with no known material differences. Selected passing tests alone never justify this claim.
 - **Almost 1:1**: the main experience closely matches, with only small, identified remaining differences.
-- **Resembles**: recognizable and playable, with material differences or substantial unverified areas.
+- **Very similar**: recognizable and playable, with material differences or substantial unverified areas.
 - **Partially alike**: only part of the experience is implemented or major flows differ.
 - **Unplayable**: the scene is missing or its main flow cannot be played.
 

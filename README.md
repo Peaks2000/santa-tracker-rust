@@ -19,12 +19,12 @@ Very Similar means it plays almost exactly like the website but small things cou
 | Elf Jetpack | 1:1 |
 | Santa Selfie | 1:1 |
 | Elf Ski | Almost 1:1 |
-| Present Drop | Resembles |
-| Gift Slingshot | Resembles |
-| Elf Maker | Resembles |
-| Elf Jamband | Resembles |
-| Elf Glider | Resembles |
-| Penguin Dash | Resembles |
+| Present Drop | Very similar |
+| Gift Slingshot | Very similar |
+| Elf Maker | Very similar |
+| Elf Jamband | Very similar |
+| Elf Glider | Very similar |
+| Penguin Dash | Very similar |
 | Christmas Tracking | Unplayable |
 
 # Running locally
