@@ -11,11 +11,11 @@ Using the javascript code of Google Santa Tracker I remade the logic function by
 
 | Name | State |
 | --- | --- |
-| Village / Home | Playable — partial fidelity |
-| Reindeer Runner | Playable — partial fidelity |
-| Elf Jetpack | Playable — partial fidelity |
-| Santa Selfie | Playable — partial fidelity |
-| Elf Ski | Playable — partial fidelity |
+| Village / Home | 1:1 |
+| Reindeer Runner | Almost 1:1 |
+| Elf Jetpack | 1:1 |
+| Santa Selfie | 1:1 |
+| Elf Ski | Almost 1:1 |
 | Present Drop | Playable — partial fidelity |
 | Gift Slingshot | Playable — partial fidelity |
 | Elf Maker | Playable — partial fidelity |
