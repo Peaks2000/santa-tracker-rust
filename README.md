@@ -19,7 +19,7 @@ Similar means faithful and plays similar but their may be some obvious issues
 | Name | State |
 | --- | --- |
 | Village / Home | 1:1 |
-| Reindeer Runner | Almost 1:1 |
+| Reindeer Runner | Very Similar (behaves 1:1 just some visual bugs)|
 | Elf Jetpack | 1:1 |
 | Santa Selfie | 1:1 |
 | Elf Ski | Almost 1:1 |
