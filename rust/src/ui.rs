@@ -68,6 +68,9 @@ impl<const N: usize> Transition<N> {
             shortening: 1.,
         }
     }
+    pub fn end_time(&self) -> f64 {
+        self.start + self.duration
+    }
     pub fn value(&self, now: f64) -> [f64; N] {
         let t = if self.duration <= 0. {
             1.

@@ -26,9 +26,9 @@
       "user_notes": "",
       "priority": "normal",
       "agent_status": "partial",
-      "agent_progress": "Playable native Gift Slingshot: source-driven charge/release, vertical keyboard/touch targeting, boat and iceberg spawning/collisions, pooled presents, scores/time bonuses, 10 levels, pause/restart/resize (including overlapping refill callbacks after rapid restart and the full ten-level finish) and original assets/audio actions. Seven original-JavaScript scenarios match at 1e-7; original/native idle capture mean RGB error 0.282/255 at 1440x800. Original queued desktop tutorial now implemented with source delay, dismissal and animation artwork. Corrected intrinsic SVG background sizing/centering and first-boat canvas padding; premultiplied texture filtering/mipmaps now match the source more closely at six widths. Elf ROI error reduced 29\u201336%, with full-frame error also reduced at every tested width. Production-compositor comparison harness now covers 1440, 1280, 980, 900, 768 and 375px widths. 120-frame release profile averaged 16.77ms intervals and 0.79ms main-thread work.",
+      "agent_progress": "Playable native Gift Slingshot: source-driven charge/release, vertical keyboard/touch targeting, boat and iceberg spawning/collisions, pooled presents, scores/time bonuses, 10 levels, pause/restart/resize (including overlapping refill callbacks after rapid restart and the full ten-level finish) and original assets/audio actions. Seven original-JavaScript scenarios match at 1e-7; original/native idle capture mean RGB error 0.282/255 at 1440x800. Original queued desktop tutorial now implemented with source delay, dismissal and animation artwork. Corrected intrinsic SVG background sizing/centering and first-boat canvas padding; premultiplied texture filtering/mipmaps now match the source more closely at six widths. Elf ROI error reduced 29\u201336%, with full-frame error also reduced at every tested width. Production-compositor comparison harness now covers 1440, 1280, 980, 900, 768 and 375px widths. 120-frame release profile averaged 16.77ms intervals and 0.79ms main-thread work. Score/splash effects now follow the original CSS clocks, easing, transform origins, integer border widths, pooled reuse and shortened reversals. 22 browser phase samples and eight lifecycle states match; pause freezes the score while splash transitions continue, and restart preserves active effects.",
       "agent_known_issues": [
-        "Score pop-up typography/animation, all effect phases and responsive captures need further browser comparisons.",
+        "Score/splash raster edges and text antialiasing still differ slightly from Chromium; additional device/input and effect combinations remain unverified.",
         "No claim of whole-mode 1:1 parity; audio actions translated but full music/bus fidelity remains partial.",
         "Remaining SVG/primitive edge coverage differs from Chromium; diagonal ropes and additional animation phases still need matching. Supersampling and blanket MSAA were tested but not retained because some comparisons worsened."
       ],
@@ -42,7 +42,11 @@
         "rust/data/boatload-raster-layout.json",
         "rust/data/boatload-raster-errors.json",
         "rust/data/boatload-render-performance.json",
-        "rust/examples/boatload_reference.rs"
+        "rust/examples/boatload_reference.rs",
+        "rust/src/boatload_effects.rs",
+        "rust/data/boatload-effects-reference.json",
+        "rust/data/boatload-effect-lifecycle.json",
+        "rust/data/boatload-effects-raster-errors.json"
       ]
     },
     {
@@ -773,6 +777,7 @@
       "rust/SOURCE-COVERAGE.md",
       "rust/src/tracker_control.rs",
       "rust/data/tracker-control-reference.json"
-    ]
+    ],
+    "next_work": "User requested native Christmas tracking map/display as the next priority after the current Gift Slingshot effects pass (2026-10-24)."
   }
 }

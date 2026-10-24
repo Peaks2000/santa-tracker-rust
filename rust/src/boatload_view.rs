@@ -227,38 +227,34 @@ impl BoatloadView {
                 c(ribbon),
             );
         }
-        if let Some((x, y, score, start)) = g.score_effect {
-            let t = ((g.time - start) / 0.4).clamp(0., 1.) as f32;
-            if t < 1. {
-                let p = at(x as f32 - 20., y as f32);
+        if let Some(effect) = g.effects.score {
+            let text = effect.value.to_string();
+            let width = measure_text(&text, Some(&self.font), 48, 1.).width;
+            if let Some(v) = g.effects.score_visual(width as f64) {
+                let p = at(v.x as f32, (v.y + 51. * v.scale) as f32);
                 draw_text_ex(
-                    &score.to_string(),
+                    &text,
                     p.x,
                     p.y,
                     TextParams {
                         font: Some(&self.font),
                         font_size: 48,
-                        font_scale: s * (0.5 + 0.5 * t),
-                        color: Color::new(1., 1., 1., 1. - t),
+                        font_scale: s * v.scale as f32,
+                        color: Color::new(1., 1., 1., v.opacity as f32),
                         ..Default::default()
                     },
                 );
             }
         }
-        if let Some((x, y, start)) = g.splash {
-            let t = ((g.time - start) / 0.5).clamp(0., 1.) as f32;
-            if t < 1. {
-                let p = at(x as f32 + 24., y as f32 + 24.);
-                let eased = santa_tracker::ui::Ease::Default.at(t as f64) as f32;
-                for (radius, weight) in [(9., 5.), (15., 3.), (20., 2.), (24., 1.)] {
-                    draw_circle_lines(
-                        p.x,
-                        p.y,
-                        radius * (1. + 0.3 * eased) * s,
-                        weight * (1. - eased) * (1. + 0.3 * eased) * s,
-                        Color::from_hex(0x3e9bd2),
-                    );
-                }
+        if let Some(rings) = g.effects.rings() {
+            for ring in rings {
+                let p = at(ring.x as f32, ring.y as f32);
+                self.shapes.ring(
+                    p,
+                    (ring.diameter * ring.scale / 2.) as f32 * s,
+                    (ring.border * ring.scale) as f32 * s,
+                    Color::from_hex(0x3e9bd2),
+                );
             }
         }
     }

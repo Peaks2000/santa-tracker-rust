@@ -1,0 +1,137 @@
+{
+  "method": "Matched 0..499ms samples at two viewports, using the actual native renderer/compositor and source browser CSS. Individual effect ROIs on the same river background; no claim of zero raster differences.",
+  "cases": [
+    {
+      "width": 1440,
+      "time_ms": 0,
+      "score_mean_rgb_error_255": 1.1301781170483463,
+      "splash_mean_rgb_error_255": 1.0354124748490945
+    },
+    {
+      "width": 1440,
+      "time_ms": 50,
+      "score_mean_rgb_error_255": 0.5799236641221374,
+      "splash_mean_rgb_error_255": 1.5926224010731052
+    },
+    {
+      "width": 1440,
+      "time_ms": 100,
+      "score_mean_rgb_error_255": 0.8455216284987278,
+      "splash_mean_rgb_error_255": 1.7512407780013415
+    },
+    {
+      "width": 1440,
+      "time_ms": 150,
+      "score_mean_rgb_error_255": 0.7367430025445292,
+      "splash_mean_rgb_error_255": 1.343796109993293
+    },
+    {
+      "width": 1440,
+      "time_ms": 200,
+      "score_mean_rgb_error_255": 1.1932824427480917,
+      "splash_mean_rgb_error_255": 1.8011401743796112
+    },
+    {
+      "width": 1440,
+      "time_ms": 250,
+      "score_mean_rgb_error_255": 0.6239440203562341,
+      "splash_mean_rgb_error_255": 1.9834339369550638
+    },
+    {
+      "width": 1440,
+      "time_ms": 300,
+      "score_mean_rgb_error_255": 0.2728753180661578,
+      "splash_mean_rgb_error_255": 2.5187793427230045
+    },
+    {
+      "width": 1440,
+      "time_ms": 350,
+      "score_mean_rgb_error_255": 0.08157760814249364,
+      "splash_mean_rgb_error_255": 2.1310529845741115
+    },
+    {
+      "width": 1440,
+      "time_ms": 399,
+      "score_mean_rgb_error_255": 0.0,
+      "splash_mean_rgb_error_255": 2.056472166331321
+    },
+    {
+      "width": 1440,
+      "time_ms": 450,
+      "score_mean_rgb_error_255": 0.0,
+      "splash_mean_rgb_error_255": 1.8892689470154258
+    },
+    {
+      "width": 1440,
+      "time_ms": 499,
+      "score_mean_rgb_error_255": 0.0,
+      "splash_mean_rgb_error_255": 1.9183098591549295
+    },
+    {
+      "width": 768,
+      "time_ms": 0,
+      "score_mean_rgb_error_255": 0.7841137192249397,
+      "splash_mean_rgb_error_255": 2.0529336734693877
+    },
+    {
+      "width": 768,
+      "time_ms": 50,
+      "score_mean_rgb_error_255": 0.8714513948629716,
+      "splash_mean_rgb_error_255": 2.1019345238095237
+    },
+    {
+      "width": 768,
+      "time_ms": 100,
+      "score_mean_rgb_error_255": 1.1080660358035312,
+      "splash_mean_rgb_error_255": 2.46077806122449
+    },
+    {
+      "width": 768,
+      "time_ms": 150,
+      "score_mean_rgb_error_255": 1.8896399164311173,
+      "splash_mean_rgb_error_255": 2.1420068027210886
+    },
+    {
+      "width": 768,
+      "time_ms": 200,
+      "score_mean_rgb_error_255": 1.8956208266764982,
+      "splash_mean_rgb_error_255": 2.470025510204082
+    },
+    {
+      "width": 768,
+      "time_ms": 250,
+      "score_mean_rgb_error_255": 1.0930727950514112,
+      "splash_mean_rgb_error_255": 2.942070578231293
+    },
+    {
+      "width": 768,
+      "time_ms": 300,
+      "score_mean_rgb_error_255": 0.3334152636106673,
+      "splash_mean_rgb_error_255": 2.97937925170068
+    },
+    {
+      "width": 768,
+      "time_ms": 350,
+      "score_mean_rgb_error_255": 0.09524394740076196,
+      "splash_mean_rgb_error_255": 3.3133503401360542
+    },
+    {
+      "width": 768,
+      "time_ms": 399,
+      "score_mean_rgb_error_255": 0.0,
+      "splash_mean_rgb_error_255": 3.2058886054421767
+    },
+    {
+      "width": 768,
+      "time_ms": 450,
+      "score_mean_rgb_error_255": 0.0,
+      "splash_mean_rgb_error_255": 2.981823979591837
+    },
+    {
+      "width": 768,
+      "time_ms": 499,
+      "score_mean_rgb_error_255": 0.0,
+      "splash_mean_rgb_error_255": 2.953231292517007
+    }
+  ]
+}

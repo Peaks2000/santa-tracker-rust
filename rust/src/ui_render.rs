@@ -12,10 +12,11 @@ void main(){gl_Position=Projection*Model*vec4(position,1.0);uv=texcoord;}
 "#;
 const FRAGMENT: &str = r#"#version 100
 precision highp float;
-varying vec2 uv;uniform vec2 Size;uniform float Radius;uniform float Padding;uniform float Blur;uniform vec4 Tint;
+varying vec2 uv;uniform vec2 Size;uniform float Radius;uniform float Padding;uniform float Blur;uniform float Stroke;uniform vec4 Tint;
 void main(){vec2 p=(uv-0.5)*(Size+2.0*Padding);vec2 q=abs(p)-Size*0.5+Radius;
 float distance=length(max(q,vec2(0.0)))+min(max(q.x,q.y),0.0)-Radius;
 float alpha=1.0-smoothstep(-0.5,0.5,distance);
+if(Stroke>0.0){alpha=clamp(0.5-distance,0.0,1.0)-clamp(0.5-distance-Stroke,0.0,1.0);}
 if(Blur>0.0){float sigma=max(Blur*0.5,0.001);float z=distance/sigma;
 float v=abs(z);float t=1.0/(1.0+0.2316419*v);float tail=0.39894228*exp(-0.5*v*v)*t*(0.31938153+t*(-0.35656378+t*(1.78147794+t*(-1.82125598+t*1.33027443))));
 alpha=z>0.0?tail:1.0-tail;}
@@ -48,6 +49,7 @@ impl Shapes {
             UniformDesc::new("Radius", UniformType::Float1),
             UniformDesc::new("Padding", UniformType::Float1),
             UniformDesc::new("Blur", UniformType::Float1),
+            UniformDesc::new("Stroke", UniformType::Float1),
             UniformDesc::new("Tint", UniformType::Float4),
         ];
         let material = load_material(
@@ -86,7 +88,24 @@ void main(){vec2 q=abs(point-Bounds.xy-Bounds.zw*0.5)-Bounds.zw*0.5+Radius;float
         SHAPE_CACHE.with(|c| *c.borrow_mut() = std::rc::Rc::downgrade(&shared));
         Ok(Self(shared))
     }
+    pub fn ring(&self, center: Vec2, radius: f32, stroke: f32, c: Color) {
+        self.draw_shape(
+            Rect::new(
+                center.x - radius,
+                center.y - radius,
+                2. * radius,
+                2. * radius,
+            ),
+            radius,
+            c,
+            0.,
+            stroke,
+        );
+    }
     pub fn rounded(&self, r: Rect, radius: f32, c: Color, blur: f32) {
+        self.draw_shape(r, radius, c, blur, 0.);
+    }
+    fn draw_shape(&self, r: Rect, radius: f32, c: Color, blur: f32, stroke: f32) {
         if r.w <= 0. || r.h <= 0. || c.a <= 0. {
             return;
         }
@@ -96,6 +115,7 @@ void main(){vec2 q=abs(point-Bounds.xy-Bounds.zw*0.5)-Bounds.zw*0.5+Radius;float
             .set_uniform("Radius", radius.min(r.w / 2.).min(r.h / 2.));
         self.material.set_uniform("Padding", padding);
         self.material.set_uniform("Blur", blur);
+        self.material.set_uniform("Stroke", stroke);
         self.material.set_uniform("Tint", vec4(c.r, c.g, c.b, c.a));
         gl_use_material(&self.material);
         draw_rectangle(

@@ -1,6 +1,7 @@
 pub mod animation;
 pub mod audio;
 pub mod boatload;
+pub mod boatload_effects;
 pub mod elfmaker;
 pub mod glider;
 pub mod image_alpha;

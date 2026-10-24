@@ -730,3 +730,64 @@ profiling was discarded after a timeout; the final profile ran alone.
 
 All 53 Rust tests pass. An owned release window was also exercised through
 Space, vertical movement, pause/resume, restart and Home; captures were inspected.
+
+## Gift Slingshot score and splash effect lifecycle (2026-10-24)
+
+Re-read the complete game.js (519 lines), source hit/miss/animate_/freeze/
+unfreeze/restart paths, utils.animWithClass and full effects/player/environment/
+boats/icebergs/presents Sass/HTML. The previous score renderer used a linear
+scale/fade, the wrong text baseline and no CSS transform origin. The splash
+used continuous shrinking borders and the game clock, losing source layout
+rounding and its continuation through pause. These are now translated in
+boatload_effects.rs and consumed by the actual native renderer.
+
+- Score: 400ms CSS default-eased scale 0.5 -> 1, transform origin 50% 70%,
+  -20px/-0.7em margins, normal Open Sans 48px line-box geometry. Opacity remains
+  1 through 200ms, then follows a separate eased fade to 0 over the last 200ms.
+  Browser DOM probes measured width 84.375, height 65 and baseline 51 for "100";
+  the native text layout uses the same line box and advance widths. The source
+  browser resolved system Open Sans Extrabold. The bundled font has matching
+  ascent/descent metrics; an older full system-font experiment did not improve
+  raster agreement and was discarded. No font/art asset was changed.
+- Splash: source 500ms transitions interpolate content width, border width and
+  scale. Blink's CSS border layout floors widths to integer CSS pixels with a
+  1px minimum while positive, and content width truncates to 1/64px. The changing
+  outer box moves each ring's center/transform origin. All four source offsets,
+  widths, borders and their resulting transforms are preserved. Rings now use
+  an antialiased annulus rather than a 30-sided polygon approximation.
+- Separate wall and animation clocks preserve source pause/game-over behavior:
+  score animations pause with the frozen class, while splash transitions keep
+  running. wall_step supplies both clocks before simulation; step/collision
+  paths trigger the actual effects. Restart does not clear active effect state.
+- Reusing .animate changes position/text without resetting its animation or
+  transition. Completed splash transitions hide the parent and reverse the
+  child styles underneath it. A new miss during that return follows CSS
+  reversal shortening (the sampled 200ms return produced a 341.270253ms forward
+  transition). The existing native Transition model supplies this behavior;
+  end_time exposes the point at which the source transitionend callback acts.
+
+The development browser tools call the actual source hitBoat/missedBoat and
+use Web Animations pause/seek to sample the original unchanged keyframes and
+transitions. The missed-present object is stubbed only for the effect-trigger
+call; present physics is tested separately by the existing game oracle. Actual
+browser transitionend delivery removes .animate and starts hidden return
+transitions; lifecycle tests do not dispatch invented completion callbacks.
+DOM probes and CDP font resolution are recorded in the fixtures. Source CSS
+animation-play-state confirms pause, while transitions retain their 0.5s
+wall-clock behavior. No browser code or CSS engine is shipped.
+
+22 first-cycle phase samples at 1440x800 and 768x800 match score bounds/opacity
+and all ring bounds/borders to 0.003 source pixels; eight additional source
+lifecycle states check reuse, hidden return, reversal duration, pause and restart.
+Native tests also check score completion and animation/wall-clock independence.
+The production renderer/compositor was captured at every sampled phase and
+original/native text and ring crops were visually inspected. Measured mean RGB
+errors in the bounded effect regions are recorded in
+boatload-effects-raster-errors.json: text 0..1.896 and splash 1.035..3.313 out of
+255. These quantify remaining raster differences; they do not certify 1:1 art.
+The unchanged idle scene renders byte-identically to the preceding committed
+renderer, checking the shared shape shader's default (non-ring) behavior.
+
+All 56 Rust tests pass, including the existing seven Boatload simulation
+scenarios and the added CSS phase/lifecycle comparisons. Broad responsive/input,
+rope/present edge coverage and audio-mixer parity remain unfinished.

@@ -24,6 +24,7 @@ fn main() {
         .unwrap_or("/tmp/boatload-native.png".into());
     let w = args.get(1).and_then(|s| s.parse().ok()).unwrap_or(1440);
     let h = args.get(2).and_then(|s| s.parse().ok()).unwrap_or(800);
+    let effect_ms = args.get(3).and_then(|s| s.parse::<f64>().ok());
     macroquad::Window::from_config(
         Conf {
             window_title: "Gift Slingshot comparison".into(),
@@ -39,6 +40,11 @@ fn main() {
             a.load_scene("boatload").unwrap();
             let mut g = santa_tracker::boatload::Boatload::new("test1234", w as f64, h as f64);
             g.advance(0.5);
+            if let Some(ms) = effect_ms {
+                g.effects.hit(700., 400., 100);
+                g.effects.miss(600., 350.);
+                g.effects.advance(ms / 1000., true);
+            }
             let view = boatload_view::BoatloadView::new().unwrap();
             let mut compositor = scene_filter::SceneFilter::new().unwrap();
             for frame in 0..8 {

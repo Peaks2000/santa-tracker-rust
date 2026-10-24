@@ -102,8 +102,7 @@ pub struct Boatload {
     pub next_boat: f64,
     pub next_iceberg: f64,
     pub sounds: Vec<&'static str>,
-    pub score_effect: Option<(f64, f64, u64, f64)>,
-    pub splash: Option<(f64, f64, f64)>,
+    pub effects: crate::boatload_effects::Effects,
     random: Random,
     boat_pool: VecDeque<usize>,
     ice_pool: VecDeque<usize>,
@@ -160,8 +159,7 @@ impl Boatload {
             next_boat: 0.,
             next_iceberg: 0.,
             sounds: vec!["bl_game_start", "music_start_ingame"],
-            score_effect: None,
-            splash: None,
+            effects: Default::default(),
             random: Random::seeded(seed),
             boat_pool: VecDeque::new(),
             ice_pool: VecDeque::new(),
@@ -395,6 +393,7 @@ impl Boatload {
     }
     /// Browser setInterval/setTimeout continue while game simulation is paused.
     pub fn wall_step(&mut self, dt: f64) {
+        self.effects.advance(dt, self.playing && !self.paused);
         for b in &mut self.bubbles {
             b.age += dt;
         }
@@ -690,7 +689,7 @@ impl Boatload {
                         self.presents[i].missed = Some(0.);
                         self.last_missed = Some(i);
                         let p = &self.presents[i];
-                        self.splash = Some((p.x - 10., p.y - 10., self.time));
+                        self.effects.miss(p.x - 10., p.y - 10.);
                         self.timers.push(Timer::Sink(i, 0.6));
                         self.sounds.push("bl_hit_water");
                     } else {
@@ -730,7 +729,7 @@ impl Boatload {
                                         50 * (1 + self.level as u64) * 2u64.pow(hits.min(3));
                                     self.score += score;
                                     self.countdown += if hits > 1 { 1. } else { 2. };
-                                    self.score_effect = Some((x + 10., y + 10., score, self.time));
+                                    self.effects.hit(x + 10., y + 10., score);
                                     self.sounds.push(if self.boats[b].kind == 0 {
                                         "bl_score_yellow"
                                     } else {
