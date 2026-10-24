@@ -9,7 +9,7 @@ Using the javascript code of Google Santa Tracker I remade the logic function by
 
 ## Working scenes and faithfulness
 
-Nine scenes currently work in the native Rust application. **None is fully verified 1:1.** “Close in tested behavior” means the checked simulation scenarios match the original; it does not mean every animation, sound or screen is identical.
+Ten scenes currently work in the native Rust application. **None is fully verified 1:1.** “Close in tested behavior” means the checked simulation scenarios match the original; it does not mean every animation, sound or screen is identical.
 
 - **Village / home (`modvil`) — Partially faithful.** Original artwork, native Lottie animation, navigation, Christmas countdown and responsive cards work. Loading hitches, frame pacing, remaining interactions and some card/loader details still need work.
 - **Reindeer Runner (`runner`) — Close in tested gameplay; visual parity is partial.** Jumping, sliding, level transitions, responsive layout and tutorial prompts are implemented and checked against the original. More animation/effect phases, audio and touch behavior need comparison.
@@ -21,6 +21,8 @@ Nine scenes currently work in the native Rust application. **None is fully verif
 
 - **Elf Maker (`elfmaker`) — Close in tested geometry and control logic; presentation is partial.** All character choices, colours, backgrounds, randomization, arm moves, blinking, photo export and saved-state restore work. 21 control states and 35 geometry cases match source; photo transitions, sharing, touch/accessibility and further viewport checks remain. The software-shadow bottleneck is fixed: the tested idle build now averages about 60 fps.
 - **Elf Jamband (`jamband`) — Close in tested band logic and character keyframes; full-scene parity is partial.** Ten instruments, six stages, both musical patterns, synchronized starts, previews, swapping, randomization, drawer and lights work. 19 band-state cases and 1,568 animation samples match source. Complete lighting/drag transitions, audio mixing, responsive/touch behavior and website link sharing still need work.
+
+- **Elf Glider (`glider`) — Close in tested gameplay and sprite timing; still partial.** Movement, timed drops, chimney scoring, candy/clocks, obstacles, backgrounds, tutorials, audio actions and pause/restart work. Seven source scenarios (52 states), sprite/lifecycle checks and five viewport/time captures support the port. Native tilt sensor delivery, further effects/input cases and complete audio-mixer fidelity remain unfinished.
 
 Shared pause/game-over geometry is checked against 18 original browser cases. Font rendering, card loading/fades and all animation phases remain under review. These descriptions are evidence-based assessments, not percentage scores or user approval.
 

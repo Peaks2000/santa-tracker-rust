@@ -1,0 +1,72 @@
+[
+  {
+    "action": "wait",
+    "duration": 0.11,
+    "animation": "module-glider-playernormal"
+  },
+  {
+    "action": "drop",
+    "duration": 0,
+    "animation": "module-glider-playerdrop"
+  },
+  {
+    "action": "wait",
+    "duration": 0.1,
+    "animation": "module-glider-playerdrop"
+  },
+  {
+    "action": "wait",
+    "duration": 0.1,
+    "animation": "module-glider-playernormal"
+  },
+  {
+    "action": "wait",
+    "duration": 0.1,
+    "animation": "module-glider-playernormal"
+  },
+  {
+    "action": "hit",
+    "duration": 0,
+    "animation": "module-glider-playerpulse"
+  },
+  {
+    "action": "pause",
+    "duration": 0.8,
+    "animation": "module-glider-playerpulse"
+  },
+  {
+    "action": "resume",
+    "duration": 0,
+    "animation": "module-glider-playerpulse"
+  },
+  {
+    "action": "wait",
+    "duration": 2.3,
+    "animation": "module-glider-playernormal"
+  },
+  {
+    "action": "drop",
+    "duration": 0,
+    "animation": "module-glider-playerdrop"
+  },
+  {
+    "action": "restart",
+    "duration": 0.05,
+    "animation": "none"
+  },
+  {
+    "action": "wait",
+    "duration": 0.06,
+    "animation": "module-glider-playerdrop"
+  },
+  {
+    "action": "wait",
+    "duration": 0.2,
+    "animation": "module-glider-playernormal"
+  },
+  {
+    "action": "wait",
+    "duration": 2,
+    "animation": "module-glider-playernormal"
+  }
+]

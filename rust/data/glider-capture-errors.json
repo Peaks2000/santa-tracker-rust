@@ -1,0 +1,32 @@
+[
+  {
+    "width": 1440,
+    "height": 800,
+    "time": 0,
+    "mean_rgb_error_255": 0.46192158564814817
+  },
+  {
+    "width": 1440,
+    "height": 800,
+    "time": 4,
+    "mean_rgb_error_255": 0.4445691550925926
+  },
+  {
+    "width": 1440,
+    "height": 800,
+    "time": 10,
+    "mean_rgb_error_255": 0.6841889467592592
+  },
+  {
+    "width": 768,
+    "height": 800,
+    "time": 4,
+    "mean_rgb_error_255": 0.46629665798611114
+  },
+  {
+    "width": 375,
+    "height": 800,
+    "time": 4,
+    "mean_rgb_error_255": 0.4964266666666666
+  }
+]

@@ -1031,7 +1031,21 @@ impl<'a> Village<'a> {
             None
         }
     }
+    pub fn activity_menu(&mut self, assets: &mut Assets) -> Option<String> {
+        if !self.menu && !self.last_menu && self.menu_opacity.value(self.time as f64)[0] <= 0.001 {
+            return None;
+        }
+        self.input_common(screen_height(), false);
+        if self.menu || self.menu_opacity.value(self.time as f64)[0] > 0.001 {
+            self.draw_menu(assets)
+        } else {
+            None
+        }
+    }
     pub fn input(&mut self, total: f32) {
+        self.input_common(total, true);
+    }
+    fn input_common(&mut self, total: f32, ambient: bool) {
         let old_time = self.time;
         self.time += get_frame_time();
         for (seconds, event) in [
@@ -1040,7 +1054,8 @@ impl<'a> Village<'a> {
             (8., "village_top_surprise"),
             (5., "village_top_fountain"),
         ] {
-            if (old_time / seconds).floor() < (self.time / seconds).floor() && !self.menu {
+            if (old_time / seconds).floor() < (self.time / seconds).floor() && !self.menu && ambient
+            {
                 self.sounds.push(event);
             }
         }

@@ -145,6 +145,14 @@ impl TutorialView {
             && is_mouse_button_pressed(MouseButton::Left)
             && !crate::chrome::over_controls(Vec2::from(mouse_position()), 3);
         match scene {
+            "glider" => {
+                if any(&[KeyCode::Left, KeyCode::Right, KeyCode::Up, KeyCode::Down]) {
+                    self.state.dismiss(&["keys-arrows", "spacenav-arrows"], now);
+                }
+                if any(&[KeyCode::Space]) {
+                    self.state.dismiss(&["keys-space", "spacenav-space"], now);
+                }
+            }
             "runner" => {
                 if any(&[KeyCode::Up, KeyCode::Down]) {
                     self.state.dismiss(&["keys-updown"], now);

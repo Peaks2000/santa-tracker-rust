@@ -8,7 +8,7 @@ The application runs native Rust window, rendering, input, simulation, Ogg decod
 
 - Village: original four background layers, exported sprite geometry/keyframes, original fonts/logo, eased Play/Family Guide controls and positions, eleven scrolling sections, native playback of their Lottie files, activity cards, a navigation grid, and snow/cloud simulation. Village animation includes the glitch elf, water-spout clipping, sprite keyframes, card hover/reverse motion and occasional card animations. Module/card geometry is compared against the original browser at 1440, 768 and 375 pixels.
 - Shared controls: original toolbar SVG paths and sizes, eased press/release shadows, hover/press audio, keyboard focus, home/pause/restart controls and a score/time badge with level/score transitions. The December 24 10:00 UTC countdown uses the original split arithmetic, responsive hiding, shaped ends, font weights and rolling/fading digit transitions.
-- Shared pause/game-over: original elf/trophy artwork, resume/restart/home buttons, two recommended activities, entrance/exit motion and the disabled scene's greyscale, brightness, blur and scaling. The selector uses the repository's original navigation defaults, adds Elf Ski and Present Drop explicitly, and reveals its cards together. Home Play and overlay recommendations share the original biased choice/recent-games behavior, filtered to the eight native activities; Play no longer always launches Runner. Opaque offscreen scenes are copied without reapplying sprite-edge alpha, preventing dark outlines.
+- Shared pause/game-over: original elf/trophy artwork, resume/restart/home buttons, two recommended activities, entrance/exit motion and the disabled scene's greyscale, brightness, blur and scaling. The selector uses the repository's original navigation defaults, adds Elf Ski and Present Drop explicitly, and reveals its cards together. Home Play and overlay recommendations share the original biased choice/recent-games behavior, filtered to the nine native activities; Play no longer always launches Runner. Opaque offscreen scenes are copied without reapplying sprite-edge alpha, preventing dark outlines.
 - Scene changes: original four coloured interlude layers and Santa/Mrs Claus Lottie illustration. Illustration rendering and scene image decoding run on background threads; GPU uploads are bounded per frame to keep the window responsive.
 - Runner: Rust physics, seeded random generation, entity spawning, platforms, collisions, scoring, time boosts, magnet attraction, timers, pause and restart. The renderer now follows the original layer origin, discrete responsive scales/portrait ceiling, stretched background canvas, original run/slide frames, rollers/wires, machinery, belts/gears, hit/pickup/magnet effects and Lobster speedometer with level stripes. Five original simulation scenarios, live level timers/canvas movement, and DOM layout at five viewport sizes are compared with the source. See [source coverage](SOURCE-COVERAGE.md).
 - Elf Jetpack: original elf/item/cloud artwork, animated flames and sparks, sprite frames, sway/rotation, sky transitions with clouds/level numbers and the finish goal. Flame scaling follows the original eased transition, player/hit rotation uses the CSS transform origin, and transparent sprite RGB is extended to prevent dark filtering fringes. Native movement, collisions, pickups, clock bonuses, hazards, levels and spawning follow the original classes. Three seeded scenarios are checked against the original simulation.
@@ -130,3 +130,26 @@ callbacks and 1,568 browser instrument-animation samples. Further responsive,
 photo/lighting transition, touch/accessibility, audio-mix and raster checks
 remain. Audio is decoded on scene entry to avoid first-note decoding during a
 performance; initial scene loading can still block. See SOURCE-COVERAGE.md.
+
+
+## Elf Glider
+
+Launch `./rust/run.sh --scene glider`. Arrow keys move and Space drops presents;
+holding Space repeats at the original cooldown. Pause/restart/home use the shared
+controls. The port preserves source FIFO pools and random consumption, delayed
+drop/reload/crash callbacks, collisions and chimney scoring, weighted candy/time
+items, obstacle movement and sprite timing, background scrolling, responsive
+scaling, tutorials and original audio actions.
+
+Source comparisons include seven simulation scenarios (scoring, pause/restart
+callbacks and extended level progression), 147 device-motion threshold inputs,
+player/obstacle CSS sprite phases and five matched gameplay captures. Device
+sensor delivery is not connected in the native application; the translated
+motion calculations alone do not provide native tilt controls. Keyboard play is
+the verified input path. Small raster/font differences, popup/effect phases,
+full audio-mixer fidelity and additional viewport/input cases remain under review.
+Glider is playable and still marked **partial**, not certified completely 1:1.
+
+The activity selector is now drawn in activity scenes as well as the village,
+fixing the three-line menu in Elf Jamband and Elf Maker. Its scrolling, card
+selection and return through the shared scene transition were smoke-checked.

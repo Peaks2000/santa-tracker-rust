@@ -3,7 +3,7 @@ SANTA TRACKER RUST — FUNCTIONALITY AND PARITY STATUS
 Generated from PARITY-STATUS.json. Edit that file for your verdicts and notes.
 This report is evidence/progress, not a claim of complete 1:1 accuracy.
 
-Native scenes playable, with parity gaps: 9/55
+Native scenes playable, with parity gaps: 10/55
 Whole modes certified 1:1: 0
 Your overall verdict: unreviewed
 
@@ -15,7 +15,7 @@ Gift Slingshot [boatload] — your verdict: unreviewed
   Remaining: No claim of whole-mode 1:1 parity; audio actions translated but full music/bus fidelity remains partial.
 
 Elf Maker [elfmaker] — your verdict: unreviewed
-  Progress: Native Elf Maker includes all original character choices/colours/backgrounds, weighted randomization, eight arm-motion sequences, blinking, responsive control strip, photo capture/export and original-format state restore. 21 control states and 35 SVG geometry cases match source. Software shadow bottleneck moved to GPU without changing motion; idle release profile averaged 16.6ms frames and 1.36ms scene CPU work.
+  Progress: Native Elf Maker includes all original character choices/colours/backgrounds, weighted randomization, eight arm-motion sequences, blinking, responsive control strip, photo capture/export and original-format state restore. 21 control states and 35 SVG geometry cases match source. Software shadow bottleneck moved to GPU without changing motion; idle release profile averaged 16.6ms frames and 1.36ms scene CPU work. Repaired the activity selector: hamburger now opens, scrolls and selects a scene; verified in an owned release window.
   Remaining: Native file export replaces host URL sharing.
   Remaining: Photo perspective/reveal/hide, save-button transitions, keyboard focus/accessibility, full touch and all responsive sizes need further source matching.
   Remaining: SVG raster/small visual differences remain; 1440x800 controlled idle mean RGB error 0.393/255.
@@ -25,8 +25,15 @@ Elf Ski [elfski] — your verdict: unreviewed
   Progress: Native implementation exists; full 1:1 parity not established. Original queued desktop tutorial now implemented with source delay, dismissal and animation artwork.
   Remaining: Touch pressure and shared music remain incomplete.
 
+Elf Glider [glider] — your verdict: unreviewed
+  Progress: Playable native Elf Glider with source FIFO pools/random consumption, movement, delayed repeat drops, gravity/chimney scores, items/obstacles, callbacks across pause/restart, responsive art/backgrounds, sprite phases, tutorials, original audio actions and shared HUD/overlays. Seven original scenarios compare 52 states at 1e-7; 147 motion threshold samples and 14 animation lifecycle checkpoints are checked. Five controlled captures have mean RGB errors 0.44–0.68/255.
+  Remaining: Native OS device-orientation/motion sensor delivery is not connected; translated motion calculations alone do not provide native tilt control.
+  Remaining: More score/effect/resize/input states and complete audio bus/mixer behavior need comparisons.
+  Remaining: Small SVG/font raster differences remain; no whole-mode 1:1 certification.
+  Remaining: Idle profile averages near 60 fps locally, with occasional presentation stalls; end-to-end input latency is not measured.
+
 Elf Jamband [jamband] — your verdict: unreviewed
-  Progress: Native Elf Jamband includes ten layered instruments, six stages, next-bar 120 BPM starts, both patterns/stage volumes, preview/loop audio, drag swaps/replacements/return, randomize, drawer transitions, lighting, crowd and original-format band save/restore. 19 original drag/bar/state cases and 1,568 instrument animation samples pass.
+  Progress: Native Elf Jamband includes ten layered instruments, six stages, next-bar 120 BPM starts, both patterns/stage volumes, preview/loop audio, drag swaps/replacements/return, randomize, drawer transitions, lighting, crowd and original-format band save/restore. 19 original drag/bar/state cases and 1,568 instrument animation samples pass. Repaired the activity selector: hamburger now opens, scrolls and selects a scene; verified in an owned release window.
   Remaining: Native band-file export replaces host link sharing.
   Remaining: Every lighting/drag/drawer transition and responsive viewport needs further full-scene comparison.
   Remaining: Raster differences remain; controlled 1440x800 idle capture mean RGB error 1.754/255.
@@ -79,7 +86,6 @@ NOT IMPLEMENTED AS NATIVE SCENES
 - Elf Express [elfexpress] — no native scene; your verdict: unreviewed
 - Candy Factory [factory] — no native scene; your verdict: unreviewed
 - Family Guide [familyguide] — no native scene; your verdict: unreviewed
-- Elf Glider [glider] — no native scene; your verdict: unreviewed
 - Gumball Tilt [gumball] — no native scene; your verdict: unreviewed
 - Elf Ski [holidayslopes] — no native scene; your verdict: unreviewed
 - Island [island] — no native scene; your verdict: unreviewed

@@ -372,3 +372,76 @@ distinct per-draw colours and the unchanged-RGB opaque output pass.
 Final regression: all 37 tests pass in the clean Rust-only distribution; the
 offline release build succeeds. All nine scenes start and save opaque captures
 using only distribution assets. No browser/reference source is required.
+
+
+## Elf Glider and activity-menu repair (2026-10-24)
+
+Read every Glider JS file (constants, entity, game, controls, player, item,
+obstacle, building, chimney, present, cloud, collision and utils), complete HTML
+and all seven Sass partials/scene styles. Rechecked shared SmartValue, FIFO
+pools and Scoreboard and the corresponding Klang actions. The scene graph is
+translated into native entity/pool IDs with chimney children; constructor-time
+random consumption and FIFO reuse match the original, including the two
+preloaded random present styles and twenty preloaded random building types.
+
+Seven original-code scenarios compare 52 states at 1e-7 numeric tolerance:
+idle, movement/held drops, pause/hit/drop callbacks, restart callbacks, chimney
+attempts, forced candy/clock/chimney/balloon collisions and extended progression.
+The scoring case verifies +200 candy, +5 seconds and a +300 chimney. Source
+resize scaling, velocity acceleration/bounds, shake, current-position delayed
+drops, reload timing, gravity, old wall callbacks surviving restart, invincibility,
+balloon cleanup, weighted items, inherited obstacle animateBack and deterministic
+building intervals are retained. Rendering follows allocation/DOM order within
+each layer rather than graph insertion order when pooled elements are reused.
+The original's misleading obstacle speed constants are unused: obstacles actually
+use ITEM_SPEED_NORMAL/FAST, as the source does. Unused score/time helper results
+do not invent rewards on obstacle hits. TOTAL_LEVELS is display metadata; source
+updateLevel_ does not enforce a ten-level finish, so native does not add one.
+
+CSS animation end for collision puffs is represented as a cancellable native
+wall event; hiding a puff cancels that event, unlike the independent JS balloon
+cleanup timeout. Player animation-name changes reset their CSS phase: drop,
+pulse, resizing/none and normal are separate modes, with a clock that stops
+while paused. Crash/reload/drop JS callbacks continue on wall time while paused.
+Keyboard state ignores releases while paused, preserving the source behavior.
+147 original device-motion inputs verify the asymmetric +90/-90 landscape
+thresholds; native OS sensor delivery remains unimplemented. Keyboard is the
+verified playable control path; this is not a claim of touch/tilt completion.
+
+Player/balloon/bird/frisbee step-start sprite boundaries are measured in Chrome,
+including duplicate 84% source keyframes. Original SVGs, cloud scaling origins,
+item spins, collision scale/fade, points and score fades, background gradients/
+scrolling, all 26 building visual sizes and responsive em scaling are retained.
+Source CSS/default body margin gives scenery a static x offset of 8px; player
+and presents have explicit left/top zero, while collision puffs also inherit
+static top 8px. Physics does not inherit those visual offsets. CSS chimney
+positions differing from collision constants are kept separately. Five matched
+captures at 1440x800 (0/4/10s), 768x800 and 375x800 (4s) have mean RGB errors
+0.462, 0.445, 0.684, 0.466 and 0.496/255. Small raster differences remain, and
+these captures do not certify every animation/effect phase.
+
+Glider is integrated into native routes, biased Play recommendations, source
+keyboard tutorial queues, HUD, pause/restart/game-over and transitions. Audio
+uses the exact source wind, drop, collision, chimney/score and clock actions;
+samples are predecoded at scene entry. Complete global music/bus transitions,
+sensor delivery, all score/effect captures and additional interactive/responsive
+cases remain partial. No original JS/HTML/CSS runs in the product.
+
+The reported Jamband hamburger failure was a real integration bug: Chrome
+changed village.menu, but draw_menu and its input/transition clocks were called
+only from Village::draw. activity_menu now processes the existing selector above
+activity scenes, with Chrome still drawn above it and game inputs blocked.
+Village ambience is not emitted by that activity-only path. Owned release checks
+opened the selector and selected Santa Selfie from both Jamband and Elf Maker.
+
+The browser player-animation lifecycle also matches fourteen original drop/hit/
+pause/restart checkpoints, including a still-pending drop after rapid restart.
+A 120-frame release idle profile after 30 warmup frames at 1440x800 averaged
+16.90ms frame intervals (p50 16.70, p95 21.25, max 39.48), 0.38ms scene CPU
+work and 0.46ms total CPU work. The occasional presentation stalls remain in
+the measurements; these are not input-to-photon latency figures or guarantees
+for every device/state. See data/glider-performance.json.
+
+Final validation: all 42 Rust tests pass in both checkouts. Release startup and
+opaque screenshot checks pass for all ten native scenes using only the clean
+distribution assets. Three original-browser Glider tests pass.

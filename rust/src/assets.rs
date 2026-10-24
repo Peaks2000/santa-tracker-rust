@@ -126,7 +126,9 @@ fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
         };
         let tree =
             resvg::usvg::Tree::from_data(&data, &options).map_err(|e| format!("{key}: {e}"))?;
-        let render_scale = if key.starts_with("scenes/_shared/img/button/") {
+        let render_scale = if key.ends_with("glider/img/glider-sprite.svg") {
+            3.
+        } else if key.starts_with("scenes/_shared/img/button/") {
             4.
         } else if key.ends_with("jetpack/img/levelclouds.svg") {
             5.
@@ -185,6 +187,7 @@ fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
 fn scene_keys(root: &Path, scene: &str) -> Result<Vec<String>, String> {
     let mut keys = vec![];
     let tutorials: &[&str] = match scene {
+        "glider" => &["keys-arrows", "keys-space", "device-tilt"],
         "runner" => &["touch-updown", "keys-updown"],
         "jetpack" => &["touch-updown", "keys-leftright", "keys-updown"],
         "presentdrop" => &["touch-leftright", "keys-space", "keys-leftright"],

@@ -207,6 +207,9 @@ impl Sound {
             }
         }
     }
+    pub fn glider_load(&mut self, root: &Path) {
+        self.preload_keys(&["vpLE", "VMgQ", "dk0G", "ghFQ", "OZ9t", "TcWr"], root);
+    }
     pub fn maker_start(&mut self, root: &Path) {
         self.preload_keys(&["h54h", "diiL", "h9jl", "Cc2y", "HQfD", "OckO"], root);
         self.trigger("music_start_scene", root);
@@ -327,10 +330,17 @@ impl Sound {
         // Native translations of the original focused scenes' Klang actions.
         // An empty action stays empty; stop actions never restart their sources.
         let actions: Option<&[(&str, bool, f64, f64)]> = match event {
+            "music_start_ingame" => Some(&[("TcWr", true, 0., 0.2)]),
             "music_start_scene" => Some(&[("OckO", true, 0., 0.2)]),
             "elfmaker_switch_type" => Some(&[("h54h", true, 0., 0.)]),
             "elfmaker_switch_color" => Some(&[("Cc2y", true, 0., 0.)]),
             "elfmaker_photo" => Some(&[("HQfD", true, 0., 0.)]),
+            "glider_start" => Some(&[("vpLE", true, 0., 0.5)]),
+            "glider_presentdrop" => Some(&[("VMgQ", true, 0., 0.)]),
+            "glider_hit" => Some(&[("dk0G", true, 0., 0.)]),
+            "glider_chimney_hit" | "generic_score" => Some(&[("ghFQ", true, 0., 0.)]),
+            "glider_clock" => Some(&[("OZ9t", true, 0., 0.)]),
+            "glider_game_over" => Some(&[("vpLE", false, 0., 1.)]),
             "bl_game_start" => Some(&[("uVNy", true, 0., 0.)]),
             "bl_game_stop" => Some(&[("uVNy", false, 0., 0.3)]),
             "bl_shoot" => Some(&[("dSUn", true, 0., 0.), ("KRJ2", false, 0., 0.)]),

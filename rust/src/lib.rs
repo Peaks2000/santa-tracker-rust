@@ -2,6 +2,7 @@ pub mod animation;
 pub mod audio;
 pub mod boatload;
 pub mod elfmaker;
+pub mod glider;
 pub mod image_alpha;
 pub mod jamband;
 pub mod jetpack;
