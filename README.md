@@ -9,7 +9,7 @@ Using the javascript code of Google Santa Tracker I remade the logic function by
 
 ## Scenes
 1:1 means every animation image and behaviour(e.g physics in Elf Jetpack) is the exact same as the website.
-
+Very Similar means so close to the website it is practically unnoticeable
 
 | Name | State |
 | --- | --- |
