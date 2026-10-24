@@ -1,0 +1,561 @@
+{
+  "map": [
+    "T     TT",
+    "       T",
+    "  TTTT T",
+    "  TX T  ",
+    "  TTTT T",
+    "T T  T  ",
+    " TTTTT Y",
+    "  T  T  ",
+    "T TTTT  ",
+    "  TX T T",
+    "  TTTT  ",
+    "T      T",
+    "T TX  TT",
+    "TTTT  T ",
+    "T  TTT T",
+    "T X   T ",
+    "TTTT TT ",
+    "T X  T T",
+    "T   T TT",
+    " T    TT",
+    "T     T ",
+    "T     TT",
+    "T     TT",
+    "T     TT",
+    "T     TT",
+    "T  S   T",
+    " X     T",
+    "  T    T",
+    "T   T TT",
+    "TT T   T",
+    "T  TT  T",
+    "T T TTTT",
+    "T  T  TT",
+    "TT T  TT",
+    " X TT  T",
+    " T  TT T",
+    "  T  TTT",
+    "TTTT  TT",
+    "TY TTX T",
+    "T  T   T",
+    "TTTTT  T",
+    "  XTT  T",
+    "       T",
+    "T TTTT T",
+    " T     T",
+    "T XTTT T",
+    "   T T T",
+    "T    T T",
+    " T T   T",
+    "     TTT",
+    "TTX T  T",
+    " T   T T",
+    "    TY T",
+    " T  T  T",
+    "TT  T TT",
+    "T X  T T",
+    "  T T  T",
+    "TT X   T",
+    "T   A TT",
+    "TT X T T",
+    "       T",
+    "  T    T",
+    "   T   T",
+    "T TTTTTT",
+    "   TT  T",
+    "T T    T",
+    "TTT T TT",
+    " T     T",
+    "   T   T"
+  ],
+  "levels": [
+    {
+      "startBlocks": "<xml><block type=\"puzzle_0B\" height=\"150\"></block><block type=\"puzzle_0A\" height=\"150\"></block></xml>",
+      "toolbox": "<xml></xml>",
+      "insertWhenRun": false,
+      "id": 0,
+      "type": "puzzle",
+      "notchedEnds": false,
+      "numPieces": 2,
+      "puzzleColor": [
+        296,
+        0.492,
+        0.626
+      ],
+      "puzzleHeight": 300,
+      "puzzleImage": "img/puzzle-1.png",
+      "puzzleWidth": 200,
+      "idealBlockCount": null,
+      "start": [
+        [
+          {
+            "kind": "puzzle_0B",
+            "fields": {},
+            "body": [],
+            "editable": true,
+            "movable": true,
+            "deletable": true
+          }
+        ],
+        [
+          {
+            "kind": "puzzle_0A",
+            "fields": {},
+            "body": [],
+            "editable": true,
+            "movable": true,
+            "deletable": true
+          }
+        ]
+      ],
+      "tools": []
+    },
+    {
+      "startBlocks": "<xml><block type=\"puzzle_1C\" height=\"100\"></block><block type=\"puzzle_1B\" height=\"100\"></block><block type=\"puzzle_1A\" height=\"100\"></block></xml>",
+      "toolbox": "<xml></xml>",
+      "insertWhenRun": false,
+      "id": 1,
+      "type": "puzzle",
+      "notchedEnds": true,
+      "numPieces": 3,
+      "puzzleColor": [
+        171,
+        0.801,
+        0.728
+      ],
+      "puzzleHeight": 300,
+      "puzzleImage": "img/puzzle-2.png",
+      "puzzleWidth": 200,
+      "idealBlockCount": null,
+      "start": [
+        [
+          {
+            "kind": "puzzle_1C",
+            "fields": {},
+            "body": [],
+            "editable": true,
+            "movable": true,
+            "deletable": true
+          }
+        ],
+        [
+          {
+            "kind": "puzzle_1B",
+            "fields": {},
+            "body": [],
+            "editable": true,
+            "movable": true,
+            "deletable": true
+          }
+        ],
+        [
+          {
+            "kind": "puzzle_1A",
+            "fields": {},
+            "body": [],
+            "editable": true,
+            "movable": true,
+            "deletable": true
+          }
+        ]
+      ],
+      "tools": []
+    },
+    {
+      "startBlocks": "<xml><block type=\"maze_moveNorth\" deletable=\"false\"></block></xml>",
+      "toolbox": "<xml><block type=\"maze_moveNorth_mini\"><clone><block type=\"maze_moveNorth\"></block></clone></block><block type=\"maze_moveSouth_mini\"><clone><block type=\"maze_moveSouth\"></block></clone></block><block type=\"maze_moveWest_mini\"><clone><block type=\"maze_moveWest\"></block></clone></block><block type=\"maze_moveEast_mini\"><clone><block type=\"maze_moveEast\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 2,
+      "type": "maze",
+      "idealBlockCount": 2,
+      "minY": 56,
+      "maxY": 68,
+      "playerX": 3,
+      "playerY": 59,
+      "presents": [
+        {
+          "x": 3,
+          "y": 57
+        }
+      ],
+      "requiredBlocks": [
+        "maze_moveNorth"
+      ],
+      "start": [
+        [
+          {
+            "kind": "maze_moveNorth",
+            "fields": {},
+            "body": [],
+            "editable": true,
+            "movable": true,
+            "deletable": false
+          }
+        ]
+      ],
+      "tools": [
+        "maze_moveNorth",
+        "maze_moveSouth",
+        "maze_moveWest",
+        "maze_moveEast"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"maze_moveNorth_mini\"><clone><block type=\"maze_moveNorth\"></block></clone></block><block type=\"maze_moveSouth_mini\"><clone><block type=\"maze_moveSouth\"></block></clone></block><block type=\"maze_moveWest_mini\"><clone><block type=\"maze_moveWest\"></block></clone></block><block type=\"maze_moveEast_mini\"><clone><block type=\"maze_moveEast\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 3,
+      "type": "maze",
+      "idealBlockCount": 3,
+      "minY": 53,
+      "maxY": 65,
+      "playerX": 3,
+      "playerY": 57,
+      "presents": [
+        {
+          "x": 2,
+          "y": 55
+        }
+      ],
+      "requiredBlocks": [
+        "maze_moveNorth",
+        "maze_moveWest"
+      ],
+      "start": [],
+      "tools": [
+        "maze_moveNorth",
+        "maze_moveSouth",
+        "maze_moveWest",
+        "maze_moveEast"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"maze_moveNorth_mini\"><clone><block type=\"maze_moveNorth\"></block></clone></block><block type=\"maze_moveSouth_mini\"><clone><block type=\"maze_moveSouth\"></block></clone></block><block type=\"maze_moveWest_mini\"><clone><block type=\"maze_moveWest\"></block></clone></block><block type=\"maze_moveEast_mini\"><clone><block type=\"maze_moveEast\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 4,
+      "type": "maze",
+      "idealBlockCount": 5,
+      "minY": 50,
+      "maxY": 62,
+      "playerX": 2,
+      "playerY": 55,
+      "presents": [
+        {
+          "x": 2,
+          "y": 50
+        }
+      ],
+      "requiredBlocks": [
+        "maze_moveNorth"
+      ],
+      "start": [],
+      "tools": [
+        "maze_moveNorth",
+        "maze_moveSouth",
+        "maze_moveWest",
+        "maze_moveEast"
+      ]
+    },
+    {
+      "startBlocks": "<xml><block type=\"controls_repeat\"><field name=\"TIMES\">1</field><statement name=\"DO\"><block type=\"maze_moveNorth\"></block></statement></block></xml>",
+      "toolbox": "<xml><block type=\"maze_moveNorth_mini\"><clone><block type=\"maze_moveNorth\"></block></clone></block><block type=\"maze_moveSouth_mini\"><clone><block type=\"maze_moveSouth\"></block></clone></block><block type=\"maze_moveWest_mini\"><clone><block type=\"maze_moveWest\"></block></clone></block><block type=\"maze_moveEast_mini\"><clone><block type=\"maze_moveEast\"></block></clone></block><block type=\"controls_repeat_mini\"><clone><block type=\"controls_repeat\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 5,
+      "type": "maze",
+      "idealBlockCount": 2,
+      "minY": 44,
+      "maxY": 56,
+      "playerX": 2,
+      "playerY": 50,
+      "presents": [
+        {
+          "x": 2,
+          "y": 45
+        }
+      ],
+      "requiredBlocks": [
+        "controls_repeat",
+        "maze_moveNorth"
+      ],
+      "start": [
+        [
+          {
+            "kind": "controls_repeat",
+            "fields": {
+              "TIMES": "1"
+            },
+            "body": [
+              {
+                "kind": "maze_moveNorth",
+                "fields": {},
+                "body": [],
+                "editable": true,
+                "movable": true,
+                "deletable": true
+              }
+            ],
+            "editable": true,
+            "movable": true,
+            "deletable": true
+          }
+        ]
+      ],
+      "tools": [
+        "maze_moveNorth",
+        "maze_moveSouth",
+        "maze_moveWest",
+        "maze_moveEast",
+        "controls_repeat"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"maze_moveNorth_mini\"><clone><block type=\"maze_moveNorth\"></block></clone></block><block type=\"maze_moveSouth_mini\"><clone><block type=\"maze_moveSouth\"></block></clone></block><block type=\"maze_moveWest_mini\"><clone><block type=\"maze_moveWest\"></block></clone></block><block type=\"maze_moveEast_mini\"><clone><block type=\"maze_moveEast\"></block></clone></block><block type=\"controls_repeat_mini\"><clone><block type=\"controls_repeat\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 6,
+      "type": "maze",
+      "idealBlockCount": 8,
+      "minY": 41,
+      "maxY": 53,
+      "playerX": 2,
+      "playerY": 45,
+      "presents": [
+        {
+          "x": 2,
+          "y": 41
+        }
+      ],
+      "requiredBlocks": [
+        "maze_moveWest",
+        "maze_moveEast",
+        "maze_moveNorth",
+        "controls_repeat"
+      ],
+      "start": [],
+      "tools": [
+        "maze_moveNorth",
+        "maze_moveSouth",
+        "maze_moveWest",
+        "maze_moveEast",
+        "controls_repeat"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"maze_moveNorth_mini\"><clone><block type=\"maze_moveNorth\"></block></clone></block><block type=\"maze_moveSouth_mini\"><clone><block type=\"maze_moveSouth\"></block></clone></block><block type=\"maze_moveWest_mini\"><clone><block type=\"maze_moveWest\"></block></clone></block><block type=\"maze_moveEast_mini\"><clone><block type=\"maze_moveEast\"></block></clone></block><block type=\"controls_repeat_mini\"><clone><block type=\"controls_repeat\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 7,
+      "type": "maze",
+      "idealBlockCount": 5,
+      "minY": 37,
+      "maxY": 49,
+      "playerX": 2,
+      "playerY": 41,
+      "presents": [
+        {
+          "x": 5,
+          "y": 38
+        }
+      ],
+      "requiredBlocks": [
+        "maze_moveSouth",
+        "maze_moveEast",
+        "maze_moveNorth",
+        "controls_repeat"
+      ],
+      "start": [],
+      "tools": [
+        "maze_moveNorth",
+        "maze_moveSouth",
+        "maze_moveWest",
+        "maze_moveEast",
+        "controls_repeat"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"maze_moveNorth_mini\"><clone><block type=\"maze_moveNorth\"></block></clone></block><block type=\"maze_moveSouth_mini\"><clone><block type=\"maze_moveSouth\"></block></clone></block><block type=\"maze_moveWest_mini\"><clone><block type=\"maze_moveWest\"></block></clone></block><block type=\"maze_moveEast_mini\"><clone><block type=\"maze_moveEast\"></block></clone></block><block type=\"controls_repeat_mini\"><clone><block type=\"controls_repeat\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 8,
+      "type": "maze",
+      "idealBlockCount": 3,
+      "minY": 32,
+      "maxY": 44,
+      "playerX": 5,
+      "playerY": 38,
+      "presents": [
+        {
+          "x": 1,
+          "y": 34
+        }
+      ],
+      "requiredBlocks": [
+        "maze_moveNorth",
+        "maze_moveWest",
+        "controls_repeat"
+      ],
+      "start": [],
+      "tools": [
+        "maze_moveNorth",
+        "maze_moveSouth",
+        "maze_moveWest",
+        "maze_moveEast",
+        "controls_repeat"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"maze_moveNorth_mini\"><clone><block type=\"maze_moveNorth\"></block></clone></block><block type=\"maze_moveSouth_mini\"><clone><block type=\"maze_moveSouth\"></block></clone></block><block type=\"maze_moveWest_mini\"><clone><block type=\"maze_moveWest\"></block></clone></block><block type=\"maze_moveEast_mini\"><clone><block type=\"maze_moveEast\"></block></clone></block><block type=\"controls_repeat_mini\"><clone><block type=\"controls_repeat\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 9,
+      "type": "maze",
+      "idealBlockCount": 7,
+      "minY": 26,
+      "maxY": 38,
+      "playerX": 1,
+      "playerY": 34,
+      "presents": [
+        {
+          "x": 1,
+          "y": 26
+        }
+      ],
+      "requiredBlocks": [
+        "maze_moveNorth",
+        "maze_moveWest",
+        "maze_moveEast",
+        "controls_repeat"
+      ],
+      "start": [],
+      "tools": [
+        "maze_moveNorth",
+        "maze_moveSouth",
+        "maze_moveWest",
+        "maze_moveEast",
+        "controls_repeat"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"maze_moveNorth_mini\"><clone><block type=\"maze_moveNorth\"></block></clone></block><block type=\"maze_moveSouth_mini\"><clone><block type=\"maze_moveSouth\"></block></clone></block><block type=\"maze_moveWest_mini\"><clone><block type=\"maze_moveWest\"></block></clone></block><block type=\"maze_moveEast_mini\"><clone><block type=\"maze_moveEast\"></block></clone></block><block type=\"controls_jump_mini\"><clone><block type=\"controls_jump\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 10,
+      "type": "maze",
+      "idealBlockCount": 1,
+      "minY": 12,
+      "maxY": 24,
+      "playerX": 2,
+      "playerY": 17,
+      "presents": [
+        {
+          "x": 2,
+          "y": 15
+        }
+      ],
+      "requiredBlocks": [
+        "controls_jump"
+      ],
+      "start": [],
+      "tools": [
+        "maze_moveNorth",
+        "maze_moveSouth",
+        "maze_moveWest",
+        "maze_moveEast",
+        "controls_jump"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"maze_moveNorth_mini\"><clone><block type=\"maze_moveNorth\"></block></clone></block><block type=\"maze_moveSouth_mini\"><clone><block type=\"maze_moveSouth\"></block></clone></block><block type=\"maze_moveWest_mini\"><clone><block type=\"maze_moveWest\"></block></clone></block><block type=\"maze_moveEast_mini\"><clone><block type=\"maze_moveEast\"></block></clone></block><block type=\"controls_jump_mini\"><clone><block type=\"controls_jump\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 11,
+      "type": "maze",
+      "idealBlockCount": 2,
+      "minY": 10,
+      "maxY": 22,
+      "playerX": 2,
+      "playerY": 15,
+      "presents": [
+        {
+          "x": 3,
+          "y": 12
+        }
+      ],
+      "requiredBlocks": [
+        "controls_jump",
+        "maze_moveEast"
+      ],
+      "start": [],
+      "tools": [
+        "maze_moveNorth",
+        "maze_moveSouth",
+        "maze_moveWest",
+        "maze_moveEast",
+        "controls_jump"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"maze_moveNorth_mini\"><clone><block type=\"maze_moveNorth\"></block></clone></block><block type=\"maze_moveSouth_mini\"><clone><block type=\"maze_moveSouth\"></block></clone></block><block type=\"maze_moveWest_mini\"><clone><block type=\"maze_moveWest\"></block></clone></block><block type=\"maze_moveEast_mini\"><clone><block type=\"maze_moveEast\"></block></clone></block><block type=\"controls_jump_mini\"><clone><block type=\"controls_jump\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 12,
+      "type": "maze",
+      "idealBlockCount": 1,
+      "minY": 7,
+      "maxY": 19,
+      "playerX": 3,
+      "playerY": 12,
+      "presents": [
+        {
+          "x": 3,
+          "y": 9
+        }
+      ],
+      "requiredBlocks": [
+        "controls_jump"
+      ],
+      "start": [],
+      "tools": [
+        "maze_moveNorth",
+        "maze_moveSouth",
+        "maze_moveWest",
+        "maze_moveEast",
+        "controls_jump"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"maze_moveNorth_mini\"><clone><block type=\"maze_moveNorth\"></block></clone></block><block type=\"maze_moveSouth_mini\"><clone><block type=\"maze_moveSouth\"></block></clone></block><block type=\"maze_moveWest_mini\"><clone><block type=\"maze_moveWest\"></block></clone></block><block type=\"maze_moveEast_mini\"><clone><block type=\"maze_moveEast\"></block></clone></block><block type=\"controls_repeat_mini\"><clone><block type=\"controls_repeat\"></block></clone></block><block type=\"controls_jump_mini\"><clone><block type=\"controls_jump\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 13,
+      "type": "maze",
+      "idealBlockCount": 2,
+      "minY": 1,
+      "maxY": 13,
+      "playerX": 3,
+      "playerY": 9,
+      "presents": [
+        {
+          "x": 3,
+          "y": 3
+        }
+      ],
+      "requiredBlocks": [
+        "controls_jump",
+        "controls_repeat"
+      ],
+      "start": [],
+      "tools": [
+        "maze_moveNorth",
+        "maze_moveSouth",
+        "maze_moveWest",
+        "maze_moveEast",
+        "controls_repeat",
+        "controls_jump"
+      ]
+    }
+  ]
+}

@@ -2,6 +2,7 @@ mod assets;
 mod boatload_view;
 mod capture;
 mod chrome;
+mod coding_view;
 mod elf_shadow;
 mod elfmaker_view;
 mod glider_view;
@@ -79,7 +80,7 @@ fn options() -> Result<Option<Options>, String> {
     while let Some(arg) = args.next() {
         match arg.as_str() {
             "--help" | "-h" => {
-                println!("Santa Tracker — native Rust port (in development)\n\nAvailable: village, Runner, Elf Jetpack, Santa Selfie, Elf Ski, Present Drop, Gift Slingshot, Elf Maker, Elf Jamband, Elf Glider and Penguin Dash.\n\n--assets PATH       Original static assets directory\n--seed TEXT         Deterministic game seed\n--mute              Start without audio\n--scene NAME        modvil, runner, jetpack, santaselfie, elfski, presentdrop, boatload, elfmaker, jamband, glider or penguindash\n--scroll PIXELS     Initial village scroll position\n--beard-file PATH   Restore an original-format saved beard\n--elf-file PATH     Restore an original-format saved elf\n--band-file PATH    Restore an original-format saved band\n--advance SECONDS   Advance the selected scene before rendering\n--frames COUNT      Exit after COUNT frames (for native render checks)\n--screenshot PATH   Save the final rendered frame (or F12 live)\n--width PIXELS      Initial window width\n--height PIXELS     Initial window height\n--clock-ms EPOCH    Deterministic countdown clock for comparisons\n--profile PATH      Measure live frame intervals and CPU work to JSON\n--profile-frames N  Measured live frames after 30 warmup frames (default 240)\n\nControls: Space/Up jump (twice), Down slide, P pause, R restart, M mute, Escape home");
+                println!("Santa Tracker — native Rust port (in development)\n\nAvailable: village, Runner, Elf Jetpack, Santa Selfie, Elf Ski, Present Drop, Gift Slingshot, Elf Maker, Elf Jamband, Elf Glider, Penguin Dash, Code Lab and Code Boogie.\n\n--assets PATH       Original static assets directory\n--seed TEXT         Deterministic game seed\n--mute              Start without audio\n--scene NAME        modvil, runner, jetpack, santaselfie, elfski, presentdrop, boatload, elfmaker, jamband, glider, penguindash, codelab or codeboogie\n--scroll PIXELS     Initial village scroll position\n--beard-file PATH   Restore an original-format saved beard\n--elf-file PATH     Restore an original-format saved elf\n--band-file PATH    Restore an original-format saved band\n--advance SECONDS   Advance the selected scene before rendering\n--frames COUNT      Exit after COUNT frames (for native render checks)\n--screenshot PATH   Save the final rendered frame (or F12 live)\n--width PIXELS      Initial window width\n--height PIXELS     Initial window height\n--clock-ms EPOCH    Deterministic countdown clock for comparisons\n--profile PATH      Measure live frame intervals and CPU work to JSON\n--profile-frames N  Measured live frames after 30 warmup frames (default 240)\n\nControls: Space/Up jump (twice), Down slide, P pause, R restart, M mute, Escape home");
                 return Ok(None);
             }
             "--mute" => out.mute = true,
@@ -139,6 +140,8 @@ fn options() -> Result<Option<Options>, String> {
                             "jamband",
                             "glider",
                             "penguindash",
+                            "codelab",
+                            "codeboogie",
                         ]
                         .contains(&value.as_str())
                         {
@@ -296,6 +299,13 @@ async fn run(opts: Options) {
         penguin.advance(opts.advance);
         sound.penguin_load(&assets.root);
     }
+    let mut lab_view = coding_view::CodingView::new(false).expect("Code Lab native editor");
+    let mut dance_view = coding_view::CodingView::new(true).expect("Code Boogie native editor");
+    match route.as_str() {
+        "codelab" => lab_view.advance(opts.advance),
+        "codeboogie" => dance_view.advance(opts.advance),
+        _ => {}
+    }
     let mut loaded = std::collections::HashSet::new();
     let mut unavailable: Option<String> = None;
     let mut accumulated = 0.;
@@ -345,7 +355,10 @@ async fn run(opts: Options) {
         if opts.profile.is_none() && is_key_pressed(KeyCode::M) {
             sound.mute();
         }
-        let restart = opts.profile.is_none() && is_key_pressed(KeyCode::R) && route != "modvil";
+        let restart = opts.profile.is_none()
+            && is_key_pressed(KeyCode::R)
+            && route != "modvil"
+            && route != "codeboogie";
         if restart {
             sound.stop();
             match route.as_str() {
@@ -378,6 +391,8 @@ async fn run(opts: Options) {
                     let (w, h) = jetpack_view::JetpackView::dimensions();
                     jetpack = Jetpack::new(&opts.seed, w, h);
                 }
+                "codelab" => lab_view.reset(),
+                "codeboogie" => dance_view.reset(),
                 "santaselfie" => selfie.reset(),
                 "presentdrop" => drop_game.restart(),
                 _ => {}
@@ -435,7 +450,8 @@ async fn run(opts: Options) {
                 "runner" => runner.playing && !runner.paused,
                 "jetpack" => jetpack.playing && !jetpack.paused,
                 "santaselfie" => !selfie.paused && !selfie_view.export_open,
-                "elfski" | "presentdrop" | "boatload" | "elfmaker" | "jamband" => true,
+                "elfski" | "presentdrop" | "boatload" | "elfmaker" | "jamband" | "codelab"
+                | "codeboogie" => true,
                 _ => false,
             };
         if route == "penguindash" {
@@ -570,6 +586,24 @@ async fn run(opts: Options) {
         clear_background(BLACK);
         let mut selected = None;
         match route.as_str() {
+            "codelab" | "codeboogie" => {
+                let view = if route == "codelab" {
+                    &mut lab_view
+                } else {
+                    &mut dance_view
+                };
+                view.draw(
+                    &mut assets,
+                    active && opts.frames.is_none() && !interlude.busy() && !village.menu,
+                    opts.frames.is_some(),
+                );
+                for event in view.sounds.drain(..) {
+                    sound.trigger(&event, &assets.root);
+                }
+                for track in view.track_events.drain(..) {
+                    sound.coding_track(track, &assets.root);
+                }
+            }
             "penguindash" => {
                 for event in penguin.sounds.drain(..) {
                     sound.trigger(event, &assets.root);
@@ -761,6 +795,22 @@ async fn run(opts: Options) {
             }
         }
         let hud = match route.as_str() {
+            "codelab" | "codeboogie" => {
+                let view = if route == "codelab" {
+                    &lab_view
+                } else {
+                    &dance_view
+                };
+                Some(chrome::GameHud {
+                    playing: !view.finished,
+                    paused: false,
+                    score: 0,
+                    countdown: 0.,
+                    level: Some((view.level_index + 1) as u32),
+                    badge: !view.chooser && !view.level().freestyle,
+                    can_pause: false,
+                })
+            }
             "penguindash" => Some(chrome::GameHud {
                 playing: !penguin.gameover,
                 paused: penguin.paused,
@@ -881,6 +931,8 @@ async fn run(opts: Options) {
                 chrome::Action::Restart => {
                     sound.stop();
                     match route.as_str() {
+                        "codelab" => lab_view.reset(),
+                        "codeboogie" => dance_view.reset(),
                         "presentdrop" => drop_game.restart(),
                         "glider" => glider.restart(),
                         "penguindash" => {
@@ -923,6 +975,8 @@ async fn run(opts: Options) {
                 "jamband",
                 "glider",
                 "penguindash",
+                "codelab",
+                "codeboogie",
             ]
             .contains(&target.as_str())
             {
@@ -965,6 +1019,8 @@ async fn run(opts: Options) {
                 "jamband",
                 "glider",
                 "penguindash",
+                "codelab",
+                "codeboogie",
             ]
             .contains(&target.as_str())
             {
@@ -972,6 +1028,8 @@ async fn run(opts: Options) {
                 accumulated = 0.;
                 village.menu = false;
                 match target.as_str() {
+                    "codelab" => lab_view.reset(),
+                    "codeboogie" => dance_view.reset(),
                     "modvil" => {
                         village
                             .sounds

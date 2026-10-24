@@ -1,0 +1,49 @@
+{
+  "method": "Original idle scene without host chrome versus native frozen --advance 2 --frames 3. Region below y=200 excludes host toolbar/countdown. Idle capture only, not whole-scene/animation certification. Fonts still have known raster/spacing differences. Window manager expanded the requested 1846x966 native window to 1846x1014; the matching original was recaptured at its actual 1846x1014 drawable size.",
+  "cases": [
+    {
+      "width": 1440,
+      "height": 800,
+      "region": [
+        0,
+        200,
+        1440,
+        800
+      ],
+      "mean_rgb_error_0_to_255": 0.4580300925925926
+    },
+    {
+      "width": 768,
+      "height": 800,
+      "region": [
+        0,
+        200,
+        768,
+        800
+      ],
+      "mean_rgb_error_0_to_255": 0.9207486979166667
+    },
+    {
+      "width": 375,
+      "height": 800,
+      "region": [
+        0,
+        200,
+        375,
+        800
+      ],
+      "mean_rgb_error_0_to_255": 1.4025451851851851
+    },
+    {
+      "width": 1846,
+      "height": 1014,
+      "region": [
+        0,
+        200,
+        1846,
+        1014
+      ],
+      "mean_rgb_error_0_to_255": 1.249072523720411
+    }
+  ]
+}

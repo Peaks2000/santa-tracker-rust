@@ -538,7 +538,14 @@ impl Chrome {
                 self.label("SCORE", middle + 56. * t, top + 34., 9, 1. - t, 0.);
                 if let Some(level) = game.level {
                     self.label(
-                        &format!("{level}·10"),
+                        &format!(
+                            "{level}·{}",
+                            match route {
+                                "codelab" => 14,
+                                "codeboogie" => 9,
+                                _ => 10,
+                            }
+                        ),
                         middle,
                         top + 21. - 40. * (1. - t),
                         17,

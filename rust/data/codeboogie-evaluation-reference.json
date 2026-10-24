@@ -1,0 +1,4051 @@
+[
+  {
+    "level": 0,
+    "steps": [],
+    "status": "NO_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Watch closely!",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      }
+    ]
+  },
+  {
+    "level": 0,
+    "steps": [
+      "pointLeft",
+      "pointRight"
+    ],
+    "status": "SUCCESS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "0",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "1",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "pony",
+        "playerStep": "pony",
+        "title": "Success!"
+      }
+    ]
+  },
+  {
+    "level": 0,
+    "steps": [
+      "pointLeft"
+    ],
+    "status": "NOT_ENOUGH_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "0",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      }
+    ]
+  },
+  {
+    "level": 0,
+    "steps": [
+      "pointLeft",
+      "pointRight",
+      "jump"
+    ],
+    "status": "TOO_MANY_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "0",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "1",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "watch",
+        "playerStep": "jump",
+        "blockId": "2",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "watch",
+        "playerStep": "fail",
+        "title": "Oops!"
+      }
+    ]
+  },
+  {
+    "level": 0,
+    "steps": [
+      "hip",
+      "pointLeft",
+      "pointRight"
+    ],
+    "status": "WRONG_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "hip",
+        "tile": "pointLeft",
+        "blockId": "0",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "fail",
+        "tile": "pointRight",
+        "title": "Oops!"
+      }
+    ]
+  },
+  {
+    "level": 0,
+    "steps": [
+      "pointRight",
+      "pointLeft"
+    ],
+    "status": "WRONG_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointRight",
+        "tile": "pointLeft",
+        "blockId": "0",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "fail",
+        "tile": "pointRight",
+        "title": "Oops!"
+      }
+    ]
+  },
+  {
+    "level": 1,
+    "steps": [],
+    "status": "NO_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Watch closely!",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      }
+    ]
+  },
+  {
+    "level": 1,
+    "steps": [
+      "pointLeft",
+      "pointRight",
+      "stepLeft",
+      "stepRight"
+    ],
+    "status": "SUCCESS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "0",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "1",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "2",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "3",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pony",
+        "playerStep": "pony",
+        "title": "Success!"
+      }
+    ]
+  },
+  {
+    "level": 1,
+    "steps": [
+      "pointLeft",
+      "pointRight",
+      "stepLeft"
+    ],
+    "status": "NOT_ENOUGH_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "0",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "1",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "2",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      }
+    ]
+  },
+  {
+    "level": 1,
+    "steps": [
+      "pointLeft",
+      "pointRight",
+      "stepLeft",
+      "stepRight",
+      "jump"
+    ],
+    "status": "TOO_MANY_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "0",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "1",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "2",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "3",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "watch",
+        "playerStep": "jump",
+        "blockId": "4",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "watch",
+        "playerStep": "fail",
+        "title": "Oops!"
+      }
+    ]
+  },
+  {
+    "level": 1,
+    "steps": [
+      "hip",
+      "pointLeft",
+      "pointRight",
+      "stepLeft",
+      "stepRight"
+    ],
+    "status": "WRONG_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "hip",
+        "tile": "pointLeft",
+        "blockId": "0",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "fail",
+        "tile": "pointRight",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      }
+    ]
+  },
+  {
+    "level": 1,
+    "steps": [
+      "stepRight",
+      "stepLeft",
+      "pointRight",
+      "pointLeft"
+    ],
+    "status": "WRONG_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "stepRight",
+        "tile": "pointLeft",
+        "blockId": "0",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "fail",
+        "tile": "pointRight",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "steps": [],
+    "status": "NO_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Watch closely!",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "steps": [
+      "pointLeft",
+      "pointRight",
+      "pointLeft",
+      "pointRight",
+      "stepLeft",
+      "stepRight",
+      "stepLeft",
+      "stepRight"
+    ],
+    "status": "SUCCESS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "0",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "1",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "2",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "3",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "4",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "5",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "6",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "7",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pony",
+        "playerStep": "pony",
+        "title": "Success!"
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "steps": [
+      "pointLeft",
+      "pointRight",
+      "pointLeft",
+      "pointRight",
+      "stepLeft",
+      "stepRight",
+      "stepLeft"
+    ],
+    "status": "NOT_ENOUGH_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "0",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "1",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "2",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "3",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "4",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "5",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "6",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "steps": [
+      "pointLeft",
+      "pointRight",
+      "pointLeft",
+      "pointRight",
+      "stepLeft",
+      "stepRight",
+      "stepLeft",
+      "stepRight",
+      "jump"
+    ],
+    "status": "TOO_MANY_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "0",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "1",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "2",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "3",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "4",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "5",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "6",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "7",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "watch",
+        "playerStep": "jump",
+        "blockId": "8",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "watch",
+        "playerStep": "fail",
+        "title": "Oops!"
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "steps": [
+      "hip",
+      "pointLeft",
+      "pointRight",
+      "pointLeft",
+      "pointRight",
+      "stepLeft",
+      "stepRight",
+      "stepLeft",
+      "stepRight"
+    ],
+    "status": "WRONG_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "hip",
+        "tile": "pointLeft",
+        "blockId": "0",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "fail",
+        "tile": "pointRight",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "steps": [
+      "stepRight",
+      "stepLeft",
+      "stepRight",
+      "stepLeft",
+      "pointRight",
+      "pointLeft",
+      "pointRight",
+      "pointLeft"
+    ],
+    "status": "WRONG_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "stepRight",
+        "tile": "pointLeft",
+        "blockId": "0",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "fail",
+        "tile": "pointRight",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "steps": [],
+    "status": "NO_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Watch closely!",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "steps": [
+      "jump",
+      "pointLeft",
+      "jump",
+      "pointRight",
+      "jump",
+      "pointLeft",
+      "jump",
+      "pointRight"
+    ],
+    "status": "SUCCESS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "0",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "1",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "2",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "3",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "4",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "5",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "6",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "7",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "hiphop",
+        "playerStep": "hiphop",
+        "title": "Success!"
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "steps": [
+      "jump",
+      "pointLeft",
+      "jump",
+      "pointRight",
+      "jump",
+      "pointLeft",
+      "jump"
+    ],
+    "status": "NOT_ENOUGH_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "0",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "1",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "2",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "3",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "4",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "5",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "6",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "steps": [
+      "jump",
+      "pointLeft",
+      "jump",
+      "pointRight",
+      "jump",
+      "pointLeft",
+      "jump",
+      "pointRight",
+      "jump"
+    ],
+    "status": "TOO_MANY_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "0",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "1",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "2",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "3",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "4",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "5",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "6",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "7",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "watch",
+        "playerStep": "jump",
+        "blockId": "8",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "watch",
+        "playerStep": "fail",
+        "title": "Oops!"
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "steps": [
+      "hip",
+      "jump",
+      "pointLeft",
+      "jump",
+      "pointRight",
+      "jump",
+      "pointLeft",
+      "jump",
+      "pointRight"
+    ],
+    "status": "WRONG_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "hip",
+        "tile": "jump",
+        "blockId": "0",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "fail",
+        "tile": "pointLeft",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "steps": [
+      "pointRight",
+      "jump",
+      "pointLeft",
+      "jump",
+      "pointRight",
+      "jump",
+      "pointLeft",
+      "jump"
+    ],
+    "status": "WRONG_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "pointRight",
+        "tile": "jump",
+        "blockId": "0",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "fail",
+        "tile": "pointLeft",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "steps": [],
+    "status": "NO_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Watch closely!",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "steps": [
+      "jump",
+      "stepRight",
+      "pointLeft",
+      "stepLeft",
+      "jump",
+      "stepRight",
+      "pointLeft",
+      "stepLeft"
+    ],
+    "status": "SUCCESS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "0",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "1",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "2",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "3",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "4",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "5",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "6",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "7",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "hiphop",
+        "playerStep": "hiphop",
+        "title": "Success!"
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "steps": [
+      "jump",
+      "stepRight",
+      "pointLeft",
+      "stepLeft",
+      "jump",
+      "stepRight",
+      "pointLeft"
+    ],
+    "status": "NOT_ENOUGH_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "0",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "1",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "2",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "3",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "4",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "5",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "6",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "steps": [
+      "jump",
+      "stepRight",
+      "pointLeft",
+      "stepLeft",
+      "jump",
+      "stepRight",
+      "pointLeft",
+      "stepLeft",
+      "jump"
+    ],
+    "status": "TOO_MANY_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "0",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "1",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "2",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "3",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "4",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "5",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "6",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "7",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "watch",
+        "playerStep": "jump",
+        "blockId": "8",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "watch",
+        "playerStep": "fail",
+        "title": "Oops!"
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "steps": [
+      "hip",
+      "jump",
+      "stepRight",
+      "pointLeft",
+      "stepLeft",
+      "jump",
+      "stepRight",
+      "pointLeft",
+      "stepLeft"
+    ],
+    "status": "WRONG_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "hip",
+        "tile": "jump",
+        "blockId": "0",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "fail",
+        "tile": "stepRight",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "steps": [
+      "stepLeft",
+      "pointLeft",
+      "stepRight",
+      "jump",
+      "stepLeft",
+      "pointLeft",
+      "stepRight",
+      "jump"
+    ],
+    "status": "WRONG_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "stepLeft",
+        "tile": "jump",
+        "blockId": "0",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "fail",
+        "tile": "stepRight",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "steps": [],
+    "status": "NO_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Watch closely!",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "watch",
+        "tile": "splits",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "watch",
+        "tile": "splits",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "watch",
+        "tile": "splits",
+        "title": "Split"
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "steps": [
+      "jump",
+      "splits",
+      "jump",
+      "splits",
+      "stepRight",
+      "pointLeft",
+      "jump",
+      "splits"
+    ],
+    "status": "SUCCESS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "0",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "splits",
+        "tile": "splits",
+        "blockId": "1",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "2",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "splits",
+        "tile": "splits",
+        "blockId": "3",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "4",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "5",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "6",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "splits",
+        "tile": "splits",
+        "blockId": "7",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "hiphop",
+        "playerStep": "hiphop",
+        "title": "Success!"
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "steps": [
+      "jump",
+      "splits",
+      "jump",
+      "splits",
+      "stepRight",
+      "pointLeft",
+      "jump"
+    ],
+    "status": "NOT_ENOUGH_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "0",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "splits",
+        "tile": "splits",
+        "blockId": "1",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "2",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "splits",
+        "tile": "splits",
+        "blockId": "3",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "4",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "5",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "6",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "watch",
+        "tile": "splits",
+        "title": "Split"
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "steps": [
+      "jump",
+      "splits",
+      "jump",
+      "splits",
+      "stepRight",
+      "pointLeft",
+      "jump",
+      "splits",
+      "jump"
+    ],
+    "status": "TOO_MANY_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "0",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "splits",
+        "tile": "splits",
+        "blockId": "1",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "2",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "splits",
+        "tile": "splits",
+        "blockId": "3",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "4",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "5",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "6",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "splits",
+        "tile": "splits",
+        "blockId": "7",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "watch",
+        "playerStep": "jump",
+        "blockId": "8",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "watch",
+        "playerStep": "fail",
+        "title": "Oops!"
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "steps": [
+      "hip",
+      "jump",
+      "splits",
+      "jump",
+      "splits",
+      "stepRight",
+      "pointLeft",
+      "jump",
+      "splits"
+    ],
+    "status": "WRONG_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "hip",
+        "tile": "jump",
+        "blockId": "0",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "fail",
+        "tile": "splits",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "watch",
+        "tile": "splits",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "watch",
+        "tile": "splits",
+        "title": "Split"
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "steps": [
+      "splits",
+      "jump",
+      "pointLeft",
+      "stepRight",
+      "splits",
+      "jump",
+      "splits",
+      "jump"
+    ],
+    "status": "WRONG_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "splits",
+        "tile": "jump",
+        "blockId": "0",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "fail",
+        "tile": "splits",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "watch",
+        "tile": "splits",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "watch",
+        "tile": "splits",
+        "title": "Split"
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "steps": [],
+    "status": "NO_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Watch closely!",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "watch",
+        "tile": "hip",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "watch",
+        "tile": "hip",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "watch",
+        "tile": "hip",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "watch",
+        "tile": "hip",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "watch",
+        "tile": "hip",
+        "title": "Hip shake"
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "steps": [
+      "hip",
+      "hip",
+      "hip",
+      "hip",
+      "jump",
+      "stepRight",
+      "stepLeft",
+      "hip"
+    ],
+    "status": "SUCCESS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "0",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "1",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "2",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "3",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "4",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "5",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "6",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "7",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "floss",
+        "playerStep": "floss",
+        "title": "Success!"
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "steps": [
+      "hip",
+      "hip",
+      "hip",
+      "hip",
+      "jump",
+      "stepRight",
+      "stepLeft"
+    ],
+    "status": "NOT_ENOUGH_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "0",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "1",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "2",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "3",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "4",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "5",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "6",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "watch",
+        "tile": "hip",
+        "title": "Hip shake"
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "steps": [
+      "hip",
+      "hip",
+      "hip",
+      "hip",
+      "jump",
+      "stepRight",
+      "stepLeft",
+      "hip",
+      "jump"
+    ],
+    "status": "TOO_MANY_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "0",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "1",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "2",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "3",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "4",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "5",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "6",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "7",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "watch",
+        "playerStep": "jump",
+        "blockId": "8",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "watch",
+        "playerStep": "fail",
+        "title": "Oops!"
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "steps": [
+      "hip",
+      "hip",
+      "hip",
+      "hip",
+      "hip",
+      "jump",
+      "stepRight",
+      "stepLeft",
+      "hip"
+    ],
+    "status": "WRONG_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "0",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "1",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "2",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "3",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "hip",
+        "tile": "jump",
+        "blockId": "4",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "fail",
+        "tile": "stepRight",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "watch",
+        "tile": "hip",
+        "title": "Hip shake"
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "steps": [
+      "hip",
+      "stepLeft",
+      "stepRight",
+      "jump",
+      "hip",
+      "hip",
+      "hip",
+      "hip"
+    ],
+    "status": "WRONG_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "0",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "stepLeft",
+        "tile": "hip",
+        "blockId": "1",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "fail",
+        "tile": "hip",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "watch",
+        "tile": "hip",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "watch",
+        "tile": "hip",
+        "title": "Hip shake"
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "steps": [],
+    "status": "NO_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Watch closely!",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "watch",
+        "tile": "hip",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "watch",
+        "tile": "splits",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "steps": [
+      "stepRight",
+      "jump",
+      "hip",
+      "pointLeft",
+      "stepLeft",
+      "jump",
+      "splits",
+      "pointRight"
+    ],
+    "status": "SUCCESS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "0",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "1",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "2",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "3",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "4",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "5",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "splits",
+        "tile": "splits",
+        "blockId": "6",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "7",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "floss",
+        "playerStep": "floss",
+        "title": "Success!"
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "steps": [
+      "stepRight",
+      "jump",
+      "hip",
+      "pointLeft",
+      "stepLeft",
+      "jump",
+      "splits"
+    ],
+    "status": "NOT_ENOUGH_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "0",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "1",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "2",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "3",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "4",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "5",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "splits",
+        "tile": "splits",
+        "blockId": "6",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "steps": [
+      "stepRight",
+      "jump",
+      "hip",
+      "pointLeft",
+      "stepLeft",
+      "jump",
+      "splits",
+      "pointRight",
+      "jump"
+    ],
+    "status": "TOO_MANY_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "0",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "1",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "2",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "3",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "4",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "5",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "splits",
+        "tile": "splits",
+        "blockId": "6",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "7",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "watch",
+        "playerStep": "jump",
+        "blockId": "8",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "watch",
+        "playerStep": "fail",
+        "title": "Oops!"
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "steps": [
+      "hip",
+      "stepRight",
+      "jump",
+      "hip",
+      "pointLeft",
+      "stepLeft",
+      "jump",
+      "splits",
+      "pointRight"
+    ],
+    "status": "WRONG_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "hip",
+        "tile": "stepRight",
+        "blockId": "0",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "fail",
+        "tile": "jump",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "watch",
+        "tile": "hip",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "watch",
+        "tile": "splits",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "steps": [
+      "pointRight",
+      "splits",
+      "jump",
+      "stepLeft",
+      "pointLeft",
+      "hip",
+      "jump",
+      "stepRight"
+    ],
+    "status": "WRONG_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "pointRight",
+        "tile": "stepRight",
+        "blockId": "0",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "fail",
+        "tile": "jump",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "watch",
+        "tile": "hip",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "watch",
+        "tile": "splits",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "steps": [],
+    "status": "NO_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Watch closely!",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "watch",
+        "tile": "hip",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "watch",
+        "tile": "hip",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "watch",
+        "tile": "splits",
+        "title": "Split"
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "steps": [
+      "hip",
+      "stepLeft",
+      "jump",
+      "stepRight",
+      "hip",
+      "stepLeft",
+      "jump",
+      "stepRight",
+      "pointLeft",
+      "pointRight",
+      "pointLeft",
+      "pointRight",
+      "pointLeft",
+      "pointRight",
+      "jump",
+      "splits"
+    ],
+    "status": "SUCCESS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "0",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "1",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "2",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "3",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "4",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "5",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "6",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "7",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "8",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "9",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "10",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "11",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "12",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "13",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "14",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "splits",
+        "tile": "splits",
+        "blockId": "15",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "floss",
+        "playerStep": "floss",
+        "title": "Success!"
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "steps": [
+      "hip",
+      "stepLeft",
+      "jump",
+      "stepRight",
+      "hip",
+      "stepLeft",
+      "jump",
+      "stepRight",
+      "pointLeft",
+      "pointRight",
+      "pointLeft",
+      "pointRight",
+      "pointLeft",
+      "pointRight",
+      "jump"
+    ],
+    "status": "NOT_ENOUGH_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "0",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "1",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "2",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "3",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "4",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "5",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "6",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "7",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "8",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "9",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "10",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "11",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "12",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "13",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "14",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "watch",
+        "tile": "splits",
+        "title": "Split"
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "steps": [
+      "hip",
+      "stepLeft",
+      "jump",
+      "stepRight",
+      "hip",
+      "stepLeft",
+      "jump",
+      "stepRight",
+      "pointLeft",
+      "pointRight",
+      "pointLeft",
+      "pointRight",
+      "pointLeft",
+      "pointRight",
+      "jump",
+      "splits",
+      "jump"
+    ],
+    "status": "TOO_MANY_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "0",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "1",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "2",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "3",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "4",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "stepLeft",
+        "tile": "stepLeft",
+        "blockId": "5",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "6",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "stepRight",
+        "tile": "stepRight",
+        "blockId": "7",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "8",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "9",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "10",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "11",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "pointLeft",
+        "tile": "pointLeft",
+        "blockId": "12",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "pointRight",
+        "tile": "pointRight",
+        "blockId": "13",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "jump",
+        "tile": "jump",
+        "blockId": "14",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "splits",
+        "tile": "splits",
+        "blockId": "15",
+        "title": "Split"
+      },
+      {
+        "teacherStep": "watch",
+        "playerStep": "jump",
+        "blockId": "16",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "watch",
+        "playerStep": "fail",
+        "title": "Oops!"
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "steps": [
+      "hip",
+      "hip",
+      "stepLeft",
+      "jump",
+      "stepRight",
+      "hip",
+      "stepLeft",
+      "jump",
+      "stepRight",
+      "pointLeft",
+      "pointRight",
+      "pointLeft",
+      "pointRight",
+      "pointLeft",
+      "pointRight",
+      "jump",
+      "splits"
+    ],
+    "status": "WRONG_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "hip",
+        "tile": "hip",
+        "blockId": "0",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "hip",
+        "tile": "stepLeft",
+        "blockId": "1",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "fail",
+        "tile": "jump",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "watch",
+        "tile": "hip",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "watch",
+        "tile": "splits",
+        "title": "Split"
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "steps": [
+      "splits",
+      "jump",
+      "pointRight",
+      "pointLeft",
+      "pointRight",
+      "pointLeft",
+      "pointRight",
+      "pointLeft",
+      "stepRight",
+      "jump",
+      "stepLeft",
+      "hip",
+      "stepRight",
+      "jump",
+      "stepLeft",
+      "hip"
+    ],
+    "status": "WRONG_STEPS",
+    "queue": [
+      {
+        "teacherStep": "idle",
+        "playerStep": "idle",
+        "title": "Let's dance",
+        "isCountdown": true,
+        "isIntro": true
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "splits",
+        "tile": "hip",
+        "blockId": "0",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "fail",
+        "tile": "stepLeft",
+        "title": "Oops!"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "hip",
+        "playerStep": "watch",
+        "tile": "hip",
+        "title": "Hip shake"
+      },
+      {
+        "teacherStep": "stepLeft",
+        "playerStep": "watch",
+        "tile": "stepLeft",
+        "title": "Step left"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "stepRight",
+        "playerStep": "watch",
+        "tile": "stepRight",
+        "title": "Step right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "pointLeft",
+        "playerStep": "watch",
+        "tile": "pointLeft",
+        "title": "Point left"
+      },
+      {
+        "teacherStep": "pointRight",
+        "playerStep": "watch",
+        "tile": "pointRight",
+        "title": "Point right"
+      },
+      {
+        "teacherStep": "jump",
+        "playerStep": "watch",
+        "tile": "jump",
+        "title": "Jump"
+      },
+      {
+        "teacherStep": "splits",
+        "playerStep": "watch",
+        "tile": "splits",
+        "title": "Split"
+      }
+    ]
+  }
+]

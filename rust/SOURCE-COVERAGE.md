@@ -852,3 +852,177 @@ The twelve selected-phase native/source crops have mean RGB error
 The release preview builds and exits its own capture windows. The main app
 continues to show the existing village; this change does not expose tracking
 off season or claim a completed map.
+
+## Code Lab and Code Boogie — native first pass (2026-10-24)
+
+These scenes are now initially playable in Rust, not complete 1:1 ports. Read the
+own-scene JS, HTML structure/entry handlers and Sass, using bounded original reads
+and comment-free Babel rendering for the longer JS groups (no code statements
+removed). Original inline SVG symbols/sprite paths are retained as assets. The
+bundled third-party Blockly/Closure engines are NOT fully reviewed/ported: the
+native graph/editor replaces them and full editor parity remains unfinished.
+`coding-function-inventory.json` explicitly inventories 377 functions in the 42
+own-scene JS files as partial/unfinished; it is not a completion certificate.
+Source file hashes and reference-harness scope are in coding-source-provenance.
+
+Native equivalents and outstanding branches:
+
+- codelab constants/map/levels: original full map and all fourteen level records
+  execute unchanged in the export VM; XML starting chains, tools, fields and
+  editable/movable/deletable flags become typed Rust data. Map bounds, original
+  7 usable columns vs 8 rendered columns, tree blocking and jump landing-only
+  collision are preserved. Native renderer iterates rows then columns right to
+  left, with original tile dimensions and SVG decorations. Pooled square/present
+  objects, overlapping retained rows/cleanup, and 800ms world travel are missing.
+- codelab level: `checkSuccess` becomes Workspace::puzzle_success (one stack,
+  exact A/B/C order, no branches/extras). `isOutsideBounds`, `processResult` and
+  LevelResult defaults become lab_run/evaluate/ResultInfo. Required blocks only
+  inspect editable enabled user blocks, while counts include the nondeletable
+  initial movement block. Editable, movable and deletable are distinct flags;
+  source isEditable does not test isDeletable. Empty containers precede extra
+  root/missing-block/too-few/too-many hints. All active levels have one present;
+  collection checks preserve source per-action present matching, not a new
+  cumulative multi-present rule. Broader result/disabled-block inputs remain.
+- codelab player: move/jump use original cardinal rounding, bounds and tree
+  checks, start-direction carry across levels and length+1 landing. Actual
+  source animation objects demonstrate walk=500ms and jump=1000ms, plus 200ms
+  for a turn. Walk includes the 100ms sound-effect sequence before its 400ms
+  position/sprite tween. Do not infer total duration from its declared 400ms
+  wrapper option: the bundled animation engine yields the measured totals.
+  Source shortest rotation is used; jump translation ends after 400ms while its
+  sprite continues. Native lose bump, pickup fades, drop shadow and exact
+  rotation/sprite phase ordering still need source engine comparisons.
+- codelab block_runner: generated-code eval replaced by a typed graph interpreter
+  for directions, jumps and nested repeats. Movement stops on a collision or the
+  original present condition; failed playback is 1.5x slower. 800ms pickup/loss
+  effects and turn durations are queued. Injected loop highlights (including
+  duration borrowing), native rewind state and all cancellation interleavings
+  are unfinished. The 100,000-action native preview limit is an intentional
+  responsiveness difference, not a claim about original execution limits.
+- both Blockly wrappers: graph roots/next/body, load/reset level, when_run insert,
+  count/user/required-block queries, empty containers and extra roots are native.
+  All original generated block images and their SVG bounds are exported through
+  the actual bundled Blockly renderer. Computed SVG presentation is inlined
+  (especially fill:none/hidden highlight paths); intrinsic painted bounds retain
+  the negative top notch and bottom shadow independently of connection height.
+  Repeat containers stretch their source middle region; arbitrary nested layout,
+  connection precedence/insertion, hover/focus, flyout/trash details, workspace
+  panning, keyboard, touch and full field geometry are not matched. Header/field
+  clicks provide repeat/jump dropdowns. Codelab freezes editing during playback;
+  Code Boogie remains editable during a run, as its actual wrapper allows.
+- both blockly_layout classes: source toolbar/responsive formulas and when_run
+  offsets are translated in part. Full cardinal/row flyout dimensions, exact
+  660/1024px breakpoints, short-height behavior, portrait sliding/timers/underlay
+  and touch drag routing need matched browser captures. Mini-block icons and
+  large block textures still differ in some rendered states.
+- blocks/patterns: source XML builders and generated SVG art are reference-only;
+  native graph execution does not run JS. Original repeat/jump options and source
+  source images remain. Async pattern-def injection/caching is replaced by native
+  texture caching. Exact generated educational JavaScript formatting and nested
+  loop display are unfinished; current View code lists expanded actions.
+- codeboogie level/dance_level/levels/step: all nine teacher sequences, stage BPM,
+  ideal counts, intro lengths, special steps and all three freestyle definitions
+  are original exported data. evaluateStatus and createAnimationQueue are Rust,
+  including wrong-step truncation, watch/fail positioning, extra-step/fail tails,
+  success specials and countdown insertion. Source result ordering is partially
+  translated; serialization/deserialization/share and mutable freestyle level
+  bookkeeping remain unfinished. Empty freestyle produces no result overlay.
+- codeboogie animation/animation_data/character: original frame counts, 24fps
+  scaled by BPM, 24 frames/strip and 622x578 canvas offsets are used. Original
+  red/green PNG strips load lazily rather than allocating every strip at startup.
+  Exact strict time-boundary accumulation, missing-image retry, watcher transform
+  transitions, color reload races and redraw lifecycle are not yet verified.
+- codeboogie animation_player/sequencer: native beat/bar queue advances, one-beat
+  preparation, countdown events and next-bar music variants are implemented.
+  Actual source schedules the new variant on the following bar and resets its
+  music clock; native tracks that schedule. Frame-skipping/finish/restart races,
+  complete title/countdown animation states and audio-clock phase need source
+  comparison. No audio presentation timing certification is claimed.
+- codeboogie lights/move_tiles/title: source read and assets retained; floor
+  shuffle/ceiling-beam transitions, move carousel and full beat-driven title
+  replacement/countdown are explicitly UNFINISHED. Native currently displays a
+  static current title and the stage/characters, not those complete effects.
+- game/scene/result in both scenes: native chooser, level progression, run/retry,
+  continue, basic portrait tray, original result art and English hints exist.
+  Exact result fades, graphic layout, missing-block picture, final host game-over,
+  tutorial queues, share/import/export and all restart/route lifecycle quirks
+  remain unfinished. Source codeboogie API restart handler is a no-op; native R
+  also leaves the scene unchanged. Source no-op
+  focus callbacks/disposal DOM listener removal have no native DOM equivalent.
+- player_sound/klang: events use original sample configuration; walk/rewind stops
+  correctly fade/stop rather than starting their source. Six Code Boogie tracks
+  use the original AudioGroup ordering. cb_start/end stop actions are preserved.
+  Full PlayerSound one-shot guards, precise walk/rotation/pickup scheduling,
+  multi-source cb_fail and performance-bus ducking are unfinished. Native tests
+  are muted; full listening/device/mixer validation is still required.
+- monkeypatches/i18n: browser vendor-prefix patch has no native DOM use; English
+  source messages are exported as data. Other languages/accessibility incomplete.
+
+Evidence: 16,128 actual Chromium Player.move/jump cases span every maze cell,
+all four directions and jump lengths 1..3; native position/collision/direction/
+activeDuration comparisons pass. No movement/animation engine is stubbed in this
+browser fixture. Starts are deliberately controlled per case. Both jigsaws and
+native completion paths for every maze are tested, plus graph cycles/repeats.
+54 unchanged source dance status/queue cases cover all nine classes. That VM
+supplies namespaces/inheritance/localized strings; it does not exercise Blockly
+or the browser dance renderer and must not be described as doing so.
+
+Main integration includes CLI/routes, Home, scene input enablement, source level
+counts 14/9 and original shared recommendation selection with the expanded native
+pool. A first owned UI smoke found the missing input-eligibility branch; fixed
+before publishing. Earlier synthetic-pointer captures that did not actually edit
+anything were discarded, not counted as successful gameplay verification.
+
+Follow-up rendering checks corrected two concrete geometry errors: the source
+world origin is 0.3 tiles below its fixed 12.6-row viewport origin, even when
+width-driven tiles make it taller than the window. Native now uses that source
+formula; five settled source DOM cases check scene bounds, toolbar widths,
+font scale and player origin to 0.03px (CSS layout rounding). Stage backgrounds
+and map contents are clipped to the scene, preserving the editor alongside them.
+Original mini-block art/painted bounds and trash SVG now replace the first draft
+mini/button artwork. The source touch nub is visible on movable non-mini blocks;
+it is retained, while when_run is exported nonmovable. XML nonbreaking spaces
+are escaped numerically, and relative SVG images are embedded as original bytes.
+Native asset tests check every SVG root and reject unresolved image paths.
+
+Owned release UI smoke `/tmp/coding-ui-s36qf370` completed both jigsaws, first
+maze, first teacher dance and freestyle entry using actual mouse/key events;
+result captures were inspected. Its capture exposed the world-origin and stage
+clipping differences above, which were corrected afterward. Earlier SVG-export
+failure on the first maze was corrected before publishing. These are interaction
+checks, not a pixel-perfect comparison or validation of all twelve/nine levels.
+
+
+Code Boogie chooser correction (user screenshot feedback): translated the full
+shared overlay and scene chooser layout rules, preserving the source's unequal
+artwork dimensions and its `choose-mode-info` normal-flow caption class. The
+chooser now uses #3f49a3, Lobster title with -2px letter spacing and 6px shadow,
+Roboto ExtraBold option captions and regular descriptions, the 680/1025px
+breakpoints, shared 500ms background/700ms dialog entrance, 200ms artwork hover
+and delayed 400ms Go transitions. Four original Chromium DOM captures compare
+all title/option/artwork/label/description boxes within 0.05px. Fixture:
+`data/codeboogie-chooser-reference.json`; test in `coding.rs`. Native uses font
+and SVG rendering only; no HTML/CSS runtime. Removed the invented Space-to-run
+shortcut and Boogie R reset, retaining the original orange Run control and
+no-op restart behavior. Chooser font rasterization/hover reversal timing and
+other scene overlays still require broader phase/device comparisons; this
+correction does not certify whole-mode parity.
+
+Chooser texture sampling now uses higher-resolution original SVG rasterization
+with mipmaps when reduced, retaining the source teacher viewBox aspect ratio
+397:371.2 inside its square background box. Code Lab's portrait callback is now
+one-shot, preserving older scheduled callbacks across level changes rather than
+forcing the tray closed every frame after three seconds. Both coding scenes now
+honor the existing --advance render diagnostic so idle/entrance captures can be
+made at a controlled phase; this is a development capture control.
+
+Final owned native fixed-time release captures and original idle captures cover
+1440x800, 1846x1014, 768x800 and 375x800. Below the independent host chrome
+(y >= 200), mean RGB errors are recorded in
+`data/codeboogie-chooser-raster-errors.json`; these idle comparisons do not
+validate active dances, editor interactions, sound or all transition phases.
+The native window manager expanded the requested 1846x966 drawable to
+1846x1014, so the original was recaptured at the actual size before comparison.
+The pure layout test additionally checks the requested 1846x966 DOM case.
+The user's README rating for Code Boogie is Very similar; agent status remains
+partial with remaining gaps listed above.

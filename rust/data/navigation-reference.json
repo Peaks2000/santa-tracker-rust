@@ -19,23 +19,23 @@
     "route": "modvil",
     "cards": [
       "jetpack",
-      "boatload"
+      "elfski"
     ],
     "play": "jetpack"
   },
   {
     "route": "jetpack",
     "cards": [
-      "elfski",
-      "presentdrop"
+      "runner",
+      "elfski"
     ],
-    "play": "elfski"
+    "play": "runner"
   },
   {
     "route": "modvil",
     "cards": [
       "elfski",
-      "glider"
+      "runner"
     ],
     "play": "elfski"
   }

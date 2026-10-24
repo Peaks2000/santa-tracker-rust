@@ -21,8 +21,8 @@ Similar means faithful and plays similar but their may be some obvious issues
 | Build & Bolt | Unplayable |
 | Candy Factory | Unplayable |
 | Christmas Tracking | Unplayable |
-| Code Boogie | Unplayable |
-| Code Lab | Unplayable |
+| Code Boogie | Very similar |
+| Code Lab | Partially alike |
 | Dashboard | Unplayable |
 | Demo Scene | Unplayable |
 | Elf Express | Unplayable |

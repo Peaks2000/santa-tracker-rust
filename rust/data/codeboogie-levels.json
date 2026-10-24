@@ -1,0 +1,699 @@
+{
+  "levels": [
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"dance_pointLeft_mini\"><clone><block type=\"dance_pointLeft\"></block></clone></block><block type=\"dance_pointRight_mini\"><clone><block type=\"dance_pointRight\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 0,
+      "type": "dance",
+      "freestyle": false,
+      "steps": [
+        "pointLeft",
+        "pointRight"
+      ],
+      "track": 0,
+      "bpm": 120,
+      "longerIntro": true,
+      "stage": "stage1",
+      "idealBlockCount": 2,
+      "requiredBlocks": [],
+      "fadeTiles": false,
+      "ceilingLights": false,
+      "floorLights": false,
+      "specialMove": "pony",
+      "start": [],
+      "tools": [
+        "dance_pointLeft",
+        "dance_pointRight"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"dance_pointLeft_mini\"><clone><block type=\"dance_pointLeft\"></block></clone></block><block type=\"dance_pointRight_mini\"><clone><block type=\"dance_pointRight\"></block></clone></block><block type=\"dance_stepLeft_mini\"><clone><block type=\"dance_stepLeft\"></block></clone></block><block type=\"dance_stepRight_mini\"><clone><block type=\"dance_stepRight\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 1,
+      "type": "dance",
+      "freestyle": false,
+      "steps": [
+        "pointLeft",
+        "pointRight",
+        "stepLeft",
+        "stepRight"
+      ],
+      "track": 0,
+      "bpm": 120,
+      "longerIntro": false,
+      "stage": "stage1",
+      "idealBlockCount": 4,
+      "requiredBlocks": [],
+      "fadeTiles": false,
+      "ceilingLights": false,
+      "floorLights": false,
+      "specialMove": "pony",
+      "start": [],
+      "tools": [
+        "dance_pointLeft",
+        "dance_pointRight",
+        "dance_stepLeft",
+        "dance_stepRight"
+      ]
+    },
+    {
+      "startBlocks": "<xml><block type=\"controls_repeat\"><field name=\"TIMES\">2</field><statement name=\"DO\"><block type=\"dance_pointLeft\"><next><block type=\"dance_pointRight\"></block></next></block></statement></block></xml>",
+      "toolbox": "<xml><block type=\"dance_pointLeft_mini\"><clone><block type=\"dance_pointLeft\"></block></clone></block><block type=\"dance_pointRight_mini\"><clone><block type=\"dance_pointRight\"></block></clone></block><block type=\"dance_stepLeft_mini\"><clone><block type=\"dance_stepLeft\"></block></clone></block><block type=\"dance_stepRight_mini\"><clone><block type=\"dance_stepRight\"></block></clone></block><block type=\"controls_repeat_mini\"><clone><block type=\"controls_repeat\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 2,
+      "type": "dance",
+      "freestyle": false,
+      "steps": [
+        "pointLeft",
+        "pointRight",
+        "pointLeft",
+        "pointRight",
+        "stepLeft",
+        "stepRight",
+        "stepLeft",
+        "stepRight"
+      ],
+      "track": 0,
+      "bpm": 120,
+      "longerIntro": false,
+      "stage": "stage1",
+      "idealBlockCount": 6,
+      "requiredBlocks": [],
+      "fadeTiles": true,
+      "ceilingLights": false,
+      "floorLights": false,
+      "specialMove": "pony",
+      "start": [
+        [
+          {
+            "kind": "controls_repeat",
+            "fields": {
+              "TIMES": "2"
+            },
+            "body": [
+              {
+                "kind": "dance_pointLeft",
+                "fields": {},
+                "body": [],
+                "editable": true,
+                "movable": true,
+                "deletable": true
+              },
+              {
+                "kind": "dance_pointRight",
+                "fields": {},
+                "body": [],
+                "editable": true,
+                "movable": true,
+                "deletable": true
+              }
+            ],
+            "editable": true,
+            "movable": true,
+            "deletable": true
+          }
+        ]
+      ],
+      "tools": [
+        "dance_pointLeft",
+        "dance_pointRight",
+        "dance_stepLeft",
+        "dance_stepRight",
+        "controls_repeat"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"dance_pointLeft_mini\"><clone><block type=\"dance_pointLeft\"></block></clone></block><block type=\"dance_pointRight_mini\"><clone><block type=\"dance_pointRight\"></block></clone></block><block type=\"dance_stepLeft_mini\"><clone><block type=\"dance_stepLeft\"></block></clone></block><block type=\"dance_stepRight_mini\"><clone><block type=\"dance_stepRight\"></block></clone></block><block type=\"dance_jump_mini\"><clone><block type=\"dance_jump\"></block></clone></block><block type=\"controls_repeat_mini\"><clone><block type=\"controls_repeat\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 3,
+      "type": "dance",
+      "freestyle": false,
+      "steps": [
+        "jump",
+        "pointLeft",
+        "jump",
+        "pointRight",
+        "jump",
+        "pointLeft",
+        "jump",
+        "pointRight"
+      ],
+      "track": 1,
+      "bpm": 130,
+      "longerIntro": true,
+      "stage": "stage2",
+      "idealBlockCount": 5,
+      "requiredBlocks": [],
+      "fadeTiles": true,
+      "ceilingLights": true,
+      "floorLights": false,
+      "specialMove": "hiphop",
+      "start": [],
+      "tools": [
+        "dance_pointLeft",
+        "dance_pointRight",
+        "dance_stepLeft",
+        "dance_stepRight",
+        "dance_jump",
+        "controls_repeat"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"dance_pointLeft_mini\"><clone><block type=\"dance_pointLeft\"></block></clone></block><block type=\"dance_pointRight_mini\"><clone><block type=\"dance_pointRight\"></block></clone></block><block type=\"dance_stepLeft_mini\"><clone><block type=\"dance_stepLeft\"></block></clone></block><block type=\"dance_stepRight_mini\"><clone><block type=\"dance_stepRight\"></block></clone></block><block type=\"dance_jump_mini\"><clone><block type=\"dance_jump\"></block></clone></block><block type=\"controls_repeat_mini\"><clone><block type=\"controls_repeat\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 4,
+      "type": "dance",
+      "freestyle": false,
+      "steps": [
+        "jump",
+        "stepRight",
+        "pointLeft",
+        "stepLeft",
+        "jump",
+        "stepRight",
+        "pointLeft",
+        "stepLeft"
+      ],
+      "track": 1,
+      "bpm": 130,
+      "longerIntro": false,
+      "stage": "stage2",
+      "idealBlockCount": 5,
+      "requiredBlocks": [],
+      "fadeTiles": true,
+      "ceilingLights": true,
+      "floorLights": false,
+      "specialMove": "hiphop",
+      "start": [],
+      "tools": [
+        "dance_pointLeft",
+        "dance_pointRight",
+        "dance_stepLeft",
+        "dance_stepRight",
+        "dance_jump",
+        "controls_repeat"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"dance_pointLeft_mini\"><clone><block type=\"dance_pointLeft\"></block></clone></block><block type=\"dance_pointRight_mini\"><clone><block type=\"dance_pointRight\"></block></clone></block><block type=\"dance_stepLeft_mini\"><clone><block type=\"dance_stepLeft\"></block></clone></block><block type=\"dance_stepRight_mini\"><clone><block type=\"dance_stepRight\"></block></clone></block><block type=\"dance_jump_mini\"><clone><block type=\"dance_jump\"></block></clone></block><block type=\"dance_splits_mini\"><clone><block type=\"dance_splits\"></block></clone></block><block type=\"controls_repeat_mini\"><clone><block type=\"controls_repeat\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 5,
+      "type": "dance",
+      "freestyle": false,
+      "steps": [
+        "jump",
+        "splits",
+        "jump",
+        "splits",
+        "stepRight",
+        "pointLeft",
+        "jump",
+        "splits"
+      ],
+      "track": 1,
+      "bpm": 130,
+      "longerIntro": false,
+      "stage": "stage2",
+      "idealBlockCount": 7,
+      "requiredBlocks": [],
+      "fadeTiles": true,
+      "ceilingLights": true,
+      "floorLights": false,
+      "specialMove": "hiphop",
+      "start": [],
+      "tools": [
+        "dance_pointLeft",
+        "dance_pointRight",
+        "dance_stepLeft",
+        "dance_stepRight",
+        "dance_jump",
+        "dance_splits",
+        "controls_repeat"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"dance_pointLeft_mini\"><clone><block type=\"dance_pointLeft\"></block></clone></block><block type=\"dance_pointRight_mini\"><clone><block type=\"dance_pointRight\"></block></clone></block><block type=\"dance_stepLeft_mini\"><clone><block type=\"dance_stepLeft\"></block></clone></block><block type=\"dance_stepRight_mini\"><clone><block type=\"dance_stepRight\"></block></clone></block><block type=\"dance_jump_mini\"><clone><block type=\"dance_jump\"></block></clone></block><block type=\"dance_splits_mini\"><clone><block type=\"dance_splits\"></block></clone></block><block type=\"dance_hip_mini\"><clone><block type=\"dance_hip\"></block></clone></block><block type=\"controls_repeat_mini\"><clone><block type=\"controls_repeat\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 6,
+      "type": "dance",
+      "freestyle": false,
+      "steps": [
+        "hip",
+        "hip",
+        "hip",
+        "hip",
+        "jump",
+        "stepRight",
+        "stepLeft",
+        "hip"
+      ],
+      "track": 2,
+      "bpm": 140,
+      "longerIntro": true,
+      "stage": "stage3",
+      "idealBlockCount": 6,
+      "requiredBlocks": [],
+      "fadeTiles": true,
+      "ceilingLights": true,
+      "floorLights": true,
+      "specialMove": "floss",
+      "start": [],
+      "tools": [
+        "dance_pointLeft",
+        "dance_pointRight",
+        "dance_stepLeft",
+        "dance_stepRight",
+        "dance_jump",
+        "dance_splits",
+        "dance_hip",
+        "controls_repeat"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"dance_pointLeft_mini\"><clone><block type=\"dance_pointLeft\"></block></clone></block><block type=\"dance_pointRight_mini\"><clone><block type=\"dance_pointRight\"></block></clone></block><block type=\"dance_stepLeft_mini\"><clone><block type=\"dance_stepLeft\"></block></clone></block><block type=\"dance_stepRight_mini\"><clone><block type=\"dance_stepRight\"></block></clone></block><block type=\"dance_jump_mini\"><clone><block type=\"dance_jump\"></block></clone></block><block type=\"dance_splits_mini\"><clone><block type=\"dance_splits\"></block></clone></block><block type=\"dance_hip_mini\"><clone><block type=\"dance_hip\"></block></clone></block><block type=\"controls_repeat_mini\"><clone><block type=\"controls_repeat\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 7,
+      "type": "dance",
+      "freestyle": false,
+      "steps": [
+        "stepRight",
+        "jump",
+        "hip",
+        "pointLeft",
+        "stepLeft",
+        "jump",
+        "splits",
+        "pointRight"
+      ],
+      "track": 2,
+      "bpm": 140,
+      "longerIntro": false,
+      "stage": "stage3",
+      "idealBlockCount": 8,
+      "requiredBlocks": [],
+      "fadeTiles": true,
+      "ceilingLights": true,
+      "floorLights": true,
+      "specialMove": "floss",
+      "start": [],
+      "tools": [
+        "dance_pointLeft",
+        "dance_pointRight",
+        "dance_stepLeft",
+        "dance_stepRight",
+        "dance_jump",
+        "dance_splits",
+        "dance_hip",
+        "controls_repeat"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"dance_pointLeft_mini\"><clone><block type=\"dance_pointLeft\"></block></clone></block><block type=\"dance_pointRight_mini\"><clone><block type=\"dance_pointRight\"></block></clone></block><block type=\"dance_stepLeft_mini\"><clone><block type=\"dance_stepLeft\"></block></clone></block><block type=\"dance_stepRight_mini\"><clone><block type=\"dance_stepRight\"></block></clone></block><block type=\"dance_jump_mini\"><clone><block type=\"dance_jump\"></block></clone></block><block type=\"dance_splits_mini\"><clone><block type=\"dance_splits\"></block></clone></block><block type=\"dance_hip_mini\"><clone><block type=\"dance_hip\"></block></clone></block><block type=\"controls_repeat_mini\"><clone><block type=\"controls_repeat\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 8,
+      "type": "dance",
+      "freestyle": false,
+      "steps": [
+        "hip",
+        "stepLeft",
+        "jump",
+        "stepRight",
+        "hip",
+        "stepLeft",
+        "jump",
+        "stepRight",
+        "pointLeft",
+        "pointRight",
+        "pointLeft",
+        "pointRight",
+        "pointLeft",
+        "pointRight",
+        "jump",
+        "splits"
+      ],
+      "track": 2,
+      "bpm": 140,
+      "longerIntro": false,
+      "stage": "stage3",
+      "idealBlockCount": 10,
+      "requiredBlocks": [],
+      "fadeTiles": true,
+      "ceilingLights": true,
+      "floorLights": true,
+      "specialMove": "floss",
+      "start": [],
+      "tools": [
+        "dance_pointLeft",
+        "dance_pointRight",
+        "dance_stepLeft",
+        "dance_stepRight",
+        "dance_jump",
+        "dance_splits",
+        "dance_hip",
+        "controls_repeat"
+      ]
+    }
+  ],
+  "freestyle": [
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"dance_pointLeft_mini\"><clone><block type=\"dance_pointLeft\"></block></clone></block><block type=\"dance_pointRight_mini\"><clone><block type=\"dance_pointRight\"></block></clone></block><block type=\"dance_stepLeft_mini\"><clone><block type=\"dance_stepLeft\"></block></clone></block><block type=\"dance_stepRight_mini\"><clone><block type=\"dance_stepRight\"></block></clone></block><block type=\"dance_jump_mini\"><clone><block type=\"dance_jump\"></block></clone></block><block type=\"dance_splits_mini\"><clone><block type=\"dance_splits\"></block></clone></block><block type=\"dance_hip_mini\"><clone><block type=\"dance_hip\"></block></clone></block><block type=\"controls_repeat_mini\"><clone><block type=\"controls_repeat\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 9,
+      "type": "dance",
+      "freestyle": true,
+      "steps": [],
+      "track": 0,
+      "bpm": 120,
+      "longerIntro": false,
+      "stage": "stage1",
+      "idealBlockCount": null,
+      "requiredBlocks": [],
+      "fadeTiles": true,
+      "ceilingLights": false,
+      "floorLights": false,
+      "specialMove": "pony",
+      "start": [],
+      "tools": [
+        "dance_pointLeft",
+        "dance_pointRight",
+        "dance_stepLeft",
+        "dance_stepRight",
+        "dance_jump",
+        "dance_splits",
+        "dance_hip",
+        "controls_repeat"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"dance_pointLeft_mini\"><clone><block type=\"dance_pointLeft\"></block></clone></block><block type=\"dance_pointRight_mini\"><clone><block type=\"dance_pointRight\"></block></clone></block><block type=\"dance_stepLeft_mini\"><clone><block type=\"dance_stepLeft\"></block></clone></block><block type=\"dance_stepRight_mini\"><clone><block type=\"dance_stepRight\"></block></clone></block><block type=\"dance_jump_mini\"><clone><block type=\"dance_jump\"></block></clone></block><block type=\"dance_splits_mini\"><clone><block type=\"dance_splits\"></block></clone></block><block type=\"dance_hip_mini\"><clone><block type=\"dance_hip\"></block></clone></block><block type=\"controls_repeat_mini\"><clone><block type=\"controls_repeat\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 10,
+      "type": "dance",
+      "freestyle": true,
+      "steps": [],
+      "track": 1,
+      "bpm": 130,
+      "longerIntro": false,
+      "stage": "stage2",
+      "idealBlockCount": null,
+      "requiredBlocks": [],
+      "fadeTiles": true,
+      "ceilingLights": true,
+      "floorLights": false,
+      "specialMove": "pony",
+      "start": [],
+      "tools": [
+        "dance_pointLeft",
+        "dance_pointRight",
+        "dance_stepLeft",
+        "dance_stepRight",
+        "dance_jump",
+        "dance_splits",
+        "dance_hip",
+        "controls_repeat"
+      ]
+    },
+    {
+      "startBlocks": "<xml></xml>",
+      "toolbox": "<xml><block type=\"dance_pointLeft_mini\"><clone><block type=\"dance_pointLeft\"></block></clone></block><block type=\"dance_pointRight_mini\"><clone><block type=\"dance_pointRight\"></block></clone></block><block type=\"dance_stepLeft_mini\"><clone><block type=\"dance_stepLeft\"></block></clone></block><block type=\"dance_stepRight_mini\"><clone><block type=\"dance_stepRight\"></block></clone></block><block type=\"dance_jump_mini\"><clone><block type=\"dance_jump\"></block></clone></block><block type=\"dance_splits_mini\"><clone><block type=\"dance_splits\"></block></clone></block><block type=\"dance_hip_mini\"><clone><block type=\"dance_hip\"></block></clone></block><block type=\"controls_repeat_mini\"><clone><block type=\"controls_repeat\"></block></clone></block></xml>",
+      "insertWhenRun": true,
+      "id": 11,
+      "type": "dance",
+      "freestyle": true,
+      "steps": [],
+      "track": 2,
+      "bpm": 140,
+      "longerIntro": false,
+      "stage": "stage3",
+      "idealBlockCount": null,
+      "requiredBlocks": [],
+      "fadeTiles": true,
+      "ceilingLights": true,
+      "floorLights": true,
+      "specialMove": "pony",
+      "start": [],
+      "tools": [
+        "dance_pointLeft",
+        "dance_pointRight",
+        "dance_stepLeft",
+        "dance_stepRight",
+        "dance_jump",
+        "dance_splits",
+        "dance_hip",
+        "controls_repeat"
+      ]
+    }
+  ],
+  "sprites": {
+    "clap_0": {
+      "width": 255,
+      "height": 346,
+      "offsetX": 450,
+      "offsetY": 153
+    },
+    "clap_1": {
+      "width": 259,
+      "height": 347,
+      "offsetX": 446,
+      "offsetY": 153
+    },
+    "floss_0": {
+      "width": 222,
+      "height": 345,
+      "offsetX": 449,
+      "offsetY": 154
+    },
+    "floss_1": {
+      "width": 245,
+      "height": 342,
+      "offsetX": 465,
+      "offsetY": 157
+    },
+    "floss_2": {
+      "width": 248,
+      "height": 343,
+      "offsetX": 454,
+      "offsetY": 156
+    },
+    "floss_3": {
+      "width": 256,
+      "height": 343,
+      "offsetX": 454,
+      "offsetY": 156
+    },
+    "hip_0": {
+      "width": 198,
+      "height": 350,
+      "offsetX": 468,
+      "offsetY": 150
+    },
+    "hip_1": {
+      "width": 194,
+      "height": 349,
+      "offsetX": 486,
+      "offsetY": 150
+    },
+    "hiphop_0": {
+      "width": 196,
+      "height": 345,
+      "offsetX": 476,
+      "offsetY": 154
+    },
+    "hiphop_1": {
+      "width": 196,
+      "height": 309,
+      "offsetX": 476,
+      "offsetY": 190
+    },
+    "hiphop_2": {
+      "width": 196,
+      "height": 309,
+      "offsetX": 476,
+      "offsetY": 190
+    },
+    "hiphop_3": {
+      "width": 196,
+      "height": 334,
+      "offsetX": 476,
+      "offsetY": 165
+    },
+    "idle_0": {
+      "width": 190,
+      "height": 348,
+      "offsetX": 481,
+      "offsetY": 151
+    },
+    "jump_0": {
+      "width": 275,
+      "height": 459,
+      "offsetX": 441,
+      "offsetY": 40
+    },
+    "jump_1": {
+      "width": 261,
+      "height": 457,
+      "offsetX": 437,
+      "offsetY": 42
+    },
+    "mchammer_0": {
+      "width": 258,
+      "height": 345,
+      "offsetX": 414,
+      "offsetY": 154
+    },
+    "mchammer_1": {
+      "width": 248,
+      "height": 309,
+      "offsetX": 360,
+      "offsetY": 190
+    },
+    "mchammer_2": {
+      "width": 251,
+      "height": 313,
+      "offsetX": 368,
+      "offsetY": 186
+    },
+    "mchammer_3": {
+      "width": 243,
+      "height": 343,
+      "offsetX": 429,
+      "offsetY": 156
+    },
+    "pointLeft_0": {
+      "width": 194,
+      "height": 345,
+      "offsetX": 472,
+      "offsetY": 154
+    },
+    "pointLeft_1": {
+      "width": 282,
+      "height": 345,
+      "offsetX": 459,
+      "offsetY": 156
+    },
+    "pointRight_0": {
+      "width": 240,
+      "height": 345,
+      "offsetX": 474,
+      "offsetY": 154
+    },
+    "pointRight_1": {
+      "width": 242,
+      "height": 340,
+      "offsetX": 474,
+      "offsetY": 159
+    },
+    "pony_0": {
+      "width": 205,
+      "height": 363,
+      "offsetX": 464,
+      "offsetY": 136
+    },
+    "pony_1": {
+      "width": 205,
+      "height": 363,
+      "offsetX": 464,
+      "offsetY": 136
+    },
+    "pony_2": {
+      "width": 205,
+      "height": 363,
+      "offsetX": 464,
+      "offsetY": 136
+    },
+    "pony_3": {
+      "width": 205,
+      "height": 364,
+      "offsetX": 464,
+      "offsetY": 135
+    },
+    "pony_4": {
+      "width": 205,
+      "height": 345,
+      "offsetX": 464,
+      "offsetY": 154
+    },
+    "splits_0": {
+      "width": 223,
+      "height": 345,
+      "offsetX": 443,
+      "offsetY": 144
+    },
+    "splits_1": {
+      "width": 247,
+      "height": 367,
+      "offsetX": 433,
+      "offsetY": 144
+    },
+    "splits_2": {
+      "width": 249,
+      "height": 354,
+      "offsetX": 421,
+      "offsetY": 172
+    },
+    "splits_3": {
+      "width": 180,
+      "height": 346,
+      "offsetX": 486,
+      "offsetY": 154
+    },
+    "stepLeft_0": {
+      "width": 305,
+      "height": 362,
+      "offsetX": 396,
+      "offsetY": 139
+    },
+    "stepLeft_1": {
+      "width": 338,
+      "height": 387,
+      "offsetX": 328,
+      "offsetY": 112
+    },
+    "stepRight_0": {
+      "width": 266,
+      "height": 345,
+      "offsetX": 478,
+      "offsetY": 154
+    },
+    "stepRight_1": {
+      "width": 257,
+      "height": 344,
+      "offsetX": 493,
+      "offsetY": 155
+    },
+    "watch_0": {
+      "width": 200,
+      "height": 346,
+      "offsetX": 466,
+      "offsetY": 153
+    },
+    "watch_1": {
+      "width": 189,
+      "height": 345,
+      "offsetX": 476,
+      "offsetY": 154
+    },
+    "fail_0": {
+      "width": 285,
+      "height": 346,
+      "offsetX": 411,
+      "offsetY": 153
+    },
+    "fail_1": {
+      "width": 293,
+      "height": 328,
+      "offsetX": 409,
+      "offsetY": 171
+    }
+  }
+}

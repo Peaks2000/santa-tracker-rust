@@ -344,7 +344,57 @@ impl Sound {
             }
         }
     }
+    pub fn coding_track(&mut self, index: usize, root: &Path) {
+        let tracks: Vec<String> = self.config["audio"]["OWvC"]["content"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .filter_map(|v| v.as_str().map(str::to_owned))
+            .collect();
+        for id in &tracks {
+            self.commands
+                .send(Command::StopSource {
+                    id: id.clone(),
+                    fade: 0.2,
+                })
+                .ok();
+        }
+        if let Some(id) = tracks.get(index) {
+            self.play_source(id, root, 0., 0., false);
+        }
+    }
     pub fn trigger(&mut self, event: &str, root: &Path) {
+        if matches!(event, "computer_walk_stop" | "computer_rewind_stop") {
+            self.commands
+                .send(Command::StopSource {
+                    id: if event == "computer_walk_stop" {
+                        "ihZz"
+                    } else {
+                        "V2gA"
+                    }
+                    .into(),
+                    fade: 0.1,
+                })
+                .ok();
+            return;
+        }
+        if event == "cb_start" || event == "cb_end" {
+            let ids: &[&str] = if event == "cb_start" {
+                &["qbxc", "z610"]
+            } else {
+                &["QzWe", "SDq1", "i4cc", "pBR6", "q0AO", "x4fD"]
+            };
+            for id in ids {
+                self.commands
+                    .send(Command::StopSource {
+                        id: (*id).into(),
+                        fade: 0.5,
+                    })
+                    .ok();
+            }
+            return;
+        }
+
         if event == "elfmaker_switch_item" {
             self.maker_switches += 1;
             self.play_source("diiL", root, 0., 0., true);

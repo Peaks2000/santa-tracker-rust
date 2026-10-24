@@ -3,7 +3,7 @@ SANTA TRACKER RUST — FUNCTIONALITY AND PARITY STATUS
 Generated from PARITY-STATUS.json. Edit that file for your verdicts and notes.
 This report is evidence/progress, not a claim of complete 1:1 accuracy.
 
-Native scenes playable, with parity gaps: 11/55
+Native scenes playable, with parity gaps: 13/55
 Whole modes certified 1:1: 0
 Your overall verdict: unreviewed
 
@@ -14,6 +14,20 @@ Gift Slingshot [boatload] — your verdict: unreviewed
   Remaining: Score/splash raster edges and text antialiasing still differ slightly from Chromium; additional device/input and effect combinations remain unverified.
   Remaining: No claim of whole-mode 1:1 parity; audio actions translated but full music/bus fidelity remains partial.
   Remaining: Remaining SVG/primitive edge coverage differs from Chromium; diagonal ropes and additional animation phases still need matching. Supersampling and blanket MSAA were tested but not retained because some comparisons worsened.
+
+Code Boogie [codeboogie] — your verdict: unreviewed
+  Progress: Native Code Boogie now includes the nine source dance classes and three randomly selected freestyle stages, draggable step/repeat blocks, run/retry/continue, original stage/character sprite sheets, BPM-driven dance playback, countdown sound actions and six original idle/performance tracks. Source evaluateStatus/createAnimationQueue results match 54 cases across all nine classes; model validation also rejects empty repeat bodies, extra root stacks and freestyle programs over 32 moves. Chooser corrected against original DOM at four viewport sizes: source background, asymmetric artwork, Roboto captions/descriptions, title letter spacing/shadow, entrance and hover transitions. Preserved teacher artwork aspect ratio and increased chooser SVG raster resolution.
+  Remaining: Initial playable port, not 1:1: full Blockly editor behavior, nested repeat layout, exact generated View code, touch/keyboard/accessibility and responsive tray/chooser transitions remain incomplete.
+  Remaining: Original move-tile carousel, ceiling/floor light transitions/random draws, watcher transforms and complete title/countdown transitions are unfinished. Native sprite phases/beat scheduling need full browser comparisons.
+  Remaining: Original share-string import/export and share button, tutorial GIF/video queues, exact result layout/fades/final shared game-over flow and full music-bus ducking/multi-source failure sounds remain unfinished.
+  Remaining: User requested README category Very similar; no whole-mode 1:1 claim. Exact font rasterization, editor, tutorial, sound scheduling and additional transition states remain incomplete or unverified.
+  Remaining: Chooser title glyph spacing/raster edges still differ slightly from Chromium; broader entrance, hover/reversal, resize and touch phase comparisons remain unfinished.
+
+Code Lab [codelab] — your verdict: unreviewed
+  Progress: Native Code Lab now includes both jigsaws and all twelve source mazes, draggable connected block stacks, repeat bodies/dropdowns, directional jumps, obstacle/bounds checks, run/retry/continue, original puzzle/maze/player art and sound actions. 16,128 calls to the actual browser Player.move/jump match movement, collision, direction and full animation duration; both jigsaw validators and completion paths for all twelve mazes pass native tests. Corrected portrait auto-hide to the original one-shot uncancelled 3-second callback, so reopening after it fires is no longer immediately undone.
+  Remaining: Initial playable port, not 1:1: Blockly connection/editor behavior, complex nested loop geometry, selection/keyboard/touch, scroll/panning, full responsive layout and font raster need broader source comparisons.
+  Remaining: Original tutorial videos, pooled world cleanup/800ms level travel, complete player lose/pickup/shadow/arrow phases, loop highlight borrowing, result overlay timing/geometry, final shared game-over flow and full audio state/bus timing remain incomplete.
+  Remaining: Educational View code is currently an expanded instruction listing; exact original loop/source formatting is unfinished. A native 100,000-action preview limit prevents enormous nested programs from freezing the UI.
 
 Elf Maker [elfmaker] — your verdict: unreviewed
   Progress: Native Elf Maker includes all original character choices/colours/backgrounds, weighted randomization, eight arm-motion sequences, blinking, responsive control strip, photo capture/export and original-format state restore. 21 control states and 35 SVG geometry cases match source. Software shadow bottleneck moved to GPU without changing motion; idle release profile averaged 16.6ms frames and 1.36ms scene CPU work. Corrected the header to use Home on activity routes, independently of HUD presence, matching original entrypoint.js showHome and santa-chrome.js click dispatch. Restored the original main-panel inset shadow from its exact CSS raster, preserving its fixed blur width across desktop and mobile panels.
@@ -90,8 +104,6 @@ NOT IMPLEMENTED AS NATIVE SCENES
 - North Pole Airport [airport] — no native scene; your verdict: unreviewed
 - Mrs. Claus' Briefing [briefing] — no native scene; your verdict: unreviewed
 - Build & Bolt [buildandbolt] — no native scene; your verdict: unreviewed
-- Code Boogie [codeboogie] — no native scene; your verdict: unreviewed
-- Code Lab [codelab] — no native scene; your verdict: unreviewed
 - Mission Control [commandcentre] — no native scene; your verdict: unreviewed
 - dashboard [dashboard] — no native scene; your verdict: unreviewed
 - demoscene [demoscene] — no native scene; your verdict: unreviewed

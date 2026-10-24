@@ -1,0 +1,2850 @@
+{
+  "note": "Every own-scene JS function is inventoried; partial_or_unfinished explicitly means no completeness certification. See the coverage ledger for native equivalents, measured behavior and remaining branches. Bundled third-party Blockly/Closure/Web Animations engines are not fully reviewed or ported; only named source-oracle paths are checked.",
+  "files": [
+    {
+      "file": "static/scenes/codelab/js/block_runner.js",
+      "methods": [
+        {
+          "name": "app.BlockRunner",
+          "from_line": 51,
+          "to_line": 62,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "reset_",
+          "from_line": 78,
+          "to_line": 88,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "execute",
+          "from_line": 93,
+          "to_line": 126,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "queueAnimation",
+          "from_line": 128,
+          "to_line": 134,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "upgradeToGroup_",
+          "from_line": 142,
+          "to_line": 147,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "injectHighlight",
+          "from_line": 149,
+          "to_line": 185,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "highlightAnimation_",
+          "from_line": 187,
+          "to_line": 194,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "highlightEffect_",
+          "from_line": 196,
+          "to_line": 201,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "beforeAnimations_",
+          "from_line": 203,
+          "to_line": 205,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onFinishAnimations_",
+          "from_line": 207,
+          "to_line": 228,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "runAnimations_",
+          "from_line": 230,
+          "to_line": 241,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "resetAnimation",
+          "from_line": 243,
+          "to_line": 245,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "reportExecution_",
+          "from_line": 247,
+          "to_line": 249,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "isTerminated",
+          "from_line": 251,
+          "to_line": 253,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "terminateWithResult",
+          "from_line": 255,
+          "to_line": 262,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "evalWith_",
+          "from_line": 264,
+          "to_line": 278,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "ctor",
+          "from_line": 273,
+          "to_line": 275,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.BlockRunnerApi",
+          "from_line": 287,
+          "to_line": 290,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.BlockRunnerApi.createApiMethod",
+          "from_line": 297,
+          "to_line": 303,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 298,
+          "to_line": 302,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 306,
+          "to_line": 308,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 310,
+          "to_line": 312,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 314,
+          "to_line": 316,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 318,
+          "to_line": 320,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 322,
+          "to_line": 324,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 326,
+          "to_line": 328,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "queueMoveAnimations_",
+          "from_line": 330,
+          "to_line": 355,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "move_",
+          "from_line": 357,
+          "to_line": 359,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "jump_",
+          "from_line": 361,
+          "to_line": 364,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codelab/js/blockly.js",
+      "methods": [
+        {
+          "name": "app.Blockly",
+          "from_line": 31,
+          "to_line": 43,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "initBlockly_",
+          "from_line": 50,
+          "to_line": 62,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "setLevel",
+          "from_line": 68,
+          "to_line": 90,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "resetToolboxScroll_",
+          "from_line": 96,
+          "to_line": 105,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "reflowToolbar",
+          "from_line": 107,
+          "to_line": 109,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "getToolbarWidth",
+          "from_line": 111,
+          "to_line": 113,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "loadBlocks_",
+          "from_line": 119,
+          "to_line": 128,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "insertWhenRunBlock_",
+          "from_line": 135,
+          "to_line": 170,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "arrangeBlockPosition_",
+          "from_line": 177,
+          "to_line": 197,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "checkGoalCondition_",
+          "from_line": 203,
+          "to_line": 214,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "highlightBlock",
+          "from_line": 216,
+          "to_line": 224,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "toggleExecution",
+          "from_line": 226,
+          "to_line": 234,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "getCode",
+          "from_line": 240,
+          "to_line": 242,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "getUserCode",
+          "from_line": 248,
+          "to_line": 270,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "getTopBlocks",
+          "from_line": 276,
+          "to_line": 278,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "getUserBlocks",
+          "from_line": 286,
+          "to_line": 292,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 288,
+          "to_line": 290,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "getCountableBlocks",
+          "from_line": 300,
+          "to_line": 306,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 302,
+          "to_line": 304,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "hasEmptyContainerBlocks",
+          "from_line": 312,
+          "to_line": 325,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "hasExtraTopBlocks",
+          "from_line": 331,
+          "to_line": 344,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "getMissingBlocks",
+          "from_line": 352,
+          "to_line": 375,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codelab/js/blockly_layout.js",
+      "methods": [
+        {
+          "name": "app.BlocklyLayout",
+          "from_line": 25,
+          "to_line": 33,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.BlocklyLayout.prototype.scheduleLayout",
+          "from_line": 114,
+          "to_line": 119,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.BlocklyLayout.prototype.onResize_",
+          "from_line": 125,
+          "to_line": 136,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.BlocklyLayout.prototype.layoutToolbox",
+          "from_line": 143,
+          "to_line": 153,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.BlocklyLayout.prototype.layoutToolboxRow_",
+          "from_line": 161,
+          "to_line": 181,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.BlocklyLayout.prototype.layoutToolboxCardinal_",
+          "from_line": 183,
+          "to_line": 219,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.BlocklyLayout.prototype.layoutWorkspace_",
+          "from_line": 225,
+          "to_line": 249,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codelab/js/blocks.js",
+      "methods": [
+        {
+          "name": "app.blocks.miniBlockXml",
+          "from_line": 33,
+          "to_line": 37,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.blocks.blockXml",
+          "from_line": 47,
+          "to_line": 74,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.blocks.install",
+          "from_line": 79,
+          "to_line": 367,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 115,
+          "to_line": 172,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "generateBlocksForDirection",
+          "from_line": 116,
+          "to_line": 120,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "generateMoveBlock",
+          "from_line": 122,
+          "to_line": 141,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "init",
+          "from_line": 130,
+          "to_line": 139,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "generateMiniBlock",
+          "from_line": 143,
+          "to_line": 160,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "init",
+          "from_line": 151,
+          "to_line": 158,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "generateCodeGenerator",
+          "from_line": 162,
+          "to_line": 166,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 163,
+          "to_line": 165,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "optionNumberRange",
+          "from_line": 174,
+          "to_line": 180,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "generateDirectionOptions",
+          "from_line": 185,
+          "to_line": 196,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "init",
+          "from_line": 205,
+          "to_line": 211,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "Blockly.JavaScript['when_run']",
+          "from_line": 214,
+          "to_line": 216,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "init",
+          "from_line": 222,
+          "to_line": 233,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "init",
+          "from_line": 240,
+          "to_line": 247,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "Blockly.JavaScript['controls_repeat']",
+          "from_line": 250,
+          "to_line": 265,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "init",
+          "from_line": 271,
+          "to_line": 285,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "init",
+          "from_line": 292,
+          "to_line": 299,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "Blockly.JavaScript['controls_jump']",
+          "from_line": 302,
+          "to_line": 307,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 309,
+          "to_line": 322,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "generateJigsawBlocksForLevel",
+          "from_line": 324,
+          "to_line": 366,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "generateBlock",
+          "from_line": 340,
+          "to_line": 361,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "init",
+          "from_line": 349,
+          "to_line": 359,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codelab/js/constants.js",
+      "methods": []
+    },
+    {
+      "file": "static/scenes/codelab/js/game.js",
+      "methods": [
+        {
+          "name": "app.Game",
+          "from_line": 35,
+          "to_line": 53,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "this.dismissUnnamedTutorial",
+          "from_line": 46,
+          "to_line": 46,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Game.prototype.tutorialForLevel_",
+          "from_line": 59,
+          "to_line": 61,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Game.prototype.dismissTutorial",
+          "from_line": 66,
+          "to_line": 71,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Game.prototype.dispose_",
+          "from_line": 77,
+          "to_line": 84,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Game.prototype.bumpLevel",
+          "from_line": 89,
+          "to_line": 124,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Game.prototype.onBlur",
+          "from_line": 126,
+          "to_line": 128,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Game.prototype.onFocus",
+          "from_line": 130,
+          "to_line": 132,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Game.prototype.restartLevel",
+          "from_line": 137,
+          "to_line": 141,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Game.prototype.start",
+          "from_line": 146,
+          "to_line": 150,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Game.prototype.restart",
+          "from_line": 155,
+          "to_line": 161,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codelab/js/i18n.js",
+      "methods": [
+        {
+          "name": "app.I18n.getMsg",
+          "from_line": 32,
+          "to_line": 35,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.I18n.getMsgOrNull",
+          "from_line": 43,
+          "to_line": 55,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codelab/js/klang.js",
+      "methods": [
+        {
+          "name": "triggerEvent",
+          "from_line": 23,
+          "to_line": 25,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codelab/js/level.js",
+      "methods": [
+        {
+          "name": "app.Level",
+          "from_line": 35,
+          "to_line": 51,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.PuzzleLevel",
+          "from_line": 79,
+          "to_line": 90,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.PuzzleLevel.prototype.checkSuccess",
+          "from_line": 97,
+          "to_line": 132,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.MazeLevel",
+          "from_line": 154,
+          "to_line": 173,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 166,
+          "to_line": 171,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.MazeLevel.prototype.isOutsideBounds",
+          "from_line": 182,
+          "to_line": 185,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.MazeLevel.prototype.processResult",
+          "from_line": 193,
+          "to_line": 242,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.LevelResult",
+          "from_line": 265,
+          "to_line": 279,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codelab/js/levels.js",
+      "methods": []
+    },
+    {
+      "file": "static/scenes/codelab/js/map.js",
+      "methods": [
+        {
+          "name": "app.Map",
+          "from_line": 129,
+          "to_line": 134,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 131,
+          "to_line": 131,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Map.prototype.iterateTiles",
+          "from_line": 144,
+          "to_line": 152,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Map.prototype.getTile",
+          "from_line": 160,
+          "to_line": 165,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codelab/js/monkeypatches.js",
+      "methods": [
+        {
+          "name": "goog.dom.vendor.getVendorJsPrefix",
+          "from_line": 30,
+          "to_line": 42,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codelab/js/patterns.js",
+      "methods": [
+        {
+          "name": "<anonymous callback>",
+          "from_line": 22,
+          "to_line": 149,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "addToQueue_",
+          "from_line": 30,
+          "to_line": 35,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "addQueuedPatterns_",
+          "from_line": 40,
+          "to_line": 46,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 41,
+          "to_line": 44,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "addQueuedPatternsWhenReady_",
+          "from_line": 48,
+          "to_line": 55,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "wasCreated_",
+          "from_line": 62,
+          "to_line": 78,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 69,
+          "to_line": 73,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "isReady_",
+          "from_line": 85,
+          "to_line": 87,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "markCreated_",
+          "from_line": 92,
+          "to_line": 97,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "addPattern",
+          "from_line": 112,
+          "to_line": 147,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codelab/js/player.js",
+      "methods": [
+        {
+          "name": "app.Player",
+          "from_line": 28,
+          "to_line": 45,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "setLevel",
+          "from_line": 66,
+          "to_line": 74,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "restartLevel",
+          "from_line": 76,
+          "to_line": 80,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "render_",
+          "from_line": 82,
+          "to_line": 85,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "move",
+          "from_line": 92,
+          "to_line": 123,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "jump",
+          "from_line": 131,
+          "to_line": 167,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "lose",
+          "from_line": 169,
+          "to_line": 199,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "maybeRotateAnimation_",
+          "from_line": 201,
+          "to_line": 223,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "pickUp",
+          "from_line": 225,
+          "to_line": 232,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "walkAnimation_",
+          "from_line": 234,
+          "to_line": 240,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "jumpAnimation_",
+          "from_line": 242,
+          "to_line": 248,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "getTranslation_",
+          "from_line": 250,
+          "to_line": 254,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codelab/js/player_sound.js",
+      "methods": [
+        {
+          "name": "reset",
+          "from_line": 28,
+          "to_line": 33,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "walk",
+          "from_line": 35,
+          "to_line": 39,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "jump",
+          "from_line": 41,
+          "to_line": 45,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "stop",
+          "from_line": 47,
+          "to_line": 51,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "lost",
+          "from_line": 53,
+          "to_line": 57,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "disable",
+          "from_line": 59,
+          "to_line": 61,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "walk_",
+          "from_line": 68,
+          "to_line": 74,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "jump_",
+          "from_line": 81,
+          "to_line": 88,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "stop_",
+          "from_line": 95,
+          "to_line": 101,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "lost_",
+          "from_line": 108,
+          "to_line": 115,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codelab/js/present.js",
+      "methods": [
+        {
+          "name": "app.Present",
+          "from_line": 26,
+          "to_line": 35,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Present.prototype.onInit",
+          "from_line": 44,
+          "to_line": 53,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Present.prototype.onDispose",
+          "from_line": 58,
+          "to_line": 60,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codelab/js/result.js",
+      "methods": [
+        {
+          "name": "app.Result",
+          "from_line": 25,
+          "to_line": 45,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "bindEvents_",
+          "from_line": 48,
+          "to_line": 58,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "show",
+          "from_line": 64,
+          "to_line": 96,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "hide",
+          "from_line": 98,
+          "to_line": 100,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onRetry",
+          "from_line": 102,
+          "to_line": 106,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onContinue",
+          "from_line": 108,
+          "to_line": 112,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onShowCode",
+          "from_line": 114,
+          "to_line": 116,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codelab/js/scene.js",
+      "methods": [
+        {
+          "name": "app.Scene",
+          "from_line": 40,
+          "to_line": 84,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 77,
+          "to_line": 77,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.dispose",
+          "from_line": 145,
+          "to_line": 151,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.reset",
+          "from_line": 156,
+          "to_line": 159,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.getPortraitMode",
+          "from_line": 164,
+          "to_line": 166,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.createWorld_",
+          "from_line": 172,
+          "to_line": 192,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.createSquare_",
+          "from_line": 201,
+          "to_line": 210,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.cleanWorld_",
+          "from_line": 216,
+          "to_line": 234,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 218,
+          "to_line": 224,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 227,
+          "to_line": 233,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.setLevel",
+          "from_line": 240,
+          "to_line": 260,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.restartLevel",
+          "from_line": 267,
+          "to_line": 270,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.createPresents_",
+          "from_line": 276,
+          "to_line": 288,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 278,
+          "to_line": 280,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 284,
+          "to_line": 287,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.updateWorld_",
+          "from_line": 294,
+          "to_line": 297,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.animateLevelTransition_",
+          "from_line": 304,
+          "to_line": 310,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.getWorldTransform_",
+          "from_line": 318,
+          "to_line": 324,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.calculateViewport_",
+          "from_line": 332,
+          "to_line": 374,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.onClickScene_",
+          "from_line": 380,
+          "to_line": 382,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.onClickUnderlay_",
+          "from_line": 388,
+          "to_line": 390,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.portraitToggleScene",
+          "from_line": 396,
+          "to_line": 401,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.onClickRun_",
+          "from_line": 407,
+          "to_line": 418,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.onFinishExecution",
+          "from_line": 425,
+          "to_line": 436,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.getWidth",
+          "from_line": 442,
+          "to_line": 450,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Scene.prototype.toggleVisibility",
+          "from_line": 456,
+          "to_line": 462,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codelab/js/square.js",
+      "methods": [
+        {
+          "name": "app.Square",
+          "from_line": 30,
+          "to_line": 35,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Square.prototype.onInit",
+          "from_line": 42,
+          "to_line": 51,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.Square.prototype.onDispose",
+          "from_line": 56,
+          "to_line": 58,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.EmptySquare",
+          "from_line": 65,
+          "to_line": 70,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.TreeSquare",
+          "from_line": 79,
+          "to_line": 89,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.DecoratedSquare",
+          "from_line": 99,
+          "to_line": 108,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.DecoratedSquare.prototype.onInit",
+          "from_line": 128,
+          "to_line": 140,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/animation.js",
+      "methods": [
+        {
+          "name": "constructor",
+          "from_line": 50,
+          "to_line": 59,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "play",
+          "from_line": 61,
+          "to_line": 64,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "getFrame",
+          "from_line": 66,
+          "to_line": 84,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "update",
+          "from_line": 86,
+          "to_line": 103,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/animation_data.js",
+      "methods": [
+        {
+          "name": "app.AnimationData",
+          "from_line": 21,
+          "to_line": 264,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/animation_player.js",
+      "methods": [
+        {
+          "name": "constructor",
+          "from_line": 36,
+          "to_line": 38,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "addEventListener",
+          "from_line": 40,
+          "to_line": 45,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "listen",
+          "from_line": 47,
+          "to_line": 49,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "dispatchEvent",
+          "from_line": 51,
+          "to_line": 55,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 54,
+          "to_line": 54,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "constructor",
+          "from_line": 77,
+          "to_line": 100,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "update",
+          "from_line": 102,
+          "to_line": 111,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 110,
+          "to_line": 110,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "start",
+          "from_line": 118,
+          "to_line": 136,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onFinish_",
+          "from_line": 142,
+          "to_line": 149,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onMusicBar",
+          "from_line": 151,
+          "to_line": 185,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onAnimationBar",
+          "from_line": 187,
+          "to_line": 199,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onBeat",
+          "from_line": 201,
+          "to_line": 223,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "setLevel",
+          "from_line": 225,
+          "to_line": 229,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/block_runner.js",
+      "methods": [
+        {
+          "name": "constructor",
+          "from_line": 59,
+          "to_line": 75,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "reset_",
+          "from_line": 77,
+          "to_line": 84,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "execute",
+          "from_line": 89,
+          "to_line": 102,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "runAnimation",
+          "from_line": 104,
+          "to_line": 112,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "beforeAnimations_",
+          "from_line": 114,
+          "to_line": 116,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onStep_",
+          "from_line": 118,
+          "to_line": 120,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onFinishAnimations_",
+          "from_line": 122,
+          "to_line": 130,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "reportExecution_",
+          "from_line": 132,
+          "to_line": 134,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "runAnimations_",
+          "from_line": 136,
+          "to_line": 141,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "restartLevel",
+          "from_line": 143,
+          "to_line": 146,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "evalWith_",
+          "from_line": 148,
+          "to_line": 166,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "Ctor",
+          "from_line": 161,
+          "to_line": 163,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "createExecuteContext",
+          "from_line": 168,
+          "to_line": 184,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "stepFn",
+          "from_line": 169,
+          "to_line": 169,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 169,
+          "to_line": 169,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "highlightFn",
+          "from_line": 170,
+          "to_line": 170,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "highlightLoop",
+          "from_line": 181,
+          "to_line": 181,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/blockly.js",
+      "methods": [
+        {
+          "name": "app.Blockly",
+          "from_line": 30,
+          "to_line": 38,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "initBlockly_",
+          "from_line": 45,
+          "to_line": 59,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "setLevel",
+          "from_line": 65,
+          "to_line": 82,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "resetToolboxScroll_",
+          "from_line": 88,
+          "to_line": 97,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "reflowToolbar",
+          "from_line": 99,
+          "to_line": 101,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "getToolbarWidth",
+          "from_line": 103,
+          "to_line": 105,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "loadBlocks_",
+          "from_line": 111,
+          "to_line": 120,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "insertWhenRunBlock_",
+          "from_line": 127,
+          "to_line": 162,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "arrangeBlockPosition_",
+          "from_line": 169,
+          "to_line": 188,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "highlightBlock",
+          "from_line": 190,
+          "to_line": 198,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "toggleExecution",
+          "from_line": 200,
+          "to_line": 206,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "getCode",
+          "from_line": 212,
+          "to_line": 214,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "getUserCode",
+          "from_line": 220,
+          "to_line": 240,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "getTopBlocks",
+          "from_line": 246,
+          "to_line": 248,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "getUserBlocks",
+          "from_line": 256,
+          "to_line": 262,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 258,
+          "to_line": 260,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "getCountableBlocks",
+          "from_line": 270,
+          "to_line": 276,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 272,
+          "to_line": 274,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "hasEmptyContainerBlocks",
+          "from_line": 282,
+          "to_line": 295,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "hasExtraTopBlocks",
+          "from_line": 301,
+          "to_line": 314,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "getMissingBlocks",
+          "from_line": 322,
+          "to_line": 345,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/blockly_layout.js",
+      "methods": [
+        {
+          "name": "constructor",
+          "from_line": 27,
+          "to_line": 36,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "scheduleLayout",
+          "from_line": 43,
+          "to_line": 48,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onResize_",
+          "from_line": 54,
+          "to_line": 65,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "layoutToolbox",
+          "from_line": 72,
+          "to_line": 82,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "layoutToolboxRow_",
+          "from_line": 90,
+          "to_line": 109,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "layoutToolboxCardinal_",
+          "from_line": 111,
+          "to_line": 133,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "layoutWorkspace_",
+          "from_line": 139,
+          "to_line": 162,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/blocks.js",
+      "methods": [
+        {
+          "name": "app.blocks.miniBlockXml",
+          "from_line": 33,
+          "to_line": 37,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.blocks.blockXml",
+          "from_line": 48,
+          "to_line": 73,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "app.blocks.install",
+          "from_line": 78,
+          "to_line": 268,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 82,
+          "to_line": 186,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "generateBlocksForStep",
+          "from_line": 121,
+          "to_line": 125,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "generateStepBlock",
+          "from_line": 127,
+          "to_line": 149,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "init",
+          "from_line": 136,
+          "to_line": 147,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "generateMiniBlock",
+          "from_line": 151,
+          "to_line": 171,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "init",
+          "from_line": 160,
+          "to_line": 169,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "generateCodeGenerator",
+          "from_line": 173,
+          "to_line": 177,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 174,
+          "to_line": 176,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "optionNumberRange",
+          "from_line": 188,
+          "to_line": 194,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "init",
+          "from_line": 203,
+          "to_line": 209,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "Blockly.JavaScript['when_run']",
+          "from_line": 212,
+          "to_line": 214,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "init",
+          "from_line": 220,
+          "to_line": 231,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "init",
+          "from_line": 238,
+          "to_line": 245,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "Blockly.JavaScript['controls_repeat']",
+          "from_line": 252,
+          "to_line": 267,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/character.js",
+      "methods": [
+        {
+          "name": "constructor",
+          "from_line": 26,
+          "to_line": 45,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "renderSprites_",
+          "from_line": 47,
+          "to_line": 51,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 48,
+          "to_line": 50,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "loadImage",
+          "from_line": 53,
+          "to_line": 68,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "image.onload",
+          "from_line": 56,
+          "to_line": 58,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "image.onerror",
+          "from_line": 60,
+          "to_line": 65,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 62,
+          "to_line": 64,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "update",
+          "from_line": 70,
+          "to_line": 96,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "setState",
+          "from_line": 98,
+          "to_line": 109,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "play",
+          "from_line": 111,
+          "to_line": 114,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "setColor",
+          "from_line": 116,
+          "to_line": 121,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/constants.js",
+      "methods": []
+    },
+    {
+      "file": "static/scenes/codeboogie/js/dance_level.js",
+      "methods": [
+        {
+          "name": "constructor",
+          "from_line": 73,
+          "to_line": 92,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "introAnimation",
+          "from_line": 99,
+          "to_line": 119,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "processResult",
+          "from_line": 128,
+          "to_line": 206,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 144,
+          "to_line": 144,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "evaluateStatus",
+          "from_line": 216,
+          "to_line": 245,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "createAnimationQueue",
+          "from_line": 254,
+          "to_line": 327,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 256,
+          "to_line": 256,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 259,
+          "to_line": 259,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "className",
+          "from_line": 334,
+          "to_line": 338,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "deserialize",
+          "from_line": 346,
+          "to_line": 382,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "serialize",
+          "from_line": 390,
+          "to_line": 403,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 391,
+          "to_line": 391,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 392,
+          "to_line": 394,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 394,
+          "to_line": 394,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "constructor",
+          "from_line": 480,
+          "to_line": 488,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "watching",
+          "from_line": 490,
+          "to_line": 496,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "showResult",
+          "from_line": 498,
+          "to_line": 506,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/game.js",
+      "methods": [
+        {
+          "name": "constructor",
+          "from_line": 47,
+          "to_line": 68,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 61,
+          "to_line": 61,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 63,
+          "to_line": 63,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 64,
+          "to_line": 64,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "this.dismissBlocklyTutorial",
+          "from_line": 66,
+          "to_line": 66,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "dispose_",
+          "from_line": 74,
+          "to_line": 78,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "bumpLevel",
+          "from_line": 83,
+          "to_line": 112,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "showTutorial",
+          "from_line": 117,
+          "to_line": 119,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "dismissTutorial",
+          "from_line": 121,
+          "to_line": 123,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "restartLevel",
+          "from_line": 128,
+          "to_line": 130,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "share",
+          "from_line": 137,
+          "to_line": 140,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "start",
+          "from_line": 145,
+          "to_line": 147,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "restart",
+          "from_line": 155,
+          "to_line": 183,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/klang.js",
+      "methods": [
+        {
+          "name": "triggerEvent",
+          "from_line": 23,
+          "to_line": 25,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/level.js",
+      "methods": [
+        {
+          "name": "constructor",
+          "from_line": 37,
+          "to_line": 53,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "introAnimation",
+          "from_line": 61,
+          "to_line": 62,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "processResult",
+          "from_line": 71,
+          "to_line": 72,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "className",
+          "from_line": 79,
+          "to_line": 81,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "constructor",
+          "from_line": 112,
+          "to_line": 126,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "showResult",
+          "from_line": 128,
+          "to_line": 130,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/levels.js",
+      "methods": [
+        {
+          "name": "getDanceClasses",
+          "from_line": 31,
+          "to_line": 31,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "createFreestyleLevel",
+          "from_line": 33,
+          "to_line": 73,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/lights.js",
+      "methods": [
+        {
+          "name": "constructor",
+          "from_line": 25,
+          "to_line": 46,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "setLevel",
+          "from_line": 48,
+          "to_line": 51,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onBeat",
+          "from_line": 53,
+          "to_line": 78,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 57,
+          "to_line": 59,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 63,
+          "to_line": 65,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 74,
+          "to_line": 76,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "shuffle_",
+          "from_line": 80,
+          "to_line": 88,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/monkeypatches.js",
+      "methods": [
+        {
+          "name": "goog.dom.vendor.getVendorJsPrefix",
+          "from_line": 32,
+          "to_line": 44,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/move_tiles.js",
+      "methods": [
+        {
+          "name": "constructor",
+          "from_line": 27,
+          "to_line": 30,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "setLevel",
+          "from_line": 32,
+          "to_line": 35,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "setLength",
+          "from_line": 37,
+          "to_line": 42,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "add",
+          "from_line": 44,
+          "to_line": 61,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 57,
+          "to_line": 59,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "reset",
+          "from_line": 63,
+          "to_line": 65,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "clear",
+          "from_line": 67,
+          "to_line": 71,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "_removeTiles",
+          "from_line": 73,
+          "to_line": 84,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 75,
+          "to_line": 77,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 79,
+          "to_line": 83,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/patterns.js",
+      "methods": [
+        {
+          "name": "<anonymous callback>",
+          "from_line": 23,
+          "to_line": 119,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "wasCreated_",
+          "from_line": 33,
+          "to_line": 49,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 40,
+          "to_line": 44,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "markCreated_",
+          "from_line": 54,
+          "to_line": 56,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "addPattern",
+          "from_line": 71,
+          "to_line": 110,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "inject",
+          "from_line": 112,
+          "to_line": 117,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 114,
+          "to_line": 116,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/result.js",
+      "methods": [
+        {
+          "name": "constructor",
+          "from_line": 27,
+          "to_line": 51,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "bindEvents_",
+          "from_line": 53,
+          "to_line": 66,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "show",
+          "from_line": 72,
+          "to_line": 109,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "hide",
+          "from_line": 111,
+          "to_line": 113,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onRetry",
+          "from_line": 115,
+          "to_line": 119,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onShare",
+          "from_line": 121,
+          "to_line": 125,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onContinue",
+          "from_line": 127,
+          "to_line": 131,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onShowCode",
+          "from_line": 133,
+          "to_line": 135,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/scene.js",
+      "methods": [
+        {
+          "name": "constructor",
+          "from_line": 36,
+          "to_line": 72,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 65,
+          "to_line": 65,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "dispose",
+          "from_line": 78,
+          "to_line": 84,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "reset",
+          "from_line": 89,
+          "to_line": 91,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "getPortraitMode",
+          "from_line": 96,
+          "to_line": 98,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "setLevel",
+          "from_line": 105,
+          "to_line": 119,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "restartLevel",
+          "from_line": 126,
+          "to_line": 128,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "calculateViewport_",
+          "from_line": 134,
+          "to_line": 170,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onClickScene_",
+          "from_line": 176,
+          "to_line": 178,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onClickUnderlay_",
+          "from_line": 184,
+          "to_line": 186,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "portraitToggleScene",
+          "from_line": 192,
+          "to_line": 197,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onClickRun_",
+          "from_line": 203,
+          "to_line": 215,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "<anonymous callback>",
+          "from_line": 210,
+          "to_line": 210,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "showTutorials_",
+          "from_line": 217,
+          "to_line": 225,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onFinishExecution",
+          "from_line": 233,
+          "to_line": 250,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "getWidth",
+          "from_line": 256,
+          "to_line": 264,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "toggleVisibility",
+          "from_line": 270,
+          "to_line": 276,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/sequencer.js",
+      "methods": [
+        {
+          "name": "constructor",
+          "from_line": 20,
+          "to_line": 32,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "setTrack",
+          "from_line": 34,
+          "to_line": 39,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "setVariant",
+          "from_line": 41,
+          "to_line": 47,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "_play",
+          "from_line": 49,
+          "to_line": 53,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "start",
+          "from_line": 55,
+          "to_line": 61,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "_update",
+          "from_line": 63,
+          "to_line": 85,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/codeboogie/js/step.js",
+      "methods": []
+    },
+    {
+      "file": "static/scenes/codeboogie/js/title.js",
+      "methods": [
+        {
+          "name": "constructor",
+          "from_line": 22,
+          "to_line": 30,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "setTitle",
+          "from_line": 42,
+          "to_line": 49,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "updateTitle_",
+          "from_line": 51,
+          "to_line": 57,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "switchText_",
+          "from_line": 59,
+          "to_line": 75,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        },
+        {
+          "name": "onBeat",
+          "from_line": 80,
+          "to_line": 93,
+          "status": "partial_or_unfinished",
+          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+        }
+      ]
+    }
+  ]
+}

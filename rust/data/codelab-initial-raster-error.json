@@ -1,0 +1,10 @@
+{
+  "method": "Original source isolated jigsaw scene vs main native renderer; initial 1440x800 jigsaw, ROI below host toolbar at y80. This single idle case does not measure transitions, editor input or whole-mode fidelity.",
+  "roi": [
+    0,
+    80,
+    1440,
+    800
+  ],
+  "mean_rgb_error": 0.0271630658436214
+}

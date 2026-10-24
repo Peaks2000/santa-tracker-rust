@@ -268,10 +268,13 @@ fn scene_keys(root: &Path, scene: &str) -> Result<Vec<String>, String> {
             let path = entry.map_err(|e| e.to_string())?.path();
             if path.is_dir() {
                 pending.push(path);
-            } else if matches!(
-                path.extension().and_then(|s| s.to_str()),
-                Some("svg" | "png" | "jpg" | "webp")
-            ) {
+            } else if !(scene == "codeboogie"
+                && path.components().any(|c| c.as_os_str() == "steps"))
+                && matches!(
+                    path.extension().and_then(|s| s.to_str()),
+                    Some("svg" | "png" | "jpg" | "webp")
+                )
+            {
                 keys.push(
                     path.strip_prefix(root)
                         .map_err(|e| e.to_string())?
@@ -289,7 +292,10 @@ fn scene_keys(root: &Path, scene: &str) -> Result<Vec<String>, String> {
 /// need mipmaps when minified; their RGBA is premultiplied before filtering.
 pub fn configure_texture(key: &str, texture: &Texture2D) {
     texture.set_filter(FilterMode::Linear);
-    if key.starts_with("scenes/elfski/") || key.starts_with("scenes/boatload/") {
+    if key.starts_with("scenes/elfski/")
+        || key.starts_with("scenes/boatload/")
+        || key.starts_with("scenes/codeboogie/img/choose-mode/")
+    {
         let id = texture.raw_miniquad_id();
         // Upload is complete and no draw references a newly created texture.
         unsafe {
@@ -305,7 +311,9 @@ pub fn configure_texture(key: &str, texture: &Texture2D) {
 }
 
 fn svg_raster_scale(key: &str) -> f32 {
-    if key.starts_with("img/sleigh/") {
+    if key.starts_with("scenes/codeboogie/img/choose-mode/") {
+        4.
+    } else if key.starts_with("img/sleigh/") {
         4.
     } else if key.ends_with("glider/img/glider-sprite.svg") {
         3.

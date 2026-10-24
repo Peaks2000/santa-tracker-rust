@@ -1,0 +1,100 @@
+{
+  "method": "Actual source Scene.calculateViewport, getWorldTransform and DOM after game.restart(3), settled 600ms to allow responsive CSS transitions. No geometry methods patched.",
+  "cases": [
+    {
+      "width": 1440,
+      "height": 800,
+      "scene": {
+        "x": 806.671875,
+        "y": 0,
+        "w": 633.328125,
+        "h": 800
+      },
+      "player": {
+        "x": 1121.3544921875,
+        "y": 314.68212890625,
+        "w": 608.328125,
+        "h": 0
+      },
+      "fontSize": "9.92064px",
+      "world": "matrix(1, 0, 0, 1, 0, -4641.67)",
+      "toolbar": 236
+    },
+    {
+      "width": 1024,
+      "height": 800,
+      "scene": {
+        "x": 512,
+        "y": 0,
+        "w": 512,
+        "h": 800
+      },
+      "player": {
+        "x": 766.3885498046875,
+        "y": 254.39599609375,
+        "w": 491.796875,
+        "h": 0
+      },
+      "fontSize": "8.02005px",
+      "world": "matrix(1, 0, 0, 1, 0, -3752.42)",
+      "toolbar": 95
+    },
+    {
+      "width": 768,
+      "height": 800,
+      "scene": {
+        "x": 384,
+        "y": 0,
+        "w": 384,
+        "h": 800
+      },
+      "player": {
+        "x": 623.7573852539062,
+        "y": 239.75830078125,
+        "w": 364.953125,
+        "h": 0
+      },
+      "fontSize": "7.55858px",
+      "world": "matrix(1, 0, 0, 1, 0, -3536.51)",
+      "toolbar": 95
+    },
+    {
+      "width": 375,
+      "height": 800,
+      "scene": {
+        "x": 48,
+        "y": 0,
+        "w": 327,
+        "h": 800
+      },
+      "player": {
+        "x": 287.75738525390625,
+        "y": 239.75830078125,
+        "w": 307.953125,
+        "h": 0
+      },
+      "fontSize": "7.55858px",
+      "world": "matrix(1, 0, 0, 1, 0, -3536.51)",
+      "toolbar": 67
+    },
+    {
+      "width": 1440,
+      "height": 480,
+      "scene": {
+        "x": 1060,
+        "y": 0,
+        "w": 380,
+        "h": 480
+      },
+      "player": {
+        "x": 1248.8095703125,
+        "y": 188.8095703125,
+        "w": 365,
+        "h": 0
+      },
+      "fontSize": "5.95238px",
+      "world": "matrix(1, 0, 0, 1, 0, -2785)",
+      "toolbar": 236
+    }
+  ]
+}

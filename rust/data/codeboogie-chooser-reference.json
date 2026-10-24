@@ -1,0 +1,1325 @@
+{
+  "method": "Unmodified original chooser DOM after 2200ms; actual Chromium at five viewports.",
+  "cases": [
+    {
+      "width": 1440,
+      "height": 800,
+      "items": {
+        ".choose-mode__dialog": [
+          {
+            "x": 239.984375,
+            "y": 46.859375,
+            "w": 960,
+            "h": 706.265625,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "inline-block"
+          }
+        ],
+        ".overlay-title-wrapper": [
+          {
+            "x": 239.984375,
+            "y": 46.859375,
+            "w": 960,
+            "h": 91.1875,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 0px 96px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".overlay-title": [
+          {
+            "x": 239.984375,
+            "y": 46.859375,
+            "w": 960,
+            "h": 91.1875,
+            "font": "96px / 91.2px Lobster, sans-serif",
+            "fontSize": "96px",
+            "lineHeight": "91.2px",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".grid": [
+          {
+            "x": 239.984375,
+            "y": 234.046875,
+            "w": 960,
+            "h": 519.078125,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "flex"
+          }
+        ],
+        ".grid__option": [
+          {
+            "x": 263.984375,
+            "y": 234.046875,
+            "w": 432,
+            "h": 479.078125,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 24px 40px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 743.984375,
+            "y": 278.890625,
+            "w": 432,
+            "h": 389.390625,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 24px 40px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__image": [
+          {
+            "x": 263.984375,
+            "y": 234.046875,
+            "w": 432,
+            "h": 479.078125,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 743.984375,
+            "y": 278.890625,
+            "w": 432,
+            "h": 327,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__bg": [
+          {
+            "x": 219.90625,
+            "y": 234.046875,
+            "w": 476.078125,
+            "h": 476.078125,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 0px 0px -44.0781px",
+            "padding": "0px 0px 476.078px",
+            "text": "",
+            "display": "inline-block"
+          },
+          {
+            "x": 797.984375,
+            "y": 278.890625,
+            "w": 324,
+            "h": 324,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px 0px 324px",
+            "text": "",
+            "display": "inline-block"
+          }
+        ],
+        ".choose-mode__info": [
+          {
+            "x": 263.984375,
+            "y": 234.046875,
+            "w": 432,
+            "h": 494.390625,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "432px 0px 0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode-info": [
+          {
+            "x": 743.984375,
+            "y": 577.09375,
+            "w": 432,
+            "h": 71.1875,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__text": [
+          {
+            "x": 263.984375,
+            "y": 637.25,
+            "w": 432,
+            "h": 50.390625,
+            "font": "700 36px / 50.4px Roboto, Arial, sans-serif",
+            "fontSize": "36px",
+            "lineHeight": "50.4px",
+            "margin": "-28.8px 0px 0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 743.984375,
+            "y": 577.09375,
+            "w": 432,
+            "h": 50.390625,
+            "font": "700 36px / 50.4px Roboto, Arial, sans-serif",
+            "fontSize": "36px",
+            "lineHeight": "50.4px",
+            "margin": "-28.8px 0px 0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__description": [
+          {
+            "x": 263.984375,
+            "y": 691.640625,
+            "w": 432,
+            "h": 16.796875,
+            "font": "12px / 16.8px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "16.8px",
+            "margin": "4px 0px 20px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 743.984375,
+            "y": 631.484375,
+            "w": 432,
+            "h": 16.796875,
+            "font": "12px / 16.8px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "16.8px",
+            "margin": "4px 0px 20px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".go": [
+          {
+            "x": 418.671875,
+            "y": 277.84063720703125,
+            "w": 107.109375,
+            "h": 83.203125,
+            "font": "700 87.6px / 83.22px Lobster, sans-serif",
+            "fontSize": "87.6px",
+            "lineHeight": "83.22px",
+            "margin": "87.6px 0px 87.6px -61.32px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 898.671875,
+            "y": 322.68438720703125,
+            "w": 107.109375,
+            "h": 83.203125,
+            "font": "700 87.6px / 83.22px Lobster, sans-serif",
+            "fontSize": "87.6px",
+            "lineHeight": "83.22px",
+            "margin": "87.6px 0px 87.6px -61.32px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ]
+      }
+    },
+    {
+      "width": 1846,
+      "height": 966,
+      "items": {
+        ".choose-mode__dialog": [
+          {
+            "x": 442.984375,
+            "y": 129.859375,
+            "w": 960,
+            "h": 706.265625,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "inline-block"
+          }
+        ],
+        ".overlay-title-wrapper": [
+          {
+            "x": 442.984375,
+            "y": 129.859375,
+            "w": 960,
+            "h": 91.1875,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 0px 96px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".overlay-title": [
+          {
+            "x": 442.984375,
+            "y": 129.859375,
+            "w": 960,
+            "h": 91.1875,
+            "font": "96px / 91.2px Lobster, sans-serif",
+            "fontSize": "96px",
+            "lineHeight": "91.2px",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".grid": [
+          {
+            "x": 442.984375,
+            "y": 317.046875,
+            "w": 960,
+            "h": 519.078125,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "flex"
+          }
+        ],
+        ".grid__option": [
+          {
+            "x": 466.984375,
+            "y": 317.046875,
+            "w": 432,
+            "h": 479.078125,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 24px 40px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 946.984375,
+            "y": 361.890625,
+            "w": 432,
+            "h": 389.390625,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 24px 40px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__image": [
+          {
+            "x": 466.984375,
+            "y": 317.046875,
+            "w": 432,
+            "h": 479.078125,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 946.984375,
+            "y": 361.890625,
+            "w": 432,
+            "h": 327,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__bg": [
+          {
+            "x": 422.90625,
+            "y": 317.046875,
+            "w": 476.078125,
+            "h": 476.078125,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 0px 0px -44.0781px",
+            "padding": "0px 0px 476.078px",
+            "text": "",
+            "display": "inline-block"
+          },
+          {
+            "x": 1000.984375,
+            "y": 361.890625,
+            "w": 324,
+            "h": 324,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px 0px 324px",
+            "text": "",
+            "display": "inline-block"
+          }
+        ],
+        ".choose-mode__info": [
+          {
+            "x": 466.984375,
+            "y": 317.046875,
+            "w": 432,
+            "h": 494.390625,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "432px 0px 0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode-info": [
+          {
+            "x": 946.984375,
+            "y": 660.09375,
+            "w": 432,
+            "h": 71.1875,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__text": [
+          {
+            "x": 466.984375,
+            "y": 720.25,
+            "w": 432,
+            "h": 50.390625,
+            "font": "700 36px / 50.4px Roboto, Arial, sans-serif",
+            "fontSize": "36px",
+            "lineHeight": "50.4px",
+            "margin": "-28.8px 0px 0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 946.984375,
+            "y": 660.09375,
+            "w": 432,
+            "h": 50.390625,
+            "font": "700 36px / 50.4px Roboto, Arial, sans-serif",
+            "fontSize": "36px",
+            "lineHeight": "50.4px",
+            "margin": "-28.8px 0px 0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__description": [
+          {
+            "x": 466.984375,
+            "y": 774.640625,
+            "w": 432,
+            "h": 16.796875,
+            "font": "12px / 16.8px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "16.8px",
+            "margin": "4px 0px 20px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 946.984375,
+            "y": 714.484375,
+            "w": 432,
+            "h": 16.796875,
+            "font": "12px / 16.8px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "16.8px",
+            "margin": "4px 0px 20px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".go": [
+          {
+            "x": 621.671875,
+            "y": 360.84063720703125,
+            "w": 107.109375,
+            "h": 83.203125,
+            "font": "700 87.6px / 83.22px Lobster, sans-serif",
+            "fontSize": "87.6px",
+            "lineHeight": "83.22px",
+            "margin": "87.6px 0px 87.6px -61.32px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 1101.671875,
+            "y": 405.68438720703125,
+            "w": 107.109375,
+            "h": 83.203125,
+            "font": "700 87.6px / 83.22px Lobster, sans-serif",
+            "fontSize": "87.6px",
+            "lineHeight": "83.22px",
+            "margin": "87.6px 0px 87.6px -61.32px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ]
+      }
+    },
+    {
+      "width": 768,
+      "height": 800,
+      "items": {
+        ".choose-mode__dialog": [
+          {
+            "x": 76.796875,
+            "y": 148.984375,
+            "w": 614.390625,
+            "h": 502.03125,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "inline-block"
+          }
+        ],
+        ".overlay-title-wrapper": [
+          {
+            "x": 76.796875,
+            "y": 148.984375,
+            "w": 614.390625,
+            "h": 58.359375,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 0px 96px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".overlay-title": [
+          {
+            "x": 76.796875,
+            "y": 148.984375,
+            "w": 614.390625,
+            "h": 58.359375,
+            "font": "61.44px / 58.368px Lobster, sans-serif",
+            "fontSize": "61.44px",
+            "lineHeight": "58.368px",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".grid": [
+          {
+            "x": 76.796875,
+            "y": 303.34375,
+            "w": 614.390625,
+            "h": 347.671875,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "flex"
+          }
+        ],
+        ".grid__option": [
+          {
+            "x": 92.15625,
+            "y": 303.34375,
+            "w": 276.46875,
+            "h": 307.671875,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 15.375px 40px 15.3594px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 399.359375,
+            "y": 320.8125,
+            "w": 276.46875,
+            "h": 272.734375,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 15.3594px 40px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__image": [
+          {
+            "x": 92.15625,
+            "y": 303.34375,
+            "w": 276.46875,
+            "h": 307.671875,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 399.359375,
+            "y": 320.8125,
+            "w": 276.46875,
+            "h": 210.34375,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__bg": [
+          {
+            "x": 63.953125,
+            "y": 303.34375,
+            "w": 304.671875,
+            "h": 304.671875,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 0px 0px -28.2031px",
+            "padding": "0px 0px 304.672px",
+            "text": "",
+            "display": "inline-block"
+          },
+          {
+            "x": 433.921875,
+            "y": 320.8125,
+            "w": 207.34375,
+            "h": 207.34375,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px 0px 207.344px",
+            "text": "",
+            "display": "inline-block"
+          }
+        ],
+        ".choose-mode__info": [
+          {
+            "x": 92.15625,
+            "y": 303.34375,
+            "w": 276.46875,
+            "h": 338.859375,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "276.469px 0px 0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode-info": [
+          {
+            "x": 399.359375,
+            "y": 502.359375,
+            "w": 276.46875,
+            "h": 71.1875,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__text": [
+          {
+            "x": 92.15625,
+            "y": 551.015625,
+            "w": 276.46875,
+            "h": 50.390625,
+            "font": "700 36px / 50.4px Roboto, Arial, sans-serif",
+            "fontSize": "36px",
+            "lineHeight": "50.4px",
+            "margin": "-28.8px 0px 0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 399.359375,
+            "y": 502.359375,
+            "w": 276.46875,
+            "h": 50.390625,
+            "font": "700 36px / 50.4px Roboto, Arial, sans-serif",
+            "fontSize": "36px",
+            "lineHeight": "50.4px",
+            "margin": "-28.8px 0px 0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__description": [
+          {
+            "x": 92.15625,
+            "y": 605.40625,
+            "w": 276.46875,
+            "h": 16.796875,
+            "font": "12px / 16.8px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "16.8px",
+            "margin": "4px 0px 20px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 399.359375,
+            "y": 556.75,
+            "w": 276.46875,
+            "h": 16.796875,
+            "font": "12px / 16.8px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "16.8px",
+            "margin": "4px 0px 20px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".go": [
+          {
+            "x": 169.078125,
+            "y": 347.13751220703125,
+            "w": 107.109375,
+            "h": 83.203125,
+            "font": "700 87.6px / 83.22px Lobster, sans-serif",
+            "fontSize": "87.6px",
+            "lineHeight": "83.22px",
+            "margin": "87.6px 0px 87.6px -61.32px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 476.28125,
+            "y": 364.60626220703125,
+            "w": 107.109375,
+            "h": 83.203125,
+            "font": "700 87.6px / 83.22px Lobster, sans-serif",
+            "fontSize": "87.6px",
+            "lineHeight": "83.22px",
+            "margin": "87.6px 0px 87.6px -61.32px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ]
+      }
+    },
+    {
+      "width": 375,
+      "height": 800,
+      "items": {
+        ".choose-mode__dialog": [
+          {
+            "x": 37.484375,
+            "y": 140.65625,
+            "w": 300,
+            "h": 518.6875,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "inline-block"
+          }
+        ],
+        ".overlay-title-wrapper": [
+          {
+            "x": 37.484375,
+            "y": 140.65625,
+            "w": 300,
+            "h": 34.1875,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 0px 48px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".overlay-title": [
+          {
+            "x": 37.484375,
+            "y": 140.65625,
+            "w": 300,
+            "h": 34.1875,
+            "font": "36px / 34.2px Lobster, sans-serif",
+            "fontSize": "36px",
+            "lineHeight": "34.2px",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".grid": [
+          {
+            "x": 37.484375,
+            "y": 222.84375,
+            "w": 300,
+            "h": 396.5,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".grid__option": [
+          {
+            "x": 37.484375,
+            "y": 222.84375,
+            "w": 300,
+            "h": 168.296875,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 0px 40px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 37.484375,
+            "y": 431.140625,
+            "w": 300,
+            "h": 188.203125,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 0px 40px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__image": [
+          {
+            "x": 37.484375,
+            "y": 222.84375,
+            "w": 300,
+            "h": 168.296875,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 37.484375,
+            "y": 431.140625,
+            "w": 300,
+            "h": 153,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__bg": [
+          {
+            "x": 97.1875,
+            "y": 222.84375,
+            "w": 165.296875,
+            "h": 165.296875,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 0px 0px -15.2969px",
+            "padding": "0px 0px 165.297px",
+            "text": "",
+            "display": "inline-block"
+          },
+          {
+            "x": 112.484375,
+            "y": 431.140625,
+            "w": 150,
+            "h": 150,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px 0px 150px",
+            "text": "",
+            "display": "inline-block"
+          }
+        ],
+        ".choose-mode__info": [
+          {
+            "x": 37.484375,
+            "y": 222.84375,
+            "w": 300,
+            "h": 205.203125,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "150px 0px 0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode-info": [
+          {
+            "x": 37.484375,
+            "y": 564.953125,
+            "w": 300,
+            "h": 54.390625,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__text": [
+          {
+            "x": 37.484375,
+            "y": 353.65625,
+            "w": 300,
+            "h": 33.59375,
+            "font": "700 24px / 33.6px Roboto, Arial, sans-serif",
+            "fontSize": "24px",
+            "lineHeight": "33.6px",
+            "margin": "-19.2px 0px 0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 37.484375,
+            "y": 564.953125,
+            "w": 300,
+            "h": 33.59375,
+            "font": "700 24px / 33.6px Roboto, Arial, sans-serif",
+            "fontSize": "24px",
+            "lineHeight": "33.6px",
+            "margin": "-19.2px 0px 0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__description": [
+          {
+            "x": 37.484375,
+            "y": 391.25,
+            "w": 300,
+            "h": 16.796875,
+            "font": "12px / 16.8px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "16.8px",
+            "margin": "4px 0px 20px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 37.484375,
+            "y": 602.546875,
+            "w": 300,
+            "h": 16.796875,
+            "font": "12px / 16.8px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "16.8px",
+            "margin": "4px 0px 20px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".go": [
+          {
+            "x": 126.171875,
+            "y": 266.63751220703125,
+            "w": 107.109375,
+            "h": 83.203125,
+            "font": "700 87.6px / 83.22px Lobster, sans-serif",
+            "fontSize": "87.6px",
+            "lineHeight": "83.22px",
+            "margin": "87.6px 0px 87.6px -61.32px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 126.171875,
+            "y": 474.93438720703125,
+            "w": 107.109375,
+            "h": 83.203125,
+            "font": "700 87.6px / 83.22px Lobster, sans-serif",
+            "fontSize": "87.6px",
+            "lineHeight": "83.22px",
+            "margin": "87.6px 0px 87.6px -61.32px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ]
+      }
+    },
+    {
+      "width": 1846,
+      "height": 1014,
+      "items": {
+        ".choose-mode__dialog": [
+          {
+            "x": 442.984375,
+            "y": 153.859375,
+            "w": 960,
+            "h": 706.265625,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "inline-block"
+          }
+        ],
+        ".overlay-title-wrapper": [
+          {
+            "x": 442.984375,
+            "y": 153.859375,
+            "w": 960,
+            "h": 91.1875,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 0px 96px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".overlay-title": [
+          {
+            "x": 442.984375,
+            "y": 153.859375,
+            "w": 960,
+            "h": 91.1875,
+            "font": "96px / 91.2px Lobster, sans-serif",
+            "fontSize": "96px",
+            "lineHeight": "91.2px",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".grid": [
+          {
+            "x": 442.984375,
+            "y": 341.046875,
+            "w": 960,
+            "h": 519.078125,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "flex"
+          }
+        ],
+        ".grid__option": [
+          {
+            "x": 466.984375,
+            "y": 341.046875,
+            "w": 432,
+            "h": 479.078125,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 24px 40px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 946.984375,
+            "y": 385.890625,
+            "w": 432,
+            "h": 389.390625,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 24px 40px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__image": [
+          {
+            "x": 466.984375,
+            "y": 341.046875,
+            "w": 432,
+            "h": 479.078125,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 946.984375,
+            "y": 385.890625,
+            "w": 432,
+            "h": 327,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__bg": [
+          {
+            "x": 422.90625,
+            "y": 341.046875,
+            "w": 476.078125,
+            "h": 476.078125,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px 0px 0px -44.0781px",
+            "padding": "0px 0px 476.078px",
+            "text": "",
+            "display": "inline-block"
+          },
+          {
+            "x": 1000.984375,
+            "y": 385.890625,
+            "w": 324,
+            "h": 324,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px 0px 324px",
+            "text": "",
+            "display": "inline-block"
+          }
+        ],
+        ".choose-mode__info": [
+          {
+            "x": 466.984375,
+            "y": 341.046875,
+            "w": 432,
+            "h": 494.390625,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "432px 0px 0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode-info": [
+          {
+            "x": 946.984375,
+            "y": 684.09375,
+            "w": 432,
+            "h": 71.1875,
+            "font": "12px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "normal",
+            "margin": "0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__text": [
+          {
+            "x": 466.984375,
+            "y": 744.25,
+            "w": 432,
+            "h": 50.390625,
+            "font": "700 36px / 50.4px Roboto, Arial, sans-serif",
+            "fontSize": "36px",
+            "lineHeight": "50.4px",
+            "margin": "-28.8px 0px 0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 946.984375,
+            "y": 684.09375,
+            "w": 432,
+            "h": 50.390625,
+            "font": "700 36px / 50.4px Roboto, Arial, sans-serif",
+            "fontSize": "36px",
+            "lineHeight": "50.4px",
+            "margin": "-28.8px 0px 0px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".choose-mode__description": [
+          {
+            "x": 466.984375,
+            "y": 798.640625,
+            "w": 432,
+            "h": 16.796875,
+            "font": "12px / 16.8px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "16.8px",
+            "margin": "4px 0px 20px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 946.984375,
+            "y": 738.484375,
+            "w": 432,
+            "h": 16.796875,
+            "font": "12px / 16.8px Roboto, Arial, sans-serif",
+            "fontSize": "12px",
+            "lineHeight": "16.8px",
+            "margin": "4px 0px 20px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ],
+        ".go": [
+          {
+            "x": 621.671875,
+            "y": 384.84063720703125,
+            "w": 107.109375,
+            "h": 83.203125,
+            "font": "700 87.6px / 83.22px Lobster, sans-serif",
+            "fontSize": "87.6px",
+            "lineHeight": "83.22px",
+            "margin": "87.6px 0px 87.6px -61.32px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          },
+          {
+            "x": 1101.671875,
+            "y": 429.68438720703125,
+            "w": 107.109375,
+            "h": 83.203125,
+            "font": "700 87.6px / 83.22px Lobster, sans-serif",
+            "fontSize": "87.6px",
+            "lineHeight": "83.22px",
+            "margin": "87.6px 0px 87.6px -61.32px",
+            "padding": "0px",
+            "text": "",
+            "display": "block"
+          }
+        ]
+      }
+    }
+  ]
+}
