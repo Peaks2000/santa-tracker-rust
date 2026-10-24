@@ -17,6 +17,12 @@ Read `PARITY-STATUS.json` before choosing work. The user edits `user_overall_hap
 
 Read `SOURCE-COVERAGE.md` for existing checks and parity gaps. Work on explicit user corrections first, then their priority/notes, then shared bugs and remaining native modes. Record concrete progress, unresolved issues and evidence in the mode's `agent_*` fields. Keep incomplete modes marked partial/not_started as appropriate.
 
+## Picking up another agent's work
+
+Read [the handoff reference](references/handoff.md) when joining this project or continuing Code Lab/Code Boogie. It maps the current implementation, durable evidence, remaining work and known verification pitfalls. Its dated snapshot is orientation, not live state: inspect the current Git status/log, feedback, coverage ledger and root README in both available checkouts before choosing changes. A README rating of Very similar does not lower the user's target of 1:1.
+
+Do not automatically resume an old task when the latest user request is narrower. Preserve unrelated working-tree changes, including local reference tools. After a meaningful pass, update the existing feedback/coverage evidence and the handoff reference if the continuation context changed; do not create a second status tracker. Keep the installed skill and both available vendored copies, including references, synchronized.
+
 ## No glossing over source code
 
 For each selected scene, read its complete JavaScript, HTML and styles **before implementing the corresponding behavior**, not merely before reporting completion. Use bounded reads and check file lengths so truncated tool output is not mistaken for a complete review. Search snippets locate code; they do not replace reading it. Account for every function and branch in `SOURCE-COVERAGE.md`: native equivalent, verified inactive/browser-only behavior, or an explicit unfinished item. Do not silently skip code because the first playable result looks plausible.
@@ -41,8 +47,6 @@ Preserve ratings the user has assigned in the README unless they request reasses
 
 ## Source fidelity and performance
 
-Read every function and line of the selected scene's JS, HTML, styles and active shared dependencies before calling its port complete. Track the review in the coverage ledger. Execute the original code only in separate development reference tools; compare native state and browser/native captures at matching seed, dimensions, time and actions. Inspect sprites, transform origins, crop/stacking, timers, pool reuse, keyframe phases and sound actions. Record unused functions and source quirks rather than silently assuming behavior.
-
 The user wants optimizations to preserve gameplay, appearance and animation timing. Profile first; distinguish startup/loading, steady frames, simulation, input sampling, rendering, GPU presentation and audio decoding. Preserve fixed simulation rules unless evidence from the source warrants a correction. Never present frame-time measurements as end-to-end input latency. Keep original asset edges/shadows; fix alpha/filtering/compositing errors instead of removing outlines from the art. Check recommendation-card aspect ratios as well as card box dimensions.
 
 Do not close or replace a window the user is testing. Smoke checks should own and terminate their own process. Screenshots of the original and native app are authorized for this project.
@@ -51,8 +55,8 @@ Christmas tracking must only be exposed during the delivery flight (Dec 24 10:00
 
 ## Build, check and publish
 
-On this machine the isolated toolchain is `/tmp/santa-cargo` and `/tmp/santa-rustup`. Use `RUSTUP_HOME=/tmp/santa-rustup CARGO_HOME=/tmp/santa-cargo CARGO=/tmp/santa-cargo/bin/cargo ./rust/build.sh --offline`. Tests use that cargo with `BINDGEN_EXTRA_CLANG_ARGS=-I/usr/lib/clang/22/include` and `--manifest-path rust/Cargo.toml`. Native screenshot controls and comparison tooling are documented in `rust/README.md`; `--frames` freezes simulation, while `--advance` pre-simulates.
+On this machine the isolated toolchain is `/tmp/santa-cargo` and `/tmp/santa-rustup`. Use `RUSTUP_HOME=/tmp/santa-rustup CARGO_HOME=/tmp/santa-cargo BINDGEN_EXTRA_CLANG_ARGS=-I/usr/lib/clang/22/include CARGO=/tmp/santa-cargo/bin/cargo ./rust/build.sh --offline`. Tests use the same environment and cargo with `--manifest-path rust/Cargo.toml`. These temporary toolchain paths may disappear; check their availability before use. Native screenshot controls and comparison tooling are documented in `rust/README.md`; `--frames` freezes simulation, while `--advance` pre-simulates. Check the actual saved image dimensions because the window manager can resize the requested window.
 
-The clean distribution contains native Rust, fixtures, fonts, shader code, licenses and required original assets. Development `rust/tools/*.cjs` and original JS/HTML/CSS/SCSS stay out. Preserve the clean repository's user-edited root README. Before an authorized push, verify staged file names/history and keep GitHub public. The user explicitly corrected the earlier private preference: do not make the repository private again unless they request it. Include this skill's vendored copy and the feedback file in the Rust-only repository; installed skill updates belong in `~/.codex/skills/maintain-rust-santa-tracker` too.
+The clean distribution contains native Rust, fixtures, fonts, shader code, licenses and required original assets. Development `rust/tools/*.cjs` and original JS/HTML/CSS/SCSS stay out. Preserve the clean repository's user-edited root README, including images, prose and ratings. Before an authorized push, fetch and integrate remote edits, verify staged file names/history and keep GitHub public. Use explicit native file paths when staging/syncing; do not copy the entire reference tree or replace the distribution README with the reference checkout's README. The user explicitly corrected the earlier private preference: do not make the repository private again unless they request it. Include this skill's vendored copy and the feedback file in the Rust-only repository; installed skill updates belong in `~/.codex/skills/maintain-rust-santa-tracker` too.
 
 Report tested changes and remaining limits candidly. Passing current snapshots does not establish whole-site or whole-mode 1:1 parity.
