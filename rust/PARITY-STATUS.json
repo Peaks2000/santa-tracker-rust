@@ -135,7 +135,7 @@
       "user_notes": "",
       "priority": "normal",
       "agent_status": "partial",
-      "agent_progress": "Native Elf Maker includes all original character choices/colours/backgrounds, weighted randomization, eight arm-motion sequences, blinking, responsive control strip, photo capture/export and original-format state restore. 21 control states and 35 SVG geometry cases match source. Software shadow bottleneck moved to GPU without changing motion; idle release profile averaged 16.6ms frames and 1.36ms scene CPU work. Corrected the header to use Home on activity routes, independently of HUD presence, matching original entrypoint.js showHome and santa-chrome.js click dispatch.",
+      "agent_progress": "Native Elf Maker includes all original character choices/colours/backgrounds, weighted randomization, eight arm-motion sequences, blinking, responsive control strip, photo capture/export and original-format state restore. 21 control states and 35 SVG geometry cases match source. Software shadow bottleneck moved to GPU without changing motion; idle release profile averaged 16.6ms frames and 1.36ms scene CPU work. Corrected the header to use Home on activity routes, independently of HUD presence, matching original entrypoint.js showHome and santa-chrome.js click dispatch. Restored the original main-panel inset shadow from its exact CSS raster, preserving its fixed blur width across desktop and mobile panels.",
       "agent_known_issues": [
         "Native file export replaces host URL sharing.",
         "Photo perspective/reveal/hide, save-button transitions, keyboard focus/accessibility, full touch and all responsive sizes need further source matching.",
@@ -149,7 +149,8 @@
         "rust/data/new-scenes-performance.json",
         "rust/SOURCE-COVERAGE.md",
         "rust/src/village.rs activity_menu",
-        "rust/src/chrome.rs activity_navigation_is_independent_of_hud"
+        "rust/src/chrome.rs activity_navigation_is_independent_of_hud",
+        "rust/assets/elfmaker-panel-shadow.png"
       ]
     },
     {
@@ -198,7 +199,7 @@
       "user_notes": "",
       "priority": "normal",
       "agent_status": "partial",
-      "agent_progress": "Playable native Elf Glider with source FIFO pools/random consumption, movement, delayed repeat drops, gravity/chimney scores, items/obstacles, callbacks across pause/restart, responsive art/backgrounds, sprite phases, tutorials, original audio actions and shared HUD/overlays. Seven original scenarios compare 52 states at 1e-7; 147 motion threshold samples and 14 animation lifecycle checkpoints are checked. Five controlled captures have mean RGB errors 0.44–0.68/255.",
+      "agent_progress": "Playable native Elf Glider with source FIFO pools/random consumption, movement, delayed repeat drops, gravity/chimney scores, items/obstacles, callbacks across pause/restart, responsive art/backgrounds, sprite phases, tutorials, original audio actions and shared HUD/overlays. Seven original scenarios compare 52 states at 1e-7; 147 motion threshold samples and 14 animation lifecycle checkpoints are checked. Five controlled captures have mean RGB errors 0.44\u20130.68/255.",
       "agent_known_issues": [
         "Native OS device-orientation/motion sensor delivery is not connected; translated motion calculations alone do not provide native tilt control.",
         "More score/effect/resize/input states and complete audio bus/mixer behavior need comparisons.",

@@ -577,3 +577,22 @@ Refreshed initial native/original captures at 1440, 768 and 375 by 800 have mean
 RGB errors of 0.025, 0.196 and 0.329 out of 255 respectively. These idle captures
 check initial geometry only. An owned native window was exercised through
 movement, pause/resume, full restart and Home without a crash.
+
+## Elf Maker panel inset shadow correction (2026-10-24)
+
+The reported faint shading at the main-panel/control-strip boundary was missing.
+The original elfmaker.scss #main rule uses
+`box-shadow: inset 0 -12px 12px -12px rgba(0, 0, 0, 0.125)`.
+The native renderer previously drew only the background and elf. It now paints
+the inset shadow after the background and before the children, matching CSS
+stacking. No artwork edges, geometry or animation timings were changed.
+
+elfmaker-panel-shadow.png is a transparent 96x96 raster of that exact original
+CSS declaration, exported with Chromium at device scale 1. Its 36px nine-slice
+edges preserve the blur rather than stretching it with the panel. A separate
+original-CSS raster at 1440x662, 768x662 and 375x400 was compared to the assembled
+native mask: every RGBA byte matched at all three sizes. This checks this shadow
+only; it does not certify the entire scene or explain other image-edge issues.
+
+Release build and owned-window captures passed at 1440x800 and 375x800.
+Both were visually inspected, including the lower panel edge.

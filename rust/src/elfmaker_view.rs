@@ -101,6 +101,7 @@ pub struct ElfMakerView {
     drag: Option<(Vec2, f32)>,
     last_time: f64,
     shadow: crate::elf_shadow::ElfShadow,
+    panel_shadow: Texture2D,
 }
 impl ElfMakerView {
     pub fn new() -> Result<Self, String> {
@@ -127,6 +128,10 @@ impl ElfMakerView {
             drag: None,
             last_time: 0.,
             shadow: crate::elf_shadow::ElfShadow::new()?,
+            panel_shadow: Texture2D::from_file_with_format(
+                include_bytes!("../assets/elfmaker-panel-shadow.png"),
+                Some(ImageFormat::Png),
+            ),
         })
     }
     pub fn reset(&mut self) {
@@ -144,6 +149,32 @@ impl ElfMakerView {
             .as_str()
             .unwrap();
         cover(a.scene("elfmaker", bg.strip_prefix("img/").unwrap()), main);
+        // #main paints its inset box-shadow above its background, below children.
+        // The original CSS shadow is rasterized into a 96px nine-slice mask;
+        // its fixed 36px edges preserve the blur at every panel size.
+        let source = [0., 36., 60., 96.];
+        let xs = [0., 36., w - 36., w];
+        let ys = [0., 36., fy - 36., fy];
+        for y in 0..3 {
+            for x in 0..3 {
+                draw_texture_ex(
+                    &self.panel_shadow,
+                    xs[x],
+                    ys[y],
+                    WHITE,
+                    DrawTextureParams {
+                        source: Some(Rect::new(
+                            source[x],
+                            source[y],
+                            source[x + 1] - source[x],
+                            source[y + 1] - source[y],
+                        )),
+                        dest_size: Some(vec2(xs[x + 1] - xs[x], ys[y + 1] - ys[y])),
+                        ..Default::default()
+                    },
+                );
+            }
+        }
         let eh = (fy - 32.).max(1.);
         let ew = eh * 400. / 560.;
         let er = Rect::new((w - ew) / 2., 16., ew, eh);
