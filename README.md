@@ -18,13 +18,13 @@ Using the javascript code of Google Santa Tracker I remade the logic function by
 | Elf Jetpack | 1:1 |
 | Santa Selfie | 1:1 |
 | Elf Ski | Almost 1:1 |
-| Present Drop | Playable — partial fidelity |
-| Gift Slingshot | Playable — partial fidelity |
-| Elf Maker | Playable — partial fidelity |
-| Elf Jamband | Playable — partial fidelity |
-| Elf Glider | Playable — partial fidelity |
-| Penguin Dash | Playable — partial fidelity |
-| Christmas Tracking | Not implemented |
+| Present Drop | Resembles |
+| Gift Slingshot | Resembles |
+| Elf Maker | Resembles |
+| Elf Jamband | Resembles |
+| Elf Glider | Resembles |
+| Penguin Dash | Resembles |
+| Christmas Tracking | Unplayable |
 
 # Running locally
 
