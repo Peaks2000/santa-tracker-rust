@@ -187,6 +187,7 @@ fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
 fn scene_keys(root: &Path, scene: &str) -> Result<Vec<String>, String> {
     let mut keys = vec![];
     let tutorials: &[&str] = match scene {
+        "penguindash" => &["keys-arrows", "device-tilt"],
         "glider" => &["keys-arrows", "keys-space", "device-tilt"],
         "runner" => &["touch-updown", "keys-updown"],
         "jetpack" => &["touch-updown", "keys-leftright", "keys-updown"],

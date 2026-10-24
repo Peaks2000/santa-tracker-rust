@@ -591,6 +591,7 @@ mod tests {
     fn activity_navigation_is_independent_of_hud() {
         assert_eq!(navigation_icon("modvil"), "menu");
         for route in [
+            "penguindash",
             "jamband",
             "elfmaker",
             "santaselfie",

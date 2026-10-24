@@ -23,6 +23,7 @@ Using the javascript code of Google Santa Tracker I remade the logic function by
 | Elf Maker | Playable — partial fidelity |
 | Elf Jamband | Playable — partial fidelity |
 | Elf Glider | Playable — partial fidelity |
+| Penguin Dash | Playable — partial fidelity |
 | Christmas Tracking | Not implemented |
 
 # Running locally

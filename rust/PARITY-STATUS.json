@@ -363,10 +363,22 @@
       "user_happy": "unreviewed",
       "user_notes": "",
       "priority": "normal",
-      "agent_status": "not_started",
-      "agent_progress": "Original source available; no native scene implementation yet.",
-      "agent_known_issues": [],
-      "agent_evidence": []
+      "agent_status": "partial",
+      "agent_progress": "Playable native Penguin Dash with the ten active source levels, source image/sprite artwork, original water video frames, arrow controls, Arcade movement/collision rules, fast ice, moving platforms, pickups, falling/retry penalties, level progression, tutorial, HUD and audio actions. 116 original Phaser checkpoints (including player frames and pause during a fall), 1,076 object/body layouts and 108 orientation inputs match. Three initial viewport captures are close; full-mode parity remains under review.",
+      "agent_known_issues": [
+        "Native OS tilt-sensor delivery and the associated device-lock message are not implemented; orientation math is tested separately.",
+        "Broader moving/rotated scene captures, all character/wave/level-transition phases and audio listening/mixer checks remain unverified.",
+        "Native restart currently regenerates the deterministic seed layout; original continuous random consumption across full-game restarts still needs matching.",
+        "Source video frames are decoded to lossless PNG for native playback; further paused-video/frame-phase and presentation checks remain."
+      ],
+      "agent_evidence": [
+        "rust/data/penguin-reference.json",
+        "rust/data/penguin-source-layout.json",
+        "rust/data/penguin-motion-reference.json",
+        "rust/data/penguin-capture-reference.json",
+        "rust/data/penguin-capture-errors.json",
+        "rust/SOURCE-COVERAGE.md"
+      ]
     },
     {
       "id": "playground",
@@ -714,10 +726,11 @@
       "Shared identical Shapes GPU resources to avoid Macroquad's 32-pipeline startup limit.",
       "Maker software drop-shadow cost isolated and moved to a GPU Gaussian kernel; idle frame intervals improved to about 60 fps without changing animation clocks.",
       "Restored the shared selector in activity scenes; Jamband and Maker hamburger/card navigation release checks pass.",
-      "Added Elf Glider with source simulation, CSS lifecycle/sprite, responsive screenshot and motion-threshold comparisons."
+      "Added Elf Glider with source simulation, CSS lifecycle/sprite, responsive screenshot and motion-threshold comparisons.",
+      "Added native Penguin Dash with ten source levels, real-Phaser state/body/player-frame comparisons, original video frames and responsive captures."
     ],
     "remaining": [
-      "Ten native scenes remain partial; 45 source scenes have no native implementation.",
+      "Eleven native scenes remain partial; 44 source scenes have no native implementation.",
       "Other modes still need individual edge/capture checks. Existing shared edge bleed and opaque target copy remain active.",
       "Whole-site smoothness and minimum input latency are not verified; presentation stalls contaminated post-change desktop profiles.",
       "Cold village image/Lottie parsing and first-use Ogg decode still run on the main thread.",
@@ -734,7 +747,9 @@
       "Owned release smoke: Boatload tutorial delay/next hint, key dismissal and pause/resume; all saved output alpha 255.",
       "rust/data/new-scenes-performance.json",
       "rust/data/glider-performance.json",
-      "rust/data/glider-reference.json"
+      "rust/data/glider-reference.json",
+      "rust/data/penguin-reference.json",
+      "rust/data/penguin-capture-errors.json"
     ]
   },
   "agent_tracking": {

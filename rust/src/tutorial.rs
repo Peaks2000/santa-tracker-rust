@@ -89,6 +89,7 @@ impl Tutorial {
     pub fn for_scene(&mut self, scene: &str, now: f64) {
         self.reset();
         let names: &[&str] = match scene {
+            "penguindash" => &["device-tilt", "keys-arrows", "spacenav-arrows"],
             "glider" => &[
                 "device-tilt",
                 "keys-arrows",

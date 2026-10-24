@@ -49,6 +49,10 @@ pub enum Command {
         offset: f64,
         end: Option<f64>,
     },
+    SourceGain {
+        id: String,
+        volume: f32,
+    },
     PanSource {
         id: String,
         pan: f32,
@@ -96,6 +100,11 @@ impl Mixer {
     pub fn mix(&mut self, output: &mut [f32]) {
         for command in self.commands.try_iter() {
             match command {
+                Command::SourceGain { id, volume } => {
+                    for v in self.voices.iter_mut().filter(|v| v.id == id) {
+                        v.volume = volume;
+                    }
+                }
                 Command::Stop => self.voices.clear(),
                 Command::PanSource { id, pan } => {
                     let pan = pan.clamp(-1., 1.);

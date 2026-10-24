@@ -10,6 +10,7 @@ mod jamband_view;
 mod jetpack_view;
 mod loader_animation;
 mod overlay;
+mod penguin_view;
 mod presentdrop_view;
 mod profile;
 mod render;
@@ -77,7 +78,7 @@ fn options() -> Result<Option<Options>, String> {
     while let Some(arg) = args.next() {
         match arg.as_str() {
             "--help" | "-h" => {
-                println!("Santa Tracker — native Rust port (in development)\n\nAvailable: village, Runner, Elf Jetpack, Santa Selfie, Elf Ski, Present Drop, Gift Slingshot, Elf Maker, Elf Jamband and Elf Glider.\n\n--assets PATH       Original static assets directory\n--seed TEXT         Deterministic game seed\n--mute              Start without audio\n--scene NAME        modvil, runner, jetpack, santaselfie, elfski, presentdrop, boatload, elfmaker, jamband or glider\n--scroll PIXELS     Initial village scroll position\n--beard-file PATH   Restore an original-format saved beard\n--elf-file PATH     Restore an original-format saved elf\n--band-file PATH    Restore an original-format saved band\n--advance SECONDS   Advance the selected scene before rendering\n--frames COUNT      Exit after COUNT frames (for native render checks)\n--screenshot PATH   Save the final rendered frame (or F12 live)\n--width PIXELS      Initial window width\n--height PIXELS     Initial window height\n--clock-ms EPOCH    Deterministic countdown clock for comparisons\n--profile PATH      Measure live frame intervals and CPU work to JSON\n--profile-frames N  Measured live frames after 30 warmup frames (default 240)\n\nControls: Space/Up jump (twice), Down slide, P pause, R restart, M mute, Escape home");
+                println!("Santa Tracker — native Rust port (in development)\n\nAvailable: village, Runner, Elf Jetpack, Santa Selfie, Elf Ski, Present Drop, Gift Slingshot, Elf Maker, Elf Jamband, Elf Glider and Penguin Dash.\n\n--assets PATH       Original static assets directory\n--seed TEXT         Deterministic game seed\n--mute              Start without audio\n--scene NAME        modvil, runner, jetpack, santaselfie, elfski, presentdrop, boatload, elfmaker, jamband, glider or penguindash\n--scroll PIXELS     Initial village scroll position\n--beard-file PATH   Restore an original-format saved beard\n--elf-file PATH     Restore an original-format saved elf\n--band-file PATH    Restore an original-format saved band\n--advance SECONDS   Advance the selected scene before rendering\n--frames COUNT      Exit after COUNT frames (for native render checks)\n--screenshot PATH   Save the final rendered frame (or F12 live)\n--width PIXELS      Initial window width\n--height PIXELS     Initial window height\n--clock-ms EPOCH    Deterministic countdown clock for comparisons\n--profile PATH      Measure live frame intervals and CPU work to JSON\n--profile-frames N  Measured live frames after 30 warmup frames (default 240)\n\nControls: Space/Up jump (twice), Down slide, P pause, R restart, M mute, Escape home");
                 return Ok(None);
             }
             "--mute" => out.mute = true,
@@ -136,6 +137,7 @@ fn options() -> Result<Option<Options>, String> {
                             "elfmaker",
                             "jamband",
                             "glider",
+                            "penguindash",
                         ]
                         .contains(&value.as_str())
                         {
@@ -287,6 +289,12 @@ async fn run(opts: Options) {
         sound.glider_load(&assets.root);
         glider.advance(opts.advance);
     }
+    let mut penguin = santa_tracker::penguindash::PenguinDash::new(&opts.seed);
+    let mut penguin_view = penguin_view::PenguinView::new(&opts.seed);
+    if route == "penguindash" {
+        penguin.advance(opts.advance);
+        sound.penguin_load(&assets.root);
+    }
     let mut loaded = std::collections::HashSet::new();
     let mut unavailable: Option<String> = None;
     let mut accumulated = 0.;
@@ -351,6 +359,10 @@ async fn run(opts: Options) {
                     sound.jamband_start(&assets.root);
                 }
                 "glider" => glider.restart(),
+                "penguindash" => {
+                    penguin.restart();
+                    penguin_view = penguin_view::PenguinView::new(&opts.seed);
+                }
                 "boatload" => boat.restart(),
                 "runner" => runner.restart(),
                 "elfski" => {
@@ -374,6 +386,14 @@ async fn run(opts: Options) {
         tutorial.prepare(&assets, get_time());
         if opts.profile.is_none() && is_key_pressed(KeyCode::P) {
             match route.as_str() {
+                "penguindash" => {
+                    if penguin.paused {
+                        penguin.resume()
+                    } else {
+                        penguin.pause()
+                    }
+                    sound.paused(penguin.paused);
+                }
                 "glider" => {
                     if glider.paused {
                         glider.resume()
@@ -409,12 +429,21 @@ async fn run(opts: Options) {
             && !interlude.busy()
             && match route.as_str() {
                 "glider" => glider.playing && !glider.paused,
+                "penguindash" => penguin.running(),
                 "runner" => runner.playing && !runner.paused,
                 "jetpack" => jetpack.playing && !jetpack.paused,
                 "santaselfie" => !selfie.paused && !selfie_view.export_open,
                 "elfski" | "presentdrop" | "boatload" | "elfmaker" | "jamband" => true,
                 _ => false,
             };
+        if route == "penguindash" && opts.frames.is_none() && !just_loaded {
+            penguin.wall_step(get_frame_time() as f64);
+            penguin.input = if active && !village.menu && opts.profile.is_none() {
+                penguin_view::PenguinView::input()
+            } else {
+                Default::default()
+            };
+        }
         if route == "santaselfie" && opts.frames.is_none() && !just_loaded {
             selfie.wall_step(get_frame_time() as f64);
         }
@@ -432,6 +461,7 @@ async fn run(opts: Options) {
         }
         let tutorial_playing = match route.as_str() {
             "glider" => glider.playing && !glider.paused,
+            "penguindash" => penguin.running(),
             "runner" => runner.playing && !runner.paused,
             "jetpack" => jetpack.playing && !jetpack.paused,
             "presentdrop" => drop_game.playing && !drop_game.paused,
@@ -510,6 +540,7 @@ async fn run(opts: Options) {
                     "runner" => runner.step(tick),
                     "jetpack" => jetpack.step(tick, jet_input),
                     "glider" => glider.step(tick),
+                    "penguindash" => penguin.step(),
                     "presentdrop" => drop_game.step(tick),
                     "elfski" => ski.step(
                         tick,
@@ -534,6 +565,15 @@ async fn run(opts: Options) {
         clear_background(BLACK);
         let mut selected = None;
         match route.as_str() {
+            "penguindash" => {
+                for event in penguin.sounds.drain(..) {
+                    sound.trigger(event, &assets.root);
+                }
+                sound.penguin_slide(&penguin, &assets.root);
+                scene_filter.begin();
+                penguin_view.draw(&assets, &penguin);
+                scene_filter.finish(penguin.paused || penguin.gameover);
+            }
             "modvil" => {
                 selected = village.draw(&mut assets);
                 for event in village.sounds.drain(..) {
@@ -633,10 +673,13 @@ async fn run(opts: Options) {
             "presentdrop",
             "boatload",
             "glider",
+            "penguindash",
         ]
         .contains(&route.as_str())
         {
-            let (paused, gameover) = if route == "glider" {
+            let (paused, gameover) = if route == "penguindash" {
+                (penguin.paused, penguin.gameover)
+            } else if route == "glider" {
                 (glider.paused, !glider.playing && !glider.paused)
             } else if route == "boatload" {
                 (boat.paused, !boat.playing)
@@ -655,7 +698,9 @@ async fn run(opts: Options) {
             {
                 match action {
                     overlay::Action::Resume => {
-                        if route == "glider" {
+                        if route == "penguindash" {
+                            penguin.resume();
+                        } else if route == "glider" {
                             glider.resume();
                         } else if route == "boatload" {
                             boat.paused = false;
@@ -670,7 +715,10 @@ async fn run(opts: Options) {
                     }
                     overlay::Action::Restart => {
                         sound.stop();
-                        if route == "glider" {
+                        if route == "penguindash" {
+                            penguin.restart();
+                            penguin_view = penguin_view::PenguinView::new(&opts.seed);
+                        } else if route == "glider" {
                             glider.restart();
                         } else if route == "boatload" {
                             boat.restart();
@@ -707,6 +755,15 @@ async fn run(opts: Options) {
             }
         }
         let hud = match route.as_str() {
+            "penguindash" => Some(chrome::GameHud {
+                playing: !penguin.gameover,
+                paused: penguin.paused,
+                score: penguin.score,
+                countdown: penguin.elapsed,
+                level: Some(penguin.level as u32),
+                badge: true,
+                can_pause: true,
+            }),
             "glider" => Some(chrome::GameHud {
                 playing: glider.playing || glider.paused,
                 paused: glider.paused,
@@ -781,6 +838,14 @@ async fn run(opts: Options) {
                 chrome::Action::Menu => village.menu = !village.menu,
                 chrome::Action::Mute => sound.mute(),
                 chrome::Action::Pause => match route.as_str() {
+                    "penguindash" => {
+                        if penguin.paused {
+                            penguin.resume()
+                        } else {
+                            penguin.pause()
+                        }
+                        sound.paused(penguin.paused);
+                    }
                     "glider" => {
                         if glider.paused {
                             glider.resume()
@@ -812,6 +877,10 @@ async fn run(opts: Options) {
                     match route.as_str() {
                         "presentdrop" => drop_game.restart(),
                         "glider" => glider.restart(),
+                        "penguindash" => {
+                            penguin.restart();
+                            penguin_view = penguin_view::PenguinView::new(&opts.seed);
+                        }
                         "boatload" => boat.restart(),
                         "runner" => runner.restart(),
                         "elfski" => {
@@ -846,6 +915,7 @@ async fn run(opts: Options) {
                 "elfmaker",
                 "jamband",
                 "glider",
+                "penguindash",
             ]
             .contains(&target.as_str())
             {
@@ -887,6 +957,7 @@ async fn run(opts: Options) {
                 "elfmaker",
                 "jamband",
                 "glider",
+                "penguindash",
             ]
             .contains(&target.as_str())
             {
@@ -930,6 +1001,11 @@ async fn run(opts: Options) {
                         jam = santa_tracker::jamband::Jamband::new(&opts.seed);
                         jam_view.reset();
                         sound.jamband_start(&assets.root);
+                    }
+                    "penguindash" => {
+                        penguin = santa_tracker::penguindash::PenguinDash::new(&opts.seed);
+                        penguin_view = penguin_view::PenguinView::new(&opts.seed);
+                        sound.penguin_load(&assets.root);
                     }
                     "glider" => {
                         let (w, h, _) = santa_tracker::glider::Glider::dimensions(

@@ -1,0 +1,20 @@
+[
+  {
+    "width": 1440,
+    "height": 800,
+    "time": 0,
+    "mean_rgb_error_out_of_255": 0.024901909722222223
+  },
+  {
+    "width": 768,
+    "height": 800,
+    "time": 0,
+    "mean_rgb_error_out_of_255": 0.19642903645833334
+  },
+  {
+    "width": 375,
+    "height": 800,
+    "time": 0,
+    "mean_rgb_error_out_of_255": 0.3196411111111111
+  }
+]

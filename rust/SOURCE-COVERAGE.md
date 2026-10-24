@@ -459,3 +459,77 @@ Jamband and Maker which have no GameHud.
 Validation: 43 Rust tests pass and the release build succeeds. Release captures
 show Home in Jamband and Maker; owned-window clicks enter the home transition
 from both activities. Existing user windows were left open.
+
+### Penguin Dash — native port (partial)
+
+Read every line of constants.js, game.js, start.js, preloader.js, penguin.js,
+wave.js and config/levels.js, the complete scene HTML, scene SCSS, lockscreen
+partial and shared level-up SCSS/JS. Rechecked Scoreboard and the used Phaser
+Arcade body pre/post updates, AABB/separation, default camera follow, shortest
+angle, sprite-child transforms and tween lifecycle. Read every pnd_* Klang
+action. The browser engine remains development reference material only.
+
+The native model uses the first ten configured levels; the five old levels
+remaining in the source array are retained as reference data and not exposed.
+All 1,076 generated objects match source keys, positions, signed visual sizes
+(accounting for flips) and body rectangles. This includes the invisible pole
+image's real collider, obstacle offsets, zero-sized character bodies, rotated/
+flipped finish anchors, generated shadows and seeded presents. Present Y
+placement intentionally uses tile width, as in the source. Dead-level retries
+retain collected presents and the current moving-platform offset.
+
+116 checkpoints execute original Start/Penguin with the bundled real Phaser
+engine, not a replacement physics mock. The development harness manually drives
+its stage pre/state/tween/post pipeline at 60 Hz and the source counter at one
+second intervals, and controls JS wall callbacks. They cover keyboard inertia,
+angle steering, fast-ice entry, obstacle collision, falling/death retry, pause,
+pause during a pending fall, moving platforms, gifts and finishes on all ten
+levels. Player sprite frame indices are compared alongside gameplay state.
+108 direct original orientation cases check truthy alpha/beta/gamma gating,
+paused/dead filtering, asymmetric axis gains and tutorial dismissal. OS sensor
+input is not connected in the desktop application.
+
+Arcade integrates the previous velocity before scene input changes it. Fast ice
+skips snow decay and doubles velocity only on entry. Falling decays velocity
+by 0.93 per tick and retries after a 2.5-second JS wall timeout, adding 20
+seconds to the count-up clock. That timeout can unpause the engine while the
+outer paused flag remains set; the native model keeps those flags separate.
+The old level remains visible until the level-up callback covers the scene.
+Level completion stops platform tweens on the finish tick; the source's sprite
+transform/body lag after a level reset is preserved. Final level completion
+has no extra +50 award. The unused celebrating animation is retained without
+inventing a gameplay trigger. The original final analytics path reads an
+undefined this.scoreboard after freezing/showing game-over; the oracle ignores
+that analytics exception only after those effects, and native does not panic.
+
+Rendering uses original PNG sheets (including the actual 15 available dust
+frames), source anchors, child shadow/dust transforms, original character
+sequences, camera rounding and world bounds. The original water MP4 is decoded
+into 194 full-resolution PNG frames with Chromium, preserving its browser color
+conversion; native decoding runs on a bounded background worker and uploads
+only arriving frames. Initial captures at 1440x800, 768x800 and 375x800 have
+mean RGB errors 0.025, 0.196 and 0.320/255 respectively. These measure the
+initial scene canvas, not all animations or the site's shared toolbar.
+
+All source sound actions are mapped, including delayed freeze/fail, pickup,
+restart, hit, level completion, slide start/stop, velocity-based slide gain and
+the two-second fast-ice sound throttle. Full audio group selection/bus/pitch
+fidelity and listening comparisons remain partial. Source level-up geometry/
+easing is translated, but every phase still needs matched browser captures.
+The desktop port does not claim full touch/tilt, accessibility or whole-mode
+1:1 certification. Full-game restart still uses the supplied deterministic
+seed layout; source continuous RNG consumption across restarts needs follow-up.
+
+Owned release UI checks verified arrow movement, pause/resume, restart and
+Home returning to the village. Synthetic X11 key timestamps were corrected
+in the development checker so repeated keys are not mistaken for autorepeat.
+A 120-frame idle release profile after 30 warmup frames measured
+7.07ms mean frame intervals (p95 9.36ms,
+max 14.46ms), 1.62ms scene CPU work and
+1.67ms total CPU work. This includes water frame uploads;
+it does not measure input-to-photon latency. See penguin-performance.json.
+All 46 Rust tests pass.
+
+Final distribution validation: all 46 tests pass against the Rust-only checkout.
+Release startup/opaque captures pass for all eleven scenes using its assets.
+Penguin audio predecode/mixing also passes with SDL dummy (not a listening test).

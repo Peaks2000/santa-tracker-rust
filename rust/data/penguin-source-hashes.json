@@ -1,0 +1,12 @@
+{
+  "static/scenes/penguindash/index.html": "4ac2db83a9d4ec43aa9a1c0fa8f08363b1ef3370a947bdf48cba7b6ac4273662",
+  "static/scenes/penguindash/js/config/levels.js": "b1b10e444ca732727e62c9a79520c3f084d5613da5e5f7cdab2867dc8f60362d",
+  "static/scenes/penguindash/js/constants.js": "0e42c340db133c3d7cb2a5702a0baef9424338f9739ac268696c899dc864e558",
+  "static/scenes/penguindash/js/game.js": "f33896000eada1a0c42ec0729ce75a11124cef7ea20952c560834f22df27517a",
+  "static/scenes/penguindash/js/penguin.js": "f147dd41f33d6c147421c6e9ab6ad94ed4730a5c0e49eead3d42962f44aa799f",
+  "static/scenes/penguindash/js/preloader.js": "0c970d3abd846dc3221958f4c563b00e95237aba3ec0679542e7837251f007a1",
+  "static/scenes/penguindash/js/start.js": "2237223191422a1c0ec391187aab68eb19a00e086369eca4e6a1cf8f94021d70",
+  "static/scenes/penguindash/js/wave.js": "35a5dfcf0bd1cb60db770dd7c4d5c4c04825d19dcec2e493bdcf0c52be84812e",
+  "static/scenes/penguindash/penguindash-scene.scss": "9f0ec2a9bd00752657976d5cca5950e81271bbb725f6b61c42d6a8ae8d779473",
+  "static/scenes/penguindash/sass/_lockscreen.scss": "d560f324b80f1e89e64159a02645bf679fc306bd5b82dcfdd2019f837969e90c"
+}

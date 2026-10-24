@@ -124,6 +124,7 @@ pub struct Sound {
     config: Value,
     jamband_voices: Vec<(usize, f64, f64, f64, Option<f64>)>,
     maker_switches: usize,
+    penguin_fast_at: f64,
     samples: HashMap<String, Arc<Sample>>,
     commands: Sender<Command>,
     muted: bool,
@@ -147,6 +148,7 @@ impl Sound {
             config: serde_json::from_str(include_str!("../data/audio.json")).unwrap(),
             jamband_voices: vec![],
             maker_switches: 0,
+            penguin_fast_at: 0.,
             samples: HashMap::new(),
             commands,
             muted,
@@ -205,6 +207,34 @@ impl Sound {
                     }
                 }
             }
+        }
+    }
+    pub fn penguin_load(&mut self, root: &Path) {
+        self.preload_keys(
+            &[
+                "uJOW", "R00y", "b0lp", "wEEX", "AhMK", "PxMS", "pDO1", "U5AB", "HIRS", "lUXp",
+                "BS8g", "DjPW", "e52U", "Sr1v", "YN6Y", "TcWr",
+            ],
+            root,
+        );
+    }
+    pub fn penguin_slide(&mut self, g: &santa_tracker::penguindash::PenguinDash, root: &Path) {
+        let volume = if g.dead || g.paused || g.transition || g.gameover {
+            0.
+        } else {
+            ((g.vx.abs() + g.vy.abs()) / 1000.).min(1.) as f32
+        };
+        let _ = self.commands.send(Command::SourceGain {
+            id: "YN6Y".into(),
+            volume,
+        });
+        if g.on_fast
+            && !g.paused
+            && !g.dead
+            && macroquad::time::get_time() - self.penguin_fast_at > 2.
+        {
+            self.penguin_fast_at = macroquad::time::get_time();
+            self.trigger("pnd_fast_ice", root);
         }
     }
     pub fn glider_load(&mut self, root: &Path) {
@@ -330,6 +360,15 @@ impl Sound {
         // Native translations of the original focused scenes' Klang actions.
         // An empty action stays empty; stop actions never restart their sources.
         let actions: Option<&[(&str, bool, f64, f64)]> = match event {
+            "pnd_fast_ice" => Some(&[("hLTb", true, 0., 0.)]),
+            "pnd_freeze" => Some(&[("wEEX", true, 0., 0.), ("AhMK", true, 0.5, 0.)]),
+            "pnd_game_over" => Some(&[("PxMS", true, 0., 0.)]),
+            "pnd_hit" => Some(&[("ZAsU", true, 0., 0.)]),
+            "pnd_level_up" => Some(&[("lUXp", true, 0., 0.), ("PxMS", true, 0., 0.)]),
+            "pnd_pickup" => Some(&[("gPwn", true, 0., 0.)]),
+            "pnd_restart" => Some(&[("Sr1v", true, 0., 0.)]),
+            "pnd_slide_start" => Some(&[("YN6Y", true, 0., 0.)]),
+            "pnd_slide_stop" => Some(&[("YN6Y", false, 0., 0.)]),
             "music_start_ingame" => Some(&[("TcWr", true, 0., 0.2)]),
             "music_start_scene" => Some(&[("OckO", true, 0., 0.2)]),
             "elfmaker_switch_type" => Some(&[("h54h", true, 0., 0.)]),
