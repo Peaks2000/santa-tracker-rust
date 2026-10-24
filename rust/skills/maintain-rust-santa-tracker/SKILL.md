@@ -47,7 +47,7 @@ The user wants optimizations to preserve gameplay, appearance and animation timi
 
 Do not close or replace a window the user is testing. Smoke checks should own and terminate their own process. Screenshots of the original and native app are authorized for this project.
 
-Christmas tracking must only be exposed during the delivery flight (Dec 24 10:00 UTC to Dec 25 11:00 UTC, end exclusive), per the user. The original web season helper additionally permits Dec 1-25 subject to remote config; distinguish that from the user-requested delivery visibility. Route math/gating is currently in `tracker.rs`; its passing oracle tests do not mean the unfinished native map/UI works. Preserve that distinction in reports.
+Christmas tracking must only be exposed during the delivery flight (Dec 24 10:00 UTC to Dec 25 11:00 UTC, end exclusive), per the user. The original web season helper additionally permits Dec 1-25 subject to remote config; distinguish that from the user-requested delivery visibility. Route math/gating is in `tracker.rs`; `tracker_control.rs` supplies the one-second clock, marker/trail state, stop selection, refocus, camera commands and stats. `tracker_reference` is a headless diagnostic. These passing oracles do not mean the unfinished native map/UI or online refresh works. Preserve that distinction in reports.
 
 ## Build, check and publish
 

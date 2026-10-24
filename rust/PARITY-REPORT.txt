@@ -75,8 +75,10 @@ are implemented. Visibility is restricted to Dec 24 10:00 UTC through
 Dec 25 11:00 UTC (end exclusive), as requested. Outside this window the
 route entry point returns no tracking details. This is currently a library
 and headless diagnostic, not a working tracking screen in the application.
-Google Maps, stop markers/trails, feed/photos, focus/zoom and online refresh
-are still missing. The bundled data is the original configured endpoint's
+Marker/trail state, stop selection, 20-second refocus, camera commands and
+English stats formatting now match original controller comparisons. Actual
+map rendering, feed/photos, native geolocation, persistent cache and online
+refresh remain missing. The bundled data is the original configured endpoint's
 2019 schedule shifted to the selected year, as in the original fetchRoute.
 
 NOT IMPLEMENTED AS NATIVE SCENES

@@ -756,16 +756,18 @@
   "agent_tracking": {
     "status": "core_tested_ui_missing",
     "visibility": "Only Dec 24 10:00 UTC through Dec 25 11:00 UTC (exclusive), per user request. No off-season tracker details through the visibility-gated API.",
-    "progress": "420-stop original route schedule, year skew, great-circle interpolation, distance, heading, presents, stop timings and nearest-stop calculations translated to Rust; 3,020 source states and seasonal boundaries tested.",
+    "progress": "420-stop original route schedule, year skew, great-circle interpolation, distance, heading, presents, stop timings and nearest-stop calculations translated to Rust; 3,020 source states and seasonal boundaries tested. Native tracker controller now includes one-second adjusted clock, marker visibility and active/20 fading trails, current/temporary destination selection, visited feed-stop IDs, 20-second auto-refocus, source camera zoom/pan commands, mobile gesture controls and exact English stats formatting. 3,020 original StopManager states, 18 controller states, 12 clock adjustments and formatter/nearest-arrival cases match. Photo attribution metadata is retained in typed route details.",
     "remaining": [
-      "Native map and tracker screen are not implemented.",
-      "Markers/trails, feed/photos, map focus/zoom, online refresh and full UI layout still require work."
+      "Native map and tracker screen are not implemented; controller commands are available to a future native renderer.",
+      "Google Maps tiles/overlays, feed/media playback, photo loading/animation, persistent route cache, remote config, online refresh and native geolocation remain unfinished."
     ],
     "evidence": [
       "rust/src/tracker.rs",
       "rust/data/tracker-reference.json",
       "rust/examples/tracker_reference.rs",
-      "rust/SOURCE-COVERAGE.md"
+      "rust/SOURCE-COVERAGE.md",
+      "rust/src/tracker_control.rs",
+      "rust/data/tracker-control-reference.json"
     ]
   }
 }

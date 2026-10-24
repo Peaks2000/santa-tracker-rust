@@ -128,3 +128,5 @@ mod tests {
 }
 
 pub mod penguindash;
+
+pub mod tracker_control;

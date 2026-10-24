@@ -596,3 +596,82 @@ only; it does not certify the entire scene or explain other image-edge issues.
 
 Release build and owned-window captures passed at 1440x800 and 375x800.
 Both were visually inspected, including the lower panel edge.
+
+## Christmas tracking controller logic (2026-10-24)
+
+Re-read the complete maputils.js (544 lines), modvil-tracker.js (393), stats.js
+(142), feed.js (183), photos.js (296), photo.js (68), spherical.js, season.js,
+tracker/stats Sass and the index.html config/route lifecycle. This correction
+ports controller logic, not a map renderer. Earlier statements that the
+marker/trail and camera *logic* are missing are superseded below; the actual
+native tracking screen remains missing.
+
+Source-to-native mapping:
+- StopManager constructor/update -> tracker_control::Markers. Initially only the
+  first marker is visible. Forward/backward time changes visibility; twenty
+  geodesic trail endpoint pairs retain source opacities, and the active leg
+  follows Santa between stops. Trail rebuild runs only when visibleTo changes;
+  home clears trails on that change, as in the source. Marker icons and real
+  Google Maps objects/click dispatch remain renderer work. destroy is native
+  object ownership; the source leaves polylines attached, which cannot affect
+  this renderer-independent model.
+- Tracker updateNow -> ClockAdjustment plus Tracker::tick. Sampling is once per
+  second, with an anchored monotonic cadence, source offset and jitter seconds
+  conversion. The jitter ratio is supplied to the controller; browser/local
+  storage persistence and remote config delivery are not implemented. The
+  user-requested gate uses the real calendar clock, not a debug/jitter offset.
+  Flight begins Dec 24 10:00 UTC, ends Dec 25 11:00 UTC exclusive, and route and
+  marker state rebase on a new year. Off-season tick/frame return no frame.
+- shouldUpdate -> route/marker update, feed stop IDs, destination/current stop,
+  heading/stopped/home state, mobile gestures/zoom control and focus commands.
+  Empty destinations retain the source home fallback but have no feed stop IDs.
+  Route detail photos/attributions are preserved; remote media are not loaded.
+- focusOnSanta, _onFocusSantaClick and map reset -> explicit focus/map_changed
+  calls, twenty-second deadline, cancellation and temporary-destination reset.
+  Repeated marker changes while already unfocused do not restart the timer.
+  Programmatic camera/resize events must not be submitted as user map changes.
+- _onMarkerClick -> marker_click, latest-stop refocus and selected destination.
+  Source tests `this.width` instead of `_width`, making its mobile early-return
+  ineffective; the controller preserves this quirk. Renderer hit-testing is
+  responsible for supplying actual marker clicks.
+- _setLocation -> Layout::camera, preserving min/max zoom 2..6, source rounding,
+  home/stop/flight/selected-stop offsets, open-photo 100px subtraction, desktop
+  40px heading allowance and vertical pan. The renderer must apply commands in
+  source fitBounds/setZoom/panBy order. Resize updates gesture options; changing
+  only width does not invent an immediate camera refocus.
+- stats formatDuration/formatArrivalTime/formatNumber and render data -> Stats.
+  Original English messages, half-hour thresholds, last-ten-minute arrival
+  hiding, rounded km, comma-separated numbers and countdown fields are ported.
+  Other-locale Intl formatting, icons and actual stats layout are not ported.
+- prepareMaps/elementMapsOverlay remain map API/DOM integration work. No API key
+  is repurposed and no substitute/fake map is added. Map event registration,
+  tile readiness/1500ms race, overlay projection and native IP-location lookup
+  are not provided by these renderer-independent commands.
+- DestinationsCache/fetch HTTP lifecycle, listener race protection, persistence
+  and live route replacement remain unfinished. The supplied 420-stop original
+  schedule is still used, skewed to each year just as the source does. This is
+  scheduled route simulation, not evidence of a newly fetched 2026 route.
+- Feed ItemChooser/runner, remote media backoff/playback/transitions, and photos
+  URL sizing, async cancellation/replacement, attribution UI and animations
+  remain explicitly unfinished. Reading their code is not an implementation.
+
+The development-only tracker-control-reference.cjs executes the original
+StopManager and actual tracker prototype methods. Maps marker/polyline objects
+and DOM nodes are spies recording commands; it does not test real map tiles,
+projection or painting. A UTC calendar and explicit wall timers isolate source
+state transitions. The original updateNow body is separately executed for 12
+offset/jitter combinations. The fixture includes 3,020 marker/trail states
+matching every existing route checkpoint (including reverse time), 18 controller
+states (selection, invalid/latest markers, timeout, mobile resize and the source
+mobile-click quirk), 23 formatting boundaries, number grouping and geographic/
+timezone nearest-stop cases. All match the native implementation. Separate
+native tests cover frame cadence, exact seasonal boundaries despite jitter,
+next-year rebasing, empty-route fallback and preservation of photo metadata.
+
+The tracker_reference example now outputs the full visibility-gated controller
+state for a real or supplied clock and timezone offset. It is a runnable native
+logic diagnostic, not a working map screen. Whole-site/scene ratings are unchanged.
+
+Validation: all 53 tests pass. The release diagnostic was exercised at October,
+takeoff, one hour into flight, the last flight second and the exclusive return
+boundary; visibility and serialized controller output matched those cases.

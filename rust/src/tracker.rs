@@ -27,6 +27,8 @@ pub struct Stop {
 #[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct StopDetails {
     pub timezone: f64,
+    #[serde(flatten)]
+    pub metadata: serde_json::Map<String, serde_json::Value>,
 }
 #[derive(Debug, Serialize)]
 pub struct Details<'a> {
@@ -46,6 +48,7 @@ pub struct Route {
     year: u64,
     index: usize,
     time: f64,
+    fallback: bool,
 }
 pub fn leap(year: u64) -> bool {
     year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
@@ -134,22 +137,39 @@ impl Route {
             return None;
         }
         let (year, _) = year_start(now_ms / 1000);
-        if year != self.year {
-            let shift = takeoff(year) as f64 * 1000. - self.stops[0].departure;
-            for stop in &mut self.stops {
-                if stop.arrival != 0. {
-                    stop.arrival += shift;
-                }
-                if stop.departure != 0. {
-                    stop.departure += shift;
-                }
-            }
-            self.year = year;
-            self.index = 0;
-            self.time = 0.;
-        }
+        self.rebase_year(year);
         self.set_now(now_ms as f64);
         Some(self.details())
+    }
+    pub fn now(&self) -> f64 {
+        self.time
+    }
+    pub fn rebase_year(&mut self, year: u64) -> bool {
+        if year == self.year {
+            return false;
+        }
+        let shift = takeoff(year) as f64 * 1000. - self.stops[0].departure;
+        for stop in &mut self.stops {
+            if stop.arrival != 0. {
+                stop.arrival += shift;
+            }
+            if stop.departure != 0. {
+                stop.departure += shift;
+            }
+        }
+        self.year = year;
+        self.index = 0;
+        self.time = 0.;
+        true
+    }
+    pub fn feed_stops(&self, visible_to: usize) -> Vec<&str> {
+        if self.fallback {
+            return vec![];
+        }
+        self.stops[..=visible_to]
+            .iter()
+            .map(|s| s.id.as_str())
+            .collect()
     }
     pub fn range(&self) -> (f64, f64) {
         let from = self.stops[0].departure;
@@ -192,7 +212,8 @@ impl Route {
         let mut stops: Vec<Stop> = serde_json::from_str::<Data>(json)
             .map_err(|e| e.to_string())?
             .destinations;
-        if stops.is_empty() {
+        let fallback = stops.is_empty();
+        if fallback {
             stops.push(Stop {
                 id: "takeoff".into(),
                 arrival: 0.,
@@ -201,7 +222,10 @@ impl Route {
                 city: "Santa's Village".into(),
                 region: "North Pole".into(),
                 location: NORTH_POLE,
-                details: StopDetails { timezone: 0. },
+                details: StopDetails {
+                    timezone: 0.,
+                    metadata: Default::default(),
+                },
                 distance: 0.,
             });
         } else {
@@ -249,6 +273,7 @@ impl Route {
             year,
             index: 0,
             time: 0.,
+            fallback,
         })
     }
     pub fn set_now(&mut self, time: f64) {
