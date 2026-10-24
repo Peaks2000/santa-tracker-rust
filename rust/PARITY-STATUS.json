@@ -765,10 +765,12 @@
   "agent_tracking": {
     "status": "core_tested_ui_missing",
     "visibility": "Only Dec 24 10:00 UTC through Dec 25 11:00 UTC (exclusive), per user request. No off-season tracker details through the visibility-gated API.",
-    "progress": "420-stop original route schedule, year skew, great-circle interpolation, distance, heading, presents, stop timings and nearest-stop calculations translated to Rust; 3,020 source states and seasonal boundaries tested. Native tracker controller now includes one-second adjusted clock, marker visibility and active/20 fading trails, current/temporary destination selection, visited feed-stop IDs, 20-second auto-refocus, source camera zoom/pan commands, mobile gesture controls and exact English stats formatting. 3,020 original StopManager states, 18 controller states, 12 clock adjustments and formatter/nearest-arrival cases match. Photo attribution metadata is retained in typed route details.",
+    "progress": "420-stop original route schedule, year skew, great-circle interpolation, distance, heading, presents, stop timings and nearest-stop calculations translated to Rust; 3,020 source states and seasonal boundaries tested. Native tracker controller now includes one-second adjusted clock, marker visibility and active/20 fading trails, current/temporary destination selection, visited feed-stop IDs, 20-second auto-refocus, source camera zoom/pan commands, mobile gesture controls and exact English stats formatting. 3,020 original StopManager states, 18 controller states, 12 clock adjustments and formatter/nearest-arrival cases match. Photo attribution metadata is retained in typed route details. Isolated native Santa renderer now includes eight directional three-layer sprites, source per-keyframe easing, responsive sizes, two original animated chimney GIFs, falling-present artwork and grouped drop shadows. 84 actual-browser direction/bounce samples, stop/show animation lifecycle and all 72 independently decoded GIF frames are checked. This is a comparison preview, not an integrated tracking screen.",
     "remaining": [
       "Native map and tracker screen are not implemented; controller commands are available to a future native renderer.",
-      "Google Maps tiles/overlays, feed/media playback, photo loading/animation, persistent route cache, remote config, online refresh and native geolocation remain unfinished."
+      "Google Maps tiles/overlays, feed/media playback, photo loading/animation, persistent route cache, remote config, online refresh and native geolocation remain unfinished.",
+      "Native Google map tiles require a separately configured provider key; no user key is currently available. No original website key is reused or embedded.",
+      "Santa preview still has SVG edge/shadow raster differences; all map interactions and combined tracker layout remain unverified."
     ],
     "evidence": [
       "rust/src/tracker.rs",
@@ -776,8 +778,15 @@
       "rust/examples/tracker_reference.rs",
       "rust/SOURCE-COVERAGE.md",
       "rust/src/tracker_control.rs",
-      "rust/data/tracker-control-reference.json"
+      "rust/data/tracker-control-reference.json",
+      "rust/src/tracker_santa.rs",
+      "rust/src/tracker_santa_view.rs",
+      "rust/examples/tracker_santa_preview.rs",
+      "rust/data/tracker-santa-reference.json",
+      "rust/data/tracker-santa-lifecycle.json",
+      "rust/data/tracker-chimney-reference.json",
+      "rust/data/tracker-santa-raster-errors.json"
     ],
-    "next_work": "User requested native Christmas tracking map/display as the next priority after the current Gift Slingshot effects pass (2026-10-24)."
+    "next_work": "Integrate native tracking layout/controller, stats and map renderer; provider key is unavailable, so live Google tiles cannot yet be verified. Finish original/native Santa edge/shadow comparisons and broader animation phases."
   }
 }

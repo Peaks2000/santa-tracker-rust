@@ -1,0 +1,149 @@
+{
+  "method": "Actual original component vs reusable native sprite renderer, isolated opaque background, matching viewport/heading and paused bounce phase 1230ms. Two-times group render target. ROI includes shadow and effects. GIFs checked separately by decoded-frame hashes.",
+  "cases": [
+    {
+      "width": 767,
+      "heading": 0,
+      "time_ms": 1230,
+      "roi": [
+        285,
+        185,
+        425,
+        395
+      ],
+      "mean_rgb_error": 0.35572562358276644
+    },
+    {
+      "width": 767,
+      "heading": 90,
+      "time_ms": 1230,
+      "roi": [
+        285,
+        185,
+        425,
+        395
+      ],
+      "mean_rgb_error": 0.8448072562358276
+    },
+    {
+      "width": 767,
+      "heading": 180,
+      "time_ms": 1230,
+      "roi": [
+        285,
+        185,
+        425,
+        395
+      ],
+      "mean_rgb_error": 0.24134920634920634
+    },
+    {
+      "width": 767,
+      "heading": 270,
+      "time_ms": 1230,
+      "roi": [
+        285,
+        185,
+        425,
+        395
+      ],
+      "mean_rgb_error": 0.8384126984126984
+    },
+    {
+      "width": 768,
+      "heading": 0,
+      "time_ms": 1230,
+      "roi": [
+        285,
+        185,
+        425,
+        395
+      ],
+      "mean_rgb_error": 0.9544444444444444
+    },
+    {
+      "width": 768,
+      "heading": 90,
+      "time_ms": 1230,
+      "roi": [
+        285,
+        185,
+        425,
+        395
+      ],
+      "mean_rgb_error": 1.6460204081632652
+    },
+    {
+      "width": 768,
+      "heading": 180,
+      "time_ms": 1230,
+      "roi": [
+        285,
+        185,
+        425,
+        395
+      ],
+      "mean_rgb_error": 1.3367460317460316
+    },
+    {
+      "width": 768,
+      "heading": 270,
+      "time_ms": 1230,
+      "roi": [
+        285,
+        185,
+        425,
+        395
+      ],
+      "mean_rgb_error": 1.819920634920635
+    },
+    {
+      "width": 1440,
+      "heading": 0,
+      "time_ms": 1230,
+      "roi": [
+        285,
+        185,
+        425,
+        395
+      ],
+      "mean_rgb_error": 0.9544444444444444
+    },
+    {
+      "width": 1440,
+      "heading": 90,
+      "time_ms": 1230,
+      "roi": [
+        285,
+        185,
+        425,
+        395
+      ],
+      "mean_rgb_error": 1.646043083900227
+    },
+    {
+      "width": 1440,
+      "heading": 180,
+      "time_ms": 1230,
+      "roi": [
+        285,
+        185,
+        425,
+        395
+      ],
+      "mean_rgb_error": 1.3367460317460316
+    },
+    {
+      "width": 1440,
+      "heading": 270,
+      "time_ms": 1230,
+      "roi": [
+        285,
+        185,
+        425,
+        395
+      ],
+      "mean_rgb_error": 1.819920634920635
+    }
+  ]
+}

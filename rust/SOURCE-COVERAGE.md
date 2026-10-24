@@ -791,3 +791,64 @@ renderer, checking the shared shape shader's default (non-ring) behavior.
 All 56 Rust tests pass, including the existing seven Boatload simulation
 scenarios and the added CSS phase/lifecycle comparisons. Broad responsive/input,
 rope/present edge coverage and audio-mixer parity remain unfinished.
+
+## Native tracker Santa component preview (2026-10-24)
+
+Read complete santa-santa.js (81 lines), santa-santa.scss (189 lines) and the
+active common.preload.assets implementation; the actual component and source
+CSS polyfill run in a development-only browser reference page. Browser code is
+not shipped. The preview uses the original 24 directional layer SVGs, effects
+SVG and both unchanged chimney GIFs. No provider key, map image pack, substitute
+cartography or webview is embedded.
+
+- `dirForHeading`: direct 22.5-degree offset/modulo/index translation, including
+  negative headings, NaN fallback south and Infinity producing no directional
+  background. The source's nearby "27.5" comment is wrong; use its formula.
+- `urls`/preload: all 27 assets are loaded by SantaView once. Native constructor
+  reports decode/load failures instead of the host preload-event protocol.
+- `properties`/render: heading selects three backgrounds; stop selects GIF mode
+  floor(abs(heading)%2). Invalid mode produces no chimney background. Correct
+  layer order and middle-layer ::after falling artwork are preserved. Width
+  breakpoint is 768px, independently of the map's 600px controls breakpoint.
+- Sass: 85%-width centered SVG backgrounds; 68x84 / 102x126 host; fixed 95x83
+  contain-sized GIF; distinct Santa/front/back bounce values; ease-in-out per
+  keyframe segment, not across the entire six seconds. Source GIFs are 383x333,
+  36 frames each, 80ms/frame, infinite loop, with transparency/disposal deltas.
+  Native decoding composites those deltas before premultiplied GPU upload.
+- Hidden `.sleigh` cancels all three CSS animation objects. Actual stop/show
+  probing confirms new animation objects after leaving the stop. SleighClock
+  resets that clock; changing heading alone does not. GIF decoding/frame timing
+  is checked independently, but browser GIF hide/show phase sharing is not yet
+  verified and must not be described as matched.
+- Group shadows use the composited silhouette with original offsets/opacity;
+  two-times group sampling reduced the measured desktop east-facing ROI error
+  from 1.857 to 1.646/255 in the selected phase. Rasterization remains different
+  from Chromium and is not certified 1:1. The same group path is used in the
+  native preview, with premultiplied layer filtering to avoid black fringes.
+- Unfinished: component button hit-testing/accessibility and its parent tracker
+  click-to-refocus, integration with native map/layout/controller, Santa overlay
+  position/visibility, asynchronous asset readiness, browser GIF display clock,
+  broader phase/direction/raster checks. Existing route/controller tests cover
+  state/commands; this new standalone preview does not wire them into the app.
+
+tracker-santa-reference.json contains 66 actual browser animation samples plus
+18 heading cases, at 767/768/1440 widths. tracker-santa-lifecycle.json records the
+actual original Web Animation cancellation/new instances. The independent Pillow
+oracle in tracker-chimney-reference.json hashes all 72 visible composited frames
+(transparent RGB normalized); native tests also check every frame boundary and
+loop wrap. tracker-santa-raster-errors.json records isolated browser/native crops
+at four directions and three widths, one matched animation phase. This does not
+measure full tracker map/UI fidelity or end-to-end input delay.
+
+The native map/display and online route refresh remain unfinished. Google Map
+Tiles API supports native renderers and source JSON styles, but live tiles have
+not been connected or verified and no user-owned key is currently available.
+The original website's key must not be repurposed. The public release continues
+to describe Christmas tracking as engine/controller tested, map/UI missing.
+
+Final isolated sprite checks: all 59 Rust tests pass (54 library, five app tests).
+The twelve selected-phase native/source crops have mean RGB error
+0.241–1.820/255 within the recorded ROI; both chimney previews were inspected.
+The release preview builds and exits its own capture windows. The main app
+continues to show the existing village; this change does not expose tracking
+off season or claim a completed map.

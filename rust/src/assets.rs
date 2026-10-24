@@ -130,7 +130,8 @@ fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
     };
     let premultiplied = key.starts_with("scenes/santaselfie/")
         || key.starts_with("scenes/_shared/img/button/")
-        || key.starts_with("scenes/boatload/");
+        || key.starts_with("scenes/boatload/")
+        || key.starts_with("img/sleigh/");
     let mut image = if key.ends_with(".svg") {
         let options = resvg::usvg::Options {
             resources_dir: path.parent().map(Path::to_path_buf),
@@ -304,7 +305,9 @@ pub fn configure_texture(key: &str, texture: &Texture2D) {
 }
 
 fn svg_raster_scale(key: &str) -> f32 {
-    if key.ends_with("glider/img/glider-sprite.svg") {
+    if key.starts_with("img/sleigh/") {
+        4.
+    } else if key.ends_with("glider/img/glider-sprite.svg") {
         3.
     } else if key.starts_with("scenes/_shared/img/button/") {
         4.

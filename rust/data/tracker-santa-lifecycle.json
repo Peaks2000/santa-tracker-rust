@@ -1,0 +1,18 @@
+{
+  "method": "Actual source component stop toggle; original Web Animation objects observed across display:none without invented events.",
+  "result": {
+    "hiddenCount": 0,
+    "cancelled": [
+      "idle",
+      "idle",
+      "idle"
+    ],
+    "freshCount": 3,
+    "newInstances": true,
+    "freshTimes": [
+      33.36699999867704,
+      33.36699999867704,
+      33.36699999867704
+    ]
+  }
+}

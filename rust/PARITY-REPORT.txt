@@ -79,7 +79,10 @@ and headless diagnostic, not a working tracking screen in the application.
 Marker/trail state, stop selection, 20-second refocus, camera commands and
 English stats formatting now match original controller comparisons. Actual
 map rendering, feed/photos, native geolocation, persistent cache and online
-refresh remain missing. The bundled data is the original configured endpoint's
+refresh remain missing. An isolated native Santa animation comparison preview
+now covers directional art, bounce and chimney GIFs; this does not add a
+tracking screen to the application. Live Google tiles are not connected; no
+provider key is bundled. The bundled data is the original configured endpoint's
 2019 schedule shifted to the selected year, as in the original fetchRoute.
 
 NOT IMPLEMENTED AS NATIVE SCENES
