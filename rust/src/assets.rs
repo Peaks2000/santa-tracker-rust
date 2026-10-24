@@ -97,6 +97,17 @@ impl Assets {
         }
         Ok(())
     }
+    /// CSS/SVG dimensions stay independent of texture sampling resolution.
+    pub fn scene_size(&self, scene: &str, name: &str) -> Vec2 {
+        let key = format!("scenes/{scene}/img/{name}");
+        let texture = self.texture(&key);
+        let scale = if key.ends_with(".svg") {
+            svg_raster_scale(&key)
+        } else {
+            1.
+        };
+        vec2(texture.width() / scale, texture.height() / scale)
+    }
     pub fn scene(&self, scene: &str, name: &str) -> &Texture2D {
         self.texture(&format!("scenes/{scene}/img/{name}"))
     }
@@ -117,8 +128,9 @@ fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
     } else {
         std::fs::read(&path).map_err(|e| format!("{}: {e}", path.display()))?
     };
-    let premultiplied =
-        key.starts_with("scenes/santaselfie/") || key.starts_with("scenes/_shared/img/button/");
+    let premultiplied = key.starts_with("scenes/santaselfie/")
+        || key.starts_with("scenes/_shared/img/button/")
+        || key.starts_with("scenes/boatload/");
     let mut image = if key.ends_with(".svg") {
         let options = resvg::usvg::Options {
             resources_dir: path.parent().map(Path::to_path_buf),
@@ -126,30 +138,55 @@ fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
         };
         let tree =
             resvg::usvg::Tree::from_data(&data, &options).map_err(|e| format!("{key}: {e}"))?;
-        let render_scale = if key.ends_with("glider/img/glider-sprite.svg") {
-            3.
-        } else if key.starts_with("scenes/_shared/img/button/") {
-            4.
-        } else if key.ends_with("jetpack/img/levelclouds.svg") {
-            5.
-        } else {
-            1.
+        let render_scale = svg_raster_scale(key);
+        // CSS background images retain their intrinsic SVG proportions inside
+        // the element box. The elf is centered; boat1 is top-left aligned.
+        let background = match key {
+            "scenes/boatload/img/player-elf.svg" => Some((44., 44., true)),
+            "scenes/boatload/img/boat1.svg" => Some((88., 194., false)),
+            _ => None,
         };
-        let size = tree
-            .size()
-            .to_int_size()
-            .scale_by(render_scale)
-            .ok_or("SVG scale failed")?;
+        let (size, transform) = if let Some((w, h, center)) = background {
+            let x = if center {
+                (w - tree.size().width()) / 2.
+            } else {
+                0.
+            };
+            let y = if center {
+                (h - tree.size().height()) / 2.
+            } else {
+                0.
+            };
+            (
+                resvg::tiny_skia::IntSize::from_wh(
+                    (w * render_scale).ceil() as u32,
+                    (h * render_scale).ceil() as u32,
+                )
+                .ok_or("SVG background size failed")?,
+                resvg::tiny_skia::Transform::from_row(
+                    render_scale,
+                    0.,
+                    0.,
+                    render_scale,
+                    x * render_scale,
+                    y * render_scale,
+                ),
+            )
+        } else {
+            (
+                tree.size()
+                    .to_int_size()
+                    .scale_by(render_scale)
+                    .ok_or("SVG scale failed")?,
+                resvg::tiny_skia::Transform::from_scale(render_scale, render_scale),
+            )
+        };
         if size.width() > 16384 || size.height() > 16384 {
             return Err(format!("Texture too large: {key}"));
         }
         let mut pixels = resvg::tiny_skia::Pixmap::new(size.width(), size.height())
             .ok_or("SVG allocation failed")?;
-        resvg::render(
-            &tree,
-            resvg::tiny_skia::Transform::from_scale(render_scale, render_scale),
-            &mut pixels.as_mut(),
-        );
+        resvg::render(&tree, transform, &mut pixels.as_mut());
         let mut rgba = pixels.data().to_vec();
         if !premultiplied {
             for p in rgba.chunks_exact_mut(4) {
@@ -247,11 +284,11 @@ fn scene_keys(root: &Path, scene: &str) -> Result<Vec<String>, String> {
     Ok(keys)
 }
 
-/// THREE TextureLoader/GLTFLoader use trilinear mipmaps for these 3D maps.
-/// Using only the full-size atlas changes the tree outlines at half scale.
+/// Keep the source THREE maps on trilinear filtering. Boatload CSS images also
+/// need mipmaps when minified; their RGBA is premultiplied before filtering.
 pub fn configure_texture(key: &str, texture: &Texture2D) {
     texture.set_filter(FilterMode::Linear);
-    if key.starts_with("scenes/elfski/") {
+    if key.starts_with("scenes/elfski/") || key.starts_with("scenes/boatload/") {
         let id = texture.raw_miniquad_id();
         // Upload is complete and no draw references a newly created texture.
         unsafe {
@@ -263,5 +300,17 @@ pub fn configure_texture(key: &str, texture: &Texture2D) {
                 macroquad::miniquad::MipmapFilterMode::Linear,
             );
         }
+    }
+}
+
+fn svg_raster_scale(key: &str) -> f32 {
+    if key.ends_with("glider/img/glider-sprite.svg") {
+        3.
+    } else if key.starts_with("scenes/_shared/img/button/") {
+        4.
+    } else if key.ends_with("jetpack/img/levelclouds.svg") {
+        5.
+    } else {
+        1.
     }
 }

@@ -6,6 +6,8 @@ mod assets;
 mod boatload_view;
 #[path = "../src/capture.rs"]
 mod capture;
+#[path = "../src/scene_filter.rs"]
+mod scene_filter;
 #[path = "../src/ui_render.rs"]
 mod ui_render;
 mod chrome {
@@ -20,11 +22,13 @@ fn main() {
         .first()
         .cloned()
         .unwrap_or("/tmp/boatload-native.png".into());
+    let w = args.get(1).and_then(|s| s.parse().ok()).unwrap_or(1440);
+    let h = args.get(2).and_then(|s| s.parse().ok()).unwrap_or(800);
     macroquad::Window::from_config(
         Conf {
             window_title: "Gift Slingshot comparison".into(),
-            window_width: 1440,
-            window_height: 800,
+            window_width: w,
+            window_height: h,
             sample_count: 4,
             ..Default::default()
         },
@@ -33,12 +37,15 @@ fn main() {
                 std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../static"),
             );
             a.load_scene("boatload").unwrap();
-            let mut g = santa_tracker::boatload::Boatload::new("test1234", 1440., 800.);
+            let mut g = santa_tracker::boatload::Boatload::new("test1234", w as f64, h as f64);
             g.advance(0.5);
             let view = boatload_view::BoatloadView::new().unwrap();
-            for frame in 0..2 {
+            let mut compositor = scene_filter::SceneFilter::new().unwrap();
+            for frame in 0..8 {
+                compositor.begin();
                 view.draw(&a, &g);
-                if frame == 1 {
+                compositor.finish(false);
+                if frame == 7 {
                     capture::save_png(&get_screen_data(), std::path::Path::new(&output)).unwrap();
                 }
                 next_frame().await;

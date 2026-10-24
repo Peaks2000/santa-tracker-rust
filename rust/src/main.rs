@@ -14,6 +14,7 @@ mod penguin_view;
 mod presentdrop_view;
 mod profile;
 mod render;
+mod scene_filter;
 mod selfie_view;
 mod ski_view;
 mod sound;

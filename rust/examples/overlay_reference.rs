@@ -8,6 +8,8 @@ mod capture;
 mod chrome;
 #[path = "../src/overlay.rs"]
 mod overlay;
+#[path = "../src/scene_filter.rs"]
+mod scene_filter;
 #[path = "../src/ui_render.rs"]
 mod ui_render;
 #[path = "../src/village.rs"]

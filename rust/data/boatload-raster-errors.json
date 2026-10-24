@@ -1,0 +1,70 @@
+{
+  "method": "Original browser and native production renderer/compositor, test1234 seed, 0.5s manual time, device scale 1 and six viewports; ROI bounds measured from original DOM. Idle captures only, not whole-mode certification.",
+  "source_sha256": {
+    "static/scenes/boatload/sass/_player.scss": "ad10fc0f6a5d61ab0a59d29c78000ac444561652ba408c6d1d7789ecd8845fa2",
+    "static/scenes/boatload/img/player-elf.svg": "bbd85a8ab246e38d49e74b2e8c69dc723e2c2aff3dd049b19ee76c65776d84ed",
+    "static/scenes/boatload/img/boat1.svg": "8e3516be37aa3c3f366f852e9e2be32c926a491e7121a05f5b13be7dca493a29"
+  },
+  "cases": [
+    {
+      "width": 1440,
+      "height": 800,
+      "crossbow_old_mean_rgb_error_255": 1.0204344418318219,
+      "crossbow_final_mean_rgb_error_255": 0.8907817073755938,
+      "elf_old_mean_rgb_error_255": 9.807070707070707,
+      "elf_final_mean_rgb_error_255": 6.78030303030303,
+      "full_old_mean_rgb_error_255": 0.18923640046296297,
+      "full_final_mean_rgb_error_255": 0.18077112268518522
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "crossbow_old_mean_rgb_error_255": 1.2494841403138346,
+      "crossbow_final_mean_rgb_error_255": 1.1359150311115376,
+      "elf_old_mean_rgb_error_255": 9.077946127946127,
+      "elf_final_mean_rgb_error_255": 6.436700336700337,
+      "full_old_mean_rgb_error_255": 0.27585123697916664,
+      "full_final_mean_rgb_error_255": 0.26771484375
+    },
+    {
+      "width": 980,
+      "height": 800,
+      "crossbow_old_mean_rgb_error_255": 1.2963553113553115,
+      "crossbow_final_mean_rgb_error_255": 1.1639102564102564,
+      "elf_old_mean_rgb_error_255": 9.07929292929293,
+      "elf_final_mean_rgb_error_255": 6.438047138047138,
+      "full_old_mean_rgb_error_255": 0.09204166666666667,
+      "full_final_mean_rgb_error_255": 0.08563903061224491
+    },
+    {
+      "width": 900,
+      "height": 800,
+      "crossbow_old_mean_rgb_error_255": 2.7783806892922915,
+      "crossbow_final_mean_rgb_error_255": 2.503376304481277,
+      "elf_old_mean_rgb_error_255": 11.876065833829069,
+      "elf_final_mean_rgb_error_255": 8.181241324608367,
+      "full_old_mean_rgb_error_255": 0.5599893518518518,
+      "full_final_mean_rgb_error_255": 0.536875462962963
+    },
+    {
+      "width": 768,
+      "height": 800,
+      "crossbow_old_mean_rgb_error_255": 3.2965004090831904,
+      "crossbow_final_mean_rgb_error_255": 3.0825267447784004,
+      "elf_old_mean_rgb_error_255": 8.541409465020577,
+      "elf_final_mean_rgb_error_255": 5.494084362139918,
+      "full_old_mean_rgb_error_255": 0.5773876953125,
+      "full_final_mean_rgb_error_255": 0.5598410373263889
+    },
+    {
+      "width": 375,
+      "height": 800,
+      "crossbow_old_mean_rgb_error_255": 7.580249860746399,
+      "crossbow_final_mean_rgb_error_255": 6.269435823983449,
+      "elf_old_mean_rgb_error_255": 11.441176470588237,
+      "elf_final_mean_rgb_error_255": 8.008714596949892,
+      "full_old_mean_rgb_error_255": 0.9335755555555556,
+      "full_final_mean_rgb_error_255": 0.8519922222222222
+    }
+  ]
+}

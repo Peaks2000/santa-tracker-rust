@@ -5,6 +5,7 @@ use santa_tracker::boatload::Boatload;
 pub struct BoatloadView {
     font: Font,
     shapes: Shapes,
+    premult: Material,
     touch: bool,
     space_down: bool,
 }
@@ -16,6 +17,7 @@ impl BoatloadView {
             ))
             .map_err(|e| e.to_string())?,
             shapes: Shapes::new()?,
+            premult: crate::ui_render::premultiplied_material()?,
             touch: false,
             space_down: false,
         })
@@ -66,6 +68,7 @@ impl BoatloadView {
         };
         let image = |name: &str, x: f32, y: f32, w: f32, h: f32| {
             let r = rect(x, y, w, h);
+            gl_use_material(&self.premult);
             draw_texture_ex(
                 a.scene("boatload", name),
                 r.x,
@@ -76,6 +79,7 @@ impl BoatloadView {
                     ..Default::default()
                 },
             );
+            gl_use_default_material();
         };
         clear_background(Color::from_hex(0xd3e4ed));
         let r = rect(294., 0., 686., g.height as f32);
@@ -111,6 +115,7 @@ impl BoatloadView {
         let rails_h = (max - min) - (max - min) % 20. + 80.;
         let rail = a.scene("boatload", "rail.png");
         let mut y = min - 25.;
+        gl_use_material(&self.premult);
         while y < min - 25. + rails_h {
             let h = (min - 25. + rails_h - y).min(rail.height());
             let r = rect(100., y, 63., h);
@@ -127,6 +132,7 @@ impl BoatloadView {
             );
             y += h;
         }
+        gl_use_default_material();
         for x in [110., 148.] {
             let r = rect(x, min - 35., 4., rails_h + 10.);
             draw_rectangle(r.x, r.y, r.w, r.h, Color::from_hex(0x939597));
@@ -156,14 +162,8 @@ impl BoatloadView {
         }
         for b in g.icebergs.iter().filter(|b| !b.dead) {
             let name = format!("iceberg{}.svg", b.kind + 1);
-            let t = a.scene("boatload", &name);
-            image(
-                &name,
-                b.x as f32,
-                (b.y - b.height) as f32,
-                t.width(),
-                t.height(),
-            );
+            let size = a.scene_size("boatload", &name);
+            image(&name, b.x as f32, (b.y - b.height) as f32, size.x, size.y);
         }
         // Source onInit overrides the namespaced animation with unresolved
         // 'bubble-left'; opacity still transitions for 600ms. Keep that source quirk.
@@ -180,13 +180,13 @@ impl BoatloadView {
         }
         for b in g.boats.iter().filter(|b| !b.dead) {
             let name = format!("boat{}.svg", b.kind + 1);
-            let t = a.scene("boatload", &name);
+            let size = a.scene_size("boatload", &name);
             image(
                 &name,
                 850. - b.width as f32 / 2.,
                 b.y as f32,
-                t.width(),
-                t.height(),
+                size.x,
+                size.y,
             );
         }
         for p in g.presents.iter().filter(|p| p.visible) {

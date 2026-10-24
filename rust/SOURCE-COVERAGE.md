@@ -675,3 +675,58 @@ logic diagnostic, not a working map screen. Whole-site/scene ratings are unchang
 Validation: all 53 tests pass. The release diagnostic was exercised at October,
 takeoff, one hour into flight, the last flight second and the exclusive return
 boundary; visibility and serialized controller output matched those cases.
+
+## Gift Slingshot intrinsic image geometry and filtering (2026-10-24)
+
+The user's softness comparison prompted a new controlled browser/native pass.
+Re-read the full Boatload HTML, player/environment/boats/icebergs/presents/effects
+Sass, source SVG dimensions and active player/reset/animate/scene-scale paths.
+The native renderer stretched the 43.3x40.9 player-elf SVG to 44x44. Source CSS
+instead centers that intrinsic image inside a 44x44 element. Native upload now
+rasterizes the unchanged artwork into the correctly sized/centered box. boat1
+similarly retains its intrinsic 88x193.3 art in the source 88x194 top-left box;
+rounding its raster to 193 pixels had clipped its bottom and altered layout.
+Logical sprite dimensions are kept independent of raster sampling density.
+
+Boatload textures now remain premultiplied through interpolation and mipmap
+construction, with ONE/ONE_MINUS_SRC_ALPHA blending at draw. This preserves
+source alpha and avoids mixing straight RGB independently of coverage when
+images are scaled down. Original SVG/PNG files, proportions, gameplay rules,
+inputs and animation timing are untouched. Other scenes' texture policies
+retain their previous behavior.
+
+The browser harness runs the actual original game with the existing manual-time
+hook, seeds before construction, advances 0.5s and freezes it. Each viewport is
+a fresh page/game, avoiding random consumption differences from resizing an
+existing game. The original CSS and functions are not patched. Native capture
+now uses the actual production scene compositor, extracted unchanged from
+overlay.rs into scene_filter.rs, instead of bypassing it. A byte comparison of
+the compositor body confirms this extraction did not change its behavior. The
+other overlay capture example was updated to import the same module.
+
+Matching 1440/1280/980/900/768/375 by 800 captures show lower player/elf and full
+frame mean RGB error at all six widths. Elf-region errors went from
+9.807/9.078/9.079/11.876/8.541/11.441 to
+6.780/6.437/6.438/8.181/5.494/8.009 out of 255 (29–36% reduction).
+Full-frame errors went from 0.189/0.276/0.092/0.560/0.577/0.934 to
+0.181/0.268/0.086/0.537/0.560/0.852. See boatload-raster-layout/errors.json.
+Desktop original/old/new crops were visually inspected, including intrinsic
+height, hands/hat and board edges. These are idle raster comparisons, not proof
+of all animations or whole-mode parity. The earlier 0.282 comparison used a
+different capture path; the newly measured before/after values are comparable
+to each other, not a direct revision of that historical figure.
+
+Experiments with 2x SVG rasterization and four-sample offscreen MSAA were also
+compared. They improved selected regions but worsened other matched cases, so
+neither change is retained. The window's MSAA does not apply automatically to
+the current offscreen target; matching source analytic edge coverage remains
+work. Do not describe this as a global sharpness fix or add blanket sharpening.
+
+A release profile with an owned visible window recorded 120 frames after 30
+warmup frames: mean interval 16.77ms, main-thread work 0.79ms, scene CPU 0.72ms,
+no intervals over 25ms. This is a current measurement, not a before/after speed
+comparison or input-to-photon latency measurement. Initial concurrent-window
+profiling was discarded after a timeout; the final profile ran alone.
+
+All 53 Rust tests pass. An owned release window was also exercised through
+Space, vertical movement, pause/resume, restart and Home; captures were inspected.
