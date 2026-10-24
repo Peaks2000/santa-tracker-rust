@@ -159,4 +159,5 @@ keys to slide; P pauses, R restarts, and Home/Escape returns to the village.
 All ten active source levels are included. State/body/sprite comparisons and
 three initial viewport captures are recorded in `SOURCE-COVERAGE.md`.
 It remains **partial**: native tilt delivery, broader effect/transition/audio
-checks and continuous random consumption across restarts are unfinished.
+checks remain unfinished. Baubles stay fixed on a level retry; a full restart
+regenerates them with the continuing random stream, as on the live site.

@@ -533,3 +533,47 @@ All 46 Rust tests pass.
 Final distribution validation: all 46 tests pass against the Rust-only checkout.
 Release startup/opaque captures pass for all eleven scenes using its assets.
 Penguin audio predecode/mixing also passes with SDL dummy (not a listening test).
+
+### Live Penguin bauble placement and full restart correction
+
+Checked the deployed v202610222036 Penguin Dash HTML and 0.js bundle directly.
+The live additionalGroupInit_ uses Math.random for prize type, tile selection
+and x/y placement; the first ten course definitions exactly match the checkout.
+All six live element-present images also match the checkout byte-for-byte;
+three shapes are round baubles and three are rectangular presents.
+No artwork was replaced. A preliminary artwork-mismatch inference was wrong
+and was corrected after checking hashes, before making any asset changes.
+
+The live browser audit exposes only the game handle, without seeding RNG or
+changing placement functions. It executes the real restartLevel_ and full
+Game.restart: level retry retains coordinates, while full restart regenerates
+them. Math.random values are recorded unchanged around the original placement
+function. The native production placement function reproduces every resulting
+key, coordinate and size on all ten levels from that recorded tape. See
+penguin-live-placement-reference.json for URLs, bundle hash, actual draws and
+before/retry/restart layouts. This is direct evidence of live behavior, not
+an inference from a seed-controlled mock.
+
+Previously full native restart reset the seed and reused the same prizes.
+It now continues the RNG stream; four initial waves consume twelve draws before
+prize generation, and full restart takes the latest wave-renderer RNG state.
+The deterministic source harness now seeds once before waves rather than
+reseeding again before levels. Initial numeric fixtures/captures are refreshed
+for that corrected order. Dedicated tests retain collected prizes and positions
+on level retry and verify fresh layouts on successive full restarts.
+
+The new seed order also exercised a bundled-Phaser transition quirk missed by
+the earlier selected placements: a finish increments the level during group
+iteration, and subsequent checks use the hidden next-level bodies with their
+stale transforms at the previous camera offset. Newly shown groups can retain
+that offset for their first physics tick. Native now preserves those effects
+and all 116 source-engine checkpoints pass with the corrected placements.
+The earlier note about deterministic full-restart reuse is superseded by this
+correction. Broader scene/effect/audio parity is still partial.
+
+Validation of this correction: 48 Rust tests pass, including all 116 original
+engine checkpoints and the live random-tape comparison across ten levels.
+Refreshed initial native/original captures at 1440, 768 and 375 by 800 have mean
+RGB errors of 0.025, 0.196 and 0.329 out of 255 respectively. These idle captures
+check initial geometry only. An owned native window was exercised through
+movement, pause/resume, full restart and Home without a crash.

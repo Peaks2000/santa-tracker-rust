@@ -77,8 +77,8 @@ pub struct PenguinView {
     initialized: bool,
 }
 impl PenguinView {
-    pub fn new(seed: &str) -> Self {
-        let mut random = Random::seeded(seed);
+    pub fn new(game: &PenguinDash) -> Self {
+        let mut random = game.wave_random.clone();
         let mut waves = vec![];
         for _ in 0..4 {
             let kind = (random.next() * 2.).ceil() as usize;
@@ -98,6 +98,13 @@ impl PenguinView {
             initialized: false,
             font: load_ttf_font_from_bytes(include_bytes!("../assets/fonts/Lobster-Regular.ttf"))
                 .unwrap(),
+        }
+    }
+    pub fn random_state(&self, game: &PenguinDash) -> Random {
+        if self.initialized {
+            self.random.clone()
+        } else {
+            game.random.clone()
         }
     }
     pub fn input() -> santa_tracker::penguindash::Input {

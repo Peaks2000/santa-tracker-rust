@@ -364,11 +364,10 @@
       "user_notes": "",
       "priority": "normal",
       "agent_status": "partial",
-      "agent_progress": "Playable native Penguin Dash with the ten active source levels, source image/sprite artwork, original water video frames, arrow controls, Arcade movement/collision rules, fast ice, moving platforms, pickups, falling/retry penalties, level progression, tutorial, HUD and audio actions. 116 original Phaser checkpoints (including player frames and pause during a fall), 1,076 object/body layouts and 108 orientation inputs match. Three initial viewport captures are close; full-mode parity remains under review.",
+      "agent_progress": "Playable native Penguin Dash with the ten active source levels, source image/sprite artwork, original water video frames, arrow controls, Arcade movement/collision rules, fast ice, moving platforms, pickups, falling/retry penalties, level progression, tutorial, HUD and audio actions. 116 original Phaser checkpoints (including player frames and pause during a fall), 1,076 object/body layouts and 108 orientation inputs match. Three initial viewport captures are close; full-mode parity remains under review. Verified live deployed bauble placement against recorded Math.random draws on all ten levels: unchanged on a level retry, regenerated on full restart. Corrected native full-restart RNG continuation, including wave draws before prizes and the renderer RNG state.",
       "agent_known_issues": [
         "Native OS tilt-sensor delivery and the associated device-lock message are not implemented; orientation math is tested separately.",
         "Broader moving/rotated scene captures, all character/wave/level-transition phases and audio listening/mixer checks remain unverified.",
-        "Native restart currently regenerates the deterministic seed layout; original continuous random consumption across full-game restarts still needs matching.",
         "Source video frames are decoded to lossless PNG for native playback; further paused-video/frame-phase and presentation checks remain."
       ],
       "agent_evidence": [
@@ -377,7 +376,8 @@
         "rust/data/penguin-motion-reference.json",
         "rust/data/penguin-capture-reference.json",
         "rust/data/penguin-capture-errors.json",
-        "rust/SOURCE-COVERAGE.md"
+        "rust/SOURCE-COVERAGE.md",
+        "rust/data/penguin-live-placement-reference.json"
       ]
     },
     {

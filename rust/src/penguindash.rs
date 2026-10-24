@@ -98,15 +98,25 @@ pub struct PenguinDash {
     death_at: Option<f64>,
     counter: f64,
     body_lag: bool,
+    group_lag: bool,
     pub body: [f64; 4],
     pub frame_time: f64,
     pub tween_time: f64,
-    seed: String,
+    pub camera: (f64, f64),
+    pub viewport: (f64, f64),
+    pub wave_random: Random,
 }
 impl PenguinDash {
     pub fn new(seed: &str) -> Self {
+        Self::from_random(Random::seeded(seed))
+    }
+    fn from_random(mut rng: Random) -> Self {
         let c = config();
-        let mut rng = Random::seeded(seed);
+        let wave_random = rng.clone();
+        // Start.create constructs four waves (type, x, y) before initLevels_.
+        for _ in 0..12 {
+            rng.next();
+        }
         let mut levels = vec![];
         for level in c["levels"].as_array().unwrap().iter().take(10) {
             let mut elements = vec![];
@@ -199,38 +209,7 @@ impl PenguinDash {
                     });
                 }
             }
-            let ice: Vec<_> = [5, 3]
-                .iter()
-                .flat_map(|g| elements.iter().filter(move |e| e.group == *g).cloned())
-                .collect();
-            let snowlen = elements.iter().filter(|e| e.group == 5).count();
-            for _ in 0..ice.len() / 2 {
-                let t = (rng.next() * 6.).floor() as u32 + 1;
-                let mut i = (rng.next() * (ice.len() - 1) as f64).floor() as usize + 1;
-                while i == snowlen - 1 {
-                    i = (rng.next() * (ice.len() - 1) as f64).floor() as usize + 1;
-                }
-                let e = &ice[i];
-                let x = e.x + 50. + (e.width - 120.) * rng.next();
-                let y = e.y + 50. + (e.width - 120.) * rng.next();
-                let key = format!("element-present{t}");
-                let (w, h) = image_size(&key);
-                elements.push(Element {
-                    key,
-                    group: 0,
-                    x,
-                    y,
-                    width: w * 0.5,
-                    height: h * 0.5,
-                    rotation: 0.,
-                    flip_x: false,
-                    flip_y: false,
-                    killed: false,
-                    origin: (x, y),
-                    motion: None,
-                    body: [x, y, w * 0.5, h * 0.5],
-                });
-            }
+            place_prizes(&mut elements, || rng.next());
             // Phaser inserts groups in source order; collision callbacks iterate their own children.
             elements.sort_by_key(|e| e.group);
             levels.push(elements);
@@ -273,16 +252,35 @@ impl PenguinDash {
             death_at: None,
             counter: 0.,
             body_lag: false,
+            group_lag: false,
             body: [0.; 4],
             frame_time: 0.,
             tween_time: 0.,
-            seed: seed.into(),
+            camera: (0., 0.),
+            viewport: (1440., 800.),
+            wave_random,
         };
         g.show_level();
+        g.update_camera();
         g
     }
+    pub fn resize(&mut self, w: f64, h: f64) {
+        let scale = if w < 980. { (w + 490.) / 1470. } else { 1. };
+        self.viewport = (w / scale, h / scale);
+    }
+    fn update_camera(&mut self) {
+        let (w, h) = self.viewport;
+        self.camera = (
+            (self.x - (w / 2.).round())
+                .clamp(0., (4000. - w).max(0.))
+                .floor(),
+            (self.y - (h / 2.).round())
+                .clamp(0., (3000. - h).max(0.))
+                .floor(),
+        );
+    }
     pub fn restart(&mut self) {
-        *self = Self::new(&self.seed.clone());
+        *self = Self::from_random(self.random.clone());
     }
     fn set_state(&mut self, s: u8) {
         if self.state != s {
@@ -291,6 +289,7 @@ impl PenguinDash {
         }
     }
     pub fn show_level(&mut self) {
+        self.group_lag |= self.visible_level != self.level;
         self.visible_level = self.level;
         let e = self.levels[self.level - 1]
             .iter()
@@ -493,12 +492,22 @@ impl PenguinDash {
             }
             let mut moving = false;
             for group in 0..9 {
+                let level = self.level - 1;
                 for idx in 0..self.levels[level].len() {
                     let e = &self.levels[level][idx];
                     if e.group != group || e.killed {
                         continue;
                     }
-                    let overlap = intersects(b, e.body);
+                    let mut body = e.body;
+                    if level + 1 != self.visible_level || self.group_lag {
+                        // Hidden Phaser groups retain their world transforms. If a finish
+                        // changes level during this loop, later groups use that hidden
+                        // level's bodies at the previous camera offset for this tick.
+                        let (x, y) = e.position(self.frame_time);
+                        body[0] += x - e.origin.0 + self.camera.0;
+                        body[1] += y - e.origin.1 + self.camera.1;
+                    }
+                    let overlap = intersects(b, body);
                     if [0, 3, 4, 5, 8].contains(&group) && overlap {
                         self.on_path = true;
                     }
@@ -575,12 +584,48 @@ impl PenguinDash {
         self.x += b[0] - start[0];
         self.y += b[1] - start[1];
         self.body = b;
+        self.update_camera();
+        self.group_lag = false;
         if !self.transition && !self.gameover {
             self.tween_time += dt;
         }
     }
     pub fn snapshot(&self) -> Value {
         json!({"x":self.x,"y":self.y,"vx":self.vx,"vy":self.vy,"angle":self.angle,"state":self.state,"frame":player_frame(self.state,self.time-self.state_since),"onPath":self.on_path,"onFastIce":self.on_fast,"multiple":self.multiple,"dead":self.dead,"level":self.level,"visibleLevel":self.visible_level,"score":self.score,"elapsed":self.elapsed,"body":self.body,"killed":self.levels.iter().map(|l|l.iter().filter(|e|e.group==0).map(|e|e.killed).collect::<Vec<_>>()).collect::<Vec<_>>()})
+    }
+}
+fn place_prizes(elements: &mut Vec<Element>, mut random: impl FnMut() -> f64) {
+    let ice: Vec<_> = [5, 3]
+        .iter()
+        .flat_map(|g| elements.iter().filter(move |e| e.group == *g).cloned())
+        .collect();
+    let snowlen = elements.iter().filter(|e| e.group == 5).count();
+    for _ in 0..ice.len() / 2 {
+        let t = (random() * 6.).floor() as u32 + 1;
+        let mut i = (random() * (ice.len() - 1) as f64).floor() as usize + 1;
+        while i == snowlen - 1 {
+            i = (random() * (ice.len() - 1) as f64).floor() as usize + 1;
+        }
+        let e = &ice[i];
+        let x = e.x + 50. + (e.width - 120.) * random();
+        let y = e.y + 50. + (e.width - 120.) * random();
+        let key = format!("element-present{t}");
+        let (w, h) = image_size(&key);
+        elements.push(Element {
+            key,
+            group: 0,
+            x,
+            y,
+            width: w * 0.5,
+            height: h * 0.5,
+            rotation: 0.,
+            flip_x: false,
+            flip_y: false,
+            killed: false,
+            origin: (x, y),
+            motion: None,
+            body: [x, y, w * 0.5, h * 0.5],
+        });
     }
 }
 pub fn intersects(a: [f64; 4], b: [f64; 4]) -> bool {
@@ -696,6 +741,76 @@ mod tests {
                 }
             }
         }
+    }
+    #[test]
+    fn live_placement_matches_original_random_draws() {
+        let live: Value = serde_json::from_str(include_str!(
+            "../data/penguin-live-placement-reference.json"
+        ))
+        .unwrap();
+        assert_eq!(
+            &config()["levels"].as_array().unwrap()[..10],
+            live["fixedCourse"].as_array().unwrap()
+        );
+        assert_eq!(
+            live["before"], live["after"],
+            "Live retry keeps original positions"
+        );
+        let g = PenguinDash::new("test1234");
+        for (i, level) in live["restarted"].as_array().unwrap().iter().enumerate() {
+            let mut elements = g.levels[i].clone();
+            elements.retain(|e| e.group != 0);
+            let mut tape = level["calls"].as_array().unwrap().iter();
+            place_prizes(&mut elements, || {
+                tape.next()
+                    .expect("Original RNG tape exhausted")
+                    .as_f64()
+                    .unwrap()
+            });
+            assert!(
+                tape.next().is_none(),
+                "All original placement draws consumed"
+            );
+            let actual: Vec<_> = elements
+                .iter()
+                .filter(|e| e.group == 0)
+                .map(|e| json!({"key":e.key,"x":e.x,"y":e.y,"w":e.width,"h":e.height}))
+                .collect();
+            compare(
+                &json!(actual),
+                &level["prizes"],
+                &format!("live level {}", i + 1),
+            );
+        }
+    }
+    #[test]
+    fn retry_keeps_baubles_full_restart_generates_new_ones() {
+        let positions = |g: &PenguinDash| {
+            json!(g
+                .levels
+                .iter()
+                .map(|l| l
+                    .iter()
+                    .filter(|e| e.group == 0)
+                    .map(|e| (&e.key, e.x, e.y, e.killed))
+                    .collect::<Vec<_>>())
+                .collect::<Vec<_>>())
+        };
+        let mut g = PenguinDash::new("test1234");
+        for e in &mut g.levels[0] {
+            if e.group == 0 {
+                e.killed = true;
+                break;
+            }
+        }
+        let before = positions(&g);
+        g.restart_level();
+        assert_eq!(before, positions(&g));
+        g.restart();
+        assert_ne!(before, positions(&g));
+        let fresh = positions(&g);
+        g.restart();
+        assert_ne!(fresh, positions(&g));
     }
     #[test]
     fn original_orientation_conditions() {

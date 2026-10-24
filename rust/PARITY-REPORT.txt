@@ -47,10 +47,9 @@ modvil [modvil] — your verdict: unreviewed
   Remaining: Frame pacing and card/loader rendering need profiling.
 
 Penguin Dash [penguindash] — your verdict: unreviewed
-  Progress: Playable native Penguin Dash with the ten active source levels, source image/sprite artwork, original water video frames, arrow controls, Arcade movement/collision rules, fast ice, moving platforms, pickups, falling/retry penalties, level progression, tutorial, HUD and audio actions. 116 original Phaser checkpoints (including player frames and pause during a fall), 1,076 object/body layouts and 108 orientation inputs match. Three initial viewport captures are close; full-mode parity remains under review.
+  Progress: Playable native Penguin Dash with the ten active source levels, source image/sprite artwork, original water video frames, arrow controls, Arcade movement/collision rules, fast ice, moving platforms, pickups, falling/retry penalties, level progression, tutorial, HUD and audio actions. 116 original Phaser checkpoints (including player frames and pause during a fall), 1,076 object/body layouts and 108 orientation inputs match. Three initial viewport captures are close; full-mode parity remains under review. Verified live deployed bauble placement against recorded Math.random draws on all ten levels: unchanged on a level retry, regenerated on full restart. Corrected native full-restart RNG continuation, including wave draws before prizes and the renderer RNG state.
   Remaining: Native OS tilt-sensor delivery and the associated device-lock message are not implemented; orientation math is tested separately.
   Remaining: Broader moving/rotated scene captures, all character/wave/level-transition phases and audio listening/mixer checks remain unverified.
-  Remaining: Native restart currently regenerates the deterministic seed layout; original continuous random consumption across full-game restarts still needs matching.
   Remaining: Source video frames are decoded to lossless PNG for native playback; further paused-video/frame-phase and presentation checks remain.
 
 Present Drop [presentdrop] — your verdict: unreviewed

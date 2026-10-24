@@ -290,7 +290,7 @@ async fn run(opts: Options) {
         glider.advance(opts.advance);
     }
     let mut penguin = santa_tracker::penguindash::PenguinDash::new(&opts.seed);
-    let mut penguin_view = penguin_view::PenguinView::new(&opts.seed);
+    let mut penguin_view = penguin_view::PenguinView::new(&penguin);
     if route == "penguindash" {
         penguin.advance(opts.advance);
         sound.penguin_load(&assets.root);
@@ -360,8 +360,9 @@ async fn run(opts: Options) {
                 }
                 "glider" => glider.restart(),
                 "penguindash" => {
+                    penguin.random = penguin_view.random_state(&penguin);
                     penguin.restart();
-                    penguin_view = penguin_view::PenguinView::new(&opts.seed);
+                    penguin_view = penguin_view::PenguinView::new(&penguin);
                 }
                 "boatload" => boat.restart(),
                 "runner" => runner.restart(),
@@ -436,6 +437,9 @@ async fn run(opts: Options) {
                 "elfski" | "presentdrop" | "boatload" | "elfmaker" | "jamband" => true,
                 _ => false,
             };
+        if route == "penguindash" {
+            penguin.resize(screen_width() as f64, screen_height() as f64);
+        }
         if route == "penguindash" && opts.frames.is_none() && !just_loaded {
             penguin.wall_step(get_frame_time() as f64);
             penguin.input = if active && !village.menu && opts.profile.is_none() {
@@ -716,8 +720,9 @@ async fn run(opts: Options) {
                     overlay::Action::Restart => {
                         sound.stop();
                         if route == "penguindash" {
+                            penguin.random = penguin_view.random_state(&penguin);
                             penguin.restart();
-                            penguin_view = penguin_view::PenguinView::new(&opts.seed);
+                            penguin_view = penguin_view::PenguinView::new(&penguin);
                         } else if route == "glider" {
                             glider.restart();
                         } else if route == "boatload" {
@@ -878,8 +883,9 @@ async fn run(opts: Options) {
                         "presentdrop" => drop_game.restart(),
                         "glider" => glider.restart(),
                         "penguindash" => {
+                            penguin.random = penguin_view.random_state(&penguin);
                             penguin.restart();
-                            penguin_view = penguin_view::PenguinView::new(&opts.seed);
+                            penguin_view = penguin_view::PenguinView::new(&penguin);
                         }
                         "boatload" => boat.restart(),
                         "runner" => runner.restart(),
@@ -1004,7 +1010,7 @@ async fn run(opts: Options) {
                     }
                     "penguindash" => {
                         penguin = santa_tracker::penguindash::PenguinDash::new(&opts.seed);
-                        penguin_view = penguin_view::PenguinView::new(&opts.seed);
+                        penguin_view = penguin_view::PenguinView::new(&penguin);
                         sound.penguin_load(&assets.root);
                     }
                     "glider" => {
