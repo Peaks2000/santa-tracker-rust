@@ -27,7 +27,7 @@ Similar means faithful and plays similar but their may be some obvious issues
 | Demo Scene | Unplayable |
 | Elf Express | Unplayable |
 | Elf Glider | Almost 1:1 |
-| Elf Jamband | Very similar |
+| Elf Jamband | 1:1 |
 | Elf Jetpack | 1:1 |
 | Elf Maker | Almost 1:1 |
 | Elf Rollercoaster | Unplayable |
