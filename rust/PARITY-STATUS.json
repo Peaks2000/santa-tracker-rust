@@ -135,7 +135,7 @@
       "user_notes": "",
       "priority": "normal",
       "agent_status": "partial",
-      "agent_progress": "Native Elf Maker includes all original character choices/colours/backgrounds, weighted randomization, eight arm-motion sequences, blinking, responsive control strip, photo capture/export and original-format state restore. 21 control states and 35 SVG geometry cases match source. Software shadow bottleneck moved to GPU without changing motion; idle release profile averaged 16.6ms frames and 1.36ms scene CPU work. Repaired the activity selector: hamburger now opens, scrolls and selects a scene; verified in an owned release window.",
+      "agent_progress": "Native Elf Maker includes all original character choices/colours/backgrounds, weighted randomization, eight arm-motion sequences, blinking, responsive control strip, photo capture/export and original-format state restore. 21 control states and 35 SVG geometry cases match source. Software shadow bottleneck moved to GPU without changing motion; idle release profile averaged 16.6ms frames and 1.36ms scene CPU work. Corrected the header to use Home on activity routes, independently of HUD presence, matching original entrypoint.js showHome and santa-chrome.js click dispatch.",
       "agent_known_issues": [
         "Native file export replaces host URL sharing.",
         "Photo perspective/reveal/hide, save-button transitions, keyboard focus/accessibility, full touch and all responsive sizes need further source matching.",
@@ -149,7 +149,7 @@
         "rust/data/new-scenes-performance.json",
         "rust/SOURCE-COVERAGE.md",
         "rust/src/village.rs activity_menu",
-        "rust/SOURCE-COVERAGE.md"
+        "rust/src/chrome.rs activity_navigation_is_independent_of_hud"
       ]
     },
     {
@@ -255,7 +255,7 @@
       "user_notes": "",
       "priority": "normal",
       "agent_status": "partial",
-      "agent_progress": "Native Elf Jamband includes ten layered instruments, six stages, next-bar 120 BPM starts, both patterns/stage volumes, preview/loop audio, drag swaps/replacements/return, randomize, drawer transitions, lighting, crowd and original-format band save/restore. 19 original drag/bar/state cases and 1,568 instrument animation samples pass. Repaired the activity selector: hamburger now opens, scrolls and selects a scene; verified in an owned release window.",
+      "agent_progress": "Native Elf Jamband includes ten layered instruments, six stages, next-bar 120 BPM starts, both patterns/stage volumes, preview/loop audio, drag swaps/replacements/return, randomize, drawer transitions, lighting, crowd and original-format band save/restore. 19 original drag/bar/state cases and 1,568 instrument animation samples pass. Corrected the header to use Home on activity routes, independently of HUD presence, matching original entrypoint.js showHome and santa-chrome.js click dispatch.",
       "agent_known_issues": [
         "Native band-file export replaces host link sharing.",
         "Every lighting/drag/drawer transition and responsive viewport needs further full-scene comparison.",
@@ -269,7 +269,7 @@
         "rust/data/new-scenes-performance.json",
         "rust/SOURCE-COVERAGE.md",
         "rust/src/village.rs activity_menu",
-        "rust/SOURCE-COVERAGE.md"
+        "rust/src/chrome.rs activity_navigation_is_independent_of_hud"
       ]
     },
     {

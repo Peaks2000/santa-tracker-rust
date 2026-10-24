@@ -773,7 +773,7 @@ async fn run(opts: Options) {
             _ => None,
         };
         if let Some(action) = chrome
-            .draw(hud, sound.is_muted())
+            .draw(&route, hud, sound.is_muted())
             .filter(|_| opts.profile.is_none())
         {
             match action {

@@ -445,3 +445,17 @@ for every device/state. See data/glider-performance.json.
 Final validation: all 42 Rust tests pass in both checkouts. Release startup and
 opaque screenshot checks pass for all ten native scenes using only the clean
 distribution assets. Three original-browser Glider tests pass.
+
+### Activity header correction
+
+The prior Jamband/Maker selector repair fixed menu rendering but retained an
+incorrect icon decision. The original entrypoint.js sets showHome from route
+and control readiness, not HUD presence; santa-chrome.js renders paths.home
+and dispatches the home event for activity routes. Native Chrome now receives
+the current route separately from GameHud: all nine activities use Home, and
+the ready village uses Menu. A regression checks every native route, including
+Jamband and Maker which have no GameHud.
+
+Validation: 43 Rust tests pass and the release build succeeds. Release captures
+show Home in Jamband and Maker; owned-window clicks enter the home transition
+from both activities. Existing user windows were left open.

@@ -326,7 +326,7 @@ impl Chrome {
         }
         total
     }
-    pub fn draw(&mut self, game: Option<GameHud>, muted: bool) -> Option<Action> {
+    pub fn draw(&mut self, route: &str, game: Option<GameHud>, muted: bool) -> Option<Action> {
         let now = get_time();
         for y in 0..64 {
             draw_rectangle(
@@ -338,7 +338,7 @@ impl Chrome {
             );
         }
         let (x, y) = toolbar_origin();
-        let first = if game.is_some() { "home" } else { "menu" };
+        let first = navigation_icon(route);
         let action = game.filter(|g| g.can_pause).map(|g| {
             if !g.playing {
                 "restart"
@@ -556,6 +556,16 @@ impl Chrome {
     }
 }
 
+// entrypoint.js sets showHome from the route, independently of score/action.
+// The native village route corresponds to the original empty top-level route.
+fn navigation_icon(route: &str) -> &'static str {
+    if route == "modvil" {
+        "menu"
+    } else {
+        "home"
+    }
+}
+
 fn leap(year: u64) -> bool {
     year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
 }
@@ -577,6 +587,23 @@ pub fn countdown(now: u64) -> u64 {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn activity_navigation_is_independent_of_hud() {
+        assert_eq!(navigation_icon("modvil"), "menu");
+        for route in [
+            "jamband",
+            "elfmaker",
+            "santaselfie",
+            "runner",
+            "jetpack",
+            "elfski",
+            "presentdrop",
+            "boatload",
+            "glider",
+        ] {
+            assert_eq!(navigation_icon(route), "home", "{route}");
+        }
+    }
     #[test]
     fn countdown_targets_original_utc_takeoff() {
         assert_eq!(countdown(1798106400), 0);

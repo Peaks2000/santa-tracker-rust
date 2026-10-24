@@ -15,7 +15,7 @@ Gift Slingshot [boatload] — your verdict: unreviewed
   Remaining: No claim of whole-mode 1:1 parity; audio actions translated but full music/bus fidelity remains partial.
 
 Elf Maker [elfmaker] — your verdict: unreviewed
-  Progress: Native Elf Maker includes all original character choices/colours/backgrounds, weighted randomization, eight arm-motion sequences, blinking, responsive control strip, photo capture/export and original-format state restore. 21 control states and 35 SVG geometry cases match source. Software shadow bottleneck moved to GPU without changing motion; idle release profile averaged 16.6ms frames and 1.36ms scene CPU work. Repaired the activity selector: hamburger now opens, scrolls and selects a scene; verified in an owned release window.
+  Progress: Native Elf Maker includes all original character choices/colours/backgrounds, weighted randomization, eight arm-motion sequences, blinking, responsive control strip, photo capture/export and original-format state restore. 21 control states and 35 SVG geometry cases match source. Software shadow bottleneck moved to GPU without changing motion; idle release profile averaged 16.6ms frames and 1.36ms scene CPU work. Corrected the header to use Home on activity routes, independently of HUD presence, matching original entrypoint.js showHome and santa-chrome.js click dispatch.
   Remaining: Native file export replaces host URL sharing.
   Remaining: Photo perspective/reveal/hide, save-button transitions, keyboard focus/accessibility, full touch and all responsive sizes need further source matching.
   Remaining: SVG raster/small visual differences remain; 1440x800 controlled idle mean RGB error 0.393/255.
@@ -33,7 +33,7 @@ Elf Glider [glider] — your verdict: unreviewed
   Remaining: Idle profile averages near 60 fps locally, with occasional presentation stalls; end-to-end input latency is not measured.
 
 Elf Jamband [jamband] — your verdict: unreviewed
-  Progress: Native Elf Jamband includes ten layered instruments, six stages, next-bar 120 BPM starts, both patterns/stage volumes, preview/loop audio, drag swaps/replacements/return, randomize, drawer transitions, lighting, crowd and original-format band save/restore. 19 original drag/bar/state cases and 1,568 instrument animation samples pass. Repaired the activity selector: hamburger now opens, scrolls and selects a scene; verified in an owned release window.
+  Progress: Native Elf Jamband includes ten layered instruments, six stages, next-bar 120 BPM starts, both patterns/stage volumes, preview/loop audio, drag swaps/replacements/return, randomize, drawer transitions, lighting, crowd and original-format band save/restore. 19 original drag/bar/state cases and 1,568 instrument animation samples pass. Corrected the header to use Home on activity routes, independently of HUD presence, matching original entrypoint.js showHome and santa-chrome.js click dispatch.
   Remaining: Native band-file export replaces host link sharing.
   Remaining: Every lighting/drag/drawer transition and responsive viewport needs further full-scene comparison.
   Remaining: Raster differences remain; controlled 1440x800 idle capture mean RGB error 1.754/255.
