@@ -8,6 +8,8 @@ Using the javascript code of Google Santa Tracker I remade the logic function by
 ![alt text](https://i.postimg.cc/qv3kdFRr/Screenshot-From-2026-10-23-23-36-53.png)
 
 ## Scenes
+1:1 means every animation image and behaviour(e.g physics in Elf Jetpack) is the exact same as the website.
+
 
 | Name | State |
 | --- | --- |
