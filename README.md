@@ -25,10 +25,10 @@ Similar means faithful and plays similar but their may be some obvious issues
 | Elf Ski | Almost 1:1 |
 | Present Drop | Very similar |
 | Gift Slingshot | Very similar |
-| Elf Maker | Very similar |
+| Elf Maker | Almost 1:1 |
 | Elf Jamband | Very similar |
 | Elf Glider | Very similar |
-| Penguin Dash | Very similar |
+| Penguin Dash | Almost 1:1 |
 | Christmas Tracking | Unplayable |
 
 # Running locally
