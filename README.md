@@ -8,7 +8,7 @@ Using the javascript code of Google Santa Tracker I remade the logic function by
 ![alt text](https://i.postimg.cc/qv3kdFRr/Screenshot-From-2026-10-23-23-36-53.png)
 
 ## Scenes
-1:1 means every animation image and behaviour(e.g physics in Elf Jetpack) is the exact same as the website.
+1:1 means every animation image and behaviour(e.g physics in Elf Jetpack) is the exact same as the website. (I mean the EXACT same literally pixel perfect)
 Almost 1:1 means so close to the website it is unnoticeable and does not have any effect on gameplay.
 Very Similar means it plays almost exactly like the website but small things could be a little off like the size of an elf (not a real example as far as I am aware.)
 Similar means faithful and plays similar but their may be some obvious issues 
