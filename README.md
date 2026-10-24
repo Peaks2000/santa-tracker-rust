@@ -19,7 +19,7 @@ Similar means faithful and plays similar but their may be some obvious issues
 | Name | State |
 | --- | --- |
 | Village / Home | 1:1 |
-| Reindeer Runner | Very Similar (behaves 1:1 just some visual bugs)|
+| Reindeer Runner | Very similar |
 | Elf Jetpack | 1:1 |
 | Santa Selfie | 1:1 |
 | Elf Ski | Almost 1:1 |
@@ -29,6 +29,7 @@ Similar means faithful and plays similar but their may be some obvious issues
 | Elf Jamband | Very similar |
 | Elf Glider | Almost 1:1 |
 | Penguin Dash | Almost 1:1 |
+| Santa Tracking Animation Preview | Partially alike |
 | Christmas Tracking | Unplayable |
 
 # Running locally
