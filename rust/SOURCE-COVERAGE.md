@@ -969,7 +969,7 @@ Native equivalents and outstanding branches:
   continue, basic portrait tray, original result art and English hints exist.
   Code Boogie result flex layout, child transitions, missing-repeat symbol and
   code pane now have native equivalents (see result follow-up below). Code Lab
-  result layout, final host game-over, tutorial queues, share/import/export and
+  result layout, complete host presentation/lifecycle, tutorial queues, share/import/export and
   all restart/route lifecycle quirks remain unfinished. Source codeboogie API restart handler is a no-op; native R
   also leaves the scene unchanged. Source no-op
   focus callbacks/disposal DOM listener removal have no native DOM equivalent.
@@ -1163,7 +1163,7 @@ but final host game-over/sharing are explicitly still unfinished.
 | show | Copies verdict, localized hint, retry/freestyle/final labels, missing-block and submitted-code snapshot; resets show-code class. Native live specs still omit shareUrl because host sharing is not implemented. Exported Boogie levels currently have empty requiredBlocks; the optional missing-repeat display is exercised by the diagnostic contract cases. |
 | hide | Root visibility/opacity changes immediately, preserving child clocks/state for later show. Native initially assumed a parent fade, but actual Chromium disproved it. `transition: opacity 0.3s, visibility 0 0.3s` is rejected in full because of the unitless time. Computed transition is `all` with zero duration. This source quirk is preserved. |
 | onRetry | Hides result and clears pending report state without clearing/editing blocks or resetting the still-running player. Broader overlapping controller/input paths still need comparison. |
-| onContinue | Advances class; continuing freestyle restarts teacher mode directly, matching Game.bumpLevel rather than returning to the chooser. Finishing the ninth class still uses the native placeholder completion screen; shared host game-over is unfinished. |
+| onContinue | Advances class; continuing freestyle restarts teacher mode directly, matching Game.bumpLevel rather than returning to the chooser. The following host-completion pass replaces the placeholder with the shared game-over overlay; complete presentation/lifecycle matching remains unfinished. |
 | onShare | Unfinished. Source-sized share button is measured in diagnostic layouts but not supplied by live native result specs. No working-share claim. |
 | onShowCode | One-way code-view class until next show; immediate flex relayout, source label/border/padding/line height. The source a[hidden] still displays due to its inline-block CSS, so empty-code success retains a clickable View code row. Native preserves that quirk. |
 | _result.scss layout | Centered column flex, title 70/140px, details 20/30px, fixed margins, text min-content limits, SVG shrink factors 1/4, textarea padding minimum, width 570 / height 500 breakpoint, button 768 breakpoint and wrapped inline button rows. Rustybuzz shapes original retained font data; no browser runtime. |
@@ -1213,3 +1213,72 @@ but final host game-over/sharing are explicitly still unfinished.
 Final verification for this result pass: all 73 tests pass in both checkouts;
 the updated native release binary and result-capture example build successfully.
 The README user rating remains Very similar; full site parity is unfinished.
+
+## Coding-scene completion and host restart
+
+Read in full for this path: both scene `js/game.js` files, the Code Boogie result
+callback/scene and both HTML API handlers; shared `scene/api.js`, `global.js`,
+`santa-gameloader.js`/SCSS, `iframe-load/main.js`, `lib/iframe.js`, `lib/channel.js`,
+CSS polyfill, shared overlay JS/SCSS and santa-button JS/SCSS. Read the complete
+active entrypoint state subscriber, restart listeners and incoming-message runner.
+The third-party Unistore/DOM implementations execute in the browser oracle; this
+is not a claim of having ported/reviewed their entire engines. Iframe/network/
+analytics boot has no native DOM counterpart and is outside this completion pass.
+
+- `coding_host.rs` preserves level number, retained editor level, missing current
+  game level after completion, last score/max level and game-over state. Teacher
+  Code Boogie reports stop level 9, while Code Lab reports 15 after its fourteen
+  levels; the original host ignores this payload and retains the last score.
+  A subsequent Continue after Boogie's no-op host restart reports 10, not 9.
+- Both native scenes now render the last scene behind the production shared
+  game-over overlay. Removed the invented Great / Play again completion page.
+  The header offers restart on game-over even for scenes without pause, matching
+  the unconditional game-over branch in the original entrypoint.
+- Code Lab handles host restart by resetting to the first jigsaw. Code Boogie's
+  original HTML restart handler does nothing: the host hides its overlay and
+  re-enables the retained last scene/editor. Native preserves this, including
+  the player queue/clock, instead of returning to the chooser. These restart
+  paths no longer stop all native audio; full mixer/listening parity remains
+  unverified. Removed Code Lab's invented R restart shortcut; coding restarts
+  use the original host controls.
+- `SceneFilter::finish_live` refreshes the disabled coding scene after the dim
+  transition settles. The original loader disables input and applies CSS but
+  does not stop scene rAF/music. The existing cached disabled filter would have
+  frozen Code Boogie's dancers/lights. Other scene filter paths are unchanged.
+
+**Checks**
+
+- `coding-host-reference.json`: 29 captured original states across both scenes,
+  every level continuation, final completion, actual host restart-button dispatch
+  and another continuation. Real Game/Result classes, scene API MessageChannel,
+  global Unistore and SantaGameLoader/Overlay/Chrome run in Chromium. The original
+  entrypoint subscriber/runner closures are executed unchanged, with external
+  Firebase/router/analytics/audio/tutorial boot scaffolded. The scene rAF is held
+  externally and Continue callbacks are invoked directly: this is not a complete
+  puzzle/dance playthrough or pointer-input verification.
+- Native completion/restart fields and the header action match every captured
+  state. All 75 tests pass (69 library, six binary); native release and the new
+  diagnostic build successfully. The usual existing overlay_reference unused
+  re-export warning remains; no compiler errors.
+- `coding_completion_capture` uses the live view, shared filter, overlay and
+  header. It asserts last-scene retention, Code Lab reset, and Boogie editor/
+  queue/clock preservation, then captures both completed scenes. Its controlled
+  1/60-second scene clock continues under game-over. A far-right scene crop changes
+  between fully dimmed frames 90 and 120 in Boogie (mean RGB change 7.22/255),
+  proving this capture is not a cached frozen image. Lab's idle crop is static;
+  this does not independently certify its other animated effects.
+- Original and native completion captures were visually inspected. The shared
+  hierarchy/art/cards are present; the original browser's auto-focus ring and
+  heavier title glyph raster are still visibly different. Backgrounds use
+  different controlled animation phases, so no whole-image error/certification
+  is claimed. Shared blur approximation, keyboard/focus, microtask/frame input
+  order, responsive route/orientation changes and audio still need matching.
+- The reference harness must import the original CSS/attribute polyfills before
+  creating components. Await Lit updates, force real CSS styles and wait for
+  opacity=1 / blur(4px) before a settled capture. Merely observing hidden=false
+  or calling document.getAnimations().finish() initially left the overlay at
+  opacity zero; those premature images were discarded.
+
+Freestyle/custom import/share and complete host boot/error/loading lifecycle are
+still partial or unimplemented. This pass verifies the selected teacher/Lab
+completion path, not every mode or the full site.

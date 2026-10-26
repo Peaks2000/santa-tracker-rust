@@ -339,12 +339,7 @@ impl CodingView {
                     self.dance_report_pending = false;
                 }
                 Action::Continue => {
-                    if self.level().freestyle {
-                        self.levels = self.dance_data.levels.clone();
-                        self.set_level(0);
-                    } else {
-                        self.set_level(self.level_index + 1);
-                    }
+                    self.continue_level();
                 }
                 // Share is not yet supplied by live result specs. The layout
                 // diagnostic measures its source box; host sharing remains
@@ -352,6 +347,58 @@ impl CodingView {
                 Action::Share => {}
             }
         }
+    }
+    pub(super) fn continue_level(&mut self) {
+        match self.host.advance() {
+            santa_tracker::coding_host::Next::Level(index) => self.set_level(index),
+            santa_tracker::coding_host::Next::Teacher => {
+                self.levels = self.dance_data.levels.clone();
+                self.set_level(0);
+            }
+            santa_tracker::coding_host::Next::Stop => {}
+        }
+    }
+    pub fn restart_from_host(&mut self) {
+        if self.host.restart_from_host() {
+            self.reset();
+        }
+    }
+    /// Completion-callback integration diagnostic; it does not solve the
+    /// levels or certify pointer input. The browser oracle invokes the same
+    /// level-continue callbacks directly.
+    #[allow(dead_code)]
+    pub fn prepare_completion_capture(&mut self) {
+        self.chooser = false;
+        self.set_level(self.levels.len() - 1);
+        let previous = self.level_index;
+        let code = if self.dance {
+            self.workspace.dance_user_code().unwrap()
+        } else {
+            String::new()
+        };
+        let clock_before_restart = self.stage.now;
+        let queue_before_restart = self.stage.queue.len();
+        self.continue_level();
+        assert!(self.host.gameover);
+        assert_eq!(self.level_index, previous);
+        self.restart_from_host();
+        assert!(!self.host.gameover);
+        if self.dance {
+            assert_eq!(self.level_index, previous);
+            assert_eq!(self.workspace.dance_user_code().unwrap(), code);
+            assert!(self.host.game_level.is_none());
+            assert_eq!(self.stage.now, clock_before_restart);
+            assert_eq!(self.stage.queue.len(), queue_before_restart);
+        } else {
+            assert_eq!(self.level_index, 0);
+        }
+        self.set_level(self.levels.len() - 1);
+        self.continue_level();
+        self.result = None;
+        self.result_panels = std::array::from_fn(|_| Default::default());
+        self.elapsed = 2.;
+        self.stage.now = 2.;
+        assert!(self.host.gameover);
     }
     #[allow(dead_code)]
     pub fn prepare_result_capture(&mut self, spec: Spec, time: f64) {

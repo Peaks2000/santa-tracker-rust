@@ -137,4 +137,5 @@ pub mod tracker_santa;
 pub mod codeboogie_result;
 pub mod codeboogie_stage;
 pub mod coding;
+pub mod coding_host;
 pub mod coding_user_code;

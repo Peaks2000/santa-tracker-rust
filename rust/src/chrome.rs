@@ -21,6 +21,17 @@ pub struct GameHud {
     pub badge: bool,
     pub can_pause: bool,
 }
+fn toolbar_action(game: Option<GameHud>) -> Option<&'static str> {
+    game.filter(|g| g.can_pause || !g.playing).map(|g| {
+        if !g.playing {
+            "restart"
+        } else if g.paused {
+            "play"
+        } else {
+            "pause"
+        }
+    })
+}
 pub struct Chrome {
     icons: HashMap<String, Texture2D>,
     font: Font,
@@ -339,15 +350,7 @@ impl Chrome {
         }
         let (x, y) = toolbar_origin();
         let first = navigation_icon(route);
-        let action = game.filter(|g| g.can_pause).map(|g| {
-            if !g.playing {
-                "restart"
-            } else if g.paused {
-                "play"
-            } else {
-                "pause"
-            }
-        });
+        let action = toolbar_action(game);
         if let Some(action) = action {
             self.last_action = action;
         }
@@ -594,6 +597,32 @@ pub fn countdown(now: u64) -> u64 {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn coding_toolbar_action_matches_original_host_without_pause() {
+        let fixture: serde_json::Value =
+            serde_json::from_str(include_str!("../data/coding-host-reference.json")).unwrap();
+        for case in fixture["cases"].as_array().unwrap() {
+            for row in case["actions"].as_array().unwrap() {
+                let gameover = row["state"]["gameover"].as_bool().unwrap();
+                let hud = GameHud {
+                    playing: !gameover,
+                    paused: false,
+                    score: 0,
+                    countdown: 0.,
+                    level: None,
+                    badge: true,
+                    can_pause: false,
+                };
+                assert_eq!(
+                    toolbar_action(Some(hud)),
+                    row["host"]["action"].as_str(),
+                    "{} {}",
+                    case["scene"],
+                    row["action"]
+                );
+            }
+        }
+    }
     #[test]
     fn activity_navigation_is_independent_of_hud() {
         assert_eq!(navigation_icon("modvil"), "menu");

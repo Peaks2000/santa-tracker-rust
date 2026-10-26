@@ -83,5 +83,16 @@
       "rust/assets/fonts/NotoSansMono.ttf": "3c874b97ce11dc54de004c81df02c8f0974033ed1b113377130cbdd71d478f11",
       "rust/assets/codeboogie/result-missing-controls_repeat.svg": "5b7bac56fdbaa55385b69f4e1f64f7761d51e47f676208191d97f099916e4c97"
     }
+  },
+  "host_completion": {
+    "method": "See coding-host-reference.json and SOURCE-COVERAGE.md: real scene/API/store/components and unchanged entrypoint subscriber/runner in Chromium; external boot scaffolded, scene rAF held. Native capture is callback-driven, not a full playthrough.",
+    "additional_hashes": {
+      "static/src/scene/api.js": "28475142637b83f1210683fece178ea61b2c1de12f9d6b324a6a21a0c41ec07c",
+      "static/global.js": "7832934ee5f6e03e2c784c83474ea7f57f1d07d7d21af5e6f39bfa98168663f2",
+      "static/entrypoint.js": "e45d5a78a6a96344816417de5277149902cf6216191c7a5d68976c1f39be6615",
+      "static/src/elements/santa-gameloader.js": "976c36e43477a9279267039ac4d26c275ab9b5b4ab43000c5f7b6ec73da82890",
+      "static/src/elements/santa-gameloader.scss": "7dca4fd714a620f54cccef6bc725b9bf33f0b34728072d96254c137dbc451947",
+      "static/src/deps/iframe-load/main.js": "147da3ebc2f01d8bc6de6da2c1ec1754ae30907aa4532c34a5459af90333c7ff"
+    }
   }
 }

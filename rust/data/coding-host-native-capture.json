@@ -1,0 +1,41 @@
+{
+  "method": "Owned native coding_completion_capture, live native view/filter/overlay/chrome; completion/restart callbacks asserted directly, not a full playthrough. Scene clock advances 1/60 per render while host remains game-over; images inspected. Source controller is checked separately by coding-host-reference.json. No whole-image 1:1 or pointer/audio certification.",
+  "checks": [
+    {
+      "scene": "codeboogie",
+      "viewport": [
+        1440,
+        800
+      ],
+      "frame_before": 90,
+      "frame_after": 120,
+      "region": [
+        1060,
+        230,
+        1440,
+        700
+      ],
+      "mean_rgb_change": 7.220705487122061,
+      "purpose": "Detect frozen filtered coding scene after 0.75s dim transition; this is a change measurement, not source image error.",
+      "motion_expected": true
+    },
+    {
+      "scene": "codelab",
+      "viewport": [
+        1440,
+        800
+      ],
+      "frame_before": 90,
+      "frame_after": 120,
+      "region": [
+        1060,
+        230,
+        1440,
+        700
+      ],
+      "mean_rgb_change": 0.0,
+      "purpose": "Static Code Lab idle-world comparison; zero change is expected here and does not independently verify redraw of an animated Lab effect.",
+      "motion_expected": false
+    }
+  ]
+}

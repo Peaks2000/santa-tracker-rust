@@ -78,15 +78,16 @@
       "user_notes": "",
       "priority": "normal",
       "agent_status": "partial",
-      "agent_progress": "Native Code Boogie now includes the nine source dance classes and three randomly selected freestyle stages, draggable step/repeat blocks, run/retry/continue, original stage/character sprite sheets, BPM-driven dance playback, countdown sound actions and six original idle/performance tracks. Source evaluateStatus/createAnimationQueue results match 54 cases across all nine classes; model validation also rejects empty repeat bodies, extra root stacks and freestyle programs over 32 moves. Chooser corrected against original DOM at four viewport sizes: source background, asymmetric artwork, Roboto captions/descriptions, title letter spacing/shadow, entrance and hover transitions. Preserved teacher artwork aspect ratio and increased chooser SVG raster resolution. Added source-driven floor/ceiling lighting, move-card carousel, title/countdown span animation, watcher transforms and strict millisecond sprite clocks. Replaced the simplified scheduler with a native translation matching 2,775 source-browser snapshots in 15 scenarios, including all lesson intros through completion, interruptions and cross-stage switches. Twelve source DOM states and 59 CSS phases match; ten matched stage stills have mean RGB errors about 0.96\u20131.43/255. A live connected two-block program reached Nice moves. Educational View code now preserves source loop structure, postorder variable names and execution-time snapshots; 98 full-string comparisons against actual Blockly pass. Result panels now use original flex sizing, glyph metrics, artwork, repeat hint, purple button shapes, delayed child transitions and source invalid-parent-transition behavior. 70 DOM configurations at seven sizes and 96 CSS phases (including reversals) match; 12 isolated captures have mean RGB error 0.046\u20130.875/255. Code pane label/font/border/clipping/scrolling restored; a controller/render diagnostic verifies the submitted code survives an edit during playback. Freestyle continuation now starts teacher mode as in the source.",
+      "agent_progress": "Native Code Boogie now includes the nine source dance classes and three randomly selected freestyle stages, draggable step/repeat blocks, run/retry/continue, original stage/character sprite sheets, BPM-driven dance playback, countdown sound actions and six original idle/performance tracks. Source evaluateStatus/createAnimationQueue results match 54 cases across all nine classes; model validation also rejects empty repeat bodies, extra root stacks and freestyle programs over 32 moves. Chooser corrected against original DOM at four viewport sizes: source background, asymmetric artwork, Roboto captions/descriptions, title letter spacing/shadow, entrance and hover transitions. Preserved teacher artwork aspect ratio and increased chooser SVG raster resolution. Added source-driven floor/ceiling lighting, move-card carousel, title/countdown span animation, watcher transforms and strict millisecond sprite clocks. Replaced the simplified scheduler with a native translation matching 2,775 source-browser snapshots in 15 scenarios, including all lesson intros through completion, interruptions and cross-stage switches. Twelve source DOM states and 59 CSS phases match; ten matched stage stills have mean RGB errors about 0.96\u20131.43/255. A live connected two-block program reached Nice moves. Educational View code now preserves source loop structure, postorder variable names and execution-time snapshots; 98 full-string comparisons against actual Blockly pass. Result panels now use original flex sizing, glyph metrics, artwork, repeat hint, purple button shapes, delayed child transitions and source invalid-parent-transition behavior. 70 DOM configurations at seven sizes and 96 CSS phases (including reversals) match; 12 isolated captures have mean RGB error 0.046\u20130.875/255. Code pane label/font/border/clipping/scrolling restored; a controller/render diagnostic verifies the submitted code survives an edit during playback. Freestyle continuation now starts teacher mode as in the source. Final-level Continue now opens the production shared game-over overlay over the retained last scene, with the original header restart action. 29 real browser host states match; owned native composite captures verify controller retention/reset and rendering. Preserved original no-op host restart and ongoing stage clock; disabled scene filtering stays live rather than caching a frozen frame.",
       "agent_known_issues": [
         "Initial playable port, not 1:1: full Blockly editor behavior, nested repeat layout, touch/keyboard/accessibility and responsive tray/chooser transitions remain incomplete.",
-        "Original share-string import/export and share button, tutorial GIF/video queues, complete textarea interaction/final shared game-over flow and full music-bus ducking/multi-source failure sounds remain unfinished.",
+        "Original share-string import/export and share button, tutorial GIF/video queues, complete textarea interaction/complete host game-over presentation/lifecycle and full music-bus ducking/multi-source failure sounds remain unfinished.",
         "User requested README category Very similar; no whole-mode 1:1 claim. Exact font rasterization, editor, tutorial, sound scheduling and additional transition states remain incomplete or unverified.",
         "Chooser title glyph spacing/raster edges still differ slightly from Chromium; broader entrance, hover/reversal, resize and touch phase comparisons remain unfinished.",
         "Stage logic and selected CSS phases/stills are checked, but full gameplay-image phase coverage, CSS reversal combinations, image-load/color retry races, route lifecycle, responsive tray, chooser exit and audio presentation remain incomplete. No full-scene 1:1 certification.",
         "Educational code matches supported enabled graphs; disabled/imported types, comments, RTL and textarea soft-wrap/scrollbars/resize/selection/copy and keyboard access remain unfinished.",
-        "Result layout/transitions and selected raster phases are checked; broader pressed/focus/device/locale/controller combinations and actual drag/click integration remain unverified. Source-sized share button is not yet provided by live native specs; whole-result 1:1 is not certified."
+        "Result layout/transitions and selected raster phases are checked; broader pressed/focus/device/locale/controller combinations and actual drag/click integration remain unverified. Source-sized share button is not yet provided by live native specs; whole-result 1:1 is not certified.",
+        "Completion core is connected; shared overlay focus ring/title raster, blur approximation, keyboard/device/route/orientation/microtask timing and audio remain incomplete or unverified. Callback-driven captures are not full interactive playthroughs."
       ],
       "agent_evidence": [
         "rust/src/coding.rs",
@@ -110,7 +111,11 @@
         "rust/data/codeboogie-result-layout-reference.json",
         "rust/data/codeboogie-result-phase-reference.json",
         "rust/data/codeboogie-result-raster-errors.json",
-        "rust/examples/codeboogie_result_capture.rs"
+        "rust/examples/codeboogie_result_capture.rs",
+        "rust/src/coding_host.rs",
+        "rust/data/coding-host-reference.json",
+        "rust/data/coding-host-native-capture.json",
+        "rust/examples/coding_completion_capture.rs"
       ]
     },
     {
@@ -120,11 +125,12 @@
       "user_notes": "",
       "priority": "normal",
       "agent_status": "partial",
-      "agent_progress": "Native Code Lab now includes both jigsaws and all twelve source mazes, draggable connected block stacks, repeat bodies/dropdowns, directional jumps, obstacle/bounds checks, run/retry/continue, original puzzle/maze/player art and sound actions. 16,128 calls to the actual browser Player.move/jump match movement, collision, direction and full animation duration; both jigsaw validators and completion paths for all twelve mazes pass native tests. Corrected portrait auto-hide to the original one-shot uncancelled 3-second callback, so reopening after it fires is no longer immediately undone.",
+      "agent_progress": "Native Code Lab now includes both jigsaws and all twelve source mazes, draggable connected block stacks, repeat bodies/dropdowns, directional jumps, obstacle/bounds checks, run/retry/continue, original puzzle/maze/player art and sound actions. 16,128 calls to the actual browser Player.move/jump match movement, collision, direction and full animation duration; both jigsaw validators and completion paths for all twelve mazes pass native tests. Corrected portrait auto-hide to the original one-shot uncancelled 3-second callback, so reopening after it fires is no longer immediately undone. Final-level Continue now opens the production shared game-over overlay over the retained last scene, with the original header restart action. 29 real browser host states match; owned native composite captures verify controller retention/reset and rendering. Host restart returns to the first jigsaw; removed the invented R shortcut.",
       "agent_known_issues": [
         "Initial playable port, not 1:1: Blockly connection/editor behavior, complex nested loop geometry, selection/keyboard/touch, scroll/panning, full responsive layout and font raster need broader source comparisons.",
-        "Original tutorial videos, pooled world cleanup/800ms level travel, complete player lose/pickup/shadow/arrow phases, loop highlight borrowing, result overlay timing/geometry, final shared game-over flow and full audio state/bus timing remain incomplete.",
-        "Educational View code is currently an expanded instruction listing; exact original loop/source formatting is unfinished. A native 100,000-action preview limit prevents enormous nested programs from freezing the UI."
+        "Original tutorial videos, pooled world cleanup/800ms level travel, complete player lose/pickup/shadow/arrow phases, loop highlight borrowing, result overlay timing/geometry, complete host game-over presentation/lifecycle and full audio state/bus timing remain incomplete.",
+        "Educational View code is currently an expanded instruction listing; exact original loop/source formatting is unfinished. A native 100,000-action preview limit prevents enormous nested programs from freezing the UI.",
+        "Completion core is connected; shared overlay focus ring/title raster, blur approximation, keyboard/device/route/orientation/microtask timing and audio remain incomplete or unverified. Callback-driven captures are not full interactive playthroughs."
       ],
       "agent_evidence": [
         "rust/src/coding.rs",
@@ -132,7 +138,11 @@
         "rust/data/coding-source-provenance.json",
         "rust/data/coding-function-inventory.json",
         "rust/data/codelab-movement-reference.json",
-        "rust/SOURCE-COVERAGE.md"
+        "rust/SOURCE-COVERAGE.md",
+        "rust/src/coding_host.rs",
+        "rust/data/coding-host-reference.json",
+        "rust/data/coding-host-native-capture.json",
+        "rust/examples/coding_completion_capture.rs"
       ]
     },
     {

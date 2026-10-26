@@ -358,7 +358,8 @@ async fn run(opts: Options) {
         let restart = opts.profile.is_none()
             && is_key_pressed(KeyCode::R)
             && route != "modvil"
-            && route != "codeboogie";
+            && route != "codeboogie"
+            && route != "codelab";
         if restart {
             sound.stop();
             match route.as_str() {
@@ -592,11 +593,17 @@ async fn run(opts: Options) {
                 } else {
                     &mut dance_view
                 };
+                scene_filter.begin();
                 view.draw(
                     &mut assets,
-                    active && opts.frames.is_none() && !interlude.busy() && !village.menu,
+                    active
+                        && opts.frames.is_none()
+                        && !interlude.busy()
+                        && !village.menu
+                        && !view.host.gameover,
                     opts.frames.is_some(),
                 );
+                scene_filter.finish_live(view.host.gameover);
                 for event in view.sounds.drain(..) {
                     sound.trigger(&event, &assets.root);
                 }
@@ -713,10 +720,16 @@ async fn run(opts: Options) {
             "boatload",
             "glider",
             "penguindash",
+            "codelab",
+            "codeboogie",
         ]
         .contains(&route.as_str())
         {
-            let (paused, gameover) = if route == "penguindash" {
+            let (paused, gameover) = if route == "codeboogie" {
+                (false, dance_view.host.gameover)
+            } else if route == "codelab" {
+                (false, lab_view.host.gameover)
+            } else if route == "penguindash" {
                 (penguin.paused, penguin.gameover)
             } else if route == "glider" {
                 (glider.paused, !glider.playing && !glider.paused)
@@ -753,8 +766,14 @@ async fn run(opts: Options) {
                         sound.paused(false);
                     }
                     overlay::Action::Restart => {
-                        sound.stop();
-                        if route == "penguindash" {
+                        if route != "codelab" && route != "codeboogie" {
+                            sound.stop();
+                        }
+                        if route == "codeboogie" {
+                            dance_view.restart_from_host();
+                        } else if route == "codelab" {
+                            lab_view.restart_from_host();
+                        } else if route == "penguindash" {
                             penguin.random = penguin_view.random_state(&penguin);
                             penguin.restart();
                             penguin_view = penguin_view::PenguinView::new(&penguin);
@@ -802,7 +821,7 @@ async fn run(opts: Options) {
                     &dance_view
                 };
                 Some(chrome::GameHud {
-                    playing: !view.finished,
+                    playing: !view.host.gameover,
                     paused: false,
                     score: 0,
                     countdown: 0.,
@@ -929,10 +948,12 @@ async fn run(opts: Options) {
                     _ => {}
                 },
                 chrome::Action::Restart => {
-                    sound.stop();
+                    if route != "codelab" && route != "codeboogie" {
+                        sound.stop();
+                    }
                     match route.as_str() {
-                        "codelab" => lab_view.reset(),
-                        "codeboogie" => dance_view.reset(),
+                        "codelab" => lab_view.restart_from_host(),
+                        "codeboogie" => dance_view.restart_from_host(),
                         "presentdrop" => drop_game.restart(),
                         "glider" => glider.restart(),
                         "penguindash" => {

@@ -225,7 +225,7 @@ pub struct CodingView {
     pub dance: bool,
     pub level_index: usize,
     pub chooser: bool,
-    pub finished: bool,
+    pub host: santa_tracker::coding_host::CodingHost,
     pub sounds: Vec<String>,
     pub track_events: Vec<usize>,
     lab: coding::LabData,
@@ -292,7 +292,7 @@ impl CodingView {
             dance,
             level_index: 0,
             chooser: dance,
-            finished: false,
+            host: santa_tracker::coding_host::CodingHost::new(dance, levels.len()),
             sounds: vec![],
             track_events: vec![],
             lab,
@@ -444,13 +444,13 @@ impl CodingView {
         t
     }
     fn set_level(&mut self, i: usize) {
-        if i >= self.levels.len() {
-            self.finished = true;
-            return;
-        }
+        assert!(
+            i < self.levels.len(),
+            "only existing coding levels are loaded; completion goes through host.advance"
+        );
         self.level_index = i;
-        self.finished = false;
         let l = self.level().clone();
+        self.host.load(i, self.levels.len(), l.freestyle);
         self.workspace = Workspace::level(&l);
         self.result = None;
         self.show_code = false;
@@ -880,24 +880,6 @@ impl CodingView {
         clear_background(Color::from_rgba(54, 65, 137, 255));
         if self.chooser {
             self.choose(assets, input);
-            return;
-        }
-        if self.finished {
-            self.text(
-                &self.msg("codelab-great"),
-                vec2(w / 2., h / 2. - 70.),
-                85.,
-                WHITE,
-                true,
-                true,
-            );
-            if self.button(
-                "Play again",
-                Rect::new(w / 2. - 90., h / 2., 180., 50.),
-                input,
-            ) {
-                self.reset();
-            }
             return;
         }
         let (toolbar, scene_width, portrait) = self.layout(w, h);
@@ -2039,11 +2021,8 @@ impl CodingView {
                 input,
             )
         {
-            if self.level().freestyle {
-                self.reset();
-            } else {
-                self.set_level(self.level_index + 1);
-            }
+            self.result = None;
+            self.continue_level();
         }
         if self.level().kind != "puzzle"
             && (!self.dance || (r.success && !self.dance_user_code.is_empty() && !self.show_code))

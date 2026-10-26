@@ -21,7 +21,7 @@ expanding actions. `codeboogie-user-code-reference.json` checks 98 complete
 strings from the real bundled Blockly generator. Code is saved at Run time,
 not regenerated after editing during playback. The next result-panel pass now matches 70 DOM configurations / seven sizes,
 96 CSS phases including reversals, and 12 isolated images. Small raster
-differences remain; textarea interaction, sharing and host game-over are still
+differences remain; textarea interaction, sharing and complete host presentation/lifecycle remain
 unfinished. The README rating stays Very similar.
 
 Do not confuse these three things: the user's README rating, their editable approval fields, and the scope of measured technical evidence. Changing one does not automatically change the others.
@@ -31,6 +31,7 @@ Do not confuse these three things: the user's README rating, their editable appr
 | Location | Purpose |
 | --- | --- |
 | `rust/src/coding.rs` | Typed block graph/interpreter, maze execution/results, dance status/queues, source viewport and chooser layout formulas, fixture tests. |
+| `rust/src/coding_host.rs` | Teacher/Lab completion and host restart, checked against 29 real browser host states. |
 | `rust/src/codeboogie_result.rs`, `coding_result_view.rs` | Source result flex/typography/transitions and live renderer, with layout/phase/raster fixtures. |
 | `rust/src/coding_user_code.rs` | Boogie educational code text, loop/name allocation and root ordering, compared with actual Blockly. |
 | `rust/src/codeboogie_stage.rs` | Source beat/track state, light shuffling, timed card removal, title spans, sprite clocks and character/card geometry. |
@@ -80,7 +81,7 @@ Known gaps include:
 
 - Boogie stage logic and selected CSS phases now have source checks. Full active-gameplay raster/phase coverage, light/transform reversal combinations, image-load/colour retry races and audio-clock/route lifecycle still need work.
 - Blockly-style nested layout, connection precedence/insertion, field/flyout/trash geometry, workspace panning, touch/keyboard/accessibility and responsive editor motion.
-- Broader result button/focus/device/controller checks, final host game-over, tutorial queues, sharing/import/export and exact textarea layout/scrolling (Boogie loop formatting is source-matched for supported enabled graphs; Code Lab still expands actions).
+- Broader result button/focus/device/controller checks, complete host game-over presentation/lifecycle, tutorial queues, sharing/import/export and exact textarea layout/scrolling (Boogie loop formatting is source-matched for supported enabled graphs; Code Lab still expands actions).
 - Lab pooled world/presents, world travel, precise rotation/sprite/pickup/loss ordering, highlights/rewind/cancellation, portrait transition/run delay. Its 100,000-action native limit is a documented intentional responsiveness difference.
 - Precise audio scheduling, one-shot guards, cb_fail combinations, bus ducking and listening/device validation. Previous native UI tests were muted.
 - Small chooser glyph spacing/raster differences, chooser exit and broader hover/entrance/reversal comparisons. Matching DOM boxes does not verify glyph pixels or interaction animation.
@@ -153,6 +154,33 @@ visible due to its inline-block CSS. Both quirks are covered by fixtures.
 
 The separate missing-repeat symbol is not the full exported editor repeat block.
 The font probe finds Noto Sans Mono on this Linux reference host; its original
-installed font/OFL are retained for selected code-pane matches. No host sharing
-or final shared game-over implementation has been added. Inspect current tests,
+installed font/OFL are retained for selected code-pane matches. Host sharing is still missing. The next section connects shared game-over;
+complete presentation/lifecycle matching remains unfinished. Inspect current tests,
 feedback and coverage; do not turn selected low image errors into whole-mode 1:1.
+
+## Coding completion continuation facts
+
+The placeholder completion page is gone. `coding_host.rs` and main routing now
+open the existing shared overlay over the retained last scene. Code Lab resets
+to puzzle one; Code Boogie host restart is intentionally the original no-op,
+clearing host game-over without resetting editor/player/clock. Do not replace it
+with a chooser reset. Its following Continue reports stop 10 after stop 9;
+Lab reports stop 15 after fourteen levels. Source host ignores stop payload score.
+The header must offer restart at game-over even when can_pause is false.
+
+`coding-host-reference.json` has 29 real browser scene/API/Unistore/component
+states. Original entrypoint closures run unchanged; external Firebase/router/
+audio/tutorial boot is scaffolded. `coding_completion_capture` invokes native
+completion callbacks, asserts restart semantics and renders the real shared
+composition. It does not solve levels or certify pointer input. `finish_live`
+is required for coding: caching the fully disabled filtered image freezes live
+Boogie actors/lights. The far-right native crop changes under game-over; Lab's
+idle crop stays static. Tests currently total 75, but revalidate live state.
+
+Reference boot needs original CSS/attribute polyfills before components, and Lit
+updates/CSS transitions must settle before screenshots. Early hidden=false and
+getAnimations finish alone produced near-invisible overlays; those captures were
+discarded. Auto-focus rings, heavier title raster, shared blur approximation,
+keyboard/orientation/route/input-frame/audio details remain unfinished. Broader
+freestyle/custom/share/boot lifecycle still requires source work; no full parity
+claim or README rating change follows from these completion checks.

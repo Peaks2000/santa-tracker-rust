@@ -649,7 +649,8 @@
           "from_line": 89,
           "to_line": 124,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Coding-scene completion and host restart; coding-host-reference.json (29 original browser host states)",
+          "native_equivalent": "coding_host.rs + CodingView::continue_level/restart_from_host; teacher/Lab completion checked, broader modes/lifecycle unfinished"
         },
         {
           "name": "app.Game.prototype.onBlur",
@@ -684,7 +685,8 @@
           "from_line": 155,
           "to_line": 161,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Coding-scene completion and host restart; coding-host-reference.json (29 original browser host states)",
+          "native_equivalent": "coding_host.rs + CodingView::continue_level/restart_from_host; teacher/Lab completion checked, broader modes/lifecycle unfinished"
         }
       ]
     },
@@ -2281,7 +2283,8 @@
           "from_line": 83,
           "to_line": 112,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Coding-scene completion and host restart; coding-host-reference.json (29 original browser host states)",
+          "native_equivalent": "coding_host.rs + CodingView::continue_level/restart_from_host; teacher/Lab completion checked, broader modes/lifecycle unfinished"
         },
         {
           "name": "showTutorial",
@@ -2323,7 +2326,8 @@
           "from_line": 155,
           "to_line": 183,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Coding-scene completion and host restart; coding-host-reference.json (29 original browser host states)",
+          "native_equivalent": "coding_host.rs + CodingView::continue_level/restart_from_host; teacher/Lab completion checked, broader modes/lifecycle unfinished"
         }
       ]
     },
@@ -2674,7 +2678,7 @@
           "to_line": 131,
           "status": "partial_or_unfinished",
           "evidence": "SOURCE-COVERAGE.md: Code Boogie result panels follow-up; 70 layout states, 96 CSS phases and selected raster/controller evidence; see explicit remaining gaps",
-          "native_equivalent": "coding_result_view class/freestyle progression; final host game-over unfinished"
+          "native_equivalent": "CodingView::continue_level / CodingHost; shared host completion connected; broader presentation/lifecycle unfinished"
         },
         {
           "name": "onShowCode",

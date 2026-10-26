@@ -78,6 +78,14 @@ void main(){gl_FragColor=vec4(texture2D(Texture,uv).rgb,1.0);}"#,
         clear_background(BLACK);
     }
     pub fn finish(&mut self, disabled: bool) {
+        self.finish_impl(disabled, false);
+    }
+    /// A disabled coding iframe keeps drawing: game-over does not pause the
+    /// original scene's animation/music clock. Refresh its filtered image too.
+    pub fn finish_live(&mut self, disabled: bool) {
+        self.finish_impl(disabled, true);
+    }
+    fn finish_impl(&mut self, disabled: bool, live: bool) {
         let now = get_time();
         self.amount.set(
             now,
@@ -88,7 +96,7 @@ void main(){gl_FragColor=vec4(texture2D(Texture,uv).rgb,1.0);}"#,
         let amount = self.amount.value(now)[0] as f32;
         let source = &self.target.as_ref().unwrap().texture;
         let filtered = self.filtered.as_ref().unwrap();
-        if amount > 0.001 && (!disabled || amount < 1. || self.cached != amount) {
+        if amount > 0.001 && (live || !disabled || amount < 1. || self.cached != amount) {
             let mut camera =
                 Camera2D::from_display_rect(Rect::new(0., 0., screen_width(), screen_height()));
             camera.render_target = Some(filtered.clone());

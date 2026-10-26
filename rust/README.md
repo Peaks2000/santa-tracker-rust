@@ -177,3 +177,12 @@ configurations; `flow` runs the native first-lesson controller and checks that
 editing during playback preserves the submitted code. A final optional number
 sets animation time in seconds for isolated configurations (default 2).
 These checks do not certify pointer/keyboard interaction, sharing or host game-over.
+
+The coding scenes now open the shared game-over overlay after their final level.
+Code Lab's host restart returns to its first puzzle. Code Boogie's original host
+restart is a no-op: the overlay closes while the last scene/editor remains.
+R is not a coding-scene restart shortcut. Sharing and broader parity gaps remain.
+For a callback-driven composite diagnostic, use
+`cargo run --release --manifest-path rust/Cargo.toml --example coding_completion_capture -- codeboogie /tmp/coding-over.png 1440 800`
+(or `codelab`). It also saves `.before.png` for the live-background check; it does
+not solve the levels or certify interactive input.

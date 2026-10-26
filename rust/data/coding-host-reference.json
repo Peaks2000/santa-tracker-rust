@@ -1,0 +1,510 @@
+{
+  "method": "Actual original scene Game/Result, API MessageChannel, global Unistore, SantaGameLoader/Overlay/Chrome and unchanged entrypoint subscriber/runner closures in Chromium. Scene rAF held externally; level callbacks invoked directly, not a full puzzle/dance playthrough. Firebase/router/analytics/audio/tutorial boot scaffolded, not certified. Captures final next, original restart dispatch and another next.",
+  "cases": [
+    {
+      "scene": "codeboogie",
+      "count": 9,
+      "actions": [
+        {
+          "action": "initial",
+          "state": {
+            "levelNumber": 0,
+            "gameLevel": 0,
+            "editorLevel": 0,
+            "scoreLevel": 1,
+            "maxLevel": 9,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 1,
+            "gameLevel": 1,
+            "editorLevel": 1,
+            "scoreLevel": 2,
+            "maxLevel": 9,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 2,
+            "gameLevel": 2,
+            "editorLevel": 2,
+            "scoreLevel": 3,
+            "maxLevel": 9,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 3,
+            "gameLevel": 3,
+            "editorLevel": 3,
+            "scoreLevel": 4,
+            "maxLevel": 9,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 4,
+            "gameLevel": 4,
+            "editorLevel": 4,
+            "scoreLevel": 5,
+            "maxLevel": 9,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 5,
+            "gameLevel": 5,
+            "editorLevel": 5,
+            "scoreLevel": 6,
+            "maxLevel": 9,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 6,
+            "gameLevel": 6,
+            "editorLevel": 6,
+            "scoreLevel": 7,
+            "maxLevel": 9,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 7,
+            "gameLevel": 7,
+            "editorLevel": 7,
+            "scoreLevel": 8,
+            "maxLevel": 9,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 8,
+            "gameLevel": 8,
+            "editorLevel": 8,
+            "scoreLevel": 9,
+            "maxLevel": 9,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 9,
+            "gameLevel": null,
+            "editorLevel": 8,
+            "scoreLevel": 9,
+            "maxLevel": 9,
+            "gameover": true,
+            "stopLevel": 9
+          },
+          "host": {
+            "overlayVisible": true,
+            "disabled": true,
+            "action": "restart"
+          }
+        },
+        {
+          "action": "restart",
+          "state": {
+            "levelNumber": 9,
+            "gameLevel": null,
+            "editorLevel": 8,
+            "scoreLevel": 9,
+            "maxLevel": 9,
+            "gameover": false,
+            "stopLevel": 9
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 10,
+            "gameLevel": null,
+            "editorLevel": 8,
+            "scoreLevel": 9,
+            "maxLevel": 9,
+            "gameover": true,
+            "stopLevel": 10
+          },
+          "host": {
+            "overlayVisible": true,
+            "disabled": true,
+            "action": "restart"
+          }
+        }
+      ]
+    },
+    {
+      "scene": "codelab",
+      "count": 14,
+      "actions": [
+        {
+          "action": "initial",
+          "state": {
+            "levelNumber": 0,
+            "gameLevel": 0,
+            "editorLevel": 0,
+            "scoreLevel": 1,
+            "maxLevel": 14,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 1,
+            "gameLevel": 1,
+            "editorLevel": 1,
+            "scoreLevel": 2,
+            "maxLevel": 14,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 2,
+            "gameLevel": 2,
+            "editorLevel": 2,
+            "scoreLevel": 3,
+            "maxLevel": 14,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 3,
+            "gameLevel": 3,
+            "editorLevel": 3,
+            "scoreLevel": 4,
+            "maxLevel": 14,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 4,
+            "gameLevel": 4,
+            "editorLevel": 4,
+            "scoreLevel": 5,
+            "maxLevel": 14,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 5,
+            "gameLevel": 5,
+            "editorLevel": 5,
+            "scoreLevel": 6,
+            "maxLevel": 14,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 6,
+            "gameLevel": 6,
+            "editorLevel": 6,
+            "scoreLevel": 7,
+            "maxLevel": 14,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 7,
+            "gameLevel": 7,
+            "editorLevel": 7,
+            "scoreLevel": 8,
+            "maxLevel": 14,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 8,
+            "gameLevel": 8,
+            "editorLevel": 8,
+            "scoreLevel": 9,
+            "maxLevel": 14,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 9,
+            "gameLevel": 9,
+            "editorLevel": 9,
+            "scoreLevel": 10,
+            "maxLevel": 14,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 10,
+            "gameLevel": 10,
+            "editorLevel": 10,
+            "scoreLevel": 11,
+            "maxLevel": 14,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 11,
+            "gameLevel": 11,
+            "editorLevel": 11,
+            "scoreLevel": 12,
+            "maxLevel": 14,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 12,
+            "gameLevel": 12,
+            "editorLevel": 12,
+            "scoreLevel": 13,
+            "maxLevel": 14,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 13,
+            "gameLevel": 13,
+            "editorLevel": 13,
+            "scoreLevel": 14,
+            "maxLevel": 14,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 14,
+            "gameLevel": null,
+            "editorLevel": 13,
+            "scoreLevel": 14,
+            "maxLevel": 14,
+            "gameover": true,
+            "stopLevel": 15
+          },
+          "host": {
+            "overlayVisible": true,
+            "disabled": true,
+            "action": "restart"
+          }
+        },
+        {
+          "action": "restart",
+          "state": {
+            "levelNumber": 0,
+            "gameLevel": 0,
+            "editorLevel": 0,
+            "scoreLevel": 1,
+            "maxLevel": 14,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        },
+        {
+          "action": "next",
+          "state": {
+            "levelNumber": 1,
+            "gameLevel": 1,
+            "editorLevel": 1,
+            "scoreLevel": 2,
+            "maxLevel": 14,
+            "gameover": false,
+            "stopLevel": null
+          },
+          "host": {
+            "overlayVisible": false,
+            "disabled": false,
+            "action": null
+          }
+        }
+      ]
+    }
+  ]
+}
