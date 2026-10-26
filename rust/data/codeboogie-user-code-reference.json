@@ -1,0 +1,4145 @@
+{
+  "method": "Unmodified original app.Blockly.getUserCode and bundled Blockly generator/Names in actual Chromium. Real XML-loaded graphs, numeric IDs, no code-generation stubs. Scene rAF held externally. Enabled standard native-supported dance/repeat/when_run graphs only; does not cover disabled blocks, comments or inaccessible imported types.",
+  "cases": [
+    {
+      "name": "empty",
+      "roots": [],
+      "userCode": ""
+    },
+    {
+      "name": "when-run-only",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": ""
+    },
+    {
+      "name": "every-step",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointLeft"
+            },
+            {
+              "kind": "dance_pointRight"
+            },
+            {
+              "kind": "dance_stepLeft"
+            },
+            {
+              "kind": "dance_stepRight"
+            },
+            {
+              "kind": "dance_jump"
+            },
+            {
+              "kind": "dance_splits"
+            },
+            {
+              "kind": "dance_hip"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointLeft();\npointRight();\nstepLeft();\nstepRight();\njump();\nsplits();\nhip();"
+    },
+    {
+      "name": "repeat-2",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "2"
+              },
+              "body": [
+                {
+                  "kind": "dance_pointLeft"
+                },
+                {
+                  "kind": "dance_jump"
+                }
+              ]
+            },
+            {
+              "kind": "dance_hip"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var i = 0; i < 2; i++) {\n  pointLeft();\n  jump();\n}\nhip();"
+    },
+    {
+      "name": "repeat-3",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "3"
+              },
+              "body": [
+                {
+                  "kind": "dance_pointLeft"
+                },
+                {
+                  "kind": "dance_jump"
+                }
+              ]
+            },
+            {
+              "kind": "dance_hip"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var i = 0; i < 3; i++) {\n  pointLeft();\n  jump();\n}\nhip();"
+    },
+    {
+      "name": "repeat-4",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "dance_pointLeft"
+                },
+                {
+                  "kind": "dance_jump"
+                }
+              ]
+            },
+            {
+              "kind": "dance_hip"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var i = 0; i < 4; i++) {\n  pointLeft();\n  jump();\n}\nhip();"
+    },
+    {
+      "name": "repeat-5",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "5"
+              },
+              "body": [
+                {
+                  "kind": "dance_pointLeft"
+                },
+                {
+                  "kind": "dance_jump"
+                }
+              ]
+            },
+            {
+              "kind": "dance_hip"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var i = 0; i < 5; i++) {\n  pointLeft();\n  jump();\n}\nhip();"
+    },
+    {
+      "name": "repeat-6",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "6"
+              },
+              "body": [
+                {
+                  "kind": "dance_pointLeft"
+                },
+                {
+                  "kind": "dance_jump"
+                }
+              ]
+            },
+            {
+              "kind": "dance_hip"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var i = 0; i < 6; i++) {\n  pointLeft();\n  jump();\n}\nhip();"
+    },
+    {
+      "name": "empty-repeat",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "2"
+              },
+              "body": []
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var i = 0; i < 2; i++) {\n}"
+    },
+    {
+      "name": "sibling-loops",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "2"
+              },
+              "body": [
+                {
+                  "kind": "dance_pointLeft"
+                }
+              ]
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "3"
+              },
+              "body": [
+                {
+                  "kind": "dance_pointRight"
+                }
+              ]
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "dance_jump"
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var i = 0; i < 2; i++) {\n  pointLeft();\n}\nfor (var j = 0; j < 3; j++) {\n  pointRight();\n}\nfor (var count3 = 0; count3 < 4; count3++) {\n  jump();\n}"
+    },
+    {
+      "name": "nested-2",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "3"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "2"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_splits"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var j = 0; j < 3; j++) {\n  for (var i = 0; i < 2; i++) {\n    splits();\n  }\n}"
+    },
+    {
+      "name": "nested-3",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "3"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "2"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_splits"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var count3 = 0; count3 < 4; count3++) {\n  for (var j = 0; j < 3; j++) {\n    for (var i = 0; i < 2; i++) {\n      splits();\n    }\n  }\n}"
+    },
+    {
+      "name": "nested-4",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "5"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "4"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "3"
+                      },
+                      "body": [
+                        {
+                          "kind": "controls_repeat",
+                          "fields": {
+                            "TIMES": "2"
+                          },
+                          "body": [
+                            {
+                              "kind": "dance_splits"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var count4 = 0; count4 < 5; count4++) {\n  for (var count3 = 0; count3 < 4; count3++) {\n    for (var j = 0; j < 3; j++) {\n      for (var i = 0; i < 2; i++) {\n        splits();\n      }\n    }\n  }\n}"
+    },
+    {
+      "name": "nested-5",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "6"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "5"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "4"
+                      },
+                      "body": [
+                        {
+                          "kind": "controls_repeat",
+                          "fields": {
+                            "TIMES": "3"
+                          },
+                          "body": [
+                            {
+                              "kind": "controls_repeat",
+                              "fields": {
+                                "TIMES": "2"
+                              },
+                              "body": [
+                                {
+                                  "kind": "dance_splits"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var count5 = 0; count5 < 6; count5++) {\n  for (var count4 = 0; count4 < 5; count4++) {\n    for (var count3 = 0; count3 < 4; count3++) {\n      for (var j = 0; j < 3; j++) {\n        for (var i = 0; i < 2; i++) {\n          splits();\n        }\n      }\n    }\n  }\n}"
+    },
+    {
+      "name": "nested-6",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "2"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "6"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "5"
+                      },
+                      "body": [
+                        {
+                          "kind": "controls_repeat",
+                          "fields": {
+                            "TIMES": "4"
+                          },
+                          "body": [
+                            {
+                              "kind": "controls_repeat",
+                              "fields": {
+                                "TIMES": "3"
+                              },
+                              "body": [
+                                {
+                                  "kind": "controls_repeat",
+                                  "fields": {
+                                    "TIMES": "2"
+                                  },
+                                  "body": [
+                                    {
+                                      "kind": "dance_splits"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var count6 = 0; count6 < 2; count6++) {\n  for (var count5 = 0; count5 < 6; count5++) {\n    for (var count4 = 0; count4 < 5; count4++) {\n      for (var count3 = 0; count3 < 4; count3++) {\n        for (var j = 0; j < 3; j++) {\n          for (var i = 0; i < 2; i++) {\n            splits();\n          }\n        }\n      }\n    }\n  }\n}"
+    },
+    {
+      "name": "nested-and-following",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "2"
+              },
+              "body": [
+                {
+                  "kind": "dance_jump"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "3"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_hip"
+                    }
+                  ]
+                },
+                {
+                  "kind": "dance_stepLeft"
+                }
+              ]
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "dance_stepRight"
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var j = 0; j < 2; j++) {\n  jump();\n  for (var i = 0; i < 3; i++) {\n    hip();\n  }\n  stepLeft();\n}\nfor (var count3 = 0; count3 < 4; count3++) {\n  stepRight();\n}"
+    },
+    {
+      "name": "root-scan-bias",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "2"
+              },
+              "body": [
+                {
+                  "kind": "dance_pointLeft"
+                }
+              ]
+            }
+          ],
+          "x": 600,
+          "y": 20
+        },
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "3"
+              },
+              "body": [
+                {
+                  "kind": "dance_pointRight"
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 40
+        }
+      ],
+      "userCode": "for (var i = 0; i < 3; i++) {\n  pointRight();\n}\nfor (var j = 0; j < 2; j++) {\n  pointLeft();\n}"
+    },
+    {
+      "name": "root-scan-tie",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        },
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointRight"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointLeft();\npointRight();"
+    },
+    {
+      "name": "generated-0",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "6"
+              },
+              "body": [
+                {
+                  "kind": "dance_hip"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "5"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_stepLeft"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var j = 0; j < 6; j++) {\n  hip();\n  for (var i = 0; i < 5; i++) {\n    stepLeft();\n  }\n}"
+    },
+    {
+      "name": "generated-1",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_stepRight"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "dance_stepRight"
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "stepRight();\nfor (var i = 0; i < 4; i++) {\n  stepRight();\n}"
+    },
+    {
+      "name": "generated-2",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_hip"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "6"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "3"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "3"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_hip"
+                        },
+                        {
+                          "kind": "dance_stepLeft"
+                        },
+                        {
+                          "kind": "dance_pointLeft"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "dance_splits"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "hip();\nfor (var count3 = 0; count3 < 6; count3++) {\n  for (var j = 0; j < 3; j++) {\n    for (var i = 0; i < 3; i++) {\n      hip();\n      stepLeft();\n      pointLeft();\n    }\n    splits();\n  }\n}"
+    },
+    {
+      "name": "generated-3",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_stepLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "stepLeft();"
+    },
+    {
+      "name": "generated-4",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointRight"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "dance_stepLeft"
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointRight();\nfor (var i = 0; i < 4; i++) {\n  stepLeft();\n}"
+    },
+    {
+      "name": "generated-5",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_stepRight"
+            },
+            {
+              "kind": "dance_stepLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "stepRight();\nstepLeft();"
+    },
+    {
+      "name": "generated-6",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_hip"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "hip();"
+    },
+    {
+      "name": "generated-7",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointLeft"
+            },
+            {
+              "kind": "dance_pointRight"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointLeft();\npointRight();"
+    },
+    {
+      "name": "generated-8",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointRight"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointRight();"
+    },
+    {
+      "name": "generated-9",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "2"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "4"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_stepRight"
+                    },
+                    {
+                      "kind": "dance_hip"
+                    },
+                    {
+                      "kind": "dance_hip"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "5"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_jump"
+                        },
+                        {
+                          "kind": "dance_pointRight"
+                        },
+                        {
+                          "kind": "dance_stepRight"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "dance_hip"
+                },
+                {
+                  "kind": "dance_pointLeft"
+                }
+              ]
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "5"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "3"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "3"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_hip"
+                        },
+                        {
+                          "kind": "dance_splits"
+                        },
+                        {
+                          "kind": "dance_splits"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "3"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_jump"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var count3 = 0; count3 < 2; count3++) {\n  for (var j = 0; j < 4; j++) {\n    stepRight();\n    hip();\n    hip();\n    for (var i = 0; i < 5; i++) {\n      jump();\n      pointRight();\n      stepRight();\n    }\n  }\n  hip();\n  pointLeft();\n}\nfor (var count7 = 0; count7 < 5; count7++) {\n  for (var count6 = 0; count6 < 3; count6++) {\n    for (var count4 = 0; count4 < 3; count4++) {\n      hip();\n      splits();\n      splits();\n    }\n    for (var count5 = 0; count5 < 3; count5++) {\n      jump();\n    }\n  }\n}"
+    },
+    {
+      "name": "generated-10",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "3"
+              },
+              "body": [
+                {
+                  "kind": "dance_pointLeft"
+                },
+                {
+                  "kind": "dance_pointRight"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "6"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "6"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_stepRight"
+                        },
+                        {
+                          "kind": "dance_pointRight"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "2"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "2"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_stepLeft"
+                        },
+                        {
+                          "kind": "dance_hip"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "dance_stepRight"
+            },
+            {
+              "kind": "dance_hip"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var count5 = 0; count5 < 3; count5++) {\n  pointLeft();\n  pointRight();\n  for (var j = 0; j < 6; j++) {\n    for (var i = 0; i < 6; i++) {\n      stepRight();\n      pointRight();\n    }\n  }\n  for (var count4 = 0; count4 < 2; count4++) {\n    for (var count3 = 0; count3 < 2; count3++) {\n      stepLeft();\n      hip();\n    }\n  }\n}\nstepRight();\nhip();"
+    },
+    {
+      "name": "generated-11",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_stepLeft"
+            },
+            {
+              "kind": "dance_jump"
+            },
+            {
+              "kind": "dance_jump"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "stepLeft();\njump();\njump();"
+    },
+    {
+      "name": "generated-12",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointRight"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "3"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "2"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_jump"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "3"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_stepLeft"
+                        },
+                        {
+                          "kind": "dance_hip"
+                        },
+                        {
+                          "kind": "dance_pointLeft"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "3"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_jump"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "dance_pointRight"
+                    }
+                  ]
+                },
+                {
+                  "kind": "dance_stepRight"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "3"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_jump"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "dance_jump"
+            },
+            {
+              "kind": "dance_stepLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointRight();\nfor (var count5 = 0; count5 < 3; count5++) {\n  for (var count3 = 0; count3 < 2; count3++) {\n    jump();\n    for (var i = 0; i < 3; i++) {\n      stepLeft();\n      hip();\n      pointLeft();\n    }\n    for (var j = 0; j < 3; j++) {\n      jump();\n    }\n    pointRight();\n  }\n  stepRight();\n  for (var count4 = 0; count4 < 3; count4++) {\n    jump();\n  }\n}\njump();\nstepLeft();"
+    },
+    {
+      "name": "generated-13",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "5"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "3"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_pointLeft"
+                    },
+                    {
+                      "kind": "dance_jump"
+                    },
+                    {
+                      "kind": "dance_stepLeft"
+                    },
+                    {
+                      "kind": "dance_stepLeft"
+                    }
+                  ]
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "3"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_hip"
+                    }
+                  ]
+                },
+                {
+                  "kind": "dance_jump"
+                }
+              ]
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "dance_hip"
+                },
+                {
+                  "kind": "dance_hip"
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var count3 = 0; count3 < 5; count3++) {\n  for (var i = 0; i < 3; i++) {\n    pointLeft();\n    jump();\n    stepLeft();\n    stepLeft();\n  }\n  for (var j = 0; j < 3; j++) {\n    hip();\n  }\n  jump();\n}\nfor (var count4 = 0; count4 < 4; count4++) {\n  hip();\n  hip();\n}"
+    },
+    {
+      "name": "generated-14",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointRight"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointRight();"
+    },
+    {
+      "name": "generated-15",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointRight"
+            },
+            {
+              "kind": "dance_pointLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointRight();\npointLeft();"
+    },
+    {
+      "name": "generated-16",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "5"
+              },
+              "body": [
+                {
+                  "kind": "dance_hip"
+                },
+                {
+                  "kind": "dance_hip"
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var i = 0; i < 5; i++) {\n  hip();\n  hip();\n}"
+    },
+    {
+      "name": "generated-17",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointLeft();"
+    },
+    {
+      "name": "generated-18",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_jump"
+            },
+            {
+              "kind": "dance_pointRight"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "jump();\npointRight();"
+    },
+    {
+      "name": "generated-19",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "dance_stepLeft"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "2"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "3"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_pointRight"
+                        },
+                        {
+                          "kind": "dance_pointRight"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var count3 = 0; count3 < 4; count3++) {\n  stepLeft();\n  for (var j = 0; j < 2; j++) {\n    for (var i = 0; i < 3; i++) {\n      pointRight();\n      pointRight();\n    }\n  }\n}"
+    },
+    {
+      "name": "generated-20",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_stepRight"
+            },
+            {
+              "kind": "dance_stepRight"
+            },
+            {
+              "kind": "dance_splits"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "stepRight();\nstepRight();\nsplits();"
+    },
+    {
+      "name": "generated-21",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointRight"
+            },
+            {
+              "kind": "dance_stepLeft"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "dance_jump"
+                }
+              ]
+            },
+            {
+              "kind": "dance_jump"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointRight();\nstepLeft();\nfor (var i = 0; i < 4; i++) {\n  jump();\n}\njump();"
+    },
+    {
+      "name": "generated-22",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "6"
+              },
+              "body": [
+                {
+                  "kind": "dance_stepLeft"
+                }
+              ]
+            },
+            {
+              "kind": "dance_pointRight"
+            },
+            {
+              "kind": "dance_stepRight"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "6"
+              },
+              "body": [
+                {
+                  "kind": "dance_jump"
+                },
+                {
+                  "kind": "dance_pointLeft"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "6"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_stepRight"
+                    }
+                  ]
+                },
+                {
+                  "kind": "dance_hip"
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var i = 0; i < 6; i++) {\n  stepLeft();\n}\npointRight();\nstepRight();\nfor (var count3 = 0; count3 < 6; count3++) {\n  jump();\n  pointLeft();\n  for (var j = 0; j < 6; j++) {\n    stepRight();\n  }\n  hip();\n}"
+    },
+    {
+      "name": "generated-23",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_stepRight"
+            },
+            {
+              "kind": "dance_splits"
+            },
+            {
+              "kind": "dance_stepLeft"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "3"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "5"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_stepRight"
+                    },
+                    {
+                      "kind": "dance_hip"
+                    },
+                    {
+                      "kind": "dance_pointLeft"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "2"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_pointRight"
+                        },
+                        {
+                          "kind": "dance_hip"
+                        },
+                        {
+                          "kind": "dance_hip"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "dance_splits"
+                },
+                {
+                  "kind": "dance_hip"
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "stepRight();\nsplits();\nstepLeft();\nfor (var count3 = 0; count3 < 3; count3++) {\n  for (var j = 0; j < 5; j++) {\n    stepRight();\n    hip();\n    pointLeft();\n    for (var i = 0; i < 2; i++) {\n      pointRight();\n      hip();\n      hip();\n    }\n  }\n  splits();\n  hip();\n}"
+    },
+    {
+      "name": "generated-24",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_splits"
+            },
+            {
+              "kind": "dance_pointRight"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "6"
+              },
+              "body": [
+                {
+                  "kind": "dance_pointLeft"
+                },
+                {
+                  "kind": "dance_stepLeft"
+                },
+                {
+                  "kind": "dance_hip"
+                },
+                {
+                  "kind": "dance_pointRight"
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "splits();\npointRight();\nfor (var i = 0; i < 6; i++) {\n  pointLeft();\n  stepLeft();\n  hip();\n  pointRight();\n}"
+    },
+    {
+      "name": "generated-25",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointLeft"
+            },
+            {
+              "kind": "dance_jump"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "6"
+              },
+              "body": [
+                {
+                  "kind": "dance_stepRight"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "3"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "4"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_jump"
+                        },
+                        {
+                          "kind": "dance_stepLeft"
+                        },
+                        {
+                          "kind": "dance_hip"
+                        },
+                        {
+                          "kind": "dance_pointLeft"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "dance_hip"
+                    },
+                    {
+                      "kind": "dance_splits"
+                    }
+                  ]
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "5"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "2"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_jump"
+                        },
+                        {
+                          "kind": "dance_stepLeft"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "dance_pointRight"
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointLeft();\njump();\nfor (var count5 = 0; count5 < 6; count5++) {\n  stepRight();\n  for (var j = 0; j < 3; j++) {\n    for (var i = 0; i < 4; i++) {\n      jump();\n      stepLeft();\n      hip();\n      pointLeft();\n    }\n    hip();\n    splits();\n  }\n  for (var count4 = 0; count4 < 5; count4++) {\n    for (var count3 = 0; count3 < 2; count3++) {\n      jump();\n      stepLeft();\n    }\n  }\n  pointRight();\n}"
+    },
+    {
+      "name": "generated-26",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_jump"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "jump();"
+    },
+    {
+      "name": "generated-27",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_splits"
+            },
+            {
+              "kind": "dance_pointLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "splits();\npointLeft();"
+    },
+    {
+      "name": "generated-28",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_stepLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "stepLeft();"
+    },
+    {
+      "name": "generated-29",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_jump"
+            },
+            {
+              "kind": "dance_jump"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "jump();\njump();"
+    },
+    {
+      "name": "generated-30",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_stepRight"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "stepRight();"
+    },
+    {
+      "name": "generated-31",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointLeft"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "3"
+              },
+              "body": [
+                {
+                  "kind": "dance_hip"
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointLeft();\nfor (var i = 0; i < 3; i++) {\n  hip();\n}"
+    },
+    {
+      "name": "generated-32",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "3"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "2"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_pointLeft"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "3"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_hip"
+                        },
+                        {
+                          "kind": "dance_jump"
+                        },
+                        {
+                          "kind": "dance_stepLeft"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "dance_stepRight"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "3"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_stepRight"
+                        },
+                        {
+                          "kind": "dance_pointRight"
+                        },
+                        {
+                          "kind": "dance_hip"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "dance_stepRight"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "6"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_splits"
+                    },
+                    {
+                      "kind": "dance_hip"
+                    },
+                    {
+                      "kind": "dance_hip"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "dance_stepRight"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var count5 = 0; count5 < 3; count5++) {\n  for (var count3 = 0; count3 < 2; count3++) {\n    pointLeft();\n    for (var i = 0; i < 3; i++) {\n      hip();\n      jump();\n      stepLeft();\n    }\n    stepRight();\n    for (var j = 0; j < 3; j++) {\n      stepRight();\n      pointRight();\n      hip();\n    }\n  }\n  stepRight();\n  for (var count4 = 0; count4 < 6; count4++) {\n    splits();\n    hip();\n    hip();\n  }\n}\nstepRight();"
+    },
+    {
+      "name": "generated-33",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointRight"
+            },
+            {
+              "kind": "dance_stepLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointRight();\nstepLeft();"
+    },
+    {
+      "name": "generated-34",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointLeft();"
+    },
+    {
+      "name": "generated-35",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointLeft"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "5"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "4"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_stepRight"
+                    },
+                    {
+                      "kind": "dance_hip"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointLeft();\nfor (var j = 0; j < 5; j++) {\n  for (var i = 0; i < 4; i++) {\n    stepRight();\n    hip();\n  }\n}"
+    },
+    {
+      "name": "generated-36",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "5"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "6"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_hip"
+                    },
+                    {
+                      "kind": "dance_jump"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "4"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_hip"
+                        },
+                        {
+                          "kind": "dance_jump"
+                        },
+                        {
+                          "kind": "dance_hip"
+                        },
+                        {
+                          "kind": "dance_hip"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "6"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "4"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_splits"
+                        },
+                        {
+                          "kind": "dance_pointRight"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var count5 = 0; count5 < 5; count5++) {\n  for (var j = 0; j < 6; j++) {\n    hip();\n    jump();\n    for (var i = 0; i < 4; i++) {\n      hip();\n      jump();\n      hip();\n      hip();\n    }\n  }\n  for (var count4 = 0; count4 < 6; count4++) {\n    for (var count3 = 0; count3 < 4; count3++) {\n      splits();\n      pointRight();\n    }\n  }\n}"
+    },
+    {
+      "name": "generated-37",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "dance_pointRight"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "6"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_pointLeft"
+                    },
+                    {
+                      "kind": "dance_splits"
+                    },
+                    {
+                      "kind": "dance_stepRight"
+                    }
+                  ]
+                },
+                {
+                  "kind": "dance_stepLeft"
+                },
+                {
+                  "kind": "dance_stepLeft"
+                }
+              ]
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "2"
+              },
+              "body": [
+                {
+                  "kind": "dance_pointRight"
+                },
+                {
+                  "kind": "dance_stepRight"
+                }
+              ]
+            },
+            {
+              "kind": "dance_stepLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var j = 0; j < 4; j++) {\n  pointRight();\n  for (var i = 0; i < 6; i++) {\n    pointLeft();\n    splits();\n    stepRight();\n  }\n  stepLeft();\n  stepLeft();\n}\nfor (var count3 = 0; count3 < 2; count3++) {\n  pointRight();\n  stepRight();\n}\nstepLeft();"
+    },
+    {
+      "name": "generated-38",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "2"
+              },
+              "body": [
+                {
+                  "kind": "dance_jump"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "5"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_hip"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "5"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_stepLeft"
+                        },
+                        {
+                          "kind": "dance_jump"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "dance_pointRight"
+                    }
+                  ]
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "5"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "2"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_pointLeft"
+                        },
+                        {
+                          "kind": "dance_hip"
+                        },
+                        {
+                          "kind": "dance_splits"
+                        },
+                        {
+                          "kind": "dance_splits"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "dance_splits"
+                    },
+                    {
+                      "kind": "dance_pointRight"
+                    }
+                  ]
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "4"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_splits"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "dance_stepLeft"
+            },
+            {
+              "kind": "dance_jump"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var count6 = 0; count6 < 2; count6++) {\n  jump();\n  for (var j = 0; j < 5; j++) {\n    hip();\n    for (var i = 0; i < 5; i++) {\n      stepLeft();\n      jump();\n    }\n    pointRight();\n  }\n  for (var count4 = 0; count4 < 5; count4++) {\n    for (var count3 = 0; count3 < 2; count3++) {\n      pointLeft();\n      hip();\n      splits();\n      splits();\n    }\n    splits();\n    pointRight();\n  }\n  for (var count5 = 0; count5 < 4; count5++) {\n    splits();\n  }\n}\nstepLeft();\njump();"
+    },
+    {
+      "name": "generated-39",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_splits"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "3"
+              },
+              "body": [
+                {
+                  "kind": "dance_hip"
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "splits();\nfor (var i = 0; i < 3; i++) {\n  hip();\n}"
+    },
+    {
+      "name": "generated-40",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_splits"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "3"
+              },
+              "body": [
+                {
+                  "kind": "dance_hip"
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "splits();\nfor (var i = 0; i < 3; i++) {\n  hip();\n}"
+    },
+    {
+      "name": "generated-41",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_jump"
+            },
+            {
+              "kind": "dance_stepRight"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "jump();\nstepRight();"
+    },
+    {
+      "name": "generated-42",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_stepLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "stepLeft();"
+    },
+    {
+      "name": "generated-43",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_hip"
+            },
+            {
+              "kind": "dance_splits"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "hip();\nsplits();"
+    },
+    {
+      "name": "generated-44",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "dance_pointRight"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "5"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_hip"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var j = 0; j < 4; j++) {\n  pointRight();\n  for (var i = 0; i < 5; i++) {\n    hip();\n  }\n}"
+    },
+    {
+      "name": "generated-45",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointRight"
+            },
+            {
+              "kind": "dance_hip"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointRight();\nhip();"
+    },
+    {
+      "name": "generated-46",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "3"
+              },
+              "body": [
+                {
+                  "kind": "dance_jump"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "4"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_pointRight"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var j = 0; j < 3; j++) {\n  jump();\n  for (var i = 0; i < 4; i++) {\n    pointRight();\n  }\n}"
+    },
+    {
+      "name": "generated-47",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointLeft"
+            },
+            {
+              "kind": "dance_stepLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointLeft();\nstepLeft();"
+    },
+    {
+      "name": "generated-48",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_stepRight"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "stepRight();"
+    },
+    {
+      "name": "generated-49",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_stepRight"
+            },
+            {
+              "kind": "dance_hip"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "stepRight();\nhip();"
+    },
+    {
+      "name": "generated-50",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_splits"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "splits();"
+    },
+    {
+      "name": "generated-51",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "2"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "2"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_pointRight"
+                    },
+                    {
+                      "kind": "dance_splits"
+                    },
+                    {
+                      "kind": "dance_pointLeft"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "2"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_pointLeft"
+                        },
+                        {
+                          "kind": "dance_hip"
+                        },
+                        {
+                          "kind": "dance_splits"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "dance_pointRight"
+                },
+                {
+                  "kind": "dance_stepLeft"
+                }
+              ]
+            },
+            {
+              "kind": "dance_pointLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var count3 = 0; count3 < 2; count3++) {\n  for (var j = 0; j < 2; j++) {\n    pointRight();\n    splits();\n    pointLeft();\n    for (var i = 0; i < 2; i++) {\n      pointLeft();\n      hip();\n      splits();\n    }\n  }\n  pointRight();\n  stepLeft();\n}\npointLeft();"
+    },
+    {
+      "name": "generated-52",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "4"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "4"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_hip"
+                        },
+                        {
+                          "kind": "dance_pointRight"
+                        },
+                        {
+                          "kind": "dance_hip"
+                        },
+                        {
+                          "kind": "dance_splits"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "6"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_splits"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "dance_pointLeft"
+                    }
+                  ]
+                },
+                {
+                  "kind": "dance_pointLeft"
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var count4 = 0; count4 < 4; count4++) {\n  for (var count3 = 0; count3 < 4; count3++) {\n    for (var i = 0; i < 4; i++) {\n      hip();\n      pointRight();\n      hip();\n      splits();\n    }\n    for (var j = 0; j < 6; j++) {\n      splits();\n    }\n    pointLeft();\n  }\n  pointLeft();\n}"
+    },
+    {
+      "name": "generated-53",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_jump"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "6"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "4"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_stepLeft"
+                    },
+                    {
+                      "kind": "dance_pointLeft"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "5"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_hip"
+                        },
+                        {
+                          "kind": "dance_splits"
+                        },
+                        {
+                          "kind": "dance_hip"
+                        },
+                        {
+                          "kind": "dance_hip"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "dance_pointLeft"
+                }
+              ]
+            },
+            {
+              "kind": "dance_stepLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "jump();\nfor (var count3 = 0; count3 < 6; count3++) {\n  for (var j = 0; j < 4; j++) {\n    stepLeft();\n    pointLeft();\n    for (var i = 0; i < 5; i++) {\n      hip();\n      splits();\n      hip();\n      hip();\n    }\n  }\n  pointLeft();\n}\nstepLeft();"
+    },
+    {
+      "name": "generated-54",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_splits"
+            },
+            {
+              "kind": "dance_stepRight"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "dance_splits"
+                },
+                {
+                  "kind": "dance_pointLeft"
+                },
+                {
+                  "kind": "dance_jump"
+                },
+                {
+                  "kind": "dance_pointRight"
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "splits();\nstepRight();\nfor (var i = 0; i < 4; i++) {\n  splits();\n  pointLeft();\n  jump();\n  pointRight();\n}"
+    },
+    {
+      "name": "generated-55",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "5"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_stepRight"
+                    }
+                  ]
+                },
+                {
+                  "kind": "dance_pointRight"
+                },
+                {
+                  "kind": "dance_jump"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "6"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_splits"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "5"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_splits"
+                        },
+                        {
+                          "kind": "dance_stepLeft"
+                        },
+                        {
+                          "kind": "dance_pointRight"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "dance_stepLeft"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "3"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_splits"
+                        },
+                        {
+                          "kind": "dance_hip"
+                        },
+                        {
+                          "kind": "dance_jump"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "5"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "4"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_pointRight"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "6"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_stepLeft"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "dance_splits"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var count5 = 0; count5 < 4; count5++) {\n  for (var i = 0; i < 5; i++) {\n    stepRight();\n  }\n  pointRight();\n  jump();\n  for (var count4 = 0; count4 < 6; count4++) {\n    splits();\n    for (var j = 0; j < 5; j++) {\n      splits();\n      stepLeft();\n      pointRight();\n    }\n    stepLeft();\n    for (var count3 = 0; count3 < 3; count3++) {\n      splits();\n      hip();\n      jump();\n    }\n  }\n}\nfor (var count8 = 0; count8 < 5; count8++) {\n  for (var count7 = 0; count7 < 4; count7++) {\n    pointRight();\n    for (var count6 = 0; count6 < 6; count6++) {\n      stepLeft();\n    }\n  }\n}\nsplits();"
+    },
+    {
+      "name": "generated-56",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_hip"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "hip();"
+    },
+    {
+      "name": "generated-57",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_stepRight"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "3"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "2"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_pointRight"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "6"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_pointLeft"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "stepRight();\nfor (var count3 = 0; count3 < 3; count3++) {\n  for (var j = 0; j < 2; j++) {\n    pointRight();\n    for (var i = 0; i < 6; i++) {\n      pointLeft();\n    }\n  }\n}"
+    },
+    {
+      "name": "generated-58",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_stepLeft"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "dance_hip"
+                },
+                {
+                  "kind": "dance_pointRight"
+                }
+              ]
+            },
+            {
+              "kind": "dance_pointLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "stepLeft();\nfor (var i = 0; i < 4; i++) {\n  hip();\n  pointRight();\n}\npointLeft();"
+    },
+    {
+      "name": "generated-59",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "3"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "2"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_pointRight"
+                    }
+                  ]
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "3"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "2"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_stepRight"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "2"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_stepRight"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "dance_stepLeft"
+                    },
+                    {
+                      "kind": "dance_pointRight"
+                    }
+                  ]
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "5"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_stepRight"
+                    }
+                  ]
+                },
+                {
+                  "kind": "dance_stepRight"
+                }
+              ]
+            },
+            {
+              "kind": "dance_jump"
+            },
+            {
+              "kind": "dance_stepRight"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var count6 = 0; count6 < 3; count6++) {\n  for (var i = 0; i < 2; i++) {\n    pointRight();\n  }\n  for (var count4 = 0; count4 < 3; count4++) {\n    for (var j = 0; j < 2; j++) {\n      stepRight();\n    }\n    for (var count3 = 0; count3 < 2; count3++) {\n      stepRight();\n    }\n    stepLeft();\n    pointRight();\n  }\n  for (var count5 = 0; count5 < 5; count5++) {\n    stepRight();\n  }\n  stepRight();\n}\njump();\nstepRight();"
+    },
+    {
+      "name": "generated-60",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "3"
+              },
+              "body": [
+                {
+                  "kind": "dance_pointRight"
+                }
+              ]
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "dance_splits"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "3"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_stepRight"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "2"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_splits"
+                        },
+                        {
+                          "kind": "dance_jump"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "dance_stepLeft"
+                    }
+                  ]
+                },
+                {
+                  "kind": "dance_hip"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "3"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_stepLeft"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "dance_splits"
+                },
+                {
+                  "kind": "dance_stepRight"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "5"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_jump"
+                    }
+                  ]
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "5"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "3"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_splits"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "dance_pointLeft"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "3"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_splits"
+                        },
+                        {
+                          "kind": "dance_hip"
+                        },
+                        {
+                          "kind": "dance_stepLeft"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "dance_stepLeft"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "3"
+              },
+              "body": [
+                {
+                  "kind": "dance_pointLeft"
+                },
+                {
+                  "kind": "dance_splits"
+                },
+                {
+                  "kind": "dance_hip"
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var i = 0; i < 3; i++) {\n  pointRight();\n}\nfor (var count5 = 0; count5 < 4; count5++) {\n  splits();\n  for (var count3 = 0; count3 < 3; count3++) {\n    stepRight();\n    for (var j = 0; j < 2; j++) {\n      splits();\n      jump();\n    }\n    stepLeft();\n  }\n  hip();\n  for (var count4 = 0; count4 < 3; count4++) {\n    stepLeft();\n  }\n}\nfor (var count10 = 0; count10 < 4; count10++) {\n  splits();\n  stepRight();\n  for (var count6 = 0; count6 < 5; count6++) {\n    jump();\n  }\n  for (var count9 = 0; count9 < 5; count9++) {\n    for (var count7 = 0; count7 < 3; count7++) {\n      splits();\n    }\n    pointLeft();\n    for (var count8 = 0; count8 < 3; count8++) {\n      splits();\n      hip();\n      stepLeft();\n    }\n    stepLeft();\n  }\n}\nfor (var count11 = 0; count11 < 3; count11++) {\n  pointLeft();\n  splits();\n  hip();\n}"
+    },
+    {
+      "name": "generated-61",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointLeft"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "5"
+              },
+              "body": [
+                {
+                  "kind": "dance_stepRight"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "4"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_jump"
+                    },
+                    {
+                      "kind": "dance_pointLeft"
+                    }
+                  ]
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "4"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "5"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_pointRight"
+                        },
+                        {
+                          "kind": "dance_stepRight"
+                        },
+                        {
+                          "kind": "dance_stepRight"
+                        },
+                        {
+                          "kind": "dance_hip"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "4"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_stepLeft"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "dance_hip"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "dance_splits"
+            },
+            {
+              "kind": "dance_stepLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointLeft();\nfor (var count5 = 0; count5 < 5; count5++) {\n  stepRight();\n  for (var i = 0; i < 4; i++) {\n    jump();\n    pointLeft();\n  }\n  for (var count4 = 0; count4 < 4; count4++) {\n    for (var j = 0; j < 5; j++) {\n      pointRight();\n      stepRight();\n      stepRight();\n      hip();\n    }\n    for (var count3 = 0; count3 < 4; count3++) {\n      stepLeft();\n    }\n    hip();\n  }\n}\nsplits();\nstepLeft();"
+    },
+    {
+      "name": "generated-62",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointRight"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointRight();"
+    },
+    {
+      "name": "generated-63",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "5"
+              },
+              "body": [
+                {
+                  "kind": "dance_stepLeft"
+                },
+                {
+                  "kind": "dance_pointLeft"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "5"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_jump"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "3"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_hip"
+                        },
+                        {
+                          "kind": "dance_pointLeft"
+                        },
+                        {
+                          "kind": "dance_pointRight"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "dance_stepRight"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "3"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_pointRight"
+                        },
+                        {
+                          "kind": "dance_pointRight"
+                        },
+                        {
+                          "kind": "dance_splits"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "dance_pointLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var count4 = 0; count4 < 5; count4++) {\n  stepLeft();\n  pointLeft();\n  for (var count3 = 0; count3 < 5; count3++) {\n    jump();\n    for (var i = 0; i < 3; i++) {\n      hip();\n      pointLeft();\n      pointRight();\n    }\n    stepRight();\n    for (var j = 0; j < 3; j++) {\n      pointRight();\n      pointRight();\n      splits();\n    }\n  }\n}\npointLeft();"
+    },
+    {
+      "name": "generated-64",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointRight"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointRight();"
+    },
+    {
+      "name": "generated-65",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "6"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "5"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "2"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_hip"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "6"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_stepLeft"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "dance_jump"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "5"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_pointRight"
+                        },
+                        {
+                          "kind": "dance_pointRight"
+                        },
+                        {
+                          "kind": "dance_hip"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "dance_splits"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "2"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_stepRight"
+                    },
+                    {
+                      "kind": "dance_stepLeft"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "2"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_splits"
+                        },
+                        {
+                          "kind": "dance_pointRight"
+                        },
+                        {
+                          "kind": "dance_stepRight"
+                        },
+                        {
+                          "kind": "dance_splits"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "dance_pointRight"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var count7 = 0; count7 < 6; count7++) {\n  for (var count4 = 0; count4 < 5; count4++) {\n    for (var i = 0; i < 2; i++) {\n      hip();\n    }\n    for (var j = 0; j < 6; j++) {\n      stepLeft();\n    }\n    jump();\n    for (var count3 = 0; count3 < 5; count3++) {\n      pointRight();\n      pointRight();\n      hip();\n    }\n  }\n  splits();\n  for (var count6 = 0; count6 < 2; count6++) {\n    stepRight();\n    stepLeft();\n    for (var count5 = 0; count5 < 2; count5++) {\n      splits();\n      pointRight();\n      stepRight();\n      splits();\n    }\n  }\n}\npointRight();"
+    },
+    {
+      "name": "generated-66",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_splits"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "splits();"
+    },
+    {
+      "name": "generated-67",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_jump"
+            },
+            {
+              "kind": "dance_pointLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "jump();\npointLeft();"
+    },
+    {
+      "name": "generated-68",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_jump"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "jump();"
+    },
+    {
+      "name": "generated-69",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "2"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "3"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "4"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_stepRight"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "dance_stepLeft"
+                    },
+                    {
+                      "kind": "dance_splits"
+                    },
+                    {
+                      "kind": "dance_pointLeft"
+                    }
+                  ]
+                },
+                {
+                  "kind": "dance_jump"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "3"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_pointLeft"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "dance_splits"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var count4 = 0; count4 < 2; count4++) {\n  for (var j = 0; j < 3; j++) {\n    for (var i = 0; i < 4; i++) {\n      stepRight();\n    }\n    stepLeft();\n    splits();\n    pointLeft();\n  }\n  jump();\n  for (var count3 = 0; count3 < 3; count3++) {\n    pointLeft();\n  }\n}\nsplits();"
+    },
+    {
+      "name": "generated-70",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "2"
+              },
+              "body": [
+                {
+                  "kind": "dance_hip"
+                }
+              ]
+            },
+            {
+              "kind": "dance_stepRight"
+            },
+            {
+              "kind": "dance_stepRight"
+            },
+            {
+              "kind": "dance_splits"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var i = 0; i < 2; i++) {\n  hip();\n}\nstepRight();\nstepRight();\nsplits();"
+    },
+    {
+      "name": "generated-71",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "2"
+              },
+              "body": [
+                {
+                  "kind": "dance_pointRight"
+                }
+              ]
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "dance_stepLeft"
+                },
+                {
+                  "kind": "dance_splits"
+                },
+                {
+                  "kind": "dance_hip"
+                },
+                {
+                  "kind": "dance_hip"
+                }
+              ]
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "5"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_hip"
+                    },
+                    {
+                      "kind": "dance_splits"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "dance_stepLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "for (var i = 0; i < 2; i++) {\n  pointRight();\n}\nfor (var j = 0; j < 4; j++) {\n  stepLeft();\n  splits();\n  hip();\n  hip();\n}\nfor (var count4 = 0; count4 < 4; count4++) {\n  for (var count3 = 0; count3 < 5; count3++) {\n    hip();\n    splits();\n  }\n}\nstepLeft();"
+    },
+    {
+      "name": "generated-72",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_jump"
+            },
+            {
+              "kind": "dance_pointLeft"
+            },
+            {
+              "kind": "dance_stepRight"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "jump();\npointLeft();\nstepRight();"
+    },
+    {
+      "name": "generated-73",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_hip"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "3"
+              },
+              "body": [
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "3"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_hip"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "2"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_stepRight"
+                        },
+                        {
+                          "kind": "dance_splits"
+                        },
+                        {
+                          "kind": "dance_pointRight"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "dance_pointRight"
+                    },
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "2"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_hip"
+                        },
+                        {
+                          "kind": "dance_stepRight"
+                        },
+                        {
+                          "kind": "dance_splits"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "4"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_pointRight"
+                    }
+                  ]
+                },
+                {
+                  "kind": "dance_hip"
+                }
+              ]
+            },
+            {
+              "kind": "dance_pointLeft"
+            },
+            {
+              "kind": "controls_repeat",
+              "fields": {
+                "TIMES": "4"
+              },
+              "body": [
+                {
+                  "kind": "dance_pointLeft"
+                },
+                {
+                  "kind": "dance_pointRight"
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "5"
+                  },
+                  "body": [
+                    {
+                      "kind": "controls_repeat",
+                      "fields": {
+                        "TIMES": "3"
+                      },
+                      "body": [
+                        {
+                          "kind": "dance_splits"
+                        },
+                        {
+                          "kind": "dance_pointLeft"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "controls_repeat",
+                  "fields": {
+                    "TIMES": "3"
+                  },
+                  "body": [
+                    {
+                      "kind": "dance_splits"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "hip();\nfor (var count5 = 0; count5 < 3; count5++) {\n  for (var count3 = 0; count3 < 3; count3++) {\n    hip();\n    for (var i = 0; i < 2; i++) {\n      stepRight();\n      splits();\n      pointRight();\n    }\n    pointRight();\n    for (var j = 0; j < 2; j++) {\n      hip();\n      stepRight();\n      splits();\n    }\n  }\n  for (var count4 = 0; count4 < 4; count4++) {\n    pointRight();\n  }\n  hip();\n}\npointLeft();\nfor (var count9 = 0; count9 < 4; count9++) {\n  pointLeft();\n  pointRight();\n  for (var count7 = 0; count7 < 5; count7++) {\n    for (var count6 = 0; count6 < 3; count6++) {\n      splits();\n      pointLeft();\n    }\n  }\n  for (var count8 = 0; count8 < 3; count8++) {\n    splits();\n  }\n}"
+    },
+    {
+      "name": "generated-74",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_hip"
+            },
+            {
+              "kind": "dance_pointRight"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "hip();\npointRight();"
+    },
+    {
+      "name": "generated-75",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_splits"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "splits();"
+    },
+    {
+      "name": "generated-76",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_splits"
+            },
+            {
+              "kind": "dance_stepLeft"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "splits();\nstepLeft();"
+    },
+    {
+      "name": "generated-77",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_hip"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "hip();"
+    },
+    {
+      "name": "generated-78",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_pointLeft"
+            },
+            {
+              "kind": "dance_splits"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "pointLeft();\nsplits();"
+    },
+    {
+      "name": "generated-79",
+      "roots": [
+        {
+          "blocks": [
+            {
+              "kind": "when_run"
+            },
+            {
+              "kind": "dance_splits"
+            }
+          ],
+          "x": 20,
+          "y": 24
+        }
+      ],
+      "userCode": "splits();"
+    }
+  ]
+}

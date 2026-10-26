@@ -56,5 +56,14 @@
       "static/scenes/codeboogie/codeboogie-scene.scss": "93e99bb81c487c754c5b8a009ec45572935fd5f541d79eb0a295950544bce849",
       "static/scenes/codeboogie/sass/_scene.scss": "7b92a680a7682cf0039b1db0a0ae60523c05fe83ee863ef2a826e07ed4bb84e7"
     }
+  },
+  "educational_code": {
+    "method": "Original bundled Blockly graph/Names/generator in Chromium; 98 complete getUserCode strings. See fixture for scope. Workspace file only active getTopBlocks path reviewed; other three complete files read.",
+    "additional_source_hashes": {
+      "static/third_party/lib/blockly/core/generator.js": "8dd51020083d9cd0f74dd26b61fdb3a2ff0f54cb8dd846cc27bd211e490deb48",
+      "static/third_party/lib/blockly/core/names.js": "8be4fa7a2196346d410438342b88d817fc476ab381ba95f3b0c11b52c30a0cd3",
+      "static/third_party/lib/blockly/generators/javascript.js": "1a7026448090fd02c9f3a0595589e88a2005b17ff3a52c381a3a5c03d3db2aa0",
+      "static/third_party/lib/blockly/core/workspace.js": "612136b47bc76f40006fcf44677aeb1e35d0a9bb3cd9820b51b5bedb3b3a44aa"
+    }
   }
 }

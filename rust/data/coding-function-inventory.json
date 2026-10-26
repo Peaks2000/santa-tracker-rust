@@ -1771,7 +1771,8 @@
           "from_line": 220,
           "to_line": 240,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie educational code follow-up; codeboogie-user-code-reference.json (98 actual Blockly outputs; enabled supported graph scope)",
+          "native_equivalent": "coding_user_code.rs Workspace::dance_user_code; CodingView run-time snapshot and success-only code link"
         },
         {
           "name": "getTopBlocks",

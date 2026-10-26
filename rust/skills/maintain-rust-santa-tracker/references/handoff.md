@@ -16,6 +16,12 @@ phase samples and ten matched stills. A live two-block first lesson reaches
 Nice moves. Read the stage follow-up section in SOURCE-COVERAGE.md for the
 precise scope and remaining gaps; refresh current test/build results before work.
 
+The next pass preserves Boogie View code loops/name allocation instead of
+expanding actions. `codeboogie-user-code-reference.json` checks 98 complete
+strings from the real bundled Blockly generator. Code is saved at Run time,
+not regenerated after editing during playback. Result layout/transitions and
+textarea scrolling remain unfinished; this does not change the README rating.
+
 Do not confuse these three things: the user's README rating, their editable approval fields, and the scope of measured technical evidence. Changing one does not automatically change the others.
 
 ## Find the implementation and evidence
@@ -23,6 +29,7 @@ Do not confuse these three things: the user's README rating, their editable appr
 | Location | Purpose |
 | --- | --- |
 | `rust/src/coding.rs` | Typed block graph/interpreter, maze execution/results, dance status/queues, source viewport and chooser layout formulas, fixture tests. |
+| `rust/src/coding_user_code.rs` | Boogie educational code text, loop/name allocation and root ordering, compared with actual Blockly. |
 | `rust/src/codeboogie_stage.rs` | Source beat/track state, light shuffling, timed card removal, title spans, sprite clocks and character/card geometry. |
 | `rust/src/coding_view.rs` | Native editor and drag/drop, SVG block painting, puzzle/maze and dancer rendering, chooser/results, beat/track queues. |
 | `rust/src/main.rs` | Routes, scene input eligibility, loading, resets, audio drains and capture controls. A missing input-eligibility branch previously made visible editors inert. |
@@ -70,7 +77,7 @@ Known gaps include:
 
 - Boogie stage logic and selected CSS phases now have source checks. Full active-gameplay raster/phase coverage, light/transform reversal combinations, image-load/colour retry races and audio-clock/route lifecycle still need work.
 - Blockly-style nested layout, connection precedence/insertion, field/flyout/trash geometry, workspace panning, touch/keyboard/accessibility and responsive editor motion.
-- Result fades/layout/missing-block artwork/final host game-over, tutorial queues, sharing/import/export and exact educational View code formatting (currently expanded actions).
+- Result fades/layout/missing-block artwork/final host game-over, tutorial queues, sharing/import/export and exact textarea layout/scrolling (Boogie loop formatting is source-matched for supported enabled graphs; Code Lab still expands actions).
 - Lab pooled world/presents, world travel, precise rotation/sprite/pickup/loss ordering, highlights/rewind/cancellation, portrait transition/run delay. Its 100,000-action native limit is a documented intentional responsiveness difference.
 - Precise audio scheduling, one-shot guards, cb_fail combinations, bus ducking and listening/device validation. Previous native UI tests were muted.
 - Small chooser glyph spacing/raster differences, chooser exit and broader hover/entrance/reversal comparisons. Matching DOM boxes does not verify glyph pixels or interaction animation.

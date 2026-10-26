@@ -918,8 +918,9 @@ Native equivalents and outstanding branches:
 - blocks/patterns: source XML builders and generated SVG art are reference-only;
   native graph execution does not run JS. Original repeat/jump options and source
   source images remain. Async pattern-def injection/caching is replaced by native
-  texture caching. Exact generated educational JavaScript formatting and nested
-  loop display are unfinished; current View code lists expanded actions.
+  texture caching. Code Boogie now preserves generated loop structure/names for supported
+  enabled dance/repeat graphs (see follow-up below). Code Lab still lists
+  expanded actions; neither scene has exact textarea layout/scrolling.
 - codeboogie level/dance_level/levels/step: all nine teacher sequences, stage BPM,
   ideal counts, intro lengths, special steps and all three freestyle definitions
   are original exported data. evaluateStatus and createAnimationQueue are Rust,
@@ -1104,3 +1105,44 @@ this muted smoke. Source-style skipped-beat behavior is intentionally retained.
 Remaining substantial work includes full Blockly interactions/layout, tutorials,
 share/import/export, exact results/final host game-over, responsive tray transitions,
 chooser exit/route lifecycle and complete audio scheduling/bus/listening validation.
+
+## Code Boogie educational code follow-up
+
+Read the complete original `codeboogie/js/result.js`, `blockly.js`, `blocks.js`,
+`game.js`, `scene.js`, `block_runner.js`, result markup and `_result.scss`, shared
+`_button.scss` and `_no-en.scss` before this work. Read the complete bundled
+Blockly `core/generator.js`, `core/names.js`, `generators/javascript.js`, and the
+active `Workspace.getTopBlocks` ordering path. This is a named generator-path
+review, not a claim that the whole third-party editor has been ported.
+
+- Native `coding_user_code.rs` translates the supported enabled dance/repeat/
+  when_run graph's educational text. It retains repeats, two-space indentation,
+  child-before-parent loop-name allocation, count→i/count2→j replacements,
+  count3+ names, and the stable three-degree LTR root scan. Numeric block-ID and
+  loop-highlight statements are absent by construction in this display text.
+  The native app does not execute generated JavaScript.
+- `codeboogie-user-code-reference.json` contains 98 actual original Blockly
+  outputs from Chromium: all seven steps, counts 2–6, empty graphs/loops,
+  sibling/nested loops through depth six, root scan bias/ties and 80 seeded
+  generated graphs. Real XML graph loading and the original generator/Names/
+  getUserCode run unchanged; the harness only exposes the compiled namespace
+  and holds external scene rAF. Native output matches every full string.
+- `CodingView::run` snapshots code before playback, preserving it while blocks
+  remain editable. The original failure DOM has no View code link; native
+  Boogie now shows it only for a successful result with nonempty code. Showing
+  code is one-way until the next result, as original onShowCode specifies.
+- Unsupported block types report an explicit error. Disabled blocks, comments,
+  arbitrary imported graph types and RTL are not represented by the current
+  native editor. Generator equivalence is limited to the supported graph scope.
+- Exact result flex layout, delayed fade/slide/reversal, missing-block artwork,
+  textarea font/label/scroll/selection, share/import/export and final shared
+  game-over are still unfinished. The current text renderer clips the preview
+  to twelve lines; this is not whole-result-screen parity.
+
+The follow-up UI automation did not reliably deliver its planned chooser/drag
+inputs: one capture had an unattached block and the second stayed at the
+chooser. Both runs were discarded as evidence of the code-display flow. The
+execution-time snapshot is implemented, but this particular edit-during-playback
+UI path remains interactively unverified. The earlier successful first-lesson
+stage smoke above is separate and still valid. Full 71-test suites pass in both
+checkouts, and the updated native release binary builds successfully.

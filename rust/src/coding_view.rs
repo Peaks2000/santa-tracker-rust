@@ -238,6 +238,7 @@ pub struct CodingView {
     dropdown: Option<(usize, String, Rect)>,
     pub result: Option<ResultInfo>,
     result_at: f64,
+    dance_user_code: String,
     show_code: bool,
     position: Point,
     direction: i32,
@@ -297,6 +298,7 @@ impl CodingView {
             dropdown: None,
             result: None,
             result_at: 0.,
+            dance_user_code: String::new(),
             show_code: false,
             position: Point { x: 0, y: 0 },
             direction: 0,
@@ -499,6 +501,7 @@ impl CodingView {
         }
         self.dropdown = None;
         self.dance_report_pending = false;
+        self.dance_user_code.clear();
         let l = self.level().clone();
         self.actions = match self.workspace.actions() {
             Ok(actions) => actions,
@@ -532,6 +535,20 @@ impl CodingView {
                 });
                 return;
             }
+            // processResult snapshots getUserCode before playback. Editing
+            // blocks during a dance must not alter the result's code text.
+            self.dance_user_code = match self.workspace.dance_user_code() {
+                Ok(code) => code,
+                Err(message) => {
+                    self.show_result(ResultInfo {
+                        message,
+                        retry: true,
+                        skip: true,
+                        ..Default::default()
+                    });
+                    return;
+                }
+            };
             let (status, queue) = coding::dance_queue(&l, &steps);
             if queue.is_empty() && l.freestyle {
                 self.result = None;
@@ -1878,22 +1895,25 @@ impl CodingView {
         );
         self.wrapped(&message, vec2(w / 2., h * 0.28), w.min(550.), 23.);
         if self.show_code {
-            let lines: Vec<_> = self
-                .actions
-                .iter()
-                .map(|a| {
-                    if a.kind == "controls_jump" {
-                        format!("moveJump({}, '{}');", a.length, a.direction)
-                    } else {
-                        format!(
-                            "{}();",
-                            a.kind
-                                .trim_start_matches("maze_")
-                                .trim_start_matches("dance_")
-                        )
-                    }
-                })
-                .collect();
+            let lines: Vec<_> = if self.dance {
+                self.dance_user_code.lines().map(str::to_owned).collect()
+            } else {
+                self.actions
+                    .iter()
+                    .map(|a| {
+                        if a.kind == "controls_jump" {
+                            format!("moveJump({}, '{}');", a.length, a.direction)
+                        } else {
+                            format!(
+                                "{}();",
+                                a.kind
+                                    .trim_start_matches("maze_")
+                                    .trim_start_matches("dance_")
+                            )
+                        }
+                    })
+                    .collect()
+            };
             for (i, line) in lines.iter().take(12).enumerate() {
                 self.text(
                     line,
@@ -1977,7 +1997,9 @@ impl CodingView {
                 self.set_level(self.level_index + 1);
             }
         }
-        if self.level().kind != "puzzle" {
+        if self.level().kind != "puzzle"
+            && (!self.dance || (r.success && !self.dance_user_code.is_empty() && !self.show_code))
+        {
             let p = vec2(w / 2., y + 85.);
             self.text("View code", p, 17., YELLOW, true, false);
             if input
