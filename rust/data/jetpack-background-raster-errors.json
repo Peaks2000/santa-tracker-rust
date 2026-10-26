@@ -1,0 +1,77 @@
+{
+  "method": "Actual native renderer before/after versus original isolated CSS gradient at 12 subpixel phases, 1440x800. Full-image mean absolute RGB error /255; original ::after cloud/number art and unrelated scene objects hidden only for reference comparison. This isolates the reported flash; no whole-mode certification.",
+  "cases": [
+    {
+      "level": 0,
+      "fraction": 0.35,
+      "mean_rgb_error_before": 0.5331707175925926,
+      "mean_rgb_error_after": 0.5216822916666667
+    },
+    {
+      "level": 0,
+      "fraction": 0.45,
+      "mean_rgb_error_before": 5.34226388888889,
+      "mean_rgb_error_after": 0.518828125
+    },
+    {
+      "level": 0,
+      "fraction": 0.55,
+      "mean_rgb_error_before": 0.520730324074074,
+      "mean_rgb_error_after": 0.5159311342592593
+    },
+    {
+      "level": 0,
+      "fraction": 0.65,
+      "mean_rgb_error_before": 0.5181409143518518,
+      "mean_rgb_error_after": 0.5126114004629629
+    },
+    {
+      "level": 4,
+      "fraction": 0.35,
+      "mean_rgb_error_before": 0.4611414930555555,
+      "mean_rgb_error_after": 0.44072251157407405
+    },
+    {
+      "level": 4,
+      "fraction": 0.45,
+      "mean_rgb_error_before": 3.9971163194444443,
+      "mean_rgb_error_after": 0.4380208333333333
+    },
+    {
+      "level": 4,
+      "fraction": 0.55,
+      "mean_rgb_error_before": 0.4502552083333333,
+      "mean_rgb_error_after": 0.4407760416666667
+    },
+    {
+      "level": 4,
+      "fraction": 0.65,
+      "mean_rgb_error_before": 0.45427112268518516,
+      "mean_rgb_error_after": 0.4448972800925926
+    },
+    {
+      "level": 8,
+      "fraction": 0.35,
+      "mean_rgb_error_before": 0.4773463541666667,
+      "mean_rgb_error_after": 0.4521345486111111
+    },
+    {
+      "level": 8,
+      "fraction": 0.45,
+      "mean_rgb_error_before": 6.72919849537037,
+      "mean_rgb_error_after": 0.4527609953703704
+    },
+    {
+      "level": 8,
+      "fraction": 0.55,
+      "mean_rgb_error_before": 0.46130266203703707,
+      "mean_rgb_error_after": 0.45224016203703704
+    },
+    {
+      "level": 8,
+      "fraction": 0.65,
+      "mean_rgb_error_before": 0.46212818287037033,
+      "mean_rgb_error_after": 0.4518151041666667
+    }
+  ]
+}

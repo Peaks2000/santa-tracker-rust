@@ -1282,3 +1282,43 @@ analytics boot has no native DOM counterpart and is outside this completion pass
 Freestyle/custom import/share and complete host boot/error/loading lifecycle are
 still partial or unimplemented. This pass verifies the selected teacher/Lab
 completion path, not every mode or the full site.
+
+## Elf Jetpack level-up gradient flash
+
+User reported a slight flash while going up a level. Read the complete original
+`js/background.js`, `sass/_background.scss`, scene HTML and scene SCSS, plus the
+active game frame/updateLevel ordering. Original background is 200% of the
+viewport: solid for its first half, then continuously fading to transparent.
+The declared JS BACKGROUND_HEIGHT=150 is unused; the actual stylesheet is 200%.
+Constructor/reset/endTransition swap/preparation, five-second progress and strict
+`> 1` completion remain represented by the existing native model. This pass does
+not change simulation/level timing or certify the rest of Jetpack.
+
+The native sky used 1.1px-high strips on a 1px stride. At some fractional vertical
+translations every screen pixel in the fade received two overlapping draws.
+The pulse reproduced at translation fraction 0.45: a middle pixel in the late
+purple/blue transition jumped from red 43 to 23 while the original stayed at 42.
+This was a rendering overdraw error, not an original level-transition effect.
+
+`JetpackView::draw_sky` now uses one continuous mesh with a solid half and a
+linearly fading half sharing edges. Each covered pixel blends once, matching the
+source CSS structure. Level clouds/number artwork and other scene presentation
+remain outside this isolated gradient correction.
+
+- `jetpack-background-reference.json`: 12 actual original Background/DOM/CSS
+  captures at 1440×800, spanning three colour pairs and four adjacent subpixel
+  translations. Source reset/transition/onFrame run unchanged. External scene
+  rAF is held and unrelated objects/::after art are hidden solely to isolate
+  the gradient. Original RGB column bytes are retained as hex for native checks.
+- `jetpack_background_capture` exercises the actual production sky renderer on
+  the GPU, comparing all 800 rows / three channels / 12 frames with original
+  bytes (28,800 comparisons, max difference 2/255). Its raw GL readback is mapped
+  from bottom-up to the source PNG's top-down rows. The old renderer exceeds
+  this tolerance by about 20 channels at the reproduced flashing phase.
+- `jetpack-background-raster-errors.json`: whole-image mean RGB error at the
+  flashing phase falls from 4.00–6.73/255 to 0.44–0.52/255. Neighboring native
+  middle-pixel colours now stay stable. Original/native and before/after images
+  were inspected. Small gradient quantization differences remain; these are
+  selected gradient cases, not whole-mode/device/transition-art certification.
+- All 75 existing tests pass and the updated release binary builds successfully.
+  The GPU comparison also passes. User approval remains unreviewed.

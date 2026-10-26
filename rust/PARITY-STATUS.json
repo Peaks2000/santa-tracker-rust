@@ -341,12 +341,18 @@
       "user_notes": "",
       "priority": "normal",
       "agent_status": "partial",
-      "agent_progress": "Native implementation exists; full 1:1 parity not established. Original queued desktop tutorial now implemented with source delay, dismissal and animation artwork.",
-      "agent_known_issues": [],
+      "agent_progress": "Native implementation exists; full 1:1 parity not established. Original queued desktop tutorial now implemented with source delay, dismissal and animation artwork. Fixed user-reported level-up flashing: overlapping 1.1px gradient strips could double-blend the new sky colour at fractional positions. Replaced them with a continuous native mesh matching the original 200%-height CSS gradient. Twelve original-browser subpixel cases match native GPU samples within 2/255; the reproduced colour pulse is removed.",
+      "agent_known_issues": [
+        "This correction isolates the level-up sky gradient. Level-cloud/number art, complete responsive transitions and whole-mode visual/audio/input parity remain unverified. Small gradient quantization differences remain."
+      ],
       "agent_evidence": [
         "rust/SOURCE-COVERAGE.md",
         "rust/data/tutorial-reference.json",
-        "rust/data/tutorial-layout-reference.json"
+        "rust/data/tutorial-layout-reference.json",
+        "rust/src/jetpack_view.rs JetpackView::draw_sky",
+        "rust/data/jetpack-background-reference.json",
+        "rust/data/jetpack-background-raster-errors.json",
+        "rust/examples/jetpack_background_capture.rs"
       ]
     },
     {

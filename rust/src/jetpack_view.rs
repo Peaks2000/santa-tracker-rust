@@ -27,6 +27,36 @@ impl JetpackView {
             last_time: 0.,
         })
     }
+    pub fn draw_sky(background_level: u32, transition: Option<f64>) {
+        let colors = [
+            0x90d4f5, 0xad95f5, 0xf59393, 0xebca46, 0xed5b37, 0xc93c3c, 0x9719d1, 0x4d2dc2,
+            0x51057a, 0x04266e, 0x04266e,
+        ];
+        clear_background(Color::from_hex(colors[(background_level as usize).min(10)]));
+        if let Some(progress) = transition {
+            let c = Color::from_hex(colors[((background_level + 1) as usize).min(10)]);
+            let y = (-1. + progress as f32) * screen_height() * 2.;
+            let (w, h) = (screen_width(), screen_height());
+            // Original CSS: a 200%-height background, solid through 50%,
+            // then fading to transparent. Shared edges are rasterized once.
+            // The old 1.1px strips overlapped at some subpixel translations
+            // and composited the gradient twice, producing a visible flash.
+            let transparent = Color::new(c.r, c.g, c.b, 0.);
+            let vertices = vec![
+                Vertex::new(0., y, 0., 0., 0., c),
+                Vertex::new(w, y, 0., 0., 0., c),
+                Vertex::new(w, y + h, 0., 0., 0., c),
+                Vertex::new(0., y + h, 0., 0., 0., c),
+                Vertex::new(w, y + 2. * h, 0., 0., 0., transparent),
+                Vertex::new(0., y + 2. * h, 0., 0., 0., transparent),
+            ];
+            draw_mesh(&Mesh {
+                vertices,
+                indices: vec![0, 1, 2, 0, 2, 3, 3, 2, 4, 3, 4, 5],
+                texture: None,
+            });
+        }
+    }
     pub fn dimensions() -> (f64, f64) {
         let scale = (screen_width() / 980.).min(1.);
         (
@@ -67,30 +97,9 @@ impl JetpackView {
         self.fire
             .set(game.time, [game.player.fire_scale], 0.2, Ease::Default);
         let fire_scale = self.fire.value(game.time)[0] as f32;
-        let colors = [
-            0x90d4f5, 0xad95f5, 0xf59393, 0xebca46, 0xed5b37, 0xc93c3c, 0x9719d1, 0x4d2dc2,
-            0x51057a, 0x04266e, 0x04266e,
-        ];
-        clear_background(Color::from_hex(
-            colors[(game.background_level as usize).min(10)],
-        ));
+        Self::draw_sky(game.background_level, game.transition);
         if let Some(progress) = game.transition {
-            let c = Color::from_hex(colors[((game.background_level + 1) as usize).min(10)]);
             let y = (-1. + progress as f32) * screen_height() * 2.;
-            for row in 0..(screen_height() * 2.).ceil() as i32 {
-                let alpha = if row as f32 > screen_height() {
-                    1. - (row as f32 - screen_height()) / screen_height()
-                } else {
-                    1.
-                };
-                draw_rectangle(
-                    0.,
-                    y + row as f32,
-                    screen_width(),
-                    1.1,
-                    Color::new(c.r, c.g, c.b, alpha),
-                );
-            }
             let cloud = assets.scene("jetpack", "levelclouds.svg");
             let w = if screen_width() >= 1025. {
                 3000.

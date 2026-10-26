@@ -59,7 +59,8 @@ Elf Jamband [jamband] — your verdict: unreviewed
   Remaining: Global mixer/bus behavior, presentation under all band combinations, touch and accessibility are not certified 1:1.
 
 Elf Jetpack [jetpack] — your verdict: unreviewed
-  Progress: Native implementation exists; full 1:1 parity not established. Original queued desktop tutorial now implemented with source delay, dismissal and animation artwork.
+  Progress: Native implementation exists; full 1:1 parity not established. Original queued desktop tutorial now implemented with source delay, dismissal and animation artwork. Fixed user-reported level-up flashing: overlapping 1.1px gradient strips could double-blend the new sky colour at fractional positions. Replaced them with a continuous native mesh matching the original 200%-height CSS gradient. Twelve original-browser subpixel cases match native GPU samples within 2/255; the reproduced colour pulse is removed.
+  Remaining: This correction isolates the level-up sky gradient. Level-cloud/number art, complete responsive transitions and whole-mode visual/audio/input parity remain unverified. Small gradient quantization differences remain.
 
 modvil [modvil] — your verdict: unreviewed
   Progress: Native implementation exists; full 1:1 parity not established. Corrected card art aspect and enabled fractional Lottie frame updates; first-use loading hitches remain.

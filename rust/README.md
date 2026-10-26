@@ -186,3 +186,8 @@ For a callback-driven composite diagnostic, use
 `cargo run --release --manifest-path rust/Cargo.toml --example coding_completion_capture -- codeboogie /tmp/coding-over.png 1440 800`
 (or `codelab`). It also saves `.before.png` for the live-background check; it does
 not solve the levels or certify interactive input.
+
+Elf Jetpack's level-up sky flash is corrected. For the GPU/source regression,
+run `cargo run --manifest-path rust/Cargo.toml --example jetpack_background_capture -- /tmp/jetpack-sky`.
+It requests 1440×800, checks twelve isolated gradient frames against original
+browser RGB samples and exports PNGs. It does not certify the remaining mode.

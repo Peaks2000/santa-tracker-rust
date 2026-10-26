@@ -184,3 +184,19 @@ discarded. Auto-focus rings, heavier title raster, shared blur approximation,
 keyboard/orientation/route/input-frame/audio details remain unfinished. Broader
 freestyle/custom/share/boot lifecycle still requires source work; no full parity
 claim or README rating change follows from these completion checks.
+
+## Jetpack level-up flash correction
+
+The user reported a slight flash on level-up. Native 1.1px gradient strips on
+1px strides double-blended at fractional positions (e.g. 0.45px), causing a
+roughly 20-channel colour jump. `JetpackView::draw_sky` now draws a continuous
+solid/fade mesh matching the source 200%-height background. The original JS
+BACKGROUND_HEIGHT=150 constant is unused; do not copy it instead of actual CSS.
+
+`jetpack-background-reference.json` has 12 real original gradient cases and RGB
+column bytes. `jetpack_background_capture` checks the actual GPU sky renderer
+(28,800 channel comparisons, tolerance 2/255), taking account of bottom-up GL
+readback. Browser exporter is development-only. See coverage/error fixtures for
+before/after evidence. The five-second progress/strict >1 completion and other
+Jetpack art/logic are unchanged; full mode parity is still unproven. Preserve
+this continuous draw rather than reintroducing overlapping scanline strips.
