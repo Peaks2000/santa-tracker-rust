@@ -169,3 +169,11 @@ For a controlled Code Boogie stage-only comparison, run
 (use `normal` instead of `watch` for the other settled pose). This diagnostic
 uses the actual native model/renderer; it does not verify the editor, full active
 gameplay or audio. Evidence and limitations are in SOURCE-COVERAGE.md.
+
+Code Boogie result diagnostics use the actual native renderer:
+`cargo run --release --manifest-path rust/Cargo.toml --example codeboogie_result_capture -- /tmp/boogie-result.png 1440 800 success`
+Use `missing-success`, `failure`, `code` or `freestyle` for other isolated
+configurations; `flow` runs the native first-lesson controller and checks that
+editing during playback preserves the submitted code. A final optional number
+sets animation time in seconds for isolated configurations (default 2).
+These checks do not certify pointer/keyboard interaction, sharing or host game-over.

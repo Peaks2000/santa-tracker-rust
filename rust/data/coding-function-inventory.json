@@ -2625,56 +2625,64 @@
           "from_line": 27,
           "to_line": 51,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie result panels follow-up; 70 layout states, 96 CSS phases and selected raster/controller evidence; see explicit remaining gaps",
+          "native_equivalent": "codeboogie_result::Spec/Panel; CodingView result fields (keyboard/focus incomplete)"
         },
         {
           "name": "bindEvents_",
           "from_line": 53,
           "to_line": 66,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie result panels follow-up; 70 layout states, 96 CSS phases and selected raster/controller evidence; see explicit remaining gaps",
+          "native_equivalent": "coding_result_view pointer controls; keyboard/accessibility incomplete"
         },
         {
           "name": "show",
           "from_line": 72,
           "to_line": 109,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie result panels follow-up; 70 layout states, 96 CSS phases and selected raster/controller evidence; see explicit remaining gaps",
+          "native_equivalent": "Panel::show and CodingView::show_result; live shareUrl unfinished"
         },
         {
           "name": "hide",
           "from_line": 111,
           "to_line": 113,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie result panels follow-up; 70 layout states, 96 CSS phases and selected raster/controller evidence; see explicit remaining gaps",
+          "native_equivalent": "Panel::hide, preserving source invalid-root-transition behavior"
         },
         {
           "name": "onRetry",
           "from_line": 115,
           "to_line": 119,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie result panels follow-up; 70 layout states, 96 CSS phases and selected raster/controller evidence; see explicit remaining gaps",
+          "native_equivalent": "coding_result_view retry and pending-report reset"
         },
         {
           "name": "onShare",
           "from_line": 121,
           "to_line": 125,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie result panels follow-up; 70 layout states, 96 CSS phases and selected raster/controller evidence; see explicit remaining gaps",
+          "native_equivalent": "UNFINISHED host sharing; diagnostic layout only"
         },
         {
           "name": "onContinue",
           "from_line": 127,
           "to_line": 131,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie result panels follow-up; 70 layout states, 96 CSS phases and selected raster/controller evidence; see explicit remaining gaps",
+          "native_equivalent": "coding_result_view class/freestyle progression; final host game-over unfinished"
         },
         {
           "name": "onShowCode",
           "from_line": 133,
           "to_line": 135,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie result panels follow-up; 70 layout states, 96 CSS phases and selected raster/controller evidence; see explicit remaining gaps",
+          "native_equivalent": "Spec::show_code and source-derived result flex/code rendering"
         }
       ]
     },

@@ -657,6 +657,7 @@ dependencies = [
  "macroquad",
  "png",
  "resvg",
+ "rustybuzz",
  "serde",
  "serde_json",
  "thorvg",

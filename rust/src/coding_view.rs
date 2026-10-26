@@ -7,6 +7,8 @@ use macroquad::prelude::*;
 use santa_tracker::codeboogie_stage::{DanceStage, Event as DanceEvent, SpriteClock};
 use santa_tracker::coding::{self, Block, DanceItem, LabRun, Level, Point, ResultInfo, Workspace};
 use std::collections::HashMap;
+#[path = "coding_result_view.rs"]
+mod result_view;
 
 struct Drag {
     id: usize,
@@ -50,6 +52,7 @@ fn svg_image(bytes: &[u8]) -> Result<Image, String> {
         include_bytes!("../assets/fonts/Roboto-Regular.ttf").as_slice(),
         include_bytes!("../assets/fonts/Roboto-ExtraBold.ttf").as_slice(),
         include_bytes!("../assets/fonts/Lobster-Regular.ttf").as_slice(),
+        include_bytes!("../assets/fonts/NotoSansMono.ttf").as_slice(),
     ] {
         opts.fontdb_mut().load_font_data(data.to_vec());
     }
@@ -184,6 +187,9 @@ fn embedded(scene: &str, name: &str) -> Option<&'static [u8]> {
         ("codeboogie", "result-failure") => {
             Some(include_bytes!("../assets/codeboogie/result-failure.svg"))
         }
+        ("codeboogie", "result-missing-controls_repeat") => Some(include_bytes!(
+            "../assets/codeboogie/result-missing-controls_repeat.svg"
+        )),
         ("codeboogie", "block-when_run") => {
             Some(include_bytes!("../assets/codeboogie/block-when_run.svg"))
         }
@@ -239,6 +245,17 @@ pub struct CodingView {
     pub result: Option<ResultInfo>,
     result_at: f64,
     dance_user_code: String,
+    result_panels: [santa_tracker::codeboogie_result::Panel; 2],
+    result_layouts: [Option<(
+        f32,
+        f32,
+        santa_tracker::codeboogie_result::Spec,
+        santa_tracker::codeboogie_result::Layout,
+    )>; 2],
+    result_presses: [[santa_tracker::ui::Transition<1>; 3]; 2],
+    result_captured: [[bool; 3]; 2],
+    result_buttons_target: Option<RenderTarget>,
+    result_code_scroll: [f32; 2],
     show_code: bool,
     position: Point,
     direction: i32,
@@ -299,6 +316,14 @@ impl CodingView {
             result: None,
             result_at: 0.,
             dance_user_code: String::new(),
+            result_panels: std::array::from_fn(|_| Default::default()),
+            result_layouts: std::array::from_fn(|_| None),
+            result_presses: std::array::from_fn(|_| {
+                std::array::from_fn(|_| santa_tracker::ui::Transition::new([0.]))
+            }),
+            result_captured: [[false; 3]; 2],
+            result_buttons_target: None,
+            result_code_scroll: [0.; 2],
             show_code: false,
             position: Point { x: 0, y: 0 },
             direction: 0,
@@ -345,6 +370,7 @@ impl CodingView {
             self.track_events.clear();
             self.stage = DanceStage::default();
             self.dance_report_pending = false;
+            self.result_panels = std::array::from_fn(|_| Default::default());
             self.playing = false;
         }
     }
@@ -360,10 +386,7 @@ impl CodingView {
     fn image(&mut self, name: &str) -> Image {
         let key = format!("{}:{name}", self.dance);
         if !self.images.contains_key(&key) {
-            let scene = if self.dance
-                && (name.starts_with("block-")
-                    || name == "result-success"
-                    || name == "result-failure")
+            let scene = if self.dance && (name.starts_with("block-") || name.starts_with("result-"))
             {
                 "codeboogie"
             } else {
@@ -476,6 +499,23 @@ impl CodingView {
         self.flush_dance_events();
     }
     fn show_result(&mut self, r: ResultInfo) {
+        if self.dance {
+            let spec = santa_tracker::codeboogie_result::Spec {
+                success: r.success,
+                retry: r.retry,
+                message: self.msg(&r.message).replace(
+                    "{{ideal}}",
+                    &self.level().ideal_block_count.unwrap_or(0).to_string(),
+                ),
+                missing: r.missing_blocks.first().cloned().unwrap_or_default(),
+                code: self.dance_user_code.clone(),
+                final_level: self.level_index + 1 == self.levels.len(),
+                freestyle: self.level().freestyle,
+                ..Default::default()
+            };
+            self.result_panels[usize::from(r.success)].show(self.elapsed, spec);
+            self.result_code_scroll[usize::from(r.success)] = 0.;
+        }
         self.sounds.push(
             if self.dance {
                 if r.success {
@@ -867,7 +907,11 @@ impl CodingView {
         } else {
             w - scene_width
         };
-        let showing_result = self.result.is_some() && self.result_at.is_finite();
+        let showing_result = if self.dance {
+            self.result_panels.iter().any(|p| p.composed(self.elapsed))
+        } else {
+            self.result.is_some() && self.result_at.is_finite()
+        };
         let editable =
             input && !showing_result && (!self.playing || self.dance) && self.run.is_none();
         if l.kind == "puzzle" {
@@ -1858,6 +1902,10 @@ impl CodingView {
         );
     }
     fn result_overlay(&mut self, _assets: &Assets, input: bool) {
+        if self.dance {
+            self.dance_result_overlay(input);
+            return;
+        }
         let r = self.result.clone().unwrap();
         let (w, h) = (screen_width(), screen_height());
         let a = ((self.elapsed - self.result_at) / 0.3).clamp(0., 1.) as f32;

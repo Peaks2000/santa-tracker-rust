@@ -967,9 +967,10 @@ Native equivalents and outstanding branches:
   card icons now rasterize at 4x with mipmaps to avoid enlargement blur.
 - game/scene/result in both scenes: native chooser, level progression, run/retry,
   continue, basic portrait tray, original result art and English hints exist.
-  Exact result fades, graphic layout, missing-block picture, final host game-over,
-  tutorial queues, share/import/export and all restart/route lifecycle quirks
-  remain unfinished. Source codeboogie API restart handler is a no-op; native R
+  Code Boogie result flex layout, child transitions, missing-repeat symbol and
+  code pane now have native equivalents (see result follow-up below). Code Lab
+  result layout, final host game-over, tutorial queues, share/import/export and
+  all restart/route lifecycle quirks remain unfinished. Source codeboogie API restart handler is a no-op; native R
   also leaves the scene unchanged. Source no-op
   focus callbacks/disposal DOM listener removal have no native DOM equivalent.
 - player_sound/klang: events use original sample configuration; walk/rewind stops
@@ -1129,15 +1130,16 @@ review, not a claim that the whole third-party editor has been ported.
   and holds external scene rAF. Native output matches every full string.
 - `CodingView::run` snapshots code before playback, preserving it while blocks
   remain editable. The original failure DOM has no View code link; native
-  Boogie now shows it only for a successful result with nonempty code. Showing
+  At that pass Boogie showed it only for successful nonempty code; the later
+  result follow-up corrects the source CSS hidden-link quirk. Showing
   code is one-way until the next result, as original onShowCode specifies.
 - Unsupported block types report an explicit error. Disabled blocks, comments,
   arbitrary imported graph types and RTL are not represented by the current
   native editor. Generator equivalence is limited to the supported graph scope.
-- Exact result flex layout, delayed fade/slide/reversal, missing-block artwork,
-  textarea font/label/scroll/selection, share/import/export and final shared
-  game-over are still unfinished. The current text renderer clips the preview
-  to twelve lines; this is not whole-result-screen parity.
+- At this educational-text pass, result layout/transitions and the twelve-line
+  preview were still incomplete. The following result pass supersedes those
+  portions; text selection, exact soft wrap/scrollbar/resize, sharing and final
+  host game-over remain unfinished.
 
 The follow-up UI automation did not reliably deliver its planned chooser/drag
 inputs: one capture had an unattached block and the second stayed at the
@@ -1146,3 +1148,68 @@ execution-time snapshot is implemented, but this particular edit-during-playback
 UI path remains interactively unverified. The earlier successful first-lesson
 stage smoke above is separate and still valid. Full 71-test suites pass in both
 checkouts, and the updated native release binary builds successfully.
+
+## Code Boogie result panels follow-up
+
+The selected original `result.js`, `_result.scss`, complete shared `_button.scss`
+and `_no-en.scss`, result HTML structure and active game/scene/block-runner/
+LevelResult paths were read before implementation. This is a native translation,
+not a CSS/HTML engine. Additional entrypoint/host overlay paths were inspected
+but final host game-over/sharing are explicitly still unfinished.
+
+| Original behavior | Native equivalent / limits |
+| --- | --- |
+| constructor / bindEvents_ | `Spec`, two independent `Panel` states and native pointer capture. Keyboard focus/activation/accessibility are unfinished. |
+| show | Copies verdict, localized hint, retry/freestyle/final labels, missing-block and submitted-code snapshot; resets show-code class. Native live specs still omit shareUrl because host sharing is not implemented. Exported Boogie levels currently have empty requiredBlocks; the optional missing-repeat display is exercised by the diagnostic contract cases. |
+| hide | Root visibility/opacity changes immediately, preserving child clocks/state for later show. Native initially assumed a parent fade, but actual Chromium disproved it. `transition: opacity 0.3s, visibility 0 0.3s` is rejected in full because of the unitless time. Computed transition is `all` with zero duration. This source quirk is preserved. |
+| onRetry | Hides result and clears pending report state without clearing/editing blocks or resetting the still-running player. Broader overlapping controller/input paths still need comparison. |
+| onContinue | Advances class; continuing freestyle restarts teacher mode directly, matching Game.bumpLevel rather than returning to the chooser. Finishing the ninth class still uses the native placeholder completion screen; shared host game-over is unfinished. |
+| onShare | Unfinished. Source-sized share button is measured in diagnostic layouts but not supplied by live native result specs. No working-share claim. |
+| onShowCode | One-way code-view class until next show; immediate flex relayout, source label/border/padding/line height. The source a[hidden] still displays due to its inline-block CSS, so empty-code success retains a clickable View code row. Native preserves that quirk. |
+| _result.scss layout | Centered column flex, title 70/140px, details 20/30px, fixed margins, text min-content limits, SVG shrink factors 1/4, textarea padding minimum, width 570 / height 500 breakpoint, button 768 breakpoint and wrapped inline button rows. Rustybuzz shapes original retained font data; no browser runtime. |
+| child transitions | Title opacity/translate, details/missing/art fade after 400ms, buttons subtree after 800ms; positive delays, shortened reversals and hidden retained phases use Transition::set_delayed. Buttons subtree composites once through a premultiplied offscreen target. |
+| button appearance | Original purple face/dark extrusion/black shadow, rectangular radii, font and 50ms press/250ms release formulas. Full pressed/focus/hover/device image-phase coverage is unfinished. |
+
+**Evidence and limits**
+
+- `codeboogie-result-layout-reference.json`: 70 original Result.show/onShowCode
+  display configurations at seven sizes (1440×800, 1024×800, 768×800, 570×500,
+  569×499, 375×800, 800×375). Includes success/retry/failure/missing hints, final,
+  empty code, freestyle/share row and code view. Native boxes match within
+  0.08px. These are English default-font configurations, not all translations.
+- `codeboogie-result-phase-reference.json`: 96 actual Chromium opacity/transform/
+  visibility samples, including show/hide and interruption at five phases in
+  both directions. Native scalar differences are below 2e-5 and translation
+  differences below 1e-4px. The pre-polyfill native animation APIs control only
+  external animation currentTime; original Result/CSS methods are unchanged.
+- `codeboogie-result-raster-errors.json`: eight settled full-panel captures at
+  three actual sizes plus four entrance phases, over the same isolated flat
+  background. Mean RGB errors range about 0.046–0.875/255; per-component region
+  errors are also recorded. Visually inspected original/native images and 8×
+  difference images. Desktop title/art/buttons/code pane closely align; small
+  raster/font/primitive-edge differences remain, especially at small sizes.
+  Isolating the panel does not verify the editor/stage behind it or host chrome.
+- Restored the original missing-repeat symbol as a separate native SVG asset,
+  including embedded original icon bytes. It is not the editor's full repeat
+  block artwork. Result geometry tests alone did not catch its first asset-route
+  mistake; the owned native capture did, and the route was corrected before
+  publication.
+- Chromium CSS.getPlatformFontsForNode identifies the original Linux generic
+  code font as NotoSansMono-Regular. Retained the same installed Noto Sans Mono
+  font and OFL license, matching selected code-pane captures. This does not
+  certify other platforms' browser fallback fonts.
+- `codeboogie_result_capture` uses the live renderer. Its `flow` diagnostic runs
+  the actual native intro, creates the first source program, invokes Run, adds
+  a third block during playback and reaches the successful result. Assertions
+  verify the submitted two-block code/verdict survive the edit; the final code
+  pane was inspected. This is input-independent controller/render evidence,
+  not a successful synthetic drag/click/keyboard test.
+- Code Boogie no longer has the old twelve-line preview limit: its native code
+  pane clips and scrolls. Precise textarea soft-wrap choice, scrollbars, dragging
+  its resize handle, text selection/copy and keyboard accessibility remain
+  unfinished. Code Lab still uses the older result renderer. Neither whole mode
+  nor all result interactions are certified 1:1.
+
+Final verification for this result pass: all 73 tests pass in both checkouts;
+the updated native release binary and result-capture example build successfully.
+The README user rating remains Very similar; full site parity is unfinished.

@@ -8,6 +8,7 @@ description = "Native Rust port of Santa Tracker (in development)"
 [dependencies]
 macroquad = { version = "0.4.14", default-features = false }
 resvg = { version = "0.45", default-features = false, features = ["text", "system-fonts", "raster-images"] }
+rustybuzz = "0.20.1"
 lewton = "0.10"
 png = "0.17"
 libloading = "0.8"

@@ -1,0 +1,367 @@
+{
+  "method": "Isolated live native result renderer versus original Result DOM/CSS over the same flat #364189 background. Eight settled captures across three viewports plus four entrance phases. Mean absolute RGB error /255. No host chrome or stage/editor background; not whole-mode or input/audio certification.",
+  "cases": [
+    {
+      "width": 1440,
+      "height": 800,
+      "case": "success",
+      "mean_rgb_error": 0.17831163194444444,
+      "regions": {
+        ".result__title": {
+          "box": [
+            358,
+            47,
+            1082,
+            257
+          ],
+          "mean_rgb_error": 0.7598066298342542
+        },
+        ".result__graphic": {
+          "box": [
+            546,
+            256,
+            894,
+            572
+          ],
+          "mean_rgb_error": 0.4730921722682962
+        },
+        ".result__buttons": {
+          "box": [
+            638,
+            586,
+            802,
+            712
+          ],
+          "mean_rgb_error": 1.8326074332171896
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "height": 800,
+      "case": "missing-success",
+      "mean_rgb_error": 0.3262097800925926,
+      "regions": {
+        ".result__title": {
+          "box": [
+            358,
+            0,
+            1082,
+            206
+          ],
+          "mean_rgb_error": 0.6158701210463265
+        },
+        ".result__details": {
+          "box": [
+            504,
+            204,
+            936,
+            256
+          ],
+          "mean_rgb_error": 3.350857668566002
+        },
+        ".result__missing-block": {
+          "box": [
+            688,
+            249,
+            752,
+            314
+          ],
+          "mean_rgb_error": 1.6782852564102564
+        },
+        ".result__graphic": {
+          "box": [
+            546,
+            307,
+            894,
+            624
+          ],
+          "mean_rgb_error": 1.287075310924979
+        },
+        ".result__buttons": {
+          "box": [
+            562,
+            637,
+            878,
+            764
+          ],
+          "mean_rgb_error": 1.487590949865444
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "height": 800,
+      "case": "failure",
+      "mean_rgb_error": 0.16320833333333332,
+      "regions": {
+        ".result__title": {
+          "box": [
+            520,
+            46,
+            920,
+            256
+          ],
+          "mean_rgb_error": 1.0093849206349208
+        },
+        ".result__details": {
+          "box": [
+            587,
+            255,
+            853,
+            306
+          ],
+          "mean_rgb_error": 2.743967762543614
+        },
+        ".result__graphic": {
+          "box": [
+            538,
+            300,
+            902,
+            616
+          ],
+          "mean_rgb_error": 0.3982734038113785
+        },
+        ".result__buttons": {
+          "box": [
+            638,
+            630,
+            802,
+            713
+          ],
+          "mean_rgb_error": 1.4833970026447252
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "height": 800,
+      "case": "code",
+      "mean_rgb_error": 0.21149508101851852,
+      "regions": {
+        ".result__title": {
+          "box": [
+            358,
+            86,
+            1082,
+            297
+          ],
+          "mean_rgb_error": 0.6012760423485464
+        },
+        ".result__buttons": {
+          "box": [
+            638,
+            589,
+            802,
+            673
+          ],
+          "mean_rgb_error": 1.4901761517615177
+        },
+        ".result__code": {
+          "box": [
+            447,
+            379,
+            993,
+            576
+          ],
+          "mean_rgb_error": 0.5421555320032477
+        }
+      }
+    },
+    {
+      "width": 375,
+      "height": 800,
+      "case": "freestyle",
+      "mean_rgb_error": 0.8742455555555555,
+      "regions": {
+        ".result__title": {
+          "box": [
+            6,
+            148,
+            369,
+            253
+          ],
+          "mean_rgb_error": 1.6243211334120424
+        },
+        ".result__details": {
+          "box": [
+            17,
+            248,
+            358,
+            289
+          ],
+          "mean_rgb_error": 3.671172782109053
+        },
+        ".result__graphic": {
+          "box": [
+            96,
+            282,
+            279,
+            449
+          ],
+          "mean_rgb_error": 2.3747477722151324
+        },
+        ".result__buttons": {
+          "box": [
+            0,
+            462,
+            375,
+            636
+          ],
+          "mean_rgb_error": 1.1718212005108557
+        }
+      }
+    },
+    {
+      "width": 375,
+      "height": 800,
+      "case": "code",
+      "mean_rgb_error": 0.6327266666666667,
+      "regions": {
+        ".result__title": {
+          "box": [
+            6,
+            158,
+            369,
+            263
+          ],
+          "mean_rgb_error": 1.6243211334120424
+        },
+        ".result__buttons": {
+          "box": [
+            105,
+            552,
+            270,
+            626
+          ],
+          "mean_rgb_error": 1.9107562107562108
+        },
+        ".result__code": {
+          "box": [
+            2,
+            342,
+            373,
+            539
+          ],
+          "mean_rgb_error": 0.713327951619303
+        }
+      }
+    },
+    {
+      "width": 375,
+      "height": 800,
+      "case": "missing-failure",
+      "mean_rgb_error": 0.5480511111111112,
+      "regions": {
+        ".result__title": {
+          "box": [
+            87,
+            169,
+            288,
+            274
+          ],
+          "mean_rgb_error": 1.8099818368475085
+        },
+        ".result__details": {
+          "box": [
+            88,
+            269,
+            287,
+            310
+          ],
+          "mean_rgb_error": 2.9564080565428767
+        },
+        ".result__missing-block": {
+          "box": [
+            155,
+            303,
+            220,
+            368
+          ],
+          "mean_rgb_error": 2.6859171597633136
+        },
+        ".result__graphic": {
+          "box": [
+            92,
+            361,
+            283,
+            528
+          ],
+          "mean_rgb_error": 2.120000836024287
+        },
+        ".result__buttons": {
+          "box": [
+            105,
+            541,
+            270,
+            615
+          ],
+          "mean_rgb_error": 1.8939120939120937
+        }
+      }
+    },
+    {
+      "width": 570,
+      "height": 500,
+      "case": "missing-success",
+      "mean_rgb_error": 0.8272315789473684,
+      "regions": {
+        ".result__title": {
+          "box": [
+            0,
+            0,
+            570,
+            291
+          ],
+          "mean_rgb_error": 0.6076244448463656
+        },
+        ".result__details": {
+          "box": [
+            69,
+            289,
+            501,
+            341
+          ],
+          "mean_rgb_error": 3.350857668566002
+        },
+        ".result__buttons": {
+          "box": [
+            127,
+            374,
+            443,
+            491
+          ],
+          "mean_rgb_error": 1.6147535071585706
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "height": 800,
+      "case": "success-phase",
+      "time": 0.2,
+      "mean_rgb_error": 0.04600347222222222
+    },
+    {
+      "width": 1440,
+      "height": 800,
+      "case": "success-phase",
+      "time": 0.4,
+      "mean_rgb_error": 0.11094299768518519
+    },
+    {
+      "width": 1440,
+      "height": 800,
+      "case": "success-phase",
+      "time": 0.6,
+      "mean_rgb_error": 0.14784751157407408
+    },
+    {
+      "width": 1440,
+      "height": 800,
+      "case": "success-phase",
+      "time": 1,
+      "mean_rgb_error": 0.17222540509259257
+    }
+  ]
+}

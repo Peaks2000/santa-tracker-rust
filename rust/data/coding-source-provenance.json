@@ -65,5 +65,23 @@
       "static/third_party/lib/blockly/generators/javascript.js": "1a7026448090fd02c9f3a0595589e88a2005b17ff3a52c381a3a5c03d3db2aa0",
       "static/third_party/lib/blockly/core/workspace.js": "612136b47bc76f40006fcf44677aeb1e35d0a9bb3cd9820b51b5bedb3b3a44aa"
     }
+  },
+  "result_panels": {
+    "method": "Original Result/DOM/CSS in Chromium; see layout/phase/raster fixtures and SOURCE-COVERAGE.md for scope. No original browser engine distributed.",
+    "code_font_platform_probe": {
+      "method": "Chromium CSS.getPlatformFontsForNode on a fixed visible element with original Monaco/Consolas/Lucida Console/monospace stack at 16px",
+      "familyName": "Noto Sans Mono",
+      "postScriptName": "NotoSansMono-Regular",
+      "isCustomFont": false,
+      "glyphCount": 29
+    },
+    "font_source": "Installed /usr/share/fonts/google-noto-vf/NotoSansMono[wght].ttf, embedded copyright/license name records plus standard SIL OFL 1.1 retained as NotoSansMono-OFL.txt",
+    "additional_hashes": {
+      "static/scenes/codeboogie/sass/_result.scss": "3447b6517b67c42c01bb718b983fbb9fa594a9b364e97f6f68ed1ca0a18a2177",
+      "static/scenes/_shared/sass/_button.scss": "55c903e30b96c40909aaa80344bfb298a6801cbcd9b30d61d9d7d8db74141322",
+      "static/scenes/_shared/sass/_no-en.scss": "b3fe2b04b862c08edfd9e12ca2927e34b09480a96b3adce89628086c9f8616f8",
+      "rust/assets/fonts/NotoSansMono.ttf": "3c874b97ce11dc54de004c81df02c8f0974033ed1b113377130cbdd71d478f11",
+      "rust/assets/codeboogie/result-missing-controls_repeat.svg": "5b7bac56fdbaa55385b69f4e1f64f7761d51e47f676208191d97f099916e4c97"
+    }
   }
 }

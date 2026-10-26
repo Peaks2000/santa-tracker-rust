@@ -72,6 +72,9 @@ impl<const N: usize> Transition<N> {
         self.start + self.duration
     }
     pub fn value(&self, now: f64) -> [f64; N] {
+        if now < self.start {
+            return self.from;
+        }
         let t = if self.duration <= 0. {
             1.
         } else {
@@ -80,6 +83,17 @@ impl<const N: usize> Transition<N> {
         std::array::from_fn(|i| self.from[i] + (self.target[i] - self.from[i]) * t)
     }
     pub fn set(&mut self, now: f64, target: [f64; N], duration: f64, ease: Ease) {
+        self.set_delayed(now, target, duration, 0., ease);
+    }
+    /// CSS positive transition-delay, retaining the current value until start.
+    pub fn set_delayed(
+        &mut self,
+        now: f64,
+        target: [f64; N],
+        duration: f64,
+        delay: f64,
+        ease: Ease,
+    ) {
         if target == self.target {
             return;
         }
@@ -96,7 +110,7 @@ impl<const N: usize> Transition<N> {
         self.reversing_start = if reversing { self.target } else { value };
         self.from = value;
         self.target = target;
-        self.start = now;
+        self.start = now + delay;
         self.duration = duration * shortening;
         self.shortening = shortening;
         self.ease = ease;

@@ -19,8 +19,10 @@ precise scope and remaining gaps; refresh current test/build results before work
 The next pass preserves Boogie View code loops/name allocation instead of
 expanding actions. `codeboogie-user-code-reference.json` checks 98 complete
 strings from the real bundled Blockly generator. Code is saved at Run time,
-not regenerated after editing during playback. Result layout/transitions and
-textarea scrolling remain unfinished; this does not change the README rating.
+not regenerated after editing during playback. The next result-panel pass now matches 70 DOM configurations / seven sizes,
+96 CSS phases including reversals, and 12 isolated images. Small raster
+differences remain; textarea interaction, sharing and host game-over are still
+unfinished. The README rating stays Very similar.
 
 Do not confuse these three things: the user's README rating, their editable approval fields, and the scope of measured technical evidence. Changing one does not automatically change the others.
 
@@ -29,6 +31,7 @@ Do not confuse these three things: the user's README rating, their editable appr
 | Location | Purpose |
 | --- | --- |
 | `rust/src/coding.rs` | Typed block graph/interpreter, maze execution/results, dance status/queues, source viewport and chooser layout formulas, fixture tests. |
+| `rust/src/codeboogie_result.rs`, `coding_result_view.rs` | Source result flex/typography/transitions and live renderer, with layout/phase/raster fixtures. |
 | `rust/src/coding_user_code.rs` | Boogie educational code text, loop/name allocation and root ordering, compared with actual Blockly. |
 | `rust/src/codeboogie_stage.rs` | Source beat/track state, light shuffling, timed card removal, title spans, sprite clocks and character/card geometry. |
 | `rust/src/coding_view.rs` | Native editor and drag/drop, SVG block painting, puzzle/maze and dancer rendering, chooser/results, beat/track queues. |
@@ -77,7 +80,7 @@ Known gaps include:
 
 - Boogie stage logic and selected CSS phases now have source checks. Full active-gameplay raster/phase coverage, light/transform reversal combinations, image-load/colour retry races and audio-clock/route lifecycle still need work.
 - Blockly-style nested layout, connection precedence/insertion, field/flyout/trash geometry, workspace panning, touch/keyboard/accessibility and responsive editor motion.
-- Result fades/layout/missing-block artwork/final host game-over, tutorial queues, sharing/import/export and exact textarea layout/scrolling (Boogie loop formatting is source-matched for supported enabled graphs; Code Lab still expands actions).
+- Broader result button/focus/device/controller checks, final host game-over, tutorial queues, sharing/import/export and exact textarea layout/scrolling (Boogie loop formatting is source-matched for supported enabled graphs; Code Lab still expands actions).
 - Lab pooled world/presents, world travel, precise rotation/sprite/pickup/loss ordering, highlights/rewind/cancellation, portrait transition/run delay. Its 100,000-action native limit is a documented intentional responsiveness difference.
 - Precise audio scheduling, one-shot guards, cb_fail combinations, bus ducking and listening/device validation. Previous native UI tests were muted.
 - Small chooser glyph spacing/raster differences, chooser exit and broader hover/entrance/reversal comparisons. Matching DOM boxes does not verify glyph pixels or interaction animation.
@@ -134,3 +137,22 @@ Fetch the distribution remote before an authorized push: the user edits its READ
 Regenerate `PARITY-REPORT.txt` from the correct checkout's JSON with the status_report example; stdout is just the saved path. Do not redirect stdout over the report. Shared build targets may reuse an example built in the other checkout, so check its embedded manifest root/input and output path before relying on it.
 
 Inspect staged paths to exclude browser code and `rust/tools/`; preserve original asset bytes/licenses (some original SVGs contain CRLF/trailing whitespace). Commit and push only the clean distribution's own history to its public origin. A local reference commit is separate. Check clean distribution status, remote visibility and successful push. Update this reference only when durable continuation facts change; put detailed ongoing status in the existing feedback/coverage files.
+
+## Result-panel continuation facts
+
+Use `codeboogie_result_capture` (see native README) for the shared live renderer.
+Its `flow` case is input-independent: actual intro/Run/Finish plus editing during
+playback is asserted and rendered, but this does not replace pointer/keyboard
+verification. The old failed synthetic input runs remain discarded.
+
+Do not add an intuitive root fade: the original unitless time in `visibility 0
+0.3s` invalidates the entire root transition declaration. Actual Chromium reports
+zero duration (`transition: all`), so show/hide is immediate while the children
+retain their delayed curves. The original a[hidden] View code link also remains
+visible due to its inline-block CSS. Both quirks are covered by fixtures.
+
+The separate missing-repeat symbol is not the full exported editor repeat block.
+The font probe finds Noto Sans Mono on this Linux reference host; its original
+installed font/OFL are retained for selected code-pane matches. No host sharing
+or final shared game-over implementation has been added. Inspect current tests,
+feedback and coverage; do not turn selected low image errors into whole-mode 1:1.

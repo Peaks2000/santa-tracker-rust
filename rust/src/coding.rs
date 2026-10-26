@@ -457,6 +457,7 @@ pub struct ResultInfo {
     pub skip: bool,
     pub status: String,
     pub queue: Vec<DanceItem>,
+    pub missing_blocks: Vec<String>,
 }
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
@@ -711,7 +712,8 @@ pub fn evaluate(l: &Level, w: &Workspace, success: bool, dance: bool) -> ResultI
         return r;
     }
     let prefix = if dance { "codeboogie" } else { "codelab" };
-    if !w.missing(&l.required_blocks).is_empty() {
+    r.missing_blocks = w.missing(&l.required_blocks);
+    if !r.missing_blocks.is_empty() {
         r.message = format!(
             "{prefix}-result-missing-block-{}",
             if success { "success" } else { "fail" }
