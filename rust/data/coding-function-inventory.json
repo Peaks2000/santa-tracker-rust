@@ -1397,28 +1397,32 @@
           "from_line": 50,
           "to_line": 59,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::SpriteClock and coding_view::character; strict ms clocks and source sprite geometry; paused bootstrap verified inactive on active paths"
         },
         {
           "name": "play",
           "from_line": 61,
           "to_line": 64,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::SpriteClock and coding_view::character; strict ms clocks and source sprite geometry; paused bootstrap verified inactive on active paths"
         },
         {
           "name": "getFrame",
           "from_line": 66,
           "to_line": 84,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::SpriteClock and coding_view::character; strict ms clocks and source sprite geometry; paused bootstrap verified inactive on active paths"
         },
         {
           "name": "update",
           "from_line": 86,
           "to_line": 103,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::SpriteClock and coding_view::character; strict ms clocks and source sprite geometry; paused bootstrap verified inactive on active paths"
         }
       ]
     },
@@ -1442,98 +1446,112 @@
           "from_line": 36,
           "to_line": 38,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage; fixed active listeners use typed events; generic EventTarget API and full lifecycle remain partial"
         },
         {
           "name": "addEventListener",
           "from_line": 40,
           "to_line": 45,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage; fixed active listeners use typed events; generic EventTarget API and full lifecycle remain partial"
         },
         {
           "name": "listen",
           "from_line": 47,
           "to_line": 49,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage; fixed active listeners use typed events; generic EventTarget API and full lifecycle remain partial"
         },
         {
           "name": "dispatchEvent",
           "from_line": 51,
           "to_line": 55,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage; fixed active listeners use typed events; generic EventTarget API and full lifecycle remain partial"
         },
         {
           "name": "<anonymous callback>",
           "from_line": 54,
           "to_line": 54,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage; fixed active listeners use typed events; generic EventTarget API and full lifecycle remain partial"
         },
         {
           "name": "constructor",
           "from_line": 77,
           "to_line": 100,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage; fixed active listeners use typed events; generic EventTarget API and full lifecycle remain partial"
         },
         {
           "name": "update",
           "from_line": 102,
           "to_line": 111,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage; fixed active listeners use typed events; generic EventTarget API and full lifecycle remain partial"
         },
         {
           "name": "<anonymous callback>",
           "from_line": 110,
           "to_line": 110,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage; fixed active listeners use typed events; generic EventTarget API and full lifecycle remain partial"
         },
         {
           "name": "start",
           "from_line": 118,
           "to_line": 136,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage; fixed active listeners use typed events; generic EventTarget API and full lifecycle remain partial"
         },
         {
           "name": "onFinish_",
           "from_line": 142,
           "to_line": 149,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage; fixed active listeners use typed events; generic EventTarget API and full lifecycle remain partial"
         },
         {
           "name": "onMusicBar",
           "from_line": 151,
           "to_line": 185,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage; fixed active listeners use typed events; generic EventTarget API and full lifecycle remain partial"
         },
         {
           "name": "onAnimationBar",
           "from_line": 187,
           "to_line": 199,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage; fixed active listeners use typed events; generic EventTarget API and full lifecycle remain partial"
         },
         {
           "name": "onBeat",
           "from_line": 201,
           "to_line": 223,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage; fixed active listeners use typed events; generic EventTarget API and full lifecycle remain partial"
         },
         {
           "name": "setLevel",
           "from_line": 225,
           "to_line": 229,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage; fixed active listeners use typed events; generic EventTarget API and full lifecycle remain partial"
         }
       ]
     },
@@ -1999,77 +2017,88 @@
           "from_line": 26,
           "to_line": 45,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::SpriteClock and native character/watch transforms; async image retry/color races remain unfinished"
         },
         {
           "name": "renderSprites_",
           "from_line": 47,
           "to_line": 51,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::SpriteClock and native character/watch transforms; async image retry/color races remain unfinished"
         },
         {
           "name": "<anonymous callback>",
           "from_line": 48,
           "to_line": 50,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::SpriteClock and native character/watch transforms; async image retry/color races remain unfinished"
         },
         {
           "name": "loadImage",
           "from_line": 53,
           "to_line": 68,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::SpriteClock and native character/watch transforms; async image retry/color races remain unfinished"
         },
         {
           "name": "image.onload",
           "from_line": 56,
           "to_line": 58,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::SpriteClock and native character/watch transforms; async image retry/color races remain unfinished"
         },
         {
           "name": "image.onerror",
           "from_line": 60,
           "to_line": 65,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::SpriteClock and native character/watch transforms; async image retry/color races remain unfinished"
         },
         {
           "name": "<anonymous callback>",
           "from_line": 62,
           "to_line": 64,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::SpriteClock and native character/watch transforms; async image retry/color races remain unfinished"
         },
         {
           "name": "update",
           "from_line": 70,
           "to_line": 96,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::SpriteClock and native character/watch transforms; async image retry/color races remain unfinished"
         },
         {
           "name": "setState",
           "from_line": 98,
           "to_line": 109,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::SpriteClock and native character/watch transforms; async image retry/color races remain unfinished"
         },
         {
           "name": "play",
           "from_line": 111,
           "to_line": 114,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::SpriteClock and native character/watch transforms; async image retry/color races remain unfinished"
         },
         {
           "name": "setColor",
           "from_line": 116,
           "to_line": 121,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::SpriteClock and native character/watch transforms; async image retry/color races remain unfinished"
         }
       ]
     },
@@ -2383,49 +2412,56 @@
           "from_line": 25,
           "to_line": 46,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::Lights (all methods/callbacks); renderer ceiling/floor cover and beam opacity"
         },
         {
           "name": "setLevel",
           "from_line": 48,
           "to_line": 51,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::Lights (all methods/callbacks); renderer ceiling/floor cover and beam opacity"
         },
         {
           "name": "onBeat",
           "from_line": 53,
           "to_line": 78,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::Lights (all methods/callbacks); renderer ceiling/floor cover and beam opacity"
         },
         {
           "name": "<anonymous callback>",
           "from_line": 57,
           "to_line": 59,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::Lights (all methods/callbacks); renderer ceiling/floor cover and beam opacity"
         },
         {
           "name": "<anonymous callback>",
           "from_line": 63,
           "to_line": 65,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::Lights (all methods/callbacks); renderer ceiling/floor cover and beam opacity"
         },
         {
           "name": "<anonymous callback>",
           "from_line": 74,
           "to_line": 76,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::Lights (all methods/callbacks); renderer ceiling/floor cover and beam opacity"
         },
         {
           "name": "shuffle_",
           "from_line": 80,
           "to_line": 88,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::Lights (all methods/callbacks); renderer ceiling/floor cover and beam opacity"
         }
       ]
     },
@@ -2449,70 +2485,80 @@
           "from_line": 27,
           "to_line": 30,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::MoveTiles (all methods/callbacks); source-timed delayed clear and card renderer"
         },
         {
           "name": "setLevel",
           "from_line": 32,
           "to_line": 35,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::MoveTiles (all methods/callbacks); source-timed delayed clear and card renderer"
         },
         {
           "name": "setLength",
           "from_line": 37,
           "to_line": 42,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::MoveTiles (all methods/callbacks); source-timed delayed clear and card renderer"
         },
         {
           "name": "add",
           "from_line": 44,
           "to_line": 61,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::MoveTiles (all methods/callbacks); source-timed delayed clear and card renderer"
         },
         {
           "name": "<anonymous callback>",
           "from_line": 57,
           "to_line": 59,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::MoveTiles (all methods/callbacks); source-timed delayed clear and card renderer"
         },
         {
           "name": "reset",
           "from_line": 63,
           "to_line": 65,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::MoveTiles (all methods/callbacks); source-timed delayed clear and card renderer"
         },
         {
           "name": "clear",
           "from_line": 67,
           "to_line": 71,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::MoveTiles (all methods/callbacks); source-timed delayed clear and card renderer"
         },
         {
           "name": "_removeTiles",
           "from_line": 73,
           "to_line": 84,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::MoveTiles (all methods/callbacks); source-timed delayed clear and card renderer"
         },
         {
           "name": "<anonymous callback>",
           "from_line": 75,
           "to_line": 77,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::MoveTiles (all methods/callbacks); source-timed delayed clear and card renderer"
         },
         {
           "name": "<anonymous callback>",
           "from_line": 79,
           "to_line": 83,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::MoveTiles (all methods/callbacks); source-timed delayed clear and card renderer"
         }
       ]
     },
@@ -2763,42 +2809,48 @@
           "from_line": 20,
           "to_line": 32,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage::update/set_level/play_track/set_variant; frame dispatcher owned by native loop"
         },
         {
           "name": "setTrack",
           "from_line": 34,
           "to_line": 39,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage::update/set_level/play_track/set_variant; frame dispatcher owned by native loop"
         },
         {
           "name": "setVariant",
           "from_line": 41,
           "to_line": 47,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage::update/set_level/play_track/set_variant; frame dispatcher owned by native loop"
         },
         {
           "name": "_play",
           "from_line": 49,
           "to_line": 53,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage::update/set_level/play_track/set_variant; frame dispatcher owned by native loop"
         },
         {
           "name": "start",
           "from_line": 55,
           "to_line": 61,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage::update/set_level/play_track/set_variant; frame dispatcher owned by native loop"
         },
         {
           "name": "_update",
           "from_line": 63,
           "to_line": 85,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::DanceStage::update/set_level/play_track/set_variant; frame dispatcher owned by native loop"
         }
       ]
     },
@@ -2814,35 +2866,40 @@
           "from_line": 22,
           "to_line": 30,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::Title/TitleNode (all methods); native cached glyph/shadow rendering"
         },
         {
           "name": "setTitle",
           "from_line": 42,
           "to_line": 49,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::Title/TitleNode (all methods); native cached glyph/shadow rendering"
         },
         {
           "name": "updateTitle_",
           "from_line": 51,
           "to_line": 57,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::Title/TitleNode (all methods); native cached glyph/shadow rendering"
         },
         {
           "name": "switchText_",
           "from_line": 59,
           "to_line": 75,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::Title/TitleNode (all methods); native cached glyph/shadow rendering"
         },
         {
           "name": "onBeat",
           "from_line": 80,
           "to_line": 93,
           "status": "partial_or_unfinished",
-          "evidence": "SOURCE-COVERAGE.md: Code Lab and Code Boogie native first pass"
+          "evidence": "SOURCE-COVERAGE.md: Code Boogie stage playback and effects follow-up; codeboogie-stage-{reference,layout-reference,phase-reference}.json",
+          "native_equivalent": "codeboogie_stage::Title/TitleNode (all methods); native cached glyph/shadow rendering"
         }
       ]
     }

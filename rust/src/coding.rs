@@ -290,6 +290,10 @@ pub struct Level {
     pub special_move: String,
     #[serde(default)]
     pub fade_tiles: bool,
+    #[serde(default)]
+    pub ceiling_lights: bool,
+    #[serde(default)]
+    pub floor_lights: bool,
 }
 #[derive(Clone, Copy, Debug, Deserialize, Serialize, PartialEq)]
 pub struct Point {

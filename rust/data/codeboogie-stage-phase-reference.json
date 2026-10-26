@@ -1,0 +1,477 @@
+{
+  "method": "Unmodified original scene CSS and real source Title/MoveTiles/Character methods in Chromium at 1440x800, teacher level 7 (140 BPM). Native getAnimations saved before the source Web Animations polyfill; CSS Animation/Transition currentTime paused and set directly to sample phases. No source easing/keyframes/layout formulas replaced. Captures opacity/scale/translation only, not full images or audio.",
+  "cases": [
+    {
+      "kind": "title-appear",
+      "t": 0,
+      "opacity": 0,
+      "scale": 0.8,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "title-appear",
+      "t": 0.1,
+      "opacity": 0,
+      "scale": 0.8,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "title-appear",
+      "t": 0.25,
+      "opacity": 0,
+      "scale": 0.8,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "title-appear",
+      "t": 0.28,
+      "opacity": 0.00425165,
+      "scale": 0.80085,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "title-appear",
+      "t": 0.3,
+      "opacity": 0.171,
+      "scale": 0.8342,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "title-appear",
+      "t": 0.35,
+      "opacity": 0.777666,
+      "scale": 0.955533,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "title-appear",
+      "t": 0.4,
+      "opacity": 0.978044,
+      "scale": 0.995609,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "title-appear",
+      "t": 0.428571428571,
+      "opacity": 1,
+      "scale": 1,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "title-appear",
+      "t": 0.5,
+      "opacity": 1,
+      "scale": 1,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "title-destroy",
+      "t": 0,
+      "opacity": 1,
+      "scale": 1,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "title-destroy",
+      "t": 0.1,
+      "opacity": 1,
+      "scale": 1,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "title-destroy",
+      "t": 0.17,
+      "opacity": 1,
+      "scale": 1,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "title-destroy",
+      "t": 0.2,
+      "opacity": 0.829,
+      "scale": 1.0855,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "title-destroy",
+      "t": 0.25,
+      "opacity": 0.222334,
+      "scale": 1.38883,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "title-destroy",
+      "t": 0.3,
+      "opacity": 0.0219558,
+      "scale": 1.48902,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "title-destroy",
+      "t": 0.328571428571,
+      "opacity": 0,
+      "scale": 1.5,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "title-destroy",
+      "t": 0.4,
+      "opacity": 0,
+      "scale": 1.5,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "tile-appear",
+      "t": 0,
+      "opacity": 0,
+      "scale": 0.8,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "tile-appear",
+      "t": 0.05,
+      "opacity": 0.0947963,
+      "scale": 0.818959,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "tile-appear",
+      "t": 0.1,
+      "opacity": 0.295244,
+      "scale": 0.859049,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "tile-appear",
+      "t": 0.25,
+      "opacity": 0.802403,
+      "scale": 0.960481,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "tile-appear",
+      "t": 0.4,
+      "opacity": 0.975625,
+      "scale": 0.995125,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "tile-appear",
+      "t": 0.5,
+      "opacity": 1,
+      "scale": 1,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "tile-appear",
+      "t": 0.7,
+      "opacity": 1,
+      "scale": 1,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "tile-disappear",
+      "t": 0,
+      "opacity": 1,
+      "scale": 1,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "tile-disappear",
+      "t": 0.05,
+      "opacity": 0.905204,
+      "scale": 1.0474,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "tile-disappear",
+      "t": 0.1,
+      "opacity": 0.704756,
+      "scale": 1.14762,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "tile-disappear",
+      "t": 0.25,
+      "opacity": 0.197597,
+      "scale": 1.4012,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "tile-disappear",
+      "t": 0.4,
+      "opacity": 0.0243746,
+      "scale": 1.48781,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "tile-disappear",
+      "t": 0.5,
+      "opacity": 0,
+      "scale": 1.5,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "tile-disappear",
+      "t": 0.7,
+      "opacity": 0,
+      "scale": 1.5,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "tile-shift",
+      "t": 0,
+      "opacity": 1,
+      "scale": 1,
+      "x": -124,
+      "y": 0
+    },
+    {
+      "kind": "tile-shift",
+      "t": 0.025,
+      "opacity": 1,
+      "scale": 1,
+      "x": -127.222,
+      "y": 0
+    },
+    {
+      "kind": "tile-shift",
+      "t": 0.05,
+      "opacity": 1,
+      "scale": 1,
+      "x": -135.59,
+      "y": 0
+    },
+    {
+      "kind": "tile-shift",
+      "t": 0.1,
+      "opacity": 1,
+      "scale": 1,
+      "x": -163.104,
+      "y": 0
+    },
+    {
+      "kind": "tile-shift",
+      "t": 0.15,
+      "opacity": 1,
+      "scale": 1,
+      "x": -201.111,
+      "y": 0
+    },
+    {
+      "kind": "tile-shift",
+      "t": 0.2,
+      "opacity": 1,
+      "scale": 1,
+      "x": -248,
+      "y": 0
+    },
+    {
+      "kind": "tile-shift",
+      "t": 0.3,
+      "opacity": 1,
+      "scale": 1,
+      "x": -248,
+      "y": 0
+    },
+    {
+      "kind": "beam",
+      "t": 0,
+      "opacity": 0,
+      "scale": 1,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "beam",
+      "t": 0.01,
+      "opacity": 0.0947963,
+      "scale": 1,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "beam",
+      "t": 0.025,
+      "opacity": 0.408511,
+      "scale": 1,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "beam",
+      "t": 0.05,
+      "opacity": 0.802403,
+      "scale": 1,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "beam",
+      "t": 0.075,
+      "opacity": 0.960459,
+      "scale": 1,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "beam",
+      "t": 0.1,
+      "opacity": 1,
+      "scale": 1,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "beam",
+      "t": 0.2,
+      "opacity": 1,
+      "scale": 1,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "kind": "player-watch",
+      "t": 0,
+      "opacity": 1,
+      "scale": 1,
+      "x": -466.5,
+      "y": 0
+    },
+    {
+      "kind": "player-watch",
+      "t": 0.1,
+      "opacity": 1,
+      "scale": 0.986,
+      "x": -466.5,
+      "y": -5.8
+    },
+    {
+      "kind": "player-watch",
+      "t": 0.25,
+      "opacity": 1,
+      "scale": 0.965,
+      "x": -466.5,
+      "y": -14.5
+    },
+    {
+      "kind": "player-watch",
+      "t": 0.5,
+      "opacity": 1,
+      "scale": 0.93,
+      "x": -466.5,
+      "y": -29
+    },
+    {
+      "kind": "player-watch",
+      "t": 0.75,
+      "opacity": 1,
+      "scale": 0.895,
+      "x": -466.5,
+      "y": -43.5
+    },
+    {
+      "kind": "player-watch",
+      "t": 1,
+      "opacity": 1,
+      "scale": 0.86,
+      "x": -466.5,
+      "y": -58
+    },
+    {
+      "kind": "player-watch",
+      "t": 1.2,
+      "opacity": 1,
+      "scale": 0.86,
+      "x": -466.5,
+      "y": -58
+    },
+    {
+      "kind": "teacher-show",
+      "t": 0,
+      "opacity": 1,
+      "scale": 1,
+      "x": -155.5,
+      "y": 0
+    },
+    {
+      "kind": "teacher-show",
+      "t": 0.1,
+      "opacity": 1,
+      "scale": 1,
+      "x": -171.05,
+      "y": 0
+    },
+    {
+      "kind": "teacher-show",
+      "t": 0.25,
+      "opacity": 1,
+      "scale": 1,
+      "x": -194.375,
+      "y": 0
+    },
+    {
+      "kind": "teacher-show",
+      "t": 0.5,
+      "opacity": 1,
+      "scale": 1,
+      "x": -233.25,
+      "y": 0
+    },
+    {
+      "kind": "teacher-show",
+      "t": 0.75,
+      "opacity": 1,
+      "scale": 1,
+      "x": -272.125,
+      "y": 0
+    },
+    {
+      "kind": "teacher-show",
+      "t": 1,
+      "opacity": 1,
+      "scale": 1,
+      "x": -311,
+      "y": 0
+    },
+    {
+      "kind": "teacher-show",
+      "t": 1.2,
+      "opacity": 1,
+      "scale": 1,
+      "x": -311,
+      "y": 0
+    }
+  ]
+}

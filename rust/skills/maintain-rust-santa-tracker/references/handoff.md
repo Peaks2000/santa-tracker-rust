@@ -8,6 +8,14 @@ Snapshot: 24 October 2026, after public native commit `c26766c` and local refere
 
 The user explicitly chose **Very similar** for Code Boogie, then reiterated that **1:1 remains the target**. Code Lab's README state was **Partially alike**. Preserve later user changes. Technical agent status remains partial: neither whole scene nor the whole site is certified 1:1. The root README already lists the source scenes in a two-column Name/State table; keep detail in the feedback/coverage files.
 
+A subsequent stage-effects pass adds `codeboogie_stage.rs`: original light
+selection/transitions, move cards, title/countdown spans, watcher transforms,
+strict millisecond sprite clocks and beat/track scheduling. Its durable evidence
+is 15 browser scenarios / 2,775 snapshots, 12 DOM states at six viewports, 59 CSS
+phase samples and ten matched stills. A live two-block first lesson reaches
+Nice moves. Read the stage follow-up section in SOURCE-COVERAGE.md for the
+precise scope and remaining gaps; refresh current test/build results before work.
+
 Do not confuse these three things: the user's README rating, their editable approval fields, and the scope of measured technical evidence. Changing one does not automatically change the others.
 
 ## Find the implementation and evidence
@@ -15,6 +23,7 @@ Do not confuse these three things: the user's README rating, their editable appr
 | Location | Purpose |
 | --- | --- |
 | `rust/src/coding.rs` | Typed block graph/interpreter, maze execution/results, dance status/queues, source viewport and chooser layout formulas, fixture tests. |
+| `rust/src/codeboogie_stage.rs` | Source beat/track state, light shuffling, timed card removal, title spans, sprite clocks and character/card geometry. |
 | `rust/src/coding_view.rs` | Native editor and drag/drop, SVG block painting, puzzle/maze and dancer rendering, chooser/results, beat/track queues. |
 | `rust/src/main.rs` | Routes, scene input eligibility, loading, resets, audio drains and capture controls. A missing input-eligibility branch previously made visible editors inert. |
 | `rust/src/assets.rs` | Image decoding/filtering; Boogie dancer strips load lazily, chooser SVGs use higher resolution/mipmaps. |
@@ -55,18 +64,35 @@ Exporter pitfalls: export full/mini blocks through the actual original Blockly r
 
 ## Remaining work when asked to continue fidelity
 
-Prioritize the latest user correction. Otherwise choose a bounded unfinished source group and read its complete files and active dependencies before translating it. Useful next Boogie groups are lights/move tiles/title, exact dancer/watch transforms and animation timing, or result flows. Update the coverage ledger with the native equivalent and remaining branches rather than declaring the entire mode complete.
+Prioritize the latest user correction. Otherwise choose a bounded unfinished source group and read its complete files and active dependencies before translating it. Useful next Boogie groups are exact result/tutorial/sharing flows, Blockly/editor behaviour, complete audio presentation, and additional active-render/lifecycle comparisons. Update the coverage ledger with the native equivalent and remaining branches rather than declaring the entire mode complete.
 
 Known gaps include:
 
-- Boogie floor/ceiling light transitions, move carousel, full beat/title/countdown animation, strict sprite time boundaries, watcher transforms and audio-clock/lifecycle races.
+- Boogie stage logic and selected CSS phases now have source checks. Full active-gameplay raster/phase coverage, light/transform reversal combinations, image-load/colour retry races and audio-clock/route lifecycle still need work.
 - Blockly-style nested layout, connection precedence/insertion, field/flyout/trash geometry, workspace panning, touch/keyboard/accessibility and responsive editor motion.
 - Result fades/layout/missing-block artwork/final host game-over, tutorial queues, sharing/import/export and exact educational View code formatting (currently expanded actions).
 - Lab pooled world/presents, world travel, precise rotation/sprite/pickup/loss ordering, highlights/rewind/cancellation, portrait transition/run delay. Its 100,000-action native limit is a documented intentional responsiveness difference.
 - Precise audio scheduling, one-shot guards, cb_fail combinations, bus ducking and listening/device validation. Previous native UI tests were muted.
-- Small chooser glyph spacing/raster differences and broader hover/entrance/reversal comparisons. Matching DOM boxes does not verify glyph pixels or interaction animation.
+- Small chooser glyph spacing/raster differences, chooser exit and broader hover/entrance/reversal comparisons. Matching DOM boxes does not verify glyph pixels or interaction animation.
 
 Christmas tracking is a separate unfinished UI task. `tracker.rs`/`tracker_control.rs` have route, date-gating and controller evidence; a standalone Santa preview is not an integrated tracker/map. The user does not currently have a confirmed Maps API key. Do not claim the map works or ask them to paste a key. Preserve the user-requested Dec 24 10:00 UTC–Dec 25 11:00 UTC visibility gate (end exclusive).
+
+New stage harnesses are `rust/tools/codeboogie-stage-{reference,layout,phases}.cjs`
+in the reference checkout. Their generated `rust/data/codeboogie-stage-*.json`
+fixtures and `rust/examples/codeboogie_stage_capture.rs` are distributed. The
+original Web Animations polyfill can hide native CSS animations from its
+getAnimations wrapper: save the native Element/Document methods before the
+polyfill loads when measuring CSS phases. Source start with `removeGuiNow=false`
+exercises the real chooser close path; setting only hidden did not hide its
+explicit display:block layer. Always inspect the captured reference image.
+
+The stage oracle retains late-start/current-animation state, skips missed beats,
+keeps the floor permutation across levels and preserves delayed remove-all
+callbacks. Do not replace those behaviours with catchup loops or clear-on-restart
+intuition. UI smoke needed a rendered-frame acknowledgement between synthetic
+mouse down/move/up; the first unacknowledged attempt placed no blocks and was
+discarded. The successful completion used periodic frame captures so occlusion
+could not skip most beats during the test.
 
 ## Build and compare reliably
 

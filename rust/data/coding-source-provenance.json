@@ -48,5 +48,13 @@
     "asset": "rust/assets/fonts/Roboto-ExtraBold.ttf",
     "source": "https://github.com/google/fonts/blob/main/ofl/roboto/Roboto%5Bwdth,wght%5D.ttf",
     "derivation": "Static instance at wght=800, wdth=100; source scene requests Roboto 400/600/800, CSS 700 resolves to 800. Covered by existing roboto-OFL.txt."
+  },
+  "stage_effects": {
+    "method": "See codeboogie-stage-reference.json, codeboogie-stage-layout-reference.json and codeboogie-stage-phase-reference.json for controlled external clock/random/scheduler scope; original scene methods unchanged.",
+    "additional_source_hashes": {
+      "static/scenes/codeboogie/index.html": "e5fc7f002825bd92bf3fb8f6b66b94ad1e3cd6ed37b2c4d9480d63aa9f11bece",
+      "static/scenes/codeboogie/codeboogie-scene.scss": "93e99bb81c487c754c5b8a009ec45572935fd5f541d79eb0a295950544bce849",
+      "static/scenes/codeboogie/sass/_scene.scss": "7b92a680a7682cf0039b1db0a0ae60523c05fe83ee863ef2a826e07ed4bb84e7"
+    }
   }
 }

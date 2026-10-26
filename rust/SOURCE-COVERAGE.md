@@ -927,21 +927,43 @@ Native equivalents and outstanding branches:
   success specials and countdown insertion. Source result ordering is partially
   translated; serialization/deserialization/share and mutable freestyle level
   bookkeeping remain unfinished. Empty freestyle produces no result overlay.
-- codeboogie animation/animation_data/character: original frame counts, 24fps
-  scaled by BPM, 24 frames/strip and 622x578 canvas offsets are used. Original
-  red/green PNG strips load lazily rather than allocating every strip at startup.
-  Exact strict time-boundary accumulation, missing-image retry, watcher transform
-  transitions, color reload races and redraw lifecycle are not yet verified.
-- codeboogie animation_player/sequencer: native beat/bar queue advances, one-beat
-  preparation, countdown events and next-bar music variants are implemented.
-  Actual source schedules the new variant on the following bar and resets its
-  music clock; native tracks that schedule. Frame-skipping/finish/restart races,
-  complete title/countdown animation states and audio-clock phase need source
-  comparison. No audio presentation timing certification is claimed.
-- codeboogie lights/move_tiles/title: source read and assets retained; floor
-  shuffle/ceiling-beam transitions, move carousel and full beat-driven title
-  replacement/countdown are explicitly UNFINISHED. Native currently displays a
-  static current title and the stage/characters, not those complete effects.
+- codeboogie animation/animation_data/character: source frame counts, 24fps
+  scaled by BPM, 24 frames/strip, 622x578 canvas offsets and strict `>` elapsed
+  boundary now run in codeboogie_stage::SpriteClock, retaining millisecond
+  arithmetic. Dancers are absent until their first source animation is prepared.
+  Watch/show CSS transforms now use the original 480px parent, 85% transform
+  origin, canvas baseline gap, 1s linear interpolation and watching scale/z order.
+  Original PNG strips remain lazily loaded. Async missing-image retry/reload races
+  and complete asset failure/disposal lifecycle still differ; no full asset-load
+  lifecycle certification. Source paused=true bootstrap is immediately followed
+  by Character.play -> Animation.play on active paths; no source pause method is
+  introduced. getFrame uses retained AnimationData; native crops the original
+  canvas bounds. Color-loading race behavior remains unfinished.
+- codeboogie animation_player/sequencer: replaced the first simplified scheduler
+  with codeboogie_stage::DanceStage. onBeat runs title cleanup/count increment,
+  music-bar shift/start/tile/sound/highlight, next-bar preparation, count sound,
+  then lighting in source order. Preserves current animation/isPlaying/watch
+  states across interrupted starts, next-bar track variants and clock reset,
+  one callback for the observed beat (no catchup loop), initial empty sprite
+  state, end titles and finish behavior. The three active EventTarget listeners
+  map to typed Track/Sound/Step/Finish events; generic arbitrary third-party
+  listener registration is not a native public API. Full route teardown,
+  rendering-clock/device and host/audio presentation checks remain incomplete.
+- codeboogie lights/move_tiles/title: all constructors/methods/callbacks now have
+  native equivalents in codeboogie_stage.rs and coding_view.rs. Fisher-Yates
+  consumes eight draws per active floor beat and keeps the permuted object
+  order across beats/levels. Four floor tiles are selected; ceiling sequence is
+  left red, right green, left green, right red; white beams are idle-only.
+  setLevel changes flags without erasing retained beam/tile state. Move cards
+  use source 124px-at-10px-em stride logic, fixed 3px borders, min(4,length) width,
+  first-add immediate motion, 200ms ease-in translation, 500ms fade/scale and
+  source CSS counters/icons. The uncancelled 200ms remove-all callback can also
+  delete newer cards. First two classes preserve cards on finish (fadeTiles=false).
+  Title spans retain smallness when their text is unchanged, count values use
+  numeric/string strict-comparison replacement, destroyed spans leave on the
+  next beat, and appearance/disappearance follow the BPM CSS delays. Rust
+  translates these rules; no original CSS/JS engine is shipped. Original SVG
+  card icons now rasterize at 4x with mipmaps to avoid enlargement blur.
 - game/scene/result in both scenes: native chooser, level progression, run/retry,
   continue, basic portrait tray, original result art and English hints exist.
   Exact result fades, graphic layout, missing-block picture, final host game-over,
@@ -1026,3 +1048,59 @@ The native window manager expanded the requested 1846x966 drawable to
 The pure layout test additionally checks the requested 1846x966 DOM case.
 The user's README rating for Code Boogie is Very similar; agent status remains
 partial with remaining gaps listed above.
+
+
+## Code Boogie stage playback and effects follow-up
+
+Re-read complete lights.js, move_tiles.js, title.js, sequencer.js,
+animation_player.js, animation.js, character.js, scene.js, game.js,
+block_runner.js, dance_level.js, level.js, levels.js, step.js, constants.js,
+klang.js and animation_data.js for this group, plus the complete scene SCSS and
+structural HTML. Inline SVG path/style data are retained licensed assets rather
+than rewritten geometry. Earlier own-scene review and third-party engine limits
+remain as recorded above; the entire Blockly/Closure engine is not claimed ported.
+
+Evidence in rust/data (relative to rust/ below):
+
+- codeboogie-stage-reference.json: 15 scenarios / 2,775 snapshots from real,
+  unchanged source AnimationPlayer/Sequencer/Title/MoveTiles/Lights/Animation
+  constructors in Chromium. All nine intros run through completion, with success,
+  wrong-step, freestyle/empty, interruption, skipped beats, and cross-stage/track
+  changes. External performance.now/rAF/timer dispatch and a 32-bit LCG random
+  stream are controlled; source scene methods are not replaced. Event output is
+  recorded instead of sent to an audio device. Snapshots are cloned immediately
+  to prevent later source array mutations from rewriting earlier evidence.
+- codeboogie-stage-layout-reference.json: 12 settled states across six original
+  DOM viewports (watching/normal). Character canvases, ceiling boxes and move-card
+  boxes match native formulas to 0.055px including CSS 1/64px layout rounding.
+- codeboogie-stage-phase-reference.json: 59 actual Chromium CSS Animation and
+  Transition samples for title/card fade/scale, carousel shift, beam opacity and
+  player/teacher transforms. Native getAnimations is saved before the original
+  Web Animations polyfill overrides its wrapper; querying that wrapper alone
+  missed native CSS effects. Animation currentTime is controlled; source easing,
+  keyframes and layout are unchanged. Matrix string serialization limits x/y
+  comparisons to 0.001px, with opacity/scale tolerance 0.00002.
+- codeboogie-stage-raster-errors.json: ten original/native settled scene images,
+  idle sprite frame zero, five actual viewport sizes. The stage crop omits 80px
+  at the left edge to exclude the separate Run button; editor/host UI are not
+  compared. Mean RGB errors range about 0.96–1.43/255. These are selected stills,
+  not certification of every active image, light reversal, sound or input path.
+
+Development harnesses: tools/codeboogie-stage-reference.cjs,
+tools/codeboogie-stage-layout.cjs and tools/codeboogie-stage-phases.cjs (reference
+checkout only). Native example: examples/codeboogie_stage_capture.rs shares the
+actual model/renderer and exposes controlled comparison state, not extra game
+controls. Large windows were resized by the WM to 1846x1014; original references
+use that actual drawable size. Source `start(..., removeGuiNow=false)` is used to
+exercise the real chooser close path before CSS captures; setting only hidden
+on a display:block chooser did not remove it from the reference image.
+
+Owned live mouse/F12 smoke completed a connected two-block first-lesson program,
+ran the routine and reached Nice moves; graph and result images were inspected.
+A first direct-input attempt never placed blocks and is not counted. The successful
+run acknowledges rendered frames between down/move/up; unattended/occluded input
+can otherwise coalesce. Scene CPU/frame pacing and audio were not certified by
+this muted smoke. Source-style skipped-beat behavior is intentionally retained.
+Remaining substantial work includes full Blockly interactions/layout, tutorials,
+share/import/export, exact results/final host game-over, responsive tray transitions,
+chooser exit/route lifecycle and complete audio scheduling/bus/listening validation.

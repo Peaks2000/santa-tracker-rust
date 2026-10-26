@@ -105,6 +105,9 @@ void main(){vec2 q=abs(point-Bounds.xy-Bounds.zw*0.5)-Bounds.zw*0.5+Radius;float
     pub fn rounded(&self, r: Rect, radius: f32, c: Color, blur: f32) {
         self.draw_shape(r, radius, c, blur, 0.);
     }
+    pub fn stroke(&self, r: Rect, radius: f32, stroke: f32, c: Color) {
+        self.draw_shape(r, radius, c, 0., stroke);
+    }
     fn draw_shape(&self, r: Rect, radius: f32, c: Color, blur: f32, stroke: f32) {
         if r.w <= 0. || r.h <= 0. || c.a <= 0. {
             return;

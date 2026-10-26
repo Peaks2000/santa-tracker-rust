@@ -1,0 +1,145 @@
+{
+  "method": "Original and native scene-only diagnostic renders with idle frame 0, level 7 lights/card states and settled watching/normal CSS poses. Stage crop starts 80px past its left edge to exclude the independent Play button; no editor/host UI comparison. Idle stills do not certify active gameplay, all phases or audio. Large requested windows were maximized by the window manager; original reference images were recaptured at the actual 1846x1014 dimensions.",
+  "cases": [
+    {
+      "requested_width": 1440,
+      "requested_height": 800,
+      "width": 1440,
+      "height": 800,
+      "state": "watch",
+      "region": [
+        800,
+        0,
+        1440,
+        800
+      ],
+      "mean_rgb_error_0_to_255": 0.9817623697916668
+    },
+    {
+      "requested_width": 1440,
+      "requested_height": 800,
+      "width": 1440,
+      "height": 800,
+      "state": "normal",
+      "region": [
+        800,
+        0,
+        1440,
+        800
+      ],
+      "mean_rgb_error_0_to_255": 0.9687610677083334
+    },
+    {
+      "requested_width": 1024,
+      "requested_height": 800,
+      "width": 1024,
+      "height": 800,
+      "state": "watch",
+      "region": [
+        592,
+        0,
+        1024,
+        800
+      ],
+      "mean_rgb_error_0_to_255": 1.1015104166666667
+    },
+    {
+      "requested_width": 1024,
+      "requested_height": 800,
+      "width": 1024,
+      "height": 800,
+      "state": "normal",
+      "region": [
+        592,
+        0,
+        1024,
+        800
+      ],
+      "mean_rgb_error_0_to_255": 1.1364882330246913
+    },
+    {
+      "requested_width": 768,
+      "requested_height": 800,
+      "width": 768,
+      "height": 800,
+      "state": "watch",
+      "region": [
+        448,
+        0,
+        768,
+        800
+      ],
+      "mean_rgb_error_0_to_255": 0.9604661458333333
+    },
+    {
+      "requested_width": 768,
+      "requested_height": 800,
+      "width": 768,
+      "height": 800,
+      "state": "normal",
+      "region": [
+        448,
+        0,
+        768,
+        800
+      ],
+      "mean_rgb_error_0_to_255": 0.9873359375
+    },
+    {
+      "requested_width": 375,
+      "requested_height": 800,
+      "width": 375,
+      "height": 800,
+      "state": "watch",
+      "region": [
+        128,
+        0,
+        375,
+        800
+      ],
+      "mean_rgb_error_0_to_255": 1.3289777327935222
+    },
+    {
+      "requested_width": 375,
+      "requested_height": 800,
+      "width": 375,
+      "height": 800,
+      "state": "normal",
+      "region": [
+        128,
+        0,
+        375,
+        800
+      ],
+      "mean_rgb_error_0_to_255": 1.3498515519568153
+    },
+    {
+      "requested_width": 1600,
+      "requested_height": 1000,
+      "width": 1846,
+      "height": 1014,
+      "state": "watch",
+      "region": [
+        1003,
+        0,
+        1846,
+        1014
+      ],
+      "mean_rgb_error_0_to_255": 1.420876803439081
+    },
+    {
+      "requested_width": 1600,
+      "requested_height": 1000,
+      "width": 1846,
+      "height": 1014,
+      "state": "normal",
+      "region": [
+        1003,
+        0,
+        1846,
+        1014
+      ],
+      "mean_rgb_error_0_to_255": 1.4241863417883127
+    }
+  ]
+}

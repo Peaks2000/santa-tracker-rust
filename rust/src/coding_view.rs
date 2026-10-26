@@ -4,6 +4,7 @@ use crate::{
     ui_render::{premultiplied_material, Shapes},
 };
 use macroquad::prelude::*;
+use santa_tracker::codeboogie_stage::{DanceStage, Event as DanceEvent, SpriteClock};
 use santa_tracker::coding::{self, Block, DanceItem, LabRun, Level, Point, ResultInfo, Workspace};
 use std::collections::HashMap;
 
@@ -244,18 +245,10 @@ pub struct CodingView {
     run: Option<LabRun>,
     run_time: f64,
     last_motion: usize,
-    queue: Vec<DanceItem>,
-    queue_at: usize,
-    current: Option<DanceItem>,
-    beat: i64,
-    pending_variant: Option<(i64, usize)>,
-    track_at: f64,
+    stage: DanceStage,
+    dance_report_pending: bool,
     playing: bool,
     watching: bool,
-    player_step: String,
-    teacher_step: String,
-    sprite_time: f64,
-    teacher_time: f64,
     highlight: Option<usize>,
     actions: Vec<coding::Action>,
     last_time: Option<f64>,
@@ -311,18 +304,10 @@ impl CodingView {
             run: None,
             run_time: 0.,
             last_motion: usize::MAX,
-            queue: vec![],
-            queue_at: 0,
-            current: None,
-            beat: -1,
-            pending_variant: None,
-            track_at: 0.,
+            stage: DanceStage::default(),
+            dance_report_pending: false,
             playing: false,
             watching: false,
-            player_step: "idle".into(),
-            teacher_step: "idle".into(),
-            sprite_time: 0.,
-            teacher_time: 0.,
             highlight: None,
             actions: vec![],
             last_time: None,
@@ -338,7 +323,7 @@ impl CodingView {
         s.set_level(0);
         if dance {
             s.track_events.clear();
-            s.queue.clear();
+            s.stage = DanceStage::default();
             s.playing = false;
         }
         Ok(s)
@@ -356,7 +341,8 @@ impl CodingView {
         self.chooser_go = std::array::from_fn(|_| santa_tracker::ui::Transition::new([0., -43.8]));
         if self.dance {
             self.track_events.clear();
-            self.queue.clear();
+            self.stage = DanceStage::default();
+            self.dance_report_pending = false;
             self.playing = false;
         }
     }
@@ -457,18 +443,11 @@ impl CodingView {
         if !self.dance {
             self.portrait_hide_at.push(self.elapsed + 3.);
         }
-        self.queue.clear();
         self.playing = false;
-        self.current = None;
-        self.beat = -1;
-        self.pending_variant = None;
-        self.track_at = self.elapsed;
-        self.player_step = "idle".into();
-        self.teacher_step = "idle".into();
-        self.sprite_time = 0.;
-        self.teacher_time = 0.;
+        self.dance_report_pending = false;
         if self.dance {
-            self.track_events.push(l.track * 2);
+            self.stage.now = self.elapsed;
+            self.stage.set_level(&l);
             if !l.freestyle {
                 let (_, mut q) = coding::dance_queue(&l, &[]);
                 for _ in 1..if l.longer_intro { 4 } else { 2 } {
@@ -485,12 +464,14 @@ impl CodingView {
                         },
                     );
                 }
-                self.queue = q;
-                self.queue_at = 0;
+                self.stage
+                    .start(q, Some("codeboogie-your-turn".into()), true, false);
+                self.dance_report_pending = true;
                 self.playing = true;
                 self.watching = true;
             }
         }
+        self.flush_dance_events();
     }
     fn show_result(&mut self, r: ResultInfo) {
         self.sounds.push(
@@ -517,6 +498,7 @@ impl CodingView {
             return;
         }
         self.dropdown = None;
+        self.dance_report_pending = false;
         let l = self.level().clone();
         self.actions = match self.workspace.actions() {
             Ok(actions) => actions,
@@ -553,6 +535,7 @@ impl CodingView {
             let (status, queue) = coding::dance_queue(&l, &steps);
             if queue.is_empty() && l.freestyle {
                 self.result = None;
+                self.stage.start(queue, None, false, true);
                 self.playing = false;
                 return;
             }
@@ -562,10 +545,19 @@ impl CodingView {
             if r.skip {
                 self.show_result(r);
             } else {
-                self.queue = queue;
-                self.queue_at = 0;
-                self.current = None;
                 self.watching = r.status == "NO_STEPS" && !l.freestyle;
+                let end = if l.freestyle {
+                    "codeboogie-keep-dancing"
+                } else if self.watching {
+                    "codeboogie-your-turn"
+                } else if r.success {
+                    "codeboogie-success"
+                } else {
+                    "codelab-try-again"
+                };
+                self.stage
+                    .start(queue, Some(end.into()), self.watching, l.freestyle);
+                self.dance_report_pending = true;
                 self.playing = true;
                 self.result = Some(r);
                 self.result_at = f64::INFINITY;
@@ -589,6 +581,7 @@ impl CodingView {
             }
             self.sounds.push("computer_play".into());
         }
+        self.flush_dance_events();
     }
     pub fn advance(&mut self, seconds: f64) {
         self.update(seconds);
@@ -604,8 +597,6 @@ impl CodingView {
         if self.chooser {
             return;
         }
-        self.sprite_time += dt;
-        self.teacher_time += dt;
         if let Some(run) = &self.run {
             self.run_time += dt / if run.result.success { 1. } else { 1.5 };
             let total: f64 = run.motions.iter().map(|m| m.duration).sum();
@@ -616,61 +607,35 @@ impl CodingView {
             }
         }
         if self.dance {
-            let mut beat =
-                ((self.elapsed - self.track_at) / (60. / self.level().bpm)).floor() as i64;
-            if self.pending_variant.is_some_and(|(at, _)| beat >= at) {
-                let (_, variant) = self.pending_variant.take().unwrap();
-                self.track_events.push(self.level().track * 2 + variant);
-                self.track_at = self.elapsed;
-                beat = 0;
-            }
-            if beat != self.beat {
-                self.beat = beat;
-                let norm = beat % 4 + 1;
-                if norm == 1 && self.playing {
-                    if self.queue_at < self.queue.len() {
-                        let current = self.queue[self.queue_at].clone();
-                        self.queue_at += 1;
-                        if current.is_countdown {
-                            self.pending_variant = Some(((beat / 4 + 1) * 4, 1));
-                        }
-                        if current.teacher_step != "idle" {
-                            if current.player_step == current.teacher_step {
-                                self.sounds.push("cb_ingame_win".into());
-                            } else if current.player_step == "fail" {
-                                self.sounds.push("cb_ingame_fail".into());
-                            }
-                        }
-                        self.highlight = current
-                            .block_id
-                            .as_ref()
-                            .and_then(|v| v.parse::<usize>().ok())
-                            .and_then(|i| self.actions.get(i))
-                            .map(|a| a.id);
-                        self.current = Some(current);
-                    } else {
-                        self.playing = false;
-                        self.current = None;
-                        self.highlight = None;
-                        self.pending_variant = Some(((beat / 4 + 1) * 4, 0));
+            self.stage
+                .update(dt, &mut || macroquad::rand::gen_range(0.0f64, 1.0f64));
+            self.flush_dance_events();
+        }
+    }
+    fn flush_dance_events(&mut self) {
+        let events: Vec<_> = self.stage.events.drain(..).collect();
+        for event in events {
+            match event {
+                DanceEvent::Track(track) => self.track_events.push(track),
+                DanceEvent::Sound(sound) => self.sounds.push(sound),
+                DanceEvent::Step(id) => {
+                    self.highlight = id
+                        .as_ref()
+                        .and_then(|s| s.parse::<usize>().ok())
+                        .and_then(|i| self.actions.get(i))
+                        .map(|a| a.id)
+                }
+                DanceEvent::Finish => {
+                    self.playing = false;
+                    self.highlight = None;
+                    if self.dance_report_pending {
+                        self.dance_report_pending = false;
                         if !self.watching {
-                            if let Some(r) = self.result.take() {
-                                self.show_result(r);
+                            if let Some(result) = self.result.take() {
+                                self.show_result(result);
                             }
                         }
                     }
-                }
-                if norm == 4 {
-                    let next = self.queue.get(self.queue_at).filter(|_| self.playing);
-                    self.teacher_step = next
-                        .map(|a| a.teacher_step.clone())
-                        .unwrap_or("idle".into());
-                    self.player_step = next.map(|a| a.player_step.clone()).unwrap_or("idle".into());
-                    self.sprite_time = 0.;
-                    self.teacher_time = 0.;
-                }
-                if self.current.as_ref().is_some_and(|a| a.is_countdown) && self.playing {
-                    self.sounds.push(format!("cb_count_in_{norm}"));
                 }
             }
         }
@@ -1365,6 +1330,7 @@ impl CodingView {
                     self.levels = self.dance_data.levels.clone();
                 }
                 self.set_level(0);
+                self.sounds.push("cb_ingame_win".into());
             }
         }
     }
@@ -1544,87 +1510,306 @@ impl CodingView {
         }
         gl_use_default_material();
     }
+    /// Controlled scene-only rendering for the comparison example. Gameplay
+    /// uses the same model and renderer; this does not install game controls.
+    #[allow(dead_code)]
+    pub fn prepare_stage_capture(&mut self, level: usize, watching: bool) {
+        self.levels = self.dance_data.levels.clone();
+        self.level_index = level;
+        self.chooser = false;
+        self.stage = DanceStage::default();
+        let level = self.level().clone();
+        self.stage.set_level(&level);
+        let mut seed = 12345u32;
+        self.stage.lights.on_beat(0., 0, false, &mut || {
+            seed = seed.wrapping_mul(1664525).wrapping_add(1013904223);
+            seed as f64 / 4294967296.
+        });
+        self.stage.player = Some(SpriteClock::new("idle".into(), self.level().bpm));
+        self.stage.teacher = Some(SpriteClock::new("idle".into(), self.level().bpm));
+        self.stage.watching = watching;
+        self.stage.showing = watching;
+        if watching {
+            self.stage
+                .player_watch
+                .set(0., [1.], 1., santa_tracker::ui::Ease::Linear);
+            self.stage
+                .teacher_show
+                .set(0., [1.], 1., santa_tracker::ui::Ease::Linear);
+        }
+        self.stage
+            .title
+            .set(0., Some("Watch closely".into()), true, 0);
+        self.stage.moves.set_length(8);
+        for step in ["pointLeft", "jump", "hip", "splits", "pointRight"] {
+            self.stage.moves.add(0., step.into());
+        }
+        self.stage.now = 2.;
+    }
+    #[allow(dead_code)]
+    pub fn draw_stage_capture(&mut self, assets: &mut Assets) {
+        clear_background(Color::from_rgba(54, 65, 137, 255));
+        let (_, width, _) = self.layout(screen_width(), screen_height());
+        self.dance_scene(assets, screen_width() - width, width, screen_height());
+        unsafe {
+            get_internal_gl().quad_gl.scissor(None);
+        }
+    }
     fn dance_scene(&mut self, assets: &mut Assets, x: f32, w: f32, h: f32) {
+        self.stage_clip(x, w, h);
+        let level = self.level().clone();
+        draw_rectangle(x, 0., w, h, Color::from_rgba(63, 77, 161, 255));
+        self.cover(
+            assets.scene("codeboogie", &format!("stages/{}.svg", level.stage)),
+            Rect::new(x, 0., w, h),
+            1.,
+        );
+        let layout = santa_tracker::codeboogie_stage::StageLayout::new(
+            screen_width() as f64,
+            x as f64,
+            w as f64,
+            h as f64,
+        );
+        if level.stage != "stage1" {
+            for (i, box_) in layout.ceiling.iter().enumerate() {
+                let r = Rect::new(
+                    box_[0] as f32,
+                    box_[1] as f32,
+                    box_[2] as f32,
+                    box_[3] as f32,
+                );
+                self.cover(assets.scene("codeboogie", "lights/ceiling.svg"), r, 1.);
+                for (color, file) in [
+                    "ceiling-light.svg",
+                    "ceiling-light--red.svg",
+                    "ceiling-light--green.svg",
+                ]
+                .iter()
+                .enumerate()
+                {
+                    let opacity =
+                        self.stage.lights.beams[i * 3 + color].value(self.stage.now)[0] as f32;
+                    if opacity > 0. {
+                        self.cover(
+                            assets.scene("codeboogie", &format!("lights/{file}")),
+                            r,
+                            opacity,
+                        );
+                    }
+                }
+            }
+            for (i, active) in self.stage.lights.tiles.iter().enumerate() {
+                if *active {
+                    self.cover(
+                        assets.scene("codeboogie", &format!("lights/disco_{}.svg", i + 1)),
+                        Rect::new(x, 0., w, h),
+                        1.,
+                    );
+                }
+            }
+        }
+        let teacher = self.stage.teacher.clone();
+        let player = self.stage.player.clone();
+        // is-showing has z-index:1 inside the transformed character container.
+        for is_teacher in if self.stage.showing {
+            [false, true]
+        } else {
+            [true, false]
+        } {
+            if is_teacher && level.freestyle {
+                continue;
+            }
+            let sprite = if is_teacher { &teacher } else { &player };
+            if let Some(sprite) = sprite {
+                let state = if is_teacher {
+                    self.stage.teacher_show.value(self.stage.now)[0]
+                } else {
+                    self.stage.player_watch.value(self.stage.now)[0]
+                };
+                let r = layout.character(is_teacher, level.freestyle, state);
+                let clip_left = (r[0] as f32).max(x);
+                let clip_top = (r[1] as f32).max(0.);
+                let clip_right = ((r[0] + r[2]) as f32).min(x + w);
+                let clip_bottom = ((r[1] + r[3]) as f32).min(h);
+                unsafe {
+                    get_internal_gl().quad_gl.scissor(Some((
+                        clip_left.floor() as i32,
+                        clip_top.floor() as i32,
+                        (clip_right - clip_left).max(0.).ceil() as i32,
+                        (clip_bottom - clip_top).max(0.).ceil() as i32,
+                    )));
+                }
+                self.character(
+                    assets,
+                    if is_teacher || level.freestyle {
+                        "green"
+                    } else {
+                        "red"
+                    },
+                    sprite,
+                    vec2(r[0] as f32, r[1] as f32),
+                    (r[2] / 622.) as f32,
+                );
+                self.stage_clip(x, w, h);
+            }
+        }
+        let tiles = self.stage.moves.tiles.clone();
+        let translate = self.stage.moves.translate.value(self.stage.now)[0];
+        for (i, tile) in tiles.iter().enumerate() {
+            let (opacity, scale) = tile.appearance(self.stage.now);
+            if opacity <= 0. {
+                continue;
+            }
+            let b = layout.tile(i, self.stage.moves.length, translate, scale);
+            let r = Rect::new(b[0] as f32, b[1] as f32, b[2] as f32, b[3] as f32);
+            self.shapes.stroke(
+                r,
+                (layout.em * 0.8 * scale) as f32,
+                (3. * scale) as f32,
+                Color::new(1., 1., 1., (opacity * 0.3) as f32),
+            );
+            let icon = match tile.step.as_str() {
+                "pointLeft" => "point-left",
+                "pointRight" => "point-right",
+                "stepLeft" => "step-left",
+                "stepRight" => "step-right",
+                "hip" => "hip-shake",
+                other => other,
+            };
+            let border = (3. * scale) as f32;
+            draw_texture_ex(
+                assets.scene("codeboogie", &format!("icons_{icon}-white.svg")),
+                r.x + border,
+                r.y + border,
+                Color::new(1., 1., 1., opacity as f32),
+                DrawTextureParams {
+                    dest_size: Some(vec2(
+                        (10. * layout.em * scale) as f32,
+                        (8.5 * layout.em * scale) as f32,
+                    )),
+                    ..Default::default()
+                },
+            );
+            let baseline = layout.moves_y + layout.tile_size[1] + 2.8 * layout.em
+                - 3.
+                - (0.35 * layout.em).round();
+            let count = (i + 1).to_string();
+            let text_scale = (layout.em * 1.4 * scale / 64.) as f32;
+            let metrics = measure_text(&count, Some(&self.lobster), 64, text_scale);
+            draw_text_ex(
+                &count,
+                r.center().x - metrics.width / 2.,
+                r.center().y
+                    + (baseline - (layout.moves_y + layout.tile_size[1] / 2.)) as f32
+                        * scale as f32,
+                TextParams {
+                    font: Some(&self.lobster),
+                    font_size: 64,
+                    font_scale: text_scale,
+                    color: Color::new(1., 1., 1., opacity as f32),
+                    ..Default::default()
+                },
+            );
+        }
+        let nodes = self.stage.title.nodes.clone();
+        for node in nodes {
+            let (opacity, scale) = node.appearance(self.stage.now, self.stage.bpm);
+            if opacity <= 0. {
+                continue;
+            }
+            let font_size = layout.em
+                * if node.sub {
+                    25.
+                } else if node.small {
+                    5.
+                } else {
+                    8.
+                };
+            self.stage_title(
+                &self.msg(&node.text),
+                x + w / 2.,
+                if node.sub { 80. } else { 48. },
+                font_size,
+                opacity,
+                scale,
+            );
+        }
+    }
+    fn stage_clip(&self, x: f32, w: f32, h: f32) {
         unsafe {
             get_internal_gl()
                 .quad_gl
                 .scissor(Some((x as i32, 0, w.ceil() as i32, h as i32)));
         }
-        let l = self.level().clone();
-        let t = assets.scene("codeboogie", &format!("stages/{}.svg", l.stage));
-        let scale = (w / t.width()).max(h / t.height());
-        let size = vec2(t.width(), t.height()) * scale;
+    }
+    fn cover(&self, texture: &Texture2D, r: Rect, opacity: f32) {
+        let scale = (r.w / texture.width()).max(r.h / texture.height());
+        let size = vec2(texture.width(), texture.height()) * scale;
         draw_texture_ex(
-            t,
-            x + (w - size.x) / 2.,
-            (h - size.y) / 2.,
-            WHITE,
+            texture,
+            r.center().x - size.x / 2.,
+            r.center().y - size.y / 2.,
+            Color::new(1., 1., 1., opacity),
             DrawTextureParams {
                 dest_size: Some(size),
                 ..Default::default()
             },
         );
-        let scale = (w / 540.).min(h / 800.).min(1.);
-        let center = vec2(x + w / 2., h * 0.78 + 72.);
-        let gap = if screen_width() >= 1024. { 0.25 } else { 0.20 };
-        if !l.freestyle {
-            self.character(
-                assets,
-                "green",
-                &self.teacher_step.clone(),
-                self.teacher_time,
-                center + vec2(622. * (-0.5 + gap) * scale, -578. * scale),
-                scale,
+    }
+    fn stage_title(
+        &mut self,
+        text: &str,
+        center: f32,
+        top: f32,
+        size: f64,
+        opacity: f64,
+        scale: f64,
+    ) {
+        let escaped = text
+            .replace('&', "&amp;")
+            .replace('<', "&lt;")
+            .replace('>', "&gt;");
+        let svg = format!(
+            r##"<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="{}"><defs><filter id="shadow" x="-10%" y="-30%" width="120%" height="160%"><feDropShadow dx="2" dy="2" stdDeviation="1" flood-color="black" flood-opacity="0.2"/></filter></defs><text x="600" y="{}" font-family="Lobster" font-size="{size}" text-anchor="middle" fill="white" filter="url(#shadow)">{escaped}</text></svg>"##,
+            size * 1.6 + 20.,
+            size + 10.
+        );
+        if !self.images.contains_key(&svg) {
+            self.images.insert(
+                svg.clone(),
+                svg_image(svg.as_bytes()).expect("stage title SVG"),
             );
         }
-        self.character(
-            assets,
-            if l.freestyle { "green" } else { "red" },
-            &self.player_step.clone(),
-            self.sprite_time,
-            center
-                + vec2(
-                    622. * if l.freestyle { -0.5 } else { -0.5 - gap } * scale,
-                    -578. * scale,
-                ),
-            scale,
+        let image = &self.images[&svg];
+        let middle = top + size as f32 / 2.;
+        let scale = scale as f32;
+        gl_use_material(&self.premult);
+        image.draw(
+            Rect::new(
+                center - 600. * scale,
+                middle + (top - 10. - middle) * scale,
+                image.size.x * scale,
+                image.size.y * scale,
+            ),
+            Color::new(
+                opacity as f32,
+                opacity as f32,
+                opacity as f32,
+                opacity as f32,
+            ),
         );
-        let title = self
-            .current
-            .as_ref()
-            .map(|a| self.msg(&a.title))
-            .unwrap_or_else(|| {
-                if self.watching {
-                    self.msg("codeboogie-your-turn")
-                } else {
-                    String::new()
-                }
-            });
-        self.text(
-            &title,
-            vec2(x + w / 2., 85.),
-            (50. * (w / 540.).min(h / 800.)).max(20.),
-            WHITE,
-            true,
-            true,
-        );
+        gl_use_default_material();
     }
     fn character(
         &mut self,
         assets: &mut Assets,
         color: &str,
-        step: &str,
-        time: f64,
+        sprite_clock: &SpriteClock,
         position: Vec2,
         scale: f32,
     ) {
-        let count = match step {
-            "idle" => 12,
-            "pony" => 104,
-            "splits" | "hiphop" | "floss" | "mchammer" => 96,
-            _ => 48,
-        };
-        let frame = ((time / (1. / 24. * (60. / self.level().bpm) * 2.)).floor() as usize) % count;
+        let step = &sprite_clock.step;
+        let frame = sprite_clock.frame;
         let sprite = format!("{step}_{}", frame / 24);
         let Some(info) = self.dance_data.sprites.get(&sprite) else {
             return;

@@ -24,7 +24,7 @@ Gift Slingshot is now playable with `--scene boatload`: Up/Down move; hold Space
 
 Christmas tracking has a tested Rust route engine, controller and delivery-only gate; **the native tracking map/UI is not implemented yet**. `cargo run --manifest-path rust/Cargo.toml --example tracker_reference -- 1798110000000` checks a simulated Christmas route/controller state, including markers, trails, stats and camera commands. An optional second argument supplies the local UTC offset in seconds for the original timezone-based arrival estimate (default: UTC). It uses the original configured endpoint's bundled 420-stop schedule, shifted to the selected year like the source. It does not yet refresh a live remote route. Santa’s isolated native animation preview is now available via `cargo run --manifest-path rust/Cargo.toml --example tracker_santa_preview`; it does not provide a map or change off-season visibility in the application. This preview uses original directional SVGs and animated chimney GIFs. For a deterministic capture, append `-- /tmp/santa.png 1440 90 fly 1230` (output, viewport width, heading, `fly`/`stop`, elapsed milliseconds). Live Google tiles have not been connected or verified; no website API key is bundled.
 
-Code Lab and Code Boogie are available with `--scene codelab` and `--scene codeboogie`. Remaining editor/animation work is recorded in [source coverage](SOURCE-COVERAGE.md). Code Lab includes two jigsaws and twelve mazes; Code Boogie includes nine dance classes and three freestyle stages. Drag blocks from the tray into a connected stack, put steps inside repeat bodies, and click repeat/jump fields for options. Use the orange Play button to run; result buttons retry or continue. Sharing, complete Blockly interaction/layout, tutorials and several visual effects remain unfinished.
+Code Lab and Code Boogie are available with `--scene codelab` and `--scene codeboogie`. Remaining editor/animation work is recorded in [source coverage](SOURCE-COVERAGE.md). Code Lab includes two jigsaws and twelve mazes; Code Boogie includes nine dance classes and three freestyle stages. Drag blocks from the tray into a connected stack, put steps inside repeat bodies, and click repeat/jump fields for options. Use the orange Play button to run; result buttons retry or continue. Code Boogie now includes source-driven light effects, move cards, title/countdown transitions and watcher transforms. Sharing, complete Blockly interaction/layout, tutorials, exact results and full audio presentation remain unfinished.
 
 ## Feedback and continuing work
 
@@ -163,3 +163,9 @@ three initial viewport captures are recorded in `SOURCE-COVERAGE.md`.
 It remains **partial**: native tilt delivery, broader effect/transition/audio
 checks remain unfinished. Baubles stay fixed on a level retry; a full restart
 regenerates them with the continuing random stream, as on the live site.
+
+For a controlled Code Boogie stage-only comparison, run
+`cargo run --release --manifest-path rust/Cargo.toml --example codeboogie_stage_capture -- /tmp/boogie-stage.png 1440 800 watch`
+(use `normal` instead of `watch` for the other settled pose). This diagnostic
+uses the actual native model/renderer; it does not verify the editor, full active
+gameplay or audio. Evidence and limitations are in SOURCE-COVERAGE.md.

@@ -295,6 +295,7 @@ pub fn configure_texture(key: &str, texture: &Texture2D) {
     if key.starts_with("scenes/elfski/")
         || key.starts_with("scenes/boatload/")
         || key.starts_with("scenes/codeboogie/img/choose-mode/")
+        || key.starts_with("scenes/codeboogie/img/icons_")
     {
         let id = texture.raw_miniquad_id();
         // Upload is complete and no draw references a newly created texture.
@@ -311,7 +312,9 @@ pub fn configure_texture(key: &str, texture: &Texture2D) {
 }
 
 fn svg_raster_scale(key: &str) -> f32 {
-    if key.starts_with("scenes/codeboogie/img/choose-mode/") {
+    if key.starts_with("scenes/codeboogie/img/choose-mode/")
+        || key.starts_with("scenes/codeboogie/img/icons_")
+    {
         4.
     } else if key.starts_with("img/sleigh/") {
         4.

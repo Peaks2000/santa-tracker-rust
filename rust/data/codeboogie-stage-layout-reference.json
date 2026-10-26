@@ -1,0 +1,3161 @@
+{
+  "method": "Original scene CSS/DOM at six viewports, teacher level 7 with a fresh original Lights instance per capture; real constructors and SVG/PNG assets. rAF held, source state methods invoked and native CSS animations finished through the pre-polyfill getAnimations API to measure settled states. Fixtures compare geometry, not transient phases.",
+  "cases": [
+    {
+      "width": 1440,
+      "height": 800,
+      "watching": true,
+      "items": {
+        ".scene": [
+          {
+            "box": [
+              720,
+              0,
+              720,
+              800
+            ],
+            "fontSize": 10,
+            "height": "800px",
+            "transform": "none",
+            "origin": "360px 400px",
+            "pseudo": null
+          }
+        ],
+        ".scene__characters": [
+          {
+            "box": [
+              1080,
+              216,
+              0,
+              480
+            ],
+            "fontSize": 10,
+            "height": "480px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "0px 408px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--player": [
+          {
+            "box": [
+              657.0400390625,
+              98.59999084472656,
+              534.919921875,
+              498.800048828125
+            ],
+            "fontSize": 10,
+            "height": "580px",
+            "transform": "matrix(0.86, 0, 0, 0.86, -466.5, -58)",
+            "origin": "311px 290px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--teacher": [
+          {
+            "box": [
+              769,
+              116,
+              622,
+              580
+            ],
+            "fontSize": 10,
+            "height": "580px",
+            "transform": "matrix(1, 0, 0, 1, -311, 0)",
+            "origin": "311px 290px",
+            "pseudo": null
+          }
+        ],
+        "canvas": [
+          {
+            "box": [
+              769,
+              116,
+              622,
+              578
+            ],
+            "fontSize": 10,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              657.0400390625,
+              98.59999084472656,
+              534.919921875,
+              497.08001708984375
+            ],
+            "fontSize": 10,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          }
+        ],
+        ".title": [
+          {
+            "box": [
+              540,
+              35.5,
+              1080,
+              75
+            ],
+            "fontSize": 50,
+            "height": "50px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "360px 25px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              720,
+              48,
+              720,
+              50
+            ],
+            "fontSize": 50,
+            "height": "50px",
+            "transform": "none",
+            "origin": "360px 25px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves": [
+          {
+            "box": [
+              713,
+              675,
+              496,
+              85
+            ],
+            "fontSize": 10,
+            "height": "85px",
+            "transform": "matrix(1, 0, 0, 1, -620, 0)",
+            "origin": "248px 42.5px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves-move": [
+          {
+            "box": [
+              684,
+              652.25,
+              174,
+              136.5
+            ],
+            "fontSize": 10,
+            "height": "85px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "58px 45.5px",
+            "pseudo": {
+              "top": "95px",
+              "bottom": "-28px",
+              "height": "18px",
+              "fontSize": "14px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              837,
+              675,
+              116,
+              91
+            ],
+            "fontSize": 10,
+            "height": "85px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "58px 45.5px",
+            "pseudo": {
+              "top": "95px",
+              "bottom": "-28px",
+              "height": "18px",
+              "fontSize": "14px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              961,
+              675,
+              116,
+              91
+            ],
+            "fontSize": 10,
+            "height": "85px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "58px 45.5px",
+            "pseudo": {
+              "top": "95px",
+              "bottom": "-28px",
+              "height": "18px",
+              "fontSize": "14px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              1085,
+              675,
+              116,
+              91
+            ],
+            "fontSize": 10,
+            "height": "85px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "58px 45.5px",
+            "pseudo": {
+              "top": "95px",
+              "bottom": "-28px",
+              "height": "18px",
+              "fontSize": "14px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              1209,
+              675,
+              116,
+              91
+            ],
+            "fontSize": 10,
+            "height": "85px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "58px 45.5px",
+            "pseudo": {
+              "top": "95px",
+              "bottom": "-28px",
+              "height": "18px",
+              "fontSize": "14px",
+              "lineHeight": "normal"
+            }
+          }
+        ],
+        ".ceilingLight": [
+          {
+            "box": [
+              330,
+              0,
+              1053,
+              591
+            ],
+            "fontSize": 10,
+            "height": "591px",
+            "transform": "none",
+            "origin": "526.5px 295.5px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              777,
+              0,
+              1053,
+              591
+            ],
+            "fontSize": 10,
+            "height": "591px",
+            "transform": "none",
+            "origin": "526.5px 295.5px",
+            "pseudo": null
+          }
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "height": 800,
+      "watching": false,
+      "items": {
+        ".scene": [
+          {
+            "box": [
+              720,
+              0,
+              720,
+              800
+            ],
+            "fontSize": 10,
+            "height": "800px",
+            "transform": "none",
+            "origin": "360px 400px",
+            "pseudo": null
+          }
+        ],
+        ".scene__characters": [
+          {
+            "box": [
+              1080,
+              216,
+              0,
+              480
+            ],
+            "fontSize": 10,
+            "height": "480px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "0px 408px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--player": [
+          {
+            "box": [
+              613.5,
+              116,
+              622,
+              580
+            ],
+            "fontSize": 10,
+            "height": "580px",
+            "transform": "matrix(1, 0, 0, 1, -466.5, 0)",
+            "origin": "311px 290px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--teacher": [
+          {
+            "box": [
+              924.5,
+              116,
+              622,
+              580
+            ],
+            "fontSize": 10,
+            "height": "580px",
+            "transform": "matrix(1, 0, 0, 1, -155.5, 0)",
+            "origin": "311px 290px",
+            "pseudo": null
+          }
+        ],
+        "canvas": [
+          {
+            "box": [
+              924.5,
+              116,
+              622,
+              578
+            ],
+            "fontSize": 10,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              613.5,
+              116,
+              622,
+              578
+            ],
+            "fontSize": 10,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          }
+        ],
+        ".title": [
+          {
+            "box": [
+              540,
+              35.5,
+              1080,
+              75
+            ],
+            "fontSize": 50,
+            "height": "50px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "360px 25px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              720,
+              48,
+              720,
+              50
+            ],
+            "fontSize": 50,
+            "height": "50px",
+            "transform": "none",
+            "origin": "360px 25px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves": [
+          {
+            "box": [
+              713,
+              675,
+              496,
+              85
+            ],
+            "fontSize": 10,
+            "height": "85px",
+            "transform": "matrix(1, 0, 0, 1, -620, 0)",
+            "origin": "248px 42.5px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves-move": [
+          {
+            "box": [
+              684,
+              652.25,
+              174,
+              136.5
+            ],
+            "fontSize": 10,
+            "height": "85px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "58px 45.5px",
+            "pseudo": {
+              "top": "95px",
+              "bottom": "-28px",
+              "height": "18px",
+              "fontSize": "14px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              837,
+              675,
+              116,
+              91
+            ],
+            "fontSize": 10,
+            "height": "85px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "58px 45.5px",
+            "pseudo": {
+              "top": "95px",
+              "bottom": "-28px",
+              "height": "18px",
+              "fontSize": "14px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              961,
+              675,
+              116,
+              91
+            ],
+            "fontSize": 10,
+            "height": "85px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "58px 45.5px",
+            "pseudo": {
+              "top": "95px",
+              "bottom": "-28px",
+              "height": "18px",
+              "fontSize": "14px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              1085,
+              675,
+              116,
+              91
+            ],
+            "fontSize": 10,
+            "height": "85px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "58px 45.5px",
+            "pseudo": {
+              "top": "95px",
+              "bottom": "-28px",
+              "height": "18px",
+              "fontSize": "14px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              1209,
+              675,
+              116,
+              91
+            ],
+            "fontSize": 10,
+            "height": "85px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "58px 45.5px",
+            "pseudo": {
+              "top": "95px",
+              "bottom": "-28px",
+              "height": "18px",
+              "fontSize": "14px",
+              "lineHeight": "normal"
+            }
+          }
+        ],
+        ".ceilingLight": [
+          {
+            "box": [
+              330,
+              0,
+              1053,
+              591
+            ],
+            "fontSize": 10,
+            "height": "591px",
+            "transform": "none",
+            "origin": "526.5px 295.5px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              777,
+              0,
+              1053,
+              591
+            ],
+            "fontSize": 10,
+            "height": "591px",
+            "transform": "none",
+            "origin": "526.5px 295.5px",
+            "pseudo": null
+          }
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "height": 800,
+      "watching": true,
+      "items": {
+        ".scene": [
+          {
+            "box": [
+              512,
+              0,
+              512,
+              800
+            ],
+            "fontSize": 9.48148,
+            "height": "800px",
+            "transform": "none",
+            "origin": "256px 400px",
+            "pseudo": null
+          }
+        ],
+        ".scene__characters": [
+          {
+            "box": [
+              768,
+              237.15554809570312,
+              0,
+              455.1111145019531
+            ],
+            "fontSize": 9.48148,
+            "height": "480px",
+            "transform": "matrix(0.948148, 0, 0, 0.948148, 0, 0)",
+            "origin": "0px 408px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--player": [
+          {
+            "box": [
+              366.9712829589844,
+              125.84294891357422,
+              507.1833801269531,
+              472.93634033203125
+            ],
+            "fontSize": 9.48148,
+            "height": "580px",
+            "transform": "matrix(0.86, 0, 0, 0.86, -466.5, -58)",
+            "origin": "311px 290px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--teacher": [
+          {
+            "box": [
+              473.1259460449219,
+              142.34072875976562,
+              589.748046875,
+              549.9259033203125
+            ],
+            "fontSize": 9.48148,
+            "height": "580px",
+            "transform": "matrix(1, 0, 0, 1, -311, 0)",
+            "origin": "311px 290px",
+            "pseudo": null
+          }
+        ],
+        "canvas": [
+          {
+            "box": [
+              473.1259460449219,
+              142.34072875976562,
+              589.748046875,
+              548.0296630859375
+            ],
+            "fontSize": 9.48148,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              366.9712829589844,
+              125.84294891357422,
+              507.1833801269531,
+              471.30548095703125
+            ],
+            "fontSize": 9.48148,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          }
+        ],
+        ".title": [
+          {
+            "box": [
+              384,
+              36.1484375,
+              768,
+              71.109375
+            ],
+            "fontSize": 47.4074,
+            "height": "47.4062px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "256px 23.7031px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              512,
+              48,
+              512,
+              47.40625
+            ],
+            "fontSize": 47.4074,
+            "height": "47.4062px",
+            "transform": "none",
+            "origin": "256px 23.7031px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves": [
+          {
+            "box": [
+              420.02313232421875,
+              159.421875,
+              470.28125,
+              80.578125
+            ],
+            "fontSize": 9.48148,
+            "height": "80.5781px",
+            "transform": "matrix(1, 0, 0, 1, -587.852, 0)",
+            "origin": "235.141px 40.2891px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves-move": [
+          {
+            "box": [
+              392.45281982421875,
+              137.77734375,
+              165.421875,
+              129.8671875
+            ],
+            "fontSize": 9.48148,
+            "height": "80.5781px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "55.1406px 43.2891px",
+            "pseudo": {
+              "top": "91.125px",
+              "bottom": "-26.5481px",
+              "height": "16px",
+              "fontSize": "13.2741px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              537.8825073242188,
+              159.421875,
+              110.28125,
+              86.578125
+            ],
+            "fontSize": 9.48148,
+            "height": "80.5781px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "55.1406px 43.2891px",
+            "pseudo": {
+              "top": "91.125px",
+              "bottom": "-26.5481px",
+              "height": "16px",
+              "fontSize": "13.2741px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              655.7418823242188,
+              159.421875,
+              110.28125,
+              86.578125
+            ],
+            "fontSize": 9.48148,
+            "height": "80.5781px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "55.1406px 43.2891px",
+            "pseudo": {
+              "top": "91.125px",
+              "bottom": "-26.5481px",
+              "height": "16px",
+              "fontSize": "13.2741px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              773.6012573242188,
+              159.421875,
+              110.28125,
+              86.578125
+            ],
+            "fontSize": 9.48148,
+            "height": "80.5781px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "55.1406px 43.2891px",
+            "pseudo": {
+              "top": "91.125px",
+              "bottom": "-26.5481px",
+              "height": "16px",
+              "fontSize": "13.2741px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              891.4606323242188,
+              159.421875,
+              110.28125,
+              86.578125
+            ],
+            "fontSize": 9.48148,
+            "height": "80.5781px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "55.1406px 43.2891px",
+            "pseudo": {
+              "top": "91.125px",
+              "bottom": "-26.5481px",
+              "height": "16px",
+              "fontSize": "13.2741px",
+              "lineHeight": "normal"
+            }
+          }
+        ],
+        ".ceilingLight": [
+          {
+            "box": [
+              56.890625,
+              0,
+              998.390625,
+              560.34375
+            ],
+            "fontSize": 9.48148,
+            "height": "560.344px",
+            "transform": "none",
+            "origin": "499.195px 280.172px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              480.71875,
+              0,
+              998.390625,
+              560.34375
+            ],
+            "fontSize": 9.48148,
+            "height": "560.344px",
+            "transform": "none",
+            "origin": "499.195px 280.172px",
+            "pseudo": null
+          }
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "height": 800,
+      "watching": false,
+      "items": {
+        ".scene": [
+          {
+            "box": [
+              512,
+              0,
+              512,
+              800
+            ],
+            "fontSize": 9.48148,
+            "height": "800px",
+            "transform": "none",
+            "origin": "256px 400px",
+            "pseudo": null
+          }
+        ],
+        ".scene__characters": [
+          {
+            "box": [
+              768,
+              237.15554809570312,
+              0,
+              455.1111145019531
+            ],
+            "fontSize": 9.48148,
+            "height": "480px",
+            "transform": "matrix(0.948148, 0, 0, 0.948148, 0, 0)",
+            "origin": "0px 408px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--player": [
+          {
+            "box": [
+              325.68890380859375,
+              142.34072875976562,
+              589.7481079101562,
+              549.9259033203125
+            ],
+            "fontSize": 9.48148,
+            "height": "580px",
+            "transform": "matrix(1, 0, 0, 1, -466.5, 0)",
+            "origin": "311px 290px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--teacher": [
+          {
+            "box": [
+              620.56298828125,
+              142.34072875976562,
+              589.748046875,
+              549.9259033203125
+            ],
+            "fontSize": 9.48148,
+            "height": "580px",
+            "transform": "matrix(1, 0, 0, 1, -155.5, 0)",
+            "origin": "311px 290px",
+            "pseudo": null
+          }
+        ],
+        "canvas": [
+          {
+            "box": [
+              620.56298828125,
+              142.34072875976562,
+              589.748046875,
+              548.0296630859375
+            ],
+            "fontSize": 9.48148,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              325.68890380859375,
+              142.34072875976562,
+              589.7481079101562,
+              548.0296630859375
+            ],
+            "fontSize": 9.48148,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          }
+        ],
+        ".title": [
+          {
+            "box": [
+              384,
+              36.1484375,
+              768,
+              71.109375
+            ],
+            "fontSize": 47.4074,
+            "height": "47.4062px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "256px 23.7031px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              512,
+              48,
+              512,
+              47.40625
+            ],
+            "fontSize": 47.4074,
+            "height": "47.4062px",
+            "transform": "none",
+            "origin": "256px 23.7031px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves": [
+          {
+            "box": [
+              420.02313232421875,
+              159.421875,
+              470.28125,
+              80.578125
+            ],
+            "fontSize": 9.48148,
+            "height": "80.5781px",
+            "transform": "matrix(1, 0, 0, 1, -587.852, 0)",
+            "origin": "235.141px 40.2891px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves-move": [
+          {
+            "box": [
+              392.45281982421875,
+              137.77734375,
+              165.421875,
+              129.8671875
+            ],
+            "fontSize": 9.48148,
+            "height": "80.5781px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "55.1406px 43.2891px",
+            "pseudo": {
+              "top": "91.125px",
+              "bottom": "-26.5481px",
+              "height": "16px",
+              "fontSize": "13.2741px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              537.8825073242188,
+              159.421875,
+              110.28125,
+              86.578125
+            ],
+            "fontSize": 9.48148,
+            "height": "80.5781px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "55.1406px 43.2891px",
+            "pseudo": {
+              "top": "91.125px",
+              "bottom": "-26.5481px",
+              "height": "16px",
+              "fontSize": "13.2741px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              655.7418823242188,
+              159.421875,
+              110.28125,
+              86.578125
+            ],
+            "fontSize": 9.48148,
+            "height": "80.5781px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "55.1406px 43.2891px",
+            "pseudo": {
+              "top": "91.125px",
+              "bottom": "-26.5481px",
+              "height": "16px",
+              "fontSize": "13.2741px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              773.6012573242188,
+              159.421875,
+              110.28125,
+              86.578125
+            ],
+            "fontSize": 9.48148,
+            "height": "80.5781px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "55.1406px 43.2891px",
+            "pseudo": {
+              "top": "91.125px",
+              "bottom": "-26.5481px",
+              "height": "16px",
+              "fontSize": "13.2741px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              891.4606323242188,
+              159.421875,
+              110.28125,
+              86.578125
+            ],
+            "fontSize": 9.48148,
+            "height": "80.5781px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "55.1406px 43.2891px",
+            "pseudo": {
+              "top": "91.125px",
+              "bottom": "-26.5481px",
+              "height": "16px",
+              "fontSize": "13.2741px",
+              "lineHeight": "normal"
+            }
+          }
+        ],
+        ".ceilingLight": [
+          {
+            "box": [
+              56.890625,
+              0,
+              998.390625,
+              560.34375
+            ],
+            "fontSize": 9.48148,
+            "height": "560.344px",
+            "transform": "none",
+            "origin": "499.195px 280.172px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              480.71875,
+              0,
+              998.390625,
+              560.34375
+            ],
+            "fontSize": 9.48148,
+            "height": "560.344px",
+            "transform": "none",
+            "origin": "499.195px 280.172px",
+            "pseudo": null
+          }
+        ]
+      }
+    },
+    {
+      "width": 768,
+      "height": 800,
+      "watching": true,
+      "items": {
+        ".scene": [
+          {
+            "box": [
+              368,
+              0,
+              400,
+              800
+            ],
+            "fontSize": 7.40741,
+            "height": "800px",
+            "transform": "none",
+            "origin": "200px 400px",
+            "pseudo": null
+          }
+        ],
+        ".scene__characters": [
+          {
+            "box": [
+              568,
+              321.7778015136719,
+              0,
+              355.5555725097656
+            ],
+            "fontSize": 7.40741,
+            "height": "480px",
+            "transform": "matrix(0.740741, 0, 0, 0.740741, 0, 0)",
+            "origin": "0px 408px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--player": [
+          {
+            "box": [
+              277.7333679199219,
+              234.81483459472656,
+              396.2369689941406,
+              369.48150634765625
+            ],
+            "fontSize": 7.40741,
+            "height": "580px",
+            "transform": "matrix(0.86, 0, 0, 0.86, -435.4, -58)",
+            "origin": "311px 290px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--teacher": [
+          {
+            "box": [
+              337.629638671875,
+              247.7037353515625,
+              460.74072265625,
+              429.629638671875
+            ],
+            "fontSize": 7.40741,
+            "height": "580px",
+            "transform": "matrix(1, 0, 0, 1, -311, 0)",
+            "origin": "311px 290px",
+            "pseudo": null
+          }
+        ],
+        "canvas": [
+          {
+            "box": [
+              337.629638671875,
+              247.7037353515625,
+              460.74072265625,
+              428.14813232421875
+            ],
+            "fontSize": 7.40741,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              277.7333679199219,
+              234.81483459472656,
+              396.2369689941406,
+              368.2073974609375
+            ],
+            "fontSize": 7.40741,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          }
+        ],
+        ".title": [
+          {
+            "box": [
+              268,
+              38.7421875,
+              600,
+              55.546875
+            ],
+            "fontSize": 37.037,
+            "height": "37.0312px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "200px 18.5156px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              368,
+              48,
+              400,
+              37.03125
+            ],
+            "fontSize": 37.037,
+            "height": "37.0312px",
+            "transform": "none",
+            "origin": "200px 18.5156px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves": [
+          {
+            "box": [
+              296.1470031738281,
+              177.046875,
+              367.4062194824219,
+              62.953125
+            ],
+            "fontSize": 7.40741,
+            "height": "62.9531px",
+            "transform": "matrix(1, 0, 0, 1, -459.259, 0)",
+            "origin": "183.703px 31.4766px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves-move": [
+          {
+            "box": [
+              274.2798156738281,
+              159.80859375,
+              131.203125,
+              103.4296875
+            ],
+            "fontSize": 7.40741,
+            "height": "62.9531px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "43.7344px 34.4766px",
+            "pseudo": {
+              "top": "70.6875px",
+              "bottom": "-20.7407px",
+              "height": "13px",
+              "fontSize": "10.3704px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              389.5376281738281,
+              177.046875,
+              87.46875,
+              68.953125
+            ],
+            "fontSize": 7.40741,
+            "height": "62.9531px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "43.7344px 34.4766px",
+            "pseudo": {
+              "top": "70.6875px",
+              "bottom": "-20.7407px",
+              "height": "13px",
+              "fontSize": "10.3704px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              482.9282531738281,
+              177.046875,
+              87.46871948242188,
+              68.953125
+            ],
+            "fontSize": 7.40741,
+            "height": "62.9531px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "43.7344px 34.4766px",
+            "pseudo": {
+              "top": "70.6875px",
+              "bottom": "-20.7407px",
+              "height": "13px",
+              "fontSize": "10.3704px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              576.31884765625,
+              177.046875,
+              87.46875,
+              68.953125
+            ],
+            "fontSize": 7.40741,
+            "height": "62.9531px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "43.7344px 34.4766px",
+            "pseudo": {
+              "top": "70.6875px",
+              "bottom": "-20.7407px",
+              "height": "13px",
+              "fontSize": "10.3704px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              669.70947265625,
+              177.046875,
+              87.46875,
+              68.953125
+            ],
+            "fontSize": 7.40741,
+            "height": "62.9531px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "43.7344px 34.4766px",
+            "pseudo": {
+              "top": "70.6875px",
+              "bottom": "-20.7407px",
+              "height": "13px",
+              "fontSize": "10.3704px",
+              "lineHeight": "normal"
+            }
+          }
+        ],
+        ".ceilingLight": [
+          {
+            "box": [
+              12.453125,
+              0,
+              780,
+              437.765625
+            ],
+            "fontSize": 7.40741,
+            "height": "437.766px",
+            "transform": "none",
+            "origin": "390px 218.883px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              343.546875,
+              0,
+              780,
+              437.765625
+            ],
+            "fontSize": 7.40741,
+            "height": "437.766px",
+            "transform": "none",
+            "origin": "390px 218.883px",
+            "pseudo": null
+          }
+        ]
+      }
+    },
+    {
+      "width": 768,
+      "height": 800,
+      "watching": false,
+      "items": {
+        ".scene": [
+          {
+            "box": [
+              368,
+              0,
+              400,
+              800
+            ],
+            "fontSize": 7.40741,
+            "height": "800px",
+            "transform": "none",
+            "origin": "200px 400px",
+            "pseudo": null
+          }
+        ],
+        ".scene__characters": [
+          {
+            "box": [
+              568,
+              321.7778015136719,
+              0,
+              355.5555725097656
+            ],
+            "fontSize": 7.40741,
+            "height": "480px",
+            "transform": "matrix(0.740741, 0, 0, 0.740741, 0, 0)",
+            "origin": "0px 408px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--player": [
+          {
+            "box": [
+              245.48150634765625,
+              247.7037353515625,
+              460.74072265625,
+              429.629638671875
+            ],
+            "fontSize": 7.40741,
+            "height": "580px",
+            "transform": "matrix(1, 0, 0, 1, -435.4, 0)",
+            "origin": "311px 290px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--teacher": [
+          {
+            "box": [
+              429.77777099609375,
+              247.7037353515625,
+              460.74072265625,
+              429.629638671875
+            ],
+            "fontSize": 7.40741,
+            "height": "580px",
+            "transform": "matrix(1, 0, 0, 1, -186.6, 0)",
+            "origin": "311px 290px",
+            "pseudo": null
+          }
+        ],
+        "canvas": [
+          {
+            "box": [
+              429.77777099609375,
+              247.7037353515625,
+              460.74072265625,
+              428.14813232421875
+            ],
+            "fontSize": 7.40741,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              245.48150634765625,
+              247.7037353515625,
+              460.74072265625,
+              428.14813232421875
+            ],
+            "fontSize": 7.40741,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          }
+        ],
+        ".title": [
+          {
+            "box": [
+              268,
+              38.7421875,
+              600,
+              55.546875
+            ],
+            "fontSize": 37.037,
+            "height": "37.0312px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "200px 18.5156px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              368,
+              48,
+              400,
+              37.03125
+            ],
+            "fontSize": 37.037,
+            "height": "37.0312px",
+            "transform": "none",
+            "origin": "200px 18.5156px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves": [
+          {
+            "box": [
+              296.1470031738281,
+              177.046875,
+              367.4062194824219,
+              62.953125
+            ],
+            "fontSize": 7.40741,
+            "height": "62.9531px",
+            "transform": "matrix(1, 0, 0, 1, -459.259, 0)",
+            "origin": "183.703px 31.4766px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves-move": [
+          {
+            "box": [
+              274.2798156738281,
+              159.80859375,
+              131.203125,
+              103.4296875
+            ],
+            "fontSize": 7.40741,
+            "height": "62.9531px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "43.7344px 34.4766px",
+            "pseudo": {
+              "top": "70.6875px",
+              "bottom": "-20.7407px",
+              "height": "13px",
+              "fontSize": "10.3704px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              389.5376281738281,
+              177.046875,
+              87.46875,
+              68.953125
+            ],
+            "fontSize": 7.40741,
+            "height": "62.9531px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "43.7344px 34.4766px",
+            "pseudo": {
+              "top": "70.6875px",
+              "bottom": "-20.7407px",
+              "height": "13px",
+              "fontSize": "10.3704px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              482.9282531738281,
+              177.046875,
+              87.46871948242188,
+              68.953125
+            ],
+            "fontSize": 7.40741,
+            "height": "62.9531px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "43.7344px 34.4766px",
+            "pseudo": {
+              "top": "70.6875px",
+              "bottom": "-20.7407px",
+              "height": "13px",
+              "fontSize": "10.3704px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              576.31884765625,
+              177.046875,
+              87.46875,
+              68.953125
+            ],
+            "fontSize": 7.40741,
+            "height": "62.9531px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "43.7344px 34.4766px",
+            "pseudo": {
+              "top": "70.6875px",
+              "bottom": "-20.7407px",
+              "height": "13px",
+              "fontSize": "10.3704px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              669.70947265625,
+              177.046875,
+              87.46875,
+              68.953125
+            ],
+            "fontSize": 7.40741,
+            "height": "62.9531px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "43.7344px 34.4766px",
+            "pseudo": {
+              "top": "70.6875px",
+              "bottom": "-20.7407px",
+              "height": "13px",
+              "fontSize": "10.3704px",
+              "lineHeight": "normal"
+            }
+          }
+        ],
+        ".ceilingLight": [
+          {
+            "box": [
+              12.453125,
+              0,
+              780,
+              437.765625
+            ],
+            "fontSize": 7.40741,
+            "height": "437.766px",
+            "transform": "none",
+            "origin": "390px 218.883px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              343.546875,
+              0,
+              780,
+              437.765625
+            ],
+            "fontSize": 7.40741,
+            "height": "437.766px",
+            "transform": "none",
+            "origin": "390px 218.883px",
+            "pseudo": null
+          }
+        ]
+      }
+    },
+    {
+      "width": 375,
+      "height": 800,
+      "watching": true,
+      "items": {
+        ".scene": [
+          {
+            "box": [
+              48,
+              0,
+              327,
+              800
+            ],
+            "fontSize": 6.05556,
+            "height": "800px",
+            "transform": "none",
+            "origin": "163.5px 400px",
+            "pseudo": null
+          }
+        ],
+        ".scene__characters": [
+          {
+            "box": [
+              211.5,
+              376.933349609375,
+              0,
+              290.6666259765625
+            ],
+            "fontSize": 6.05556,
+            "height": "480px",
+            "transform": "matrix(0.605556, 0, 0, 0.605556, 0, 0)",
+            "origin": "0px 408px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--player": [
+          {
+            "box": [
+              -25.792984008789062,
+              306.46484375,
+              323.92376708984375,
+              301.53033447265625
+            ],
+            "fontSize": 6.05556,
+            "height": "579px",
+            "transform": "matrix(0.86, 0, 0, 0.86, -435.4, -57.9)",
+            "origin": "311px 289.5px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--teacher": [
+          {
+            "box": [
+              23.172225952148438,
+              316.98333740234375,
+              376.655517578125,
+              350.61663818359375
+            ],
+            "fontSize": 6.05556,
+            "height": "579px",
+            "transform": "matrix(1, 0, 0, 1, -311, 0)",
+            "origin": "311px 289.5px",
+            "pseudo": null
+          }
+        ],
+        "canvas": [
+          {
+            "box": [
+              23.172225952148438,
+              316.98333740234375,
+              376.655517578125,
+              350.0111083984375
+            ],
+            "fontSize": 6.05556,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              -25.792984008789062,
+              306.46484375,
+              323.92376708984375,
+              301.00958251953125
+            ],
+            "fontSize": 6.05556,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          }
+        ],
+        ".title": [
+          {
+            "box": [
+              -33.75,
+              40.43359375,
+              490.5,
+              45.3984375
+            ],
+            "fontSize": 30.2778,
+            "height": "30.2656px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "163.5px 15.1328px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              48,
+              48,
+              327,
+              30.265625
+            ],
+            "fontSize": 30.2778,
+            "height": "30.2656px",
+            "transform": "none",
+            "origin": "163.5px 15.1328px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves": [
+          {
+            "box": [
+              -10.741302490234375,
+              188.53125,
+              300.34375,
+              51.46875
+            ],
+            "fontSize": 6.05556,
+            "height": "51.4688px",
+            "transform": "matrix(1, 0, 0, 1, -375.444, 0)",
+            "origin": "150.172px 25.7344px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves-move": [
+          {
+            "box": [
+              -28.893646240234375,
+              174.1640625,
+              108.9140625,
+              86.203125
+            ],
+            "fontSize": 6.05556,
+            "height": "51.4688px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "36.3047px 28.7344px",
+            "pseudo": {
+              "top": "58.4219px",
+              "bottom": "-16.9556px",
+              "height": "10px",
+              "fontSize": "8.47778px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              66.71182250976562,
+              188.53125,
+              72.609375,
+              57.46875
+            ],
+            "fontSize": 6.05556,
+            "height": "51.4688px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "36.3047px 28.7344px",
+            "pseudo": {
+              "top": "58.4219px",
+              "bottom": "-16.9556px",
+              "height": "10px",
+              "fontSize": "8.47778px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              144.16494750976562,
+              188.53125,
+              72.609375,
+              57.46875
+            ],
+            "fontSize": 6.05556,
+            "height": "51.4688px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "36.3047px 28.7344px",
+            "pseudo": {
+              "top": "58.4219px",
+              "bottom": "-16.9556px",
+              "height": "10px",
+              "fontSize": "8.47778px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              221.61807250976562,
+              188.53125,
+              72.609375,
+              57.46875
+            ],
+            "fontSize": 6.05556,
+            "height": "51.4688px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "36.3047px 28.7344px",
+            "pseudo": {
+              "top": "58.4219px",
+              "bottom": "-16.9556px",
+              "height": "10px",
+              "fontSize": "8.47778px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              299.0711975097656,
+              188.53125,
+              72.609375,
+              57.46875
+            ],
+            "fontSize": 6.05556,
+            "height": "51.4688px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "36.3047px 28.7344px",
+            "pseudo": {
+              "top": "58.4219px",
+              "bottom": "-16.9556px",
+              "height": "10px",
+              "fontSize": "8.47778px",
+              "lineHeight": "normal"
+            }
+          }
+        ],
+        ".ceilingLight": [
+          {
+            "box": [
+              -242.65625,
+              0,
+              637.640625,
+              357.875
+            ],
+            "fontSize": 6.05556,
+            "height": "357.875px",
+            "transform": "none",
+            "origin": "318.82px 178.938px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              28.015625,
+              0,
+              637.640625,
+              357.875
+            ],
+            "fontSize": 6.05556,
+            "height": "357.875px",
+            "transform": "none",
+            "origin": "318.82px 178.938px",
+            "pseudo": null
+          }
+        ]
+      }
+    },
+    {
+      "width": 375,
+      "height": 800,
+      "watching": false,
+      "items": {
+        ".scene": [
+          {
+            "box": [
+              48,
+              0,
+              327,
+              800
+            ],
+            "fontSize": 6.05556,
+            "height": "800px",
+            "transform": "none",
+            "origin": "163.5px 400px",
+            "pseudo": null
+          }
+        ],
+        ".scene__characters": [
+          {
+            "box": [
+              211.5,
+              376.933349609375,
+              0,
+              290.6666259765625
+            ],
+            "fontSize": 6.05556,
+            "height": "480px",
+            "transform": "matrix(0.605556, 0, 0, 0.605556, 0, 0)",
+            "origin": "0px 408px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--player": [
+          {
+            "box": [
+              -52.15887451171875,
+              316.98333740234375,
+              376.6555480957031,
+              350.61663818359375
+            ],
+            "fontSize": 6.05556,
+            "height": "579px",
+            "transform": "matrix(1, 0, 0, 1, -435.4, 0)",
+            "origin": "311px 289.5px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--teacher": [
+          {
+            "box": [
+              98.50333404541016,
+              316.98333740234375,
+              376.6555480957031,
+              350.61663818359375
+            ],
+            "fontSize": 6.05556,
+            "height": "579px",
+            "transform": "matrix(1, 0, 0, 1, -186.6, 0)",
+            "origin": "311px 289.5px",
+            "pseudo": null
+          }
+        ],
+        "canvas": [
+          {
+            "box": [
+              98.50333404541016,
+              316.98333740234375,
+              376.6555480957031,
+              350.0111083984375
+            ],
+            "fontSize": 6.05556,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              -52.15887451171875,
+              316.98333740234375,
+              376.6555480957031,
+              350.0111083984375
+            ],
+            "fontSize": 6.05556,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          }
+        ],
+        ".title": [
+          {
+            "box": [
+              -33.75,
+              40.43359375,
+              490.5,
+              45.3984375
+            ],
+            "fontSize": 30.2778,
+            "height": "30.2656px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "163.5px 15.1328px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              48,
+              48,
+              327,
+              30.265625
+            ],
+            "fontSize": 30.2778,
+            "height": "30.2656px",
+            "transform": "none",
+            "origin": "163.5px 15.1328px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves": [
+          {
+            "box": [
+              -10.741302490234375,
+              188.53125,
+              300.34375,
+              51.46875
+            ],
+            "fontSize": 6.05556,
+            "height": "51.4688px",
+            "transform": "matrix(1, 0, 0, 1, -375.444, 0)",
+            "origin": "150.172px 25.7344px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves-move": [
+          {
+            "box": [
+              -28.893646240234375,
+              174.1640625,
+              108.9140625,
+              86.203125
+            ],
+            "fontSize": 6.05556,
+            "height": "51.4688px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "36.3047px 28.7344px",
+            "pseudo": {
+              "top": "58.4219px",
+              "bottom": "-16.9556px",
+              "height": "10px",
+              "fontSize": "8.47778px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              66.71182250976562,
+              188.53125,
+              72.609375,
+              57.46875
+            ],
+            "fontSize": 6.05556,
+            "height": "51.4688px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "36.3047px 28.7344px",
+            "pseudo": {
+              "top": "58.4219px",
+              "bottom": "-16.9556px",
+              "height": "10px",
+              "fontSize": "8.47778px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              144.16494750976562,
+              188.53125,
+              72.609375,
+              57.46875
+            ],
+            "fontSize": 6.05556,
+            "height": "51.4688px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "36.3047px 28.7344px",
+            "pseudo": {
+              "top": "58.4219px",
+              "bottom": "-16.9556px",
+              "height": "10px",
+              "fontSize": "8.47778px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              221.61807250976562,
+              188.53125,
+              72.609375,
+              57.46875
+            ],
+            "fontSize": 6.05556,
+            "height": "51.4688px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "36.3047px 28.7344px",
+            "pseudo": {
+              "top": "58.4219px",
+              "bottom": "-16.9556px",
+              "height": "10px",
+              "fontSize": "8.47778px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              299.0711975097656,
+              188.53125,
+              72.609375,
+              57.46875
+            ],
+            "fontSize": 6.05556,
+            "height": "51.4688px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "36.3047px 28.7344px",
+            "pseudo": {
+              "top": "58.4219px",
+              "bottom": "-16.9556px",
+              "height": "10px",
+              "fontSize": "8.47778px",
+              "lineHeight": "normal"
+            }
+          }
+        ],
+        ".ceilingLight": [
+          {
+            "box": [
+              -242.65625,
+              0,
+              637.640625,
+              357.875
+            ],
+            "fontSize": 6.05556,
+            "height": "357.875px",
+            "transform": "none",
+            "origin": "318.82px 178.938px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              28.015625,
+              0,
+              637.640625,
+              357.875
+            ],
+            "fontSize": 6.05556,
+            "height": "357.875px",
+            "transform": "none",
+            "origin": "318.82px 178.938px",
+            "pseudo": null
+          }
+        ]
+      }
+    },
+    {
+      "width": 1600,
+      "height": 1000,
+      "watching": true,
+      "items": {
+        ".scene": [
+          {
+            "box": [
+              800,
+              0,
+              800,
+              1000
+            ],
+            "fontSize": 12.5,
+            "height": "1000px",
+            "transform": "none",
+            "origin": "400px 500px",
+            "pseudo": null
+          }
+        ],
+        ".scene__characters": [
+          {
+            "box": [
+              1200,
+              372,
+              0,
+              480
+            ],
+            "fontSize": 12.5,
+            "height": "480px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "0px 408px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--player": [
+          {
+            "box": [
+              777.0400390625,
+              253.5699920654297,
+              534.919921875,
+              499.65997314453125
+            ],
+            "fontSize": 12.5,
+            "height": "581px",
+            "transform": "matrix(0.86, 0, 0, 0.86, -466.5, -58.1)",
+            "origin": "311px 290.5px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--teacher": [
+          {
+            "box": [
+              889,
+              271,
+              622,
+              581
+            ],
+            "fontSize": 12.5,
+            "height": "581px",
+            "transform": "matrix(1, 0, 0, 1, -311, 0)",
+            "origin": "311px 290.5px",
+            "pseudo": null
+          }
+        ],
+        "canvas": [
+          {
+            "box": [
+              889,
+              271,
+              622,
+              578
+            ],
+            "fontSize": 12.5,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              777.0400390625,
+              253.5699920654297,
+              534.919921875,
+              497.08001708984375
+            ],
+            "fontSize": 12.5,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          }
+        ],
+        ".title": [
+          {
+            "box": [
+              600,
+              32.375,
+              1200,
+              93.75
+            ],
+            "fontSize": 62.5,
+            "height": "62.5px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "400px 31.25px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              800,
+              48,
+              800,
+              62.5
+            ],
+            "fontSize": 62.5,
+            "height": "62.5px",
+            "transform": "none",
+            "origin": "400px 31.25px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves": [
+          {
+            "box": [
+              741.25,
+              843.75,
+              620,
+              106.25
+            ],
+            "fontSize": 12.5,
+            "height": "106.25px",
+            "transform": "matrix(1, 0, 0, 1, -775, 0)",
+            "origin": "310px 53.125px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves-move": [
+          {
+            "box": [
+              705.375,
+              815.6875,
+              215.25,
+              168.375
+            ],
+            "fontSize": 12.5,
+            "height": "106.25px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "71.75px 56.125px",
+            "pseudo": {
+              "top": "119.25px",
+              "bottom": "-35px",
+              "height": "22px",
+              "fontSize": "17.5px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              894.75,
+              843.75,
+              143.5,
+              112.25
+            ],
+            "fontSize": 12.5,
+            "height": "106.25px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "71.75px 56.125px",
+            "pseudo": {
+              "top": "119.25px",
+              "bottom": "-35px",
+              "height": "22px",
+              "fontSize": "17.5px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              1048.25,
+              843.75,
+              143.5,
+              112.25
+            ],
+            "fontSize": 12.5,
+            "height": "106.25px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "71.75px 56.125px",
+            "pseudo": {
+              "top": "119.25px",
+              "bottom": "-35px",
+              "height": "22px",
+              "fontSize": "17.5px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              1201.75,
+              843.75,
+              143.5,
+              112.25
+            ],
+            "fontSize": 12.5,
+            "height": "106.25px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "71.75px 56.125px",
+            "pseudo": {
+              "top": "119.25px",
+              "bottom": "-35px",
+              "height": "22px",
+              "fontSize": "17.5px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              1355.25,
+              843.75,
+              143.5,
+              112.25
+            ],
+            "fontSize": 12.5,
+            "height": "106.25px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "71.75px 56.125px",
+            "pseudo": {
+              "top": "119.25px",
+              "bottom": "-35px",
+              "height": "22px",
+              "fontSize": "17.5px",
+              "lineHeight": "normal"
+            }
+          }
+        ],
+        ".ceilingLight": [
+          {
+            "box": [
+              262.5,
+              0,
+              1316.25,
+              738.75
+            ],
+            "fontSize": 12.5,
+            "height": "738.75px",
+            "transform": "none",
+            "origin": "658.125px 369.375px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              821.25,
+              0,
+              1316.25,
+              738.75
+            ],
+            "fontSize": 12.5,
+            "height": "738.75px",
+            "transform": "none",
+            "origin": "658.125px 369.375px",
+            "pseudo": null
+          }
+        ]
+      }
+    },
+    {
+      "width": 1600,
+      "height": 1000,
+      "watching": false,
+      "items": {
+        ".scene": [
+          {
+            "box": [
+              800,
+              0,
+              800,
+              1000
+            ],
+            "fontSize": 12.5,
+            "height": "1000px",
+            "transform": "none",
+            "origin": "400px 500px",
+            "pseudo": null
+          }
+        ],
+        ".scene__characters": [
+          {
+            "box": [
+              1200,
+              372,
+              0,
+              480
+            ],
+            "fontSize": 12.5,
+            "height": "480px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "0px 408px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--player": [
+          {
+            "box": [
+              733.5,
+              271,
+              622,
+              581
+            ],
+            "fontSize": 12.5,
+            "height": "581px",
+            "transform": "matrix(1, 0, 0, 1, -466.5, 0)",
+            "origin": "311px 290.5px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--teacher": [
+          {
+            "box": [
+              1044.5,
+              271,
+              622,
+              581
+            ],
+            "fontSize": 12.5,
+            "height": "581px",
+            "transform": "matrix(1, 0, 0, 1, -155.5, 0)",
+            "origin": "311px 290.5px",
+            "pseudo": null
+          }
+        ],
+        "canvas": [
+          {
+            "box": [
+              1044.5,
+              271,
+              622,
+              578
+            ],
+            "fontSize": 12.5,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              733.5,
+              271,
+              622,
+              578
+            ],
+            "fontSize": 12.5,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          }
+        ],
+        ".title": [
+          {
+            "box": [
+              600,
+              32.375,
+              1200,
+              93.75
+            ],
+            "fontSize": 62.5,
+            "height": "62.5px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "400px 31.25px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              800,
+              48,
+              800,
+              62.5
+            ],
+            "fontSize": 62.5,
+            "height": "62.5px",
+            "transform": "none",
+            "origin": "400px 31.25px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves": [
+          {
+            "box": [
+              741.25,
+              843.75,
+              620,
+              106.25
+            ],
+            "fontSize": 12.5,
+            "height": "106.25px",
+            "transform": "matrix(1, 0, 0, 1, -775, 0)",
+            "origin": "310px 53.125px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves-move": [
+          {
+            "box": [
+              705.375,
+              815.6875,
+              215.25,
+              168.375
+            ],
+            "fontSize": 12.5,
+            "height": "106.25px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "71.75px 56.125px",
+            "pseudo": {
+              "top": "119.25px",
+              "bottom": "-35px",
+              "height": "22px",
+              "fontSize": "17.5px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              894.75,
+              843.75,
+              143.5,
+              112.25
+            ],
+            "fontSize": 12.5,
+            "height": "106.25px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "71.75px 56.125px",
+            "pseudo": {
+              "top": "119.25px",
+              "bottom": "-35px",
+              "height": "22px",
+              "fontSize": "17.5px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              1048.25,
+              843.75,
+              143.5,
+              112.25
+            ],
+            "fontSize": 12.5,
+            "height": "106.25px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "71.75px 56.125px",
+            "pseudo": {
+              "top": "119.25px",
+              "bottom": "-35px",
+              "height": "22px",
+              "fontSize": "17.5px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              1201.75,
+              843.75,
+              143.5,
+              112.25
+            ],
+            "fontSize": 12.5,
+            "height": "106.25px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "71.75px 56.125px",
+            "pseudo": {
+              "top": "119.25px",
+              "bottom": "-35px",
+              "height": "22px",
+              "fontSize": "17.5px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              1355.25,
+              843.75,
+              143.5,
+              112.25
+            ],
+            "fontSize": 12.5,
+            "height": "106.25px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "71.75px 56.125px",
+            "pseudo": {
+              "top": "119.25px",
+              "bottom": "-35px",
+              "height": "22px",
+              "fontSize": "17.5px",
+              "lineHeight": "normal"
+            }
+          }
+        ],
+        ".ceilingLight": [
+          {
+            "box": [
+              262.5,
+              0,
+              1316.25,
+              738.75
+            ],
+            "fontSize": 12.5,
+            "height": "738.75px",
+            "transform": "none",
+            "origin": "658.125px 369.375px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              821.25,
+              0,
+              1316.25,
+              738.75
+            ],
+            "fontSize": 12.5,
+            "height": "738.75px",
+            "transform": "none",
+            "origin": "658.125px 369.375px",
+            "pseudo": null
+          }
+        ]
+      }
+    },
+    {
+      "width": 1846,
+      "height": 1014,
+      "watching": true,
+      "items": {
+        ".scene": [
+          {
+            "box": [
+              923,
+              0,
+              923,
+              1014
+            ],
+            "fontSize": 12.675,
+            "height": "1014px",
+            "transform": "none",
+            "origin": "461.5px 507px",
+            "pseudo": null
+          }
+        ],
+        ".scene__characters": [
+          {
+            "box": [
+              1384.5,
+              382.921875,
+              0,
+              480
+            ],
+            "fontSize": 12.675,
+            "height": "480px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "0px 408px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--player": [
+          {
+            "box": [
+              961.5400390625,
+              264.49188232421875,
+              534.919921875,
+              499.65997314453125
+            ],
+            "fontSize": 12.675,
+            "height": "581px",
+            "transform": "matrix(0.86, 0, 0, 0.86, -466.5, -58.1)",
+            "origin": "311px 290.5px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--teacher": [
+          {
+            "box": [
+              1073.5,
+              281.921875,
+              622,
+              581
+            ],
+            "fontSize": 12.675,
+            "height": "581px",
+            "transform": "matrix(1, 0, 0, 1, -311, 0)",
+            "origin": "311px 290.5px",
+            "pseudo": null
+          }
+        ],
+        "canvas": [
+          {
+            "box": [
+              1073.5,
+              281.921875,
+              622,
+              578
+            ],
+            "fontSize": 12.675,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              961.5400390625,
+              264.49188232421875,
+              534.919921875,
+              497.08001708984375
+            ],
+            "fontSize": 12.675,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          }
+        ],
+        ".title": [
+          {
+            "box": [
+              692.25,
+              32.15625,
+              1384.5,
+              95.0625
+            ],
+            "fontSize": 63.375,
+            "height": "63.375px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "461.5px 31.6875px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              923,
+              48,
+              923,
+              63.375
+            ],
+            "fontSize": 63.375,
+            "height": "63.375px",
+            "transform": "none",
+            "origin": "461.5px 31.6875px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves": [
+          {
+            "box": [
+              919.3218383789062,
+              855.578125,
+              628.6718139648438,
+              107.734375
+            ],
+            "fontSize": 12.675,
+            "height": "107.734px",
+            "transform": "matrix(1, 0, 0, 1, -785.85, 0)",
+            "origin": "314.336px 53.8672px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves-move": [
+          {
+            "box": [
+              882.9663696289062,
+              827.14453125,
+              218.13275146484375,
+              170.6015625
+            ],
+            "fontSize": 12.675,
+            "height": "107.734px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "72.7109px 56.8672px",
+            "pseudo": {
+              "top": "121.219px",
+              "bottom": "-35.49px",
+              "height": "22px",
+              "fontSize": "17.745px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              1074.86865234375,
+              855.578125,
+              145.421875,
+              113.734375
+            ],
+            "fontSize": 12.675,
+            "height": "107.734px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "72.7109px 56.8672px",
+            "pseudo": {
+              "top": "121.219px",
+              "bottom": "-35.49px",
+              "height": "22px",
+              "fontSize": "17.745px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              1230.41552734375,
+              855.578125,
+              145.421875,
+              113.734375
+            ],
+            "fontSize": 12.675,
+            "height": "107.734px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "72.7109px 56.8672px",
+            "pseudo": {
+              "top": "121.219px",
+              "bottom": "-35.49px",
+              "height": "22px",
+              "fontSize": "17.745px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              1385.96240234375,
+              855.578125,
+              145.421875,
+              113.734375
+            ],
+            "fontSize": 12.675,
+            "height": "107.734px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "72.7109px 56.8672px",
+            "pseudo": {
+              "top": "121.219px",
+              "bottom": "-35.49px",
+              "height": "22px",
+              "fontSize": "17.745px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              1541.50927734375,
+              855.578125,
+              145.421875,
+              113.734375
+            ],
+            "fontSize": 12.675,
+            "height": "107.734px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "72.7109px 56.8672px",
+            "pseudo": {
+              "top": "121.219px",
+              "bottom": "-35.49px",
+              "height": "22px",
+              "fontSize": "17.745px",
+              "lineHeight": "normal"
+            }
+          }
+        ],
+        ".ceilingLight": [
+          {
+            "box": [
+              433.875,
+              0,
+              1334.671875,
+              749.078125
+            ],
+            "fontSize": 12.675,
+            "height": "749.078px",
+            "transform": "none",
+            "origin": "667.336px 374.539px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              1000.453125,
+              0,
+              1334.671875,
+              749.078125
+            ],
+            "fontSize": 12.675,
+            "height": "749.078px",
+            "transform": "none",
+            "origin": "667.336px 374.539px",
+            "pseudo": null
+          }
+        ]
+      }
+    },
+    {
+      "width": 1846,
+      "height": 1014,
+      "watching": false,
+      "items": {
+        ".scene": [
+          {
+            "box": [
+              923,
+              0,
+              923,
+              1014
+            ],
+            "fontSize": 12.675,
+            "height": "1014px",
+            "transform": "none",
+            "origin": "461.5px 507px",
+            "pseudo": null
+          }
+        ],
+        ".scene__characters": [
+          {
+            "box": [
+              1384.5,
+              382.921875,
+              0,
+              480
+            ],
+            "fontSize": 12.675,
+            "height": "480px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "0px 408px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--player": [
+          {
+            "box": [
+              918,
+              281.921875,
+              622,
+              581
+            ],
+            "fontSize": 12.675,
+            "height": "581px",
+            "transform": "matrix(1, 0, 0, 1, -466.5, 0)",
+            "origin": "311px 290.5px",
+            "pseudo": null
+          }
+        ],
+        ".scene__character--teacher": [
+          {
+            "box": [
+              1229,
+              281.921875,
+              622,
+              581
+            ],
+            "fontSize": 12.675,
+            "height": "581px",
+            "transform": "matrix(1, 0, 0, 1, -155.5, 0)",
+            "origin": "311px 290.5px",
+            "pseudo": null
+          }
+        ],
+        "canvas": [
+          {
+            "box": [
+              1229,
+              281.921875,
+              622,
+              578
+            ],
+            "fontSize": 12.675,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              918,
+              281.921875,
+              622,
+              578
+            ],
+            "fontSize": 12.675,
+            "height": "578px",
+            "transform": "none",
+            "origin": "311px 289px",
+            "pseudo": null
+          }
+        ],
+        ".title": [
+          {
+            "box": [
+              692.25,
+              32.15625,
+              1384.5,
+              95.0625
+            ],
+            "fontSize": 63.375,
+            "height": "63.375px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "461.5px 31.6875px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              923,
+              48,
+              923,
+              63.375
+            ],
+            "fontSize": 63.375,
+            "height": "63.375px",
+            "transform": "none",
+            "origin": "461.5px 31.6875px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves": [
+          {
+            "box": [
+              919.3218383789062,
+              855.578125,
+              628.6718139648438,
+              107.734375
+            ],
+            "fontSize": 12.675,
+            "height": "107.734px",
+            "transform": "matrix(1, 0, 0, 1, -785.85, 0)",
+            "origin": "314.336px 53.8672px",
+            "pseudo": null
+          }
+        ],
+        ".scene__moves-move": [
+          {
+            "box": [
+              882.9663696289062,
+              827.14453125,
+              218.13275146484375,
+              170.6015625
+            ],
+            "fontSize": 12.675,
+            "height": "107.734px",
+            "transform": "matrix(1.5, 0, 0, 1.5, 0, 0)",
+            "origin": "72.7109px 56.8672px",
+            "pseudo": {
+              "top": "121.219px",
+              "bottom": "-35.49px",
+              "height": "22px",
+              "fontSize": "17.745px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              1074.86865234375,
+              855.578125,
+              145.421875,
+              113.734375
+            ],
+            "fontSize": 12.675,
+            "height": "107.734px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "72.7109px 56.8672px",
+            "pseudo": {
+              "top": "121.219px",
+              "bottom": "-35.49px",
+              "height": "22px",
+              "fontSize": "17.745px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              1230.41552734375,
+              855.578125,
+              145.421875,
+              113.734375
+            ],
+            "fontSize": 12.675,
+            "height": "107.734px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "72.7109px 56.8672px",
+            "pseudo": {
+              "top": "121.219px",
+              "bottom": "-35.49px",
+              "height": "22px",
+              "fontSize": "17.745px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              1385.96240234375,
+              855.578125,
+              145.421875,
+              113.734375
+            ],
+            "fontSize": 12.675,
+            "height": "107.734px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "72.7109px 56.8672px",
+            "pseudo": {
+              "top": "121.219px",
+              "bottom": "-35.49px",
+              "height": "22px",
+              "fontSize": "17.745px",
+              "lineHeight": "normal"
+            }
+          },
+          {
+            "box": [
+              1541.50927734375,
+              855.578125,
+              145.421875,
+              113.734375
+            ],
+            "fontSize": 12.675,
+            "height": "107.734px",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "origin": "72.7109px 56.8672px",
+            "pseudo": {
+              "top": "121.219px",
+              "bottom": "-35.49px",
+              "height": "22px",
+              "fontSize": "17.745px",
+              "lineHeight": "normal"
+            }
+          }
+        ],
+        ".ceilingLight": [
+          {
+            "box": [
+              433.875,
+              0,
+              1334.671875,
+              749.078125
+            ],
+            "fontSize": 12.675,
+            "height": "749.078px",
+            "transform": "none",
+            "origin": "667.336px 374.539px",
+            "pseudo": null
+          },
+          {
+            "box": [
+              1000.453125,
+              0,
+              1334.671875,
+              749.078125
+            ],
+            "fontSize": 12.675,
+            "height": "749.078px",
+            "transform": "none",
+            "origin": "667.336px 374.539px",
+            "pseudo": null
+          }
+        ]
+      }
+    }
+  ]
+}

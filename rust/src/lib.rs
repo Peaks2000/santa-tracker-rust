@@ -134,4 +134,5 @@ pub mod tracker_control;
 
 pub mod tracker_santa;
 
+pub mod codeboogie_stage;
 pub mod coding;
