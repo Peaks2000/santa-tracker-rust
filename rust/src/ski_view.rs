@@ -39,7 +39,7 @@ fn pipeline(blend: bool) -> PipelineParams {
         ..Default::default()
     }
 }
-fn lit(vertex: &str, fragment: &str, phong: bool) -> Result<Material, String> {
+pub(crate) fn lit(vertex: &str, fragment: &str, phong: bool) -> Result<Material, String> {
     let mut uniforms = vec![];
     for name in [
         "modelMatrix",

@@ -1,0 +1,23 @@
+{
+  "method": "Owned native diagnostic window, production SnowballView input, real XTest pointer down/up with rendered frames between. Live movement uses actual local simulation. Isolated throw uses imported measured source render-state held still to avoid stale moving targets. Source browser physics oracles are independent.",
+  "live": {
+    "intro_entered": true,
+    "player_arrived": true,
+    "clicked_path_followed": true,
+    "full_match_completed": false
+  },
+  "isolated_throw": {
+    "original_render_fixture": "snowball-render-reference.json",
+    "target_actor_index": 4,
+    "pointer": [
+      1248,
+      278
+    ],
+    "local_shots": 1,
+    "local_throw_event": true
+  },
+  "limits": [
+    "Earlier moving-target automation attempts missed or used stale state; discarded.",
+    "Does not certify touch, keyboard, overlapping hits or live moving-target selection."
+  ]
+}

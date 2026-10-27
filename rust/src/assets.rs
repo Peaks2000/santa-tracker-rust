@@ -213,7 +213,8 @@ fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
     };
     // All CSS-style 2D images share the same straight-alpha filtering issue.
     // Leave the source 3D maps alone: their mipmaps follow THREE's renderer.
-    if !premultiplied && !key.starts_with("scenes/elfski/") {
+    if !premultiplied && !key.starts_with("scenes/elfski/") && !key.starts_with("scenes/snowball/")
+    {
         santa_tracker::image_alpha::bleed_edges(
             &mut image.bytes,
             image.width as usize,
@@ -293,6 +294,7 @@ fn scene_keys(root: &Path, scene: &str) -> Result<Vec<String>, String> {
 pub fn configure_texture(key: &str, texture: &Texture2D) {
     texture.set_filter(FilterMode::Linear);
     if key.starts_with("scenes/elfski/")
+        || key.starts_with("scenes/snowball/")
         || key.starts_with("scenes/boatload/")
         || key.starts_with("scenes/codeboogie/img/choose-mode/")
         || key.starts_with("scenes/codeboogie/img/icons_")

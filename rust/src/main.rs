@@ -18,6 +18,8 @@ mod render;
 mod scene_filter;
 mod selfie_view;
 mod ski_view;
+mod snowball_model;
+mod snowball_view;
 mod sound;
 mod tutorial_view;
 mod ui_render;
@@ -80,7 +82,7 @@ fn options() -> Result<Option<Options>, String> {
     while let Some(arg) = args.next() {
         match arg.as_str() {
             "--help" | "-h" => {
-                println!("Santa Tracker — native Rust port (in development)\n\nAvailable: village, Runner, Elf Jetpack, Santa Selfie, Elf Ski, Present Drop, Gift Slingshot, Elf Maker, Elf Jamband, Elf Glider, Penguin Dash, Code Lab and Code Boogie.\n\n--assets PATH       Original static assets directory\n--seed TEXT         Deterministic game seed\n--mute              Start without audio\n--scene NAME        modvil, runner, jetpack, santaselfie, elfski, presentdrop, boatload, elfmaker, jamband, glider, penguindash, codelab or codeboogie\n--scroll PIXELS     Initial village scroll position\n--beard-file PATH   Restore an original-format saved beard\n--elf-file PATH     Restore an original-format saved elf\n--band-file PATH    Restore an original-format saved band\n--advance SECONDS   Advance the selected scene before rendering\n--frames COUNT      Exit after COUNT frames (for native render checks)\n--screenshot PATH   Save the final rendered frame (or F12 live)\n--width PIXELS      Initial window width\n--height PIXELS     Initial window height\n--clock-ms EPOCH    Deterministic countdown clock for comparisons\n--profile PATH      Measure live frame intervals and CPU work to JSON\n--profile-frames N  Measured live frames after 30 warmup frames (default 240)\n\nControls: Space/Up jump (twice), Down slide, P pause, R restart, M mute, Escape home");
+                println!("Santa Tracker — native Rust port (in development)\n\nAvailable: village, Runner, Elf Jetpack, Santa Selfie, Elf Ski, Present Drop, Gift Slingshot, Elf Maker, Elf Jamband, Elf Glider, Penguin Dash, Code Lab, Code Boogie and Snowball Storm.\n\n--assets PATH       Original static assets directory\n--seed TEXT         Deterministic game seed\n--mute              Start without audio\n--scene NAME        modvil, runner, jetpack, santaselfie, elfski, presentdrop, boatload, elfmaker, jamband, glider, penguindash, codelab, codeboogie or snowball\n--scroll PIXELS     Initial village scroll position\n--beard-file PATH   Restore an original-format saved beard\n--elf-file PATH     Restore an original-format saved elf\n--band-file PATH    Restore an original-format saved band\n--advance SECONDS   Advance the selected scene before rendering\n--frames COUNT      Exit after COUNT frames (for native render checks)\n--screenshot PATH   Save the final rendered frame (or F12 live)\n--width PIXELS      Initial window width\n--height PIXELS     Initial window height\n--clock-ms EPOCH    Deterministic countdown clock for comparisons\n--profile PATH      Measure live frame intervals and CPU work to JSON\n--profile-frames N  Measured live frames after 30 warmup frames (default 240)\n\nControls: Space/Up jump (twice), Down slide, P pause, R restart, M mute, Escape home");
                 return Ok(None);
             }
             "--mute" => out.mute = true,
@@ -142,6 +144,7 @@ fn options() -> Result<Option<Options>, String> {
                             "penguindash",
                             "codelab",
                             "codeboogie",
+                            "snowball",
                         ]
                         .contains(&value.as_str())
                         {
@@ -306,6 +309,11 @@ async fn run(opts: Options) {
         "codeboogie" => dance_view.advance(opts.advance),
         _ => {}
     }
+    let mut snowball = santa_tracker::snowball::Snowball::new(&opts.seed);
+    let mut snowball_view = snowball_view::SnowballView::new().expect("Snowball Storm renderer");
+    if route == "snowball" {
+        snowball.advance(opts.advance, screen_width() as f64, screen_height() as f64);
+    }
     let mut loaded = std::collections::HashSet::new();
     let mut unavailable: Option<String> = None;
     let mut accumulated = 0.;
@@ -359,7 +367,8 @@ async fn run(opts: Options) {
             && is_key_pressed(KeyCode::R)
             && route != "modvil"
             && route != "codeboogie"
-            && route != "codelab";
+            && route != "codelab"
+            && route != "snowball";
         if restart {
             sound.stop();
             match route.as_str() {
@@ -380,6 +389,7 @@ async fn run(opts: Options) {
                     penguin_view = penguin_view::PenguinView::new(&penguin);
                 }
                 "boatload" => boat.restart(),
+                "snowball" => snowball.start(),
                 "runner" => runner.restart(),
                 "elfski" => {
                     ski = Ski::new(
@@ -452,7 +462,7 @@ async fn run(opts: Options) {
                 "jetpack" => jetpack.playing && !jetpack.paused,
                 "santaselfie" => !selfie.paused && !selfie_view.export_open,
                 "elfski" | "presentdrop" | "boatload" | "elfmaker" | "jamband" | "codelab"
-                | "codeboogie" => true,
+                | "codeboogie" | "snowball" => true,
                 _ => false,
             };
         if route == "penguindash" {
@@ -587,6 +597,29 @@ async fn run(opts: Options) {
         clear_background(BLACK);
         let mut selected = None;
         match route.as_str() {
+            "snowball" => {
+                let live = opts.frames.is_none() && !just_loaded && !interlude.busy();
+                let updating = live
+                    && snowball.begin_frame(
+                        get_frame_time() as f64,
+                        screen_width() as f64,
+                        screen_height() as f64,
+                    );
+                scene_filter.begin();
+                snowball_view
+                    .draw(&assets, &snowball)
+                    .expect("Snowball Storm rendering");
+                scene_filter.finish_live(snowball.gameover);
+                if live {
+                    snowball_view.input(&mut snowball, !village.menu && opts.profile.is_none());
+                }
+                if updating {
+                    snowball.finish_frame(screen_width() as f64, screen_height() as f64);
+                }
+                for event in snowball.sounds.drain(..) {
+                    sound.trigger(event, &assets.root);
+                }
+            }
             "codelab" | "codeboogie" => {
                 let view = if route == "codelab" {
                     &mut lab_view
@@ -722,10 +755,13 @@ async fn run(opts: Options) {
             "penguindash",
             "codelab",
             "codeboogie",
+            "snowball",
         ]
         .contains(&route.as_str())
         {
-            let (paused, gameover) = if route == "codeboogie" {
+            let (paused, gameover) = if route == "snowball" {
+                (false, snowball.gameover)
+            } else if route == "codeboogie" {
                 (false, dance_view.host.gameover)
             } else if route == "codelab" {
                 (false, lab_view.host.gameover)
@@ -769,7 +805,9 @@ async fn run(opts: Options) {
                         if route != "codelab" && route != "codeboogie" {
                             sound.stop();
                         }
-                        if route == "codeboogie" {
+                        if route == "snowball" {
+                            snowball.start();
+                        } else if route == "codeboogie" {
                             dance_view.restart_from_host();
                         } else if route == "codelab" {
                             lab_view.restart_from_host();
@@ -814,6 +852,19 @@ async fn run(opts: Options) {
             }
         }
         let hud = match route.as_str() {
+            "snowball" => Some(chrome::GameHud {
+                playing: !snowball.gameover,
+                paused: false,
+                score: 0,
+                countdown: if snowball.phase == santa_tracker::snowball::Phase::Playing {
+                    snowball.hud_time
+                } else {
+                    0.
+                },
+                level: (snowball.hud_knockouts > 0).then_some(snowball.hud_knockouts),
+                badge: snowball.phase == santa_tracker::snowball::Phase::Playing,
+                can_pause: false,
+            }),
             "codelab" | "codeboogie" => {
                 let view = if route == "codelab" {
                     &lab_view
@@ -962,6 +1013,7 @@ async fn run(opts: Options) {
                             penguin_view = penguin_view::PenguinView::new(&penguin);
                         }
                         "boatload" => boat.restart(),
+                        "snowball" => snowball.start(),
                         "runner" => runner.restart(),
                         "elfski" => {
                             ski = Ski::new(
@@ -998,6 +1050,7 @@ async fn run(opts: Options) {
                 "penguindash",
                 "codelab",
                 "codeboogie",
+                "snowball",
             ]
             .contains(&target.as_str())
             {
@@ -1042,6 +1095,7 @@ async fn run(opts: Options) {
                 "penguindash",
                 "codelab",
                 "codeboogie",
+                "snowball",
             ]
             .contains(&target.as_str())
             {
@@ -1051,6 +1105,7 @@ async fn run(opts: Options) {
                 match target.as_str() {
                     "codelab" => lab_view.reset(),
                     "codeboogie" => dance_view.reset(),
+                    "snowball" => snowball = santa_tracker::snowball::Snowball::new(&opts.seed),
                     "modvil" => {
                         village
                             .sounds

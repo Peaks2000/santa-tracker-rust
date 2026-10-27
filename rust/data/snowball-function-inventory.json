@@ -1,0 +1,3772 @@
+{
+  "scope": "Complete own-scene JS files read, together with HTML/SCSS. Function inventory is review accounting, NOT a declaration that every function is faithfully implemented. Bundled THREE/GLTFLoader/AnimationMixer dependencies were traced for active transforms and skin evaluation; whole third-party engine has not been ported/reviewed line by line.",
+  "files": [
+    {
+      "file": "static/scenes/snowball/index.js",
+      "lines": 97,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "cleanup",
+          "start": 42,
+          "end": 45
+        },
+        {
+          "name": "callback at 41",
+          "start": 41,
+          "end": 47
+        },
+        {
+          "name": "awaitAnimation",
+          "start": 41,
+          "end": 47
+        },
+        {
+          "name": "callback at 61",
+          "start": 61,
+          "end": 61
+        },
+        {
+          "name": "callback at 54",
+          "start": 54,
+          "end": 62
+        },
+        {
+          "name": "callback at 53",
+          "start": 53,
+          "end": 63
+        },
+        {
+          "name": "callback at 65",
+          "start": 65,
+          "end": 67
+        },
+        {
+          "name": "callback at 89",
+          "start": 89,
+          "end": 93
+        },
+        {
+          "name": "callback at 88",
+          "start": 88,
+          "end": 94
+        },
+        {
+          "name": "callback at 85",
+          "start": 85,
+          "end": 95
+        },
+        {
+          "name": "startGame",
+          "start": 70,
+          "end": 96
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/third_party/priorityqueue.js",
+      "lines": 186,
+      "review": "native formulas checked against actual original map/grid/path oracle; general unused grid conversion helpers remain unported",
+      "native": [
+        "rust/src/snowball.rs"
+      ],
+      "functions": [
+        {
+          "name": "PriorityQueue",
+          "start": 29,
+          "end": 32
+        },
+        {
+          "name": "callback at 43",
+          "start": 43,
+          "end": 54
+        },
+        {
+          "name": "callback at 62",
+          "start": 62,
+          "end": 64
+        },
+        {
+          "name": "callback at 73",
+          "start": 73,
+          "end": 77
+        },
+        {
+          "name": "callback at 86",
+          "start": 86,
+          "end": 116
+        },
+        {
+          "name": "callback at 125",
+          "start": 125,
+          "end": 139
+        },
+        {
+          "name": "callback at 147",
+          "start": 147,
+          "end": 149
+        },
+        {
+          "name": "callback at 156",
+          "start": 156,
+          "end": 158
+        },
+        {
+          "name": "callback at 169",
+          "start": 169,
+          "end": 171
+        },
+        {
+          "name": "callback at 180",
+          "start": 180,
+          "end": 184
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/engine/utils/quad-tree.js",
+      "lines": 165,
+      "review": "native dynamic tree ordering checked by 40 actual original queries; persistent registration and static branch lifecycle still partial",
+      "native": [
+        "rust/src/snowball_collision.rs"
+      ],
+      "functions": [
+        {
+          "name": "callback at 24",
+          "start": 24,
+          "end": 24
+        },
+        {
+          "name": "constructor",
+          "start": 23,
+          "end": 33
+        },
+        {
+          "name": "tl",
+          "start": 35,
+          "end": 35
+        },
+        {
+          "name": "bl",
+          "start": 36,
+          "end": 36
+        },
+        {
+          "name": "tr",
+          "start": 37,
+          "end": 37
+        },
+        {
+          "name": "br",
+          "start": 38,
+          "end": 38
+        },
+        {
+          "name": "clear",
+          "start": 40,
+          "end": 48
+        },
+        {
+          "name": "callback at 51",
+          "start": 51,
+          "end": 51
+        },
+        {
+          "name": "clearDynamic",
+          "start": 50,
+          "end": 69
+        },
+        {
+          "name": "split",
+          "start": 71,
+          "end": 82
+        },
+        {
+          "name": "getQuadrantIndex",
+          "start": 84,
+          "end": 93
+        },
+        {
+          "name": "redistributeObjects",
+          "start": 95,
+          "end": 112
+        },
+        {
+          "name": "traverseAndInsert",
+          "start": 114,
+          "end": 129
+        },
+        {
+          "name": "add",
+          "start": 131,
+          "end": 137
+        },
+        {
+          "name": "remove",
+          "start": 139,
+          "end": 152
+        },
+        {
+          "name": "getObjectsNear",
+          "start": 154,
+          "end": 162
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/engine/utils/hex-grid.js",
+      "lines": 422,
+      "review": "native formulas checked against actual original map/grid/path oracle; general unused grid conversion helpers remain unported",
+      "native": [
+        "rust/src/snowball.rs"
+      ],
+      "functions": [
+        {
+          "name": "callback at 36",
+          "start": 36,
+          "end": 38
+        },
+        {
+          "name": "callback at 32",
+          "start": 32,
+          "end": 39
+        },
+        {
+          "name": "defaultPassable",
+          "start": 41,
+          "end": 41
+        },
+        {
+          "name": "SQRT_THREE",
+          "start": 44,
+          "end": 46
+        },
+        {
+          "name": "defaultHeuristic",
+          "start": 48,
+          "end": 50
+        },
+        {
+          "name": "defaultPassable",
+          "start": 52,
+          "end": 54
+        },
+        {
+          "name": "intermediateHexCoord",
+          "start": 56,
+          "end": 58
+        },
+        {
+          "name": "intermediateNeighbors",
+          "start": 60,
+          "end": 62
+        },
+        {
+          "name": "cubicNeighborhood",
+          "start": 64,
+          "end": 66
+        },
+        {
+          "name": "constructor",
+          "start": 68,
+          "end": 77
+        },
+        {
+          "name": "uvToPixel",
+          "start": 80,
+          "end": 87
+        },
+        {
+          "name": "uvToIndex",
+          "start": 89,
+          "end": 91
+        },
+        {
+          "name": "pixelToIndex",
+          "start": 94,
+          "end": 96
+        },
+        {
+          "name": "pixelToOddq",
+          "start": 98,
+          "end": 109
+        },
+        {
+          "name": "pixelToAxial",
+          "start": 111,
+          "end": 120
+        },
+        {
+          "name": "indexToCube",
+          "start": 123,
+          "end": 126
+        },
+        {
+          "name": "indexToOddq",
+          "start": 128,
+          "end": 134
+        },
+        {
+          "name": "indexToRingIndices",
+          "start": 136,
+          "end": 139
+        },
+        {
+          "name": "indexToNeighborIndices",
+          "start": 141,
+          "end": 144
+        },
+        {
+          "name": "indexToPixel",
+          "start": 146,
+          "end": 150
+        },
+        {
+          "name": "indexToOffset",
+          "start": 152,
+          "end": 154
+        },
+        {
+          "name": "indexToPosition",
+          "start": 156,
+          "end": 164
+        },
+        {
+          "name": "cubeToIndex",
+          "start": 167,
+          "end": 169
+        },
+        {
+          "name": "cubeToOddq",
+          "start": 171,
+          "end": 179
+        },
+        {
+          "name": "cubeToAxial",
+          "start": 181,
+          "end": 189
+        },
+        {
+          "name": "cubeToRingIndices",
+          "start": 191,
+          "end": 210
+        },
+        {
+          "name": "cubeToNeighborCubes",
+          "start": 212,
+          "end": 219
+        },
+        {
+          "name": "callback at 223",
+          "start": 223,
+          "end": 223
+        },
+        {
+          "name": "cubeToNeighborIndices",
+          "start": 221,
+          "end": 224
+        },
+        {
+          "name": "cubeToOffset",
+          "start": 226,
+          "end": 236
+        },
+        {
+          "name": "oddqToIndex",
+          "start": 239,
+          "end": 247
+        },
+        {
+          "name": "oddqToCube",
+          "start": 249,
+          "end": 257
+        },
+        {
+          "name": "axialToCube",
+          "start": 260,
+          "end": 268
+        },
+        {
+          "name": "offsetToPosition",
+          "start": 271,
+          "end": 282
+        },
+        {
+          "name": "positionToIndex",
+          "start": 285,
+          "end": 295
+        },
+        {
+          "name": "roundCube",
+          "start": 298,
+          "end": 320
+        },
+        {
+          "name": "roundAxial",
+          "start": 322,
+          "end": 327
+        },
+        {
+          "name": "roundOddq",
+          "start": 329,
+          "end": 335
+        },
+        {
+          "name": "callback at 340",
+          "start": 340,
+          "end": 340
+        },
+        {
+          "name": "waypoints",
+          "start": 337,
+          "end": 364
+        },
+        {
+          "name": "callback at 368",
+          "start": 368,
+          "end": 368
+        },
+        {
+          "name": "path",
+          "start": 366,
+          "end": 420
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/engine/utils/hex-coord.js",
+      "lines": 52,
+      "review": "native formulas checked against actual original map/grid/path oracle; general unused grid conversion helpers remain unported",
+      "native": [
+        "rust/src/snowball.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 20,
+          "end": 22
+        },
+        {
+          "name": "q",
+          "start": 24,
+          "end": 26
+        },
+        {
+          "name": "q",
+          "start": 28,
+          "end": 30
+        },
+        {
+          "name": "r",
+          "start": 32,
+          "end": 34
+        },
+        {
+          "name": "r",
+          "start": 36,
+          "end": 38
+        },
+        {
+          "name": "s",
+          "start": 40,
+          "end": 42
+        },
+        {
+          "name": "s",
+          "start": 44,
+          "end": 46
+        },
+        {
+          "name": "toString",
+          "start": 48,
+          "end": 50
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/engine/utils/gamelike.js",
+      "lines": 90,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "GamelikeInterface",
+          "start": 20,
+          "end": 20
+        },
+        {
+          "name": "callback at 22",
+          "start": 22,
+          "end": 22
+        },
+        {
+          "name": "callback at 23",
+          "start": 23,
+          "end": 23
+        },
+        {
+          "name": "callback at 28",
+          "start": 28,
+          "end": 28
+        },
+        {
+          "name": "get",
+          "start": 34,
+          "end": 34
+        },
+        {
+          "name": "callback at 47",
+          "start": 47,
+          "end": 61
+        },
+        {
+          "name": "constructor",
+          "start": 40,
+          "end": 62
+        },
+        {
+          "name": "setup",
+          "start": 64,
+          "end": 64
+        },
+        {
+          "name": "update",
+          "start": 66,
+          "end": 66
+        },
+        {
+          "name": "teardown",
+          "start": 68,
+          "end": 70
+        },
+        {
+          "name": "setLevel",
+          "start": 74,
+          "end": 84
+        },
+        {
+          "name": "level",
+          "start": 86,
+          "end": 88
+        },
+        {
+          "name": "Gamelike",
+          "start": 39,
+          "end": 89
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/engine/utils/function.js",
+      "lines": 23,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "callback at 17",
+          "start": 17,
+          "end": 17
+        },
+        {
+          "name": "callback at 17",
+          "start": 17,
+          "end": 17
+        },
+        {
+          "name": "combine",
+          "start": 17,
+          "end": 17
+        },
+        {
+          "name": "randomElement",
+          "start": 18,
+          "end": 18
+        },
+        {
+          "name": "randomValue",
+          "start": 19,
+          "end": 22
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/engine/utils/collision-2d.js",
+      "lines": 437,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "type",
+          "start": 23,
+          "end": 25
+        },
+        {
+          "name": "contains",
+          "start": 27,
+          "end": 39
+        },
+        {
+          "name": "intersects",
+          "start": 41,
+          "end": 52
+        },
+        {
+          "name": "type",
+          "start": 64,
+          "end": 66
+        },
+        {
+          "name": "x",
+          "start": 68,
+          "end": 70
+        },
+        {
+          "name": "y",
+          "start": 72,
+          "end": 74
+        },
+        {
+          "name": "width",
+          "start": 76,
+          "end": 78
+        },
+        {
+          "name": "height",
+          "start": 80,
+          "end": 82
+        },
+        {
+          "name": "onAllocated",
+          "start": 84,
+          "end": 86
+        },
+        {
+          "name": "onFreed",
+          "start": 88,
+          "end": 90
+        },
+        {
+          "name": "type",
+          "start": 95,
+          "end": 97
+        },
+        {
+          "name": "x",
+          "start": 99,
+          "end": 101
+        },
+        {
+          "name": "y",
+          "start": 103,
+          "end": 105
+        },
+        {
+          "name": "width",
+          "start": 107,
+          "end": 109
+        },
+        {
+          "name": "height",
+          "start": 111,
+          "end": 113
+        },
+        {
+          "name": "constructor",
+          "start": 115,
+          "end": 118
+        },
+        {
+          "name": "onAllocated",
+          "start": 120,
+          "end": 124
+        },
+        {
+          "name": "onFreed",
+          "start": 126,
+          "end": 129
+        },
+        {
+          "name": "type",
+          "start": 134,
+          "end": 136
+        },
+        {
+          "name": "x",
+          "start": 138,
+          "end": 140
+        },
+        {
+          "name": "y",
+          "start": 142,
+          "end": 144
+        },
+        {
+          "name": "width",
+          "start": 146,
+          "end": 148
+        },
+        {
+          "name": "height",
+          "start": 150,
+          "end": 152
+        },
+        {
+          "name": "onAllocated",
+          "start": 154,
+          "end": 158
+        },
+        {
+          "name": "onFreed",
+          "start": 160,
+          "end": 164
+        },
+        {
+          "name": "type",
+          "start": 169,
+          "end": 171
+        },
+        {
+          "name": "x",
+          "start": 173,
+          "end": 175
+        },
+        {
+          "name": "y",
+          "start": 177,
+          "end": 179
+        },
+        {
+          "name": "left",
+          "start": 181,
+          "end": 183
+        },
+        {
+          "name": "right",
+          "start": 185,
+          "end": 187
+        },
+        {
+          "name": "top",
+          "start": 189,
+          "end": 191
+        },
+        {
+          "name": "bottom",
+          "start": 193,
+          "end": 195
+        },
+        {
+          "name": "constructor",
+          "start": 197,
+          "end": 199
+        },
+        {
+          "name": "onAllocated",
+          "start": 201,
+          "end": 208
+        },
+        {
+          "name": "onFreed",
+          "start": 210,
+          "end": 217
+        },
+        {
+          "name": "callback at 228",
+          "start": 228,
+          "end": 239
+        },
+        {
+          "name": "callback at 222",
+          "start": 222,
+          "end": 240
+        },
+        {
+          "name": "callback at 245",
+          "start": 245,
+          "end": 250
+        },
+        {
+          "name": "callback at 242",
+          "start": 242,
+          "end": 251
+        },
+        {
+          "name": "callback at 254",
+          "start": 254,
+          "end": 263
+        },
+        {
+          "name": "callback at 265",
+          "start": 265,
+          "end": 274
+        },
+        {
+          "name": "callback at 253",
+          "start": 253,
+          "end": 275
+        },
+        {
+          "name": "callback at 281",
+          "start": 281,
+          "end": 304
+        },
+        {
+          "name": "callback at 278",
+          "start": 278,
+          "end": 305
+        },
+        {
+          "name": "callback at 310",
+          "start": 310,
+          "end": 313
+        },
+        {
+          "name": "callback at 307",
+          "start": 307,
+          "end": 314
+        },
+        {
+          "name": "callback at 317",
+          "start": 317,
+          "end": 326
+        },
+        {
+          "name": "callback at 316",
+          "start": 316,
+          "end": 327
+        },
+        {
+          "name": "callback at 333",
+          "start": 333,
+          "end": 351
+        },
+        {
+          "name": "callback at 330",
+          "start": 330,
+          "end": 352
+        },
+        {
+          "name": "point",
+          "start": 357,
+          "end": 357
+        },
+        {
+          "name": "rectangle",
+          "start": 358,
+          "end": 359
+        },
+        {
+          "name": "circle",
+          "start": 360,
+          "end": 360
+        },
+        {
+          "name": "rectangle",
+          "start": 363,
+          "end": 363
+        },
+        {
+          "name": "line",
+          "start": 364,
+          "end": 364
+        },
+        {
+          "name": "circle",
+          "start": 367,
+          "end": 367
+        },
+        {
+          "name": "rectangle",
+          "start": 368,
+          "end": 369
+        },
+        {
+          "name": "point",
+          "start": 370,
+          "end": 370
+        },
+        {
+          "name": "point",
+          "start": 373,
+          "end": 373
+        },
+        {
+          "name": "line",
+          "start": 374,
+          "end": 374
+        },
+        {
+          "name": "circle",
+          "start": 375,
+          "end": 375
+        },
+        {
+          "name": "rectangle",
+          "start": 376,
+          "end": 377
+        },
+        {
+          "name": "rectangleContainsPoint",
+          "start": 382,
+          "end": 389
+        },
+        {
+          "name": "callback at 394",
+          "start": 394,
+          "end": 408
+        },
+        {
+          "name": "callback at 391",
+          "start": 391,
+          "end": 409
+        },
+        {
+          "name": "rectangleContainsCircle",
+          "start": 411,
+          "end": 420
+        },
+        {
+          "name": "circleContainsPoint",
+          "start": 422,
+          "end": 424
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/engine/utils/basic-element.js",
+      "lines": 56,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "is",
+          "start": 24,
+          "end": 24
+        },
+        {
+          "name": "template",
+          "start": 26,
+          "end": 28
+        },
+        {
+          "name": "prepareTemplate",
+          "start": 30,
+          "end": 42
+        },
+        {
+          "name": "stampTemplate",
+          "start": 44,
+          "end": 54
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/engine/utils/allocatable.js",
+      "lines": 109,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "AllocatableInterface",
+          "start": 21,
+          "end": 21
+        },
+        {
+          "name": "callback at 26",
+          "start": 26,
+          "end": 26
+        },
+        {
+          "name": "callback at 31",
+          "start": 31,
+          "end": 31
+        },
+        {
+          "name": "callback at 36",
+          "start": 36,
+          "end": 36
+        },
+        {
+          "name": "get",
+          "start": 42,
+          "end": 42
+        },
+        {
+          "name": "get",
+          "start": 49,
+          "end": 49
+        },
+        {
+          "name": "callback at 52",
+          "start": 52,
+          "end": 52
+        },
+        {
+          "name": "callback at 53",
+          "start": 53,
+          "end": 53
+        },
+        {
+          "name": "allocate",
+          "start": 62,
+          "end": 71
+        },
+        {
+          "name": "free",
+          "start": 73,
+          "end": 81
+        },
+        {
+          "name": "createItem",
+          "start": 83,
+          "end": 85
+        },
+        {
+          "name": "freeItems",
+          "start": 87,
+          "end": 93
+        },
+        {
+          "name": "allocatedItems",
+          "start": 95,
+          "end": 101
+        },
+        {
+          "name": "onAllocated",
+          "start": 103,
+          "end": 103
+        },
+        {
+          "name": "onFreed",
+          "start": 104,
+          "end": 104
+        },
+        {
+          "name": "Allocatable",
+          "start": 55,
+          "end": 108
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/utils/seed-random.js",
+      "lines": 51,
+      "review": "native formulas checked against actual original map/grid/path oracle; general unused grid conversion helpers remain unported",
+      "native": [
+        "rust/src/snowball.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 20,
+          "end": 22
+        },
+        {
+          "name": "clone",
+          "start": 24,
+          "end": 26
+        },
+        {
+          "name": "random",
+          "start": 28,
+          "end": 30
+        },
+        {
+          "name": "randInt",
+          "start": 32,
+          "end": 42
+        },
+        {
+          "name": "randRange",
+          "start": 44,
+          "end": 49
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/utils/magic-hex-grid.js",
+      "lines": 80,
+      "review": "native formulas checked against actual original map/grid/path oracle; general unused grid conversion helpers remain unported",
+      "native": [
+        "rust/src/snowball.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 28,
+          "end": 36
+        },
+        {
+          "name": "hitToIndex",
+          "start": 38,
+          "end": 42
+        },
+        {
+          "name": "hitToPosition",
+          "start": 44,
+          "end": 50
+        },
+        {
+          "name": "tileIsPassable",
+          "start": 57,
+          "end": 62
+        },
+        {
+          "name": "callback at 68",
+          "start": 68,
+          "end": 71
+        },
+        {
+          "name": "playerWaypointsForMap",
+          "start": 52,
+          "end": 78
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/utils/camera-tracking.js",
+      "lines": 66,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 22,
+          "end": 29
+        },
+        {
+          "name": "update",
+          "start": 31,
+          "end": 64
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/engine/systems/render-system.js",
+      "lines": 78,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "is",
+          "start": 40,
+          "end": 40
+        },
+        {
+          "name": "template",
+          "start": 42,
+          "end": 42
+        },
+        {
+          "name": "aspectRatio",
+          "start": 44,
+          "end": 46
+        },
+        {
+          "name": "constructor",
+          "start": 48,
+          "end": 55
+        },
+        {
+          "name": "measure",
+          "start": 57,
+          "end": 63
+        },
+        {
+          "name": "update",
+          "start": 65,
+          "end": 68
+        },
+        {
+          "name": "teardown",
+          "start": 70,
+          "end": 70
+        },
+        {
+          "name": "clear",
+          "start": 72,
+          "end": 74
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/engine/systems/input-system.js",
+      "lines": 282,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "removableListener",
+          "start": 52,
+          "end": 52
+        },
+        {
+          "name": "callback at 54",
+          "start": 54,
+          "end": 54
+        },
+        {
+          "name": "addEventListener",
+          "start": 51,
+          "end": 55
+        },
+        {
+          "name": "is",
+          "start": 58,
+          "end": 58
+        },
+        {
+          "name": "template",
+          "start": 60,
+          "end": 60
+        },
+        {
+          "name": "callback at 82",
+          "start": 82,
+          "end": 82
+        },
+        {
+          "name": "callback at 84",
+          "start": 84,
+          "end": 84
+        },
+        {
+          "name": "callback at 86",
+          "start": 86,
+          "end": 86
+        },
+        {
+          "name": "callback at 88",
+          "start": 88,
+          "end": 88
+        },
+        {
+          "name": "callback at 90",
+          "start": 90,
+          "end": 90
+        },
+        {
+          "name": "constructor",
+          "start": 62,
+          "end": 91
+        },
+        {
+          "name": "teardown",
+          "start": 93,
+          "end": 95
+        },
+        {
+          "name": "onPointerMove",
+          "start": 97,
+          "end": 100
+        },
+        {
+          "name": "onClick",
+          "start": 102,
+          "end": 105
+        },
+        {
+          "name": "normalizeXY",
+          "start": 107,
+          "end": 111
+        },
+        {
+          "name": "dispatch",
+          "start": 113,
+          "end": 137
+        },
+        {
+          "name": "callback at 157",
+          "start": 157,
+          "end": 163
+        },
+        {
+          "name": "on",
+          "start": 139,
+          "end": 164
+        },
+        {
+          "name": "trackHitTarget",
+          "start": 166,
+          "end": 174
+        },
+        {
+          "name": "untrackHitTarget",
+          "start": 176,
+          "end": 188
+        },
+        {
+          "name": "update",
+          "start": 190,
+          "end": 196
+        },
+        {
+          "name": "callback at 211",
+          "start": 211,
+          "end": 221
+        },
+        {
+          "name": "callback at 223",
+          "start": 223,
+          "end": 225
+        },
+        {
+          "name": "callback at 240",
+          "start": 240,
+          "end": 249
+        },
+        {
+          "name": "testHits",
+          "start": 198,
+          "end": 253
+        },
+        {
+          "name": "callback at 266",
+          "start": 266,
+          "end": 266
+        },
+        {
+          "name": "callback at 267",
+          "start": 267,
+          "end": 277
+        },
+        {
+          "name": "intersectHitTargets",
+          "start": 255,
+          "end": 278
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/engine/systems/collision-2d-system.js",
+      "lines": 240,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "callback at 27",
+          "start": 27,
+          "end": 27
+        },
+        {
+          "name": "constructor",
+          "start": 27,
+          "end": 39
+        },
+        {
+          "name": "teardown",
+          "start": 41,
+          "end": 44
+        },
+        {
+          "name": "limit",
+          "start": 46,
+          "end": 66
+        },
+        {
+          "name": "callback at 70",
+          "start": 70,
+          "end": 70
+        },
+        {
+          "name": "bounds",
+          "start": 68,
+          "end": 91
+        },
+        {
+          "name": "bounds",
+          "start": 93,
+          "end": 95
+        },
+        {
+          "name": "callback at 104",
+          "start": 104,
+          "end": 113
+        },
+        {
+          "name": "handleCollisions",
+          "start": 97,
+          "end": 114
+        },
+        {
+          "name": "addCollidable",
+          "start": 116,
+          "end": 136
+        },
+        {
+          "name": "removeCollidable",
+          "start": 138,
+          "end": 150
+        },
+        {
+          "name": "notifyCollision",
+          "start": 152,
+          "end": 159
+        },
+        {
+          "name": "callback at 172",
+          "start": 172,
+          "end": 177
+        },
+        {
+          "name": "callback at 183",
+          "start": 183,
+          "end": 187
+        },
+        {
+          "name": "callback at 191",
+          "start": 191,
+          "end": 237
+        },
+        {
+          "name": "update",
+          "start": 161,
+          "end": 238
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/engine/systems/clock-system.js",
+      "lines": 64,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 18,
+          "end": 23
+        },
+        {
+          "name": "teardown",
+          "start": 25,
+          "end": 27
+        },
+        {
+          "name": "time",
+          "start": 29,
+          "end": 31
+        },
+        {
+          "name": "synchronize",
+          "start": 33,
+          "end": 36
+        },
+        {
+          "name": "startClock",
+          "start": 38,
+          "end": 50
+        },
+        {
+          "name": "callback at 59",
+          "start": 59,
+          "end": 59
+        },
+        {
+          "name": "callback at 58",
+          "start": 58,
+          "end": 59
+        },
+        {
+          "name": "callback at 53",
+          "start": 53,
+          "end": 61
+        },
+        {
+          "name": "tick",
+          "start": 52,
+          "end": 62
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/engine/core/level.js",
+      "lines": 34,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "measure",
+          "start": 32,
+          "end": 32
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/engine/core/game.js",
+      "lines": 120,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "template",
+          "start": 52,
+          "end": 52
+        },
+        {
+          "name": "callback at 66",
+          "start": 66,
+          "end": 66
+        },
+        {
+          "name": "constructor",
+          "start": 54,
+          "end": 67
+        },
+        {
+          "name": "connectedCallback",
+          "start": 69,
+          "end": 71
+        },
+        {
+          "name": "measure",
+          "start": 73,
+          "end": 90
+        },
+        {
+          "name": "update",
+          "start": 92,
+          "end": 96
+        },
+        {
+          "name": "teardown",
+          "start": 98,
+          "end": 107
+        },
+        {
+          "name": "setLevel",
+          "start": 109,
+          "end": 118
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/engine/core/event.js",
+      "lines": 24,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 18,
+          "end": 22
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/engine/core/entity.js",
+      "lines": 63,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "EntityInterface",
+          "start": 23,
+          "end": 23
+        },
+        {
+          "name": "callback at 28",
+          "start": 28,
+          "end": 28
+        },
+        {
+          "name": "callback at 33",
+          "start": 33,
+          "end": 33
+        },
+        {
+          "name": "callback at 38",
+          "start": 38,
+          "end": 38
+        },
+        {
+          "name": "setup",
+          "start": 48,
+          "end": 48
+        },
+        {
+          "name": "teardown",
+          "start": 53,
+          "end": 53
+        },
+        {
+          "name": "update",
+          "start": 58,
+          "end": 58
+        },
+        {
+          "name": "Entity",
+          "start": 41,
+          "end": 62
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/constants.js",
+      "lines": 17,
+      "review": "reviewed; networking/lobby not reached by original index.js startGame(local); not implemented",
+      "native": [],
+      "functions": []
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/messages.js",
+      "lines": 74,
+      "review": "reviewed; networking/lobby not reached by original index.js startGame(local); not implemented",
+      "native": [],
+      "functions": [
+        {
+          "name": "throwSnowball",
+          "start": 19,
+          "end": 22
+        },
+        {
+          "name": "move",
+          "start": 24,
+          "end": 27
+        },
+        {
+          "name": "changeLevel",
+          "start": 29,
+          "end": 32
+        },
+        {
+          "name": "announcePopulation",
+          "start": 34,
+          "end": 42
+        },
+        {
+          "name": "initializeGame",
+          "start": 44,
+          "end": 48
+        },
+        {
+          "name": "assignPlayer",
+          "start": 50,
+          "end": 53
+        },
+        {
+          "name": "enterPlayer",
+          "start": 55,
+          "end": 58
+        },
+        {
+          "name": "exitPlayer",
+          "start": 60,
+          "end": 63
+        },
+        {
+          "name": "synchronizeTime",
+          "start": 65,
+          "end": 69
+        },
+        {
+          "name": "erodeTile",
+          "start": 71,
+          "end": 73
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/ui/powerup-ui.js",
+      "lines": 148,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "is",
+          "start": 82,
+          "end": 82
+        },
+        {
+          "name": "template",
+          "start": 84,
+          "end": 84
+        },
+        {
+          "name": "constructor",
+          "start": 86,
+          "end": 100
+        },
+        {
+          "name": "swap",
+          "start": 102,
+          "end": 105
+        },
+        {
+          "name": "activePowerup",
+          "start": 107,
+          "end": 111
+        },
+        {
+          "name": "inactivePowerup",
+          "start": 113,
+          "end": 117
+        },
+        {
+          "name": "update",
+          "start": 119,
+          "end": 144
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/ui/powerup-status.js",
+      "lines": 154,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "initializeTemplate",
+          "start": 29,
+          "end": 89
+        },
+        {
+          "name": "is",
+          "start": 92,
+          "end": 92
+        },
+        {
+          "name": "template",
+          "start": 94,
+          "end": 94
+        },
+        {
+          "name": "constructor",
+          "start": 96,
+          "end": 101
+        },
+        {
+          "name": "connectedCallback",
+          "start": 103,
+          "end": 120
+        },
+        {
+          "name": "value",
+          "start": 122,
+          "end": 150
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/ui/population-ui.js",
+      "lines": 104,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "is",
+          "start": 70,
+          "end": 70
+        },
+        {
+          "name": "template",
+          "start": 72,
+          "end": 72
+        },
+        {
+          "name": "constructor",
+          "start": 74,
+          "end": 80
+        },
+        {
+          "name": "update",
+          "start": 82,
+          "end": 100
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/ui/lobby-status.js",
+      "lines": 166,
+      "review": "reviewed; networking/lobby not reached by original index.js startGame(local); not implemented",
+      "native": [],
+      "functions": [
+        {
+          "name": "initializeTemplate",
+          "start": 29,
+          "end": 124
+        },
+        {
+          "name": "is",
+          "start": 127,
+          "end": 127
+        },
+        {
+          "name": "template",
+          "start": 129,
+          "end": 129
+        },
+        {
+          "name": "connectedCallback",
+          "start": 131,
+          "end": 150
+        },
+        {
+          "name": "update",
+          "start": 152,
+          "end": 162
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/textures.js",
+      "lines": 39,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "callback at 26",
+          "start": 26,
+          "end": 32
+        },
+        {
+          "name": "textureMemo",
+          "start": 23,
+          "end": 33
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/levels/network-level.js",
+      "lines": 47,
+      "review": "reviewed; networking/lobby not reached by original index.js startGame(local); not implemented",
+      "native": [],
+      "functions": [
+        {
+          "name": "setup",
+          "start": 20,
+          "end": 24
+        },
+        {
+          "name": "update",
+          "start": 26,
+          "end": 45
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/levels/main-level.js",
+      "lines": 145,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "callback at 52",
+          "start": 52,
+          "end": 52
+        },
+        {
+          "name": "setup",
+          "start": 27,
+          "end": 84
+        },
+        {
+          "name": "measure",
+          "start": 86,
+          "end": 97
+        },
+        {
+          "name": "teardown",
+          "start": 99,
+          "end": 107
+        },
+        {
+          "name": "update",
+          "start": 109,
+          "end": 143
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/levels/local-level.js",
+      "lines": 90,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "setup",
+          "start": 20,
+          "end": 47
+        },
+        {
+          "name": "update",
+          "start": 49,
+          "end": 88
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/levels/lobby-level.js",
+      "lines": 39,
+      "review": "reviewed; networking/lobby not reached by original index.js startGame(local); not implemented",
+      "native": [],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 21,
+          "end": 25
+        },
+        {
+          "name": "setup",
+          "start": 27,
+          "end": 29
+        },
+        {
+          "name": "teardown",
+          "start": 31,
+          "end": 33
+        },
+        {
+          "name": "update",
+          "start": 35,
+          "end": 37
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/systems/state-system.js",
+      "lines": 88,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "hasCurrentPopulation",
+          "start": 19,
+          "end": 23
+        },
+        {
+          "name": "recordPlayerConnected",
+          "start": 25,
+          "end": 28
+        },
+        {
+          "name": "recordPlayerDisconnected",
+          "start": 30,
+          "end": 34
+        },
+        {
+          "name": "recordPlayerKnockedOut",
+          "start": 36,
+          "end": 38
+        },
+        {
+          "name": "finishMatch",
+          "start": 40,
+          "end": 44
+        },
+        {
+          "name": "setup",
+          "start": 46,
+          "end": 60
+        },
+        {
+          "name": "update",
+          "start": 62,
+          "end": 84
+        },
+        {
+          "name": "teardown",
+          "start": 86,
+          "end": 86
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/systems/snowball-system.js",
+      "lines": 138,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "snowballConstructorForType",
+          "start": 29,
+          "end": 35
+        },
+        {
+          "name": "constructor",
+          "start": 38,
+          "end": 44
+        },
+        {
+          "name": "teardown",
+          "start": 46,
+          "end": 62
+        },
+        {
+          "name": "update",
+          "start": 64,
+          "end": 99
+        },
+        {
+          "name": "setupSnowball",
+          "start": 101,
+          "end": 109
+        },
+        {
+          "name": "removeSnowball",
+          "start": 111,
+          "end": 123
+        },
+        {
+          "name": "throwSnowball",
+          "start": 125,
+          "end": 136
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/systems/player-system.js",
+      "lines": 277,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "setup",
+          "start": 30,
+          "end": 41
+        },
+        {
+          "name": "teardown",
+          "start": 43,
+          "end": 45
+        },
+        {
+          "name": "hasPlayer",
+          "start": 47,
+          "end": 49
+        },
+        {
+          "name": "addPlayerFromJson",
+          "start": 51,
+          "end": 64
+        },
+        {
+          "name": "addPlayer",
+          "start": 66,
+          "end": 72
+        },
+        {
+          "name": "addPlayerInstance",
+          "start": 74,
+          "end": 79
+        },
+        {
+          "name": "getPlayer",
+          "start": 81,
+          "end": 83
+        },
+        {
+          "name": "callback at 87",
+          "start": 87,
+          "end": 87
+        },
+        {
+          "name": "clearAllPlayers",
+          "start": 85,
+          "end": 88
+        },
+        {
+          "name": "callback at 101",
+          "start": 101,
+          "end": 106
+        },
+        {
+          "name": "callback at 110",
+          "start": 110,
+          "end": 110
+        },
+        {
+          "name": "removePlayer",
+          "start": 90,
+          "end": 111
+        },
+        {
+          "name": "assignPlayerPowerup",
+          "start": 113,
+          "end": 120
+        },
+        {
+          "name": "assignPlayerDestination",
+          "start": 122,
+          "end": 128
+        },
+        {
+          "name": "assignPlayerTargetedPosition",
+          "start": 130,
+          "end": 138
+        },
+        {
+          "name": "callback at 157",
+          "start": 157,
+          "end": 157
+        },
+        {
+          "name": "update",
+          "start": 140,
+          "end": 275
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/systems/parachute-system.js",
+      "lines": 131,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 27,
+          "end": 37
+        },
+        {
+          "name": "dropEntity",
+          "start": 39,
+          "end": 45
+        },
+        {
+          "name": "removeEntity",
+          "start": 47,
+          "end": 59
+        },
+        {
+          "name": "callback at 62",
+          "start": 62,
+          "end": 62
+        },
+        {
+          "name": "callback at 63",
+          "start": 63,
+          "end": 63
+        },
+        {
+          "name": "teardown",
+          "start": 61,
+          "end": 64
+        },
+        {
+          "name": "callback at 70",
+          "start": 70,
+          "end": 79
+        },
+        {
+          "name": "update",
+          "start": 66,
+          "end": 129
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/systems/network-system.js",
+      "lines": 194,
+      "review": "reviewed; networking/lobby not reached by original index.js startGame(local); not implemented",
+      "native": [],
+      "functions": [
+        {
+          "name": "callback at 29",
+          "start": 29,
+          "end": 30
+        },
+        {
+          "name": "setup",
+          "start": 25,
+          "end": 37
+        },
+        {
+          "name": "teardown",
+          "start": 39,
+          "end": 39
+        },
+        {
+          "name": "connect",
+          "start": 42,
+          "end": 45
+        },
+        {
+          "name": "post",
+          "start": 47,
+          "end": 51
+        },
+        {
+          "name": "postMove",
+          "start": 53,
+          "end": 55
+        },
+        {
+          "name": "postTargetedPosition",
+          "start": 57,
+          "end": 59
+        },
+        {
+          "name": "update",
+          "start": 61,
+          "end": 158
+        },
+        {
+          "name": "_indexFor",
+          "start": 160,
+          "end": 169
+        },
+        {
+          "name": "onSocketMessage",
+          "start": 171,
+          "end": 192
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/systems/map-system.js",
+      "lines": 137,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 29,
+          "end": 53
+        },
+        {
+          "name": "teardown",
+          "start": 55,
+          "end": 57
+        },
+        {
+          "name": "callback at 62",
+          "start": 62,
+          "end": 65
+        },
+        {
+          "name": "handleMapPick",
+          "start": 59,
+          "end": 66
+        },
+        {
+          "name": "callback at 74",
+          "start": 74,
+          "end": 76
+        },
+        {
+          "name": "onMapPicked",
+          "start": 68,
+          "end": 77
+        },
+        {
+          "name": "callback at 84",
+          "start": 84,
+          "end": 84
+        },
+        {
+          "name": "setup",
+          "start": 79,
+          "end": 85
+        },
+        {
+          "name": "update",
+          "start": 87,
+          "end": 107
+        },
+        {
+          "name": "callback at 110",
+          "start": 110,
+          "end": 112
+        },
+        {
+          "name": "callback at 121",
+          "start": 121,
+          "end": 134
+        },
+        {
+          "name": "rebuildMap",
+          "start": 109,
+          "end": 135
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/systems/lod-system.js",
+      "lines": 72,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "lod",
+          "start": 24,
+          "end": 26
+        },
+        {
+          "name": "callback at 28",
+          "start": 28,
+          "end": 28
+        },
+        {
+          "name": "constructor",
+          "start": 28,
+          "end": 32
+        },
+        {
+          "name": "teardown",
+          "start": 34,
+          "end": 36
+        },
+        {
+          "name": "addEntity",
+          "start": 38,
+          "end": 40
+        },
+        {
+          "name": "removeEntity",
+          "start": 42,
+          "end": 48
+        },
+        {
+          "name": "update",
+          "start": 50,
+          "end": 70
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/systems/entity-removal-system.js",
+      "lines": 161,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 27,
+          "end": 35
+        },
+        {
+          "name": "teardown",
+          "start": 37,
+          "end": 49
+        },
+        {
+          "name": "teleportEntity",
+          "start": 51,
+          "end": 58
+        },
+        {
+          "name": "freezeEntity",
+          "start": 60,
+          "end": 67
+        },
+        {
+          "name": "update",
+          "start": 69,
+          "end": 159
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/systems/effect-system.js",
+      "lines": 53,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 32,
+          "end": 41
+        },
+        {
+          "name": "teardown",
+          "start": 43,
+          "end": 46
+        },
+        {
+          "name": "update",
+          "start": 48,
+          "end": 51
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/systems/drop-system.js",
+      "lines": 150,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "setup",
+          "start": 29,
+          "end": 34
+        },
+        {
+          "name": "teardown",
+          "start": 36,
+          "end": 50
+        },
+        {
+          "name": "addDrop",
+          "start": 52,
+          "end": 61
+        },
+        {
+          "name": "update",
+          "start": 63,
+          "end": 148
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/systems/client-system.js",
+      "lines": 151,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 30,
+          "end": 43
+        },
+        {
+          "name": "assignTarget",
+          "start": 45,
+          "end": 47
+        },
+        {
+          "name": "assignDestination",
+          "start": 49,
+          "end": 51
+        },
+        {
+          "name": "assignPlayer",
+          "start": 53,
+          "end": 55
+        },
+        {
+          "name": "teardown",
+          "start": 57,
+          "end": 70
+        },
+        {
+          "name": "setup",
+          "start": 72,
+          "end": 72
+        },
+        {
+          "name": "update",
+          "start": 74,
+          "end": 149
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/systems/bot-system.js",
+      "lines": 62,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 20,
+          "end": 25
+        },
+        {
+          "name": "teardown",
+          "start": 27,
+          "end": 27
+        },
+        {
+          "name": "addBot",
+          "start": 29,
+          "end": 33
+        },
+        {
+          "name": "removeBot",
+          "start": 35,
+          "end": 38
+        },
+        {
+          "name": "update",
+          "start": 40,
+          "end": 60
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/shader-partials.js",
+      "lines": 105,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": []
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/network/socket.js",
+      "lines": 110,
+      "review": "reviewed; networking/lobby not reached by original index.js startGame(local); not implemented",
+      "native": [],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 20,
+          "end": 35
+        },
+        {
+          "name": "callback at 48",
+          "start": 48,
+          "end": 48
+        },
+        {
+          "name": "callback at 38",
+          "start": 38,
+          "end": 49
+        },
+        {
+          "name": "callback at 51",
+          "start": 51,
+          "end": 61
+        },
+        {
+          "name": "callback at 63",
+          "start": 63,
+          "end": 63
+        },
+        {
+          "name": "configureSocket_",
+          "start": 37,
+          "end": 64
+        },
+        {
+          "name": "callback at 71",
+          "start": 71,
+          "end": 74
+        },
+        {
+          "name": "retry_",
+          "start": 66,
+          "end": 75
+        },
+        {
+          "name": "callback at 82",
+          "start": 82,
+          "end": 82
+        },
+        {
+          "name": "target",
+          "start": 77,
+          "end": 84
+        },
+        {
+          "name": "target",
+          "start": 86,
+          "end": 88
+        },
+        {
+          "name": "post",
+          "start": 90,
+          "end": 97
+        },
+        {
+          "name": "handlePayload_",
+          "start": 99,
+          "end": 108
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/models.js",
+      "lines": 167,
+      "review": "native glTF joints/linear quaternion sampling checked against 30 original AnimationMixer poses; complete action interruption/mix/fade lifecycle remains partial",
+      "native": [
+        "rust/src/snowball_model.rs"
+      ],
+      "functions": [
+        {
+          "name": "cloneGltf",
+          "start": 28,
+          "end": 31
+        },
+        {
+          "name": "constructor",
+          "start": 34,
+          "end": 45
+        },
+        {
+          "name": "getClip",
+          "start": 47,
+          "end": 49
+        },
+        {
+          "name": "getAction",
+          "start": 51,
+          "end": 56
+        },
+        {
+          "name": "play",
+          "start": 58,
+          "end": 85
+        },
+        {
+          "name": "playOnce",
+          "start": 87,
+          "end": 97
+        },
+        {
+          "name": "onFinished",
+          "start": 124,
+          "end": 133
+        },
+        {
+          "name": "mixOnce",
+          "start": 99,
+          "end": 136
+        },
+        {
+          "name": "update",
+          "start": 138,
+          "end": 145
+        },
+        {
+          "name": "callback at 155",
+          "start": 155,
+          "end": 155
+        },
+        {
+          "name": "callback at 154",
+          "start": 154,
+          "end": 156
+        },
+        {
+          "name": "callback at 152",
+          "start": 152,
+          "end": 160
+        },
+        {
+          "name": "callback at 149",
+          "start": 149,
+          "end": 161
+        },
+        {
+          "name": "callback at 164",
+          "start": 164,
+          "end": 164
+        },
+        {
+          "name": "callback at 163",
+          "start": 163,
+          "end": 165
+        },
+        {
+          "name": "callback at 148",
+          "start": 148,
+          "end": 166
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/entities/elf.js",
+      "lines": 441,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "callback at 67",
+          "start": 67,
+          "end": 114
+        },
+        {
+          "name": "callback at 59",
+          "start": 59,
+          "end": 115
+        },
+        {
+          "name": "fromJson",
+          "start": 134,
+          "end": 146
+        },
+        {
+          "name": "randomizeColors",
+          "start": 148,
+          "end": 152
+        },
+        {
+          "name": "ensureCorrectTextureImage",
+          "start": 154,
+          "end": 160
+        },
+        {
+          "name": "clone",
+          "start": 162,
+          "end": 164
+        },
+        {
+          "name": "constructor",
+          "start": 166,
+          "end": 193
+        },
+        {
+          "name": "onAllocated",
+          "start": 195,
+          "end": 225
+        },
+        {
+          "name": "setup",
+          "start": 227,
+          "end": 240
+        },
+        {
+          "name": "teardown",
+          "start": 242,
+          "end": 252
+        },
+        {
+          "name": "callback at 273",
+          "start": 273,
+          "end": 278
+        },
+        {
+          "name": "callback at 278",
+          "start": 278,
+          "end": 289
+        },
+        {
+          "name": "update",
+          "start": 254,
+          "end": 354
+        },
+        {
+          "name": "lod",
+          "start": 356,
+          "end": 365
+        },
+        {
+          "name": "callback at 371",
+          "start": 371,
+          "end": 388
+        },
+        {
+          "name": "initializeModel",
+          "start": 367,
+          "end": 392
+        },
+        {
+          "name": "face",
+          "start": 394,
+          "end": 396
+        },
+        {
+          "name": "idle",
+          "start": 398,
+          "end": 402
+        },
+        {
+          "name": "run",
+          "start": 404,
+          "end": 408
+        },
+        {
+          "name": "throw",
+          "start": 410,
+          "end": 414
+        },
+        {
+          "name": "handler",
+          "start": 420,
+          "end": 426
+        },
+        {
+          "name": "fallDown",
+          "start": 416,
+          "end": 429
+        },
+        {
+          "name": "sink",
+          "start": 431,
+          "end": 434
+        },
+        {
+          "name": "die",
+          "start": 436,
+          "end": 439
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/entities/drop.js",
+      "lines": 210,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "callback at 92",
+          "start": 92,
+          "end": 109
+        },
+        {
+          "name": "callback at 84",
+          "start": 84,
+          "end": 110
+        },
+        {
+          "name": "constructor",
+          "start": 127,
+          "end": 135
+        },
+        {
+          "name": "onAllocated",
+          "start": 137,
+          "end": 147
+        },
+        {
+          "name": "callback at 157",
+          "start": 157,
+          "end": 161
+        },
+        {
+          "name": "setup",
+          "start": 149,
+          "end": 162
+        },
+        {
+          "name": "teardown",
+          "start": 164,
+          "end": 171
+        },
+        {
+          "name": "update",
+          "start": 173,
+          "end": 201
+        },
+        {
+          "name": "spin",
+          "start": 203,
+          "end": 208
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/entities/destination-marker.js",
+      "lines": 76,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 35,
+          "end": 64
+        },
+        {
+          "name": "setup",
+          "start": 66,
+          "end": 74
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/entities/bot.js",
+      "lines": 118,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "setup",
+          "start": 34,
+          "end": 42
+        },
+        {
+          "name": "update",
+          "start": 44,
+          "end": 116
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/entities/static/tree.js",
+      "lines": 50,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 29,
+          "end": 38
+        },
+        {
+          "name": "setup",
+          "start": 40,
+          "end": 43
+        },
+        {
+          "name": "teardown",
+          "start": 45,
+          "end": 48
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/entities/snowsplat.js",
+      "lines": 98,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 68,
+          "end": 92
+        },
+        {
+          "name": "update",
+          "start": 94,
+          "end": 96
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/effects/trail-effect.js",
+      "lines": 175,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 103,
+          "end": 134
+        },
+        {
+          "name": "add",
+          "start": 136,
+          "end": 138
+        },
+        {
+          "name": "remove",
+          "start": 140,
+          "end": 142
+        },
+        {
+          "name": "update",
+          "start": 144,
+          "end": 173
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/entities/snowballs/big-snowball.js",
+      "lines": 27,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 20,
+          "end": 25
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/effects/snowsplat-effect.js",
+      "lines": 193,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 108,
+          "end": 149
+        },
+        {
+          "name": "showFor",
+          "start": 151,
+          "end": 159
+        },
+        {
+          "name": "update",
+          "start": 161,
+          "end": 191
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/entities/snowball.js",
+      "lines": 256,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "callback at 127",
+          "start": 127,
+          "end": 127
+        },
+        {
+          "name": "constructor",
+          "start": 101,
+          "end": 131
+        },
+        {
+          "name": "onAllocated",
+          "start": 133,
+          "end": 145
+        },
+        {
+          "name": "callback at 155",
+          "start": 155,
+          "end": 163
+        },
+        {
+          "name": "setup",
+          "start": 147,
+          "end": 166
+        },
+        {
+          "name": "teardown",
+          "start": 168,
+          "end": 175
+        },
+        {
+          "name": "update",
+          "start": 177,
+          "end": 187
+        },
+        {
+          "name": "throwAt",
+          "start": 189,
+          "end": 200
+        },
+        {
+          "name": "advance",
+          "start": 202,
+          "end": 233
+        },
+        {
+          "name": "deserialize",
+          "start": 235,
+          "end": 237
+        },
+        {
+          "name": "serialize",
+          "start": 239,
+          "end": 253
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/constants.js",
+      "lines": 66,
+      "review": "reviewed; networking/lobby not reached by original index.js startGame(local); not implemented",
+      "native": [],
+      "functions": []
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/entities/player-marker.js",
+      "lines": 53,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 35,
+          "end": 51
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/entities/parachute.js",
+      "lines": 95,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 45,
+          "end": 68
+        },
+        {
+          "name": "setup",
+          "start": 70,
+          "end": 75
+        },
+        {
+          "name": "lod",
+          "start": 77,
+          "end": 81
+        },
+        {
+          "name": "onFreed",
+          "start": 83,
+          "end": 86
+        },
+        {
+          "name": "carry",
+          "start": 88,
+          "end": 93
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/entities/obstacles.js",
+      "lines": 189,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "setup",
+          "start": 130,
+          "end": 164
+        },
+        {
+          "name": "update",
+          "start": 166,
+          "end": 168
+        },
+        {
+          "name": "map",
+          "start": 170,
+          "end": 172
+        },
+        {
+          "name": "map",
+          "start": 174,
+          "end": 187
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/entities/iceberg.js",
+      "lines": 165,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "setup",
+          "start": 96,
+          "end": 135
+        },
+        {
+          "name": "update",
+          "start": 137,
+          "end": 163
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/entities/hex-map.js",
+      "lines": 232,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 144,
+          "end": 151
+        },
+        {
+          "name": "callback at 194",
+          "start": 194,
+          "end": 194
+        },
+        {
+          "name": "callback at 194",
+          "start": 194,
+          "end": 194
+        },
+        {
+          "name": "setup",
+          "start": 153,
+          "end": 195
+        },
+        {
+          "name": "map",
+          "start": 197,
+          "end": 199
+        },
+        {
+          "name": "map",
+          "start": 201,
+          "end": 212
+        },
+        {
+          "name": "teardown",
+          "start": 214,
+          "end": 218
+        },
+        {
+          "name": "update",
+          "start": 220,
+          "end": 222
+        },
+        {
+          "name": "callback at 227",
+          "start": 227,
+          "end": 229
+        },
+        {
+          "name": "handlePick",
+          "start": 224,
+          "end": 230
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball-game.js",
+      "lines": 129,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "is",
+          "start": 42,
+          "end": 42
+        },
+        {
+          "name": "maximumPlayers",
+          "start": 44,
+          "end": 44
+        },
+        {
+          "name": "callback at 50",
+          "start": 50,
+          "end": 50
+        },
+        {
+          "name": "constructor",
+          "start": 46,
+          "end": 65
+        },
+        {
+          "name": "setup",
+          "start": 67,
+          "end": 78
+        },
+        {
+          "name": "update",
+          "start": 80,
+          "end": 95
+        },
+        {
+          "name": "teardown",
+          "start": 97,
+          "end": 113
+        },
+        {
+          "name": "start",
+          "start": 115,
+          "end": 125
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/components/visibility.js",
+      "lines": 25,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 20,
+          "end": 23
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/components/trajectory.js",
+      "lines": 36,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 24,
+          "end": 28
+        },
+        {
+          "name": "direction",
+          "start": 30,
+          "end": 34
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/components/trail.js",
+      "lines": 28,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 20,
+          "end": 26
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/components/splat.js",
+      "lines": 35,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 24,
+          "end": 33
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/components/speed.js",
+      "lines": 22,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 18,
+          "end": 20
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/components/presence.js",
+      "lines": 46,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 22,
+          "end": 26
+        },
+        {
+          "name": "exiting",
+          "start": 28,
+          "end": 30
+        },
+        {
+          "name": "exiting",
+          "start": 32,
+          "end": 40
+        },
+        {
+          "name": "gone",
+          "start": 42,
+          "end": 44
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/components/powerup.js",
+      "lines": 120,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 25,
+          "end": 30
+        },
+        {
+          "name": "swap",
+          "start": 32,
+          "end": 34
+        },
+        {
+          "name": "active",
+          "start": 36,
+          "end": 40
+        },
+        {
+          "name": "active",
+          "start": 42,
+          "end": 52
+        },
+        {
+          "name": "inactive",
+          "start": 54,
+          "end": 58
+        },
+        {
+          "name": "inactive",
+          "start": 60,
+          "end": 70
+        },
+        {
+          "name": "decrementActiveQuantity",
+          "start": 72,
+          "end": 84
+        },
+        {
+          "name": "pop",
+          "start": 86,
+          "end": 88
+        },
+        {
+          "name": "collect",
+          "start": 90,
+          "end": 96
+        },
+        {
+          "name": "copyFromJson",
+          "start": 98,
+          "end": 110
+        },
+        {
+          "name": "constructor",
+          "start": 114,
+          "end": 118
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/components/path.js",
+      "lines": 39,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 20,
+          "end": 24
+        },
+        {
+          "name": "follow",
+          "start": 26,
+          "end": 29
+        },
+        {
+          "name": "nextWaypoint",
+          "start": 31,
+          "end": 33
+        },
+        {
+          "name": "destinationReached",
+          "start": 35,
+          "end": 37
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/components/health.js",
+      "lines": 47,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 20,
+          "end": 23
+        },
+        {
+          "name": "alive",
+          "start": 25,
+          "end": 27
+        },
+        {
+          "name": "alive",
+          "start": 29,
+          "end": 37
+        },
+        {
+          "name": "dead",
+          "start": 39,
+          "end": 41
+        },
+        {
+          "name": "revive",
+          "start": 43,
+          "end": 45
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/components/game-map.js",
+      "lines": 255,
+      "review": "native formulas checked against actual original map/grid/path oracle; general unused grid conversion helpers remain unported",
+      "native": [
+        "rust/src/snowball.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 35,
+          "end": 107
+        },
+        {
+          "name": "_generateRaisedTiles",
+          "start": 109,
+          "end": 154
+        },
+        {
+          "name": "erode",
+          "start": 156,
+          "end": 189
+        },
+        {
+          "name": "getRandomNearbyPassableTileIndex",
+          "start": 191,
+          "end": 209
+        },
+        {
+          "name": "getRandomHabitableTileIndex",
+          "start": 211,
+          "end": 231
+        },
+        {
+          "name": "setTileObstacle",
+          "start": 233,
+          "end": 238
+        },
+        {
+          "name": "getTileObstacle",
+          "start": 240,
+          "end": 242
+        },
+        {
+          "name": "setTileState",
+          "start": 244,
+          "end": 249
+        },
+        {
+          "name": "getTileState",
+          "start": 251,
+          "end": 253
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/components/contents.js",
+      "lines": 33,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 20,
+          "end": 23
+        },
+        {
+          "name": "isEmpty",
+          "start": 25,
+          "end": 27
+        },
+        {
+          "name": "clear",
+          "start": 29,
+          "end": 31
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/components/component.js",
+      "lines": 24,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "fromJSON",
+          "start": 18,
+          "end": 22
+        }
+      ]
+    },
+    {
+      "file": "static/scenes/snowball/js/snowball/components/arrival.js",
+      "lines": 39,
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "native": [
+        "rust/src/snowball.rs",
+        "rust/src/snowball_view.rs"
+      ],
+      "functions": [
+        {
+          "name": "constructor",
+          "start": 20,
+          "end": 25
+        },
+        {
+          "name": "isDropping",
+          "start": 27,
+          "end": 29
+        },
+        {
+          "name": "droppedAt",
+          "start": 31,
+          "end": 33
+        },
+        {
+          "name": "arrive",
+          "start": 35,
+          "end": 37
+        }
+      ]
+    }
+  ]
+}

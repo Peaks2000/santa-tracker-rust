@@ -200,3 +200,41 @@ readback. Browser exporter is development-only. See coverage/error fixtures for
 before/after evidence. The five-second progress/strict >1 completion and other
 Jetpack art/logic are unchanged; full mode parity is still unproven. Preserve
 this continuous draw rather than reintroducing overlapping scanline strips.
+
+## Snowball Storm continuation
+
+The 27 October 2026 pass adds the local `snowball` route, `snowball.rs`,
+`snowball_collision.rs`, `snowball_model.rs` and `snowball_view.rs`. Read the
+Snowball section in SOURCE-COVERAGE.md and its function inventory before
+continuing: the rating is Very similar, target 1:1, and several lifecycle/mixing/
+randomness/input/audio areas are explicitly partial. Do not mistake the initial
+render/pose oracles for complete mode parity.
+
+The actual index starts `local`, not the unused multiplayer/lobby path. Preserve
+per-render-frame movement with wall-derived ticks, greedy path cost using the
+source's from-index cost, source queue tie behavior, separate map/erosion seeds,
+and nearby-tile selection's origin-vs-candidate bug. Tree statics are registered
+after quad bounds creation and never inserted by the original local dynamic
+rebuild; do not invent projectile/tree collisions. Source camera lookAt followed
+by rotation.z=0 produces a flipped-Y camera, not the intuitive lookAt basis.
+Weather's supplied attributes are unused and it has no active attribute, so the
+splash has no invented weather. No pause, R shortcut or swapping click is added.
+
+Live rendering separates begin_frame (Level/camera/erosion) and finish_frame
+(systems), with draw/input in between. Map picks queue for the next Level pass;
+elf targeting is direct. The original keeps simulating behind game-over. Native
+batching is necessary to avoid Macroquad silently clamping large map meshes.
+GLTFLoader r110 binds only JOINTS_0/WEIGHTS_0; extra sets in this asset are ignored.
+The source texture cache keys only major/minor colours despite hair/ponytail
+arguments. Native per-fragment side tones/alpha must not be replaced with white
+top vertex interpolation (that visibly changes raised edges).
+
+`snowball-reference.json` checks four seeded maps/erosion, grid/path/shot/powerup
+formulas and forty real source quad queries. `snowball-skin-reference.json`
+checks 30 original Model/AnimationMixer poses, all 2746 vertex positions; it does
+not certify interrupted action mixing/normals. `snowball_capture` uses the real
+native renderer. Its `reference` case imports measured original state/textures,
+omits presents/projectiles and resets animation phase; never present its low
+whole-image error as a full gameplay match. Development browser exporters stay
+in the original checkout's rust/tools only. Preserve unknown/user feedback and
+the public README's two-column table on publication.

@@ -1,0 +1,321 @@
+{
+  "method": "Actual original modules in Chromium; external RAF held, performance.now controlled. Map/path/shot/powerup methods unmodified. No network path is invoked by index.js.",
+  "files": {
+    "static/scenes/snowball/index.html": {
+      "lines": 54,
+      "sha256": "d8bb81beea01614e4493ef04fc5463db53f3f6830d83fdebe814b8d33f26870e"
+    },
+    "static/scenes/snowball/index.js": {
+      "lines": 97,
+      "sha256": "b2d959e02688b0f1e182255c24a543ee0358a596abb6642486eeea9034328175"
+    },
+    "static/scenes/snowball/index.scss": {
+      "lines": 224,
+      "sha256": "aca651827e912cac3214c87e2eac4eac4e54a1217b2c14c7ecce4510152c20f1"
+    },
+    "static/scenes/snowball/js/constants.js": {
+      "lines": 17,
+      "sha256": "1bf4b0431dd756587c5a44db1c6ab613ea81414df9954924c8a48b757794916f"
+    },
+    "static/scenes/snowball/js/snowball-game.js": {
+      "lines": 129,
+      "sha256": "48d4ced63ac0e39fe3010e80472d333d26d838a54c23a5841941fe42458d4d4f"
+    },
+    "static/scenes/snowball/js/third_party/priorityqueue.js": {
+      "lines": 186,
+      "sha256": "ed022abe889bc674bdc04d6bb3bf1f6e3c8b04085fc95d7fbae7f6a267aca56b"
+    },
+    "static/scenes/snowball/js/snowball/utils/seed-random.js": {
+      "lines": 51,
+      "sha256": "7da1a70134a36731ed08478f6bcae64f6d24ca68835ef1119bd0412c9b3a002f"
+    },
+    "static/scenes/snowball/js/snowball/utils/magic-hex-grid.js": {
+      "lines": 80,
+      "sha256": "23047e1e5a716d8f9c03c91d754f7571bbe41d4f0eb9059db8700cffe3742a6e"
+    },
+    "static/scenes/snowball/js/snowball/utils/camera-tracking.js": {
+      "lines": 66,
+      "sha256": "2ca29bbc8392bb6848113641eda97e34656971fb9aa6e71735e488dacfb030e2"
+    },
+    "static/scenes/snowball/js/snowball/ui/powerup-ui.js": {
+      "lines": 148,
+      "sha256": "8dc0c02bc84c0f7aa609438ff39c84fa09c66d1287be1a7e791137ecd2dadef3"
+    },
+    "static/scenes/snowball/js/snowball/ui/powerup-status.js": {
+      "lines": 154,
+      "sha256": "5b7895afc584f662429a8d44abb1f02c328d08714a85272f8f472804967e4a62"
+    },
+    "static/scenes/snowball/js/snowball/ui/population-ui.js": {
+      "lines": 104,
+      "sha256": "861c46ad17ed24a317da223cb95975bb19eb5d8bfb01aef3918baf51af7fe181"
+    },
+    "static/scenes/snowball/js/snowball/ui/lobby-status.js": {
+      "lines": 166,
+      "sha256": "b6ab44e8695ac8b013fd1c323e02444121833de5960227945f519f7a4187cd76"
+    },
+    "static/scenes/snowball/js/snowball/textures.js": {
+      "lines": 39,
+      "sha256": "e910084cc44c6757f4daef16f1f2e2539fbd22b391ebab159f644dfdb7c59eb3"
+    },
+    "static/scenes/snowball/js/engine/utils/quad-tree.js": {
+      "lines": 165,
+      "sha256": "36e561167a9ee4e0096f3f48f00ccc65c13a173b61c99853abbc80c9abb35146"
+    },
+    "static/scenes/snowball/js/snowball/systems/state-system.js": {
+      "lines": 88,
+      "sha256": "786084366dca60a9355b02d1c80522adc9e0028b36a1987f8d63d1658a8c169c"
+    },
+    "static/scenes/snowball/js/engine/utils/hex-grid.js": {
+      "lines": 422,
+      "sha256": "17b0a79fa57ed702028678af932862b0a8d2c7a239eb9d09c981d833d29572d5"
+    },
+    "static/scenes/snowball/js/engine/utils/hex-coord.js": {
+      "lines": 52,
+      "sha256": "1d82e0d4fa01bc627f1f2d69f731c759c48b1fb0f4f9e21aff2121467e453c1d"
+    },
+    "static/scenes/snowball/js/engine/utils/gamelike.js": {
+      "lines": 90,
+      "sha256": "b4d6f26f87bf3bc2a64dbb1dfc75faf5049b0e58582319873aafb03900b24392"
+    },
+    "static/scenes/snowball/js/engine/utils/function.js": {
+      "lines": 23,
+      "sha256": "c802732d13117236459f527ce06e8e411503991f7a7b37fd1926fb3bfbe12b2e"
+    },
+    "static/scenes/snowball/js/engine/utils/collision-2d.js": {
+      "lines": 437,
+      "sha256": "e3813be39a28288bc8784000bb612e002588e14078ce3bd2e5d74827bc175807"
+    },
+    "static/scenes/snowball/js/engine/utils/basic-element.js": {
+      "lines": 56,
+      "sha256": "aca9b10971063aebf7a41ce12e5d717f8c2979758cf3f7c2958da8b28f16085c"
+    },
+    "static/scenes/snowball/js/engine/utils/allocatable.js": {
+      "lines": 109,
+      "sha256": "c4ab5759c61e9c933e3fb009cc6d3f59e0e83e5cb951444ba45b6a1c1c7ad628"
+    },
+    "static/scenes/snowball/js/snowball/systems/snowball-system.js": {
+      "lines": 138,
+      "sha256": "34445b3fa23074569d7e06fea56c3c2035178737205e4da67ad3c6507b6e25fb"
+    },
+    "static/scenes/snowball/js/snowball/systems/player-system.js": {
+      "lines": 277,
+      "sha256": "37e8c893a3643f5bc0940524ea23cc51a8ba9b575365d6ef555b9966836461b0"
+    },
+    "static/scenes/snowball/js/snowball/systems/parachute-system.js": {
+      "lines": 131,
+      "sha256": "c26622b7497d442c327eb903cdd8fff7a82456dd8b09caa4d1c7fa2a69bcd80b"
+    },
+    "static/scenes/snowball/js/snowball/systems/network-system.js": {
+      "lines": 194,
+      "sha256": "f7991721ea078c0e28ff676435ed296b1285e994f8ee89deaf295b2b57be0b21"
+    },
+    "static/scenes/snowball/js/snowball/systems/map-system.js": {
+      "lines": 137,
+      "sha256": "42393aa5916c5668417b9b6a70244788ed6bf9a43cdcdffe59c20217c61a004f"
+    },
+    "static/scenes/snowball/js/snowball/systems/lod-system.js": {
+      "lines": 72,
+      "sha256": "d214e05189514a66ba84142872cd49b6722a4d3b8e8e8d76728932f6c2edd8c6"
+    },
+    "static/scenes/snowball/js/snowball/systems/entity-removal-system.js": {
+      "lines": 161,
+      "sha256": "1153d0a20db468fe7ced48d9d3f977c1e1adacf2c07ec1aa59e813224374ba5c"
+    },
+    "static/scenes/snowball/js/snowball/systems/effect-system.js": {
+      "lines": 53,
+      "sha256": "87107f41fd15ae291aa8f192f5e83c3ab6825de09239af7f89835a7d160a183d"
+    },
+    "static/scenes/snowball/js/snowball/systems/drop-system.js": {
+      "lines": 150,
+      "sha256": "d0230bcf979a736698ed41013451ebea345ee2d8b8580b59ea375880f55b1db2"
+    },
+    "static/scenes/snowball/js/snowball/systems/client-system.js": {
+      "lines": 151,
+      "sha256": "0f8aded75ed447fbfede07eaa10485180aa54d1e2de101ba9a6a77fe7a0aa7d8"
+    },
+    "static/scenes/snowball/js/snowball/systems/bot-system.js": {
+      "lines": 62,
+      "sha256": "8b1937a9da0ba571fa9d2c198a9f03b85f22e9d7997068382bff3a3836759b44"
+    },
+    "static/scenes/snowball/js/snowball/shader-partials.js": {
+      "lines": 105,
+      "sha256": "1fc9cbe411bc773abe913ca1b692f485b510abd4e77a922eff189d333235ec3c"
+    },
+    "static/scenes/snowball/js/snowball/network/socket.js": {
+      "lines": 110,
+      "sha256": "df44194f04b7bfe342ef2a1a9bcb554d0277e531e2e35606289b6f52d8d7b9c4"
+    },
+    "static/scenes/snowball/js/snowball/models.js": {
+      "lines": 167,
+      "sha256": "90578c9e8ea0b6106693faa6c8ce84d1667831f1eb249ac0915598ec03720d86"
+    },
+    "static/scenes/snowball/js/snowball/messages.js": {
+      "lines": 74,
+      "sha256": "b21c80ce481410c70d6fbfb640731cb0091358e034b36d2a578c1b212b7f99f7"
+    },
+    "static/scenes/snowball/js/engine/systems/render-system.js": {
+      "lines": 78,
+      "sha256": "028b2df9ab7a95627c247c10285539086552ef302e8863f95272d56c5958ccef"
+    },
+    "static/scenes/snowball/js/engine/systems/input-system.js": {
+      "lines": 282,
+      "sha256": "1934efc4be461f17940ff889bdcd896dc2085ec651fee22eb2721cc2bc158d0c"
+    },
+    "static/scenes/snowball/js/engine/systems/collision-2d-system.js": {
+      "lines": 240,
+      "sha256": "0c6d78d78bdc7015adfd8d370ffdfc0c7e083d0ad27c0ca307a8903841dbc1c7"
+    },
+    "static/scenes/snowball/js/snowball/levels/network-level.js": {
+      "lines": 47,
+      "sha256": "6e06d8bfca24ad6d21b288af6eb8fc13d28ad57ab99fae86e45fa1786e72f96d"
+    },
+    "static/scenes/snowball/js/snowball/levels/main-level.js": {
+      "lines": 145,
+      "sha256": "0b079ed3f800b4c3dcf3a81f2fca44968a8bc240ab5901f14460013a78253452"
+    },
+    "static/scenes/snowball/js/snowball/levels/local-level.js": {
+      "lines": 90,
+      "sha256": "058cd94969c0f64708d5fdfad70298e539a0eefc9b3d11c856fac53674f386de"
+    },
+    "static/scenes/snowball/js/snowball/levels/lobby-level.js": {
+      "lines": 39,
+      "sha256": "7cb2e609820f24bfa487b7c9de6ef6e5c6836b8cc3c8ddd4a3e371a66002b4ba"
+    },
+    "static/scenes/snowball/js/engine/systems/clock-system.js": {
+      "lines": 64,
+      "sha256": "ec84c569632c34e49d6a8efde9d7888a9fd3518f6fc465cb10034517c82f2c0e"
+    },
+    "static/scenes/snowball/js/engine/core/level.js": {
+      "lines": 34,
+      "sha256": "c179cc25a639e8289006787bbbf2fa47257f4c02e233304448995e5efe8c5b86"
+    },
+    "static/scenes/snowball/js/engine/core/game.js": {
+      "lines": 120,
+      "sha256": "a8571291aa26baeae2a268cf693e69877f4407976ca4023dcc8f8eb6ad52e459"
+    },
+    "static/scenes/snowball/js/engine/core/event.js": {
+      "lines": 24,
+      "sha256": "630efda4c2407658e142d5b8cefc9fa16ea031298cdc559b264f791eac8235e5"
+    },
+    "static/scenes/snowball/js/engine/core/entity.js": {
+      "lines": 63,
+      "sha256": "d846a4e29e7f6664d422212d8746746da32c0a2e2a91e51b52f26b00ab0028ce"
+    },
+    "static/scenes/snowball/js/snowball/entities/hex-map.js": {
+      "lines": 232,
+      "sha256": "c9514ce0783d4f18d9b7229606b3443de68b6ad173886631c6a53c46dfcf6c3e"
+    },
+    "static/scenes/snowball/js/snowball/entities/elf.js": {
+      "lines": 441,
+      "sha256": "d5fd37bbe1201b63143898793fbe0b9e7036805e513b1af6aa4a48f0226f5cf2"
+    },
+    "static/scenes/snowball/js/snowball/entities/drop.js": {
+      "lines": 210,
+      "sha256": "80e22ed1bd2af68ff7544a3d724848980cc7bd921317978ec0362cef56567a64"
+    },
+    "static/scenes/snowball/js/snowball/entities/destination-marker.js": {
+      "lines": 76,
+      "sha256": "60ec3e652c38b625c939d9831ebcb526cddb4c7141997ba471ed3b58ed696e5d"
+    },
+    "static/scenes/snowball/js/snowball/entities/bot.js": {
+      "lines": 118,
+      "sha256": "cfd847069244d475487af40edde7cb1a95f254f6ec6322b1fb55916d6508883e"
+    },
+    "static/scenes/snowball/js/snowball/entities/static/tree.js": {
+      "lines": 50,
+      "sha256": "d24a6eb603cdd4b33be6ad5fd083b14078e4d8aa64efeea65b3ad333c585ee29"
+    },
+    "static/scenes/snowball/js/snowball/entities/snowsplat.js": {
+      "lines": 98,
+      "sha256": "53a2d06b8205390bb802824e8c50edb404ac7f8c8b9bd4dd5becbac29b086215"
+    },
+    "static/scenes/snowball/js/snowball/entities/snowballs/big-snowball.js": {
+      "lines": 27,
+      "sha256": "1660b4aa4a18ebb31ee77cd8dfd1aefb535481f02632daeb5713e673b6a07b65"
+    },
+    "static/scenes/snowball/js/snowball/entities/snowball.js": {
+      "lines": 256,
+      "sha256": "3c0e0c2577486cf5c6827d8a178df4475c31ea34fa41c6860deabbcc5df15749"
+    },
+    "static/scenes/snowball/js/snowball/entities/player-marker.js": {
+      "lines": 53,
+      "sha256": "9ea345e315ba34920fe325e9a3e4083adab61a5a2d0d092cb22b92ec7341f544"
+    },
+    "static/scenes/snowball/js/snowball/entities/parachute.js": {
+      "lines": 95,
+      "sha256": "5b85c84553f344efca726d6ca78ebc26c96f54d19c166f921589127605826728"
+    },
+    "static/scenes/snowball/js/snowball/entities/obstacles.js": {
+      "lines": 189,
+      "sha256": "a0db76fe7d73e767803248bd565e0e9e5ab6cfcb36bb7d09bcb8a7bf49dd1f37"
+    },
+    "static/scenes/snowball/js/snowball/entities/iceberg.js": {
+      "lines": 165,
+      "sha256": "6d6e9c5a4a9516db6b48b4532d2ddc035104d65b322299aa98bc2b67151990b5"
+    },
+    "static/scenes/snowball/js/snowball/constants.js": {
+      "lines": 66,
+      "sha256": "bdbe324414457f80d75fe7ca2eae380c67e5789384539b6a0a7cfd9e3b1a42ea"
+    },
+    "static/scenes/snowball/js/snowball/effects/snowsplat-effect.js": {
+      "lines": 193,
+      "sha256": "5275032a11f78d821dc5e64ab3573cc2096596e16c258f76aa29f1c63ad2f11e"
+    },
+    "static/scenes/snowball/js/snowball/effects/trail-effect.js": {
+      "lines": 175,
+      "sha256": "2a86c3cd50ac602779908019033e24294f599cb7d5c6ddc2777f871b8661efa8"
+    },
+    "static/scenes/snowball/js/snowball/components/visibility.js": {
+      "lines": 25,
+      "sha256": "9aba7abd79812704ab02b66282f3e900be098bdec8d0e2e77cb5031887cc49a5"
+    },
+    "static/scenes/snowball/js/snowball/components/trajectory.js": {
+      "lines": 36,
+      "sha256": "4e87f2e0dccad053e24d658ba0bccb38363a1a56c247c2faf7bd52206ceacad4"
+    },
+    "static/scenes/snowball/js/snowball/components/trail.js": {
+      "lines": 28,
+      "sha256": "f2b181b2087fa14fa7d97500cc81c6dd16fde75c191e2c9d1bef6f1d328c6085"
+    },
+    "static/scenes/snowball/js/snowball/components/splat.js": {
+      "lines": 35,
+      "sha256": "8609c6aceb6a10c3f6d7de75622ddab674cfd612eb7bb7518e1a0b0f9bc63fe2"
+    },
+    "static/scenes/snowball/js/snowball/components/speed.js": {
+      "lines": 22,
+      "sha256": "c4962b20c238cb55787d86d863530c9adfc9249108fed2f93dae294da621048e"
+    },
+    "static/scenes/snowball/js/snowball/components/presence.js": {
+      "lines": 46,
+      "sha256": "6f8513b648efae9fe9c4cc6aa59a49180e2ebd7b6ad09c4fa3fa37158e1d9e76"
+    },
+    "static/scenes/snowball/js/snowball/components/powerup.js": {
+      "lines": 120,
+      "sha256": "685f22ecf8a5b18d6d52a20a4f3919578987d9c008a23ef5cdaae3d965600696"
+    },
+    "static/scenes/snowball/js/snowball/components/path.js": {
+      "lines": 39,
+      "sha256": "cd0d22a56343ea733c2880dea5b86e38fd91576e161ee9195e0666a91b68c447"
+    },
+    "static/scenes/snowball/js/snowball/components/health.js": {
+      "lines": 47,
+      "sha256": "912e9d5d5d0fdaea5d42a8921c98e955cabd67e40d701fc51a384f652ceaa5c4"
+    },
+    "static/scenes/snowball/js/snowball/components/game-map.js": {
+      "lines": 255,
+      "sha256": "a345fe09864dc60d56a926dd7dcae0224847a3cdfc50365fe4f280836c9a2c2c"
+    },
+    "static/scenes/snowball/js/snowball/components/contents.js": {
+      "lines": 33,
+      "sha256": "5bf65a6066d95405124c4a7f89e210b621acc2a09968d2bc1ac71bf1c20fdf6b"
+    },
+    "static/scenes/snowball/js/snowball/components/component.js": {
+      "lines": 24,
+      "sha256": "0838cddfc50a779e2bd45ecce0c15911f22883040bb93ce64c09387ba4bda76f"
+    },
+    "static/scenes/snowball/js/snowball/components/arrival.js": {
+      "lines": 39,
+      "sha256": "ec8d83b69b92298a2ad6a5b061af737b498e44e6ad0740a27c59f2f069413894"
+    }
+  }
+}

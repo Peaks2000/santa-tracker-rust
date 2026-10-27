@@ -640,10 +640,27 @@
       "user_happy": "unreviewed",
       "user_notes": "",
       "priority": "normal",
-      "agent_status": "not_started",
-      "agent_progress": "Original source available; no native scene implementation yet.",
-      "agent_known_issues": [],
-      "agent_evidence": []
+      "agent_status": "partial",
+      "agent_progress": "Added a playable native Snowball Storm local scene: original splash/intro, glTF skinned elf clips, hex island and independent seeded erosion, path movement, bots, snowballs/large powerups, parachutes/presents, particle/ice/teleport effects, host HUD and game-over. Original module oracles cover map/path/trajectory/powerup/quad formulas; 30 actual THREE poses verify all 2746 vertex positions. Mouse entry/arrival/movement, an isolated real pointer throw/sound event and a 150-second native simulation were exercised. Target remains 1:1; full mode is not certified.",
+      "agent_known_issues": [
+        "Full seeded match/random consumption, UUID and pooled actor/material/particle reuse do not yet match end to end.",
+        "Some collision registration/notification and arrival/removal ordering remains partial despite checked quad-tree candidate formulas.",
+        "Complete THREE action mixing/interruption/fall callbacks, model readiness/LOD animation phases and all normals/material raster combinations need comparisons.",
+        "Responsive intro/powerup phases, full touch/keyboard/accessibility and input octree ordering are not certified.",
+        "Particle-ring reuse, drop/frozen parent transforms and every effect phase need broader source comparisons.",
+        "Shared overlay focus/blur and exact audio group/bus/retrigger/scheduling remain unverified."
+      ],
+      "agent_evidence": [
+        "rust/SOURCE-COVERAGE.md",
+        "rust/data/snowball-function-inventory.json",
+        "rust/data/snowball-source-provenance.json",
+        "rust/data/snowball-reference.json",
+        "rust/data/snowball-skin-reference.json",
+        "rust/data/snowball-render-reference.json",
+        "rust/examples/snowball_capture.rs",
+        "rust/data/snowball-input-smoke.json",
+        "rust/data/snowball-raster-errors.json"
+      ]
     },
     {
       "id": "snowbox",

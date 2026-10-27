@@ -1,0 +1,10 @@
+{
+  "method": "Isolated imported original render-state geometry comparison at 1440x800. Original actors/models awaited; native imports source positions/maps/textures but omits presents/projectiles and resets animation phase. Not a seeded gameplay or full mode parity check.",
+  "size": [
+    1440,
+    800
+  ],
+  "mean_rgb_error_255": 0.35770688657407407,
+  "source_png_sha256": "f417f7f82b4edb17f5eab79f62666966db879b094d90e2308f18980eb548ca3b",
+  "native_png_sha256": "dc9f052534a5bb83c4f5a881c3a36932b23398550ef688b87e9ec5377e36892e"
+}

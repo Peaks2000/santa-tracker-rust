@@ -191,3 +191,16 @@ Elf Jetpack's level-up sky flash is corrected. For the GPU/source regression,
 run `cargo run --manifest-path rust/Cargo.toml --example jetpack_background_capture -- /tmp/jetpack-sky`.
 It requests 1440×800, checks twelve isolated gradient frames against original
 browser RGB samples and exports PNGs. It does not certify the remaining mode.
+
+
+Snowball Storm is available with `--scene snowball`. Click the parachute button, then click snow to move or another elf to throw a snowball. Presents supply three large snowballs. The original page starts a local bot match; no online service is required. Full 1:1 parity remains unfinished; see the existing coverage ledger and editable feedback.
+
+For an owned native render check:
+
+```sh
+cargo run --release --manifest-path rust/Cargo.toml --example snowball_capture -- /tmp/snowball-native.png 6
+```
+
+A third argument `reference` imports the measured original render state and textures for an isolated geometry comparison; it omits source presents/projectiles and resets animation phase. `input` opens a 40-second live diagnostic using production mouse controls. These diagnostics do not certify an entire match or all input/animation states.
+
+The diagnostic `reference-pointer` case holds the measured original state still and asserts that a real pointer click on an elf produces a local shot. It requires interactive input; it is not a simulated whole-match check.

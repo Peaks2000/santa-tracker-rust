@@ -139,3 +139,7 @@ pub mod codeboogie_stage;
 pub mod coding;
 pub mod coding_host;
 pub mod coding_user_code;
+
+pub mod snowball;
+
+pub mod snowball_collision;

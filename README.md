@@ -65,7 +65,7 @@ Similar means faithful and plays similar but their may be some obvious issues
 | Santa's Canvas | Unplayable |
 | Season of Giving | Unplayable |
 | Snow Dodgeball | Unplayable |
-| Snowball Storm | Unplayable |
+| Snowball Storm | Very similar |
 | Snowbox | Unplayable |
 | Street View | Unplayable |
 | Translations | Unplayable |

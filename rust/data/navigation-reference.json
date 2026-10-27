@@ -26,16 +26,16 @@
   {
     "route": "jetpack",
     "cards": [
-      "runner",
+      "boatload",
       "elfski"
     ],
-    "play": "runner"
+    "play": "boatload"
   },
   {
     "route": "modvil",
     "cards": [
       "elfski",
-      "runner"
+      "boatload"
     ],
     "play": "elfski"
   }

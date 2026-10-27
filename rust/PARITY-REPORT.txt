@@ -3,7 +3,7 @@ SANTA TRACKER RUST — FUNCTIONALITY AND PARITY STATUS
 Generated from PARITY-STATUS.json. Edit that file for your verdicts and notes.
 This report is evidence/progress, not a claim of complete 1:1 accuracy.
 
-Native scenes playable, with parity gaps: 13/55
+Native scenes playable, with parity gaps: 14/55
 Whole modes certified 1:1: 0
 Your overall verdict: unreviewed
 
@@ -87,6 +87,15 @@ Santa Selfie [santaselfie] — your verdict: unreviewed
   Remaining: Small SVG/filtering differences still need user review; no claim of complete edge parity.
   Remaining: All effect phases/viewports and original URL sharing remain incomplete.
 
+Snowball Storm [snowball] — your verdict: unreviewed
+  Progress: Added a playable native Snowball Storm local scene: original splash/intro, glTF skinned elf clips, hex island and independent seeded erosion, path movement, bots, snowballs/large powerups, parachutes/presents, particle/ice/teleport effects, host HUD and game-over. Original module oracles cover map/path/trajectory/powerup/quad formulas; 30 actual THREE poses verify all 2746 vertex positions. Mouse entry/arrival/movement, an isolated real pointer throw/sound event and a 150-second native simulation were exercised. Target remains 1:1; full mode is not certified.
+  Remaining: Full seeded match/random consumption, UUID and pooled actor/material/particle reuse do not yet match end to end.
+  Remaining: Some collision registration/notification and arrival/removal ordering remains partial despite checked quad-tree candidate formulas.
+  Remaining: Complete THREE action mixing/interruption/fall callbacks, model readiness/LOD animation phases and all normals/material raster combinations need comparisons.
+  Remaining: Responsive intro/powerup phases, full touch/keyboard/accessibility and input octree ordering are not certified.
+  Remaining: Particle-ring reuse, drop/frozen parent transforms and every effect phase need broader source comparisons.
+  Remaining: Shared overlay focus/blur and exact audio group/bus/retrigger/scheduling remain unverified.
+
 CHRISTMAS TRACKING — CORE TESTED; MAP/UI NOT IMPLEMENTED
 
 420 original scheduled stops; 3,020 source-JavaScript state comparisons pass.
@@ -135,7 +144,6 @@ NOT IMPLEMENTED AS NATIVE SCENES
 - Santa's Canvas [santascanvas] — no native scene; your verdict: unreviewed
 - Santa Search [santasearch] — no native scene; your verdict: unreviewed
 - Season of Giving [seasonofgiving] — no native scene; your verdict: unreviewed
-- Snowball Storm [snowball] — no native scene; your verdict: unreviewed
 - Snowbox [snowbox] — no native scene; your verdict: unreviewed
 - Snow Dodgeball [snowdodgeball] — no native scene; your verdict: unreviewed
 - Quick Draw [speedsketch] — no native scene; your verdict: unreviewed
