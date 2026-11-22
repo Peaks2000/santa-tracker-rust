@@ -1,0 +1,3731 @@
+{
+  "cases": [
+    {
+      "name": "irregular-frames-and-late-spawn",
+      "frames": [
+        {
+          "at": 0,
+          "added": [
+            {
+              "id": "p0",
+              "tile": 2090
+            },
+            {
+              "id": "d0",
+              "tile": 2000,
+              "scale": [
+                18.79700674253462,
+                12.592446755512388,
+                13.013592143465125
+              ],
+              "rotation": 0,
+              "z": 0
+            }
+          ],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": null,
+                "setup": false,
+                "handler": false,
+                "parent": null
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": null,
+                "setup": false,
+                "parent": null,
+                "rotation": 0,
+                "z": 0,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [],
+            "order": [],
+            "shots": [],
+            "canopies": []
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": null,
+                "setup": true,
+                "handler": false,
+                "parent": null
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": 0,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              }
+            ],
+            "undropped": [
+              "p0"
+            ],
+            "dropping": [
+              "d0"
+            ],
+            "order": [
+              "p0"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              }
+            ]
+          }
+        },
+        {
+          "at": 350,
+          "added": [],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": null,
+                "setup": true,
+                "handler": false,
+                "parent": null
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": 0,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              }
+            ],
+            "undropped": [
+              "p0"
+            ],
+            "dropping": [
+              "d0"
+            ],
+            "order": [
+              "p0"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              }
+            ]
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": 21,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": 0,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "d0",
+              "p0"
+            ],
+            "order": [
+              "p0"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  470.6
+                ],
+                "rotation": 0.08805955318567374
+              },
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              }
+            ]
+          }
+        },
+        {
+          "at": 1000,
+          "added": [
+            {
+              "id": "p1",
+              "tile": 2010
+            },
+            {
+              "id": "d1",
+              "tile": 2020,
+              "scale": [
+                12.297708009796496,
+                12.507684648403409,
+                13.322345005743706
+              ],
+              "rotation": 0,
+              "z": 0
+            }
+          ],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": 21,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": null,
+                "setup": false,
+                "handler": false,
+                "parent": null
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": 0,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": false,
+                "dropped": null,
+                "setup": false,
+                "parent": null,
+                "rotation": 0,
+                "z": 0,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "d0",
+              "p0"
+            ],
+            "order": [
+              "p0"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  470.6
+                ],
+                "rotation": 0.08805955318567374
+              },
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              }
+            ]
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": 21,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": null,
+                "setup": true,
+                "handler": false,
+                "parent": null
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": 0,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": false,
+                "dropped": 60,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [
+              "p1"
+            ],
+            "dropping": [
+              "d0",
+              "p0",
+              "d1"
+            ],
+            "order": [
+              "p0",
+              "p1"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  416
+                ],
+                "rotation": 0.07818314824680296
+              },
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  445.4
+                ],
+                "rotation": 0.09989930665413146
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              }
+            ]
+          }
+        },
+        {
+          "at": 4999,
+          "added": [],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": 21,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": null,
+                "setup": true,
+                "handler": false,
+                "parent": null
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": 0,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": false,
+                "dropped": 60,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [
+              "p1"
+            ],
+            "dropping": [
+              "d0",
+              "p0",
+              "d1"
+            ],
+            "order": [
+              "p0",
+              "p1"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  416
+                ],
+                "rotation": 0.07818314824680296
+              },
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  445.4
+                ],
+                "rotation": 0.09989930665413146
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              }
+            ]
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": 21,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": 0,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": false,
+                "dropped": 60,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "d0",
+              "p0",
+              "d1",
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  81.39999999999998
+                ],
+                "rotation": 0.002991546616939797
+              },
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  110.80000000000001
+                ],
+                "rotation": 0.06117242991150066
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  165.40000000000003
+                ],
+                "rotation": 0.09678347484506664
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              }
+            ]
+          }
+        },
+        {
+          "at": 5000,
+          "added": [],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": 21,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": 0,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": false,
+                "dropped": 60,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "d0",
+              "p0",
+              "d1",
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  81.39999999999998
+                ],
+                "rotation": 0.002991546616939797
+              },
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  110.80000000000001
+                ],
+                "rotation": 0.06117242991150066
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  165.40000000000003
+                ],
+                "rotation": 0.09678347484506664
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              }
+            ]
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": 21,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": null,
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": false,
+                "dropped": 60,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "p0",
+              "d1",
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  109.39999999999998
+                ],
+                "rotation": 0.058778525229247286
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  164
+                ],
+                "rotation": 0.09749279121818237
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  498.6
+                ],
+                "rotation": 0.04606424504506321
+              }
+            ]
+          }
+        },
+        {
+          "at": 5016.6667,
+          "added": [],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": 21,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": null,
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": false,
+                "dropped": 60,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "p0",
+              "d1",
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  109.39999999999998
+                ],
+                "rotation": 0.058778525229247286
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  164
+                ],
+                "rotation": 0.09749279121818237
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  498.6
+                ],
+                "rotation": 0.04606424504506321
+              }
+            ]
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": 21,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.01,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": false,
+                "dropped": 60,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "p0",
+              "d1",
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1",
+              "d0"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  108
+                ],
+                "rotation": 0.0563320058063622
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  162.60000000000002
+                ],
+                "rotation": 0.09811483833941725
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  497.2
+                ],
+                "rotation": 0.04869888244043666
+              }
+            ]
+          }
+        },
+        {
+          "at": 5350,
+          "added": [],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": 21,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.01,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": false,
+                "dropped": 60,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "p0",
+              "d1",
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1",
+              "d0"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  108
+                ],
+                "rotation": 0.0563320058063622
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  162.60000000000002
+                ],
+                "rotation": 0.09811483833941725
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  497.2
+                ],
+                "rotation": 0.04869888244043666
+              }
+            ]
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 21,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.02,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": false,
+                "dropped": 60,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "d1",
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1",
+              "d0"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  134.60000000000002
+                ],
+                "rotation": 0.0919527772551451
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  469.2
+                ],
+                "rotation": 0.08943774076663367
+              }
+            ]
+          }
+        },
+        {
+          "at": 5366.6667,
+          "added": [],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 21,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.02,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": false,
+                "dropped": 60,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "d1",
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1",
+              "d0"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  134.60000000000002
+                ],
+                "rotation": 0.0919527772551451
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  469.2
+                ],
+                "rotation": 0.08943774076663367
+              }
+            ]
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 21,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.03,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": false,
+                "dropped": 60,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "d1",
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1",
+              "d0"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  133.2
+                ],
+                "rotation": 0.09073586945678647
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  467.8
+                ],
+                "rotation": 0.09073586945678652
+              }
+            ]
+          }
+        },
+        {
+          "at": 6000,
+          "added": [],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 21,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.03,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": false,
+                "dropped": 60,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "d1",
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1",
+              "d0"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  133.2
+                ],
+                "rotation": 0.09073586945678647
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  467.8
+                ],
+                "rotation": 0.09073586945678652
+              }
+            ]
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 21,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.04,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": true,
+                "dropped": 60,
+                "setup": true,
+                "parent": null,
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1",
+              "d0"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  414.6
+                ],
+                "rotation": 0.07628295718622674
+              }
+            ]
+          }
+        },
+        {
+          "at": 6016.6667,
+          "added": [],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 21,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.04,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": true,
+                "dropped": 60,
+                "setup": true,
+                "parent": null,
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1",
+              "d0"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  414.6
+                ],
+                "rotation": 0.07628295718622674
+              }
+            ]
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 21,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.05,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": true,
+                "dropped": 60,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.01,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1",
+              "d0",
+              "d1"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  413.2
+                ],
+                "rotation": 0.07431448254773937
+              }
+            ]
+          }
+        },
+        {
+          "at": 6033.3334,
+          "added": [],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 21,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.05,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": true,
+                "dropped": 60,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.01,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1",
+              "d0",
+              "d1"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  413.2
+                ],
+                "rotation": 0.07431448254773937
+              }
+            ]
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 21,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.060000000000000005,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": true,
+                "dropped": 60,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.02,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1",
+              "d0",
+              "d1"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  411.8
+                ],
+                "rotation": 0.07227948638273914
+              }
+            ]
+          }
+        },
+        {
+          "at": 6350,
+          "added": [],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 21,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.060000000000000005,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": true,
+                "dropped": 60,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.02,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1",
+              "d0",
+              "d1"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  411.8
+                ],
+                "rotation": 0.07227948638273914
+              }
+            ]
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 21,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.07,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": true,
+                "dropped": 60,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.03,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1",
+              "d0",
+              "d1"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  385.2
+                ],
+                "rotation": 0.023708037771549614
+              }
+            ]
+          }
+        },
+        {
+          "at": 6366.6667,
+          "added": [],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 21,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.07,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": true,
+                "dropped": 60,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.03,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1",
+              "d0",
+              "d1"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  385.2
+                ],
+                "rotation": 0.023708037771549614
+              }
+            ]
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 21,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2010,
+                "arrived": false,
+                "dropped": 299,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.08,
+                "z": 32,
+                "scale": [
+                  18.79700674253462,
+                  12.592446755512388,
+                  13.013592143465125
+                ]
+              },
+              {
+                "id": "d1",
+                "pos": [
+                  -24,
+                  -267.5589098293674,
+                  0
+                ],
+                "tile": 2020,
+                "arrived": true,
+                "dropped": 60,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.04,
+                "z": 32,
+                "scale": [
+                  12.297708009796496,
+                  12.507684648403409,
+                  13.322345005743706
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1",
+              "d0",
+              "d1"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  383.8
+                ],
+                "rotation": 0.02079116908177594
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "target-reference-on-landing",
+      "frames": [
+        {
+          "at": 0,
+          "added": [
+            {
+              "id": "p0",
+              "tile": 2090
+            },
+            {
+              "id": "p1",
+              "tile": 2000
+            }
+          ],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": null,
+                "setup": false,
+                "handler": false,
+                "parent": null
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": null,
+                "setup": false,
+                "handler": false,
+                "parent": null
+              }
+            ],
+            "drops": [],
+            "undropped": [],
+            "dropping": [],
+            "order": [],
+            "shots": [],
+            "canopies": []
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": null,
+                "setup": true,
+                "handler": false,
+                "parent": null
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": null,
+                "setup": true,
+                "handler": false,
+                "parent": null
+              }
+            ],
+            "drops": [],
+            "undropped": [
+              "p0",
+              "p1"
+            ],
+            "dropping": [],
+            "order": [
+              "p0",
+              "p1"
+            ],
+            "shots": [],
+            "canopies": []
+          }
+        },
+        {
+          "at": 350,
+          "added": [],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": null,
+                "setup": true,
+                "handler": false,
+                "parent": null
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": null,
+                "setup": true,
+                "handler": false,
+                "parent": null
+              }
+            ],
+            "drops": [],
+            "undropped": [
+              "p0",
+              "p1"
+            ],
+            "dropping": [],
+            "order": [
+              "p0",
+              "p1"
+            ],
+            "shots": [],
+            "canopies": []
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": 21,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": 21,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [],
+            "undropped": [],
+            "dropping": [
+              "p0",
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              }
+            ]
+          }
+        },
+        {
+          "at": 5350,
+          "added": [],
+          "botLanding": true,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": 21,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": 21,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [],
+            "undropped": [],
+            "dropping": [
+              "p0",
+              "p1"
+            ],
+            "order": [
+              "p0",
+              "p1"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              }
+            ]
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 21,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              },
+              {
+                "id": "p1",
+                "pos": [
+                  -22.818968882513435,
+                  839.748276458589,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 21,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              }
+            ],
+            "drops": [],
+            "undropped": [],
+            "dropping": [],
+            "order": [
+              "p0",
+              "p1"
+            ],
+            "shots": [
+              {
+                "origin": [
+                  -24,
+                  840.953607014714
+                ],
+                "target": [
+                  24,
+                  -572.39985196149
+                ],
+                "setup": false
+              }
+            ],
+            "canopies": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "held-tick-and-large-jump",
+      "frames": [
+        {
+          "at": 0,
+          "added": [
+            {
+              "id": "p0",
+              "tile": 2090
+            },
+            {
+              "id": "d0",
+              "tile": 2000,
+              "scale": [
+                14.482876809508298,
+                12.12617230518293,
+                10.650392152553607
+              ],
+              "rotation": 0,
+              "z": 0
+            }
+          ],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": null,
+                "setup": false,
+                "handler": false,
+                "parent": null
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": null,
+                "setup": false,
+                "parent": null,
+                "rotation": 0,
+                "z": 0,
+                "scale": [
+                  14.482876809508298,
+                  12.12617230518293,
+                  10.650392152553607
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [],
+            "order": [],
+            "shots": [],
+            "canopies": []
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": null,
+                "setup": true,
+                "handler": false,
+                "parent": null
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": 0,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  14.482876809508298,
+                  12.12617230518293,
+                  10.650392152553607
+                ]
+              }
+            ],
+            "undropped": [
+              "p0"
+            ],
+            "dropping": [
+              "d0"
+            ],
+            "order": [
+              "p0"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              }
+            ]
+          }
+        },
+        {
+          "at": 0,
+          "added": [],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": null,
+                "setup": true,
+                "handler": false,
+                "parent": null
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": 0,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  14.482876809508298,
+                  12.12617230518293,
+                  10.650392152553607
+                ]
+              }
+            ],
+            "undropped": [
+              "p0"
+            ],
+            "dropping": [
+              "d0"
+            ],
+            "order": [
+              "p0"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              }
+            ]
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": 0,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": 0,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  14.482876809508298,
+                  12.12617230518293,
+                  10.650392152553607
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "d0",
+              "p0"
+            ],
+            "order": [
+              "p0"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              },
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              }
+            ]
+          }
+        },
+        {
+          "at": 0,
+          "added": [],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": 0,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": 0,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  14.482876809508298,
+                  12.12617230518293,
+                  10.650392152553607
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "d0",
+              "p0"
+            ],
+            "order": [
+              "p0"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              },
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              }
+            ]
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": 0,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": 0,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  14.482876809508298,
+                  12.12617230518293,
+                  10.650392152553607
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "d0",
+              "p0"
+            ],
+            "order": [
+              "p0"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              },
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              }
+            ]
+          }
+        },
+        {
+          "at": 7000,
+          "added": [],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": false,
+                "dropped": 0,
+                "setup": true,
+                "handler": false,
+                "parent": "parachute"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": false,
+                "dropped": 0,
+                "setup": true,
+                "parent": "parachute",
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  14.482876809508298,
+                  12.12617230518293,
+                  10.650392152553607
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "d0",
+              "p0"
+            ],
+            "order": [
+              "p0"
+            ],
+            "shots": [],
+            "canopies": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              },
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              }
+            ]
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": null,
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  14.482876809508298,
+                  12.12617230518293,
+                  10.650392152553607
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [],
+            "order": [
+              "p0"
+            ],
+            "shots": [],
+            "canopies": []
+          }
+        },
+        {
+          "at": 7000,
+          "added": [],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": null,
+                "rotation": 0,
+                "z": 32,
+                "scale": [
+                  14.482876809508298,
+                  12.12617230518293,
+                  10.650392152553607
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [],
+            "order": [
+              "p0"
+            ],
+            "shots": [],
+            "canopies": []
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.01,
+                "z": 32,
+                "scale": [
+                  14.482876809508298,
+                  12.12617230518293,
+                  10.650392152553607
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [],
+            "order": [
+              "p0",
+              "d0"
+            ],
+            "shots": [],
+            "canopies": []
+          }
+        },
+        {
+          "at": 7016.6667,
+          "added": [],
+          "botLanding": false,
+          "before": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.01,
+                "z": 32,
+                "scale": [
+                  14.482876809508298,
+                  12.12617230518293,
+                  10.650392152553607
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [],
+            "order": [
+              "p0",
+              "d0"
+            ],
+            "shots": [],
+            "canopies": []
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "tile": 2090,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "handler": true,
+                "parent": "map"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "tile": 2000,
+                "arrived": true,
+                "dropped": 0,
+                "setup": true,
+                "parent": "map",
+                "rotation": 0.02,
+                "z": 32,
+                "scale": [
+                  14.482876809508298,
+                  12.12617230518293,
+                  10.650392152553607
+                ]
+              }
+            ],
+            "undropped": [],
+            "dropping": [],
+            "order": [
+              "p0",
+              "d0"
+            ],
+            "shots": [],
+            "canopies": []
+          }
+        }
+      ]
+    }
+  ]
+}

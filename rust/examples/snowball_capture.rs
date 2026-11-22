@@ -77,6 +77,61 @@ async fn run() {
     }
     game.start();
     game.advance(seconds, 1440., 800.);
+    if let Some(tick) = args
+        .get(3)
+        .and_then(|s| s.strip_prefix("arrival-"))
+        .and_then(|s| s.parse::<u64>().ok())
+    {
+        use santa_tracker::{
+            snowball::V,
+            snowball_collision::Id,
+            snowball_parachute::{Canopy, Parachutes},
+        };
+        let data: serde_json::Value = serde_json::from_str(include_str!(
+            "../data/snowball-arrival-render-reference.json"
+        ))
+        .unwrap();
+        let row = data["frames"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .find(|r| r["tick"].as_u64() == Some(tick))
+            .unwrap();
+        game.players.clear();
+        game.shots.clear();
+        game.particles.clear();
+        game.drops.truncate(1);
+        game.map.states.fill(0);
+        game.map.obstacles.fill(-1);
+        game.splash_until = 0.;
+        game.time = tick as f64 / 0.06;
+        game.camera = V::new(
+            data["camera"][0].as_f64().unwrap(),
+            data["camera"][1].as_f64().unwrap(),
+        );
+        let d = &mut game.drops[0];
+        d.setup = true;
+        d.landed = false;
+        d.arrived = false;
+        d.gone = false;
+        d.frozen = false;
+        d.color = 0;
+        d.pos = V::default();
+        d.z = 32.;
+        d.rotation = 0.;
+        d.spin = None;
+        d.scale = std::array::from_fn(|i| data["scale"][i].as_f64().unwrap());
+        game.parachutes = Parachutes::default();
+        game.parachutes.canopies.push(Canopy {
+            entity: Id::Drop(0),
+            pos: V::new(
+                row["pos"][0].as_f64().unwrap(),
+                row["pos"][1].as_f64().unwrap(),
+            ),
+            z: row["pos"][2].as_f64().unwrap(),
+            rotation: row["rotation"].as_f64().unwrap(),
+        });
+    }
     if args
         .get(3)
         .is_some_and(|s| s == "reference" || s == "reference-pointer" || s.starts_with("action-"))
@@ -107,6 +162,7 @@ async fn run() {
             );
             p.tile = row["tile"].as_i64().unwrap() as i32;
             p.arrived = row["arrived"].as_bool().unwrap();
+            p.landed = p.arrived;
             p.alive = row["alive"].as_bool().unwrap();
             p.gone = false;
             p.frozen = false;

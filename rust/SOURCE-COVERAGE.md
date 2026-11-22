@@ -1337,7 +1337,7 @@ Target remains 1:1; this pass is **Very similar**, not certified 1:1. All own-sc
 | `models.js`, Elf texture and animation methods, actual GLTFLoader/Skeleton path | `snowball_model.rs`: original glTF/bin, skin weights/joints/inverse bind transforms, source linear/spherical interpolation, vertex colours, idle/run/throw/three falls. `snowball_view.rs`: original generated colour bands, cache key, source material/light parameters. | Complete THREE action interruption, thrown-action crossfades, fall callback timing, model loading/LOD phase and pooled material reuse remain partial. Selected pose position tests do not certify normals or every action combination. |
 | HexMap/Obstacles and shader partials | Source cylinder vertex/index fixture, 144-degree gimbal and actual camera orientation, original atlas/obstacle tilt, per-fragment tile tones/alpha, shaking/sinking/raised geometry and continuous meshes. | Large viewports, all erosion phases and transparent object ordering still need coverage. GPU batching avoids Macroquad geometry clamping. |
 | Snowball/BigSnowball, SnowballSystem, Trajectory, Trail/Splat and effects | Source 256px/42-frame distance-dependent shot, arc, ignored skew preserved, large radius/quantity, snowball rotation/colour shader, source trail/splat equations and textures. | Source preallocated particle-ring/random consumption, overlapping effects and collision/exhaustion removal ordering remain partial. |
-| Drop/DropSystem, Parachute/ParachuteSystem, Iceberg/EntityRemovalSystem | Original present geometry/colour bands/scales, 300-tick/420px descent, rocking parachute asset, pickups/300ms spin, 1500ms hold + 700ms teleport, frozen drift/bob/additive ice rendering. | Exact drop rotation/parent transforms, arrival frame offsets, pooled/delayed callbacks and all removal combinations need comparison. |
+| Drop/DropSystem, Parachute/ParachuteSystem, Iceberg/EntityRemovalSystem | Original present geometry/colour bands/scales, stored 300-tick/420px canopy state, source carry/arrival/reparent queues and parent rotation offset, rocking parachute asset, pickups/300ms spin, 1500ms hold + 700ms teleport, frozen drift/bob/additive ice rendering. | Normal carry/landing parent matrices and system-stage offsets are checked below. Freezing parents, resource/actor reuse, asynchronous LOD and full teardown/restart/removal overlaps still need comparison. |
 | Powerup UI/status, population UI | Original art, 128px frames and quantity icon transforms, 300ms transitions and 768px scaling. Population panel remains hidden, swapping click remains disabled, per source. | Phase/reversal/quantity geometry not yet measured across devices; scissor rounding can differ. |
 | NetworkSystem, Socket, messages, Network/Lobby levels/status | Reviewed, inactive in the actual entrypoint, which explicitly starts `local`. | No invented online service or multiplayer route is shipped. |
 | Audio calls and host chrome | Original existing Klang sample/group resolver supplies `snowball_throw`, hit, pickup, frozen, button, generic music. Home (not menu), no pause and no invented keyboard controls; gameplay continues behind disabled game-over. | Listening checks, exact group/retrigger/mixer/bus timing and shared overlay focus/blur are not certified. |
@@ -1501,3 +1501,63 @@ visual/effect phase coverage. The scene stays Very similar, target 1:1.
 
 The updated release builds, and a 150-second native simulation completes without panic.
 That smoke check does not certify full-match equivalence or all rendered phases.
+
+
+### Snowball Storm parachute and landing stages — 22 November 2026
+
+`src/snowball_parachute.rs` translates the active ParachuteSystem queue and
+stored canopy state. New Arrival.droppedTick starts at Infinity. DropSystem
+queues new presents before ParachuteSystem, whereas PlayerSystem queues new elves
+after it. Only the actual carry update sets droppedTick and resets local actor
+position, so an irregular next frame no longer uses a guessed +1 tick. Descent
+and sway use the exact source formulas without clamping a long frame. Rendering
+uses the last completed system state, since the original renders before systems.
+
+Arrival and joining the map are separate: elves are reparented later in the same
+system update, but presents remain detached until the next DropSystem update.
+That one render-frame absence is a source behavior, not filled with a fabricated
+landing pose. Registration and Elf handler activation follow those stages.
+Player movement/target processing follows landing; queued bot target positions
+retain their actor identity until the post-landing throw origin/target is read.
+
+The renderer now composes T(canopy) * Ry(sway) * T(0,0,-84) before actor/model
+transforms. The previous flattened translation lost the rotated carrying offset.
+Canopies draw independently of the carried actor's visibility, and the client's
+marker is hidden until arrival per Elf.update. Unparented newly allocated actors
+and detached landed presents do not render. Freezing/teleporting parent overlaps
+and asynchronous original LOD/model visibility still need work.
+
+Evidence and limits:
+
+- `snowball-arrival-reference.json` / provenance: four actual original
+  ParachuteSystem/Parachute/Arrival/THREE cases, 21 updates with before/after
+  queues, local resets, descent/sway, arrival, explicit cancellation/reuse and
+  the source teardown forEach/splice successor skip plus deferred detach.
+  Plain Object3D actors have explicit child transform inputs; no full gameplay
+  or LOD integration is asserted. Native state comparisons use 1e-9.
+- The production renderer's canopy, carrying-dolly and child matrices match
+  210 actual THREE matrices from those snapshots at tolerance 0.0003, reflecting
+  native Float32 GPU transforms. This checks parent composition, not all pixels.
+- `snowball-arrival-stages-reference.json` / provenance: three actual original
+  Player/Drop/Parachute/Collision sequences, 22 frames. Explicit tiles, held and
+  irregular ticks, late spawns and a long frame verify registration, local and
+  map positions, handler activation, detached/map/parent state, drop spin start
+  and both before-render and after-update queues. One actual Bot.update case
+  verifies a target position reference surviving same-frame landing. Random
+  selection is controlled and drop scales imported; maps are held passable.
+  Full spawn random consumption, bots/population, LOD/model loading, effects,
+  host/audio/erosion and restart are outside this fixture's scope.
+- `snowball-arrival-render-reference.json` and `snowball-arrival-raster-errors.json`:
+  four actual original and native 1440x800 present/parachute renders at ticks
+  0, 30, 130 and 299, with a blank map and explicit matching camera. The native
+  diagnostic imports measured canopy state to isolate parent rendering.
+  Whole-image mean RGB error is 0.00294–0.00391 / 255; the object-region errors
+  are 0.409–0.533 / 255. Original/native/difference crops were inspected. Small
+  edge filtering/raster differences remain. Both source textures were awaited;
+  an initial capture before canopy texture readiness was discarded. These are
+  isolated present/canopy phases, not scene-wide fidelity or loading certification.
+
+All 92 tests pass, the release builds, and a 150-second native simulation runs
+without panic. Full-match random/UUID/pooling, freezing parents, scene lifecycle,
+async LOD/loading, input/responsiveness, audio and other effect phases remain
+unfinished. Snowball Storm remains Very similar with a 1:1 target.

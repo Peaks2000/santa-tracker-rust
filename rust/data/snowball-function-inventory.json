@@ -2087,7 +2087,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/player-system.js",
       "lines": 277,
-      "review": "Actual original contact/powerup/update sequences verify repeated falls, collision removal and once-per-frame local pickup sound. Spawn/landing/destination/target queues and pooling still require full lifecycle matching.",
+      "review": "New-player setup/queue after ParachuteSystem, same-frame landing/reparent before movement/targeted throws, handler activation and target-position reference through landing checked against actual source. Earlier pickup batching/hit checks retained. Full spawn RNG/pooling/freezing/teardown lifecycle remains partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -2183,10 +2183,11 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/parachute-system.js",
       "lines": 131,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Native snowball_parachute.rs matches active FIFO carry/start ticks, stored descent/sway, arrival/free detach and remove/teardown queue quirks in 21 actual original updates. System-stage landing registration checked in 22 frames. Duplicate simultaneous redrops, full actor/resource reuse and scene teardown/restart are not certified.",
       "native": [
         "rust/src/snowball.rs",
-        "rust/src/snowball_view.rs"
+        "rust/src/snowball_view.rs",
+        "rust/src/snowball_parachute.rs"
       ],
       "functions": [
         {
@@ -2471,7 +2472,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/drop-system.js",
       "lines": 150,
-      "review": "Actual original landed contact/pickup/spin-removal sequences checked. Native registration is persistent at system stages; full parachute/new-drop/freezing/reuse cadence remains partial.",
+      "review": "Source new-drop setup/carry queue before ParachuteSystem, one-frame detached arrival then map attachment/collider registration checked against actual original stages. Earlier contact/pickup/spin checks retained. Frozen parents, pooled allocation/reuse and complete restart remain partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -3197,10 +3198,11 @@
     {
       "file": "static/scenes/snowball/js/snowball/entities/parachute.js",
       "lines": 95,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Original size64, graphic RxPI/6, dolly z-84, carry local reset and onFreed detach represented natively. Production parent/graphic/child matrices compared to 210 actual THREE matrices and four isolated pixel captures. LOD forwarding into original async model readiness and pooled material lifecycle remain partial.",
       "native": [
         "rust/src/snowball.rs",
-        "rust/src/snowball_view.rs"
+        "rust/src/snowball_view.rs",
+        "rust/src/snowball_parachute.rs"
       ],
       "functions": [
         {
@@ -3743,10 +3745,11 @@
     {
       "file": "static/scenes/snowball/js/snowball/components/arrival.js",
       "lines": 39,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Infinity default, actual droppedAt tick and arrive flags translated and checked with original carry/landing queues in held/irregular/long frames. isDropping has no active source callers and no separate native method; dropped/arrived state is retained.",
       "native": [
         "rust/src/snowball.rs",
-        "rust/src/snowball_view.rs"
+        "rust/src/snowball_view.rs",
+        "rust/src/snowball_parachute.rs"
       ],
       "functions": [
         {

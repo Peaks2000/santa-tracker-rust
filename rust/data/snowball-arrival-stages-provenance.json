@@ -1,0 +1,14 @@
+{
+  "method": "Unchanged actual original PlayerSystem, DropSystem, ParachuteSystem and Collision2DSystem with original Elf/Drop/Parachute/Arrival/THREE, canonical ?module imports. Before/after snapshots surround the source collision -> drop -> parachute -> player stages. Explicit spawn tiles, irregular wall times, held ticks and a long frame isolate queue/carry/landing/reparent/registration order. Map states held at 1; LOD/input/state counters are no-ops; one actual Bot.update landing-target case has explicit last target/path and fixed .8 throw selection; its queued target retains the actor position reference through PlayerSystem reparenting. No BotSystem population/random lifecycle, model loading, effects, client HUD, erosion, audio or restart is certified. Drop random scale is measured and imported by native tests; does not certify random consumption. Actual source rendering precedes system updates, so before state determines what can render.",
+  "files": {
+    "static/scenes/snowball/js/snowball/systems/player-system.js": "37e8c893a3643f5bc0940524ea23cc51a8ba9b575365d6ef555b9966836461b0",
+    "static/scenes/snowball/js/snowball/systems/drop-system.js": "d0230bcf979a736698ed41013451ebea345ee2d8b8580b59ea375880f55b1db2",
+    "static/scenes/snowball/js/snowball/systems/parachute-system.js": "c26622b7497d442c327eb903cdd8fff7a82456dd8b09caa4d1c7fa2a69bcd80b",
+    "static/scenes/snowball/js/snowball/entities/parachute.js": "5b85c84553f344efca726d6ca78ebc26c96f54d19c166f921589127605826728",
+    "static/scenes/snowball/js/snowball/entities/elf.js": "d5fd37bbe1201b63143898793fbe0b9e7036805e513b1af6aa4a48f0226f5cf2",
+    "static/scenes/snowball/js/snowball/entities/drop.js": "80e22ed1bd2af68ff7544a3d724848980cc7bd921317978ec0362cef56567a64",
+    "static/scenes/snowball/js/snowball-game.js": "48d4ced63ac0e39fe3010e80472d333d26d838a54c23a5841941fe42458d4d4f",
+    "static/scenes/snowball/js/snowball/entities/bot.js": "cfd847069244d475487af40edde7cb1a95f254f6ec6322b1fb55916d6508883e",
+    "static/scenes/snowball/js/snowball/entities/snowball.js": "3c0e0c2577486cf5c6827d8a178df4475c31ea34fa41c6860deabbcc5df15749"
+  }
+}

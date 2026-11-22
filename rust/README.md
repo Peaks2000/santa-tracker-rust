@@ -206,3 +206,5 @@ A third argument `reference` imports the measured original render state and text
 The diagnostic `reference-pointer` case holds the measured original state still and asserts that a real pointer click on an elf produces a local shot. It requires interactive input; it is not a simulated whole-match check.
 
 Snowball now retains source animation actions/callbacks through throws, movement changes and falls. The `snowball_capture` diagnostic also accepts `action-N` (for example `action-4`) to inspect a state from the first original animation sequence in the measured render layout. The animation fixture checks 650 mixer states, 42 ready-model elf updates and sampled scaled vertex/normal output; remaining pool/LOD/collision/input/audio scope is in the coverage ledger.
+
+For isolated parachute rendering, `snowball_capture /tmp/carry.png 0 arrival-130` imports a measured original present/canopy state on a blank map. Available ticks are 0, 30, 130 and 299. This checks parent transforms/rendering; it does not certify full-scene arrival, loading or input parity.

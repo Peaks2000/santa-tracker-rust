@@ -2,6 +2,7 @@
 //! Copyright 2020 Google LLC, Apache-2.0. Browser/network scaffolding is separate.
 use crate::random::Random;
 use crate::snowball_collision::{Bounds, Collision, Id};
+use crate::snowball_parachute::{Event as ParachuteEvent, Parachutes};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::f64::consts::{FRAC_PI_2, PI};
@@ -476,6 +477,7 @@ impl Powerups {
 #[derive(Clone)]
 pub struct Player {
     pub setup: bool,
+    pub landed: bool,
     pub collision_handler: bool,
     pub pos: V,
     pub z: f64,
@@ -544,6 +546,7 @@ impl Shot {
 }
 #[derive(Clone)]
 pub struct Drop {
+    pub setup: bool,
     pub landed: bool,
     pub colliding_player: Option<usize>,
     pub tile: i32,
@@ -577,6 +580,7 @@ pub enum Phase {
     Playing,
 }
 pub struct Snowball {
+    pub parachutes: Parachutes,
     pub map: Map,
     pub players: Vec<Player>,
     pub drops: Vec<Drop>,
@@ -611,6 +615,7 @@ impl Snowball {
         let mut random = Random::seeded(seed);
         let map_seed = (random.next() * 4294967296.) as u32;
         Self {
+            parachutes: Parachutes::default(),
             map: Map::new(Grid::default(), map_seed),
             players: vec![],
             drops: vec![],
@@ -668,6 +673,7 @@ impl Snowball {
         self.drops.clear();
         self.shots.clear();
         self.particles.clear();
+        self.parachutes = Parachutes::default();
         self.last_erode = 0.;
         self.last_drop = 0.;
         self.last_bot = 0.;
@@ -723,11 +729,12 @@ impl Snowball {
         let pony = self.random.next() >= 0.5;
         self.players.push(Player {
             setup: false,
+            landed: false,
             collision_handler: false,
             pos: V::default(),
             z: 0.,
             tile,
-            dropped: (self.time * 60. / 1000.).floor() + 1.,
+            dropped: f64::INFINITY,
             arrived: false,
             bot,
             path: vec![],
@@ -761,11 +768,12 @@ impl Snowball {
             self.random.next() * 5. + 10.,
         ];
         self.drops.push(Drop {
+            setup: false,
             landed: false,
             colliding_player: None,
             tile,
             pos: V::default(),
-            dropped: (self.time * 0.06).floor(),
+            dropped: f64::INFINITY,
             arrived: false,
             color,
             scale,
@@ -773,7 +781,7 @@ impl Snowball {
             spin: None,
             gone: false,
             frozen: false,
-            z: 32.,
+            z: 0.,
             freeze_at: 0.,
             ice: V::default(),
         })
@@ -860,6 +868,33 @@ impl Snowball {
             p.fall = (self.random.next() * 3.).floor() as usize + 1;
             p.animator.fall(p.fall, self.time);
             p.anim = format!("elf_rig_fall_down_{}", p.fall);
+        }
+    }
+    fn update_parachutes(&mut self, tick: f64) {
+        let grid = self.map.grid;
+        let events = self
+            .parachutes
+            .update(tick, 64., 300., 420., |id| match id {
+                Id::Player(i) => (grid.pos(self.players[i].tile), self.players[i].dropped),
+                Id::Drop(i) => (grid.pos(self.drops[i].tile), self.drops[i].dropped),
+                _ => unreachable!("Arrival component"),
+            });
+        for event in events {
+            match event {
+                ParachuteEvent::Carried(Id::Player(i), tick) => {
+                    self.players[i].pos = V::default();
+                    self.players[i].z = 0.;
+                    self.players[i].dropped = tick;
+                }
+                ParachuteEvent::Carried(Id::Drop(i), tick) => {
+                    self.drops[i].pos = V::default();
+                    self.drops[i].dropped = tick;
+                }
+                ParachuteEvent::Arrived(Id::Player(i)) => self.players[i].arrived = true,
+                ParachuteEvent::Arrived(Id::Drop(i)) => self.drops[i].arrived = true,
+                ParachuteEvent::Detached(_) => {}
+                _ => unreachable!("Arrival component"),
+            }
         }
     }
     pub fn advance(&mut self, seconds: f64, width: f64, height: f64) {
@@ -1074,9 +1109,11 @@ impl Snowball {
             .retain(|p| self.time - p.born < if p.trail { 700. } else { 300. });
         let mut collected_by_client = false;
         for (di, d) in self.drops.iter_mut().enumerate() {
-            if !d.arrived && tick - d.dropped >= 300. {
-                d.arrived = true;
-                d.pos = grid.pos(d.tile)
+            if !d.setup {
+                d.setup = true;
+                d.z = 32.;
+                d.rotation = 0.;
+                self.parachutes.drop_entity(Id::Drop(di));
             }
             if !d.arrived || d.gone {
                 if d.gone {
@@ -1086,6 +1123,7 @@ impl Snowball {
             }
             if !d.landed {
                 d.landed = true;
+                d.pos = grid.pos(d.tile);
                 self.collision.add(Id::Drop(di));
             }
             if d.frozen {
@@ -1121,6 +1159,7 @@ impl Snowball {
                 }
             }
         }
+        self.update_parachutes(tick);
         if self.players.first().is_some_and(|p| p.alive) {
             self.hud_knockouts = self.knocked_out;
             self.hud_time = self.time / 1000.;
@@ -1157,47 +1196,42 @@ impl Snowball {
             if let Some(j) = target {
                 if tick - p.last_throw > 40. {
                     if self.random.next() > 0.5 {
-                        throws.push((i, self.players[j].pos))
+                        throws.push((i, j))
                     }
                     self.players[i].last_throw = tick
                 }
             }
             self.players[i].last_target = target;
         }
-        for (i, p) in moves {
-            self.destination(i, p)
-        }
-        for (i, p) in throws {
-            self.throw(i, p)
-        }
         if collected_by_client {
             self.sounds.push("snowball_pickup");
         }
-        let mut freezing = vec![];
         for (i, p) in self.players.iter_mut().enumerate() {
             if !p.setup {
                 p.setup = true;
                 self.collision.add(Id::Player(i));
+                if !p.arrived {
+                    self.parachutes.drop_entity(Id::Player(i));
+                }
             }
+        }
+        for p in &mut self.players {
+            if p.arrived && !p.landed {
+                p.landed = true;
+                p.pos = grid.pos(p.tile);
+            }
+        }
+        for (i, p) in moves {
+            self.destination(i, p)
+        }
+        for (i, j) in throws {
+            self.throw(i, self.players[j].pos)
+        }
+        let mut freezing = vec![];
+        for (i, p) in self.players.iter_mut().enumerate() {
             if p.gone {
                 self.collision.remove(Id::Player(i));
                 continue;
-            }
-            if !p.arrived {
-                if tick - p.dropped >= 300. {
-                    p.arrived = true;
-                    p.pos = grid.pos(p.tile)
-                } else {
-                    if p.alive {
-                        p.animation("elf_rig_idle", self.time);
-                        if p.pending_throw {
-                            p.animator.mix_once("elf_rig_throw");
-                            p.pending_throw = false;
-                        }
-                    }
-                    p.animator.update(self.time);
-                    continue;
-                }
             }
             if p.arrived {
                 p.collision_handler = true;
@@ -1266,8 +1300,84 @@ pub fn circle_rect(c: V, r: f64, p: V, hw: f64, hh: f64) -> bool {
         && (x <= hw || y <= hh || (x - hw).powi(2) + (y - hh).powi(2) <= r * r)
 }
 #[cfg(test)]
-mod tests {
+pub(crate) mod tests {
     use super::*;
+    #[test]
+    fn arrival_stages_match_actual_player_drop_and_parachute_systems() {
+        let data: serde_json::Value = serde_json::from_str(include_str!(
+            "../data/snowball-arrival-stages-reference.json"
+        ))
+        .unwrap();
+        let label = |id: Id| match id {
+            Id::Player(i) => format!("p{i}"),
+            Id::Drop(i) => format!("d{i}"),
+            _ => unreachable!(),
+        };
+        for case in data["cases"].as_array().unwrap() {
+            let mut game = Snowball::new("arrival-stages");
+            game.map.obstacles.fill(-1);
+            game.map.states.fill(1);
+            game.reset_collisions();
+            let snapshot = |g: &Snowball| {
+                serde_json::json!({
+                    "players":g.players.iter().enumerate().map(|(i,p)|serde_json::json!({
+                        "id":format!("p{i}"),"pos":[p.pos.x,p.pos.y,p.z],"tile":p.tile,"arrived":p.arrived,
+                        "dropped":p.dropped.is_finite().then_some(p.dropped),"setup":p.setup,"handler":p.collision_handler,
+                        "parent":if p.landed{Some("map")}else{g.parachutes.get(Id::Player(i)).map(|_|"parachute")}
+                    })).collect::<Vec<_>>(),
+                    "drops":g.drops.iter().enumerate().map(|(i,d)|serde_json::json!({
+                        "id":format!("d{i}"),"pos":[d.pos.x,d.pos.y,0.],"tile":d.tile,"arrived":d.arrived,
+                        "dropped":d.dropped.is_finite().then_some(d.dropped),"setup":d.setup,
+                        "parent":if d.landed{Some("map")}else{g.parachutes.get(Id::Drop(i)).map(|_|"parachute")},
+                        "rotation":d.rotation,"z":d.z,"scale":d.scale
+                    })).collect::<Vec<_>>(),
+                    "undropped":g.parachutes.undropped.iter().copied().map(label).collect::<Vec<_>>(),
+                    "dropping":g.parachutes.dropping.iter().copied().map(label).collect::<Vec<_>>(),
+                    "order":g.collision.order.iter().copied().map(label).collect::<Vec<_>>(),
+                    "shots":g.shots.iter().map(|s|serde_json::json!({"origin":[s.origin.x,s.origin.y],"target":[s.target.x,s.target.y],"setup":s.setup})).collect::<Vec<_>>(),
+                    "canopies":g.parachutes.canopies.iter().map(|c|serde_json::json!({"id":label(c.entity),"pos":[c.pos.x,c.pos.y,c.z],"rotation":c.rotation})).collect::<Vec<_>>()
+                })
+            };
+            for frame in case["frames"].as_array().unwrap() {
+                game.time = frame["at"].as_f64().unwrap();
+                for added in frame["added"].as_array().unwrap() {
+                    let id = added["id"].as_str().unwrap();
+                    let tile = added["tile"].as_i64().unwrap() as i32;
+                    if id.starts_with('p') {
+                        game.add_player(false);
+                        game.players.last_mut().unwrap().tile = tile;
+                    } else {
+                        game.add_drop();
+                        let d = game.drops.last_mut().unwrap();
+                        d.tile = tile;
+                        d.scale = std::array::from_fn(|i| added["scale"][i].as_f64().unwrap());
+                        d.rotation = added["rotation"].as_f64().unwrap();
+                        d.z = added["z"].as_f64().unwrap();
+                    }
+                }
+                let path = format!("{} at {}", case["name"], frame["at"]);
+                assert_json_close(
+                    &snapshot(&game),
+                    &frame["before"],
+                    &format!("{path} before"),
+                );
+                if frame["botLanding"].as_bool().unwrap_or(false) {
+                    game.players[1].bot = true;
+                    game.players[1].path = vec![V::new(800., 0.)];
+                    game.players[1].last_target = Some(0);
+                    game.players[1].last_throw = (game.time * 0.06).floor() - 41.;
+                    game.random = (0..100)
+                        .find_map(|i| {
+                            let rng = Random::seeded(&format!("landing-throw-{i}"));
+                            (rng.clone().next() > 0.5).then_some(rng)
+                        })
+                        .unwrap();
+                }
+                game.finish_frame(1440., 800.);
+                assert_json_close(&snapshot(&game), &frame["after"], &format!("{path} after"));
+            }
+        }
+    }
     #[test]
     fn concrete_contact_actions_match_original_actor_and_system_handlers() {
         let data: serde_json::Value = serde_json::from_str(include_str!(
@@ -1301,6 +1411,7 @@ mod tests {
                 p.setup = true;
                 p.collision_handler = true;
                 p.arrived = true;
+                p.landed = true;
                 p.pos = point(&row["pos"]);
                 p.face = row["face"].as_f64().unwrap();
                 p.animation("elf_rig_idle", 0.);
@@ -1308,6 +1419,7 @@ mod tests {
             }
             for row in initial["drops"].as_array().unwrap() {
                 game.drops.push(Drop {
+                    setup: true,
                     landed: true,
                     colliding_player: None,
                     tile: 2080,
@@ -1400,7 +1512,7 @@ mod tests {
             }
         }
     }
-    fn assert_json_close(a: &serde_json::Value, b: &serde_json::Value, path: &str) {
+    pub(crate) fn assert_json_close(a: &serde_json::Value, b: &serde_json::Value, path: &str) {
         match (a, b) {
             (serde_json::Value::Number(a), serde_json::Value::Number(b)) => assert!(
                 (a.as_f64().unwrap() - b.as_f64().unwrap()).abs() < 1e-9,
@@ -1444,6 +1556,7 @@ mod tests {
             );
             game.players[0].face = case["initial"]["face"].as_f64().unwrap();
             game.players[0].arrived = true;
+            game.players[0].landed = true;
             for (index, row) in case["states"].as_array().unwrap().iter().enumerate() {
                 let op = &row["op"];
                 game.time = op["at"].as_f64().unwrap();

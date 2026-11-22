@@ -5,6 +5,8 @@ use macroquad::{
     prelude::*,
 };
 use santa_tracker::snowball::{Phase, Snowball, V};
+use santa_tracker::snowball_collision::Id;
+use santa_tracker::snowball_parachute::Canopy;
 use serde_json::Value;
 use std::{collections::HashMap, f32::consts::PI};
 const VERT: &str = r#"#version 100
@@ -333,6 +335,13 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
         let eye = vec3(g.camera.x as f32, g.camera.y as f32, -3200.);
         p * Mat4::look_at_rh(eye, eye + Vec3::Z, -Vec3::Y) * Mat4::from_rotation_x(4. * PI / 5.)
     }
+    fn canopy_matrix(c: &Canopy) -> Mat4 {
+        Mat4::from_translation(vec3(c.pos.x as f32, c.pos.y as f32, c.z as f32))
+            * Mat4::from_rotation_y(c.rotation as f32)
+    }
+    fn carried_matrix(c: &Canopy) -> Mat4 {
+        Self::canopy_matrix(c) * Mat4::from_translation(vec3(0., 0., -84.))
+    }
     fn deform(g: &Snowball, index: usize, mut p: Vec3) -> (Vec3, f32) {
         let elapsed = (g.time - g.map.times[index]) as f32;
         let mut alpha = 1.;
@@ -466,45 +475,45 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             indices: vec![],
             texture: Some(assets.scene("snowball", "parachute.png").clone()),
         };
-        for d in &g.drops {
+        for c in &g.parachutes.canopies {
+            Self::quad(
+                &mut parachutes,
+                vp,
+                Self::canopy_matrix(c) * Mat4::from_rotation_x(PI / 6.),
+                vec2(64., 64.),
+                Rect::new(0., 0., 1., 1.),
+                WHITE,
+            );
+        }
+        for (di, d) in g.drops.iter().enumerate() {
             if d.gone {
                 continue;
             }
-            let (pos, z, rotation) = if d.frozen {
+            let base = if d.frozen {
                 let tick = ((g.time - d.freeze_at) * 0.06).floor();
-                (
-                    d.ice,
-                    (tick / 10.).cos() * 32. * (1. - (tick / 75.).min(1.).powi(3) * 0.9) + 16.,
-                    0.,
-                )
-            } else if d.arrived {
-                (d.pos, d.z, 0.)
+                Mat4::from_translation(vec3(
+                    d.ice.x as f32,
+                    d.ice.y as f32,
+                    ((tick / 10.).cos() * 32. * (1. - (tick / 75.).min(1.).powi(3) * 0.9) + 16.)
+                        as f32,
+                ))
+            } else if d.landed {
+                Mat4::from_translation(vec3(d.pos.x as f32, d.pos.y as f32, d.z as f32))
+            } else if let Some(c) = g.parachutes.get(Id::Drop(di)) {
+                Self::carried_matrix(c)
+                    * Mat4::from_translation(vec3(d.pos.x as f32, d.pos.y as f32, d.z as f32))
             } else {
-                let t = ((g.time * 0.06).floor() - d.dropped) / 300.;
-                let z = 420. - t * 420.;
-                let pos = g.map.grid.pos(d.tile);
-                let angle = 0.1 * (z / (0.35 * 420.) * std::f64::consts::PI).sin();
-                let m = Mat4::from_translation(vec3(pos.x as f32, pos.y as f32, (z + 80.) as f32))
-                    * Mat4::from_rotation_y(angle as f32);
-                Self::quad(
-                    &mut parachutes,
-                    vp,
-                    m * Mat4::from_rotation_x(PI / 6.),
-                    vec2(64., 64.),
-                    Rect::new(0., 0., 1., 1.),
-                    WHITE,
-                );
-                (pos, z + 28., angle)
+                // Parachute.free detaches an arrived present one system update
+                // before DropSystem reparents it into the map.
+                continue;
             };
-            let model = Mat4::from_translation(vec3(pos.x as f32, pos.y as f32, z as f32))
-                * Mat4::from_rotation_y(rotation as f32)
-                * Mat4::from_quat(Quat::from_euler(
+            let model =
+                base * Mat4::from_quat(Quat::from_euler(
                     EulerRot::XYZ,
                     if d.frozen { PI / 2. } else { PI / 2.5 },
                     d.rotation as f32,
                     0.,
-                ))
-                * Mat4::from_scale(vec3(
+                )) * Mat4::from_scale(vec3(
                     d.scale[0] as f32,
                     d.scale[1] as f32,
                     d.scale[2] as f32,
@@ -528,36 +537,24 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             if p.gone {
                 continue;
             }
-            let mut pos = p.pos;
-            let mut z = 0.;
-            let mut para_rot = 0.;
-            if !p.arrived {
-                pos = g.map.grid.pos(p.tile);
-                let amount = 420. - ((g.time * 0.06).floor() - p.dropped) / 300. * 420.;
-                para_rot = 0.1 * (amount / (0.35 * 420.) * std::f64::consts::PI).sin();
-                z = amount - 4.;
-                let m =
-                    Mat4::from_translation(vec3(pos.x as f32, pos.y as f32, (amount + 80.) as f32))
-                        * Mat4::from_rotation_y(para_rot as f32);
-                Self::quad(
-                    &mut parachutes,
-                    vp,
-                    m * Mat4::from_rotation_x(PI / 6.),
-                    vec2(64., 64.),
-                    Rect::new(0., 0., 1., 1.),
-                    WHITE,
-                );
-            }
-            let mut extra = Mat4::IDENTITY;
-            if p.frozen {
-                let tick = (g.time - p.ice_start) * 0.06;
-                pos = p.ice;
-                z = (tick / 10.).cos() * 32. * (1. - (tick / 75.).min(1.).powi(3) * 0.9) - 16.;
-                extra = Mat4::from_rotation_z((tick / 500.).sin() as f32 * PI)
-            } else if !p.alive {
+            let mut z = p.z;
+            if !p.alive && !p.frozen {
                 z = ((g.time - p.death - 1500.) / 700.).clamp(0., 1.).powi(2) * 64. / 1.5;
             }
-            let screen = vp.transform_point3(vec3(pos.x as f32, pos.y as f32, z as f32));
+            let base = if p.frozen {
+                let tick = (g.time - p.ice_start) * 0.06;
+                let z = (tick / 10.).cos() * 32. * (1. - (tick / 75.).min(1.).powi(3) * 0.9) - 16.;
+                Mat4::from_translation(vec3(p.ice.x as f32, p.ice.y as f32, z as f32))
+                    * Mat4::from_rotation_z((tick / 500.).sin() as f32 * PI)
+            } else if p.landed {
+                Mat4::from_translation(vec3(p.pos.x as f32, p.pos.y as f32, z as f32))
+            } else if let Some(c) = g.parachutes.get(Id::Player(i)) {
+                Self::carried_matrix(c)
+                    * Mat4::from_translation(vec3(p.pos.x as f32, p.pos.y as f32, z as f32))
+            } else {
+                continue;
+            };
+            let screen = vp.transform_point3(base.transform_point3(Vec3::ZERO));
             if screen.x.abs() > 1.3 || screen.y.abs() > 1.5 {
                 continue;
             }
@@ -568,9 +565,7 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
                 .unwrap()
                 .mesh_pose_scaled(&p.animator.pose, 5.);
             mesh.texture = Some(texture);
-            let model = Mat4::from_translation(vec3(pos.x as f32, pos.y as f32, z as f32))
-                * Mat4::from_rotation_y(para_rot as f32)
-                * extra
+            let model = base
                 * Mat4::from_translation(vec3(0., -10., 19.))
                 * Mat4::from_quat(Quat::from_euler(
                     EulerRot::XYZ,
@@ -590,18 +585,13 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             gl_use_material(&self.lit);
             draw_batched(&mesh);
             gl_use_material(&self.clip);
-            if i == 0 && p.alive {
+            if i == 0 && p.alive && p.arrived {
                 let mut ring = Mesh {
                     vertices: vec![],
                     indices: vec![],
                     texture: None,
                 };
-                let at = if p.arrived {
-                    model * Mat4::from_rotation_x(-PI / 2.)
-                } else {
-                    Mat4::from_translation(vec3(pos.x as f32, pos.y as f32 - 10., 19.))
-                        * Mat4::from_rotation_x(PI / 2.25)
-                };
+                let at = model * Mat4::from_rotation_x(-PI / 2.);
                 for k in 0..=48 {
                     let a = k as f32 / 48. * 2. * PI;
                     for r in [15., 11.] {
@@ -1032,5 +1022,77 @@ fn draw_batched(mesh: &Mesh) {
             indices: local,
             texture: mesh.texture.clone(),
         });
+    }
+}
+
+#[cfg(test)]
+mod arrival_tests {
+    use super::*;
+    #[test]
+    fn canopy_and_carried_matrices_match_actual_three_hierarchy() {
+        let data: Value =
+            serde_json::from_str(include_str!("../data/snowball-arrival-reference.json")).unwrap();
+        let mut checked = 0;
+        for case in data["cases"].as_array().unwrap() {
+            for frame in case["frames"].as_array().unwrap() {
+                for phase in ["before", "after"] {
+                    for row in frame[phase]["canopies"].as_array().unwrap() {
+                        let id = row["id"].as_str().unwrap();
+                        let c = Canopy {
+                            entity: if id.starts_with('p') {
+                                Id::Player(0)
+                            } else {
+                                Id::Drop(0)
+                            },
+                            pos: V::new(
+                                row["pos"][0].as_f64().unwrap(),
+                                row["pos"][1].as_f64().unwrap(),
+                            ),
+                            z: row["pos"][2].as_f64().unwrap(),
+                            rotation: row["rotation"].as_f64().unwrap(),
+                        };
+                        let carried = SnowballView::carried_matrix(&c);
+                        let sample = if id.starts_with('p') {
+                            carried
+                                * Mat4::from_translation(vec3(0., -10., 19.))
+                                * Mat4::from_quat(Quat::from_euler(
+                                    EulerRot::XYZ,
+                                    PI / 2.25,
+                                    0.8,
+                                    0.,
+                                ))
+                        } else {
+                            carried
+                                * Mat4::from_translation(vec3(0., 0., 32.))
+                                * Mat4::from_quat(Quat::from_euler(
+                                    EulerRot::XYZ,
+                                    PI / 2.5,
+                                    0.2,
+                                    0.,
+                                ))
+                        };
+                        for (name, matrix) in [
+                            ("carried", carried),
+                            (
+                                "graphic",
+                                SnowballView::canopy_matrix(&c) * Mat4::from_rotation_x(PI / 6.),
+                            ),
+                            ("sample", sample),
+                        ] {
+                            for (i, a) in matrix.to_cols_array().into_iter().enumerate() {
+                                let b = row[name][i].as_f64().unwrap();
+                                assert!(
+                                    (a as f64 - b).abs() < 0.0003,
+                                    "{} {phase} {id} {name}[{i}]: {a} vs {b}",
+                                    case["name"]
+                                );
+                            }
+                            checked += 1;
+                        }
+                    }
+                }
+            }
+        }
+        assert!(checked > 100);
     }
 }

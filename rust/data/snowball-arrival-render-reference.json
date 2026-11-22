@@ -1,0 +1,51 @@
+{
+  "method": "Isolated actual original Drop/Parachute/ParachuteSystem and bundled THREE renderer. Blank map, explicit matching orthographic camera, no player/LOD/loading/effects/host/input path. Both generated present and network canopy texture readiness/decode awaited before capture. An initial first-frame capture before canopy texture readiness was discarded. Original carry/descent and material/geometry are unchanged. Native imports measured canopy state to isolate parent transform rendering; this is not a seeded full-scene comparison.",
+  "camera": [
+    24,
+    13.607695154586793
+  ],
+  "tile": 2080,
+  "scale": [
+    18,
+    16,
+    13
+  ],
+  "frames": [
+    {
+      "tick": 0,
+      "pos": [
+        24,
+        -18.143593539449057,
+        500
+      ],
+      "rotation": 0.043388373911755845
+    },
+    {
+      "tick": 30,
+      "pos": [
+        24,
+        -18.143593539449057,
+        458
+      ],
+      "rotation": 0.09749279121818238
+    },
+    {
+      "tick": 130,
+      "pos": [
+        24,
+        -18.143593539449057,
+        318
+      ],
+      "rotation": -0.09308737486442045
+    },
+    {
+      "tick": 299,
+      "pos": [
+        24,
+        -18.143593539449057,
+        81.39999999999998
+      ],
+      "rotation": 0.002991546616939797
+    }
+  ]
+}

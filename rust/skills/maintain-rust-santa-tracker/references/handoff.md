@@ -319,3 +319,42 @@ class identities and silently breaks instanceof-based pickup/death handlers.
 An initial contact run was discarded after debugger confirmation; final fixtures
 use canonical imports. Do not infer inactive handlers from a duplicate-module
 harness. Existing formula/shape tests do not depend on those instance checks.
+
+
+### Snowball carry/landing follow-up (22 November 2026)
+
+`src/snowball_parachute.rs` owns FIFO undropped/dropping/removed state and stored
+canopy transforms. Arrival.dropped starts Infinity, then actual ParachuteSystem
+carry sets it. DropSystem queues before parachute update; PlayerSystem queues
+after it. Never replace elf carry with allocationTick+1: frames can skip/hold
+clock ticks. `Player.landed` / `Drop.landed` distinguish map attachment from
+arrival. The present is detached for one render frame after arrival and is
+registered/reparented by next DropSystem. Elves reparent in the same PlayerSystem
+stage. Landing precedes queued destinations/targets; bot target actor identity
+must survive reparenting before the shot reads its position. `Drop.setup` also
+keeps pre-setup model state separate from its parachute-ready z32 pose.
+
+Render stored system state, not descent recalculated with the new render clock.
+`SnowballView::carried_matrix` is T(canopy)*Ry(sway)*T(0,0,-84); flattening its
+translation loses the rotated offset. Draw canopies independently of carried
+actor visibility. Hide unparented actors, detached presents and the local marker
+before arrival. Normal parent composition is checked; freezing/teleport parent
+reparenting, LOD/model readiness and full actor/resource pooling remain partial.
+
+Evidence: four actual original parachute cases/21 updates (including source
+teardown mutation/deferred detach), three actual player/drop/parachute collision
+stage cases/22 frames, 210 actual THREE matrices and four isolated present/canopy
+pixel comparisons. Read the provenance/scaffolds: explicit spawn tiles, passable
+map, controlled bot throw selection and imported drop scales do not certify a
+full seeded match. The `snowball_capture` example accepts `arrival-0`,
+`arrival-30`, `arrival-130`, `arrival-299` as third argument after output/seconds
+(use seconds 0); imports measured canopy state, clears map/players and renders
+only this isolated asset comparison. Those images have small edge differences;
+no whole-scene 1:1 claim follows.
+
+Source texture readiness must be checked before an isolated loaded-asset capture.
+When external requestAnimationFrame is held by a harness, Playwright's default
+RAF polling can stall readiness waits; use an explicit interval for that wait.
+A first incomplete canopy capture was discarded before final comparisons.
+
+The distribution rust/README.md has a deliberately native-only verification section that differs from the reference checkout. Sync specific diagnostic paragraphs there; replacing the whole file would introduce commands for reference tools that are not distributed.

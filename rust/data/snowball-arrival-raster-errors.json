@@ -1,0 +1,65 @@
+{
+  "scope": "Isolated original/native present and parachute, blank map, matched camera and imported source canopy states. Both source textures awaited; first incomplete-loading capture discarded. Does not certify full scene, async readiness, input/lifecycle or alpha ordering across other objects.",
+  "frames": [
+    {
+      "tick": 0,
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        676,
+        66,
+        765,
+        161
+      ],
+      "mae": 0.0035234375,
+      "roi_mae": 0.48007096392667065
+    },
+    {
+      "tick": 30,
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        676,
+        90,
+        765,
+        185
+      ],
+      "mae": 0.003909722222222222,
+      "roi_mae": 0.5327025428740391
+    },
+    {
+      "tick": 130,
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        675,
+        172,
+        764,
+        268
+      ],
+      "mae": 0.0036805555555555554,
+      "roi_mae": 0.49625468164794007
+    },
+    {
+      "tick": 299,
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        676,
+        312,
+        764,
+        406
+      ],
+      "mae": 0.0029383680555555556,
+      "roi_mae": 0.4092117988394584
+    }
+  ]
+}

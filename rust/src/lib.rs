@@ -145,3 +145,4 @@ pub mod snowball;
 pub mod snowball_collision;
 
 pub mod snowball_animation;
+pub mod snowball_parachute;

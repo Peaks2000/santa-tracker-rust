@@ -1,0 +1,9 @@
+{
+  "method": "Unchanged original ParachuteSystem/Parachute/Arrival and bundled THREE in Chromium with canonical ?module imports. RAF/time controlled. Plain Object3D actors start with explicit local position and sample child transforms; original carry/reset, pooled Parachute free/detach, arrival flags, queue order and world matrices run directly. LOD add/remove is recorded, not a full LodSystem integration. No active game collision/map erosion/audio/input/model readiness is certified. Source teardown forEach/splice skips are retained. Each before snapshot is the state before this systems update (the original renders before systems).",
+  "files": {
+    "static/scenes/snowball/js/snowball/systems/parachute-system.js": "c26622b7497d442c327eb903cdd8fff7a82456dd8b09caa4d1c7fa2a69bcd80b",
+    "static/scenes/snowball/js/snowball/entities/parachute.js": "5b85c84553f344efca726d6ca78ebc26c96f54d19c166f921589127605826728",
+    "static/scenes/snowball/js/snowball/components/arrival.js": "ec8d83b69b92298a2ad6a5b061af737b498e44e6ad0740a27c59f2f069413894",
+    "static/scenes/snowball/js/engine/utils/allocatable.js": "c4ab5759c61e9c933e3fb009cc6d3f59e0e83e5cb951444ba45b6a1c1c7ad628"
+  }
+}
