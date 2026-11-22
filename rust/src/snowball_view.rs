@@ -15,7 +15,7 @@ attribute vec3 position;attribute vec2 texcoord;attribute vec4 color0;attribute 
 void main(){gl_Position=vec4(position,1.0);uv=texcoord;tint=color0/255.0;data=normal;}"#;
 const FRAG: &str = r#"#version 100
 precision highp float;uniform sampler2D Texture;uniform vec3 diffuse;uniform float opacity;varying vec2 uv;varying vec4 tint;varying vec4 data;
-void main(){if(data.z==-1.){gl_FragColor=vec4(diffuse,opacity);return;}vec4 c=texture2D(Texture,uv)*tint;if(c.a<0.1)discard;gl_FragColor=c;}"#;
+void main(){if(data.z==-1.){gl_FragColor=vec4(diffuse,opacity);return;}vec4 c=texture2D(Texture,uv)*tint;if(data.z==-2.){c.a*=data.w;}else if(c.a<0.1)discard;gl_FragColor=c;}"#;
 pub struct SnowballView {
     model: Option<ElfModel>,
     shapes: crate::ui_render::Shapes,
@@ -488,6 +488,12 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
                 WHITE,
             );
         }
+        // Parachute's MeshBasicMaterial also has no alpha test. Keep the
+        // filtered translucent fringe, including its original depth writes.
+        for vertex in &mut parachutes.vertices {
+            vertex.normal.z = -2.;
+            vertex.normal.w = 1.;
+        }
         for (di, d) in g.drops.iter().enumerate() {
             let Some(base) = Self::actor_base(
                 g,
@@ -516,7 +522,12 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             let opacity = d.opacity as f32;
             for v in &mut gift.vertices {
                 v.position = vp.transform_point3(model.transform_point3(v.position));
-                v.color = Color::new(1., 1., 1., opacity).into()
+                v.color = WHITE.into();
+                // Drop uses MeshBasicMaterial with the default alphaTest=0.
+                // Only tree atlas fragments discard below .1. Keep opacity
+                // in a float attribute instead of quantizing it to color's u8.
+                v.normal.z = -2.;
+                v.normal.w = opacity;
             }
             draw_batched(&gift);
         }

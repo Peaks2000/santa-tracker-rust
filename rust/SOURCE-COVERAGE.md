@@ -2019,3 +2019,29 @@ approval changes follow this state-machine verification.
 
 Release validation: the application and snowball_capture diagnostic build. No
 window/GPU/input path was executed in this pass.
+
+
+### Snowball basic-material alpha correction (22 November 2026)
+
+Read complete Drop, Parachute, Obstacles and texture modules. Actual bundled
+THREE evaluated in CPU Node VM confirms MeshBasicMaterial alphaTest=0,
+opacity=1, depthWrite=true, premultipliedAlpha=false; both source gift/canopy
+materials are transparent and leave alphaTest unchanged. Obstacles instead
+explicitly discard texture*fade alpha below .1. The native shared clip shader
+previously applied that tree cutoff to gifts and parachutes too. It now selects
+a no-cutoff branch for those basic materials in the same existing pipeline.
+Gift opacity travels in a float attribute instead of a byte color, preserving
+the source continuous material fade. Canopy uses opacity=1. Marker and tree
+branches remain unchanged; no extra GPU pipeline is allocated.
+
+CPU array comparison also confirms all 72 position/48 UV/72 normal scalars and
+36 indices in the shared ski-present geometry exactly match Snowball Drop.
+The source maps still request linear/trilinear filtering; no unsupported
+sharpening or filter change was made. See snowball-basic-alpha-provenance.json
+for hashes and limits. No window, GPU or input was used. These corrections
+address a known fringe/late-fade mismatch, not proof of the reported fuzziness's
+cause. Transparent ordering, loaded materials/pools and GPU appearance remain
+unverified. No README rating or user approval changes.
+
+Release application build passes. Shader runtime/pixel comparison was not run;
+prior 102 state tests were not rerun for this render-only change.

@@ -1,0 +1,25 @@
+{
+  "method": "Complete drop/parachute/obstacles/textures source review plus CPU evaluation of the actual bundled THREE MeshBasicMaterial defaults. No window, GPU context or OS input.",
+  "source_material_defaults": {
+    "alphaTest": 0,
+    "opacity": 1,
+    "depthWrite": true,
+    "premultipliedAlpha": false,
+    "transparent": true
+  },
+  "before": "Shared native clip shader discarded all texture*opacity alpha values below .1; gift opacity additionally traveled through an unsigned-byte color.",
+  "after": "Gift and canopy vertices select the existing pipeline basic-material branch: no alpha discard, float opacity attribute. Tree atlas retains its original .1 discard; marker branch unchanged. No additional pipeline.",
+  "geometry_check": "All 72 positions, 48 UV scalars, 72 normals and 36 indices in shared ski-present-geometry.json equal Snowball Drop arrays.",
+  "limitations": [
+    "CPU defaults are observed; source shader expansion/material review is source tracing, not GPU verification.",
+    "This removes a known translucent-fringe and late-fade mismatch; it does not establish the cause of user-reported overall texture fuzziness.",
+    "Transparent sorting, full material/pool/loading lifecycle, actual GPU sampling/composition and whole-mode visual parity remain unverified."
+  ],
+  "source_sha256": {
+    "static/scenes/snowball/js/snowball/entities/drop.js": "80e22ed1bd2af68ff7544a3d724848980cc7bd921317978ec0362cef56567a64",
+    "static/scenes/snowball/js/snowball/entities/parachute.js": "5b85c84553f344efca726d6ca78ebc26c96f54d19c166f921589127605826728",
+    "static/scenes/snowball/js/snowball/entities/obstacles.js": "a0db76fe7d73e767803248bd565e0e9e5ab6cfcb36bb7d09bcb8a7bf49dd1f37",
+    "static/scenes/snowball/js/snowball/textures.js": "e910084cc44c6757f4daef16f1f2e2539fbd22b391ebab159f644dfdb7c59eb3",
+    "static/third_party/lib/three/build/three.js": "6467e0098991c58a5c6e64415c7126079672b4e0927c3203589644db96c64b60"
+  }
+}

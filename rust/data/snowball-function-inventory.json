@@ -2901,7 +2901,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/entities/drop.js",
       "lines": 210,
-      "review": "Stored spin opacity/rotation/model-z and frozen tilt follow source update stage; Presence and entity local z/parent separate from model z. Concrete freeze/teleport/landing overlap fixtures and isolated images verify selected states. Full pool/LOD/input/audio/scene reuse remains partial.",
+      "review": "Stored spin opacity/rotation/model-z and frozen tilt follow source update stage; Presence and entity local z/parent separate from model z. Concrete freeze/teleport/landing overlap fixtures and isolated images verify selected states. Full pool/LOD/input/audio/scene reuse remains partial.; source material alpha traced: Drop/Parachute retain default alphaTest=0, Obstacles explicit .1 discard; native uses separate branches within existing clip pipeline, GPU unverified",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -3209,7 +3209,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/entities/parachute.js",
       "lines": 95,
-      "review": "Original size64, graphic RxPI/6, dolly z-84, carry local reset and onFreed detach represented natively. Production parent/graphic/child matrices compared to 210 actual THREE matrices and four isolated pixel captures. LOD forwarding into original async model readiness and pooled material lifecycle remain partial. Bounded original core LOD/root/requested/ring-state comparisons now cover 46 frames plus 13 ring operations, including canopy forwarding and dead/dirty behavior. Actual async model completion, loaded opacity/actions, general duplicate registry/pool/restart and GPU rendering remain partial; SOURCE-COVERAGE records scope.",
+      "review": "Original size64, graphic RxPI/6, dolly z-84, carry local reset and onFreed detach represented natively. Production parent/graphic/child matrices compared to 210 actual THREE matrices and four isolated pixel captures. LOD forwarding into original async model readiness and pooled material lifecycle remain partial. Bounded original core LOD/root/requested/ring-state comparisons now cover 46 frames plus 13 ring operations, including canopy forwarding and dead/dirty behavior. Actual async model completion, loaded opacity/actions, general duplicate registry/pool/restart and GPU rendering remain partial; SOURCE-COVERAGE records scope.; source material alpha traced: Drop/Parachute retain default alphaTest=0, Obstacles explicit .1 discard; native uses separate branches within existing clip pipeline, GPU unverified",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs",
@@ -3247,7 +3247,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/entities/obstacles.js",
       "lines": 189,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; source material alpha traced: Drop/Parachute retain default alphaTest=0, Obstacles explicit .1 discard; native uses separate branches within existing clip pipeline, GPU unverified",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"

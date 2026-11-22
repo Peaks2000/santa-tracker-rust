@@ -604,3 +604,19 @@ Legacy frozen raster capture imports poses/textures, not LOD/readiness flags;
 it explicitly keeps root-visible isolation and restores its known living,
 arrived local ring. It was compiled, not run. Full loading/pools/materials/input
 and GPU appearance remain open. All 102 tests pass; do not infer mode 1:1.
+
+
+### Gift/canopy alpha pass (22 November 2026)
+
+No windows/input while the user plays. Complete Drop/Parachute/Obstacles source
+review and actual CPU bundled-THREE defaults show gift/canopy alphaTest=0;
+tree atlas alone explicitly cuts alpha below .1. The shared native clip shader
+now distinguishes these through data.z=-2 and float opacity in data.w. Gift
+color stays white to avoid u8 opacity quantization. Canopy uses 1. Marker -1
+branch and ordinary tree cutoff remain. No extra pipeline. All shared present
+geometry scalars/indices match Drop arrays. See basic-alpha provenance.
+This fixes known fringes/late fade; overall texture fuzziness is still unresolved
+and GPU rendering/transparent sorting/loading/pools remain unverified.
+
+Release application build passes. Shader runtime/pixel comparison was not run;
+prior 102 state tests were not rerun for this render-only change.
