@@ -2291,3 +2291,60 @@ no user approval/README rating change and no window/input/focus operation.
 
 Release application and snowball_capture diagnostic build. Neither was launched;
 GPU appearance remains unverified and user game/focus/input stayed untouched.
+
+
+### Snowball material blending, sidedness and plane winding (22 November 2026)
+
+Source Elf.initializeModel clones the glTF material/map and explicitly sets
+transparent=true. Native reused Ski's opaque standard pipeline (phong=false),
+so elf opacity/texture alpha did not blend like source. Snowball now supplies
+its own straight-alpha pipeline to the shared standard-shader factory. Ski's
+existing lit wrapper still passes precisely its former pipeline(phong), so no
+Ski material-setting change follows this pass. All source scene material kinds
+are transparent: default normal RGB SrcAlpha/OneMinusSrcAlpha and separate alpha
+One/OneMinusSrcAlpha, except additive iceberg whose blendFunc uses SrcAlpha/One
+for BOTH RGB and alpha. Native iceberg alpha previously used normal alpha factors.
+
+Source FrontSide applies to elf, hex tiles, obstacles, gift, canopy, player ring
+and arrival ring; destination, snowball, iceberg and both point effects use
+DoubleSide. Native pipelines previously culled nothing. Front-only kinds now
+use back-face culling/CCW; source default BACK cull selection and positive object
+world determinant rule were traced in THREE. Current glTF has no negative-scale
+nodes/matrix nodes or scale animation targets; arbitrary reflected transforms
+are NOT supported/certified by this fixed-policy pass. Source-render geometry
+and native projection/skin transform checks from prior passes remain bounded.
+
+The native generic plane/obstacle quads were clockwise and used a different
+diagonal. They now use source PlaneBufferGeometry triangles, remapped to native
+TL/TR/BR/BL storage as 0,3,1,3,2,1. This correction accompanies culling rather
+than enabling culling on oppositely wound geometry. Unit check compares actual
+source plane triangle positions and existing top-left-upload adapted UVs at two
+base offsets. Real GPU winding/clip/pixels remain unverified while user plays.
+
+Arrival ring shares the existing no-depth particle pipeline: fragment marker
+tag -1 discards !gl_FrontFacing; destination cross tag -4 allows both faces.
+Depth-tested player ring uses the culled clip pipeline. No new GPU pipeline;
+Macroquad's global 32-pipeline constraint is preserved. Native no-depth pipelines
+disable effective depth writes, matching GL behavior when depth test is disabled
+even though those source material.depthWrite properties remain true. No other
+texture filtering/size/timing or game logic changes. Full transparent sorting
+and every material/geometry interaction remain unfinished.
+
+CPU snowball-material-state-reference.cjs constructs actual original entities,
+client arrival marker and effects with bundled THREE and setup methods. Actual
+GLTFParser.loadMaterial executes with an image dependency adapter, then the
+source-reviewed Elf clone/transparent override is applied manually; this is NOT
+actual createElf/skeleton/async callback execution. Original extracted setMaterial,
+setBlending and setFlipSided function bodies execute unchanged with recording
+GL/state adapters, enum constants and caches reset unknown per kind. This
+records requested backend state, not WebGLState construction/real GL calls or
+call counts. Source initial BACK cull default is traced separately. The fixture
+supplies positive object-world determinant. Actual GPU output is not inferred.
+
+Production pipeline policy compares cull/front/depth and RGB/alpha blend factors
+to those recorded source function results for all 12 kinds. All 109 tests pass
+(98 library + 11 binary); release application and snowball_capture diagnostic
+build. Neither was launched. Texture/model readiness, driver front-face behavior,
+source callback/full object identity, global transparency sorting and all pixels
+remain unverified. Source/provenance JSON records hashes and precise scope.
+No window/focus/input change, user approval change or README rating change.

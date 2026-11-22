@@ -737,3 +737,28 @@ All 107 tests pass; no window/browser/GPU/input. Whole mode/site 1:1 unfinished.
 
 Release application and snowball_capture diagnostic build. Neither was launched;
 GPU appearance remains unverified and user game/focus/input stayed untouched.
+
+
+### Material transparency and winding pass (22 November 2026)
+
+Snowball elf now supplies source transparent pipeline instead of Ski's opaque
+standard config. Ski lit wrapper preserves former pipeline(phong); new
+lit_configured accepts Snowball params. snowball_material::pipeline covers 12
+kinds: FrontSide elf/tile/tree/gift/canopy/rings; DoubleSide destination/projectile/
+iceberg/points. Ice additive alpha now SrcAlpha/One like RGB. Other alpha normal.
+
+Generic quad/tree triangles now 0,3,1,3,2,1 for native TL/TR/BR/BL storage, matching
+actual THREE plane topology before culling. Front-only clip/lit/tile pipelines
+cull Back/CCW. Arrival ring uses gl_FrontFacing discard in existing no-depth
+particle material (tag -1), destination tag -4 remains double-sided. No extra
+pipeline. Effective depth writes off when depth test disabled.
+
+Source CPU fixture: actual constructors/setup, GLTFParser.loadMaterial with image
+I/O adapter + manually applied source-reviewed Elf clone/transparent override.
+No real Elf callback/model readiness. Extracted original backend setMaterial/
+setBlending/setFlipSided bodies run against recording adapters, caches reset
+unknown per kind. Not real GL/WebGLState constructor or call counts. 12 source
+configurations and actual plane triangles compare to production policy/helpers.
+All 109 tests pass; release app/capture build, not run. Positive determinants
+only; arbitrary reflections, GPU winding/coverage/pixels, full sorting/readiness
+and whole-mode/site 1:1 remain unverified. See material-state reference/provenance.

@@ -40,6 +40,9 @@ fn pipeline(blend: bool) -> PipelineParams {
     }
 }
 pub(crate) fn lit(vertex: &str, fragment: &str, phong: bool) -> Result<Material, String> {
+    lit_configured(vertex, fragment, phong, pipeline(phong))
+}
+pub(crate) fn lit_configured(vertex: &str, fragment: &str, phong: bool, params: PipelineParams) -> Result<Material, String> {
     let mut uniforms = vec![];
     for name in [
         "modelMatrix",
@@ -84,7 +87,7 @@ pub(crate) fn lit(vertex: &str, fragment: &str, phong: bool) -> Result<Material,
         ShaderSource::Glsl { vertex, fragment },
         MaterialParams {
             uniforms,
-            pipeline_params: pipeline(phong),
+            pipeline_params: params,
             ..Default::default()
         },
     )

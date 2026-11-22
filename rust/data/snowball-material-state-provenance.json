@@ -1,0 +1,38 @@
+{
+  "fixture": "snowball-material-state-reference.json",
+  "changes": [
+    "Snowball elf now uses source transparent straight-alpha pipeline rather than inherited opaque Ski standard pipeline. Ski lit wrapper keeps the original pipeline(phong) configuration.",
+    "Front-side culling for tiles, obstacles, gifts, canopies, elf and depth-tested player ring. Arrival ring front culling emulated via gl_FrontFacing in existing no-depth particle pipeline; double-side destination uses distinct -4 tag.",
+    "Source double-side snowballs/icebergs/point effects retained; additive iceberg alpha uses SourceAlpha/One like RGB, matching original blendFunc.",
+    "Quad indices and vertices now use actual source PlaneBufferGeometry triangle order, remapped to native TL/TR/BR/BL vertex storage; necessary before enabling culling. No additional pipeline allocated."
+  ],
+  "source_execution": "12 original constructor/material configurations; GLTFParser.loadMaterial executes with image dependency adapter, then source-reviewed Elf material clone/transparent override is applied manually. Extracted unchanged setMaterial/setBlending/setFlipSided bodies record adapter GL calls; cache variables reset unknown per material. This is requested backend state, not real GL execution/call counts. Source initial BACK cull-face default traced separately.",
+  "checks": "Production pipeline helper compared to source cull/front/depth and RGB/alpha factors for all 12 kinds. Production quad vertices/indices compare to actual THREE plane triangle positions and adapted UVs at two base offsets.",
+  "gltf_static": {
+    "negativeScaleNodes": 0,
+    "matrixNodes": 0
+  },
+  "limits": [
+    "No GPU, shader execution, pixel/coverage, actual driver winding or full transparency sorting check.",
+    "Assumes positive object-world determinant, as used by current source scene transforms; arbitrary reflections/negative scales are not covered.",
+    "Original model loading/cloning callback and skeleton readiness not executed by material fixture; Elf override is source-traced.",
+    "Plane UV adapter preserves existing native top-left texture upload convention; actual sample orientation/filtering is unverified.",
+    "Source depthWrite remains true for no-depth materials; native disables effective writes because GL depth test is disabled.",
+    "Whole-mode/site 1:1 and user texture-clarity report remain unfinished."
+  ],
+  "reviewed_source_sha256": {
+    "static/scenes/snowball/js/snowball/entities/elf.js": "d5fd37bbe1201b63143898793fbe0b9e7036805e513b1af6aa4a48f0226f5cf2",
+    "static/scenes/snowball/js/snowball/entities/player-marker.js": "9ea345e315ba34920fe325e9a3e4083adab61a5a2d0d092cb22b92ec7341f544",
+    "static/scenes/snowball/js/snowball/entities/destination-marker.js": "60ec3e652c38b625c939d9831ebcb526cddb4c7141997ba471ed3b58ed696e5d",
+    "static/scenes/snowball/js/snowball/entities/hex-map.js": "c9514ce0783d4f18d9b7229606b3443de68b6ad173886631c6a53c46dfcf6c3e",
+    "static/scenes/snowball/js/snowball/entities/obstacles.js": "a0db76fe7d73e767803248bd565e0e9e5ab6cfcb36bb7d09bcb8a7bf49dd1f37",
+    "static/scenes/snowball/js/snowball/entities/drop.js": "80e22ed1bd2af68ff7544a3d724848980cc7bd921317978ec0362cef56567a64",
+    "static/scenes/snowball/js/snowball/entities/parachute.js": "5b85c84553f344efca726d6ca78ebc26c96f54d19c166f921589127605826728",
+    "static/scenes/snowball/js/snowball/entities/snowball.js": "3c0e0c2577486cf5c6827d8a178df4475c31ea34fa41c6860deabbcc5df15749",
+    "static/scenes/snowball/js/snowball/entities/iceberg.js": "6d6e9c5a4a9516db6b48b4532d2ddc035104d65b322299aa98bc2b67151990b5",
+    "static/scenes/snowball/js/snowball/systems/client-system.js": "0f8aded75ed447fbfede07eaa10485180aa54d1e2de101ba9a6a77fe7a0aa7d8",
+    "static/scenes/snowball/models/elf-animated.gltf": "966bb82acfcae90daccbfe86acb8df28fffdec62ebc6a649f6c21b3bdf538f4d",
+    "static/third_party/lib/three/build/three.js": "6467e0098991c58a5c6e64415c7126079672b4e0927c3203589644db96c64b60",
+    "static/third_party/lib/three/examples/js/loaders/GLTFLoader.js": "d679f38015daeaefec97ada4792f356f939597fe4c68d573c1743704bc1ec3dc"
+  }
+}
