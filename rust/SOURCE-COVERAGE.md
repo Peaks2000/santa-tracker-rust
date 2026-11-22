@@ -2236,3 +2236,58 @@ approval change. See projectile reference/provenance JSON for hashes and scope.
 
 Release application and snowball_capture diagnostic build. No window or GPU
 check was run; user game/focus/input stayed untouched.
+
+
+### Map performance clock and float fade attributes (22 November 2026)
+
+Read complete GameMap, HexMap, Obstacles, MapSystem, shader partials and active
+LocalLevel->GameMap erosion path. GameMap.setTileState writes performance.now()
+through a Float32 InstancedBufferAttribute. Raised tiles use this setter during
+construction too. HexMap.update and Obstacles.update store performance.now(),
+not ClockSystem.time. Performance namespace continues across index.js new Game,
+whereas projectile/effect game clock resets. Source Game renders before the
+MapSystem uniform update; a LocalLevel tile transition can therefore be newer
+than the stored shader time in that render. Preserve the negative elapsed value
+and source fade/scale expressions instead of clamping time or advancing clocks.
+
+Native Map::new_at/set_state now retain float32 timestamps. Map::new remains
+the time-zero controlled constructor. Runtime uses scene-monotonic wall for map
+creation/erosion, separate from match-relative self.time. Stored hex/obstacle
+shader times initialize/reset to zero and update after Effects at the Map stage;
+render tone/deformation uses those stored times, with separate f32 casts before
+time subtraction. Native logical wall is the model of supplied performance time,
+not proof of exact browser navigation/load/host/background clock alignment or
+within-frame multiple performance getter timings. Those remain unverified.
+
+Tile fragment fade previously traveled through vertex color's u8 alpha. It now
+travels through unused float UV.x. Tree fade uses float normal.w with tag -3,
+then the original .1 alpha cutoff; gift/canopy tag -2 still has no cutoff and
+marker -1 keeps its uniform color. Tile side alpha and highlight/raised tones
+remain in the original fragment expressions. No new pipeline/filter/texture-size
+change. These are source-traced corrections; shader/CPU float transcendental,
+coverage and actual alpha behavior have NOT been verified with GPU captures.
+The exported erode shader helper is not imported by HexMap/Obstacles; their
+active formulas are shake/sink/fade, so it is not silently substituted.
+
+CPU snowball-map-clock-reference.cjs executes actual original setup/rebuild,
+GameMap setters/erosion, MapSystem updates and teardown/reconstruction with
+bundled THREE attributes/materials. Source performance clock is constant per
+stage and independent of supplied relative game time; input/collision sinks are
+inert, TextureLoader image I/O returns an empty texture handle. Ten frames cover
+4096 initial tile state/time pairs, 203 changed pairs, fractional timestamps,
+10-million-ms precision, erosion RNG, newer transitions versus old shader clocks
+and restart. Native reconstructs and compares ALL 4096 pairs before/after real
+finish_frame each frame, plus erosion RNG and both material clocks. This proves
+bounded JS state and typed-array timing, not GLSL execution or all-map rendering.
+Fixture restart reconstructs MapSystem; full Game/host lifetime is traced apart.
+
+The legacy frozen full-reference capture explicitly imports wall and both map
+shader clocks: its original exporter performed two updates at time=6000 and
+then explicit rendering at that same supplied performance timestamp. Other
+isolated blank-map captures are unaffected. Diagnostic changed/built, not run
+while the user plays. All 107 tests pass (96 library + 11 binary). Complete
+map/input/render/clock/loading parity and overall texture clarity remain open;
+no user approval/README rating change and no window/input/focus operation.
+
+Release application and snowball_capture diagnostic build. Neither was launched;
+GPU appearance remains unverified and user game/focus/input stayed untouched.

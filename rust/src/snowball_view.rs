@@ -15,7 +15,7 @@ attribute vec3 position;attribute vec2 texcoord;attribute vec4 color0;attribute 
 void main(){gl_Position=vec4(position,1.0);uv=texcoord;tint=color0/255.0;data=normal;}"#;
 const FRAG: &str = r#"#version 100
 precision highp float;uniform sampler2D Texture;uniform vec3 diffuse;uniform float opacity;varying vec2 uv;varying vec4 tint;varying vec4 data;
-void main(){if(data.z==-1.){gl_FragColor=vec4(diffuse,opacity);return;}vec4 c=texture2D(Texture,uv)*tint;if(data.z==-2.){c.a*=data.w;}else if(c.a<0.1)discard;gl_FragColor=c;}"#;
+void main(){if(data.z==-1.){gl_FragColor=vec4(diffuse,opacity);return;}vec4 c=texture2D(Texture,uv)*tint;if(data.z==-2.||data.z==-3.)c.a*=data.w;if(data.z!=-2.&&c.a<0.1)discard;gl_FragColor=c;}"#;
 pub struct SnowballView {
     model: Option<ElfModel>,
     shapes: crate::ui_render::Shapes,
@@ -138,7 +138,7 @@ void main(){gl_Position=vec4(position,1.0);uv=texcoord;tint=color0/255.0;data=no
         let tile = make(
             r#"#version 100
 precision highp float;varying vec2 uv;varying vec4 tint;varying vec4 data;uniform float Time;
-void main(){vec4 color=data.w==5.0?vec4(.94,.97,1.,1.):vec4(1.);if(data.y<.5)color=vec4(.8,.87,.86,1.)+data.y/7.;if(data.w==2.){float t=.15+abs(sin(Time/300.))*.15;color.rgb*=vec3(1.-.45*t,1.-.75*t,1.);}gl_FragColor=vec4(color.rgb,color.a*tint.a);}"#,
+void main(){vec4 color=data.w==5.0?vec4(.94,.97,1.,1.):vec4(1.);if(data.y<.5)color=vec4(.8,.87,.86,1.)+data.y/7.;if(data.w==2.){float t=.15+abs(sin(Time/300.))*.15;color.rgb*=vec3(1.-.45*t,1.-.75*t,1.);}gl_FragColor=vec4(color.rgb,color.a*uv.x);}"#,
             false,
             true,
             vec![UniformDesc::new("Time", UniformType::Float1)],
@@ -344,8 +344,8 @@ void main(){float time=data.y;float a=time/(1000.+5000.*data.x)*3.14159*2.;vec2 
         };
         Some(parent * Mat4::from_translation(local))
     }
-    fn deform(g: &Snowball, index: usize, mut p: Vec3) -> (Vec3, f32) {
-        let elapsed = (g.time - g.map.times[index]) as f32;
+    fn deform(g: &Snowball, index: usize, mut p: Vec3, time: f64) -> (Vec3, f32) {
+        let elapsed = time as f32 - g.map.times[index] as f32;
         let mut alpha = 1.;
         match g.map.states[index] {
             3 => p.x += (elapsed / 70. * PI).sin(),
@@ -411,7 +411,7 @@ void main(){float time=data.y;float a=time/(1000.+5000.*data.x)*3.14159*2.;vec2 
                 continue;
             }
             if tiles.vertices.len() + self.hex.vertices.len() > 60000 {
-                self.tile.set_uniform("Time", g.time as f32);
+                self.tile.set_uniform("Time", g.map_shader_time as f32);
                 gl_use_material(&self.tile);
                 draw_batched(&tiles);
                 gl_use_material(&self.clip);
@@ -426,16 +426,11 @@ void main(){float time=data.y;float a=time/(1000.+5000.*data.x)*3.14159*2.;vec2 
                 if state == 5 && pos.z > 0. {
                     pos.z *= 3.
                 }
-                let (d, a) = Self::deform(g, i, pos + origin);
+                let (d, a) = Self::deform(g, i, pos + origin, g.map_shader_time);
                 alpha = a;
-                let c = if p.y < 0.5 {
-                    Color::new(0.8 + p.y / 7., 0.87 + p.y / 7., 0.86 + p.y / 7., a)
-                } else if state == 5 {
-                    Color::new(0.94, 0.97, 1., a)
-                } else {
-                    Color::new(1., 1., 1., a)
-                };
-                let mut vertex = Vertex::new2(vp.transform_point3(d), Vec2::ZERO, c);
+                // The source fragment multiplies float fade by its side alpha.
+                // UV is unused by tile color; carry fade without a u8 roundtrip.
+                let mut vertex = Vertex::new2(vp.transform_point3(d), vec2(a, 0.), WHITE);
                 vertex.normal = p.extend(state as f32);
                 tiles.vertices.push(vertex)
             }
@@ -457,17 +452,18 @@ void main(){float time=data.y;float a=time/(1000.+5000.*data.x)*3.14159*2.;vec2 
                             p.y * 64. * (PI / 6.).cos() + g.map.grid.cell_height() as f32 / 2.,
                             p.y * 32. + 48.,
                         );
-                    let (pos, a) = Self::deform(g, i, pos);
-                    trees.vertices.push(Vertex::new2(
-                        vp.transform_point3(pos),
-                        uv + vec2(ob / 4., 0.),
-                        Color::new(1., 1., 1., a),
-                    ));
+                    let (pos, a) = Self::deform(g, i, pos, g.obstacle_shader_time);
+                    let mut vertex = Vertex::new2(
+                        vp.transform_point3(pos), uv + vec2(ob / 4., 0.), WHITE,
+                    );
+                    // Atlas alpha cutoff stays .1, after float fade multiplication.
+                    vertex.normal = vec4(0., 0., -3., a);
+                    trees.vertices.push(vertex);
                 }
                 trees.indices.extend([n, n + 1, n + 2, n, n + 2, n + 3]);
             }
         }
-        self.tile.set_uniform("Time", g.time as f32);
+        self.tile.set_uniform("Time", g.map_shader_time as f32);
         gl_use_material(&self.tile);
         draw_batched(&tiles);
         gl_use_material(&self.clip);

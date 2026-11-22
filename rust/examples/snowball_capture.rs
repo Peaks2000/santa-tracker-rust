@@ -247,6 +247,11 @@ async fn run() {
             serde_json::from_str(include_str!("../data/snowball-render-reference.json")).unwrap();
         game.map = Map::new(Grid::default(), 1);
         game.time = data["time"].as_f64().unwrap();
+        // The original exporter updated the map twice at this frozen
+        // performance timestamp, then explicitly rendered that stored state.
+        game.wall = game.time;
+        game.map_shader_time = game.time;
+        game.obstacle_shader_time = game.time;
         game.splash_until = 0.;
         game.gameover = false;
         game.camera = V::new(

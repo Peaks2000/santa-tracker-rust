@@ -1,0 +1,29 @@
+{
+  "fixture": "snowball-map-clock-reference.json",
+  "source_execution": "10 frames, 4096 initial tile state/time pairs, 203 changed pairs. Native reconstructs and compares all 4096 pairs before/after actual finish_frame plus source erosion RNG and both stored shader clocks. Actual original GameMap/MapSystem/THREE run with constant supplied performance timestamp per stage, inert input/collision and image I/O adapter. Relative game time is independently supplied.",
+  "changes": [
+    "Map::new_at/set_state store raised/transition timestamps in float32, matching source InstancedBufferAttribute. Existing new() remains controlled time zero.",
+    "Runtime uses monotonic wall/performance namespace for tile creation/erosion timestamps, separate from reset-on-start game clock used by projectile/effects.",
+    "Hex and obstacle shader times initialize zero and update at Map stage after rendering; rendering deformations/tone use stored clocks.",
+    "Tile fade travels through float UV attribute; tree fade through float normal.w tag -3 before source .1 alpha cutoff. Removes byte alpha rounding without changing base texture filters or creating a pipeline.",
+    "Frozen reference capture imports performance/shader times from its known exporter sequence (two updates at 6000 then explicit render). Diagnostic built, not run."
+  ],
+  "limits": [
+    "No GPU/browser/window/input check. GLSL fade/deformation/tone, float-vs-driver transcendental precision, clipping/coverage and pixels are not established by JS state oracle.",
+    "Native wall is a logical monotonic scene clock; complete document loading/background/host-pause timing, source absolute-origin alignment and within-frame performance getter timing remain unverified.",
+    "MapSystem fixture restart is reconstruction at supplied performance time; whole Game/host/clock lifecycle traced separately.",
+    "Alpha-attribute corrections are source-derived, not GPU-verified; full reported texture clarity and whole-mode/site parity remain unfinished."
+  ],
+  "reviewed_source_sha256": {
+    "static/scenes/snowball/js/snowball/components/game-map.js": "a345fe09864dc60d56a926dd7dcae0224847a3cdfc50365fe4f280836c9a2c2c",
+    "static/scenes/snowball/js/snowball/entities/hex-map.js": "c9514ce0783d4f18d9b7229606b3443de68b6ad173886631c6a53c46dfcf6c3e",
+    "static/scenes/snowball/js/snowball/entities/obstacles.js": "a0db76fe7d73e767803248bd565e0e9e5ab6cfcb36bb7d09bcb8a7bf49dd1f37",
+    "static/scenes/snowball/js/snowball/systems/map-system.js": "42393aa5916c5668417b9b6a70244788ed6bf9a43cdcdffe59c20217c61a004f",
+    "static/scenes/snowball/js/snowball/shader-partials.js": "1fc9cbe411bc773abe913ca1b692f485b510abd4e77a922eff189d333235ec3c",
+    "static/scenes/snowball/js/snowball-game.js": "48d4ced63ac0e39fe3010e80472d333d26d838a54c23a5841941fe42458d4d4f",
+    "static/scenes/snowball/js/engine/core/game.js": "a8571291aa26baeae2a268cf693e69877f4407976ca4023dcc8f8eb6ad52e459",
+    "static/scenes/snowball/js/snowball/levels/local-level.js": "058cd94969c0f64708d5fdfad70298e539a0eefc9b3d11c856fac53674f386de",
+    "static/scenes/snowball/index.js": "b2d959e02688b0f1e182255c24a543ee0358a596abb6642486eeea9034328175",
+    "rust/tools/snowball-render-reference.cjs": "2f46bf5a06d5688d3fee7dd354b195ceb01ee2152fe9a6ef6a4ab6857684c2c7"
+  }
+}

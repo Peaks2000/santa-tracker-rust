@@ -274,6 +274,9 @@ pub struct Map {
 }
 impl Map {
     pub fn new(grid: Grid, seed: u32) -> Self {
+        Self::new_at(grid, seed, 0.)
+    }
+    pub fn new_at(grid: Grid, seed: u32, now: f64) -> Self {
         let n = (grid.width * grid.height) as usize;
         let mut m = Self {
             grid,
@@ -343,7 +346,7 @@ impl Map {
                     && m.obstacle(i) == -1
                     && m.state(i) == 1
                 {
-                    m.states[i as usize] = 5;
+                    m.set_state(i as usize, 5, now);
                     visited[i as usize] = true;
                     size += 1;
                     frontier.extend(grid.neighbors(i))
@@ -354,6 +357,11 @@ impl Map {
             }
         }
         m
+    }
+    /// GameMap.setTileState writes both values through a Float32 attribute.
+    pub fn set_state(&mut self, index: usize, state: u8, now: f64) {
+        self.states[index] = state;
+        self.times[index] = now as f32 as f64;
     }
     pub fn state(&self, i: i32) -> u8 {
         self.states.get(i as usize).copied().unwrap_or(0)
@@ -383,13 +391,11 @@ impl Map {
                     if self.states[i] == 1 {
                         self.passable_count -= 1
                     }
-                    self.states[i] = 3;
-                    self.times[i] = now
+                    self.set_state(i, 3, now)
                 }
                 3 => {
                     self.rings[j].remove(k);
-                    self.states[i] = 4;
-                    self.times[i] = now
+                    self.set_state(i, 4, now)
                 }
                 _ => {}
             }
@@ -637,6 +643,8 @@ pub struct Snowball {
     player_destinations: Vec<(usize, V)>,
     player_targets: Vec<(usize, TargetPosition)>,
     pub destination_marker: Option<V>,
+    pub map_shader_time: f64,
+    pub obstacle_shader_time: f64,
     camera_target: Option<V>,
     collision_limit: Option<(f64, f64, V)>,
     collision: Collision,
@@ -686,6 +694,8 @@ impl Snowball {
             player_destinations: vec![],
             player_targets: vec![],
             destination_marker: None,
+            map_shader_time: 0.,
+            obstacle_shader_time: 0.,
             camera_target: None,
             collision_limit: None,
             collision: Collision::new(Bounds::rect(
@@ -720,6 +730,8 @@ impl Snowball {
         self.player_destinations.clear();
         self.player_targets.clear();
         self.destination_marker = None;
+        self.map_shader_time = 0.;
+        self.obstacle_shader_time = 0.;
         self.camera_target = None;
         self.collision_limit = None;
         self.knocked_out = 0;
@@ -745,7 +757,7 @@ impl Snowball {
         self.last_drop = 0.;
         self.last_bot = 0.;
         self.seed = (self.random.next() * 4294967296.) as u32;
-        self.map = Map::new(Grid::default(), self.seed);
+        self.map = Map::new_at(Grid::default(), self.seed, self.wall);
         self.reset_collisions();
         self.next_shot_id = 0;
         self.add_player(false);
@@ -1137,7 +1149,7 @@ impl Snowball {
         }
         if tick - self.last_erode > 16. {
             self.last_erode = tick;
-            self.map.erode(self.time)
+            self.map.erode(self.wall)
         }
         if self.all_time < 100 && tick - self.last_bot > 128. {
             self.add_player(true);
@@ -1399,6 +1411,10 @@ impl Snowball {
         }), |id| splats.get(&id).cloned());
         self.effects.write_particles(self.time, &mut self.particles);
 
+        // Original map materials store performance.now(), not game clock time.
+        // Their uniforms update after rendering, in obstacles-then-hex order.
+        self.obstacle_shader_time = self.wall;
+        self.map_shader_time = self.wall;
         // MapSystem precedes Client/Player commands: retain this rendered marker
         // until the following map update, even if movement reaches its endpoint.
         if let Some(p) = self.players.first() {
@@ -1586,6 +1602,59 @@ pub fn circle_rect(c: V, r: f64, p: V, hw: f64, hh: f64) -> bool {
 #[cfg(test)]
 pub(crate) mod tests {
     use super::*;
+    #[test]
+    fn map_performance_clock_and_float_states_match_original_system() {
+        let data: serde_json::Value = serde_json::from_str(include_str!(
+            "../data/snowball-map-clock-reference.json"
+        )).unwrap();
+        let mut game = Snowball::new("map-clock-reference");
+        game.wall = data["initialPerf"].as_f64().unwrap();
+        game.start();
+        fn isolate(game: &mut Snowball) {
+            game.players.clear();
+            game.drops.clear();
+            game.map = Map::new_at(Grid::default(),1,game.wall);
+            game.collision = Collision::new(Bounds::rect(V::default(),10000.,10000.));
+        }
+        fn clocks(game: &Snowball) -> serde_json::Value {
+            serde_json::json!({"hex":game.map_shader_time,"obstacles":game.obstacle_shader_time})
+        }
+        fn check(map: &Map, expected: &[[f64;2]]) {
+            for (i,values) in expected.iter().enumerate() {
+                assert_eq!(map.states[i] as f64,values[0],"tile {i} state");
+                assert_eq!(map.times[i],values[1],"tile {i} timestamp");
+            }
+        }
+        isolate(&mut game);
+        let mut expected: Vec<[f64;2]> = data["initial"].as_array().unwrap().iter()
+            .map(|v|[v[0].as_f64().unwrap(),v[1].as_f64().unwrap()]).collect();
+        check(&game.map,&expected);
+        for (frame,row) in data["rows"].as_array().unwrap().iter().enumerate() {
+            let input = &row["input"];
+            game.wall = input["perf"].as_f64().unwrap();
+            if input["restart"].as_bool().unwrap_or(false) {
+                game.start();
+                isolate(&mut game);
+            }
+            game.time = input["time"].as_f64().unwrap();
+            for change in input["set"].as_array().into_iter().flatten() {
+                game.map.set_state(change[0].as_u64().unwrap() as usize,
+                    change[1].as_u64().unwrap() as u8,game.wall);
+            }
+            if input["erode"].as_bool().unwrap_or(false) {game.map.erode(game.wall);}
+            for change in row["changes"].as_array().unwrap() {
+                expected[change[0].as_u64().unwrap() as usize] = [
+                    change[1][0].as_f64().unwrap(),change[1][1].as_f64().unwrap()];
+            }
+            check(&game.map,&expected);
+            assert_json_close(&clocks(&game),&row["before"],&format!("map {frame} before"));
+            assert_eq!(game.map.erode_random.0 as u64,row["erodeSeed"].as_u64().unwrap());
+            game.finish_frame(1440.,800.);
+            check(&game.map,&expected);
+            assert_json_close(&clocks(&game),&row["after"],&format!("map {frame} after"));
+        }
+    }
+
     #[test]
     fn projectile_material_state_matches_original_system_and_pools() {
         let data: serde_json::Value = serde_json::from_str(include_str!(

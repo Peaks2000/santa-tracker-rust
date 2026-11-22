@@ -2297,7 +2297,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/map-system.js",
       "lines": 137,
-      "review": "Destination-marker update now snapshots pre-Client/Player path state, with delayed appearance/reached visibility checked in command fixture. Map rebuild/obstacle/input/camera general lifecycle remain partial.",
+      "review": "Destination-marker update now snapshots pre-Client/Player path state, with delayed appearance/reached visibility checked in command fixture. Map rebuild/obstacle/input/camera general lifecycle remain partial.; map/performance clock separated from game time; source float32 raised/transition timestamps and stored hex/obstacle uniforms compare against original modules/THREE for ten frames/all 4096 tiles. Float tile/tree fade attributes replace byte rounding. GLSL pixels/deformation/tone, per-getter timing/loading/host clock remain unverified; unused erode shader export is not the active shake/sink path.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -2593,7 +2593,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/shader-partials.js",
       "lines": 105,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; map/performance clock separated from game time; source float32 raised/transition timestamps and stored hex/obstacle uniforms compare against original modules/THREE for ten frames/all 4096 tiles. Float tile/tree fade attributes replace byte rounding. GLSL pixels/deformation/tone, per-getter timing/loading/host clock remain unverified; unused erode shader export is not the active shake/sink path.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -3247,7 +3247,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/entities/obstacles.js",
       "lines": 189,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; source material alpha traced: Drop/Parachute retain default alphaTest=0, Obstacles explicit .1 discard; native uses separate branches within existing clip pipeline, GPU unverified",
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; source material alpha traced: Drop/Parachute retain default alphaTest=0, Obstacles explicit .1 discard; native uses separate branches within existing clip pipeline, GPU unverified; map/performance clock separated from game time; source float32 raised/transition timestamps and stored hex/obstacle uniforms compare against original modules/THREE for ten frames/all 4096 tiles. Float tile/tree fade attributes replace byte rounding. GLSL pixels/deformation/tone, per-getter timing/loading/host clock remain unverified; unused erode shader export is not the active shake/sink path.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -3300,7 +3300,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/entities/hex-map.js",
       "lines": 232,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; map/performance clock separated from game time; source float32 raised/transition timestamps and stored hex/obstacle uniforms compare against original modules/THREE for ten frames/all 4096 tiles. Float tile/tree fade attributes replace byte rounding. GLSL pixels/deformation/tone, per-getter timing/loading/host clock remain unverified; unused erode shader export is not the active shake/sink path.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -3663,7 +3663,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/components/game-map.js",
       "lines": 255,
-      "review": "native formulas checked against actual original map/grid/path oracle; general unused grid conversion helpers remain unported",
+      "review": "native formulas checked against actual original map/grid/path oracle; general unused grid conversion helpers remain unported; map/performance clock separated from game time; source float32 raised/transition timestamps and stored hex/obstacle uniforms compare against original modules/THREE for ten frames/all 4096 tiles. Float tile/tree fade attributes replace byte rounding. GLSL pixels/deformation/tone, per-getter timing/loading/host clock remain unverified; unused erode shader export is not the active shake/sink path.",
       "native": [
         "rust/src/snowball.rs"
       ],

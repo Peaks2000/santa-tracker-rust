@@ -710,3 +710,30 @@ GPU output remain unverified. See projectile reference/provenance and coverage.
 
 Release application and snowball_capture diagnostic build. No window or GPU
 check was run; user game/focus/input stayed untouched.
+
+
+### Map performance timestamps and float fade pass (22 November 2026)
+
+GameMap timestamps and HexMap/Obstacles uniforms use performance.now, distinct
+from reset-on-new-Game ClockSystem time. Native Map::new_at/set_state store
+f32 timestamps; runtime passes wall, not game time, for creation/erosion. Stored
+map_shader_time/obstacle_shader_time reset0 and update at Map stage after render.
+Deformation casts both inputs to f32 before subtraction. Preserve negative elapsed
+when a new state precedes the next uniform update; don't clamp it away.
+
+Tile fade now uses float UV.x instead of u8 alpha; tree fade float normal.w/tag
+-3 applies before original .1 cutoff. Basic material tag -2/marker -1 unchanged.
+No pipeline/filter change. Source active helpers are shake/sink/fade; exported
+erode helper is unused here. GPU fade/deformation/tone/pixels remain unverified.
+
+Actual original MapSystem/GameMap/THREE clock fixture compares 4096 state/time
+pairs over ten frames (203 deltas), erosion RNG and stored uniforms through
+actual native finish_frame, including fractional/long perf times and new Map
+reconstruction. Controlled constant-per-stage perf and image/input/collision
+adapters, not real document/host timing. Native wall's exact absolute origin,
+loading/background/pause and within-frame getter timing remain open. Full
+reference capture imports known exporter map clocks at6000; compiled only.
+All 107 tests pass; no window/browser/GPU/input. Whole mode/site 1:1 unfinished.
+
+Release application and snowball_capture diagnostic build. Neither was launched;
+GPU appearance remains unverified and user game/focus/input stayed untouched.
