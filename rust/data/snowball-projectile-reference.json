@@ -1,0 +1,1431 @@
+{
+  "method": "Unmodified original SnowballSystem plus normal/BigSnowball and actual THREE. Seeded constructor RNG, inert collision/effect/audio sinks and TextureLoader I/O adapter. No physics collision step, browser, renderer, GPU, OS input or image readiness. Snapshots are render eligibility/state, not pixels. JSON null position z is original undefined before advance, not zero.",
+  "rows": [
+    {
+      "input": {
+        "at": 16,
+        "ops": [
+          {
+            "op": "throw",
+            "id": 0,
+            "big": false
+          }
+        ]
+      },
+      "allocations": [
+        {
+          "id": 0,
+          "fresh": true,
+          "random": 0.030101920943707228
+        }
+      ],
+      "before": {
+        "shots": [
+          {
+            "id": 0,
+            "big": false,
+            "setup": false,
+            "visible": true,
+            "eligible": false,
+            "born": -1,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.030101920943707228,
+            "time": 0
+          }
+        ],
+        "free": [
+          [],
+          []
+        ]
+      },
+      "after": {
+        "shots": [
+          {
+            "id": 0,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 0,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.030101920943707228,
+            "time": 16
+          }
+        ],
+        "free": [
+          [],
+          []
+        ]
+      }
+    },
+    {
+      "input": {
+        "at": 32,
+        "ops": []
+      },
+      "allocations": [],
+      "before": {
+        "shots": [
+          {
+            "id": 0,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 0,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.030101920943707228,
+            "time": 16
+          }
+        ],
+        "free": [
+          [],
+          []
+        ]
+      },
+      "after": {
+        "shots": [
+          {
+            "id": 0,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 0,
+            "position": [
+              23.70285714285714,
+              34,
+              34.86244966422239
+            ],
+            "random": 0.030101920943707228,
+            "time": 32
+          }
+        ],
+        "free": [
+          [],
+          []
+        ]
+      }
+    },
+    {
+      "input": {
+        "at": 48,
+        "ops": [
+          {
+            "op": "throw",
+            "id": 1,
+            "big": false
+          },
+          {
+            "op": "throw",
+            "id": 2,
+            "big": true
+          },
+          {
+            "op": "hit",
+            "id": 0
+          }
+        ]
+      },
+      "allocations": [
+        {
+          "id": 1,
+          "fresh": true,
+          "random": 0.4342796877026558
+        },
+        {
+          "id": 2,
+          "fresh": true,
+          "random": 0.8366702827624977
+        }
+      ],
+      "before": {
+        "shots": [
+          {
+            "id": 0,
+            "big": false,
+            "setup": true,
+            "visible": false,
+            "eligible": false,
+            "born": 0,
+            "position": [
+              23.70285714285714,
+              34,
+              34.86244966422239
+            ],
+            "random": 0.030101920943707228,
+            "time": 32
+          },
+          {
+            "id": 1,
+            "big": false,
+            "setup": false,
+            "visible": true,
+            "eligible": false,
+            "born": -1,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.4342796877026558,
+            "time": 0
+          },
+          {
+            "id": 2,
+            "big": true,
+            "setup": false,
+            "visible": true,
+            "eligible": false,
+            "born": -1,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.8366702827624977,
+            "time": 0
+          }
+        ],
+        "free": [
+          [],
+          []
+        ]
+      },
+      "after": {
+        "shots": [
+          {
+            "id": 2,
+            "big": true,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": -1,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.8366702827624977,
+            "time": 0
+          },
+          {
+            "id": 1,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 2,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.4342796877026558,
+            "time": 48
+          }
+        ],
+        "free": [
+          [
+            [
+              0.030101920943707228,
+              32
+            ]
+          ],
+          []
+        ]
+      }
+    },
+    {
+      "input": {
+        "at": 64,
+        "ops": [
+          {
+            "op": "throw",
+            "id": 3,
+            "big": false
+          }
+        ]
+      },
+      "allocations": [
+        {
+          "id": 3,
+          "fresh": false,
+          "random": 0.030101920943707228
+        }
+      ],
+      "before": {
+        "shots": [
+          {
+            "id": 2,
+            "big": true,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": -1,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.8366702827624977,
+            "time": 0
+          },
+          {
+            "id": 1,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 2,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.4342796877026558,
+            "time": 48
+          },
+          {
+            "id": 3,
+            "big": false,
+            "setup": false,
+            "visible": true,
+            "eligible": false,
+            "born": -1,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.030101920943707228,
+            "time": 32
+          }
+        ],
+        "free": [
+          [],
+          []
+        ]
+      },
+      "after": {
+        "shots": [
+          {
+            "id": 2,
+            "big": true,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 3,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.8366702827624977,
+            "time": 64
+          },
+          {
+            "id": 1,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 2,
+            "position": [
+              23.215238095238092,
+              34,
+              34.743951506376156
+            ],
+            "random": 0.4342796877026558,
+            "time": 64
+          },
+          {
+            "id": 3,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 3,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.030101920943707228,
+            "time": 64
+          }
+        ],
+        "free": [
+          [],
+          []
+        ]
+      }
+    },
+    {
+      "input": {
+        "at": 80,
+        "ops": [
+          {
+            "op": "hit",
+            "id": 2
+          },
+          {
+            "op": "hit",
+            "id": 1
+          }
+        ]
+      },
+      "allocations": [],
+      "before": {
+        "shots": [
+          {
+            "id": 2,
+            "big": true,
+            "setup": true,
+            "visible": false,
+            "eligible": false,
+            "born": 3,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.8366702827624977,
+            "time": 64
+          },
+          {
+            "id": 1,
+            "big": false,
+            "setup": true,
+            "visible": false,
+            "eligible": false,
+            "born": 2,
+            "position": [
+              23.215238095238092,
+              34,
+              34.743951506376156
+            ],
+            "random": 0.4342796877026558,
+            "time": 64
+          },
+          {
+            "id": 3,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 3,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.030101920943707228,
+            "time": 64
+          }
+        ],
+        "free": [
+          [],
+          []
+        ]
+      },
+      "after": {
+        "shots": [
+          {
+            "id": 1,
+            "big": false,
+            "setup": true,
+            "visible": false,
+            "eligible": false,
+            "born": 2,
+            "position": [
+              23.215238095238092,
+              34,
+              34.743951506376156
+            ],
+            "random": 0.4342796877026558,
+            "time": 64
+          },
+          {
+            "id": 3,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 3,
+            "position": [
+              22.971428571428568,
+              34,
+              34.68466531635311
+            ],
+            "random": 0.030101920943707228,
+            "time": 80
+          }
+        ],
+        "free": [
+          [],
+          [
+            [
+              0.8366702827624977,
+              64
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "input": {
+        "at": 96,
+        "ops": [
+          {
+            "op": "throw",
+            "id": 4,
+            "big": true
+          }
+        ]
+      },
+      "allocations": [
+        {
+          "id": 4,
+          "fresh": false,
+          "random": 0.8366702827624977
+        }
+      ],
+      "before": {
+        "shots": [
+          {
+            "id": 1,
+            "big": false,
+            "setup": true,
+            "visible": false,
+            "eligible": false,
+            "born": 2,
+            "position": [
+              23.215238095238092,
+              34,
+              34.743951506376156
+            ],
+            "random": 0.4342796877026558,
+            "time": 64
+          },
+          {
+            "id": 3,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 3,
+            "position": [
+              22.971428571428568,
+              34,
+              34.68466531635311
+            ],
+            "random": 0.030101920943707228,
+            "time": 80
+          },
+          {
+            "id": 4,
+            "big": true,
+            "setup": false,
+            "visible": true,
+            "eligible": false,
+            "born": -1,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.8366702827624977,
+            "time": 64
+          }
+        ],
+        "free": [
+          [],
+          []
+        ]
+      },
+      "after": {
+        "shots": [
+          {
+            "id": 3,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 3,
+            "position": [
+              22.971428571428568,
+              34,
+              34.68466531635311
+            ],
+            "random": 0.030101920943707228,
+            "time": 80
+          },
+          {
+            "id": 4,
+            "big": true,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 5,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.8366702827624977,
+            "time": 96
+          }
+        ],
+        "free": [
+          [
+            [
+              0.4342796877026558,
+              64
+            ]
+          ],
+          []
+        ]
+      }
+    },
+    {
+      "input": {
+        "at": 112,
+        "ops": [
+          {
+            "op": "throw",
+            "id": 5,
+            "big": false
+          },
+          {
+            "op": "throw",
+            "id": 6,
+            "big": false
+          }
+        ]
+      },
+      "allocations": [
+        {
+          "id": 5,
+          "fresh": false,
+          "random": 0.4342796877026558
+        },
+        {
+          "id": 6,
+          "fresh": true,
+          "random": 0.9578459050972015
+        }
+      ],
+      "before": {
+        "shots": [
+          {
+            "id": 3,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 3,
+            "position": [
+              22.971428571428568,
+              34,
+              34.68466531635311
+            ],
+            "random": 0.030101920943707228,
+            "time": 80
+          },
+          {
+            "id": 4,
+            "big": true,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 5,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.8366702827624977,
+            "time": 96
+          },
+          {
+            "id": 5,
+            "big": false,
+            "setup": false,
+            "visible": true,
+            "eligible": false,
+            "born": -1,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.4342796877026558,
+            "time": 64
+          },
+          {
+            "id": 6,
+            "big": false,
+            "setup": false,
+            "visible": true,
+            "eligible": false,
+            "born": -1,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.9578459050972015,
+            "time": 0
+          }
+        ],
+        "free": [
+          [],
+          []
+        ]
+      },
+      "after": {
+        "shots": [
+          {
+            "id": 3,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 3,
+            "position": [
+              34.674285714285716,
+              34,
+              37.493570456047806
+            ],
+            "random": 0.030101920943707228,
+            "time": 112
+          },
+          {
+            "id": 4,
+            "big": true,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 5,
+            "position": [
+              22.483809523809523,
+              34,
+              34.56602136775684
+            ],
+            "random": 0.8366702827624977,
+            "time": 112
+          },
+          {
+            "id": 6,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 6,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.9578459050972015,
+            "time": 112
+          },
+          {
+            "id": 5,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 6,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.4342796877026558,
+            "time": 112
+          }
+        ],
+        "free": [
+          [],
+          []
+        ]
+      }
+    },
+    {
+      "input": {
+        "at": 1000,
+        "ops": []
+      },
+      "allocations": [],
+      "before": {
+        "shots": [
+          {
+            "id": 3,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 3,
+            "position": [
+              34.674285714285716,
+              34,
+              37.493570456047806
+            ],
+            "random": 0.030101920943707228,
+            "time": 112
+          },
+          {
+            "id": 4,
+            "big": true,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 5,
+            "position": [
+              22.483809523809523,
+              34,
+              34.56602136775684
+            ],
+            "random": 0.8366702827624977,
+            "time": 112
+          },
+          {
+            "id": 6,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 6,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.9578459050972015,
+            "time": 112
+          },
+          {
+            "id": 5,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 6,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.4342796877026558,
+            "time": 112
+          }
+        ],
+        "free": [
+          [],
+          []
+        ]
+      },
+      "after": {
+        "shots": [
+          {
+            "id": 4,
+            "big": true,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 5,
+            "position": [
+              22.483809523809523,
+              34,
+              34.56602136775684
+            ],
+            "random": 0.8366702827624977,
+            "time": 112
+          },
+          {
+            "id": 5,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 6,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.4342796877026558,
+            "time": 112
+          }
+        ],
+        "free": [
+          [
+            [
+              0.030101920943707228,
+              1000
+            ],
+            [
+              0.9578459050972015,
+              1000
+            ]
+          ],
+          []
+        ]
+      }
+    },
+    {
+      "input": {
+        "at": 1016,
+        "ops": [
+          {
+            "op": "restart"
+          }
+        ]
+      },
+      "allocations": [],
+      "before": {
+        "shots": [],
+        "free": [
+          [
+            [
+              0.030101920943707228,
+              1000
+            ],
+            [
+              0.9578459050972015,
+              1000
+            ],
+            [
+              0.4342796877026558,
+              112
+            ]
+          ],
+          [
+            [
+              0.8366702827624977,
+              112
+            ]
+          ]
+        ]
+      },
+      "after": {
+        "shots": [],
+        "free": [
+          [
+            [
+              0.030101920943707228,
+              1000
+            ],
+            [
+              0.9578459050972015,
+              1000
+            ],
+            [
+              0.4342796877026558,
+              112
+            ]
+          ],
+          [
+            [
+              0.8366702827624977,
+              112
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "input": {
+        "at": 1032,
+        "ops": [
+          {
+            "op": "throw",
+            "id": 7,
+            "big": false
+          },
+          {
+            "op": "throw",
+            "id": 8,
+            "big": true
+          }
+        ]
+      },
+      "allocations": [
+        {
+          "id": 7,
+          "fresh": false,
+          "random": 0.4342796877026558
+        },
+        {
+          "id": 8,
+          "fresh": false,
+          "random": 0.8366702827624977
+        }
+      ],
+      "before": {
+        "shots": [
+          {
+            "id": 7,
+            "big": false,
+            "setup": false,
+            "visible": true,
+            "eligible": false,
+            "born": -1,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.4342796877026558,
+            "time": 112
+          },
+          {
+            "id": 8,
+            "big": true,
+            "setup": false,
+            "visible": true,
+            "eligible": false,
+            "born": -1,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.8366702827624977,
+            "time": 112
+          }
+        ],
+        "free": [
+          [
+            [
+              0.030101920943707228,
+              1000
+            ],
+            [
+              0.9578459050972015,
+              1000
+            ]
+          ],
+          []
+        ]
+      },
+      "after": {
+        "shots": [
+          {
+            "id": 8,
+            "big": true,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 61,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.8366702827624977,
+            "time": 1032
+          },
+          {
+            "id": 7,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 61,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.4342796877026558,
+            "time": 1032
+          }
+        ],
+        "free": [
+          [
+            [
+              0.030101920943707228,
+              1000
+            ],
+            [
+              0.9578459050972015,
+              1000
+            ]
+          ],
+          []
+        ]
+      }
+    },
+    {
+      "input": {
+        "at": 1048,
+        "ops": [
+          {
+            "op": "throw",
+            "id": 9,
+            "big": false
+          },
+          {
+            "op": "throw",
+            "id": 10,
+            "big": true
+          },
+          {
+            "op": "restart"
+          }
+        ]
+      },
+      "allocations": [
+        {
+          "id": 9,
+          "fresh": false,
+          "random": 0.9578459050972015
+        },
+        {
+          "id": 10,
+          "fresh": true,
+          "random": 0.7772103110328317
+        }
+      ],
+      "before": {
+        "shots": [],
+        "free": [
+          [
+            [
+              0.030101920943707228,
+              1000
+            ],
+            [
+              0.9578459050972015,
+              1000
+            ],
+            [
+              0.4342796877026558,
+              1032
+            ]
+          ],
+          [
+            [
+              0.7772103110328317,
+              0
+            ],
+            [
+              0.8366702827624977,
+              1032
+            ]
+          ]
+        ]
+      },
+      "after": {
+        "shots": [],
+        "free": [
+          [
+            [
+              0.030101920943707228,
+              1000
+            ],
+            [
+              0.9578459050972015,
+              1000
+            ],
+            [
+              0.4342796877026558,
+              1032
+            ]
+          ],
+          [
+            [
+              0.7772103110328317,
+              0
+            ],
+            [
+              0.8366702827624977,
+              1032
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "input": {
+        "at": 1064,
+        "ops": [
+          {
+            "op": "throw",
+            "id": 11,
+            "big": false
+          },
+          {
+            "op": "throw",
+            "id": 12,
+            "big": true
+          }
+        ]
+      },
+      "allocations": [
+        {
+          "id": 11,
+          "fresh": false,
+          "random": 0.4342796877026558
+        },
+        {
+          "id": 12,
+          "fresh": false,
+          "random": 0.8366702827624977
+        }
+      ],
+      "before": {
+        "shots": [
+          {
+            "id": 11,
+            "big": false,
+            "setup": false,
+            "visible": true,
+            "eligible": false,
+            "born": -1,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.4342796877026558,
+            "time": 1032
+          },
+          {
+            "id": 12,
+            "big": true,
+            "setup": false,
+            "visible": true,
+            "eligible": false,
+            "born": -1,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.8366702827624977,
+            "time": 1032
+          }
+        ],
+        "free": [
+          [
+            [
+              0.030101920943707228,
+              1000
+            ],
+            [
+              0.9578459050972015,
+              1000
+            ]
+          ],
+          [
+            [
+              0.7772103110328317,
+              0
+            ]
+          ]
+        ]
+      },
+      "after": {
+        "shots": [
+          {
+            "id": 12,
+            "big": true,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 63,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.8366702827624977,
+            "time": 1064
+          },
+          {
+            "id": 11,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 63,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.4342796877026558,
+            "time": 1064
+          }
+        ],
+        "free": [
+          [
+            [
+              0.030101920943707228,
+              1000
+            ],
+            [
+              0.9578459050972015,
+              1000
+            ]
+          ],
+          [
+            [
+              0.7772103110328317,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "input": {
+        "at": 1080,
+        "ops": []
+      },
+      "allocations": [],
+      "before": {
+        "shots": [
+          {
+            "id": 12,
+            "big": true,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 63,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.8366702827624977,
+            "time": 1064
+          },
+          {
+            "id": 11,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 63,
+            "position": [
+              12,
+              34,
+              null
+            ],
+            "random": 0.4342796877026558,
+            "time": 1064
+          }
+        ],
+        "free": [
+          [
+            [
+              0.030101920943707228,
+              1000
+            ],
+            [
+              0.9578459050972015,
+              1000
+            ]
+          ],
+          [
+            [
+              0.7772103110328317,
+              0
+            ]
+          ]
+        ]
+      },
+      "after": {
+        "shots": [
+          {
+            "id": 12,
+            "big": true,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 63,
+            "position": [
+              22.971428571428554,
+              34,
+              34.684665316353104
+            ],
+            "random": 0.8366702827624977,
+            "time": 1080
+          },
+          {
+            "id": 11,
+            "big": false,
+            "setup": true,
+            "visible": true,
+            "eligible": true,
+            "born": 63,
+            "position": [
+              22.971428571428554,
+              34,
+              34.684665316353104
+            ],
+            "random": 0.4342796877026558,
+            "time": 1080
+          }
+        ],
+        "free": [
+          [
+            [
+              0.030101920943707228,
+              1000
+            ],
+            [
+              0.9578459050972015,
+              1000
+            ]
+          ],
+          [
+            [
+              0.7772103110328317,
+              0
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "source_sha256": {
+    "static/scenes/snowball/js/engine/core/entity.js": "d846a4e29e7f6664d422212d8746746da32c0a2e2a91e51b52f26b00ab0028ce",
+    "static/scenes/snowball/js/engine/utils/allocatable.js": "c4ab5759c61e9c933e3fb009cc6d3f59e0e83e5cb951444ba45b6a1c1c7ad628",
+    "static/scenes/snowball/js/engine/utils/collision-2d.js": "e3813be39a28288bc8784000bb612e002588e14078ce3bd2e5d74827bc175807",
+    "static/scenes/snowball/js/engine/utils/quad-tree.js": "36e561167a9ee4e0096f3f48f00ccc65c13a173b61c99853abbc80c9abb35146",
+    "static/scenes/snowball/js/snowball/components/component.js": "0838cddfc50a779e2bd45ecce0c15911f22883040bb93ce64c09387ba4bda76f",
+    "static/scenes/snowball/js/snowball/components/powerup.js": "685f22ecf8a5b18d6d52a20a4f3919578987d9c008a23ef5cdaae3d965600696",
+    "static/scenes/snowball/js/snowball/components/presence.js": "6f8513b648efae9fe9c4cc6aa59a49180e2ebd7b6ad09c4fa3fa37158e1d9e76",
+    "static/scenes/snowball/js/snowball/components/splat.js": "8609c6aceb6a10c3f6d7de75622ddab674cfd612eb7bb7518e1a0b0f9bc63fe2",
+    "static/scenes/snowball/js/snowball/components/trail.js": "f2b181b2087fa14fa7d97500cc81c6dd16fde75c191e2c9d1bef6f1d328c6085",
+    "static/scenes/snowball/js/snowball/components/trajectory.js": "4e87f2e0dccad053e24d658ba0bccb38363a1a56c247c2faf7bd52206ceacad4",
+    "static/scenes/snowball/js/snowball/entities/snowball.js": "3c0e0c2577486cf5c6827d8a178df4475c31ea34fa41c6860deabbcc5df15749",
+    "static/scenes/snowball/js/snowball/entities/snowballs/big-snowball.js": "1660b4aa4a18ebb31ee77cd8dfd1aefb535481f02632daeb5713e673b6a07b65",
+    "static/scenes/snowball/js/snowball/systems/snowball-system.js": "34445b3fa23074569d7e06fea56c3c2035178737205e4da67ad3c6507b6e25fb",
+    "static/scenes/snowball/js/snowball/textures.js": "e910084cc44c6757f4daef16f1f2e2539fbd22b391ebab159f644dfdb7c59eb3",
+    "static/third_party/lib/three/build/three.js": "6467e0098991c58a5c6e64415c7126079672b4e0927c3203589644db96c64b60"
+  },
+  "limits": [
+    "Native tests import random uniforms only when source allocates a new object, not on reuse; whole-game seeded/UUID order is unverified.",
+    "Source restart here recreates SnowballSystem after teardown while caller supplies clock. Whole Game/host/clock lifecycle is traced separately.",
+    "Native pools material random/time state, not complete source object UUID/collider/subscription/component alias identity."
+  ]
+}

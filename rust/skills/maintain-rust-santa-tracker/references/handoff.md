@@ -685,3 +685,28 @@ notes saying fixed buffers were unimplemented describe the prior state.
 
 Release application and snowball_capture diagnostic build successfully. Neither
 was launched; user game/window/input remained untouched.
+
+
+### Projectile material-state pass (22 November 2026)
+
+Shot.shader_time is stored per material/update; projectile batch receives it in
+normal.y and no longer uses new-frame global Time. Normal/big shot_visuals pools
+retain random/time LIFO, also across start's new Game; teardown frees pending
+before active. Full actor UUID/collider/event/Splat identity is NOT pooled by
+this representation. Fresh random consumes once, reuse only consumes skew.
+
+Important source quirk: Vector3.copy(Vector2 trajectory.origin) makes z undefined
+until advance. Native throw uses NaN; renderer eligibility is setup&&hit.none,
+not birth>=0. Newly parented, splice-skipped shots may have birth=-1/old time and
+nonfinite coordinates. Native passes these through; GPU clipping is unverified.
+
+Actual source SnowballSystem/Snowball/BigSnowball/Allocatable/THREE fixture covers
+13 frames/26 snapshots/13 throws (5 fresh, 8 reuse). Native actual finish_frame
+with collision/AI isolated compares state and free material order. Import random
+only on verified fresh allocations; never on reuse. Source case restart replaces
+SnowballSystem with supplied clock, not full Game. All 106 tests pass; no browser/
+GPU/input. Complete object pool aliases, image readiness, full RNG/UUID/clock and
+GPU output remain unverified. See projectile reference/provenance and coverage.
+
+Release application and snowball_capture diagnostic build. No window or GPU
+check was run; user game/focus/input stayed untouched.

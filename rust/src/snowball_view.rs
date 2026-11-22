@@ -173,11 +173,11 @@ void main(){float alpha=pow(length(abs(uv-vec2(.5))),3.);if(data.y<0.)alpha=min(
         )?;
         let projectile = make(
             r#"#version 100
-precision highp float;varying vec2 uv;varying vec4 tint;varying vec4 data;uniform sampler2D Texture;uniform float Time;
-void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.y)-.5;vec2 q=mat2(cos(a),-sin(a),sin(a),cos(a))*p+.5;vec4 c=texture2D(Texture,vec2(q.x,1.-q.y));c-=vec4(.05,.015,0.,0.)*cos(Time/30.*data.x);gl_FragColor=c;}"#,
+precision highp float;varying vec2 uv;varying vec4 tint;varying vec4 data;uniform sampler2D Texture;
+void main(){float time=data.y;float a=time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.y)-.5;vec2 q=mat2(cos(a),-sin(a),sin(a),cos(a))*p+.5;vec4 c=texture2D(Texture,vec2(q.x,1.-q.y));c-=vec4(.05,.015,0.,0.)*cos(time/30.*data.x);gl_FragColor=c;}"#,
             false,
             true,
-            vec![UniformDesc::new("Time", UniformType::Float1)],
+            vec![],
         )?;
         let vertex = include_str!("../assets/shaders/ski-standard.vert")
             .replace("#define USE_MAP", "#define USE_MAP\n#define USE_COLOR")
@@ -577,7 +577,7 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             texture: Some(assets.scene("snowball", "snowball.png").clone()),
         };
         for s in &g.shots {
-            if s.born < 0. {
+            if !s.render_eligible() {
                 continue;
             }
             let size = if s.big { 40. } else { 12. };
@@ -591,10 +591,9 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
                 WHITE,
             );
             for v in &mut shots.vertices[from..] {
-                v.normal = vec4(s.random as f32, 0., 0., 0.);
+                v.normal = vec4(s.random as f32, s.shader_time as f32, 0., 0.);
             }
         }
-        self.projectile.set_uniform("Time", g.time as f32);
         gl_use_material(&self.projectile);
         draw_batched(&shots);
         gl_use_material(&self.clip);

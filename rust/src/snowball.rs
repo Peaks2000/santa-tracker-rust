@@ -535,8 +535,23 @@ pub struct Shot {
     pub gone: bool,
     pub random: f64,
     pub skew: f64,
+    pub shader_time: f64,
+}
+#[derive(Clone, Copy)]
+struct ShotVisual {
+    random: f64,
+    shader_time: f64,
+}
+impl ShotVisual {
+    fn of(shot: &Shot) -> Self {
+        Self { random: shot.random, shader_time: shot.shader_time }
+    }
 }
 impl Shot {
+    /// Source visibility and layer attachment are independent of thrown tick.
+    pub fn render_eligible(&self) -> bool {
+        self.setup && self.hit.is_none()
+    }
     pub fn advance(&mut self, precise_tick: f64) {
         let delta = self.target.sub(self.origin);
         let path = delta.norm().mul(delta.len().min(256.));
@@ -626,6 +641,7 @@ pub struct Snowball {
     collision_limit: Option<(f64, f64, V)>,
     collision: Collision,
     next_shot_id: usize,
+    shot_visuals: [Vec<ShotVisual>; 2],
     client_dead_at: f64,
 }
 impl Snowball {
@@ -678,6 +694,7 @@ impl Snowball {
                 Grid::default().pixel_height(),
             )),
             next_shot_id: 0,
+            shot_visuals: [vec![], vec![]],
             client_dead_at: 0.,
         }
     }
@@ -711,6 +728,13 @@ impl Snowball {
         self.all_time = 0;
         self.players.clear();
         self.drops.clear();
+        // Source teardown frees pending shots before active shots. Its class
+        // pools survive new SnowballGame instances in the same module realm.
+        for setup in [false, true] {
+            for shot in self.shots.iter().filter(|s| s.setup == setup) {
+                self.shot_visuals[usize::from(shot.big)].push(ShotVisual::of(shot));
+            }
+        }
         self.shots.clear();
         // index.js restart destroys the old game and constructs new effects,
         // even though EffectSystem.teardown itself leaves its buffers intact.
@@ -893,6 +917,10 @@ impl Snowball {
         let big = self.players[index].powerups.active().is_some();
         self.players[index].powerups.decrement();
         let origin = self.players[index].pos;
+        let visual = self.shot_visuals[usize::from(big)].pop().unwrap_or_else(|| ShotVisual {
+            random: self.random.next(),
+            shader_time: 0.,
+        });
         self.shots.push(Shot {
             id: self.next_shot_id,
             hit: None,
@@ -900,12 +928,14 @@ impl Snowball {
             origin,
             target,
             pos: origin,
-            z: 0.,
+            // Source Vector3.copy(Vector2 origin) leaves z undefined until advance.
+            z: f64::NAN,
             thrower: index,
             big,
             born: -1.,
             gone: false,
-            random: self.random.next(),
+            random: visual.random,
+            shader_time: visual.shader_time,
             skew: self.random.next() * PI / 6. - PI / 12.,
         });
         self.next_shot_id += 1;
@@ -1260,12 +1290,14 @@ impl Snowball {
                 self.collision.remove(Id::Shot(s.id));
                 self.effects.remove(s.id);
                 self.effects.show_for(s.id);
+                self.shot_visuals[usize::from(s.big)].push(ShotVisual::of(&s));
                 removed.push(s);
                 // The source for-loop increments even after splice + continue.
                 i += 1;
                 continue;
             }
             let s = &mut self.shots[i];
+            s.shader_time = self.time;
             if s.born < 0. {
                 s.born = tick
             } else {
@@ -1276,6 +1308,7 @@ impl Snowball {
                 self.collision.remove(Id::Shot(s.id));
                 self.effects.remove(s.id);
                 self.effects.show_for(s.id);
+                self.shot_visuals[usize::from(s.big)].push(ShotVisual::of(&s));
                 removed.push(s); /* source splice skips next */
                 i += 1
             } else {
@@ -1554,6 +1587,86 @@ pub fn circle_rect(c: V, r: f64, p: V, hw: f64, hh: f64) -> bool {
 pub(crate) mod tests {
     use super::*;
     #[test]
+    fn projectile_material_state_matches_original_system_and_pools() {
+        let data: serde_json::Value = serde_json::from_str(include_str!(
+            "../data/snowball-projectile-reference.json"
+        )).unwrap();
+        fn isolate(game: &mut Snowball) {
+            game.players.truncate(1);
+            game.drops.clear();
+            game.map.states.fill(1);
+            game.map.obstacles.fill(-1);
+            let player = &mut game.players[0];
+            player.arrived = true;
+            player.landed = true;
+            player.setup = true;
+            player.bot = false;
+            player.parent = Parent::Map;
+            player.pos = V::new(12.,34.);
+            player.path.clear();
+            game.collision = Collision::new(Bounds::rect(V::default(),10000.,10000.));
+        }
+        fn snapshot(game: &Snowball, labels: &HashMap<usize,usize>) -> serde_json::Value {
+            serde_json::json!({
+                "shots":game.shots.iter().map(|s|serde_json::json!({
+                    "id":labels[&s.id],"big":s.big,"setup":s.setup,
+                    "visible":s.hit.is_none(),"eligible":s.render_eligible(),
+                    "born":s.born,"position":[s.pos.x,s.pos.y,s.z],
+                    "random":s.random,"time":s.shader_time
+                })).collect::<Vec<_>>(),
+                "free":game.shot_visuals.iter().map(|pool|pool.iter()
+                    .map(|v|[v.random,v.shader_time]).collect::<Vec<_>>()).collect::<Vec<_>>()
+            })
+        }
+        let mut game = Snowball::new("projectile-material-reference");
+        game.start();
+        isolate(&mut game);
+        let mut labels = HashMap::new();
+        for (frame,row) in data["rows"].as_array().unwrap().iter().enumerate() {
+            let at = row["input"]["at"].as_f64().unwrap();
+            game.time = at;
+            for op in row["input"]["ops"].as_array().unwrap() {
+                match op["op"].as_str().unwrap() {
+                    "throw" => {
+                        let id = op["id"].as_u64().unwrap() as usize;
+                        let big = op["big"].as_bool().unwrap();
+                        let allocation = row["allocations"].as_array().unwrap().iter()
+                            .find(|a|a["id"].as_u64()==Some(id as u64)).unwrap();
+                        assert_eq!(game.shot_visuals[usize::from(big)].is_empty(),allocation["fresh"].as_bool().unwrap());
+                        game.players[0].pos = V::new(12.,34.);
+                        game.players[0].powerups = Powerups::default();
+                        if big { game.players[0].powerups.collect(); }
+                        game.throw(0,V::new(268.,34.));
+                        let shot = game.shots.last_mut().unwrap();
+                        if allocation["fresh"].as_bool().unwrap() {
+                            // Import only constructor RNG input. Reused material
+                            // random values must come from the real native pool.
+                            shot.random = allocation["random"].as_f64().unwrap();
+                        }
+                        labels.insert(shot.id,id);
+                    }
+                    "hit" => {
+                        let id = op["id"].as_u64().unwrap() as usize;
+                        let shot = game.shots.iter_mut().find(|s|labels[&s.id]==id).unwrap();
+                        shot.hit = Some(Id::Tree(0));
+                        shot.gone = true;
+                    }
+                    "restart" => {game.start();isolate(&mut game);}
+                    other => panic!("unknown projectile operation {other}"),
+                }
+            }
+            let label = format!("projectile frame {frame}");
+            assert_json_close(&snapshot(&game,&labels),&row["before"],&format!("{label} before"));
+            // Only source SnowballSystem ran in the oracle. Isolate collision,
+            // LocalLevel/AI and supplied clock, retaining real finish_frame stages.
+            game.time = at;
+            game.collision = Collision::new(Bounds::rect(V::default(),10000.,10000.));
+            game.finish_frame(1440.,800.);
+            assert_json_close(&snapshot(&game,&labels),&row["after"],&format!("{label} after"));
+        }
+    }
+
+    #[test]
     fn production_effects_follow_shot_stages_and_recreate_on_restart() {
         let mut game = Snowball::new("effect-system-stages");
         game.start();
@@ -1566,7 +1679,7 @@ pub(crate) mod tests {
             id: 100, hit: None, setup: false, origin: V::default(),
             target: V::new(100., 0.), pos: V::default(), z: 0.,
             thrower: usize::MAX, big: false, born: -1., gone: false,
-            random: 0.25, skew: 0.,
+            random: 0.25, skew: 0., shader_time: 0.,
         });
         let randoms: Vec<_> = game.effects.splats.iter().map(|p|p.random).collect();
         game.finish_frame(1440.,800.);
@@ -1863,7 +1976,7 @@ pub(crate) mod tests {
                     born: row["born"].as_f64().unwrap(),
                     gone: false,
                     random: 0.,
-                    skew: 0.,
+                    skew: 0., shader_time: 0.,
                 });
             }
             game.reset_collisions();
@@ -2108,7 +2221,7 @@ pub(crate) mod tests {
                 born: 12.,
                 gone: false,
                 random: 0.,
-                skew: 0.,
+                skew: 0., shader_time: 0.,
             };
             shot.advance(s["tick"].as_f64().unwrap());
             for (a, b) in [shot.pos.x, shot.pos.y, shot.z]
@@ -2153,7 +2266,7 @@ pub(crate) mod tests {
                     },
                     gone: kind == "hit",
                     random: i as f64,
-                    skew: 0.,
+                    skew: 0., shader_time: 0.,
                 });
             }
             game.reset_collisions();
@@ -2204,7 +2317,7 @@ pub(crate) mod tests {
                 born: 0.,
                 gone: false,
                 random: i as f64,
-                skew: 0.,
+                skew: 0., shader_time: 0.,
             });
         }
         game.reset_collisions();
@@ -2251,7 +2364,7 @@ pub(crate) mod tests {
                 born: 0.,
                 gone: false,
                 random: 0.,
-                skew: 0.,
+                skew: 0., shader_time: 0.,
             });
             game.reset_collisions();
             game.finish_frame(

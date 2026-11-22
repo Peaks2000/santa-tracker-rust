@@ -1,0 +1,43 @@
+{
+  "fixture": "snowball-projectile-reference.json",
+  "method": "Actual unchanged SnowballSystem, Snowball/BigSnowball, Allocatable and bundled THREE in CPU VM. TextureLoader image I/O adapter, inert collision/effect/audio sinks and supplied clock. Native uses actual finish_frame with collision/AI/LocalLevel isolated.",
+  "counts": {
+    "frames": 13,
+    "native_snapshots": 26,
+    "throws": 13,
+    "fresh_materials": 5,
+    "reuses": 8
+  },
+  "changes": [
+    "Per-shot stored shader time updated only when original Snowball.update runs; batched renderer receives each material time as float attribute instead of global current time.",
+    "Small and big material-state LIFO pools retain random/time on reuse; expiry caches updated time, pre-update collision retains old time.",
+    "Restart frees pending before active and retains class material-state pools across new game, consistent with original static Allocatable classes.",
+    "Dispatch leaves z NaN, mirroring Vector3.copy(Vector2) undefined z until first advance; renderer tests layer/visible eligibility rather than thrown tick. No claim about nonfinite GPU pixel behavior."
+  ],
+  "initialization_adapter": "Native test imports random only for a source-verified fresh allocation; pool capacity/fresh decisions are checked before import. Reuse must retrieve stored native values. This does not certify whole-game UUID/RNG draw order.",
+  "cases": [
+    "initial throw/new setup z undefined, later first advance finite",
+    "LIFO mixed-size setup, adjacent collision splice skip, newly parented but unupdated big snowball",
+    "hidden collided actor skipped for one update and per-material time retained",
+    "small/big reuse and old material clocks, bulk expiry splice skips",
+    "restart with active actors; restart with pending then active free order; reuse across new systems"
+  ],
+  "limits": [
+    "No renderer, GPU, browser/window, image readiness or OS input run.",
+    "Native pools random/time material state, not complete original object UUID, collider/event subscription/Splat component identity.",
+    "Source undefined z is represented by f64 NaN, compared as JSON null. Nonfinite clipping/driver behavior is unverified.",
+    "Source/native geometry, UV rotation and GPU transcendental differences are not established by state snapshots.",
+    "Whole-game clock synchronization, pooling aliases, native RNG/THREE UUID allocation order and scene routing remain partial."
+  ],
+  "reviewed_source_sha256": {
+    "static/scenes/snowball/index.js": "b2d959e02688b0f1e182255c24a543ee0358a596abb6642486eeea9034328175",
+    "static/scenes/snowball/js/snowball-game.js": "48d4ced63ac0e39fe3010e80472d333d26d838a54c23a5841941fe42458d4d4f",
+    "static/scenes/snowball/js/engine/core/game.js": "a8571291aa26baeae2a268cf693e69877f4407976ca4023dcc8f8eb6ad52e459",
+    "static/scenes/snowball/js/engine/utils/allocatable.js": "c4ab5759c61e9c933e3fb009cc6d3f59e0e83e5cb951444ba45b6a1c1c7ad628",
+    "static/scenes/snowball/js/snowball/entities/snowball.js": "3c0e0c2577486cf5c6827d8a178df4475c31ea34fa41c6860deabbcc5df15749",
+    "static/scenes/snowball/js/snowball/entities/snowballs/big-snowball.js": "1660b4aa4a18ebb31ee77cd8dfd1aefb535481f02632daeb5713e673b6a07b65",
+    "static/scenes/snowball/js/snowball/systems/snowball-system.js": "34445b3fa23074569d7e06fea56c3c2035178737205e4da67ad3c6507b6e25fb",
+    "static/scenes/snowball/js/snowball/components/trajectory.js": "4e87f2e0dccad053e24d658ba0bccb38363a1a56c247c2faf7bd52206ceacad4",
+    "static/third_party/lib/three/build/three.js": "6467e0098991c58a5c6e64415c7126079672b4e0927c3203589644db96c64b60"
+  }
+}

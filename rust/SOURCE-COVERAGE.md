@@ -2186,3 +2186,53 @@ GPU context, focus change or input; no user approval or README rating changes.
 
 Release application and snowball_capture diagnostic build successfully. Neither
 was launched; user game/window/input remained untouched.
+
+
+### Projectile material clock and size-specific reuse (22 November 2026)
+
+Original Snowball update sets its material time before thrown/birth/advance
+branches; render already happened earlier that frame. Constructor initializes
+random/time once. onAllocated resets trajectory/presence/birth/skew/visibility
+but does NOT reroll random or reset material time. Static Allocatable class
+pools survive the index.js new-Game restart; normal and BigSnowball classes
+have separate weak-map pools. Native now retains random/time in size-specific
+LIFO material-state pools, including pending-before-active free order on restart.
+Removal before update caches the old clock; removal after advance caches the
+new one. Native updates shader_time only for actually visited active shots.
+Batched projectile shader uses that per-shot float attribute rather than the
+new frame's global time. No additional pipeline or texture sampling change.
+
+Source onAllocated copies Vector2 trajectory.origin to Vector3 position, leaving
+z undefined until advance sets it. Native dispatch previously put a shot at z=0;
+it now represents undefined height as f64 NaN. Source layer/visible eligibility
+is distinct from birth tick: a newly set-up shot skipped by splice may be
+parented/visible with birth=-1 and material time still old/zero. Renderer uses
+setup && no collidedWith (native hit) instead of the birth gate. Undefined/NaN
+positions are compared as JSON null. This is state equivalence, not proof about
+nonfinite GPU clipping or actual pixels. Native passes nonfinite coordinates
+through its geometry path; driver behavior remains unverified.
+
+CPU snowball-projectile-reference.cjs executes unchanged SnowballSystem, normal/
+BigSnowball, Allocatable and bundled THREE. Clock is supplied; collision/effect/
+audio sinks are inert and TextureLoader image I/O returns a texture handle.
+Thirteen frames/26 before-after snapshots cover 13 throws (5 fresh, 8 reused),
+initial height/birth, mixed-size LIFO setup, skipped new-shot update, collided
+hidden actor retained by splice, expiry, cross-system reuse and teardown with
+pending before active. Native actual finish_frame checks position/birth,
+layer/visibility eligibility, stored clocks/randoms and pool order. Fresh source
+constructor random inputs are imported ONLY for source-verified fresh allocation;
+native pool-empty decisions are asserted first, and reused values must come
+from native caches. This does not certify whole-game seed/UUID draw order.
+
+Native pools graphics random/time state, not complete source actor UUID, collider
+object, subscription or Splat component alias identity. Existing effect-stage
+flush precedes subsequent Player allocation; removed Shot values remain stable
+until that flush. Full original model/image readiness, route realm/clock lifetime,
+queued pool aliases and GPU geometry/UV/transcendental/pixel behavior remain
+unfinished. Fixture restart recreates only SnowballSystem with a supplied caller
+clock; full index/Game restart is source-traced separately. All 106 tests pass
+(95 lib + 11 binary). No window, GPU context, focus/input action or rating/user
+approval change. See projectile reference/provenance JSON for hashes and scope.
+
+Release application and snowball_capture diagnostic build. No window or GPU
+check was run; user game/focus/input stayed untouched.
