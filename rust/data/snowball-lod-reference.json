@@ -1,0 +1,7073 @@
+{
+  "cases": [
+    {
+      "name": "rectangle-boundaries-and-resize",
+      "air": false,
+      "tile": 2080,
+      "frames": [
+        {
+          "input": {
+            "at": 0
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": -1,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 16
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 32,
+            "ops": [
+              {
+                "op": "position",
+                "position": [
+                  840.5,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  840.5,
+                  0,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  840.5,
+                  0,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  840.5,
+                  0,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 48,
+            "ops": [
+              {
+                "op": "position",
+                "position": [
+                  840.50001,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  840.50001,
+                  0,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  840.50001,
+                  0,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  840.50001,
+                  0,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 64,
+            "ops": [
+              {
+                "op": "position",
+                "position": [
+                  0,
+                  638.8333333333333,
+                  0
+                ]
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  638.8333333333333,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  638.8333333333333,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  638.8333333333333,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 80,
+            "ops": [
+              {
+                "op": "position",
+                "position": [
+                  0,
+                  638.8333433333333,
+                  0
+                ]
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  638.8333433333333,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  638.8333433333333,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  638.8333433333333,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 96,
+            "size": [
+              375,
+              300
+            ],
+            "ops": [
+              {
+                "op": "position",
+                "position": [
+                  308,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  308,
+                  0,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  308,
+                  0,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  308,
+                  0,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 112,
+            "ops": [
+              {
+                "op": "position",
+                "position": [
+                  308.00001,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  308.00001,
+                  0,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  308.00001,
+                  0,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  308.00001,
+                  0,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "dead-setter-retains-low-or-high",
+      "air": false,
+      "tile": 2080,
+      "frames": [
+        {
+          "input": {
+            "at": 0
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": -1,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 16,
+            "ops": [
+              {
+                "op": "dead",
+                "value": true
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 32,
+            "camera": [
+              3000,
+              0
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              3000,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              3000,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              3000,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 48,
+            "camera": [
+              0,
+              0
+            ],
+            "ops": [
+              {
+                "op": "dead",
+                "value": false
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 64,
+            "camera": [
+              3000,
+              0
+            ],
+            "ops": [
+              {
+                "op": "dead",
+                "value": true
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              3000,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "after": {
+            "camera": [
+              3000,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "post": {
+            "camera": [
+              3000,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 80,
+            "ops": [
+              {
+                "op": "exit",
+                "value": true
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              3000,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": true,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "after": {
+            "camera": [
+              3000,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": true,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": -1,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              3000,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": true,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": -1,
+              "visible": true,
+              "sceneVisible": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "freeze-keeps-ring-until-next-elf-update",
+      "air": false,
+      "tile": 2080,
+      "frames": [
+        {
+          "input": {
+            "at": 0
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": -1,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 16
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 32,
+            "ops": [
+              {
+                "op": "erode"
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": true,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": true,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 48
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": true,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": true,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "ice0"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": -1,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": true,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "ice0"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": -1,
+              "visible": true,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 1500
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": true,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "ice0"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": -1,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": true,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "ice0"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": -1,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": true,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "ice0"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": -1,
+              "visible": true,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 2000,
+            "size": [
+              0,
+              0
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": true,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "ice0"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": -1,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": true,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "ice0"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": -1,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": true,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "ice0"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": -1,
+              "visible": true,
+              "sceneVisible": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "skipped-exiting-update-retains-ring",
+      "air": false,
+      "tile": 2080,
+      "frames": [
+        {
+          "input": {
+            "at": 0
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": -1,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 16,
+            "post": [
+              {
+                "op": "teleport"
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": true,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 3000
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": true,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  42.666666666666664
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": false,
+                "exiting": false,
+                "gone": true,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  42.666666666666664
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": false,
+                "exiting": false,
+                "gone": true,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 3016
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  42.666666666666664
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": false,
+                "exiting": false,
+                "gone": true,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  42.666666666666664
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": false,
+                "exiting": false,
+                "gone": true,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  42.666666666666664
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": false,
+                "exiting": false,
+                "gone": true,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "canopy-overrides-local-collider-and-landing",
+      "air": true,
+      "tile": 512,
+      "frames": [
+        {
+          "input": {
+            "at": 0
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": false,
+                "parent": null
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": -1,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": null
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": null
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 16.666666666666668
+          },
+          "afterLod": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": null
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 33.333333333333336
+          },
+          "afterLod": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": false,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 5000
+          },
+          "afterLod": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": true,
+                "requested": true,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 5016.666666666667
+          },
+          "afterLod": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": true,
+                "requested": true,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  -1128,
+                  1755.4764334110812,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "post": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  -1128,
+                  1755.4764334110812,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 5033.333333333333
+          },
+          "afterLod": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  -1128,
+                  1755.4764334110812,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "after": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  -1128,
+                  1755.4764334110812,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "post": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  -1128,
+                  1755.4764334110812,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 5050,
+            "camera": [
+              0,
+              0
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  -1128,
+                  1755.4764334110812,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  -1128,
+                  1755.4764334110812,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  -1128,
+                  1755.4764334110812,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "canopy-point-boundary",
+      "air": true,
+      "tile": 512,
+      "frames": [
+        {
+          "input": {
+            "at": 0
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": false,
+                "parent": null
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": -1,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": null
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": null
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 16.666666666666668
+          },
+          "afterLod": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": null
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 33.333333333333336,
+            "ops": [
+              {
+                "op": "canopy-edge",
+                "epsilon": 0
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              -1976,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": false,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              -1976,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              -1976,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 50,
+            "ops": [
+              {
+                "op": "canopy-edge",
+                "epsilon": 0.00001
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              -1976.00001,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": true,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              -1976.00001,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              -1976.00001,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 66.66666666666667,
+            "ops": [
+              {
+                "op": "canopy-edge",
+                "epsilon": 0
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              -1976,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": true,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              -1976,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              -1976,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "dead-carried-elf-ignores-forwarded-lod",
+      "air": true,
+      "tile": 512,
+      "frames": [
+        {
+          "input": {
+            "at": 0
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": false,
+                "parent": null
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": -1,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": null
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": null
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 16.666666666666668
+          },
+          "afterLod": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": null
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 33.333333333333336,
+            "ops": [
+              {
+                "op": "dead",
+                "value": true
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": false,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": false,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": false,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 50
+          },
+          "afterLod": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": false,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": false,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": false,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 66.66666666666667,
+            "ops": [
+              {
+                "op": "dead",
+                "value": false
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": false,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              -1128,
+              -1316.6073250583108
+            ],
+            "actors": [
+              {
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "canopy"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": false,
+              "sceneVisible": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "pending-high-then-death-does-not-retry-on-revive",
+      "air": false,
+      "tile": 2080,
+      "frames": [
+        {
+          "input": {
+            "at": 0
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": -1,
+              "visible": false,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 16,
+            "ops": [
+              {
+                "op": "lod",
+                "high": true
+              },
+              {
+                "op": "dead",
+                "value": true
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 32,
+            "ops": [
+              {
+                "op": "dead",
+                "value": false
+              }
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 48,
+            "camera": [
+              3000,
+              0
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              3000,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": true,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              3000,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "post": {
+            "camera": [
+              3000,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": false,
+                "dirty": false,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          }
+        },
+        {
+          "input": {
+            "at": 64,
+            "camera": [
+              0,
+              0
+            ]
+          },
+          "afterLod": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": false,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": true,
+                "visible": false,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": false
+            }
+          },
+          "after": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          },
+          "post": {
+            "camera": [
+              0,
+              0
+            ],
+            "actors": [
+              {
+                "position": [
+                  24,
+                  -18.143593539449057,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              },
+              {
+                "position": [
+                  24,
+                  -73.56921938165328,
+                  0
+                ],
+                "arrived": true,
+                "alive": true,
+                "active": true,
+                "exiting": false,
+                "gone": false,
+                "high": true,
+                "dirty": false,
+                "visible": true,
+                "requested": true,
+                "parent": "map"
+              }
+            ],
+            "ring": {
+              "owner": 0,
+              "visible": true,
+              "sceneVisible": true
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "ringInitial": {
+    "owner": -1,
+    "visible": true
+  },
+  "ringFrames": [
+    {
+      "input": {
+        "op": "setup",
+        "player": 0
+      },
+      "owner": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "op": "update",
+        "player": 0,
+        "arrived": true
+      },
+      "owner": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "op": "update",
+        "player": 0,
+        "dead": true
+      },
+      "owner": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "op": "update",
+        "player": 0,
+        "exiting": true
+      },
+      "owner": -1,
+      "visible": true
+    },
+    {
+      "input": {
+        "op": "update",
+        "player": 0,
+        "dead": false,
+        "arrived": false,
+        "exiting": false
+      },
+      "owner": -1,
+      "visible": false
+    },
+    {
+      "input": {
+        "op": "setup",
+        "player": 0
+      },
+      "owner": 0,
+      "visible": false
+    },
+    {
+      "input": {
+        "op": "client",
+        "player": 1
+      },
+      "owner": 0,
+      "visible": false
+    },
+    {
+      "input": {
+        "op": "setup",
+        "player": 1
+      },
+      "owner": 1,
+      "visible": false
+    },
+    {
+      "input": {
+        "op": "update",
+        "player": 1,
+        "arrived": true
+      },
+      "owner": 1,
+      "visible": true
+    },
+    {
+      "input": {
+        "op": "update",
+        "player": 0,
+        "dead": true,
+        "exiting": true
+      },
+      "owner": 1,
+      "visible": true
+    },
+    {
+      "input": {
+        "op": "teardown",
+        "player": 1
+      },
+      "owner": 1,
+      "visible": true
+    },
+    {
+      "input": {
+        "op": "update",
+        "player": 1,
+        "arrived": false
+      },
+      "owner": 1,
+      "visible": false
+    },
+    {
+      "input": {
+        "op": "update",
+        "player": 1,
+        "dead": true,
+        "exiting": true
+      },
+      "owner": -1,
+      "visible": false
+    }
+  ],
+  "ioRequests": [
+    "models/elf-animated.gltf"
+  ]
+}

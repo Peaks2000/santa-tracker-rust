@@ -143,6 +143,7 @@ pub mod coding_user_code;
 
 pub mod snowball;
 pub mod snowball_client;
+pub mod snowball_lod;
 pub mod snowball_texture;
 
 pub mod snowball_collision;

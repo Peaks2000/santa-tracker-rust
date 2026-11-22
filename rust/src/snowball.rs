@@ -485,6 +485,7 @@ pub struct Player {
     pub setup: bool,
     pub landed: bool,
     pub collision_handler: bool,
+    pub lod: crate::snowball_lod::ElfLod,
     pub pos: V,
     pub z: f64,
     pub tile: i32,
@@ -603,6 +604,7 @@ pub struct Snowball {
     pub shots: Vec<Shot>,
     pub particles: Vec<Particle>,
     pub client_arrival: crate::snowball_client::Arrival,
+    pub client_ring: crate::snowball_lod::ClientRing,
     pub camera: V,
     pub camera_velocity: V,
     pub time: f64,
@@ -646,6 +648,7 @@ impl Snowball {
             shots: vec![],
             particles: vec![],
             client_arrival: crate::snowball_client::Arrival::default(),
+            client_ring: crate::snowball_lod::ClientRing::default(),
             camera: V::default(),
             camera_velocity: V::default(),
             time: 0.,
@@ -695,6 +698,7 @@ impl Snowball {
         self.gameover = false;
         self.client_dead_at = 0.;
         self.client_arrival.teardown();
+        self.client_ring.leave_scene();
         self.removal.teardown();
         self.pending_destination = None;
         self.client_destination = None;
@@ -774,6 +778,7 @@ impl Snowball {
             setup: false,
             landed: false,
             collision_handler: false,
+            lod: crate::snowball_lod::ElfLod::default(),
             pos: V::default(),
             z: 0.,
             tile,
@@ -1215,6 +1220,28 @@ impl Snowball {
             height,
             V::new(self.camera.x, -self.camera.y * 4. / 3.),
         ));
+        // LodSystem follows collision and uses the current camera. Player
+        // colliders remain in local actor coordinates, like the source objects.
+        let lod_limit = Bounds::rect(
+            V::new(self.camera.x, -self.camera.y * 4. / 3.),
+            width + 256.,
+            height * 4. / 3. + 256.,
+        );
+        for (i, p) in self.players.iter_mut().enumerate() {
+            if p.setup && (p.active || i == 0) {
+                p.lod
+                    .assign(p.alive, lod_limit.contains(Bounds::rect(p.pos, 15., 45.)));
+            }
+        }
+        // A canopy registers after its carried elf. Its Point collider's LOD
+        // forwards to that elf even after another parent has taken the actor.
+        for c in &self.parachutes.canopies {
+            if let Id::Player(i) = c.entity {
+                let p = &mut self.players[i];
+                p.lod
+                    .assign(p.alive, lod_limit.contains(Bounds::rect(c.pos, 0., 0.)));
+            }
+        }
         // Source newSnowballs.pop() sets up new shots after collision and
         // appends them in reverse throw order, before the active-array loop.
         if let Some(first_pending) = self.shots.iter().position(|s| !s.setup) {
@@ -1420,6 +1447,9 @@ impl Snowball {
             if !p.setup {
                 p.setup = true;
                 self.collision.add(Id::Player(i));
+                if i == 0 {
+                    self.client_ring.setup(i);
+                }
                 if !p.arrived {
                     self.parachutes.drop_entity(Id::Player(i));
                 }
@@ -1458,9 +1488,12 @@ impl Snowball {
             if !p.active {
                 continue;
             }
+            self.client_ring
+                .update(i, i == 0, p.arrived, p.alive, p.presence.exiting());
             if p.arrived {
                 p.collision_handler = true;
             }
+            p.lod.update(p.alive);
             if p.alive {
                 if let Some(&next) = p.path.first() {
                     let d = next.sub(p.pos);
@@ -2368,6 +2401,185 @@ mod command_tests {
                     &format!("{label} player"),
                 );
             }
+        }
+    }
+}
+
+#[cfg(test)]
+mod lod_tests {
+    use super::*;
+    use crate::snowball_lod::ClientRing;
+    fn snapshot(g: &Snowball) -> serde_json::Value {
+        let parent = |p: Parent| match p {
+            Parent::Detached => serde_json::Value::Null,
+            Parent::Map => serde_json::json!("map"),
+            Parent::Canopy => serde_json::json!("canopy"),
+            Parent::Ice(i) => serde_json::json!(format!("ice{i}")),
+        };
+        let scene_visible = g.client_ring.visible
+            && g.client_ring.owner.is_some_and(|i| {
+                let p = &g.players[i];
+                p.lod.root_visible
+                    && match p.parent {
+                        Parent::Detached => false,
+                        Parent::Map => true,
+                        Parent::Canopy => g.parachutes.get(Id::Player(i)).is_some(),
+                        Parent::Ice(slot) => g.removal.layer.contains(&slot),
+                    }
+            });
+        serde_json::json!({"camera":[g.camera.x,g.camera.y],"actors":g.players.iter().map(|p|serde_json::json!({"position":[p.pos.x,p.pos.y,p.z],"arrived":p.arrived,"alive":p.alive,"active":p.active,"exiting":p.presence.exiting(),"gone":p.presence.gone(),"high":p.lod.high,"dirty":p.lod.needs_update,"visible":p.lod.root_visible,"requested":p.lod.model_requested,"parent":parent(p.parent)})).collect::<Vec<_>>(),"ring":{"owner":g.client_ring.owner.map(|i|i as i64).unwrap_or(-1),"visible":g.client_ring.visible,"sceneVisible":scene_visible}})
+    }
+    fn apply(g: &mut Snowball, c: &serde_json::Value, width: f64) {
+        let i = c["player"].as_u64().unwrap_or(0) as usize;
+        match c["op"].as_str().unwrap() {
+            "position" => {
+                g.players[i].pos = V::new(
+                    c["position"][0].as_f64().unwrap(),
+                    c["position"][1].as_f64().unwrap(),
+                );
+                g.players[i].z = c["position"][2].as_f64().unwrap();
+            }
+            "dead" => g.players[i].alive = !c["value"].as_bool().unwrap(),
+            "exit" => {
+                if c["value"].as_bool().unwrap() {
+                    g.players[i].presence.exit(g.time)
+                } else {
+                    g.players[i].presence.exit_time = -1.;
+                }
+            }
+            "erode" => {
+                let tile = g.map.grid.position_index(g.players[i].pos);
+                g.map.states[tile as usize] = 4;
+            }
+            "lod" => {
+                let p = &mut g.players[i];
+                p.lod.assign(p.alive, c["high"].as_bool().unwrap());
+            }
+            "teleport" => g.kill(i, false),
+            "canopy-edge" => {
+                let p = g.map.grid.pos(g.players[i].tile);
+                g.camera = V::new(
+                    p.x - (width + 256.) / 2. - c["epsilon"].as_f64().unwrap(),
+                    p.y * -0.75,
+                );
+            }
+            _ => panic!("LOD command {c}"),
+        }
+    }
+    #[test]
+    fn lod_and_shared_ring_match_original_core_system_stages() {
+        let data: serde_json::Value =
+            serde_json::from_str(include_str!("../data/snowball-lod-reference.json")).unwrap();
+        assert_eq!(data["cases"].as_array().unwrap().len(), 8);
+        for case in data["cases"].as_array().unwrap() {
+            let mut g = Snowball::new("lod-reference");
+            g.start();
+            g.players.truncate(2);
+            g.drops.clear();
+            g.shots.clear();
+            g.particles.clear();
+            g.parachutes = Parachutes::default();
+            g.map.states.fill(1);
+            g.map.obstacles.fill(-1);
+            g.map.rings.resize(4, vec![]);
+            g.all_time = 100;
+            for (i, p) in g.players.iter_mut().enumerate() {
+                p.tile = if i == 0 {
+                    case["tile"].as_i64().unwrap() as i32
+                } else {
+                    2081
+                };
+                p.arrived = !(i == 0 && case["air"].as_bool().unwrap());
+                p.landed = p.arrived;
+                p.setup = false;
+                p.active = true;
+                p.bot = false;
+                p.face = 0.;
+                p.pos = if p.arrived {
+                    g.map.grid.pos(p.tile)
+                } else {
+                    V::default()
+                };
+                p.z = 0.;
+                p.parent = if p.arrived {
+                    Parent::Map
+                } else {
+                    Parent::Detached
+                };
+            }
+            let (mut width, mut height) = (1440., 800.);
+            for (index, row) in case["frames"].as_array().unwrap().iter().enumerate() {
+                let input = &row["input"];
+                g.time = input["at"].as_f64().unwrap();
+                g.wall = g.time;
+                if input["size"].is_array() {
+                    width = input["size"][0].as_f64().unwrap();
+                    height = input["size"][1].as_f64().unwrap();
+                }
+                if input["camera"].is_array() {
+                    g.camera = V::new(
+                        input["camera"][0].as_f64().unwrap(),
+                        input["camera"][1].as_f64().unwrap(),
+                    );
+                }
+                for c in input["ops"].as_array().into_iter().flatten() {
+                    apply(&mut g, c, width);
+                }
+                // The source harness runs these core stages with no collision
+                // or LocalLevel/AI/loaded-model phase. Match that isolation.
+                g.collision = Collision::new(Bounds::rect(
+                    V::default(),
+                    g.map.grid.pixel_width(),
+                    g.map.grid.pixel_height(),
+                ));
+                g.finish_frame(width, height);
+                let label = format!("{} frame {index}", case["name"]);
+                crate::snowball::tests::assert_json_close(&snapshot(&g), &row["after"], &label);
+                for c in input["post"].as_array().into_iter().flatten() {
+                    apply(&mut g, c, width);
+                }
+                crate::snowball::tests::assert_json_close(&snapshot(&g), &row["post"], &label);
+            }
+        }
+    }
+    #[test]
+    fn shared_ring_ownership_and_teardown_match_original_elf() {
+        let data: serde_json::Value =
+            serde_json::from_str(include_str!("../data/snowball-lod-reference.json")).unwrap();
+        let mut ring = ClientRing {
+            owner: data["ringInitial"]["owner"]
+                .as_i64()
+                .filter(|i| *i >= 0)
+                .map(|i| i as usize),
+            visible: data["ringInitial"]["visible"].as_bool().unwrap(),
+        };
+        let mut client = 0;
+        let mut states = [(false, true, false); 2]; // arrived, alive, exiting
+        for row in data["ringFrames"].as_array().unwrap() {
+            let input = &row["input"];
+            let i = input["player"].as_u64().unwrap() as usize;
+            if let Some(v) = input["arrived"].as_bool() {
+                states[i].0 = v;
+            }
+            if let Some(v) = input["dead"].as_bool() {
+                states[i].1 = !v;
+            }
+            if let Some(v) = input["exiting"].as_bool() {
+                states[i].2 = v;
+            }
+            match input["op"].as_str().unwrap() {
+                "setup" => ring.setup(i),
+                "client" => client = i,
+                "teardown" => {}
+                "update" => ring.update(i, i == client, states[i].0, states[i].1, states[i].2),
+                _ => panic!("ring command"),
+            }
+            assert_eq!(
+                ring.owner.map(|n| n as i64).unwrap_or(-1),
+                row["owner"].as_i64().unwrap(),
+                "{input}"
+            );
+            assert_eq!(ring.visible, row["visible"].as_bool().unwrap(), "{input}");
         }
     }
 }

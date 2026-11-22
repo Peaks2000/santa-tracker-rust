@@ -521,6 +521,9 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             draw_batched(&gift);
         }
         for (i, p) in g.players.iter().enumerate() {
+            if !p.lod.root_visible {
+                continue;
+            }
             let Some(base) = Self::actor_base(
                 g,
                 Id::Player(i),
@@ -552,7 +555,7 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             gl_use_material(&self.lit);
             draw_batched(&mesh);
             gl_use_material(&self.clip);
-            if i == 0 && p.alive && p.arrived {
+            if g.client_ring.owner == Some(i) && g.client_ring.visible {
                 self.draw_marker(vp, model * Mat4::from_rotation_x(-PI / 2.), false);
                 gl_use_material(&self.clip);
             }

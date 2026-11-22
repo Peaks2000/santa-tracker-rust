@@ -1944,3 +1944,78 @@ rendering, touch/keyboard/host input and actual sound-bus fidelity remain open.
 Validation for this pass: all 100 native tests pass (89 library, 11 application
 unit tests); the release application and snowball_capture example build. These
 checks do not launch a window or certify interactive/GPU behavior.
+
+
+### Snowball elf root visibility and shared ring — 22 November 2026
+
+Read the complete original LodSystem, Elf constructor/allocation/setup/update/
+teardown/lod setter, Parachute constructor/carry/lod/onFreed and ParachuteSystem
+queue/registration order. Traced Rectangle/Point containment and existing
+Player/Removal/Client order. No window, browser or OS input was used.
+
+`src/snowball_lod.rs` translates current HIGH/LOW, lodNeedsUpdate, root visible
+and model-requested flags. Constructor is LOW/dirty/visible/unrequested; setters
+ignore dead players and only mark dirty on a changed value. Elf.update consumes
+dirty: HIGH+alive makes root visible/requests the model; otherwise it hides root.
+Health revival alone does not retry a pending HIGH that was consumed while dead:
+this source quirk remains until another LOD transition. modelInitialized in the
+source means requested, not promise resolved; the native field is named that way.
+
+LodSystem runs after collisions using the current camera's x/y*-4/3 and the
+width+256 by height*4/3+256 rectangle. Full 15x45 local elf collider containment
+is inclusive. A canopy's Point LOD forwards to its carried object; it registers
+after that elf and can override the local-collider result. Native preserves both
+assignments and their dirty transitions, before Player.update consumes them.
+Forwarding still occurs when the actor has been reparented elsewhere, because
+source carriedObject is retained until free. Default Drop.lod is an assigned but
+unused property, not a reason to hide gifts. Canopy graphics are not hidden by
+this forwarded LOD. Generic duplicate registration/redrop/pool aliasing still
+needs broader checking; the new state is not a whole LOD engine certification.
+
+The shared clientPlayerMarker under the dolly is separate from Client's arrival
+marker. Setup attaches it; arrived controls its mesh visibility. Death alone
+keeps it attached. Only a dead exiting Elf update detaches its own marker; a
+freeze at the end of the Player pass therefore retains it for that next render.
+If a time jump skips all exiting Elf updates, it can remain attached after gone;
+Native preserves this behavior rather than hiding every dead elf's ring. An old
+owner cannot remove a marker reparented to another dolly. Elf.teardown itself
+does not detach it. Native renderer checks stored owner/mesh visibility and root
+visibility, replacing the inferred alive&&arrived test. It uses existing shaders;
+no new GPU pipeline is allocated. Per-frame skeleton updates remain independent
+of root visibility, as in source.
+
+The source module marker retains visibility across scene instances. Native start
+keeps that flag but maps an old dolly outside its cleared actor set to no current
+owner, until setup. Raw old-parent identity and complete pooled scene teardown
+are still unimplemented, not established by this abstraction.
+
+The CPU-only source VM uses unchanged Elf/Player/Lod/Parachute/Removal/Client and
+actual THREE. Original GLTFLoader reaches an I/O adapter that leaves FileLoader
+pending. Thus it verifies requested/root/ring decisions while no model resolves;
+it cannot prove loaded-model callbacks, texture/material updates or animation
+readiness. Image/Canvas, collision/input/event/network sinks are inert; no AI or
+LocalLevel runs. Source UUIDs use a seeded LCG, not the earlier constant-random
+command harness, so Removal's UUID keys stay distinct. Pools start empty per
+case; source global model promise/marker retain their normal memoized state.
+
+`snowball-lod-reference.json`/provenance cover 8 cases, 46 core frames and 13
+separate ring operations. Actual native finish_frame compares 92 post-Player/
+post-command snapshots (root/LOD/request flags, parent, active/arrival/presence,
+position/camera, ring owner/visibility and hierarchy eligibility). Source afterLod
+data is retained but not directly hooked in native. Cases cover inclusive and
+outside bounds, resize, dead HIGH/LOW retention, pending-HIGH death/revival,
+late freeze removal, skipped exiting updates, canopy override/boundary/death
+and landing. The separate ring sequence exercises reassignment and teardown,
+not the port's complete fixed-local-index controller. sceneVisible is hierarchy
+eligibility, not a frustum or pixel-render check.
+
+All 102 native tests pass. Model IO remains eager/shared in the view; async
+completion, pooled loaded objects/material opacity/actions, input octree and
+GPU appearance remain unfinished. The legacy frozen reference capture imports
+poses/textures but no LOD/readiness flags: it explicitly keeps ready-to-draw
+root isolation and restores the known living/arrived local ring. That diagnostic
+was updated/compiled, not run while the user is playing. No rating or user
+approval changes follow this state-machine verification.
+
+Release validation: the application and snowball_capture diagnostic build. No
+window/GPU/input path was executed in this pass.

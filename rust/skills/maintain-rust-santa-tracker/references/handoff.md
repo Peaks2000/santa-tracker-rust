@@ -565,3 +565,42 @@ Do not claim complete mode/input/animation parity from these comparisons.
 
 This command/marker pass passes all 100 native tests (89 library + 11 binary);
 release application/capture builds pass. No window or raw input was used.
+
+
+### Elf root/ring visibility pass (22 November 2026)
+
+No window/input tests while the user plays. New `snowball_lod::ElfLod` records
+HIGH/LOW, dirty, root_visible and model_requested (not model ready). Defaults
+LOW/dirty/visible/unrequested; dead assignments are ignored. Dirty is consumed
+only in active Elf.update: high+alive requests/shows, otherwise hides. A dirty
+HIGH consumed while dead does not retry just because health revives. Native
+renderer now skips a hidden root, while animation clocks keep updating.
+
+LOD follows collision using CURRENT camera and inclusive 15x45 local collider
+containment. Canopy Point setters register AFTER the elf and forward LOD even
+if another parent has taken the carried object; keep the override and both
+intermediate dirty transitions. Do not hide canopy art or gifts for these
+assignments. Generic duplicate registry/redrop/pool identity is still unverified.
+
+`client_ring` is the shared marker under a dolly, separate from client_arrival.
+Setup owns it; arrived sets mesh visibility. Dead+exiting UPDATE detaches only
+that owner's marker. Freeze happens after Elf.update, so the ring survives that
+next render. A time jump skipping exiting updates can leave it attached after
+gone; preserve the source quirk. Teardown alone does not detach. Renderer reads
+owner/mesh/root state, not health. start maps an old dolly outside the cleared
+actor set to no current owner and retains visible; raw old-parent/pool lifecycle
+is not implemented by this abstraction.
+
+CPU VM `snowball-lod-reference.cjs` runs real source core systems/THREE without a
+browser; original GLTFLoader FileLoader IO is held pending. It measures requested
+flags/root/ring, not actual model completion or loaded-material opacity/actions.
+Eight cases / 46 frames / 92 native snapshots plus 13 ring-only operations cover
+limits/resize/death/dirty/canopy/landing/freeze/skipped exits/reassignment/teardown.
+Source afterLod snapshots are stored but not directly hooked in native tests.
+sceneVisible means hierarchy eligibility, never pixel/frustum verification.
+Native uses actual finish_frame with collision and LocalLevel/AI isolated out.
+
+Legacy frozen raster capture imports poses/textures, not LOD/readiness flags;
+it explicitly keeps root-visible isolation and restores its known living,
+arrived local ring. It was compiled, not run. Full loading/pools/materials/input
+and GPU appearance remain open. All 102 tests pass; do not infer mode 1:1.

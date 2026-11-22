@@ -220,3 +220,5 @@ For isolated arrival-marker rendering, `snowball_capture /tmp/marker.png 0 marke
 `cargo run --manifest-path rust/Cargo.toml --example snowball_elf_texture_audit -- /tmp/elf-textures` compares native CPU-generated elf textures with the 28 saved browser PNGs and exports optional before/after images. It creates no window or GPU context. Generated eye coverage is closer, with exact non-eye regions; residual antialiasing and complete world-texture rendering remain unfinished.
 
 The CPU-only command comparison runs with `cargo test --manifest-path rust/Cargo.toml --lib command_tests`. It compares 64 original frames at render/input/Player boundaries, including deferred throws, landing movement, charges and destination-marker timing. Geometry/projection checks do not certify full input or rendered-pixel parity.
+
+`cargo test --manifest-path rust/Cargo.toml --lib lod_tests` checks elf visibility/ring state against the saved original core-system fixture: 46 frames and 13 ownership operations. It creates no window. Requested-model flags are verified separately from the still-unfinished asynchronous loading/loaded-model and GPU behavior.

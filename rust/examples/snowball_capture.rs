@@ -275,6 +275,9 @@ async fn run() {
                 santa_tracker::snowball_removal::Parent::Detached
             };
             p.alive = row["alive"].as_bool().unwrap();
+            // This legacy raster fixture imports poses/textures, not source
+            // loading/LOD flags. Keep its existing ready-to-draw isolation.
+            p.lod.root_visible = true;
             p.gone = false;
             p.frozen = false;
             p.face = row["rotation"][1].as_f64().unwrap();
@@ -306,6 +309,12 @@ async fn run() {
         game.drops.clear();
         game.shots.clear();
         game.particles.clear();
+        // This captured source local is alive and arrived after real setup.
+        // Its shared ring belongs to the local dolly, unlike a fresh start's
+        // not-yet-registered actors. Do not infer this for an arbitrary corpse.
+        assert!(game.players[0].alive && game.players[0].arrived);
+        game.client_ring.setup(0);
+        game.client_ring.visible = true;
     }
     if let Some(step) = args
         .get(3)
