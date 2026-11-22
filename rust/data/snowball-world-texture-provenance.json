@@ -1,0 +1,105 @@
+{
+  "method": "Source-traced original GLTFLoader.loadTexture and Texture.copy defaults versus locked Macroquad/miniquad upload/draw/wrap path. GLTF accessor bytes read directly for UV bounds. No browser, GPU context, driver query or scene-render comparison: after-wrap flags are code/API tracing, not observed GL state. Generated texture pixel comparison uses 28 saved original browser Canvas PNGs; error artifact documents residual coverage.",
+  "before_reference_commit": "9b40e066b2e722a4288cb21868003eda26aec262",
+  "gltf_sampler": {},
+  "source_resolved_sampler": {
+    "wrapS": "RepeatWrapping",
+    "wrapT": "RepeatWrapping",
+    "magFilter": "LinearFilter",
+    "minFilter": "LinearMipmapLinearFilter",
+    "flipY": false,
+    "texture_size": [
+      512,
+      512
+    ],
+    "power_of_two": true
+  },
+  "native_wrap_before": "Clamp",
+  "native_wrap_after": "Repeat on both axes for generated elf and its isolated reference texture only",
+  "unchanged_other_maps": "tiles, snowball, parachute and generated gift retain TextureLoader/Texture clamp defaults; existing linear/trilinear world-map filtering retained. CSS PNG sampling is not certified.",
+  "uv": {
+    "count": 2746,
+    "min": [
+      -0.0023183971643447876,
+      0.0058228373527526855
+    ],
+    "max": [
+      0.9946621656417847,
+      0.9992719888687134
+    ],
+    "outside": [
+      {
+        "index": 704,
+        "uv": [
+          -0.0023183971643447876,
+          0.4212324023246765
+        ]
+      },
+      {
+        "index": 747,
+        "uv": [
+          -0.0023183971643447876,
+          0.4212324023246765
+        ]
+      }
+    ]
+  },
+  "elf_canvas_comparison": {
+    "images": 28,
+    "rgba_error_reduction_percent": [
+      88.47340198358089,
+      88.75246409462123
+    ],
+    "non_eye_pixels_exact": true,
+    "remaining_max_channel_error": [
+      20,
+      36
+    ]
+  },
+  "source_sha256": {
+    "static/scenes/snowball/js/snowball/entities/elf.js": "d5fd37bbe1201b63143898793fbe0b9e7036805e513b1af6aa4a48f0226f5cf2",
+    "static/scenes/snowball/js/snowball/textures.js": "e910084cc44c6757f4daef16f1f2e2539fbd22b391ebab159f644dfdb7c59eb3",
+    "static/scenes/snowball/models/elf-animated.gltf": "966bb82acfcae90daccbfe86acb8df28fffdec62ebc6a649f6c21b3bdf538f4d",
+    "static/scenes/snowball/models/elf-animated.bin": "6931db820304c14d6a6671a3c0c28e373b2ba195bd6fa5b5ec14180e33e7f965",
+    "static/third_party/lib/three/examples/js/loaders/GLTFLoader.js": "d679f38015daeaefec97ada4792f356f939597fe4c68d573c1743704bc1ec3dc",
+    "static/third_party/lib/three/build/three.js": "6467e0098991c58a5c6e64415c7126079672b4e0927c3203589644db96c64b60"
+  },
+  "locked_backend_sha256": {
+    "macroquad-0.4.16/src/models.rs": "f739c51606b3162d985ea75f8c935b19e3f791608d314d0a2d31ae51e530fe98",
+    "macroquad-0.4.16/src/texture.rs": "06c27fa0c706935fb796bf156254fa4f26ac559eb9158f539dd4bd537f48ae60",
+    "miniquad-0.4.11/src/graphics.rs": "32fe6037961a7a812d58a6e1af3fa456345c964160c9be4e85702c3817cee265",
+    "miniquad-0.4.11/src/graphics/gl.rs": "e75a1e2de955529e76711e864886708ee77fc7cc606bc1944ce101525155be35"
+  },
+  "before_generator_file_sha256": "39288ff5da409546b677444b523984cbc41c7c38fe295b005b4bbf64553f6259",
+  "before_distribution_commit": "59f82420b512fed8e789221b9f71f4fa8145ce5c",
+  "original_texture_sha256": {
+    "0.png": "b693e153549ebb8b79e912c5773a98473169d77c41579220e2b7f350706273d9",
+    "1.png": "ffdb19a8c50cf74667da68a4ef502ae5bf687d62243251d126a3e71c53de108c",
+    "10.png": "335f242392d79601a74b42f86e12f6f3b92a26e979f147523584794a7b2badc7",
+    "11.png": "80d2e7ff0cb98be1a29b5bda7d0277219c6b256aa241055b219df9651adb4c5b",
+    "12.png": "b693e153549ebb8b79e912c5773a98473169d77c41579220e2b7f350706273d9",
+    "13.png": "e686a267c68bf7274785144bf38fb65af2c5ce1591d0b8376e539eb690315ab3",
+    "14.png": "ffdb19a8c50cf74667da68a4ef502ae5bf687d62243251d126a3e71c53de108c",
+    "15.png": "148d75889699c47b480ed291badb0c9a8801a2eea4410676ed9b91f25e145fae",
+    "16.png": "a9e8636a8e7194cd5814da153ab37caa2164ae6be076ea03ec0e3fab22f7c231",
+    "17.png": "e686a267c68bf7274785144bf38fb65af2c5ce1591d0b8376e539eb690315ab3",
+    "18.png": "a9e8636a8e7194cd5814da153ab37caa2164ae6be076ea03ec0e3fab22f7c231",
+    "19.png": "65aa8a1ca0ec51105dd3c1e688f3c97a53fc2b60ea1e358b4ce5285fd86af4c4",
+    "2.png": "148d75889699c47b480ed291badb0c9a8801a2eea4410676ed9b91f25e145fae",
+    "20.png": "65aa8a1ca0ec51105dd3c1e688f3c97a53fc2b60ea1e358b4ce5285fd86af4c4",
+    "21.png": "37b70ab100ac230d535cfa42bd6df7686fccd75ece3ab3fad92e1596946ef705",
+    "22.png": "49c04d704dbdedfa264a49d4bd7b54df2e98b485f1ceec51632e3cc3457de3b2",
+    "23.png": "9b7510073ddbf3f931423c757824b56832b2baeb647501b25fb496ff8615248b",
+    "24.png": "f3d2f653c838afcd57937682ab222b1865bef4c4385984f7ebca58f92e8e7696",
+    "25.png": "335f242392d79601a74b42f86e12f6f3b92a26e979f147523584794a7b2badc7",
+    "26.png": "f3d2f653c838afcd57937682ab222b1865bef4c4385984f7ebca58f92e8e7696",
+    "27.png": "404ac5fc12ca9453aaff0d4765ee405e72ce3d7bc10cca1462cc19dae7c161e8",
+    "3.png": "65aa8a1ca0ec51105dd3c1e688f3c97a53fc2b60ea1e358b4ce5285fd86af4c4",
+    "4.png": "83ab0cbd99dee7f4188bbeb2c1187739b58603080e6944198d0a0e8546650302",
+    "5.png": "83ab0cbd99dee7f4188bbeb2c1187739b58603080e6944198d0a0e8546650302",
+    "6.png": "148d75889699c47b480ed291badb0c9a8801a2eea4410676ed9b91f25e145fae",
+    "7.png": "65aa8a1ca0ec51105dd3c1e688f3c97a53fc2b60ea1e358b4ce5285fd86af4c4",
+    "8.png": "e05c8c403803c0e5871751c4d8b1a5501ef570fb6691c89ee039baa540482529",
+    "9.png": "e686a267c68bf7274785144bf38fb65af2c5ce1591d0b8376e539eb690315ab3"
+  }
+}

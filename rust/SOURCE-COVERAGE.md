@@ -1808,3 +1808,65 @@ sampling or sharpening. The saved original elf texture samples differ from the
 current binary-circle reconstruction at 302 eye-edge pixels per 512x512 sheet;
 that offline reconstruction is only a locator for future native-generator work,
 not verification of all generated textures or the cause of scene-wide blur.
+
+
+### Snowball generated elf maps and glTF sampling — 22 November 2026
+
+No windows or input were used. Reread the complete generateElfTexture closure
+and initializeModel callback, Texture constructor/clone/copy, GLTFLoader's full
+loadTexture method, source textureMemo, active THREE upload/parameter functions,
+model JSON and native upload/draw/backend wrap path.
+
+Confirmed sampling distinction: tiles/snowball/parachute use TextureLoader's
+clamp defaults, but the glTF elf's empty sampler resolves to RepeatWrapping on
+both axes, linear magnification and trilinear minification. Elf clones that map
+and replaces only its image; Texture.copy preserves wrapping/filtering/flipY.
+The 512x512 generated map is power-of-two, so these settings remain active even
+in WebGL1. Native Macroquad/miniquad upload defaults to clamp. configure_texture
+now applies Repeat to the generated elf map and isolated imported elf reference
+map only. Other world-map wrap/filter settings are unchanged. Among 2,746
+source UVs, two extend below zero in U (minimum -.0023183972); both-axis source
+wrapping is relevant, not an arbitrary sharpening choice. Native draw_mesh uses
+the original texture directly, and the locked OpenGL backend maps Repeat to
+GL_REPEAT. This is source/API tracing, not a GPU state query or rendered proof.
+
+GLTFLoader's embedded-buffer/DDS/handler/object-URL branches are inactive for the
+bundled external elf PNG and empty sampler. Generic glTF loading, asynchronous
+readiness and errors remain partial; this change does not port those branches.
+Other scenes' glTF maps require their own sampler audit. Default anisotropy is
+one; blanket nearest filtering or extra anisotropy is not a source match.
+
+`src/snowball_texture.rs` replaces the binary integer-distance eye raster with
+native Canvas-like rectangle/path paints in the source order. It retains exact
+512x512 dimensions, palette values, pony-tail clear/paint region, white hat,
+skin/clothes/boots rectangles and final buckle. A fresh canvas is equivalent
+here because all pixels are cleared/covered by the original operations. Source
+retains its eye path without beginPath, appending the same two complete circles;
+repeated same-winding contours describe the same filled region. Native uses
+those two antialiased circle paths. Tiny-skia versus browser Skia edge coverage
+still differs; this is explicitly not an exact Canvas raster implementation.
+View still owns the source (major, minor) cache key, ignoring later hair/pony;
+allocation/RNG/full restart/cache population order is not certified by this pass.
+Direct RGBA upload replaces data-URL encoding without changing the intended
+image; readiness/lifecycle timing remains a separate unfinished area.
+
+The CPU-only `snowball_elf_texture_audit` example compares actual native output
+and the immutable preceding production loop against all 28 saved original
+browser-generated texture PNGs. Recorded major/skin colors are used; because
+this older fixture omitted hair/pony, only those constant non-eye regions are
+used to infer those parameters. No original eye pixels/coverage enter the new
+generator. Pixels outside x=[23,171), y=[186,228) match exactly in all 28 maps.
+Mean RGBA error decreases 88.47–88.75%; remaining differences are 284–290
+pixels per map, max channel error 20–36, all on eye edges. Inspected enlarged
+source/old/new eye crops and 4x differences. Whole-map means are small because
+the changing region is tiny; they cannot certify complete textures/rendering.
+
+Evidence: `snowball-elf-texture-errors.json`, `snowball-world-texture-provenance.json`
+(source/backend hashes, actual sampler JSON and out-of-range UVs), and the new
+28-image regression. That test demands exact non-eye regions, per-channel
+coverage bounds and at least fourfold reduction against the measured legacy
+error; it does not assert pixel equality or upgrade the mode's rating. All 98
+tests pass; the release binary builds. No runtime/window/driver test was run.
+Full world-texture clarity, minified GPU appearance, CSS PNG sampling and model
+lighting/render/compositor fidelity remain open. Source linear/trilinear world
+filtering is retained rather than changed based on the blur report alone.

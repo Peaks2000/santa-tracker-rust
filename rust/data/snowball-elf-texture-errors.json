@@ -1,0 +1,510 @@
+{
+  "frames": [
+    {
+      "after": {
+        "different_pixels": 288,
+        "max_channel_error": 27,
+        "rgba_mae_per_255": 0.0038089752197265625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 133,
+        "rgba_mae_per_255": 0.03386497497558594
+      },
+      "color": "#84488F",
+      "hair": "#ab2923",
+      "index": 0,
+      "ponytail": false,
+      "skin": "#B8906D",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 288,
+        "max_channel_error": 20,
+        "rgba_mae_per_255": 0.0022525787353515625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 96,
+        "rgba_mae_per_255": 0.019590377807617188
+      },
+      "color": "#56BBCA",
+      "hair": "#7c4149",
+      "index": 1,
+      "ponytail": true,
+      "skin": "#936644",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 290,
+        "max_channel_error": 36,
+        "rgba_mae_per_255": 0.0046329498291015625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 180,
+        "rgba_mae_per_255": 0.04019355773925781
+      },
+      "color": "#84488F",
+      "hair": "#2f3030",
+      "index": 2,
+      "ponytail": false,
+      "skin": "#E7C241",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 290,
+        "max_channel_error": 36,
+        "rgba_mae_per_255": 0.0046329498291015625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 180,
+        "rgba_mae_per_255": 0.04019355773925781
+      },
+      "color": "#BC3EB4",
+      "hair": "#ab2923",
+      "index": 3,
+      "ponytail": false,
+      "skin": "#E7C241",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 288,
+        "max_channel_error": 20,
+        "rgba_mae_per_255": 0.0022525787353515625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 96,
+        "rgba_mae_per_255": 0.019590377807617188
+      },
+      "color": "#BC3EB4",
+      "hair": "#ab2923",
+      "index": 4,
+      "ponytail": true,
+      "skin": "#936644",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 288,
+        "max_channel_error": 20,
+        "rgba_mae_per_255": 0.0022525787353515625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 96,
+        "rgba_mae_per_255": 0.019590377807617188
+      },
+      "color": "#BC3EB4",
+      "hair": "#ab2923",
+      "index": 5,
+      "ponytail": true,
+      "skin": "#936644",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 290,
+        "max_channel_error": 36,
+        "rgba_mae_per_255": 0.0046329498291015625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 180,
+        "rgba_mae_per_255": 0.04019355773925781
+      },
+      "color": "#84488F",
+      "hair": "#2f3030",
+      "index": 6,
+      "ponytail": false,
+      "skin": "#E7C241",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 290,
+        "max_channel_error": 36,
+        "rgba_mae_per_255": 0.0046329498291015625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 180,
+        "rgba_mae_per_255": 0.04019355773925781
+      },
+      "color": "#BC3EB4",
+      "hair": "#ab2923",
+      "index": 7,
+      "ponytail": false,
+      "skin": "#E7C241",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 290,
+        "max_channel_error": 36,
+        "rgba_mae_per_255": 0.0046329498291015625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 180,
+        "rgba_mae_per_255": 0.04019355773925781
+      },
+      "color": "#55AB57",
+      "hair": "#ab2923",
+      "index": 8,
+      "ponytail": false,
+      "skin": "#E7C241",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 288,
+        "max_channel_error": 27,
+        "rgba_mae_per_255": 0.0038089752197265625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 133,
+        "rgba_mae_per_255": 0.03386497497558594
+      },
+      "color": "#BC3EB4",
+      "hair": "#2f3030",
+      "index": 9,
+      "ponytail": true,
+      "skin": "#B8906D",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 288,
+        "max_channel_error": 20,
+        "rgba_mae_per_255": 0.0022525787353515625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 96,
+        "rgba_mae_per_255": 0.019590377807617188
+      },
+      "color": "#4DB1E9",
+      "hair": "#ea9639",
+      "index": 10,
+      "ponytail": false,
+      "skin": "#936644",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 288,
+        "max_channel_error": 27,
+        "rgba_mae_per_255": 0.0038089752197265625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 133,
+        "rgba_mae_per_255": 0.03386497497558594
+      },
+      "color": "#D55040",
+      "hair": "#7c4149",
+      "index": 11,
+      "ponytail": false,
+      "skin": "#B8906D",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 288,
+        "max_channel_error": 27,
+        "rgba_mae_per_255": 0.0038089752197265625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 133,
+        "rgba_mae_per_255": 0.03386497497558594
+      },
+      "color": "#84488F",
+      "hair": "#ab2923",
+      "index": 12,
+      "ponytail": false,
+      "skin": "#B8906D",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 288,
+        "max_channel_error": 27,
+        "rgba_mae_per_255": 0.0038089752197265625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 133,
+        "rgba_mae_per_255": 0.03386497497558594
+      },
+      "color": "#BC3EB4",
+      "hair": "#2f3030",
+      "index": 13,
+      "ponytail": true,
+      "skin": "#B8906D",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 288,
+        "max_channel_error": 20,
+        "rgba_mae_per_255": 0.0022525787353515625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 96,
+        "rgba_mae_per_255": 0.019590377807617188
+      },
+      "color": "#56BBCA",
+      "hair": "#7c4149",
+      "index": 14,
+      "ponytail": true,
+      "skin": "#936644",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 290,
+        "max_channel_error": 36,
+        "rgba_mae_per_255": 0.0046329498291015625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 180,
+        "rgba_mae_per_255": 0.04019355773925781
+      },
+      "color": "#84488F",
+      "hair": "#2f3030",
+      "index": 15,
+      "ponytail": false,
+      "skin": "#E7C241",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 288,
+        "max_channel_error": 27,
+        "rgba_mae_per_255": 0.0038089752197265625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 133,
+        "rgba_mae_per_255": 0.03386497497558594
+      },
+      "color": "#4DB1E9",
+      "hair": "#7c4149",
+      "index": 16,
+      "ponytail": false,
+      "skin": "#B8906D",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 288,
+        "max_channel_error": 27,
+        "rgba_mae_per_255": 0.0038089752197265625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 133,
+        "rgba_mae_per_255": 0.03386497497558594
+      },
+      "color": "#BC3EB4",
+      "hair": "#2f3030",
+      "index": 17,
+      "ponytail": true,
+      "skin": "#B8906D",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 288,
+        "max_channel_error": 27,
+        "rgba_mae_per_255": 0.0038089752197265625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 133,
+        "rgba_mae_per_255": 0.03386497497558594
+      },
+      "color": "#4DB1E9",
+      "hair": "#7c4149",
+      "index": 18,
+      "ponytail": false,
+      "skin": "#B8906D",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 290,
+        "max_channel_error": 36,
+        "rgba_mae_per_255": 0.0046329498291015625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 180,
+        "rgba_mae_per_255": 0.04019355773925781
+      },
+      "color": "#BC3EB4",
+      "hair": "#ab2923",
+      "index": 19,
+      "ponytail": false,
+      "skin": "#E7C241",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 290,
+        "max_channel_error": 36,
+        "rgba_mae_per_255": 0.0046329498291015625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 180,
+        "rgba_mae_per_255": 0.04019355773925781
+      },
+      "color": "#BC3EB4",
+      "hair": "#ab2923",
+      "index": 20,
+      "ponytail": false,
+      "skin": "#E7C241",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 288,
+        "max_channel_error": 20,
+        "rgba_mae_per_255": 0.0022525787353515625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 96,
+        "rgba_mae_per_255": 0.019590377807617188
+      },
+      "color": "#84488F",
+      "hair": "#7c4149",
+      "index": 21,
+      "ponytail": false,
+      "skin": "#936644",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 288,
+        "max_channel_error": 20,
+        "rgba_mae_per_255": 0.0022525787353515625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 96,
+        "rgba_mae_per_255": 0.019590377807617188
+      },
+      "color": "#D55040",
+      "hair": "#ab2923",
+      "index": 22,
+      "ponytail": false,
+      "skin": "#936644",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 288,
+        "max_channel_error": 27,
+        "rgba_mae_per_255": 0.0038089752197265625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 133,
+        "rgba_mae_per_255": 0.03386497497558594
+      },
+      "color": "#55AB57",
+      "hair": "#ab2923",
+      "index": 23,
+      "ponytail": false,
+      "skin": "#B8906D",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 290,
+        "max_channel_error": 36,
+        "rgba_mae_per_255": 0.0046329498291015625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 180,
+        "rgba_mae_per_255": 0.04019355773925781
+      },
+      "color": "#56BBCA",
+      "hair": "#7c4149",
+      "index": 24,
+      "ponytail": true,
+      "skin": "#E7C241",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 288,
+        "max_channel_error": 20,
+        "rgba_mae_per_255": 0.0022525787353515625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 96,
+        "rgba_mae_per_255": 0.019590377807617188
+      },
+      "color": "#4DB1E9",
+      "hair": "#ea9639",
+      "index": 25,
+      "ponytail": false,
+      "skin": "#936644",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 290,
+        "max_channel_error": 36,
+        "rgba_mae_per_255": 0.0046329498291015625
+      },
+      "before": {
+        "different_pixels": 302,
+        "max_channel_error": 180,
+        "rgba_mae_per_255": 0.04019355773925781
+      },
+      "color": "#56BBCA",
+      "hair": "#7c4149",
+      "index": 26,
+      "ponytail": true,
+      "skin": "#E7C241",
+      "different_pixels_outside_eye_bounds": 0
+    },
+    {
+      "after": {
+        "different_pixels": 284,
+        "max_channel_error": 33,
+        "rgba_mae_per_255": 0.0055084228515625
+      },
+      "before": {
+        "different_pixels": 300,
+        "max_channel_error": 168,
+        "rgba_mae_per_255": 0.04852294921875
+      },
+      "color": "#55AB57",
+      "hair": "#ea9639",
+      "index": 27,
+      "ponytail": true,
+      "skin": "#DBBC99",
+      "different_pixels_outside_eye_bounds": 0
+    }
+  ],
+  "method": "Actual current native CPU generator and immutable preceding production loop compared with 28 saved original browser Canvas PNGs. Major/skin are recorded source values; hair/pony inferred from constant non-eye regions, not rerolled or eye-injected. No window/GPU/input; not cache lifecycle, mipmap, renderer or whole-scene parity. Tiny-skia circle coverage can differ from browser Skia.",
+  "scope": "All 28 saved source textures, with unchanged constant regions outside the eye bounding rectangle. Residual Tiny-skia versus browser Skia eye coverage remains; this is not exact image or whole-scene parity."
+}

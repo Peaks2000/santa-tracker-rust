@@ -242,45 +242,12 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
         if let Some(t) = self.textures.get(&key) {
             return t.clone();
         }
-        let mut im = Image::gen_image_color(512, 512, BLANK);
-        let major =
-            Color::from_hex([0x84488f, 0xd55040, 0x4db1e9, 0x55ab57, 0x56bbca, 0xbc3eb4][color]);
-        let minor = Color::from_hex([0xe7c241, 0x936644, 0xb8906d, 0xdbbc99][skin]);
-        let hair = Color::from_hex([0x2f3030, 0x7c4149, 0xab2923, 0xea9639][hair]);
-        for y in 0..512 {
-            for x in 0..512 {
-                let c = if y < 153 {
-                    if x >= 256 {
-                        WHITE
-                    } else if pony || x >= 128 {
-                        hair
-                    } else {
-                        BLANK
-                    }
-                } else if y < 327 {
-                    if ((x as i32 - 44).pow(2) + (y as i32 - 207).pow(2) < 441)
-                        || ((x as i32 - 150).pow(2) + (y as i32 - 207).pow(2) < 441)
-                    {
-                        Color::from_hex(0x333333)
-                    } else {
-                        minor
-                    }
-                } else if y < 467 {
-                    major
-                } else {
-                    Color::from_hex(0x333333)
-                };
-                im.set_pixel(
-                    x,
-                    y,
-                    if (252..312).contains(&x) && y >= 460 {
-                        Color::from_hex(0xf9d448)
-                    } else {
-                        c
-                    },
-                );
-            }
-        }
+        use santa_tracker::snowball_texture::{elf_rgba, HAIR, MAJOR, SKIN};
+        let im = Image {
+            bytes: elf_rgba(MAJOR[color], SKIN[skin], HAIR[hair], pony),
+            width: 512,
+            height: 512,
+        };
         let t = Texture2D::from_image(&im);
         crate::assets::configure_texture("scenes/snowball/elf.png", &t);
         self.textures.insert(key, t.clone());

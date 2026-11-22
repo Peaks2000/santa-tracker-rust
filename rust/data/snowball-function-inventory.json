@@ -2766,11 +2766,12 @@
     {
       "file": "static/scenes/snowball/js/snowball/entities/elf.js",
       "lines": 441,
-      "review": "Ready Model/actual Elf.update checks, plus actual collision handlers verify incoming facing, repeated die/fall callbacks and first exit time. Subscription phase is tracked natively; original pool/LOD/loading and freeze/arrival timing remain partial.",
+      "review": "Ready Model/actual Elf.update checks, plus actual collision handlers verify incoming facing, repeated die/fall callbacks and first exit time. Subscription phase is tracked natively; original pool/LOD/loading and freeze/arrival timing remain partial. Native source-order Canvas paints now have 28-image browser texture comparisons; non-eye pixels exact and eye mean error improved ~88.5%, with residual Skia/tiny-skia coverage explicit. glTF clone retains source Repeat sampler, now applied to native elf maps. Full model readiness/LOD/actor pooling/cache allocation order, behavior and scene rendering remain partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_animation.rs",
-        "rust/src/snowball_view.rs"
+        "rust/src/snowball_view.rs",
+        "rust/src/snowball_texture.rs"
       ],
       "functions": [
         {

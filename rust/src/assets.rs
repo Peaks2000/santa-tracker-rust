@@ -293,6 +293,21 @@ fn scene_keys(root: &Path, scene: &str) -> Result<Vec<String>, String> {
 /// need mipmaps when minified; their RGBA is premultiplied before filtering.
 pub fn configure_texture(key: &str, texture: &Texture2D) {
     texture.set_filter(FilterMode::Linear);
+    if matches!(
+        key,
+        "scenes/snowball/elf.png" | "scenes/snowball/reference.png"
+    ) {
+        // GLTFLoader r110 defaults an empty sampler to RepeatWrapping on both
+        // axes. Elf clones that map before replacing its image with the canvas.
+        // Other Snowball maps use TextureLoader's clamp defaults instead.
+        unsafe {
+            get_internal_gl().quad_context.texture_set_wrap(
+                texture.raw_miniquad_id(),
+                macroquad::miniquad::TextureWrap::Repeat,
+                macroquad::miniquad::TextureWrap::Repeat,
+            );
+        }
+    }
     if key.starts_with("scenes/elfski/")
         || key.starts_with("scenes/snowball/")
         || key.starts_with("scenes/boatload/")

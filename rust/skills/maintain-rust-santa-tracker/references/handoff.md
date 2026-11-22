@@ -493,3 +493,32 @@ open. Existing reference elf texture PNGs can locate the binary-circle eye-AA
 difference without opening a window; source PNG byte identity does not prove
 sampling or generated-texture parity. CPU Image.export_png flips rows because
 it targets GPU readbacks: use png::Encoder on decoded top-down bytes instead.
+
+
+### Elf map/sampler offline follow-up (22 November 2026)
+
+Keep the user's no-window/no-input restriction. World trilinear filtering is
+source behavior. A confirmed mismatch was wrapping: glTF empty sampler defaults
+to Repeat/Repeat in the actual loader, then Elf clones that map before replacing
+its image. Texture.copy retains these flags and flipY=false. Macroquad upload
+was Clamp. assets::configure_texture now sets Repeat on generated elf.png and
+its imported reference.png only; the other Snowball maps stay clamped. Actual
+UV accessor data includes two U values below 0. See world-texture provenance
+for source/backend hashes and scope. No GL state or full runtime-render check
+was performed. Don't generalize this to all scene/CSS textures.
+
+`snowball_texture::elf_rgba` replays source-order rectangle/path paints; the View
+still caches by major/minor, deliberately ignoring hair/pony like source. Eye
+circles now use native AA coverage instead of integer pixel-center tests.
+Canvas's repeated retained contours have the same nonzero-winding region;
+readiness/global cache population/seed order are still not certified. Against
+28 existing original browser PNGs, all non-eye pixels match, error decreases
+88.47–88.75%, and remaining 284–290 differing pixels have max channel error
+20–36. This is NOT exact Canvas raster parity. Use the ordinary-main, CPU-only
+`snowball_elf_texture_audit` and its errors JSON, not a live app, while the user
+plays. Hair/pony are inferred only from constant non-eye reference regions;
+no original eye image is injected. The immutable old loop lives only in this
+diagnostic to reproduce the comparison, never as the application generator.
+The 28-image regression checks non-eye identity and bounded improvement, not
+a false assertion of full equality. All 98 tests pass and the release builds;
+GPU sampling/lighting/composition/world clarity remain open.
