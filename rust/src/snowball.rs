@@ -510,6 +510,7 @@ impl Player {
 }
 #[derive(Clone)]
 pub struct Shot {
+    pub setup: bool,
     pub origin: V,
     pub target: V,
     pub pos: V,
@@ -594,6 +595,7 @@ pub struct Snowball {
     pub seed: u32,
     pending_destination: Option<V>,
     camera_target: Option<V>,
+    collision_limit: Option<(f64, f64, V)>,
 }
 impl Snowball {
     pub fn new(seed: &str) -> Self {
@@ -625,6 +627,7 @@ impl Snowball {
             seed: map_seed,
             pending_destination: None,
             camera_target: None,
+            collision_limit: None,
         }
     }
     pub fn jump(&mut self) {
@@ -641,6 +644,7 @@ impl Snowball {
         self.gameover = false;
         self.pending_destination = None;
         self.camera_target = None;
+        self.collision_limit = None;
         self.knocked_out = 0;
         self.hud_knockouts = 0;
         self.hud_time = 0.;
@@ -754,6 +758,7 @@ impl Snowball {
         self.players[index].powerups.decrement();
         let origin = self.players[index].pos;
         self.shots.push(Shot {
+            setup: false,
             origin,
             target,
             pos: origin,
@@ -876,6 +881,14 @@ impl Snowball {
     pub fn finish_frame(&mut self, width: f64, height: f64) {
         let grid = self.map.grid;
         let tick = (self.time * 0.06).floor();
+        // MainLevel.measure creates the shared limit at the origin; LodSystem
+        // moves it AFTER Collision2DSystem, so collision uses last frame's camera.
+        let limit_center = self
+            .collision_limit
+            .filter(|&(w, h, _)| w == width && h == height)
+            .map(|(_, _, p)| p)
+            .unwrap_or_default();
+        let collision_limit = Bounds::rect(limit_center, width + 256., height * 4. / 3. + 256.);
         // Collision notifications precede snowball movement; bounds/LOD constrain checks.
         let mut quad = Quad::new(Bounds::rect(
             V::default(),
@@ -893,7 +906,7 @@ impl Snowball {
             }
         }
         for (i, s) in self.shots.iter().enumerate() {
-            if s.born >= 0. && !s.gone {
+            if s.setup {
                 quad.add(
                     Id::Shot(i),
                     Bounds::circle(s.pos, if s.big { 20. } else { 6. }),
@@ -902,16 +915,13 @@ impl Snowball {
         }
         let mut kills = vec![];
         for s in &mut self.shots {
-            if s.gone || s.born < 0. {
-                continue;
-            }
-            let limit = V::new(self.camera.x, -self.camera.y * 4. / 3.);
-            if (s.pos.x - limit.x).abs() > width / 2. + 128.
-                || (s.pos.y - limit.y).abs() > height * 2. / 3. + 128.
-            {
+            if !s.setup {
                 continue;
             }
             let radius = if s.big { 20. } else { 6. };
+            if !collision_limit.contains(Bounds::circle(s.pos, radius)) {
+                continue;
+            }
             let mut hit = false;
             let nearby = quad.near(Bounds::circle(s.pos, radius));
             for (i, p) in self.players.iter().enumerate() {
@@ -926,8 +936,6 @@ impl Snowball {
                     hit = true
                 }
             }
-            // Static Tree colliders are registered after bounds creation. The
-            // original system never inserts them into its quad-tree in local mode.
             for (di, d) in self.drops.iter().enumerate() {
                 if !nearby.contains(&Id::Drop(di)) {
                     continue;
@@ -945,11 +953,55 @@ impl Snowball {
         for i in kills {
             self.kill(i, false)
         }
+        // MapSystem registers every obstacle in tile order. Tree shifts the
+        // supplied grid position by -cellSize/2 + 15; erosion never unregisters
+        // those colliders. A tree is an outer-loop collider even though the
+        // dynamic quad-tree does not contain it. Keep multiple hit notifications
+        // before SnowballSystem removes any shots.
+        let tree_contacts = quad.static_circle_contacts(
+            self.map
+                .obstacles
+                .iter()
+                .enumerate()
+                .filter_map(|(i, &ob)| {
+                    (ob >= 0).then(|| (i, grid.pos(i as i32).add(V::new(0., -32. + 15.))))
+                }),
+            14.,
+            collision_limit,
+            |id| match id {
+                Id::Player(i) => Bounds::rect(self.players[i].pos, 15., 45.),
+                Id::Drop(i) => Bounds::circle(self.drops[i].pos, 10.),
+                Id::Shot(i) => {
+                    Bounds::circle(self.shots[i].pos, if self.shots[i].big { 20. } else { 6. })
+                }
+            },
+        );
+        for (_, id) in tree_contacts {
+            if let Id::Shot(i) = id {
+                self.shots[i].gone = true;
+                self.sounds.push("snowball_hit");
+            }
+        }
+        self.collision_limit = Some((
+            width,
+            height,
+            V::new(self.camera.x, -self.camera.y * 4. / 3.),
+        ));
+        // Source newSnowballs.pop() sets up new shots after collision and
+        // appends them in reverse throw order, before the active-array loop.
+        if let Some(first_pending) = self.shots.iter().position(|s| !s.setup) {
+            self.shots[first_pending..].reverse();
+            for s in &mut self.shots[first_pending..] {
+                s.setup = true;
+            }
+        }
         let mut removed = vec![];
         let mut i = 0;
         while i < self.shots.len() {
             if self.shots[i].gone {
                 removed.push(self.shots.remove(i));
+                // The source for-loop increments even after splice + continue.
+                i += 1;
                 continue;
             }
             let s = &mut self.shots[i];
@@ -1317,6 +1369,7 @@ mod tests {
             serde_json::from_str(include_str!("../data/snowball-reference.json")).unwrap();
         for s in data["shots"].as_array().unwrap() {
             let mut shot = Shot {
+                setup: true,
                 origin: V::new(12., 34.),
                 target: V::new(
                     s["target"][0].as_f64().unwrap(),
@@ -1339,6 +1392,138 @@ mod tests {
                 assert!((a - b.as_f64().unwrap()).abs() < 1e-9)
             }
             assert_eq!(shot.gone, s["gone"].as_bool().unwrap())
+        }
+    }
+    #[test]
+    fn snowball_queue_matches_original_system_splice_and_lifo() {
+        let data: serde_json::Value =
+            serde_json::from_str(include_str!("../data/snowball-collision-reference.json"))
+                .unwrap();
+        for case in data["removals"].as_array().unwrap() {
+            let mut game = Snowball::new("queue-reference");
+            game.map.obstacles.fill(-1);
+            game.time = 1000.;
+            let active = case["active"].as_array().unwrap();
+            let pending = case["pending"].as_array().unwrap();
+            for (i, kind) in active.iter().chain(pending).enumerate() {
+                let kind = kind.as_str().unwrap();
+                let origin = V::new(10000. + i as f64 * 1000., 10000.);
+                game.shots.push(Shot {
+                    setup: i < active.len(),
+                    origin,
+                    target: origin.add(V::new(256., 0.)),
+                    pos: origin,
+                    z: 0.,
+                    thrower: usize::MAX,
+                    big: false,
+                    born: if i >= active.len() {
+                        -1.
+                    } else if kind == "expire" {
+                        0.
+                    } else {
+                        60.
+                    },
+                    gone: kind == "hit",
+                    random: i as f64,
+                    skew: 0.,
+                });
+            }
+            game.finish_frame(1440., 800.);
+            let remaining: Vec<_> = game.shots.iter().map(|s| s.random as usize).collect();
+            assert_eq!(
+                serde_json::json!(remaining),
+                case["remaining"],
+                "{}",
+                case["name"]
+            );
+            for s in &game.shots {
+                assert!(s.setup);
+                if s.random as usize >= active.len() {
+                    let updated = case["updated"]
+                        .as_array()
+                        .unwrap()
+                        .contains(&serde_json::json!(s.random as usize));
+                    assert_eq!(s.born, if updated { 60. } else { -1. }, "{}", case["name"]);
+                }
+            }
+            assert_eq!(
+                game.particles.iter().filter(|p| !p.trail).count(),
+                case["removed"].as_array().unwrap().len() * 5
+            );
+        }
+    }
+    #[test]
+    fn map_tree_hits_both_shots_before_splice_skips_the_second() {
+        let mut game = Snowball::new("tree-integration");
+        game.map.obstacles.fill(-1);
+        let tile = 2080;
+        game.map.obstacles[tile] = 0;
+        let center = game.map.grid.pos(tile as i32).add(V::new(0., -17.));
+        game.camera = V::new(center.x, -center.y * 0.75);
+        game.collision_limit = Some((1440., 800., center));
+        for i in 0..2 {
+            game.shots.push(Shot {
+                setup: true,
+                origin: center,
+                target: center.add(V::new(256., 0.)),
+                pos: center,
+                z: 32.,
+                thrower: usize::MAX,
+                big: false,
+                born: 0.,
+                gone: false,
+                random: i as f64,
+                skew: 0.,
+            });
+        }
+        game.finish_frame(1440., 800.);
+        assert_eq!(game.shots.len(), 1);
+        assert_eq!(game.shots[0].random, 1.);
+        assert!(game.shots[0].gone);
+        assert_eq!(game.sounds, ["snowball_hit", "snowball_hit"]);
+        // Source MapSystem does not remove colliders as their tile erodes.
+        game.map.states[tile] = 4;
+        game.finish_frame(1440., 800.);
+        assert!(game.shots.is_empty());
+    }
+    #[test]
+    fn collision_limit_uses_previous_lod_camera_and_resets_on_resize() {
+        let data: serde_json::Value =
+            serde_json::from_str(include_str!("../data/snowball-collision-reference.json"))
+                .unwrap();
+        let reference = &data["limit"];
+        let mut game = Snowball::new("collision-limit");
+        game.map.obstacles.fill(-1);
+        let tile = reference["tile"].as_u64().unwrap() as usize;
+        game.map.obstacles[tile] = 0;
+        let center = game.map.grid.pos(tile as i32).add(V::new(0., -17.));
+        assert_eq!(center.x, reference["center"][0].as_f64().unwrap());
+        assert_eq!(center.y, reference["center"][1].as_f64().unwrap());
+        for frame in reference["frames"].as_array().unwrap() {
+            game.shots.clear();
+            game.sounds.clear();
+            game.camera = V::new(
+                frame["camera"][0].as_f64().unwrap(),
+                frame["camera"][1].as_f64().unwrap(),
+            );
+            game.shots.push(Shot {
+                setup: true,
+                origin: center,
+                target: center.add(V::new(256., 0.)),
+                pos: center,
+                z: 32.,
+                thrower: usize::MAX,
+                big: false,
+                born: 0.,
+                gone: false,
+                random: 0.,
+                skew: 0.,
+            });
+            game.finish_frame(
+                frame["width"].as_f64().unwrap(),
+                frame["height"].as_f64().unwrap(),
+            );
+            assert_eq!(game.sounds.len(), frame["hits"].as_u64().unwrap() as usize);
         }
     }
     #[test]

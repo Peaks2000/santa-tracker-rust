@@ -1333,7 +1333,7 @@ Target remains 1:1; this pass is **Very similar**, not certified 1:1. All own-sc
 | `snowball-game.js`; engine `Game`, `Gamelike`, `ClockSystem`, render/input systems; Main/Local levels | Separate `begin_frame` and `finish_frame` retain Level/camera/erosion → render → input → simulation ordering, one update per rendered frame, wall-derived 60Hz tick, strict 16/625/128 tick gates, 100-player cap, shared host game-over and restart. | Async asset readiness, exact initialization/random consumption, persistent collision registration, input octree sorting and full host lifecycle are incomplete. Source win repeats stop notifications; native stores game-over state. |
 | `game-map.js`, `MagicHexGrid`, `HexGrid`, `HexCoord`, `SeedRandom`, priorityqueue | `snowball.rs`: source grid/coordinate formulas, seeded island/trees/raised frontier, independent erosion seed, rings, habitat/nearby selection, source greedy path cost and queue tie ordering, waypoint compression. | Unused general conversions/network serialization not ported. The nearby selection's original origin-vs-candidate test is retained. |
 | State/Client/Player/Bot systems; Elf; all component classes | `snowball.rs`: arrival queues, per-render-frame 2.25 movement / 0.75 bot speed, click-to-move and blocked-tile/elf targeting, quantities/swapping fallback, spawn/population cadence, camera tether/damping, last valid host time/count, death/knockout. | Bot random order and pooled object reuse are not matched end to end; source late queues, offscreen LOD and interrupted action state need work. Native collision registration order differs in some arrival/removal cases. |
-| Collision2DSystem, QuadTree, collision shape helpers, Tree | `snowball_collision.rs`, `snowball.rs`: native quad partition/candidate order and original circle containment quirk; circle/rectangle notifications and original static-tree registration omission in the local path. | Full Set/handler notification ordering and all shape-pair/debug-only methods are not reproduced. Static trees are registered after bounds in source but never inserted by its dynamic rebuild; do not add inferred tree projectile hits. |
+| Collision2DSystem, QuadTree, collision shape helpers, Tree | `snowball_collision.rs`, `snowball.rs`: native quad partition/candidate order, original circle containment quirk, tree-primary projectile contacts and shared collision-limit camera lag/reset. | Full dynamic Set/handler notification ordering, persistent quad nodes and debug-only methods remain partial. Trees are absent from the local dynamic rebuild but still query moving objects from the outer collidables loop; the earlier inactive-tree conclusion was incorrect. |
 | `models.js`, Elf texture and animation methods, actual GLTFLoader/Skeleton path | `snowball_model.rs`: original glTF/bin, skin weights/joints/inverse bind transforms, source linear/spherical interpolation, vertex colours, idle/run/throw/three falls. `snowball_view.rs`: original generated colour bands, cache key, source material/light parameters. | Complete THREE action interruption, thrown-action crossfades, fall callback timing, model loading/LOD phase and pooled material reuse remain partial. Selected pose position tests do not certify normals or every action combination. |
 | HexMap/Obstacles and shader partials | Source cylinder vertex/index fixture, 144-degree gimbal and actual camera orientation, original atlas/obstacle tilt, per-fragment tile tones/alpha, shaking/sinking/raised geometry and continuous meshes. | Large viewports, all erosion phases and transparent object ordering still need coverage. GPU batching avoids Macroquad geometry clamping. |
 | Snowball/BigSnowball, SnowballSystem, Trajectory, Trail/Splat and effects | Source 256px/42-frame distance-dependent shot, arc, ignored skew preserved, large radius/quantity, snowball rotation/colour shader, source trail/splat equations and textures. | Source preallocated particle-ring/random consumption, overlapping effects and collision/exhaustion removal ordering remain partial. |
@@ -1397,3 +1397,43 @@ Evidence is `snowball-animation-reference.json` and its provenance file:
 The original Elf pool also retains its cached Model across reuse; full native
 pool/collision lifecycle and initial asynchronous model/LOD timing remain open.
 The scene rating remains Very similar and user feedback remains unreviewed.
+
+
+### Snowball Storm tree collision and shot queue correction — 22 November 2026
+
+The earlier claim that local static trees could not hit projectiles was wrong.
+`Collision2DSystem.update` rebuilds its quad with dynamic objects, but iterates
+**all** registered colliders as primary objects. Each tree can therefore query
+and notify nearby snowballs. Native tree colliders now use the source radius 14,
+grid offset -32 + 15, tile registration order, strict circle intersection and
+original limit containment. Eroded tiles do not unregister their trees. Multiple
+tree contacts notify before removal, including shots marked hit earlier in the
+same frame. The shared collision/LOD limit now uses the previous frame's camera;
+measurement/resize recreates it at the origin, as in MainLevel.measure.
+
+`SnowballSystem` uses newSnowballs.pop(), then iterates an active array whose
+splice removal still increments the loop index. The native implementation now
+sets up queued shots in reverse throw order and skips the shifted successor
+after either collision removal or trajectory expiry. Setup and first trajectory
+update are tracked separately: a skipped freshly set-up snowball is already
+collidable even while its tickWhenThrown remains -1.
+
+Evidence: `snowball-collision-reference.json` and its provenance. Eight cases run
+unchanged Collision2DSystem/QuadTree/Circle/Tree with actual bundled THREE in
+Chromium, covering tree-first and multiple-tree hits, strict tangency, large
+balls, camera edges, the source circle-Y containment quirk and a split quad.
+Eight cases run actual SnowballSystem methods with Object3D actor fixtures to
+measure LIFO/setup/splice ordering; actor update supplies expiry and collision/
+effect callbacks record calls, so these do not certify trajectory/pooling/effect
+implementations. Four limit frames use actual LodSystem after collision and a
+resize reset. Native tests exercise production tree queries, the game shot loop,
+map-tree placement and that shared limit sequence.
+
+This remains a bounded correction: full dynamic-pair notification/deduplication,
+persistent quad topology, registration/arrival/removal order, shot/shot contacts,
+pooled actors and exact full-match randomness still need work. In particular,
+native dynamic contacts are still grouped by shot rather than the full source
+Set iteration, and pickups remain a separate later pass. The rating stays
+Very similar; these fixtures do not establish whole-mode 1:1.
+
+Validation for this correction: all 87 native tests pass and the release binary builds.

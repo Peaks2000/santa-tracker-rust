@@ -1368,7 +1368,7 @@
     {
       "file": "static/scenes/snowball/js/engine/systems/collision-2d-system.js",
       "lines": 240,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Tree-primary contacts and shared previous-LOD limit/reset checked against actual original; dynamic Set/handler/deduplication and persistent registration still partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -2040,7 +2040,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/snowball-system.js",
       "lines": 138,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Actual original setup/update/remove fixture checks queued LIFO and source splice successor skips. Native setup is distinct from tickWhenThrown initialization. Full pooling, dynamic collision ordering and effect-ring lifecycle remain partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -2987,7 +2987,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/entities/static/tree.js",
       "lines": 50,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Constructor/setup circle radius 14 and map offset -32+15 translated; source collision oracle verifies active tree-primary projectile contacts. Trees remain registered after erosion.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"

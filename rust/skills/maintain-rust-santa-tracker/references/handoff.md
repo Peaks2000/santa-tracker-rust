@@ -214,8 +214,10 @@ The actual index starts `local`, not the unused multiplayer/lobby path. Preserve
 per-render-frame movement with wall-derived ticks, greedy path cost using the
 source's from-index cost, source queue tie behavior, separate map/erosion seeds,
 and nearby-tile selection's origin-vs-candidate bug. Tree statics are registered
-after quad bounds creation and never inserted by the original local dynamic
-rebuild; do not invent projectile/tree collisions. Source camera lookAt followed
+after quad bounds creation and absent from its dynamic rebuild, but the outer
+collidables iteration still queries them against moving objects. They DO hit
+projectiles. The earlier inactive-tree conclusion was incorrect; see the
+collision follow-up below and its unchanged-source oracle. Source camera lookAt followed
 by rotation.z=0 produces a flipped-Y camera, not the intuitive lookAt basis.
 Weather's supplied attributes are unused and it has no active attribute, so the
 splash has no invented weather. No pause, R shortcut or swapping click is added.
@@ -265,3 +267,22 @@ pooling. Original model/actor reuse, LOD/readiness, collision registration and
 full-match random/lifecycle parity remain work. Installed cargo is currently
 available at /home/finn/.cargo/bin/cargo; the old /tmp toolchain was absent.
 Continue to check availability rather than assuming either path exists.
+
+
+### Snowball collision follow-up (22 November 2026)
+
+`data/snowball-collision-reference.json` records eight actual original tree/quad
+collision cases, eight actual SnowballSystem queue cases and four shared-limit
+frames. Its provenance describes the actor/effect scaffolds. Tree colliders
+(radius 14, grid y -17) participate as primary colliders even though not inserted
+into the local dynamic quad. Erosion does not unregister them. Never infer an
+inactive branch solely from quad insertion; follow both sides of notification.
+Native contacts now include trees; multiple hits happen before removal.
+Source newSnowballs.pop() reverses setup order. Splice + for-loop increment skips
+the shifted next shot for both collision and expiry; freshly set-up skipped
+shots are collidable before tickWhenThrown initializes. `Shot.setup` tracks that
+separately. Collision uses the shared limit's previous LodSystem camera center;
+resize/MainLevel.measure recreates that limit at the origin.
+Full dynamic Set/handler ordering/deduplication, persistent quad nodes, shot/shot
+contacts, pickups/arrivals and original pools remain partial. Do not claim these
+narrow cases certify the whole match. No rating/user-feedback changes follow.

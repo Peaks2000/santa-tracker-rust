@@ -1,0 +1,14 @@
+{
+  "method": "Unchanged original classes run in Chromium with actual bundled THREE. Tree constructor/setup and Collision2DSystem.update including quad rebuild run directly. Each collision case uses a fresh system with bounds set before static registration, like local startup. Records only shot handlers receiving trees; source handlers for dynamic/dynamic contacts are intentionally not measured. Limit frames call Collision2DSystem before actual LodSystem.update on their shared Rectangle, with resize rebuilding the limit. Removal cases call actual SnowballSystem.update/remove/setup methods with Object3D actor fixtures; actor update reports expiry, effect/collision callbacks record calls, no asset loading/physics/pooling is certified.",
+  "files": {
+    "static/scenes/snowball/js/engine/systems/collision-2d-system.js": "0c6d78d78bdc7015adfd8d370ffdfc0c7e083d0ad27c0ca307a8903841dbc1c7",
+    "static/scenes/snowball/js/engine/utils/quad-tree.js": "36e561167a9ee4e0096f3f48f00ccc65c13a173b61c99853abbc80c9abb35146",
+    "static/scenes/snowball/js/engine/utils/collision-2d.js": "e3813be39a28288bc8784000bb612e002588e14078ce3bd2e5d74827bc175807",
+    "static/scenes/snowball/js/engine/utils/allocatable.js": "c4ab5759c61e9c933e3fb009cc6d3f59e0e83e5cb951444ba45b6a1c1c7ad628",
+    "static/scenes/snowball/js/snowball/entities/static/tree.js": "d24a6eb603cdd4b33be6ad5fd083b14078e4d8aa64efeea65b3ad333c585ee29",
+    "static/scenes/snowball/js/snowball/systems/snowball-system.js": "34445b3fa23074569d7e06fea56c3c2035178737205e4da67ad3c6507b6e25fb",
+    "static/scenes/snowball/js/snowball/systems/lod-system.js": "d214e05189514a66ba84142872cd49b6722a4d3b8e8e8d76728932f6c2edd8c6",
+    "static/scenes/snowball/js/snowball/levels/main-level.js": "0b079ed3f800b4c3dcf3a81f2fca44968a8bc240ab5901f14460013a78253452",
+    "static/scenes/snowball/js/snowball/utils/magic-hex-grid.js": "23047e1e5a716d8f9c03c91d754f7571bbe41d4f0eb9059db8700cffe3742a6e"
+  }
+}

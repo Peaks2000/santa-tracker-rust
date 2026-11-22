@@ -44,6 +44,19 @@ impl Bounds {
                 && b.pos.y + b.half.y <= top
         }
     }
+    pub fn intersects(self, b: Self) -> bool {
+        match (self.circle, b.circle) {
+            (true, true) => self.pos.sub(b.pos).len() < self.half.x + b.half.x,
+            (true, false) => {
+                crate::snowball::circle_rect(self.pos, self.half.x, b.pos, b.half.x, b.half.y)
+            }
+            (false, true) => b.intersects(self),
+            (false, false) => {
+                (self.pos.x - b.pos.x).abs() <= self.half.x + b.half.x
+                    && (self.pos.y - b.pos.y).abs() <= self.half.y + b.half.y
+            }
+        }
+    }
 }
 pub struct Quad {
     bounds: Bounds,
@@ -111,10 +124,85 @@ impl Quad {
         out.extend(self.objects.iter().map(|(id, _)| *id));
         out
     }
+    /// Static colliders still participate as the primary object in the source's
+    /// outer Set.forEach, even when absent from the dynamic quad-tree. This is
+    /// the tree side of that traversal; the dynamic pair pass is separate.
+    pub fn static_circle_contacts(
+        &self,
+        centers: impl Iterator<Item = (usize, V)>,
+        radius: f64,
+        limit: Bounds,
+        measure: impl Fn(Id) -> Bounds,
+    ) -> Vec<(usize, Id)> {
+        let mut contacts = vec![];
+        for (i, center) in centers {
+            let collider = Bounds::circle(center, radius);
+            if !limit.contains(collider) {
+                continue;
+            }
+            for id in self.near(collider) {
+                if collider.intersects(measure(id)) {
+                    contacts.push((i, id));
+                }
+            }
+        }
+        contacts
+    }
 }
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn tree_notifications_match_original_collision_system() {
+        let data: serde_json::Value =
+            serde_json::from_str(include_str!("../data/snowball-collision-reference.json"))
+                .unwrap();
+        for case in data["cases"].as_array().unwrap() {
+            let shots: Vec<_> = case["shots"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .map(|s| {
+                    Bounds::circle(
+                        V::new(s[0].as_f64().unwrap(), s[1].as_f64().unwrap()),
+                        s[2].as_f64().unwrap(),
+                    )
+                })
+                .collect();
+            let mut q = Quad::new(Bounds::rect(V::default(), 1000., 800.));
+            for (i, &b) in shots.iter().enumerate() {
+                q.add(Id::Shot(i), b);
+            }
+            let centers = case["centers"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .enumerate()
+                .map(|(i, p)| (i, V::new(p[0].as_f64().unwrap(), p[1].as_f64().unwrap())));
+            let events: Vec<_> = q
+                .static_circle_contacts(
+                    centers,
+                    14.,
+                    Bounds::rect(V::default(), 200., 200.),
+                    |id| {
+                        let Id::Shot(i) = id else { unreachable!() };
+                        shots[i]
+                    },
+                )
+                .into_iter()
+                .map(|(tree, id)| {
+                    let Id::Shot(i) = id else { unreachable!() };
+                    [tree, i]
+                })
+                .collect();
+            assert_eq!(
+                serde_json::json!(events),
+                case["events"],
+                "{}",
+                case["name"]
+            );
+        }
+    }
     #[test]
     fn original_quad_tree_candidate_order() {
         let data: serde_json::Value =
