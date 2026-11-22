@@ -204,3 +204,5 @@ cargo run --release --manifest-path rust/Cargo.toml --example snowball_capture -
 A third argument `reference` imports the measured original render state and textures for an isolated geometry comparison; it omits source presents/projectiles and resets animation phase. `input` opens a 40-second live diagnostic using production mouse controls. These diagnostics do not certify an entire match or all input/animation states.
 
 The diagnostic `reference-pointer` case holds the measured original state still and asserts that a real pointer click on an elf produces a local shot. It requires interactive input; it is not a simulated whole-match check.
+
+Snowball now retains source animation actions/callbacks through throws, movement changes and falls. The `snowball_capture` diagnostic also accepts `action-N` (for example `action-4`) to inspect a state from the first original animation sequence in the measured render layout. The animation fixture checks 650 mixer states, 42 ready-model elf updates and sampled scaled vertex/normal output; remaining pool/LOD/collision/input/audio scope is in the coverage ledger.

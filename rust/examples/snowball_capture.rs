@@ -79,7 +79,7 @@ async fn run() {
     game.advance(seconds, 1440., 800.);
     if args
         .get(3)
-        .is_some_and(|s| s == "reference" || s == "reference-pointer")
+        .is_some_and(|s| s == "reference" || s == "reference-pointer" || s.starts_with("action-"))
     {
         use santa_tracker::snowball::{Grid, Map, V};
         let data: serde_json::Value =
@@ -110,10 +110,11 @@ async fn run() {
             p.alive = row["alive"].as_bool().unwrap();
             p.gone = false;
             p.frozen = false;
-            p.throwing = None;
             p.face = row["rotation"][1].as_f64().unwrap();
             p.anim = row["anim"].as_str().unwrap_or("elf_rig_idle").into();
-            p.anim_start = game.time;
+            p.animator = santa_tracker::snowball_animation::Animator::new();
+            p.animator.play(&p.anim, game.time);
+            p.animator.update(game.time);
             p.color = [
                 "#84488F", "#D55040", "#4DB1E9", "#55AB57", "#56BBCA", "#BC3EB4",
             ]
@@ -138,6 +139,34 @@ async fn run() {
         game.drops.clear();
         game.shots.clear();
         game.particles.clear();
+    }
+    if let Some(step) = args
+        .get(3)
+        .and_then(|s| s.strip_prefix("action-"))
+        .and_then(|s| s.parse::<usize>().ok())
+    {
+        let reference: serde_json::Value =
+            serde_json::from_str(include_str!("../data/snowball-animation-reference.json"))
+                .unwrap();
+        let mut animator = santa_tracker::snowball_animation::Animator::new();
+        for state in reference["cases"][0]["states"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .take(step + 1)
+        {
+            let op = &state["op"];
+            let now = op["at"].as_f64().unwrap();
+            match op["op"].as_str().unwrap() {
+                "play" => {
+                    animator.play(op["name"].as_str().unwrap(), now);
+                }
+                "mix" => animator.mix_once(op["name"].as_str().unwrap()),
+                "update" => animator.update(now),
+                _ => unreachable!(),
+            }
+        }
+        game.players[0].animator = animator;
     }
     if args.get(3).is_some_and(|s| s == "reference-pointer") {
         let began = get_time();

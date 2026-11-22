@@ -493,18 +493,18 @@ pub struct Player {
     pub powerups: Powerups,
     pub last_throw: f64,
     pub last_target: Option<usize>,
+    pub animator: crate::snowball_animation::Animator,
+    pending_throw: bool,
     pub anim: String,
-    pub anim_start: f64,
-    pub throwing: Option<f64>,
     pub fall: usize,
     pub ice: V,
     pub ice_start: f64,
 }
 impl Player {
     fn animation(&mut self, name: &str, now: f64) {
+        self.animator.play(name, now);
         if self.anim != name {
             self.anim = name.into();
-            self.anim_start = now
         }
     }
 }
@@ -690,9 +690,9 @@ impl Snowball {
             powerups: Default::default(),
             last_throw: (self.time * 0.06).floor(),
             last_target: None,
+            animator: crate::snowball_animation::Animator::new(),
+            pending_throw: false,
             anim: "elf_rig_idle".into(),
-            anim_start: self.time,
-            throwing: None,
             fall: 1,
             ice: V::default(),
             ice_start: 0.,
@@ -766,7 +766,7 @@ impl Snowball {
             skew: self.random.next() * PI / 6. - PI / 12.,
         });
         self.players[index].face = (target.y - origin.y).atan2(target.x - origin.x) + FRAC_PI_2;
-        self.players[index].throwing = Some(self.time);
+        self.players[index].pending_throw = true;
         if index == 0 {
             self.sounds.push("snowball_throw")
         }
@@ -780,7 +780,8 @@ impl Snowball {
         p.frozen = frozen;
         p.death = self.time;
         p.fall = (self.random.next() * 3.).floor() as usize + 1;
-        p.animation(&format!("elf_rig_fall_down_{}", p.fall), self.time);
+        p.animator.fall(p.fall, self.time);
+        p.anim = format!("elf_rig_fall_down_{}", p.fall);
         if frozen {
             p.ice = self
                 .map
@@ -1093,6 +1094,14 @@ impl Snowball {
                     p.arrived = true;
                     p.pos = grid.pos(p.tile)
                 } else {
+                    if p.alive {
+                        p.animation("elf_rig_idle", self.time);
+                        if p.pending_throw {
+                            p.animator.mix_once("elf_rig_throw");
+                            p.pending_throw = false;
+                        }
+                    }
+                    p.animator.update(self.time);
                     continue;
                 }
             }
@@ -1126,17 +1135,20 @@ impl Snowball {
                         self.sounds.push("snowball_frozen")
                     }
                 } else {
-                    let duration = [0., 1000. / 3., 1000. * 5. / 12., 375.][p.fall];
-                    if elapsed >= duration && p.anim != format!("elf_rig_fall_down_{}_idle", p.fall)
-                    {
-                        p.animation(&format!("elf_rig_fall_down_{}_idle", p.fall), self.time)
-                    }
                     if elapsed >= 2200. {
                         p.gone = true;
                         self.knocked_out += 1;
                         self.sounds.push("snowball_frozen")
                     }
                 }
+            }
+            if p.alive && p.pending_throw {
+                p.animator.mix_once("elf_rig_throw");
+                p.pending_throw = false;
+            }
+            p.animator.update(self.time);
+            if let Some(name) = p.animator.playing_name() {
+                p.anim = name.into();
             }
             if i == 0 && !p.alive && (p.gone || self.time - p.death > 2500.) {
                 self.gameover = true
@@ -1158,6 +1170,71 @@ pub fn circle_rect(c: V, r: f64, p: V, hw: f64, hh: f64) -> bool {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn player_calls_match_actual_elf_update() {
+        let data: serde_json::Value =
+            serde_json::from_str(include_str!("../data/snowball-animation-reference.json"))
+                .unwrap();
+        for case in data["elfCases"].as_array().unwrap() {
+            let mut game = Snowball::new("animation-integration");
+            game.start();
+            game.players.truncate(1);
+            game.drops.clear();
+            game.shots.clear();
+            game.all_time = 100;
+            game.map.states.fill(1);
+            game.map.obstacles.fill(-1);
+            // The source Elf pool retains these incoming transforms; this
+            // comparison isolates update ordering from pool implementation.
+            game.players[0].pos = V::new(
+                case["initial"]["position"][0].as_f64().unwrap(),
+                case["initial"]["position"][1].as_f64().unwrap(),
+            );
+            game.players[0].face = case["initial"]["face"].as_f64().unwrap();
+            game.players[0].arrived = true;
+            for (index, row) in case["states"].as_array().unwrap().iter().enumerate() {
+                let op = &row["op"];
+                game.time = op["at"].as_f64().unwrap();
+                let target = || {
+                    V::new(
+                        op["target"][0].as_f64().unwrap(),
+                        op["target"][1].as_f64().unwrap(),
+                    )
+                };
+                match op["op"].as_str().unwrap() {
+                    "idle" => game.players[0].path.clear(),
+                    "move" => game.players[0].path = vec![target()],
+                    "throw" => game.throw(0, target()),
+                    "die" => {
+                        let variant = op["variant"].as_u64().unwrap() as usize;
+                        let seed = (0..100)
+                            .map(|i| Random::seeded(&format!("fall-{i}")))
+                            .find(|r| {
+                                let mut r = r.clone();
+                                (r.next() * 3.).floor() as usize + 1 == variant
+                            })
+                            .unwrap();
+                        game.random = seed;
+                        game.kill(0, false);
+                        assert_eq!(game.players[0].fall, variant)
+                    }
+                    "update" => {}
+                    _ => unreachable!(),
+                }
+                game.finish_frame(1440., 800.);
+                let p = &game.players[0];
+                let mut snapshot = p.animator.snapshot();
+                snapshot["position"] = serde_json::json!([p.pos.x, p.pos.y, 0.]);
+                snapshot["face"] = serde_json::json!(p.face);
+                snapshot["alive"] = serde_json::json!(p.alive);
+                crate::snowball_animation::tests::compare(
+                    &snapshot,
+                    row,
+                    &format!("Elf.update fall {} step {index}", case["variant"]),
+                );
+            }
+        }
+    }
     #[test]
     fn map_grid_paths_match_original_chromium() {
         let data: serde_json::Value =

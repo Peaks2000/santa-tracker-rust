@@ -238,3 +238,30 @@ omits presents/projectiles and resets animation phase; never present its low
 whole-image error as a full gameplay match. Development browser exporters stay
 in the original checkout's rust/tools only. Preserve unknown/user feedback and
 the public README's two-column table on publication.
+
+## Snowball action-state follow-up — 22 November 2026
+
+`src/snowball_animation.rs` now drives each player's persistent Model state;
+throw/fall timing must not return to timestamp-based rendering. New fixture
+`snowball-animation-reference.json` has 650 actual Model/THREE states, 42 actual
+ready-model Elf.update states and fourteen scaled skeleton vertex/normal samples
+per Model state. Consult its provenance and coverage scope; this is not full-mode
+certification. CPU skinning now applies scale five to the glTF root inside the
+hierarchy, not outside its translation. Keep the client marker on the unscaled
+dolly. `snowball_capture ... action-N` renders a first-sequence animation state.
+
+Preserve cached once/clamp/timeScale flags, same-name play no-op, retained throw
+callbacks after interruption, mutable action-array iteration during finished
+callbacks and the unfiltered Elf fall listener. Original property poses are saved
+when active bindings go from zero to one; stopAll does not restore the pose.
+Fade clocks/results are Float32 even though action and property arithmetic is
+Float64. All original scene tracks are LINEAR TRS; unused engine warp/scheduled/
+ping-pong paths are explicitly out of this port's checked scope.
+
+The integration harness exposed that Elf.onAllocated retains position and facing.
+Those incoming transforms are now recorded/imported for identical starting
+conditions in the isolated update test. It does not fix/certify native object
+pooling. Original model/actor reuse, LOD/readiness, collision registration and
+full-match random/lifecycle parity remain work. Installed cargo is currently
+available at /home/finn/.cargo/bin/cargo; the old /tmp toolchain was absent.
+Continue to check availability rather than assuming either path exists.

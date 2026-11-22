@@ -641,11 +641,11 @@
       "user_notes": "",
       "priority": "normal",
       "agent_status": "partial",
-      "agent_progress": "Added a playable native Snowball Storm local scene: original splash/intro, glTF skinned elf clips, hex island and independent seeded erosion, path movement, bots, snowballs/large powerups, parachutes/presents, particle/ice/teleport effects, host HUD and game-over. Original module oracles cover map/path/trajectory/powerup/quad formulas; 30 actual THREE poses verify all 2746 vertex positions. Mouse entry/arrival/movement, an isolated real pointer throw/sound event and a 150-second native simulation were exercised. Target remains 1:1; full mode is not certified.",
+      "agent_progress": "Added a playable native Snowball Storm local scene: original splash/intro, glTF skinned elf clips, hex island and independent seeded erosion, path movement, bots, snowballs/large powerups, parachutes/presents, particle/ice/teleport effects, host HUD and game-over. Original module oracles cover map/path/trajectory/powerup/quad formulas; 30 actual THREE poses verify all 2746 vertex positions. Mouse entry/arrival/movement, an isolated real pointer throw/sound event and a 150-second native simulation were exercised. Target remains 1:1; full mode is not certified. Follow-up 22 November: replaced elapsed-time throw blending and hard-coded fall timing with persistent source action state. 650 original mixer states and 42 actual ready-model Elf.update states match, plus sampled scaled vertices/normal directions; corrected model-root scaling order.",
       "agent_known_issues": [
         "Full seeded match/random consumption, UUID and pooled actor/material/particle reuse do not yet match end to end.",
         "Some collision registration/notification and arrival/removal ordering remains partial despite checked quad-tree candidate formulas.",
-        "Complete THREE action mixing/interruption/fall callbacks, model readiness/LOD animation phases and all normals/material raster combinations need comparisons.",
+        "Loaded-model actions now have source checks, but model readiness/LOD timing, initial poses and original pooled position/facing/cached Model reuse across spawns/restarts still differ.",
         "Responsive intro/powerup phases, full touch/keyboard/accessibility and input octree ordering are not certified.",
         "Particle-ring reuse, drop/frozen parent transforms and every effect phase need broader source comparisons.",
         "Shared overlay focus/blur and exact audio group/bus/retrigger/scheduling remain unverified."
@@ -659,7 +659,10 @@
         "rust/data/snowball-render-reference.json",
         "rust/examples/snowball_capture.rs",
         "rust/data/snowball-input-smoke.json",
-        "rust/data/snowball-raster-errors.json"
+        "rust/data/snowball-raster-errors.json",
+        "rust/src/snowball_animation.rs",
+        "rust/data/snowball-animation-reference.json",
+        "rust/data/snowball-animation-provenance.json"
       ]
     },
     {

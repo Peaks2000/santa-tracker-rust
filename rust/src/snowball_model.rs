@@ -10,24 +10,11 @@ struct Node {
     s: Vec3,
     children: Vec<usize>,
 }
-struct Track {
-    node: usize,
-    path: String,
-    times: Vec<f32>,
-    values: Vec<f32>,
-    stride: usize,
-}
-pub struct Clip {
-    pub name: String,
-    pub duration: f32,
-    tracks: Vec<Track>,
-}
 pub struct ElfModel {
     nodes: Vec<Node>,
     roots: Vec<usize>,
     joints: Vec<usize>,
     inverse: Vec<Mat4>,
-    pub clips: Vec<Clip>,
     positions: Vec<Vec3>,
     normals: Vec<Vec3>,
     uv: Vec<Vec2>,
@@ -151,46 +138,11 @@ impl ElfModel {
             .chunks_exact(4)
             .map(|p| [p[0] as usize, p[1] as usize, p[2] as usize, p[3] as usize])
             .collect();
-        let clips = doc["animations"]
-            .as_array()
-            .unwrap()
-            .iter()
-            .map(|a| {
-                let tracks: Vec<_> = a["channels"]
-                    .as_array()
-                    .unwrap()
-                    .iter()
-                    .map(|c| {
-                        let s = &a["samplers"][c["sampler"].as_u64().unwrap() as usize];
-                        assert_eq!(s["interpolation"], "LINEAR");
-                        let path = c["target"]["path"].as_str().unwrap().to_owned();
-                        Track {
-                            node: c["target"]["node"].as_u64().unwrap() as usize,
-                            stride: if path == "rotation" { 4 } else { 3 },
-                            path,
-                            times: read(s["input"].as_u64().unwrap() as usize),
-                            values: read(s["output"].as_u64().unwrap() as usize),
-                        }
-                    })
-                    .collect();
-                let duration = tracks
-                    .iter()
-                    .filter_map(|t| t.times.last())
-                    .copied()
-                    .fold(0f32, f32::max);
-                Clip {
-                    name: a["name"].as_str().unwrap_or("").into(),
-                    duration,
-                    tracks,
-                }
-            })
-            .collect();
         Ok(Self {
             nodes,
             roots,
             joints,
             inverse,
-            clips,
             positions,
             normals,
             uv,
@@ -200,72 +152,28 @@ impl ElfModel {
             indices,
         })
     }
-    fn pose(&self, name: &str, elapsed: f32, once: bool) -> Vec<Node> {
-        let mut nodes = self.nodes.clone();
-        if let Some(c) = self.clips.iter().find(|c| c.name == name) {
-            let t = if c.duration <= 0. {
-                0.
-            } else if once {
-                elapsed.min(c.duration)
-            } else {
-                elapsed % c.duration
-            };
-            for track in &c.tracks {
-                let hi = track.times.partition_point(|v| *v <= t);
-                let a = hi.saturating_sub(1);
-                let b = hi.min(track.times.len() - 1);
-                let f = if a == b {
-                    0.
-                } else {
-                    (t - track.times[a]) / (track.times[b] - track.times[a])
-                };
-                let va = &track.values[a * track.stride..(a + 1) * track.stride];
-                let vb = &track.values[b * track.stride..(b + 1) * track.stride];
-                match track.path.as_str() {
-                    "translation" => {
-                        nodes[track.node].t = Vec3::from_slice(va).lerp(Vec3::from_slice(vb), f)
-                    }
-                    "scale" => {
-                        nodes[track.node].s = Vec3::from_slice(va).lerp(Vec3::from_slice(vb), f)
-                    }
-                    "rotation" => {
-                        nodes[track.node].r = Quat::from_array(va.try_into().unwrap())
-                            .slerp(Quat::from_array(vb.try_into().unwrap()), f)
-                    }
-                    _ => {}
-                }
-            }
-        }
-        nodes
+    #[cfg(test)]
+    pub fn mesh_pose(&self, pose: &[santa_tracker::snowball_animation::Transform]) -> Mesh {
+        self.mesh_pose_scaled(pose, 1.)
     }
-    pub fn mesh(&self, name: &str, elapsed: f32, throwing: Option<f32>) -> Mesh {
-        let mut nodes = self.pose(
-            name,
-            elapsed,
-            name.contains("fall_down") && !name.ends_with("idle"),
-        );
-        if let Some(t) = throwing {
-            let duration = self
-                .clips
-                .iter()
-                .find(|c| c.name == "elf_rig_throw")
-                .unwrap()
-                .duration;
-            let clock = t * 1.75;
-            if clock < duration + 0.25 {
-                let overlay = self.pose("elf_rig_throw", clock, true);
-                let w = if clock <= duration {
-                    1.
-                } else {
-                    1. - (clock - duration) / 0.25
-                };
-                for (a, b) in nodes.iter_mut().zip(overlay) {
-                    a.t = a.t.lerp(b.t, w);
-                    a.s = a.s.lerp(b.s, w);
-                    a.r = a.r.slerp(b.r, w)
-                }
-            }
+    pub fn mesh_pose_scaled(
+        &self,
+        pose: &[santa_tracker::snowball_animation::Transform],
+        root_scale: f32,
+    ) -> Mesh {
+        assert_eq!(pose.len(), self.nodes.len());
+        let mut nodes = self.nodes.clone();
+        for (n, p) in nodes.iter_mut().zip(pose) {
+            n.t = Vec3::from_array(p.t.map(|v| v as f32));
+            n.r = Quat::from_array(p.r.map(|v| v as f32));
+            n.s = Vec3::from_array(p.s.map(|v| v as f32));
         }
+        for &root in &self.roots {
+            nodes[root].s *= root_scale;
+        }
+        self.mesh_nodes(&nodes)
+    }
+    fn mesh_nodes(&self, nodes: &[Node]) -> Mesh {
         let mut world = vec![Mat4::IDENTITY; nodes.len()];
         fn visit(i: usize, parent: Mat4, n: &[Node], world: &mut [Mat4]) {
             let local = Mat4::from_scale_rotation_translation(n[i].s, n[i].r, n[i].t);
@@ -314,6 +222,58 @@ impl ElfModel {
 mod tests {
     use super::*;
     #[test]
+    fn mixed_scaled_vertices_and_normals_match_original_skeleton() {
+        let model = ElfModel::load(
+            &Path::new(env!("CARGO_MANIFEST_DIR")).join("../static/scenes/snowball/models"),
+        )
+        .unwrap();
+        let data: Value =
+            serde_json::from_str(include_str!("../data/snowball-animation-reference.json"))
+                .unwrap();
+        for case in data["cases"].as_array().unwrap() {
+            let mut animator = santa_tracker::snowball_animation::Animator::new();
+            for (step, row) in case["states"].as_array().unwrap().iter().enumerate() {
+                let op = &row["op"];
+                let now = op["at"].as_f64().unwrap();
+                match op["op"].as_str().unwrap() {
+                    "play" => {
+                        animator.play(op["name"].as_str().unwrap(), now);
+                    }
+                    "mix" => animator.mix_once(op["name"].as_str().unwrap()),
+                    "fall" => animator.fall(op["n"].as_u64().unwrap() as usize, now),
+                    "update" => animator.update(now),
+                    _ => unreachable!(),
+                }
+                let mesh = model.mesh_pose_scaled(&animator.pose, 5.);
+                let scaled = &row["scaled"];
+                for (j, index) in scaled["indices"].as_array().unwrap().iter().enumerate() {
+                    let v = &mesh.vertices[index.as_u64().unwrap() as usize];
+                    let normal = v.normal.truncate().normalize();
+                    for (axis, (position, normal)) in v
+                        .position
+                        .to_array()
+                        .into_iter()
+                        .zip(normal.to_array())
+                        .enumerate()
+                    {
+                        let source = scaled["positions"][j * 3 + axis].as_f64().unwrap() as f32;
+                        assert!(
+                            (position - source).abs() < 0.0002,
+                            "{} step {step} vertex {index} axis {axis}: {position} != {source}",
+                            case["name"]
+                        );
+                        let source = scaled["normals"][j * 3 + axis].as_f64().unwrap() as f32;
+                        assert!(
+                            (normal - source).abs() < 0.00003,
+                            "{} step {step} normal {index} axis {axis}: {normal} != {source}",
+                            case["name"]
+                        );
+                    }
+                }
+            }
+        }
+    }
+    #[test]
     fn skinned_vertices_match_original_three_animation_mixer() {
         let model = ElfModel::load(
             &Path::new(env!("CARGO_MANIFEST_DIR")).join("../static/scenes/snowball/models"),
@@ -323,20 +283,11 @@ mod tests {
             serde_json::from_str(include_str!("../data/snowball-skin-reference.json")).unwrap();
         for row in data.as_array().unwrap() {
             let name = row["name"].as_str().unwrap();
-            let time = row["time"].as_f64().unwrap() as f32; // Source harness calls Model.play (looped), including fall clips.
-            let mesh = model.mesh(name, time, None);
-            let duration = model
-                .clips
-                .iter()
-                .find(|c| c.name == name)
-                .unwrap()
-                .duration;
-            let elapsed = if duration > 0. { time % duration } else { 0. };
-            let mesh = if name.contains("fall_down") && time >= duration {
-                model.mesh(name, elapsed, None)
-            } else {
-                mesh
-            };
+            let time = row["time"].as_f64().unwrap();
+            let mut animator = santa_tracker::snowball_animation::Animator::new();
+            animator.play(name, 0.);
+            animator.update(time * 1000.);
+            let mesh = model.mesh_pose(&animator.pose);
             for (i, v) in mesh.vertices.iter().enumerate() {
                 for (j, a) in [v.position.x, v.position.y, v.position.z]
                     .into_iter()

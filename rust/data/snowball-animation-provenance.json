@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-22",
+  "source_sha256": {
+    "static/scenes/snowball/js/snowball/models.js": "90578c9e8ea0b6106693faa6c8ce84d1667831f1eb249ac0915598ec03720d86",
+    "static/scenes/snowball/js/snowball/entities/elf.js": "d5fd37bbe1201b63143898793fbe0b9e7036805e513b1af6aa4a48f0226f5cf2",
+    "static/third_party/lib/three/build/three.js": "6467e0098991c58a5c6e64415c7126079672b4e0927c3203589644db96c64b60",
+    "static/third_party/lib/three/examples/js/loaders/GLTFLoader.js": "d679f38015daeaefec97ada4792f356f939597fe4c68d573c1743704bc1ec3dc",
+    "static/scenes/snowball/models/elf-animated.gltf": "966bb82acfcae90daccbfe86acb8df28fffdec62ebc6a649f6c21b3bdf538f4d",
+    "static/scenes/snowball/models/elf-animated.bin": "6931db820304c14d6a6671a3c0c28e373b2ba195bd6fa5b5ec14180e33e7f965"
+  },
+  "model_sequences": 15,
+  "model_states": 650,
+  "elf_update_states": 42,
+  "sampled_scaled_vertices_per_state": 14,
+  "scope": [
+    "Original Model play/playOnce/mixOnce/update, actual Elf fall callback and update call order.",
+    "Bundled THREE action time/weight, mutable active-cache order, callback dispatch, property original-state/accumulation, linear TRS tracks and quaternion interpolation.",
+    "650 poses/actions checked at 1e-9; sampled scaled vertex positions at 0.0002 and normalized directions at 0.00003.",
+    "Source root scale is temporarily multiplied by five only for shader-equivalent palette measurements, then restored before further mixer operations.",
+    "Three ready-model Elf.update cases import the original incoming pooled position/facing to compare identical starting transforms. Collision registration, LOD/readiness and the pool itself are not verified by those cases."
+  ],
+  "unused_engine_paths": [
+    "Scheduled starts, warping, ping-pong, finite repetitions, cubic tracks and non-TRS tracks are not invoked by this scene. No claim of porting the entire THIRD-PARTY animation engine."
+  ],
+  "remaining": [
+    "Actor/model reuse across spawns/restarts; LOD/model readiness and initial timing.",
+    "Full collision and entity lifecycle parity, responsive inputs, all audio and render phases."
+  ]
+}

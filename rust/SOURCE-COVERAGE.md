@@ -1352,3 +1352,48 @@ Evidence:
 Development exporters stay in `rust/tools/` in the original checkout only. The app and distributed verification code use native Rust, original assets and data fixtures; no browser engine or JavaScript is shipped.
 
 The isolated 1440×800 image mean RGB error is recorded in `snowball-raster-errors.json` (about 0.358/255). Its omissions/phase reset are explicit: this does not establish whole-mode visual equivalence. `snowball-input-smoke.json` records the limited owned input checks.
+
+### Snowball Storm loaded-model animation follow-up — 22 November 2026
+
+`src/snowball_animation.rs` replaces the previous elapsed-time throw overlay and
+hard-coded fall-to-idle deadlines. Each player retains the original active
+Model/THREE action lifecycle: cached loop/clamp/time-scale fields; same-name play
+no-op; stop-all resets; positive/zero-delta timing; per-action weight/fade state;
+mutable action-cache iteration; finished listeners retained across cancellation;
+repeated throws; fall callbacks with their original unfiltered event behavior;
+property accumulation and original-pose fallback. Fade control times/results
+retain the source Float32 rounding. The scene uses linear translation/quaternion
+tracks; unused engine scheduling/warping/ping-pong/cubic paths are not claimed.
+
+The production game queues throw animation after idle/run selection and updates
+models during parachute arrival as well as after landing. The renderer consumes
+the resulting persistent pose. It no longer recomputes a heuristic throw pose
+from a timestamp. The original model-root scale of five is now applied inside
+the skeleton hierarchy, preserving its root translation; the previous outer
+scale moved that translation too. The player marker remains attached to the
+unscaled dolly as in the source.
+
+Evidence is `snowball-animation-reference.json` and its provenance file:
+
+- Fifteen original Model sequences / 650 states, including four longer stress
+  sequences. The unchanged original Model/Elf callbacks and bundled THREE mixer
+  run in Chromium; only external RAF/time and the requested fall variant are
+  controlled. Native comparisons include all node TRS poses, action time/weights,
+  flags, cache order, fades, listeners and finished events (tolerance 1e-9).
+- Three actual ready-model `Elf.update` sequences / 42 states check the native
+  game's idle/run/throw/die call order and movement. These explicitly import the
+  original incoming transform because `Elf.onAllocated` retains pooled position
+  and facing. LOD/input registration and collision removal are scaffolded in this
+  isolated source check; neither those systems nor full pool behavior is certified.
+- Fourteen sampled vertices and normalized skin directions in all 650 states
+  check the actual source skeleton palette after root scaling. Native position
+  tolerance is 0.0002 model units; direction tolerance is 0.00003. The existing
+  thirty full-vertex isolated pose cases remain passing through the production
+  pose-to-mesh path. These checks do not certify all GPU pixels/material phases.
+- `snowball_capture ... action-4` (or another state index from the first sequence)
+  renders the real native pose/mesh path in the measured original render layout.
+  One such throw capture was inspected; no complete gameplay raster claim follows.
+
+The original Elf pool also retains its cached Model across reuse; full native
+pool/collision lifecycle and initial asynchronous model/LOD timing remain open.
+The scene rating remains Very similar and user feedback remains unreviewed.

@@ -562,11 +562,11 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
                 continue;
             }
             let texture = self.elf_texture(p.color, p.skin, p.hair, p.pony);
-            let mut mesh = self.model.as_ref().unwrap().mesh(
-                &p.anim,
-                ((g.time - p.anim_start) / 1000.) as f32,
-                p.throwing.map(|t| ((g.time - t) / 1000.) as f32),
-            );
+            let mut mesh = self
+                .model
+                .as_ref()
+                .unwrap()
+                .mesh_pose_scaled(&p.animator.pose, 5.);
             mesh.texture = Some(texture);
             let model = Mat4::from_translation(vec3(pos.x as f32, pos.y as f32, z as f32))
                 * Mat4::from_rotation_y(para_rot as f32)
@@ -577,8 +577,7 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
                     PI / 2.25,
                     p.face as f32,
                     0.,
-                ))
-                * Mat4::from_scale(Vec3::splat(5.));
+                ));
             self.lighting(
                 g,
                 model,
@@ -598,7 +597,7 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
                     texture: None,
                 };
                 let at = if p.arrived {
-                    model * Mat4::from_scale(Vec3::splat(0.2)) * Mat4::from_rotation_x(-PI / 2.)
+                    model * Mat4::from_rotation_x(-PI / 2.)
                 } else {
                     Mat4::from_translation(vec3(pos.x as f32, pos.y as f32 - 10., 19.))
                         * Mat4::from_rotation_x(PI / 2.25)

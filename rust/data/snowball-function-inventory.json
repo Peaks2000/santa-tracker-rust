@@ -2666,8 +2666,9 @@
     {
       "file": "static/scenes/snowball/js/snowball/models.js",
       "lines": 167,
-      "review": "native glTF joints/linear quaternion sampling checked against 30 original AnimationMixer poses; complete action interruption/mix/fade lifecycle remains partial",
+      "review": "Loaded-model active play/playOnce/mixOnce/update action/pose lifecycle checked against 650 original states, including retained callbacks/cache loop flags. Async loading, clone readiness/LOD and model pooling still partial.",
       "native": [
+        "rust/src/snowball_animation.rs",
         "rust/src/snowball_model.rs"
       ],
       "functions": [
@@ -2756,9 +2757,10 @@
     {
       "file": "static/scenes/snowball/js/snowball/entities/elf.js",
       "lines": 441,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Ready-model idle/run/throw/fall update ordering checked in 42 actual Elf.update states with matched incoming transforms; dynamic loading/LOD, material/actor pooling and collision/input registration still partial.",
       "native": [
         "rust/src/snowball.rs",
+        "rust/src/snowball_animation.rs",
         "rust/src/snowball_view.rs"
       ],
       "functions": [
