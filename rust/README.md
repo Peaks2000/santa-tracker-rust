@@ -208,3 +208,5 @@ The diagnostic `reference-pointer` case holds the measured original state still 
 Snowball now retains source animation actions/callbacks through throws, movement changes and falls. The `snowball_capture` diagnostic also accepts `action-N` (for example `action-4`) to inspect a state from the first original animation sequence in the measured render layout. The animation fixture checks 650 mixer states, 42 ready-model elf updates and sampled scaled vertex/normal output; remaining pool/LOD/collision/input/audio scope is in the coverage ledger.
 
 For isolated parachute rendering, `snowball_capture /tmp/carry.png 0 arrival-130` imports a measured original present/canopy state on a blank map. Available ticks are 0, 30, 130 and 299. This checks parent transforms/rendering; it does not certify full-scene arrival, loading or input parity.
+
+The `snowball_capture` third argument also accepts `removal-6`, `removal-7`, `removal-43`, `removal-81` or `removal-126` (seconds 0) for isolated measured frozen-present/iceberg rendering. These captures expose remaining MSAA/edge differences and do not certify whole-scene parity.

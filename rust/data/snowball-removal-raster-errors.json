@@ -1,0 +1,80 @@
+{
+  "scope": "Isolated actual original/native frozen present and iceberg with blank map and explicit matching camera; native imports measured body/actor state. Does not establish full-scene transparency, loading, input, pooled actors or scene lifecycle parity.",
+  "frames": [
+    {
+      "tick": 6,
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        699,
+        353,
+        742,
+        397
+      ],
+      "mae": 0.0009973958333333334,
+      "roi_mae": 0.6072938689217758
+    },
+    {
+      "tick": 7,
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        699,
+        353,
+        742,
+        398
+      ],
+      "mae": 0.0019918981481481485,
+      "roi_mae": 1.1858742463393626
+    },
+    {
+      "tick": 43,
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        677,
+        371,
+        764,
+        464
+      ],
+      "mae": 0.0024858217592592592,
+      "roi_mae": 0.3539323528200058
+    },
+    {
+      "tick": 81,
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        680,
+        356,
+        761,
+        451
+      ],
+      "mae": 0.005028645833333334,
+      "roi_mae": 0.7528265107212476
+    },
+    {
+      "tick": 126,
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        678,
+        356,
+        764,
+        450
+      ],
+      "mae": 0.005130497685185185,
+      "roi_mae": 0.7311149595909616
+    }
+  ]
+}

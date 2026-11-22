@@ -2410,10 +2410,11 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/entity-removal-system.js",
       "lines": 161,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "snowball_removal.rs translates Presence guard/first exit, LIFO freeze attachment, constant stored drift/bob/opacity, strict bounds, null-map return, teleport thresholds and pool/teardown state. Four actual original cases/26 updates plus three concrete stages/19 frames check active behavior. Full actor/model reuse, all scene restart overlaps and asynchronous LOD remain partial.",
       "native": [
         "rust/src/snowball.rs",
-        "rust/src/snowball_view.rs"
+        "rust/src/snowball_view.rs",
+        "rust/src/snowball_removal.rs"
       ],
       "functions": [
         {
@@ -2503,10 +2504,11 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/client-system.js",
       "lines": 151,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Source separate dead-observation time, strict >2500ms fallback and gone shortcut translated at Client stage; checked in concrete removal fixture. Complete Client arrival marker, camera, destination/target/network/HUD lifecycle still partial, not inactive.",
       "native": [
         "rust/src/snowball.rs",
-        "rust/src/snowball_view.rs"
+        "rust/src/snowball_view.rs",
+        "rust/src/snowball_removal.rs"
       ],
       "functions": [
         {
@@ -2891,7 +2893,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/entities/drop.js",
       "lines": 210,
-      "review": "Actual original handler and DropSystem fixture verifies first-notified Elf, simultaneous lethal/pickup and spin transforms, with imported initial scale. Original pooled allocation/parent/freeze lifecycle remains partial.",
+      "review": "Stored spin opacity/rotation/model-z and frozen tilt follow source update stage; Presence and entity local z/parent separate from model z. Concrete freeze/teleport/landing overlap fixtures and isolated images verify selected states. Full pool/LOD/input/audio/scene reuse remains partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -3266,10 +3268,11 @@
     {
       "file": "static/scenes/snowball/js/snowball/entities/iceberg.js",
       "lines": 165,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Native stored Ice/setup/update, retained pooled rotation/uniform state and grid z reset checked with actual source. Ten THREE matrices and five isolated original/native renders check parent/geometry/alpha; opacity uses Float32 data instead of byte tint. Edge/MSAA raster differences remain; full pooled child graph/scenario-wide combinations not certified.",
       "native": [
         "rust/src/snowball.rs",
-        "rust/src/snowball_view.rs"
+        "rust/src/snowball_view.rs",
+        "rust/src/snowball_removal.rs"
       ],
       "functions": [
         {
@@ -3399,10 +3402,11 @@
     {
       "file": "static/scenes/snowball/js/snowball/components/visibility.js",
       "lines": 25,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Native player Visibility opacity separate from material opacity; source ready-model teleport completion retains prior material opacity once Presence.exiting clears. Actual system fixture verifies; asynchronous LOD/material reuse remains partial.",
       "native": [
         "rust/src/snowball.rs",
-        "rust/src/snowball_view.rs"
+        "rust/src/snowball_view.rs",
+        "rust/src/snowball_removal.rs"
       ],
       "functions": [
         {
@@ -3484,10 +3488,11 @@
     {
       "file": "static/scenes/snowball/js/snowball/components/presence.js",
       "lines": 46,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Native Presence stores present/exit_time, preserves first exit and computes gone separately; guard, completion, queue and concrete system stages compared to actual original. Broader actor reuse/scene lifecycle remains partial.",
       "native": [
         "rust/src/snowball.rs",
-        "rust/src/snowball_view.rs"
+        "rust/src/snowball_view.rs",
+        "rust/src/snowball_removal.rs"
       ],
       "functions": [
         {

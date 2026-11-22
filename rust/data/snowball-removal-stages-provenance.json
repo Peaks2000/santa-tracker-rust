@@ -1,0 +1,13 @@
+{
+  "method": "Actual original Player/Drop/Parachute/EntityRemoval/Client/Collision systems, ready original Elf models and THREE, canonical module imports. Explicit tiles/scales, map default state1 with requested eroded tiles, controlled clock and fall selection .5. Elf, Drop and Iceberg allocation pools reset empty per case to isolate these sequences from cross-case object/model reuse. LOD registration/input/network posting held inactive; no bots, map generation/erosion algorithm, route restart or full random/model loading timing is certified. Cases exercise pending freeze frame, next-stage iceberg attachment/drift, local/NPC cleanup, teleport material vs Visibility opacity at completion, Client dead-observation timing, and frozen actor reparenting through parachute landing. Fall randomness is selected in native fixture rather than claiming full random parity.",
+  "files": {
+    "static/scenes/snowball/js/snowball/systems/entity-removal-system.js": "1153d0a20db468fe7ced48d9d3f977c1e1adacf2c07ec1aa59e813224374ba5c",
+    "static/scenes/snowball/js/snowball/systems/player-system.js": "37e8c893a3643f5bc0940524ea23cc51a8ba9b575365d6ef555b9966836461b0",
+    "static/scenes/snowball/js/snowball/systems/drop-system.js": "d0230bcf979a736698ed41013451ebea345ee2d8b8580b59ea375880f55b1db2",
+    "static/scenes/snowball/js/snowball/systems/parachute-system.js": "c26622b7497d442c327eb903cdd8fff7a82456dd8b09caa4d1c7fa2a69bcd80b",
+    "static/scenes/snowball/js/snowball/systems/client-system.js": "0f8aded75ed447fbfede07eaa10485180aa54d1e2de101ba9a6a77fe7a0aa7d8",
+    "static/scenes/snowball/js/snowball/entities/iceberg.js": "6d6e9c5a4a9516db6b48b4532d2ddc035104d65b322299aa98bc2b67151990b5",
+    "static/scenes/snowball/js/snowball/entities/elf.js": "d5fd37bbe1201b63143898793fbe0b9e7036805e513b1af6aa4a48f0226f5cf2",
+    "static/scenes/snowball/js/snowball/entities/drop.js": "80e22ed1bd2af68ff7544a3d724848980cc7bd921317978ec0362cef56567a64"
+  }
+}

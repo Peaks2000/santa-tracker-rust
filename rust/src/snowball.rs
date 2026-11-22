@@ -3,6 +3,7 @@
 use crate::random::Random;
 use crate::snowball_collision::{Bounds, Collision, Id};
 use crate::snowball_parachute::{Event as ParachuteEvent, Parachutes};
+use crate::snowball_removal::{ActorState, Event as RemovalEvent, Parent, Presence, Removal};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::f64::consts::{FRAC_PI_2, PI};
@@ -476,6 +477,11 @@ impl Powerups {
 }
 #[derive(Clone)]
 pub struct Player {
+    pub active: bool,
+    pub parent: Parent,
+    pub presence: Presence,
+    pub opacity: f64,
+    pub material_opacity: f64,
     pub setup: bool,
     pub landed: bool,
     pub collision_handler: bool,
@@ -502,8 +508,6 @@ pub struct Player {
     pending_throw: bool,
     pub anim: String,
     pub fall: usize,
-    pub ice: V,
-    pub ice_start: f64,
 }
 impl Player {
     fn animation(&mut self, name: &str, now: f64) {
@@ -546,6 +550,12 @@ impl Shot {
 }
 #[derive(Clone)]
 pub struct Drop {
+    pub active: bool,
+    pub parent: Parent,
+    pub presence: Presence,
+    pub entity_z: f64,
+    pub opacity: f64,
+    pub tilt: f64,
     pub setup: bool,
     pub landed: bool,
     pub colliding_player: Option<usize>,
@@ -560,8 +570,6 @@ pub struct Drop {
     pub gone: bool,
     pub frozen: bool,
     pub z: f64,
-    pub freeze_at: f64,
-    pub ice: V,
 }
 #[derive(Clone)]
 pub struct Particle {
@@ -580,6 +588,7 @@ pub enum Phase {
     Playing,
 }
 pub struct Snowball {
+    pub removal: Removal,
     pub parachutes: Parachutes,
     pub map: Map,
     pub players: Vec<Player>,
@@ -609,12 +618,14 @@ pub struct Snowball {
     collision_limit: Option<(f64, f64, V)>,
     collision: Collision,
     next_shot_id: usize,
+    client_dead_at: f64,
 }
 impl Snowball {
     pub fn new(seed: &str) -> Self {
         let mut random = Random::seeded(seed);
         let map_seed = (random.next() * 4294967296.) as u32;
         Self {
+            removal: Removal::default(),
             parachutes: Parachutes::default(),
             map: Map::new(Grid::default(), map_seed),
             players: vec![],
@@ -648,6 +659,7 @@ impl Snowball {
                 Grid::default().pixel_height(),
             )),
             next_shot_id: 0,
+            client_dead_at: 0.,
         }
     }
     pub fn jump(&mut self) {
@@ -662,6 +674,8 @@ impl Snowball {
         self.time = 0.;
         self.splash_until = self.wall + 1000.;
         self.gameover = false;
+        self.client_dead_at = 0.;
+        self.removal.teardown();
         self.pending_destination = None;
         self.camera_target = None;
         self.collision_limit = None;
@@ -728,6 +742,11 @@ impl Snowball {
         let hair = (self.random.next() * 4.) as usize;
         let pony = self.random.next() >= 0.5;
         self.players.push(Player {
+            active: true,
+            parent: Parent::Detached,
+            presence: Presence::default(),
+            opacity: 1.,
+            material_opacity: 1.,
             setup: false,
             landed: false,
             collision_handler: false,
@@ -754,8 +773,6 @@ impl Snowball {
             pending_throw: false,
             anim: "elf_rig_idle".into(),
             fall: 1,
-            ice: V::default(),
-            ice_start: 0.,
         });
         self.all_time += 1
     }
@@ -768,6 +785,12 @@ impl Snowball {
             self.random.next() * 5. + 10.,
         ];
         self.drops.push(Drop {
+            active: true,
+            parent: Parent::Detached,
+            presence: Presence::default(),
+            entity_z: 0.,
+            opacity: 1.,
+            tilt: 0.,
             setup: false,
             landed: false,
             colliding_player: None,
@@ -782,8 +805,6 @@ impl Snowball {
             gone: false,
             frozen: false,
             z: 0.,
-            freeze_at: 0.,
-            ice: V::default(),
         })
     }
     pub fn destination(&mut self, index: usize, pos: V) {
@@ -840,34 +861,110 @@ impl Snowball {
     }
     fn kill(&mut self, index: usize, frozen: bool) {
         let p = &mut self.players[index];
-        if !p.alive {
-            return;
+        if p.alive {
+            p.death = self.time;
         }
         p.alive = false;
-        p.frozen = frozen;
-        p.death = self.time;
+        p.frozen |= frozen;
         p.fall = (self.random.next() * 3.).floor() as usize + 1;
         p.animator.fall(p.fall, self.time);
         p.anim = format!("elf_rig_fall_down_{}", p.fall);
         if frozen {
-            p.ice = self
-                .map
-                .grid
-                .pos(self.map.grid.position_index(p.pos))
-                .add(V::new(0., -32.));
-            p.ice_start = self.time
+            self.removal
+                .freeze(Id::Player(index), self.time, Some(&mut p.presence));
+        } else {
+            self.removal
+                .teleport(Id::Player(index), self.time, Some(&mut p.presence));
         }
     }
     fn hit_player(&mut self, index: usize) {
-        if self.players[index].alive {
-            self.kill(index, false);
-        } else {
-            // Elf's collision handler calls die() for each notification, even
-            // after another hit in this pass. Presence keeps the first exit time.
-            let p = &mut self.players[index];
-            p.fall = (self.random.next() * 3.).floor() as usize + 1;
-            p.animator.fall(p.fall, self.time);
-            p.anim = format!("elf_rig_fall_down_{}", p.fall);
+        self.kill(index, false);
+    }
+    fn update_removal(&mut self, tick: f64, width: f64, height: f64) {
+        let events = self.removal.update(
+            self.map.grid,
+            Some(self.map.rings.len()),
+            tick,
+            self.time,
+            width,
+            height,
+            |id| match id {
+                Id::Player(i) => {
+                    let p = &self.players[i];
+                    ActorState {
+                        pos: p.pos,
+                        exit_time: p.presence.exit_time,
+                        visibility: true,
+                    }
+                }
+                Id::Drop(i) => {
+                    let d = &self.drops[i];
+                    ActorState {
+                        pos: d.pos,
+                        exit_time: d.presence.exit_time,
+                        visibility: false,
+                    }
+                }
+                _ => unreachable!(),
+            },
+        );
+        for event in events {
+            match event {
+                RemovalEvent::Attached(Id::Player(i), slot) => {
+                    let p = &mut self.players[i];
+                    p.pos = V::default();
+                    p.z = -16.;
+                    p.parent = Parent::Ice(slot);
+                }
+                RemovalEvent::Attached(Id::Drop(i), slot) => {
+                    let d = &mut self.drops[i];
+                    d.pos = V::default();
+                    d.entity_z = -16.;
+                    d.parent = Parent::Ice(slot);
+                }
+                RemovalEvent::Gone(Id::Player(i)) => {
+                    let p = &mut self.players[i];
+                    p.parent = Parent::Detached;
+                    p.presence.finish();
+                    p.gone = true;
+                }
+                RemovalEvent::Gone(Id::Drop(i)) => {
+                    let d = &mut self.drops[i];
+                    d.parent = Parent::Detached;
+                    d.presence.finish();
+                    d.gone = true;
+                }
+                RemovalEvent::Teleport {
+                    id: Id::Player(i),
+                    z,
+                    opacity,
+                    finished,
+                } => {
+                    let p = &mut self.players[i];
+                    p.z = z;
+                    if let Some(o) = opacity {
+                        p.opacity = o;
+                    }
+                    if finished {
+                        p.presence.finish();
+                        p.gone = true;
+                    }
+                }
+                RemovalEvent::Teleport {
+                    id: Id::Drop(i),
+                    z,
+                    finished,
+                    ..
+                } => {
+                    let d = &mut self.drops[i];
+                    d.entity_z = z;
+                    if finished {
+                        d.presence.finish();
+                        d.gone = true;
+                    }
+                }
+                _ => unreachable!(),
+            }
         }
     }
     fn update_parachutes(&mut self, tick: f64) {
@@ -885,14 +982,36 @@ impl Snowball {
                     self.players[i].pos = V::default();
                     self.players[i].z = 0.;
                     self.players[i].dropped = tick;
+                    self.players[i].parent = Parent::Canopy;
                 }
                 ParachuteEvent::Carried(Id::Drop(i), tick) => {
                     self.drops[i].pos = V::default();
                     self.drops[i].dropped = tick;
+                    self.drops[i].entity_z = 0.;
+                    self.drops[i].parent = Parent::Canopy;
                 }
-                ParachuteEvent::Arrived(Id::Player(i)) => self.players[i].arrived = true,
-                ParachuteEvent::Arrived(Id::Drop(i)) => self.drops[i].arrived = true,
-                ParachuteEvent::Detached(_) => {}
+                ParachuteEvent::Arrived(Id::Player(i)) => {
+                    self.players[i].arrived = true;
+                    if self.players[i].parent == Parent::Canopy {
+                        self.players[i].parent = Parent::Detached;
+                    }
+                }
+                ParachuteEvent::Arrived(Id::Drop(i)) => {
+                    self.drops[i].arrived = true;
+                    if self.drops[i].parent == Parent::Canopy {
+                        self.drops[i].parent = Parent::Detached;
+                    }
+                }
+                ParachuteEvent::Detached(Id::Player(i)) => {
+                    if self.players[i].parent == Parent::Canopy {
+                        self.players[i].parent = Parent::Detached;
+                    }
+                }
+                ParachuteEvent::Detached(Id::Drop(i)) => {
+                    if self.drops[i].parent == Parent::Canopy {
+                        self.drops[i].parent = Parent::Detached;
+                    }
+                }
                 _ => unreachable!("Arrival component"),
             }
         }
@@ -1107,59 +1226,79 @@ impl Snowball {
         }
         self.particles
             .retain(|p| self.time - p.born < if p.trail { 700. } else { 300. });
+        self.update_removal(tick, width, height);
         let mut collected_by_client = false;
         for (di, d) in self.drops.iter_mut().enumerate() {
+            if !d.active {
+                continue;
+            }
             if !d.setup {
                 d.setup = true;
                 d.z = 32.;
+                d.tilt = PI / 2.5;
                 d.rotation = 0.;
+                d.opacity = 1.;
                 self.parachutes.drop_entity(Id::Drop(di));
             }
-            if !d.arrived || d.gone {
-                if d.gone {
-                    self.collision.remove(Id::Drop(di));
-                }
-                continue;
-            }
-            if !d.landed {
+            if d.arrived && !d.landed {
                 d.landed = true;
                 d.pos = grid.pos(d.tile);
+                d.parent = Parent::Map;
                 self.collision.add(Id::Drop(di));
             }
-            if d.frozen {
-                d.ice = d.ice.add(d.ice.norm().mul(1. / 3.));
-                if d.ice.len()
-                    > V::new(width / 2., height / 2.).len()
-                        + (self.map.rings.len() as f64 + 2.) * 64.
-                {
-                    d.gone = true
+            if d.arrived {
+                if !d.presence.exiting() {
+                    d.rotation += 0.01;
+                } else if let Some(start) = d.spin {
+                    let t = ((self.time - start) / 300.).min(1.);
+                    let delta = -((t - 1.).powi(4) + (t - 1.).powi(3));
+                    d.rotation += delta * 2. * PI;
+                    d.z += delta * 64.;
+                    for scale in &mut d.scale {
+                        *scale *= 1f64.max(1. + delta);
+                    }
+                    d.opacity = (1. - t).max(0.);
+                    if t == 1. {
+                        d.presence.finish();
+                    }
+                } else {
+                    d.rotation = 0.;
+                    d.tilt = PI / 2.;
                 }
-            } else if let Some(start) = d.spin {
-                let t = ((self.time - start) / 300.).min(1.);
-                let delta = -((t - 1.).powi(4) + (t - 1.).powi(3));
-                d.rotation += delta * 2. * PI;
-                d.z += delta * 64.;
-                for s in &mut d.scale {
-                    *s *= 1f64.max(1. + delta)
-                }
-                if t == 1. {
-                    d.gone = true
-                }
-                self.collision.remove(Id::Drop(di));
-            } else if self.map.state(grid.position_index(d.pos)) == 4 {
-                d.frozen = true;
-                d.gone = true;
-                self.collision.remove(Id::Drop(di));
-            } else {
-                d.rotation += 0.01;
-                if let Some(i) = d.colliding_player.take() {
-                    self.players[i].powerups.collect();
-                    d.spin = Some(self.time);
-                    collected_by_client |= i == 0;
+                d.gone = d.presence.gone();
+                if d.gone {
+                    d.active = false;
+                    if d.parent == Parent::Map {
+                        d.parent = Parent::Detached;
+                    }
+                    self.collision.remove(Id::Drop(di));
+                } else if !d.presence.exiting() {
+                    if self.map.state(grid.position_index(d.pos)) == 4 {
+                        d.frozen = true;
+                        self.collision.remove(Id::Drop(di));
+                        self.removal
+                            .freeze(Id::Drop(di), self.time, Some(&mut d.presence));
+                    } else if let Some(i) = d.colliding_player.take() {
+                        self.players[i].powerups.collect();
+                        d.spin = Some(self.time);
+                        d.presence.exit(self.time);
+                        d.presence.present = true;
+                        collected_by_client |= i == 0;
+                    }
+                } else {
+                    self.collision.remove(Id::Drop(di));
                 }
             }
         }
         self.update_parachutes(tick);
+        if let Some(p) = self.players.first().filter(|p| !p.alive) {
+            if self.client_dead_at == 0. {
+                self.client_dead_at = self.time;
+            }
+            if p.presence.gone() || self.time - self.client_dead_at > 2500. {
+                self.gameover = true;
+            }
+        }
         if self.players.first().is_some_and(|p| p.alive) {
             self.hud_knockouts = self.knocked_out;
             self.hud_time = self.time / 1000.;
@@ -1218,6 +1357,7 @@ impl Snowball {
         for p in &mut self.players {
             if p.arrived && !p.landed {
                 p.landed = true;
+                p.parent = Parent::Map;
                 p.pos = grid.pos(p.tile);
             }
         }
@@ -1229,8 +1369,7 @@ impl Snowball {
         }
         let mut freezing = vec![];
         for (i, p) in self.players.iter_mut().enumerate() {
-            if p.gone {
-                self.collision.remove(Id::Player(i));
+            if !p.active {
                 continue;
             }
             if p.arrived {
@@ -1252,26 +1391,10 @@ impl Snowball {
                 } else {
                     p.animation("elf_rig_idle", self.time)
                 }
-                if self.map.state(grid.position_index(p.pos)) == 4 {
-                    freezing.push(i)
-                }
             } else {
                 self.collision.remove(Id::Player(i));
-                let elapsed = self.time - p.death;
-                if p.frozen {
-                    p.ice = p.ice.add(p.ice.norm().mul(1. / 3.));
-                    let island = (self.map.rings.len() as f64 + 2.) * 64.;
-                    if p.ice.len() > V::new(width / 2., height / 2.).len() + island {
-                        p.gone = true;
-                        self.knocked_out += 1;
-                        self.sounds.push("snowball_frozen")
-                    }
-                } else {
-                    if elapsed >= 2200. {
-                        p.gone = true;
-                        self.knocked_out += 1;
-                        self.sounds.push("snowball_frozen")
-                    }
+                if p.presence.exiting() {
+                    p.material_opacity = p.opacity;
                 }
             }
             if p.alive && p.pending_throw {
@@ -1282,8 +1405,19 @@ impl Snowball {
             if let Some(name) = p.animator.playing_name() {
                 p.anim = name.into();
             }
-            if i == 0 && !p.alive && (p.gone || self.time - p.death > 2500.) {
-                self.gameover = true
+            if self.map.state(grid.position_index(p.pos)) == 4
+                && p.presence.present
+                && !p.presence.exiting()
+            {
+                freezing.push(i);
+            } else if p.presence.gone() {
+                p.gone = true;
+                p.active = false;
+                self.knocked_out += 1;
+                self.sounds.push("snowball_frozen");
+                if i != 0 && p.parent == Parent::Map {
+                    p.parent = Parent::Detached;
+                }
             }
         }
         for i in freezing {
@@ -1302,6 +1436,119 @@ pub fn circle_rect(c: V, r: f64, p: V, hw: f64, hh: f64) -> bool {
 #[cfg(test)]
 pub(crate) mod tests {
     use super::*;
+    #[test]
+    fn concrete_removal_stages_match_original_systems_and_parents() {
+        let data: serde_json::Value = serde_json::from_str(include_str!(
+            "../data/snowball-removal-stages-reference.json"
+        ))
+        .unwrap();
+        let label = |id: Id| match id {
+            Id::Player(i) => format!("p{i}"),
+            Id::Drop(i) => format!("d{i}"),
+            _ => unreachable!(),
+        };
+        let parent = |p: Parent| match p {
+            Parent::Detached => None,
+            Parent::Map => Some("map".into()),
+            Parent::Canopy => Some("canopy".into()),
+            Parent::Ice(i) => Some(format!("ice{i}")),
+        };
+        for case in data["cases"].as_array().unwrap() {
+            let mut game = Snowball::new("removal-stages");
+            game.map.obstacles.fill(-1);
+            game.map.states.fill(1);
+            game.map.rings.resize(4, vec![]);
+            let air = case["air"].as_bool().unwrap();
+            for tile in case["playerTiles"].as_array().unwrap() {
+                game.add_player(false);
+                let grid = game.map.grid;
+                let p = game.players.last_mut().unwrap();
+                p.tile = tile.as_i64().unwrap() as i32;
+                if !air {
+                    p.pos = grid.pos(p.tile);
+                    p.arrived = true;
+                    p.landed = true;
+                    p.setup = true;
+                    p.collision_handler = true;
+                    p.parent = Parent::Map;
+                    p.animation("elf_rig_idle", 0.);
+                    p.animator.update(0.);
+                }
+            }
+            game.add_drop();
+            let d = &mut game.drops[0];
+            d.tile = case["dropTile"].as_i64().unwrap() as i32;
+            d.scale = [18., 16., 13.];
+            if !air {
+                d.pos = game.map.grid.pos(d.tile);
+                d.setup = true;
+                d.arrived = true;
+                d.landed = true;
+                d.parent = Parent::Map;
+                d.z = 32.;
+                d.tilt = PI / 2.5;
+            }
+            game.reset_collisions();
+            if air {
+                game.finish_frame(1440., 800.);
+            }
+            let snapshot = |g: &Snowball| {
+                serde_json::json!({
+                    "players":g.players.iter().enumerate().map(|(i,p)|serde_json::json!({"id":format!("p{i}"),"active":p.active,"pos":[p.pos.x,p.pos.y,p.z],"arrived":p.arrived,"alive":p.alive,"death":if p.alive{-1.}else{p.death},"present":p.presence.present,"exit":p.presence.exit_time,"gone":p.presence.gone(),"opacity":p.opacity,"material":p.material_opacity,"parent":parent(p.parent),"playing":p.animator.playing_name()})).collect::<Vec<_>>(),
+                    "drops":g.drops.iter().enumerate().map(|(i,d)|serde_json::json!({"id":format!("d{i}"),"active":d.active,"pos":[d.pos.x,d.pos.y,d.entity_z],"arrived":d.arrived,"present":d.presence.present,"exit":d.presence.exit_time,"gone":d.presence.gone(),"parent":parent(d.parent),"rotation":d.rotation,"tilt":d.tilt,"z":d.z,"opacity":d.opacity})).collect::<Vec<_>>(),
+                    "order":g.collision.order.iter().copied().map(label).collect::<Vec<_>>(),"freezing":g.removal.freezing.iter().copied().map(label).collect::<Vec<_>>(),"frozen":g.removal.frozen.iter().copied().map(label).collect::<Vec<_>>(),"teleporting":g.removal.teleporting.iter().copied().map(label).collect::<Vec<_>>(),"layer":g.removal.layer,
+                    "bodies":g.removal.bodies.iter().map(|b|serde_json::json!({"pos":[b.pos.x,b.pos.y,b.z],"rotation":b.rotation,"opacity":b.opacity,"start":b.start_tick})).collect::<Vec<_>>(),
+                    "canopies":g.parachutes.canopies.iter().map(|c|serde_json::json!({"id":label(c.entity),"pos":[c.pos.x,c.pos.y,c.z],"rotation":c.rotation})).collect::<Vec<_>>(),"undropped":g.parachutes.undropped.iter().copied().map(label).collect::<Vec<_>>(),"dropping":g.parachutes.dropping.iter().copied().map(label).collect::<Vec<_>>(),"knockedOut":g.knocked_out,"gameover":g.gameover,"sounds":g.sounds
+                })
+            };
+            assert_json_close(
+                &snapshot(&game),
+                &case["initial"],
+                case["name"].as_str().unwrap(),
+            );
+            let (mut w, mut h) = (1440., 800.);
+            for frame in case["frames"].as_array().unwrap() {
+                let input = &frame["input"];
+                game.time = input["at"].as_f64().unwrap();
+                game.sounds.clear();
+                if input["size"].is_array() {
+                    w = input["size"][0].as_f64().unwrap();
+                    h = input["size"][1].as_f64().unwrap();
+                }
+                if let Some(n) = input["rings"].as_u64() {
+                    game.map.rings.resize(n as usize, vec![]);
+                }
+                if let Some(tiles) = input["erode"].as_array() {
+                    for t in tiles {
+                        game.map.states[t.as_u64().unwrap() as usize] = 4;
+                    }
+                }
+                if input["erodeOrigin"].as_bool().unwrap_or(false) {
+                    let i = game.map.grid.position_index(V::default());
+                    game.map.states[i as usize] = 4;
+                }
+                game.random = (0..10000)
+                    .find_map(|seed| {
+                        let r = Random::seeded(&format!("removal-fall-{seed}"));
+                        let mut q = r.clone();
+                        (0..4).all(|_| (q.next() * 3.).floor() == 1.).then_some(r)
+                    })
+                    .unwrap();
+                if let Some(die) = input["die"].as_array() {
+                    for e in die {
+                        let i = e.as_str().unwrap()[1..].parse().unwrap();
+                        game.kill(i, false);
+                    }
+                }
+                game.finish_frame(w, h);
+                assert_json_close(
+                    &snapshot(&game),
+                    &frame["after"],
+                    &format!("{} at {}", case["name"], input["at"]),
+                );
+            }
+        }
+    }
     #[test]
     fn arrival_stages_match_actual_player_drop_and_parachute_systems() {
         let data: serde_json::Value = serde_json::from_str(include_str!(
@@ -1412,6 +1659,7 @@ pub(crate) mod tests {
                 p.collision_handler = true;
                 p.arrived = true;
                 p.landed = true;
+                p.parent = Parent::Map;
                 p.pos = point(&row["pos"]);
                 p.face = row["face"].as_f64().unwrap();
                 p.animation("elf_rig_idle", 0.);
@@ -1419,6 +1667,12 @@ pub(crate) mod tests {
             }
             for row in initial["drops"].as_array().unwrap() {
                 game.drops.push(Drop {
+                    active: true,
+                    parent: Parent::Map,
+                    presence: Presence::default(),
+                    entity_z: 0.,
+                    opacity: 1.,
+                    tilt: PI / 2.5,
                     setup: true,
                     landed: true,
                     colliding_player: None,
@@ -1433,8 +1687,6 @@ pub(crate) mod tests {
                     gone: false,
                     frozen: false,
                     z: row["z"].as_f64().unwrap(),
-                    freeze_at: 0.,
-                    ice: V::default(),
                 });
             }
             for row in initial["shots"].as_array().unwrap() {
@@ -1557,6 +1809,7 @@ pub(crate) mod tests {
             game.players[0].face = case["initial"]["face"].as_f64().unwrap();
             game.players[0].arrived = true;
             game.players[0].landed = true;
+            game.players[0].parent = Parent::Map;
             for (index, row) in case["states"].as_array().unwrap().iter().enumerate() {
                 let op = &row["op"];
                 game.time = op["at"].as_f64().unwrap();

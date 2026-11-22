@@ -1,0 +1,10 @@
+{
+  "method": "Unmodified original EntityRemovalSystem, Iceberg, Presence, Visibility, allocator and bundled THREE in Chromium; canonical ?module imports. Plain Object3D actors have explicit local positions/presence/visibility. Clock/ticks/map existence/ring count/window size and requests are explicit inputs. Iceberg pools start empty per case; actual original reuse/retained transform state is exercised within cases. Snapshots cover queues, LIFO allocation, guards, first exit time, local reparenting, constant drift, stored bob/rotation/opacity, strict bounds, null-map early return, teleport thresholds and teardown/reuse. This does not certify actor/model/material pooling, concrete game-system registration, LOD/loading, input/audio or complete scene restart.",
+  "files": {
+    "static/scenes/snowball/js/snowball/systems/entity-removal-system.js": "1153d0a20db468fe7ced48d9d3f977c1e1adacf2c07ec1aa59e813224374ba5c",
+    "static/scenes/snowball/js/snowball/entities/iceberg.js": "6d6e9c5a4a9516db6b48b4532d2ddc035104d65b322299aa98bc2b67151990b5",
+    "static/scenes/snowball/js/snowball/components/presence.js": "6f8513b648efae9fe9c4cc6aa59a49180e2ebd7b6ad09c4fa3fa37158e1d9e76",
+    "static/scenes/snowball/js/snowball/components/visibility.js": "9aba7abd79812704ab02b66282f3e900be098bdec8d0e2e77cb5031887cc49a5",
+    "static/scenes/snowball/js/engine/utils/allocatable.js": "c4ab5759c61e9c933e3fb009cc6d3f59e0e83e5cb951444ba45b6a1c1c7ad628"
+  }
+}

@@ -358,3 +358,39 @@ RAF polling can stall readiness waits; use an explicit interval for that wait.
 A first incomplete canopy capture was discarded before final comparisons.
 
 The distribution rust/README.md has a deliberately native-only verification section that differs from the reference checkout. Sync specific diagnostic paragraphs there; replacing the whole file would introduce commands for reference tools that are not distributed.
+
+
+### Snowball removal/frozen-parent follow-up (22 November 2026)
+
+`src/snowball_removal.rs` owns Presence, Removal queues, pooled Ice transforms
+and Parent (Detached/Map/Canopy/Ice). Do not infer a transform or disappearance
+from `.frozen`: requests mark exiting now, next removal update attaches LIFO and
+sets local (0,0,-16). Frozen presents stay visible. A parachute can later reparent
+a frozen elf back to the map while its now-empty iceberg continues drifting.
+`landed` records that the arrival queue was processed; actual Parent determines
+render membership. Iceberg/free pooled state and strict bounds use source
+formulas; indexToPosition resets z, so reused setup starts at +32, not old-z+32.
+Drift is one normalized 1/3 step per update, never time-accelerated.
+
+Presence and Visibility/material opacity differ. Teleport holds 1500ms then
+moves local z and visibility for 700ms. At completion exiting is false before
+Elf.update, so it retains the preceding material opacity; local client mesh
+stays parented, NPC cleanup detaches its normal map parent. `active` separately
+tracks system-array membership and prevents repeated knockout counting. Client
+records first observed dead time before PlayerSystem; gone or strict >2500ms
+then triggers game over. Full Client arrival-marker/camera/input/HUD paths still
+need matching; don't mistake just its verified death decision for full parity.
+
+Evidence: four actual original removal cases/26 updates; three actual concrete
+system cases/19 frames with ready models; ten THREE body/model matrices; five
+isolated frozen-present/iceberg comparisons. Read provenance for explicit tiles,
+map cells/clock/pool reset and selected fall randomness. No full-match/scene
+restart/actor-model pool/LOD readiness certification follows. Diagnostic third
+argument `removal-6`, `removal-7`, `removal-43`, `removal-81`, `removal-126` after
+output/seconds (seconds 0) imports only measured body/present state on blank map.
+
+Next concrete rendering gap: native main/example requests sample_count=4,
+whereas original RenderSystem uses WebGLRenderer default antialias=false in the
+bundled THREE. Inspected iceberg/present crops show softer native edges. Address
+scene-specific raster behavior without silently changing other games' output.
+Ice opacity now uses Float32 vertex data instead of byte-quantized tint alpha.

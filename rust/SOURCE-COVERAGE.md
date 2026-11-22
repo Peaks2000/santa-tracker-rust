@@ -1337,7 +1337,7 @@ Target remains 1:1; this pass is **Very similar**, not certified 1:1. All own-sc
 | `models.js`, Elf texture and animation methods, actual GLTFLoader/Skeleton path | `snowball_model.rs`: original glTF/bin, skin weights/joints/inverse bind transforms, source linear/spherical interpolation, vertex colours, idle/run/throw/three falls. `snowball_view.rs`: original generated colour bands, cache key, source material/light parameters. | Complete THREE action interruption, thrown-action crossfades, fall callback timing, model loading/LOD phase and pooled material reuse remain partial. Selected pose position tests do not certify normals or every action combination. |
 | HexMap/Obstacles and shader partials | Source cylinder vertex/index fixture, 144-degree gimbal and actual camera orientation, original atlas/obstacle tilt, per-fragment tile tones/alpha, shaking/sinking/raised geometry and continuous meshes. | Large viewports, all erosion phases and transparent object ordering still need coverage. GPU batching avoids Macroquad geometry clamping. |
 | Snowball/BigSnowball, SnowballSystem, Trajectory, Trail/Splat and effects | Source 256px/42-frame distance-dependent shot, arc, ignored skew preserved, large radius/quantity, snowball rotation/colour shader, source trail/splat equations and textures. | Source preallocated particle-ring/random consumption, overlapping effects and collision/exhaustion removal ordering remain partial. |
-| Drop/DropSystem, Parachute/ParachuteSystem, Iceberg/EntityRemovalSystem | Original present geometry/colour bands/scales, stored 300-tick/420px canopy state, source carry/arrival/reparent queues and parent rotation offset, rocking parachute asset, pickups/300ms spin, 1500ms hold + 700ms teleport, frozen drift/bob/additive ice rendering. | Normal carry/landing parent matrices and system-stage offsets are checked below. Freezing parents, resource/actor reuse, asynchronous LOD and full teardown/restart/removal overlaps still need comparison. |
+| Drop/DropSystem, Parachute/ParachuteSystem, Iceberg/EntityRemovalSystem | Original present geometry/colour bands/scales, stored 300-tick/420px canopy state, source carry/arrival/reparent queues and parent rotation offset, rocking parachute asset, pickups/300ms spin, 1500ms hold + 700ms teleport, frozen drift/bob/additive ice rendering. | Normal carry/landing parent matrices and system-stage offsets are checked below. Freezing/teleport stages and selected parent overlaps are checked in the later removal follow-up below. Full actor/model reuse, asynchronous LOD, general teardown/restart and all overlapping removals remain partial. |
 | Powerup UI/status, population UI | Original art, 128px frames and quantity icon transforms, 300ms transitions and 768px scaling. Population panel remains hidden, swapping click remains disabled, per source. | Phase/reversal/quantity geometry not yet measured across devices; scissor rounding can differ. |
 | NetworkSystem, Socket, messages, Network/Lobby levels/status | Reviewed, inactive in the actual entrypoint, which explicitly starts `local`. | No invented online service or multiplayer route is shipped. |
 | Audio calls and host chrome | Original existing Klang sample/group resolver supplies `snowball_throw`, hit, pickup, frozen, button, generic music. Home (not menu), no pause and no invented keyboard controls; gameplay continues behind disabled game-over. | Listening checks, exact group/retrigger/mixer/bus timing and shared overlay focus/blur are not certified. |
@@ -1561,3 +1561,71 @@ All 92 tests pass, the release builds, and a 150-second native simulation runs
 without panic. Full-match random/UUID/pooling, freezing parents, scene lifecycle,
 async LOD/loading, input/responsiveness, audio and other effect phases remain
 unfinished. Snowball Storm remains Very similar with a 1:1 target.
+
+
+### Snowball Storm freezing, teleport and actual parents — 22 November 2026
+
+`src/snowball_removal.rs` replaces elapsed-time/render-only approximations with
+original Presence and EntityRemovalSystem state. Freeze requests mark exiting
+at their source system stage; the following removal update pops them LIFO,
+allocates/reuses an iceberg, sets actor local position (0,0,-16), reparents it,
+and advances the iceberg. Presents therefore stay visible on the freeze-request
+frame and then inside the moving iceberg, rather than disappearing immediately.
+Drift is a normalized 1/3 step per update; bob, turn and opacity use the stored
+integer tick. Bounds removal is strict > against half-window diagonal plus
+(rings+2)*cellSize. A null map returns after pending attachment, before frozen
+motion or teleport processing. Pool reuse preserves source transform/uniform
+state; indexToPosition explicitly resets z before adding 32.
+
+Actors retain explicit Detached/Map/Canopy/Ice parents. Render transforms follow
+that parent, not the frozen flag: a frozen elf can later reparent from iceberg
+to map as its original parachute finishes. Icebergs and canopies render
+independently from carried-actor visibility. Completed removal changes Presence
+and system membership once; normal NPC cleanup detaches its map parent, while
+the local client remains parented as the source does. Presence, Visibility and
+material opacity are separate: at teleport completion Visibility becomes zero,
+but Elf.update no longer applies that value once exiting is false, leaving the
+last material opacity on the retained local mesh. Native rendering now consumes
+stored opacity and entity z instead of evaluating a new fade with render time.
+Drop spin/frozen tilt and opacity also retain completed system-update values.
+Client death observation occurs before PlayerSystem, with the source's separate
+wasDeadAt/strict >2500ms fallback and gone shortcut. This verifies that decision,
+not the complete Client input/arrival-marker/camera/HUD event implementation.
+
+Iceberg rendering uses stored transforms/opacity and source rotated cylinder
+geometry. Opacity travels through a Float32 vertex channel instead of being
+quantized into vertex-color alpha. Native root and child matrices are compared
+with actual THREE, and the graphic still draws after contained actors.
+
+Evidence and scope:
+
+- `snowball-removal-reference.json` / provenance: four unchanged original
+  EntityRemovalSystem/Iceberg/Presence/allocator cases, 26 updates including
+  before/after queues, presence-less objects, repeated freeze/teleport guards,
+  LIFO binding, retained pooled state, null-map return, strict bounds and exact
+  1500ms hold/700ms teleport thresholds. Plain Object3D actors and explicit map,
+  clock/window inputs isolate these operations; no game/actor pool claim follows.
+- `snowball-removal-stages-reference.json` / provenance: three actual original
+  Player/Drop/Parachute/Removal/Client/Collision sequences, 19 frames, with ready
+  original elf models. They verify freeze-request versus attachment frames,
+  present visibility/tilt, local and NPC cleanup, stored fade/material behavior,
+  death observation/game-over timing and the frozen-parachute landing overlap.
+  Explicit tiles/passable map plus requested eroded cells and selected fall
+  randomness do not certify full seeded map/bot/LOD/loading or restart behavior.
+- `snowball-removal-render-reference.json`: five actual original and native
+  frozen-present/iceberg renders, blank map and explicit matched camera, with
+  imported measured source state. Ten production parent/model matrices match
+  THREE at 0.0003 tolerance. `snowball-removal-raster-errors.json` records mean
+  RGB error 0.000997–0.00513 / 255 across the whole image, and 0.354–1.186 / 255
+  in object-region crops. Original/native/difference crops were inspected.
+  These are isolated effects, not full-scene visual or lifecycle certification.
+
+A remaining raster mismatch is explicit: native main/example windows request
+4x MSAA while original RenderSystem constructs THREE.WebGLRenderer with its
+default antialias=false (checked in bundled THREE). Iceberg/present edges remain
+softer natively. Correcting this without changing other scenes is future work.
+Other remaining work includes full actor/model/material/particle reuse, complete
+initialization/scene restart and LOD/readiness, Client arrival marker/camera/input,
+responsive host overlays, audio buses/scheduling and all effect combinations.
+All 95 tests pass; release builds and a 150-second native simulation completes.
+Snowball Storm remains Very similar, target 1:1.

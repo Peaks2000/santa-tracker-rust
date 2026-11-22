@@ -79,6 +79,73 @@ async fn run() {
     game.advance(seconds, 1440., 800.);
     if let Some(tick) = args
         .get(3)
+        .and_then(|s| s.strip_prefix("removal-"))
+        .and_then(|s| s.parse::<u64>().ok())
+    {
+        use santa_tracker::{
+            snowball::V,
+            snowball_removal::{Ice, Parent, Presence},
+        };
+        let data: serde_json::Value = serde_json::from_str(include_str!(
+            "../data/snowball-removal-render-reference.json"
+        ))
+        .unwrap();
+        let r = data["frames"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .find(|r| r["tick"].as_u64() == Some(tick))
+            .unwrap();
+        game.players.clear();
+        game.drops.truncate(1);
+        game.shots.clear();
+        game.particles.clear();
+        game.parachutes = Default::default();
+        game.removal = Default::default();
+        game.map.states.fill(0);
+        game.map.obstacles.fill(-1);
+        game.splash_until = 0.;
+        game.time = tick as f64 / 0.06;
+        game.camera = V::new(
+            data["camera"][0].as_f64().unwrap(),
+            data["camera"][1].as_f64().unwrap(),
+        );
+        let d = &mut game.drops[0];
+        d.setup = true;
+        d.arrived = true;
+        d.landed = true;
+        d.active = true;
+        d.gone = false;
+        d.frozen = true;
+        d.parent = Parent::Ice(0);
+        d.presence = Presence {
+            present: true,
+            exit_time: 100.,
+        };
+        d.pos = V::new(
+            r["entity"][0].as_f64().unwrap(),
+            r["entity"][1].as_f64().unwrap(),
+        );
+        d.entity_z = r["entity"][2].as_f64().unwrap();
+        d.z = r["modelZ"].as_f64().unwrap();
+        d.rotation = r["modelY"].as_f64().unwrap();
+        d.tilt = r["modelX"].as_f64().unwrap();
+        d.opacity = 1.;
+        d.spin = None;
+        d.color = 0;
+        d.scale = std::array::from_fn(|i| data["scale"][i].as_f64().unwrap());
+        game.removal.bodies.push(Ice {
+            pos: V::new(r["pos"][0].as_f64().unwrap(), r["pos"][1].as_f64().unwrap()),
+            z: r["pos"][2].as_f64().unwrap(),
+            rotation: r["rotation"].as_f64().unwrap(),
+            opacity: r["opacity"].as_f64().unwrap(),
+            start_tick: r["start"].as_f64().unwrap(),
+            radius: Some(r["radius"].as_f64().unwrap()),
+        });
+        game.removal.layer.push(0);
+    }
+    if let Some(tick) = args
+        .get(3)
         .and_then(|s| s.strip_prefix("arrival-"))
         .and_then(|s| s.parse::<u64>().ok())
     {
@@ -115,6 +182,8 @@ async fn run() {
         d.arrived = false;
         d.gone = false;
         d.frozen = false;
+        d.parent = santa_tracker::snowball_removal::Parent::Canopy;
+        d.tilt = std::f64::consts::PI / 2.5;
         d.color = 0;
         d.pos = V::default();
         d.z = 32.;
@@ -163,6 +232,11 @@ async fn run() {
             p.tile = row["tile"].as_i64().unwrap() as i32;
             p.arrived = row["arrived"].as_bool().unwrap();
             p.landed = p.arrived;
+            p.parent = if p.landed {
+                santa_tracker::snowball_removal::Parent::Map
+            } else {
+                santa_tracker::snowball_removal::Parent::Detached
+            };
             p.alive = row["alive"].as_bool().unwrap();
             p.gone = false;
             p.frozen = false;

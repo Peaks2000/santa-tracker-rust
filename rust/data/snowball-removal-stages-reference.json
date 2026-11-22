@@ -1,0 +1,2027 @@
+{
+  "cases": [
+    {
+      "name": "freeze-stage-visibility-and-bounds",
+      "air": false,
+      "playerTiles": [
+        2090,
+        2000
+      ],
+      "dropTile": 2010,
+      "initial": {
+        "players": [
+          {
+            "id": "p0",
+            "active": true,
+            "pos": [
+              24,
+              -572.39985196149,
+              0
+            ],
+            "arrived": true,
+            "alive": true,
+            "death": -1,
+            "present": true,
+            "exit": -1,
+            "gone": false,
+            "opacity": 1,
+            "material": 1,
+            "parent": "map",
+            "playing": "elf_rig_idle"
+          },
+          {
+            "id": "p1",
+            "active": true,
+            "pos": [
+              -24,
+              840.953607014714,
+              0
+            ],
+            "arrived": true,
+            "alive": true,
+            "death": -1,
+            "present": true,
+            "exit": -1,
+            "gone": false,
+            "opacity": 1,
+            "material": 1,
+            "parent": "map",
+            "playing": "elf_rig_idle"
+          }
+        ],
+        "drops": [
+          {
+            "id": "d0",
+            "active": true,
+            "pos": [
+              -24,
+              286.6973485926733,
+              0
+            ],
+            "arrived": true,
+            "present": true,
+            "exit": -1,
+            "gone": false,
+            "parent": "map",
+            "rotation": 0,
+            "tilt": 1.2566370614359172,
+            "z": 32,
+            "opacity": 1
+          }
+        ],
+        "order": [
+          "p0",
+          "p1",
+          "d0"
+        ],
+        "freezing": [],
+        "frozen": [],
+        "teleporting": [],
+        "layer": [],
+        "bodies": [],
+        "canopies": [],
+        "undropped": [],
+        "dropping": [],
+        "knockedOut": 0,
+        "gameover": false,
+        "sounds": []
+      },
+      "frames": [
+        {
+          "input": {
+            "at": 100,
+            "erode": [
+              2090,
+              2000,
+              2010
+            ]
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": true,
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "map",
+                "playing": "elf_rig_fall_down_2"
+              },
+              {
+                "id": "p1",
+                "active": true,
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "map",
+                "playing": "elf_rig_fall_down_2"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": true,
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  0
+                ],
+                "arrived": true,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "parent": "map",
+                "rotation": 0.01,
+                "tilt": 1.2566370614359172,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [
+              "p0",
+              "p1"
+            ],
+            "freezing": [
+              "d0",
+              "p0",
+              "p1"
+            ],
+            "frozen": [],
+            "teleporting": [],
+            "layer": [],
+            "bodies": [],
+            "canopies": [],
+            "undropped": [],
+            "dropping": [],
+            "knockedOut": 0,
+            "gameover": false,
+            "sounds": []
+          }
+        },
+        {
+          "input": {
+            "at": 150
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": true,
+                "pos": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "ice1",
+                "playing": "elf_rig_fall_down_2"
+              },
+              {
+                "id": "p1",
+                "active": true,
+                "pos": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "ice0",
+                "playing": "elf_rig_fall_down_2"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": true,
+                "pos": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "parent": "ice2",
+                "rotation": 0,
+                "tilt": 1.5707963267948966,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [],
+            "freezing": [],
+            "frozen": [
+              "p1",
+              "p0",
+              "d0"
+            ],
+            "teleporting": [],
+            "layer": [
+              0,
+              1,
+              2
+            ],
+            "bodies": [
+              {
+                "pos": [
+                  -24.009884969301947,
+                  809.2867937468823,
+                  32
+                ],
+                "rotation": 0,
+                "opacity": 0,
+                "start": 9
+              },
+              {
+                "pos": [
+                  24.013225847531423,
+                  -604.7329228069091,
+                  32
+                ],
+                "rotation": 0,
+                "opacity": 0,
+                "start": 9
+              },
+              {
+                "pos": [
+                  -24.031271303153943,
+                  255.02921184268774,
+                  32
+                ],
+                "rotation": 0,
+                "opacity": 0,
+                "start": 9
+              }
+            ],
+            "canopies": [],
+            "undropped": [],
+            "dropping": [],
+            "knockedOut": 0,
+            "gameover": false,
+            "sounds": []
+          }
+        },
+        {
+          "input": {
+            "at": 250
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": true,
+                "pos": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "ice1",
+                "playing": "elf_rig_fall_down_2"
+              },
+              {
+                "id": "p1",
+                "active": true,
+                "pos": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "ice0",
+                "playing": "elf_rig_fall_down_2"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": true,
+                "pos": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "parent": "ice2",
+                "rotation": 0,
+                "tilt": 1.5707963267948966,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [],
+            "freezing": [],
+            "frozen": [
+              "p1",
+              "p0",
+              "d0"
+            ],
+            "teleporting": [],
+            "layer": [
+              0,
+              1,
+              2
+            ],
+            "bodies": [
+              {
+                "pos": [
+                  -24.019769938603893,
+                  809.6199804790506,
+                  26.39856960826649
+                ],
+                "rotation": 0.03769820707090767,
+                "opacity": 0.0005120000000000001,
+                "start": 9
+              },
+              {
+                "pos": [
+                  24.026451695062846,
+                  -605.0659936523282,
+                  26.39856960826649
+                ],
+                "rotation": 0.03769820707090767,
+                "opacity": 0.0005120000000000001,
+                "start": 9
+              },
+              {
+                "pos": [
+                  -24.062542606307886,
+                  255.3610750927022,
+                  26.39856960826649
+                ],
+                "rotation": 0.03769820707090767,
+                "opacity": 0.0005120000000000001,
+                "start": 9
+              }
+            ],
+            "canopies": [],
+            "undropped": [],
+            "dropping": [],
+            "knockedOut": 0,
+            "gameover": false,
+            "sounds": []
+          }
+        },
+        {
+          "input": {
+            "at": 1400
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": true,
+                "pos": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "ice1",
+                "playing": "elf_rig_fall_down_2_idle"
+              },
+              {
+                "id": "p1",
+                "active": true,
+                "pos": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "ice0",
+                "playing": "elf_rig_fall_down_2_idle"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": true,
+                "pos": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "parent": "ice2",
+                "rotation": 0,
+                "tilt": 1.5707963267948966,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [],
+            "freezing": [],
+            "frozen": [
+              "p1",
+              "p0",
+              "d0"
+            ],
+            "teleporting": [],
+            "layer": [
+              0,
+              1,
+              2
+            ],
+            "bodies": [
+              {
+                "pos": [
+                  -24.02965490790584,
+                  809.9531672112189,
+                  1.1092330170720823
+                ],
+                "rotation": 0.4694737391452376,
+                "opacity": 1,
+                "start": 9
+              },
+              {
+                "pos": [
+                  24.03967754259427,
+                  -605.3990644977473,
+                  1.1092330170720823
+                ],
+                "rotation": 0.4694737391452376,
+                "opacity": 1,
+                "start": 9
+              },
+              {
+                "pos": [
+                  -24.09381390946183,
+                  255.69293834271667,
+                  1.1092330170720823
+                ],
+                "rotation": 0.4694737391452376,
+                "opacity": 1,
+                "start": 9
+              }
+            ],
+            "canopies": [],
+            "undropped": [],
+            "dropping": [],
+            "knockedOut": 0,
+            "gameover": false,
+            "sounds": []
+          }
+        },
+        {
+          "input": {
+            "at": 1600,
+            "size": [
+              0,
+              0
+            ],
+            "rings": 0
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": false,
+                "pos": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": false,
+                "exit": -1,
+                "gone": true,
+                "opacity": 1,
+                "material": 1,
+                "parent": null,
+                "playing": "elf_rig_fall_down_2_idle"
+              },
+              {
+                "id": "p1",
+                "active": false,
+                "pos": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": false,
+                "exit": -1,
+                "gone": true,
+                "opacity": 1,
+                "material": 1,
+                "parent": null,
+                "playing": "elf_rig_fall_down_2_idle"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": false,
+                "pos": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "present": false,
+                "exit": -1,
+                "gone": true,
+                "parent": null,
+                "rotation": 0.01,
+                "tilt": 1.5707963267948966,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [],
+            "freezing": [],
+            "frozen": [],
+            "teleporting": [],
+            "layer": [],
+            "bodies": [
+              {
+                "pos": [
+                  -24.039539877207787,
+                  810.2863539433872,
+                  -2.395669265911675
+                ],
+                "rotation": 0.5438829633610246,
+                "opacity": 1,
+                "start": 9
+              },
+              {
+                "pos": [
+                  24.052903390125692,
+                  -605.7321353431664,
+                  -2.395669265911675
+                ],
+                "rotation": 0.5438829633610246,
+                "opacity": 1,
+                "start": 9
+              },
+              {
+                "pos": [
+                  -24.125085212615772,
+                  256.02480159273114,
+                  -2.395669265911675
+                ],
+                "rotation": 0.5438829633610246,
+                "opacity": 1,
+                "start": 9
+              }
+            ],
+            "canopies": [],
+            "undropped": [],
+            "dropping": [],
+            "knockedOut": 2,
+            "gameover": true,
+            "sounds": [
+              "snowball_frozen",
+              "snowball_frozen"
+            ]
+          }
+        },
+        {
+          "input": {
+            "at": 1700
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": false,
+                "pos": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": false,
+                "exit": -1,
+                "gone": true,
+                "opacity": 1,
+                "material": 1,
+                "parent": null,
+                "playing": "elf_rig_fall_down_2_idle"
+              },
+              {
+                "id": "p1",
+                "active": false,
+                "pos": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": false,
+                "exit": -1,
+                "gone": true,
+                "opacity": 1,
+                "material": 1,
+                "parent": null,
+                "playing": "elf_rig_fall_down_2_idle"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": false,
+                "pos": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": true,
+                "present": false,
+                "exit": -1,
+                "gone": true,
+                "parent": null,
+                "rotation": 0.01,
+                "tilt": 1.5707963267948966,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [],
+            "freezing": [],
+            "frozen": [],
+            "teleporting": [],
+            "layer": [],
+            "bodies": [
+              {
+                "pos": [
+                  -24.039539877207787,
+                  810.2863539433872,
+                  -2.395669265911675
+                ],
+                "rotation": 0.5438829633610246,
+                "opacity": 1,
+                "start": 9
+              },
+              {
+                "pos": [
+                  24.052903390125692,
+                  -605.7321353431664,
+                  -2.395669265911675
+                ],
+                "rotation": 0.5438829633610246,
+                "opacity": 1,
+                "start": 9
+              },
+              {
+                "pos": [
+                  -24.125085212615772,
+                  256.02480159273114,
+                  -2.395669265911675
+                ],
+                "rotation": 0.5438829633610246,
+                "opacity": 1,
+                "start": 9
+              }
+            ],
+            "canopies": [],
+            "undropped": [],
+            "dropping": [],
+            "knockedOut": 2,
+            "gameover": true,
+            "sounds": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "teleport-local-and-npc",
+      "air": false,
+      "playerTiles": [
+        2090,
+        2000
+      ],
+      "dropTile": 2010,
+      "initial": {
+        "players": [
+          {
+            "id": "p0",
+            "active": true,
+            "pos": [
+              24,
+              -572.39985196149,
+              0
+            ],
+            "arrived": true,
+            "alive": true,
+            "death": -1,
+            "present": true,
+            "exit": -1,
+            "gone": false,
+            "opacity": 1,
+            "material": 1,
+            "parent": "map",
+            "playing": "elf_rig_idle"
+          },
+          {
+            "id": "p1",
+            "active": true,
+            "pos": [
+              -24,
+              840.953607014714,
+              0
+            ],
+            "arrived": true,
+            "alive": true,
+            "death": -1,
+            "present": true,
+            "exit": -1,
+            "gone": false,
+            "opacity": 1,
+            "material": 1,
+            "parent": "map",
+            "playing": "elf_rig_idle"
+          }
+        ],
+        "drops": [
+          {
+            "id": "d0",
+            "active": true,
+            "pos": [
+              -24,
+              286.6973485926733,
+              0
+            ],
+            "arrived": true,
+            "present": true,
+            "exit": -1,
+            "gone": false,
+            "parent": "map",
+            "rotation": 0,
+            "tilt": 1.2566370614359172,
+            "z": 32,
+            "opacity": 1
+          }
+        ],
+        "order": [
+          "p0",
+          "p1",
+          "d0"
+        ],
+        "freezing": [],
+        "frozen": [],
+        "teleporting": [],
+        "layer": [],
+        "bodies": [],
+        "canopies": [],
+        "undropped": [],
+        "dropping": [],
+        "knockedOut": 0,
+        "gameover": false,
+        "sounds": []
+      },
+      "frames": [
+        {
+          "input": {
+            "at": 100,
+            "die": [
+              "p0",
+              "p1"
+            ]
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": true,
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "map",
+                "playing": "elf_rig_fall_down_2"
+              },
+              {
+                "id": "p1",
+                "active": true,
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "map",
+                "playing": "elf_rig_fall_down_2"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": true,
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  0
+                ],
+                "arrived": true,
+                "present": true,
+                "exit": -1,
+                "gone": false,
+                "parent": "map",
+                "rotation": 0.01,
+                "tilt": 1.2566370614359172,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [
+              "d0"
+            ],
+            "freezing": [],
+            "frozen": [],
+            "teleporting": [
+              "p0",
+              "p1"
+            ],
+            "layer": [],
+            "bodies": [],
+            "canopies": [],
+            "undropped": [],
+            "dropping": [],
+            "knockedOut": 0,
+            "gameover": false,
+            "sounds": []
+          }
+        },
+        {
+          "input": {
+            "at": 1599.999
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": true,
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "map",
+                "playing": "elf_rig_fall_down_2_idle"
+              },
+              {
+                "id": "p1",
+                "active": true,
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "map",
+                "playing": "elf_rig_fall_down_2_idle"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": true,
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  0
+                ],
+                "arrived": true,
+                "present": true,
+                "exit": -1,
+                "gone": false,
+                "parent": "map",
+                "rotation": 0.02,
+                "tilt": 1.2566370614359172,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [
+              "d0"
+            ],
+            "freezing": [],
+            "frozen": [],
+            "teleporting": [
+              "p0",
+              "p1"
+            ],
+            "layer": [],
+            "bodies": [],
+            "canopies": [],
+            "undropped": [],
+            "dropping": [],
+            "knockedOut": 0,
+            "gameover": false,
+            "sounds": []
+          }
+        },
+        {
+          "input": {
+            "at": 1600
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": true,
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "map",
+                "playing": "elf_rig_fall_down_2_idle"
+              },
+              {
+                "id": "p1",
+                "active": true,
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  0
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "map",
+                "playing": "elf_rig_fall_down_2_idle"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": true,
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  0
+                ],
+                "arrived": true,
+                "present": true,
+                "exit": -1,
+                "gone": false,
+                "parent": "map",
+                "rotation": 0.03,
+                "tilt": 1.2566370614359172,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [
+              "d0"
+            ],
+            "freezing": [],
+            "frozen": [],
+            "teleporting": [
+              "p0",
+              "p1"
+            ],
+            "layer": [],
+            "bodies": [],
+            "canopies": [],
+            "undropped": [],
+            "dropping": [],
+            "knockedOut": 0,
+            "gameover": false,
+            "sounds": []
+          }
+        },
+        {
+          "input": {
+            "at": 1950
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": true,
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  10.666666666666666
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 0.5,
+                "material": 0.5,
+                "parent": "map",
+                "playing": "elf_rig_fall_down_2_idle"
+              },
+              {
+                "id": "p1",
+                "active": true,
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  10.666666666666666
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 0.5,
+                "material": 0.5,
+                "parent": "map",
+                "playing": "elf_rig_fall_down_2_idle"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": true,
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  0
+                ],
+                "arrived": true,
+                "present": true,
+                "exit": -1,
+                "gone": false,
+                "parent": "map",
+                "rotation": 0.04,
+                "tilt": 1.2566370614359172,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [
+              "d0"
+            ],
+            "freezing": [],
+            "frozen": [],
+            "teleporting": [
+              "p0",
+              "p1"
+            ],
+            "layer": [],
+            "bodies": [],
+            "canopies": [],
+            "undropped": [],
+            "dropping": [],
+            "knockedOut": 0,
+            "gameover": false,
+            "sounds": []
+          }
+        },
+        {
+          "input": {
+            "at": 2299
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": true,
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  42.54484897959183
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 0.0014285714285714457,
+                "material": 0.0014285714285714457,
+                "parent": "map",
+                "playing": "elf_rig_fall_down_2_idle"
+              },
+              {
+                "id": "p1",
+                "active": true,
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  42.54484897959183
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 0.0014285714285714457,
+                "material": 0.0014285714285714457,
+                "parent": "map",
+                "playing": "elf_rig_fall_down_2_idle"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": true,
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  0
+                ],
+                "arrived": true,
+                "present": true,
+                "exit": -1,
+                "gone": false,
+                "parent": "map",
+                "rotation": 0.05,
+                "tilt": 1.2566370614359172,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [
+              "d0"
+            ],
+            "freezing": [],
+            "frozen": [],
+            "teleporting": [
+              "p0",
+              "p1"
+            ],
+            "layer": [],
+            "bodies": [],
+            "canopies": [],
+            "undropped": [],
+            "dropping": [],
+            "knockedOut": 0,
+            "gameover": false,
+            "sounds": []
+          }
+        },
+        {
+          "input": {
+            "at": 2300
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": false,
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  42.666666666666664
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": false,
+                "exit": -1,
+                "gone": true,
+                "opacity": 0,
+                "material": 0.0014285714285714457,
+                "parent": "map",
+                "playing": "elf_rig_fall_down_2_idle"
+              },
+              {
+                "id": "p1",
+                "active": false,
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  42.666666666666664
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": false,
+                "exit": -1,
+                "gone": true,
+                "opacity": 0,
+                "material": 0.0014285714285714457,
+                "parent": null,
+                "playing": "elf_rig_fall_down_2_idle"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": true,
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  0
+                ],
+                "arrived": true,
+                "present": true,
+                "exit": -1,
+                "gone": false,
+                "parent": "map",
+                "rotation": 0.060000000000000005,
+                "tilt": 1.2566370614359172,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [
+              "d0"
+            ],
+            "freezing": [],
+            "frozen": [],
+            "teleporting": [],
+            "layer": [],
+            "bodies": [],
+            "canopies": [],
+            "undropped": [],
+            "dropping": [],
+            "knockedOut": 2,
+            "gameover": true,
+            "sounds": [
+              "snowball_frozen",
+              "snowball_frozen"
+            ]
+          }
+        },
+        {
+          "input": {
+            "at": 2400
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": false,
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  42.666666666666664
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": false,
+                "exit": -1,
+                "gone": true,
+                "opacity": 0,
+                "material": 0.0014285714285714457,
+                "parent": "map",
+                "playing": "elf_rig_fall_down_2_idle"
+              },
+              {
+                "id": "p1",
+                "active": false,
+                "pos": [
+                  -24,
+                  840.953607014714,
+                  42.666666666666664
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": false,
+                "exit": -1,
+                "gone": true,
+                "opacity": 0,
+                "material": 0.0014285714285714457,
+                "parent": null,
+                "playing": "elf_rig_fall_down_2_idle"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": true,
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  0
+                ],
+                "arrived": true,
+                "present": true,
+                "exit": -1,
+                "gone": false,
+                "parent": "map",
+                "rotation": 0.07,
+                "tilt": 1.2566370614359172,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [
+              "d0"
+            ],
+            "freezing": [],
+            "frozen": [],
+            "teleporting": [],
+            "layer": [],
+            "bodies": [],
+            "canopies": [],
+            "undropped": [],
+            "dropping": [],
+            "knockedOut": 2,
+            "gameover": true,
+            "sounds": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "frozen-parachute-parent-landing",
+      "air": true,
+      "playerTiles": [
+        2090
+      ],
+      "dropTile": 2010,
+      "initial": {
+        "players": [
+          {
+            "id": "p0",
+            "active": true,
+            "pos": [
+              0,
+              0,
+              0
+            ],
+            "arrived": false,
+            "alive": true,
+            "death": -1,
+            "present": true,
+            "exit": -1,
+            "gone": false,
+            "opacity": 1,
+            "material": 1,
+            "parent": null,
+            "playing": "elf_rig_idle"
+          }
+        ],
+        "drops": [
+          {
+            "id": "d0",
+            "active": true,
+            "pos": [
+              0,
+              0,
+              0
+            ],
+            "arrived": false,
+            "present": true,
+            "exit": -1,
+            "gone": false,
+            "parent": "canopy",
+            "rotation": 0,
+            "tilt": 1.2566370614359172,
+            "z": 32,
+            "opacity": 1
+          }
+        ],
+        "order": [
+          "p0"
+        ],
+        "freezing": [],
+        "frozen": [],
+        "teleporting": [],
+        "layer": [],
+        "bodies": [],
+        "canopies": [
+          {
+            "id": "d0",
+            "pos": [
+              -24,
+              286.6973485926733,
+              500
+            ],
+            "rotation": 0.043388373911755845
+          }
+        ],
+        "undropped": [
+          "p0"
+        ],
+        "dropping": [
+          "d0"
+        ],
+        "knockedOut": 0,
+        "gameover": false,
+        "sounds": []
+      },
+      "frames": [
+        {
+          "input": {
+            "at": 100,
+            "erodeOrigin": true
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": true,
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "canopy",
+                "playing": "elf_rig_fall_down_2"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": true,
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "present": true,
+                "exit": -1,
+                "gone": false,
+                "parent": "canopy",
+                "rotation": 0,
+                "tilt": 1.2566370614359172,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [
+              "p0"
+            ],
+            "freezing": [
+              "p0"
+            ],
+            "frozen": [],
+            "teleporting": [],
+            "layer": [],
+            "bodies": [],
+            "canopies": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  491.6
+                ],
+                "rotation": 0.05877852522924734
+              },
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  500
+                ],
+                "rotation": 0.043388373911755845
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "d0",
+              "p0"
+            ],
+            "knockedOut": 0,
+            "gameover": false,
+            "sounds": []
+          }
+        },
+        {
+          "input": {
+            "at": 116.6667
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": true,
+                "pos": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": false,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "ice0",
+                "playing": "elf_rig_fall_down_2"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": true,
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": false,
+                "present": true,
+                "exit": -1,
+                "gone": false,
+                "parent": "canopy",
+                "rotation": 0,
+                "tilt": 1.2566370614359172,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [],
+            "freezing": [],
+            "frozen": [
+              "p0"
+            ],
+            "teleporting": [],
+            "layer": [
+              0
+            ],
+            "bodies": [
+              {
+                "pos": [
+                  24.14390770479797,
+                  -50.444262266806746,
+                  32
+                ],
+                "rotation": 0,
+                "opacity": 0,
+                "start": 7
+              }
+            ],
+            "canopies": [
+              {
+                "id": "d0",
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  490.2
+                ],
+                "rotation": 0.061172429911500764
+              },
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  498.6
+                ],
+                "rotation": 0.04606424504506321
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "d0",
+              "p0"
+            ],
+            "knockedOut": 0,
+            "gameover": false,
+            "sounds": []
+          }
+        },
+        {
+          "input": {
+            "at": 5000
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": true,
+                "pos": [
+                  0,
+                  0,
+                  -16
+                ],
+                "arrived": false,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "ice0",
+                "playing": "elf_rig_fall_down_2_idle"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": true,
+                "pos": [
+                  0,
+                  0,
+                  0
+                ],
+                "arrived": true,
+                "present": true,
+                "exit": -1,
+                "gone": false,
+                "parent": null,
+                "rotation": 0,
+                "tilt": 1.2566370614359172,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [],
+            "freezing": [],
+            "frozen": [
+              "p0"
+            ],
+            "teleporting": [],
+            "layer": [
+              0
+            ],
+            "bodies": [
+              {
+                "pos": [
+                  24.287815409595943,
+                  -50.744930994164434,
+                  -1.6592941806943329
+                ],
+                "rotation": 1.7374038387804764,
+                "opacity": 1,
+                "start": 7
+              }
+            ],
+            "canopies": [
+              {
+                "id": "p0",
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  88.40000000000003
+                ],
+                "rotation": 0.017855689479863737
+              }
+            ],
+            "undropped": [],
+            "dropping": [
+              "p0"
+            ],
+            "knockedOut": 0,
+            "gameover": true,
+            "sounds": []
+          }
+        },
+        {
+          "input": {
+            "at": 5100
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": true,
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "map",
+                "playing": "elf_rig_fall_down_2_idle"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": true,
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  0
+                ],
+                "arrived": true,
+                "present": true,
+                "exit": -1,
+                "gone": false,
+                "parent": "map",
+                "rotation": 0.01,
+                "tilt": 1.2566370614359172,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [
+              "d0"
+            ],
+            "freezing": [],
+            "frozen": [
+              "p0"
+            ],
+            "teleporting": [],
+            "layer": [
+              0
+            ],
+            "bodies": [
+              {
+                "pos": [
+                  24.431723114393915,
+                  -51.04559972152212,
+                  0.17549523952004606
+                ],
+                "rotation": 1.7686873654185677,
+                "opacity": 1,
+                "start": 7
+              }
+            ],
+            "canopies": [],
+            "undropped": [],
+            "dropping": [],
+            "knockedOut": 0,
+            "gameover": true,
+            "sounds": []
+          }
+        },
+        {
+          "input": {
+            "at": 5116.6667
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": true,
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "map",
+                "playing": "elf_rig_fall_down_2_idle"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": true,
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  0
+                ],
+                "arrived": true,
+                "present": true,
+                "exit": -1,
+                "gone": false,
+                "parent": "map",
+                "rotation": 0.02,
+                "tilt": 1.2566370614359172,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [
+              "d0"
+            ],
+            "freezing": [],
+            "frozen": [
+              "p0"
+            ],
+            "teleporting": [],
+            "layer": [
+              0
+            ],
+            "bodies": [
+              {
+                "pos": [
+                  24.575630819191886,
+                  -51.34626844887981,
+                  0.49360463964026885
+                ],
+                "rotation": 1.7738766463226134,
+                "opacity": 1,
+                "start": 7
+              }
+            ],
+            "canopies": [],
+            "undropped": [],
+            "dropping": [],
+            "knockedOut": 0,
+            "gameover": true,
+            "sounds": []
+          }
+        },
+        {
+          "input": {
+            "at": 7000
+          },
+          "after": {
+            "players": [
+              {
+                "id": "p0",
+                "active": true,
+                "pos": [
+                  24,
+                  -572.39985196149,
+                  -16
+                ],
+                "arrived": true,
+                "alive": false,
+                "death": 100,
+                "present": true,
+                "exit": 100,
+                "gone": false,
+                "opacity": 1,
+                "material": 1,
+                "parent": "map",
+                "playing": "elf_rig_fall_down_2_idle"
+              }
+            ],
+            "drops": [
+              {
+                "id": "d0",
+                "active": true,
+                "pos": [
+                  -24,
+                  286.6973485926733,
+                  0
+                ],
+                "arrived": true,
+                "present": true,
+                "exit": -1,
+                "gone": false,
+                "parent": "map",
+                "rotation": 0.03,
+                "tilt": 1.2566370614359172,
+                "z": 32,
+                "opacity": 1
+              }
+            ],
+            "order": [
+              "d0"
+            ],
+            "freezing": [],
+            "frozen": [
+              "p0"
+            ],
+            "teleporting": [],
+            "layer": [
+              0
+            ],
+            "bodies": [
+              {
+                "pos": [
+                  24.719538523989858,
+                  -51.6469371762375,
+                  -2.868368112317072
+                ],
+                "rotation": 2.3097805118146186,
+                "opacity": 1,
+                "start": 7
+              }
+            ],
+            "canopies": [],
+            "undropped": [],
+            "dropping": [],
+            "knockedOut": 0,
+            "gameover": true,
+            "sounds": []
+          }
+        }
+      ]
+    }
+  ]
+}

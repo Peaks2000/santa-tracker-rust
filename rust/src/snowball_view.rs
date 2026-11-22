@@ -7,6 +7,7 @@ use macroquad::{
 use santa_tracker::snowball::{Phase, Snowball, V};
 use santa_tracker::snowball_collision::Id;
 use santa_tracker::snowball_parachute::Canopy;
+use santa_tracker::snowball_removal::{Ice, Parent};
 use serde_json::Value;
 use std::{collections::HashMap, f32::consts::PI};
 const VERT: &str = r#"#version 100
@@ -145,7 +146,7 @@ void main(){if(data.w>.5){float scale=data.y/6.;float fade=(Time-data.x)/(700.*s
         let iceberg = make(
             r#"#version 100
 precision highp float;varying vec2 uv;varying vec4 tint;varying vec4 data;uniform float Time;
-void main(){float alpha=pow(length(abs(uv-vec2(.5))),3.);if(data.y<0.)alpha=min(0.,.5-data.y);gl_FragColor=vec4(.6,.9,1.,(alpha*.9+.1)*tint.a);}"#,
+void main(){float alpha=pow(length(abs(uv-vec2(.5))),3.);if(data.y<0.)alpha=min(0.,.5-data.y);gl_FragColor=vec4(.6,.9,1.,(alpha*.9+.1)*data.w);}"#,
             true,
             true,
         )?;
@@ -342,6 +343,19 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
     fn carried_matrix(c: &Canopy) -> Mat4 {
         Self::canopy_matrix(c) * Mat4::from_translation(vec3(0., 0., -84.))
     }
+    fn ice_matrix(b: &Ice) -> Mat4 {
+        Mat4::from_translation(vec3(b.pos.x as f32, b.pos.y as f32, b.z as f32))
+            * Mat4::from_rotation_z(b.rotation as f32)
+    }
+    fn actor_base(g: &Snowball, id: Id, parent: Parent, local: Vec3) -> Option<Mat4> {
+        let parent = match parent {
+            Parent::Detached => return None,
+            Parent::Map => Mat4::IDENTITY,
+            Parent::Canopy => Self::carried_matrix(g.parachutes.get(id)?),
+            Parent::Ice(slot) => Self::ice_matrix(g.removal.body(slot)?),
+        };
+        Some(parent * Mat4::from_translation(local))
+    }
     fn deform(g: &Snowball, index: usize, mut p: Vec3) -> (Vec3, f32) {
         let elapsed = (g.time - g.map.times[index]) as f32;
         let mut alpha = 1.;
@@ -486,31 +500,18 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             );
         }
         for (di, d) in g.drops.iter().enumerate() {
-            if d.gone {
-                continue;
-            }
-            let base = if d.frozen {
-                let tick = ((g.time - d.freeze_at) * 0.06).floor();
-                Mat4::from_translation(vec3(
-                    d.ice.x as f32,
-                    d.ice.y as f32,
-                    ((tick / 10.).cos() * 32. * (1. - (tick / 75.).min(1.).powi(3) * 0.9) + 16.)
-                        as f32,
-                ))
-            } else if d.landed {
-                Mat4::from_translation(vec3(d.pos.x as f32, d.pos.y as f32, d.z as f32))
-            } else if let Some(c) = g.parachutes.get(Id::Drop(di)) {
-                Self::carried_matrix(c)
-                    * Mat4::from_translation(vec3(d.pos.x as f32, d.pos.y as f32, d.z as f32))
-            } else {
-                // Parachute.free detaches an arrived present one system update
-                // before DropSystem reparents it into the map.
+            let Some(base) = Self::actor_base(
+                g,
+                Id::Drop(di),
+                d.parent,
+                vec3(d.pos.x as f32, d.pos.y as f32, (d.entity_z + d.z) as f32),
+            ) else {
                 continue;
             };
             let model =
                 base * Mat4::from_quat(Quat::from_euler(
                     EulerRot::XYZ,
-                    if d.frozen { PI / 2. } else { PI / 2.5 },
+                    d.tilt as f32,
                     d.rotation as f32,
                     0.,
                 )) * Mat4::from_scale(vec3(
@@ -523,10 +524,7 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
                 indices: self.present.indices.clone(),
                 texture: Some(self.gifts[d.color].clone()),
             };
-            let opacity = d
-                .spin
-                .map(|s| 1. - ((g.time - s) / 300.).min(1.))
-                .unwrap_or(1.) as f32;
+            let opacity = d.opacity as f32;
             for v in &mut gift.vertices {
                 v.position = vp.transform_point3(model.transform_point3(v.position));
                 v.color = Color::new(1., 1., 1., opacity).into()
@@ -534,24 +532,12 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             draw_batched(&gift);
         }
         for (i, p) in g.players.iter().enumerate() {
-            if p.gone {
-                continue;
-            }
-            let mut z = p.z;
-            if !p.alive && !p.frozen {
-                z = ((g.time - p.death - 1500.) / 700.).clamp(0., 1.).powi(2) * 64. / 1.5;
-            }
-            let base = if p.frozen {
-                let tick = (g.time - p.ice_start) * 0.06;
-                let z = (tick / 10.).cos() * 32. * (1. - (tick / 75.).min(1.).powi(3) * 0.9) - 16.;
-                Mat4::from_translation(vec3(p.ice.x as f32, p.ice.y as f32, z as f32))
-                    * Mat4::from_rotation_z((tick / 500.).sin() as f32 * PI)
-            } else if p.landed {
-                Mat4::from_translation(vec3(p.pos.x as f32, p.pos.y as f32, z as f32))
-            } else if let Some(c) = g.parachutes.get(Id::Player(i)) {
-                Self::carried_matrix(c)
-                    * Mat4::from_translation(vec3(p.pos.x as f32, p.pos.y as f32, z as f32))
-            } else {
+            let Some(base) = Self::actor_base(
+                g,
+                Id::Player(i),
+                p.parent,
+                vec3(p.pos.x as f32, p.pos.y as f32, p.z as f32),
+            ) else {
                 continue;
             };
             let screen = vp.transform_point3(base.transform_point3(Vec3::ZERO));
@@ -573,15 +559,7 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
                     p.face as f32,
                     0.,
                 ));
-            self.lighting(
-                g,
-                model,
-                if p.alive || p.frozen {
-                    1.
-                } else {
-                    (1. - (g.time - p.death - 1500.) / 700.).clamp(0., 1.) as f32
-                },
-            );
+            self.lighting(g, model, p.material_opacity as f32);
             gl_use_material(&self.lit);
             draw_batched(&mesh);
             gl_use_material(&self.clip);
@@ -739,34 +717,21 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             indices: vec![],
             texture: None,
         };
-        let bodies = g
-            .players
-            .iter()
-            .filter(|p| p.frozen && !p.gone)
-            .map(|p| (p.ice, p.ice_start))
-            .chain(
-                g.drops
-                    .iter()
-                    .filter(|d| d.frozen && !d.gone)
-                    .map(|d| (d.ice, d.freeze_at)),
-            );
-        for (position, started) in bodies {
-            let tick = ((g.time - started) * 0.06).floor() as f32;
-            let diminish = (tick / 75.).min(1.).powi(3);
-            let model = Mat4::from_translation(vec3(
-                position.x as f32,
-                position.y as f32,
-                (tick / 10.).cos() * 32. * (1. - diminish * 0.9),
-            )) * Mat4::from_rotation_z((tick / 500.).sin() * PI);
+        for &slot in &g.removal.layer {
+            let body = &g.removal.bodies[slot];
+            let radius = body.radius.unwrap_or(32.) as f32;
+            let model = Self::ice_matrix(body);
             let n = ice.vertices.len() as u16;
             for v in &self.hex.vertices {
                 let pos = v.position;
                 let mut out = Vertex::new2(
-                    vp.transform_point3(model.transform_point3(vec3(-pos.z, -pos.x, pos.y) * 32.)),
+                    vp.transform_point3(
+                        model.transform_point3(vec3(-pos.z, -pos.x, pos.y) * radius),
+                    ),
                     v.uv,
-                    Color::new(1., 1., 1., diminish),
+                    WHITE,
                 );
-                out.normal = pos.extend(0.);
+                out.normal = (pos * radius).extend(body.opacity as f32);
                 ice.vertices.push(out)
             }
             ice.indices.extend(self.hex.indices.iter().map(|i| i + n));
@@ -1094,5 +1059,66 @@ mod arrival_tests {
             }
         }
         assert!(checked > 100);
+    }
+}
+
+#[cfg(test)]
+mod removal_tests {
+    use super::*;
+    #[test]
+    fn iceberg_and_frozen_present_matrices_match_original_three() {
+        let data: Value = serde_json::from_str(include_str!(
+            "../data/snowball-removal-render-reference.json"
+        ))
+        .unwrap();
+        let mut game = Snowball::new("removal-matrices");
+        for row in data["frames"].as_array().unwrap() {
+            let body = Ice {
+                pos: V::new(
+                    row["pos"][0].as_f64().unwrap(),
+                    row["pos"][1].as_f64().unwrap(),
+                ),
+                z: row["pos"][2].as_f64().unwrap(),
+                rotation: row["rotation"].as_f64().unwrap(),
+                opacity: row["opacity"].as_f64().unwrap(),
+                start_tick: row["start"].as_f64().unwrap(),
+                radius: Some(32.),
+            };
+            game.removal.bodies = vec![body];
+            game.removal.layer = vec![0];
+            let base = SnowballView::actor_base(
+                &game,
+                Id::Drop(0),
+                Parent::Ice(0),
+                vec3(
+                    row["entity"][0].as_f64().unwrap() as f32,
+                    row["entity"][1].as_f64().unwrap() as f32,
+                    (row["entity"][2].as_f64().unwrap() + row["modelZ"].as_f64().unwrap()) as f32,
+                ),
+            )
+            .unwrap();
+            let model = Mat4::from_rotation_x(4. * PI / 5.)
+                * base
+                * Mat4::from_quat(Quat::from_euler(
+                    EulerRot::XYZ,
+                    row["modelX"].as_f64().unwrap() as f32,
+                    row["modelY"].as_f64().unwrap() as f32,
+                    0.,
+                ))
+                * Mat4::from_scale(vec3(18., 16., 13.));
+            for (name, matrix) in [
+                ("matrix", SnowballView::ice_matrix(&body)),
+                ("modelMatrix", model),
+            ] {
+                for (i, a) in matrix.to_cols_array().into_iter().enumerate() {
+                    let b = row[name][i].as_f64().unwrap();
+                    assert!(
+                        (a as f64 - b).abs() < 0.0003,
+                        "{} {name}[{i}]: {a} vs {b}",
+                        row["tick"]
+                    );
+                }
+            }
+        }
     }
 }
