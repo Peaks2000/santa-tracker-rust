@@ -1,0 +1,41 @@
+{
+  "method": "CPU execution of unchanged WebGLPrograms.getParameters and encoding helpers; only internal exports added. Renderer defaults evaluated from original assignments, no actual renderer/GPU. Snowball render-system preserves gammaOutput default; Elf Ski explicitly enables it. GLTF base-color encoding assignment is supplied from source review, not a loaded model.",
+  "rendererDefaults": {
+    "gammaFactor": 2,
+    "gammaInput": false,
+    "gammaOutput": false,
+    "physicallyCorrectLights": false,
+    "toneMapping": 1,
+    "maxMorphTargets": 8,
+    "maxMorphNormals": 4
+  },
+  "cases": [
+    {
+      "name": "snowball",
+      "gammaOutput": false,
+      "outputEncoding": 3000,
+      "mapEncoding": 3001,
+      "outputFunction": "vec4 linearToOutputTexel( vec4 value ) { return LinearToLinear( value ); }",
+      "mapFunction": "vec4 mapTexelToLinear( vec4 value ) { return sRGBToLinear( value ); }"
+    },
+    {
+      "name": "elfski",
+      "gammaOutput": true,
+      "outputEncoding": 3007,
+      "mapEncoding": 3001,
+      "outputFunction": "vec4 linearToOutputTexel( vec4 value ) { return LinearToGamma( value, float( GAMMA_FACTOR ) ); }",
+      "mapFunction": "vec4 mapTexelToLinear( vec4 value ) { return sRGBToLinear( value ); }"
+    }
+  ],
+  "source_sha256": {
+    "static/third_party/lib/three/build/three.js": "6467e0098991c58a5c6e64415c7126079672b4e0927c3203589644db96c64b60",
+    "static/scenes/snowball/js/engine/systems/render-system.js": "028b2df9ab7a95627c247c10285539086552ef302e8863f95272d56c5958ccef",
+    "static/scenes/snowball/js/snowball/levels/main-level.js": "0b079ed3f800b4c3dcf3a81f2fca44968a8bc240ab5901f14460013a78253452",
+    "static/scenes/elfski/js/game-three.js": "2e944c2321ddf2b54efe00e1568cb05460a6df7019befbdeeba578aa3785f130",
+    "static/third_party/lib/three/examples/js/loaders/GLTFLoader.js": "d679f38015daeaefec97ada4792f356f939597fe4c68d573c1743704bc1ec3dc"
+  },
+  "limits": [
+    "No GL compilation, pixels, filtering, lighting integration, actual renderer/context or async model-load comparison.",
+    "Confirms encoding selection only; other shader/render parity remains unfinished."
+  ]
+}

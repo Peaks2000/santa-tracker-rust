@@ -186,8 +186,7 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             "vColor.xyz = color.xyz;",
             "vColor.xyz = color0.rgb / 255.0;",
         );
-        let frag = include_str!("../assets/shaders/ski-standard.frag")
-            .replace("#define USE_MAP", "#define USE_MAP\n#define USE_COLOR");
+        let frag = santa_tracker::snowball_material::elf_fragment();
         let lit = crate::ski_view::lit(&vertex, &frag, false)?;
         let gifts = [
             (0xfade4b, 0xbe584a),

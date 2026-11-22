@@ -2045,3 +2045,39 @@ unverified. No README rating or user approval changes.
 
 Release application build passes. Shader runtime/pixel comparison was not run;
 prior 102 state tests were not rerun for this render-only change.
+
+
+### Snowball output-encoding correction (22 November 2026)
+
+The reused ski-standard fragment included LinearToGamma output with gamma=2.
+Source Elf Ski explicitly enables gammaOutput; complete Snowball RenderSystem
+uses new WebGLRenderer with its false default and no override anywhere in the
+scene. MainLevel's ambient light is 0xbbaaaa at PI; native values already match.
+GLTF material base-color factor is .6399999713897699 and metallic=0; native
+float .64/roughness=1/metalness=0 matches those factors/default. GLTFLoader
+sets base-color map encoding=sRGB; Elf clones the material/map before replacing
+the image and preserves that encoding. No texture-decode change is appropriate.
+
+CPU snowball-encoding-reference.cjs exposes unchanged bundled WebGLPrograms
+and texel encoding/decoding helpers through extra exports. It evaluates the
+literal original renderer configuration assignments, supplies source-reviewed
+glTF sRGB map encoding and executes getParameters without creating a renderer,
+GPU, canvas, browser or input. Unrelated capabilities/empty light arrays/current
+default framebuffer are adapters; it is not actual glTF or renderer lifecycle.
+Actual helpers select LinearEncoding (3000) for Snowball output and GammaEncoding
+(3007) for Elf Ski; both maps decode sRGB (3001). Fixture stores exact source
+helper strings and source hashes. This verifies configuration selection, not
+shader compile/execution, illumination integration or framebuffer pixels.
+
+Production Snowball now uses snowball_material::elf_fragment to replace only
+the inherited output helper with LinearToLinear, retaining texture decoding,
+shared lighting, vertex colors and Elf Ski's separate gamma shader. Regression
+checks compare the emitted helpers to actual source-selected helpers for both
+scenes. No arbitrary sharpening/filter change. The old square-root output lifted
+midtones, so this corrects a known color/contrast mismatch, but the user's overall
+texture-clarity report is not considered solved without visual verification.
+Other shaders, transparency sorting, loading/pools and full world/UI parity
+remain incomplete. No window/focus/input or README/user-rating change.
+
+All 103 tests pass (92 library + 11 binary). Release application and capture
+diagnostic build; neither was executed. No window, GPU context or input used.

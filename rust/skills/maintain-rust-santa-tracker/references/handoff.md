@@ -620,3 +620,22 @@ and GPU rendering/transparent sorting/loading/pools remain unverified.
 
 Release application build passes. Shader runtime/pixel comparison was not run;
 prior 102 state tests were not rerun for this render-only change.
+
+
+### Snowball encoding pass (22 November 2026)
+
+Snowball previously inherited Ski gammaOutput=true via ski-standard.frag.
+Original Snowball RenderSystem uses false renderer default; glTF texture remains
+sRGB through Elf map.clone. Production snowball_material::elf_fragment now
+changes ONLY output helper to LinearToLinear and adds existing USE_COLOR.
+Elf Ski shader stays gamma=2. Source CPU oracle snowball-encoding-reference.cjs
+executes actual WebGLPrograms.getParameters/encoding helpers via internal-export
+instrumentation, with original default assignments and explicit source-reviewed
+sRGB map. No WebGLRenderer/browser/GPU constructed. JSON records exact helpers
+and hashes; native regression verifies both production Snowball and untouched
+Ski helpers. Main ambient/material factors already match. Configuration test
+is not GPU or full glTF/loading/lighting validation. Overall fuzziness remains
+unresolved pending visual verification; don't claim full mode 1:1.
+
+All 103 tests pass (92 library + 11 binary). Release application and capture
+diagnostic build; neither was executed. No window, GPU context or input used.
