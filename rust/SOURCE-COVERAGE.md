@@ -2123,3 +2123,66 @@ and full mode/site 1:1 remain unfinished; user feedback/README ratings preserved
 
 Release application and snowball_capture diagnostic build. Neither was run;
 GPU appearance remains unverified while the user plays.
+
+
+### Snowball fixed effect buffers and stage clock (22 November 2026)
+
+Read complete effect modules/components, Snowball/BigSnowball, SnowballSystem,
+SnowballGame, engine Game/Gamelike/ClockSystem and index.js restart path. Native
+snowball_effects now stores 500 trail and 2000 impact records matching source
+Float32 attributes. Random values are filled once per impact slot at game start,
+not per hit. Trail registration preserves duplicates and splice(indexOf,1)'s
+absent-object removal of the last registration. Optional/show-false trail data
+skips writes; colors retain source integer hex channels. Trail cursor wraps per
+write. Queued splats are stable component keys resolved at flush, in LIFO order;
+repeated keys see mutations made before processing. At end overflow, splats
+write at zero but advance the OLD cursor, preserving source's overlap quirk.
+Exact remaining-capacity fill, zero quantity and oversized typed-array writes
+(ignored outside capacity) are covered, not normalized into a different model.
+
+Production Snowball setup registers trails and removal unregisters/queues splats.
+Effects now flush after Removal/Drop/Parachute and before Map/Client/Bot/Player,
+as in SnowballGame.update. Removed native Shot values are stable until that
+flush because Player allocates new shots later; global pooled Snowball/Splat
+component aliases are still incomplete. A bounded slot-order render snapshot
+filters expired records and reuses Vec capacity; source GPU instead submits
+all slots and discards expired fragments. Source GPU size/coverage remains open.
+Renderer uses stored Effects.time, as the source renders before the next effect
+uniform update; current-frame time no longer advances an older particle buffer.
+Source frame/ClockSystem getter timing and host clock synchronization are not
+fully reproduced by this bounded constant-clock verification.
+
+EffectSystem.teardown inherits no-op attribute teardown. This does NOT mean
+buffers survive a website restart: complete index.js startGame destroys the old
+Game and constructs a new SnowballGame/EffectSystem. Native start now creates
+fresh buffers/random slots. Unused splash map/effect placeholders consume no
+gameplay random calls; effect random samples are consumed before the playable
+map seed, like source construction. All THREE UUID/object/pool random draws and
+full seeded match order remain unverified. Ordinary restarting resets source
+Game's clock as well; native effects use the existing match time namespace.
+The source's unused EffectSystem.trailedObjects array is not reproduced.
+
+CPU snowball-effects-reference.cjs runs unchanged original modules with actual
+THREE Float32 BufferAttributes. Only TextureLoader image I/O is replaced by an
+empty texture handle; seeded source constructor RNG includes THREE UUID calls.
+Native test imports the resulting 2000 random attributes, which certifies slot
+retention/writes rather than whole-game RNG ordering. Fourteen steps compare
+every field in all 2500 slots each time: 35000 records/280000 numeric fields plus
+cursors, registration order and stored time uniforms. Cases include null/false
+Trail, duplicates/absent remove, 503-object trail overflow, duplicate mutated
+splat keys, null Splat, 1998->7->7 wrap (cursor 1998->5->12), oversized 2003,
+exact fill, zero quantity, post-lifetime data retention and teardown. GPU expiry
+fragments were not executed. Source delta fixture stores all
+changes; native reconstructs full expected buffers before every comparison.
+
+A separate production finish_frame regression checks pending shot setup ->
+trail emission -> removal/impact -> new-game reset, no reroll on impact and the
+stored render-time lag. That check is native plus source-order tracing, not a
+whole original game/renderer execution. All 105 tests pass (94 lib + 11 binary).
+Map readiness, full component pool identity/aliasing, hidden/paused clock timing,
+GPU point range/center snapping/texture orientation and all scene composition
+remain unfinished. Source/provenance JSON records scope and hashes. No window,
+GPU context, focus change or input; no user approval or README rating changes.
+
+Release application and snowball_capture diagnostic build successfully. Neither
+was launched; user game/window/input remained untouched.

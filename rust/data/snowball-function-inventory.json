@@ -4,7 +4,7 @@
     {
       "file": "static/scenes/snowball/index.js",
       "lines": 97,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; complete restart startGame path traced: removes old Game and constructs new SnowballGame, requiring fresh effect buffers/randoms despite effect teardown itself being no-op",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -2045,7 +2045,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/snowball-system.js",
       "lines": 138,
-      "review": "Actual original setup/update/remove fixture checks queued LIFO and source splice successor skips. Native setup is distinct from tickWhenThrown initialization. Full pooling, dynamic collision ordering and effect-ring lifecycle remain partial.",
+      "review": "Actual original setup/update/remove fixture checks queued LIFO and source splice successor skips. Native setup is distinct from tickWhenThrown initialization. Full pooling, dynamic collision ordering and effect-ring lifecycle remain partial.; native setup/removal register and unregister trails, queue splat component keys and flush at the source EffectSystem stage; native production integration regression covers setup/removal/restart, not full source pool identity",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -2452,7 +2452,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/effect-system.js",
       "lines": 53,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; native physical-pixel point quad sizes, layer ordering, birth guards and f32 input arithmetic corrected from complete source; original constructors/THREE stable transparent sorting CPU-observed; fixed ring indexing/random reuse/update lifetime and GPU point raster remain unfinished",
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; native physical-pixel point quad sizes, layer ordering, birth guards and f32 input arithmetic corrected from complete source; original constructors/THREE stable transparent sorting CPU-observed; fixed ring indexing/random reuse/update lifetime and GPU point raster remain unfinished; fixed 500/2000 buffers, random-per-slot constructor attributes, float32 writes, duplicate registration/absent splice, LIFO stable component lookup, wrap-old-cursor quirk and stored uniforms now compared against unchanged source for 14 steps/all slots; inherited teardown no-op checked. Full image readiness, pooled aliases, clock/getter timing and GPU effects remain unverified. Unused EffectSystem.trailedObjects is omitted.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -3046,7 +3046,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/effects/trail-effect.js",
       "lines": 175,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; native physical-pixel point quad sizes, layer ordering, birth guards and f32 input arithmetic corrected from complete source; original constructors/THREE stable transparent sorting CPU-observed; fixed ring indexing/random reuse/update lifetime and GPU point raster remain unfinished",
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; native physical-pixel point quad sizes, layer ordering, birth guards and f32 input arithmetic corrected from complete source; original constructors/THREE stable transparent sorting CPU-observed; fixed ring indexing/random reuse/update lifetime and GPU point raster remain unfinished; fixed 500/2000 buffers, random-per-slot constructor attributes, float32 writes, duplicate registration/absent splice, LIFO stable component lookup, wrap-old-cursor quirk and stored uniforms now compared against unchanged source for 14 steps/all slots; inherited teardown no-op checked. Full image readiness, pooled aliases, clock/getter timing and GPU effects remain unverified. Unused EffectSystem.trailedObjects is omitted.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -3093,7 +3093,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/effects/snowsplat-effect.js",
       "lines": 193,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; native physical-pixel point quad sizes, layer ordering, birth guards and f32 input arithmetic corrected from complete source; original constructors/THREE stable transparent sorting CPU-observed; fixed ring indexing/random reuse/update lifetime and GPU point raster remain unfinished",
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; native physical-pixel point quad sizes, layer ordering, birth guards and f32 input arithmetic corrected from complete source; original constructors/THREE stable transparent sorting CPU-observed; fixed ring indexing/random reuse/update lifetime and GPU point raster remain unfinished; fixed 500/2000 buffers, random-per-slot constructor attributes, float32 writes, duplicate registration/absent splice, LIFO stable component lookup, wrap-old-cursor quirk and stored uniforms now compared against unchanged source for 14 steps/all slots; inherited teardown no-op checked. Full image readiness, pooled aliases, clock/getter timing and GPU effects remain unverified. Unused EffectSystem.trailedObjects is omitted.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"

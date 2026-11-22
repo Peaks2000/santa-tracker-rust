@@ -657,3 +657,31 @@ scene sorting remain unverified. All 103 tests pass; no windows were launched.
 
 Release application and snowball_capture diagnostic build. Neither was run;
 GPU appearance remains unverified while the user plays.
+
+
+### Fixed effect buffers and stored clock (22 November 2026)
+
+Production now uses snowball_effects::Effects: fixed 500/2000 buffers, constructor
+random-per-slot floats, ordered duplicate trail IDs, absent remove pops last,
+LIFO stable Splat component keys, float32 writes and source old-cursor wrap bug.
+Effects flush after Parachute before Map/Client/Bot/Player; render uses stored
+Effects.time from the previous update, not new frame time. Snapshot traverses
+slot indices and reuses Vec capacity. Trail colors are carried to the shader.
+
+Important: effect teardown itself is a no-op, BUT index.js restart destroys the
+Game and constructs a new one. Native start recreates buffers/randoms; don't
+preserve old ring data on website restart. Splash placeholders consume no
+gameplay randomness. Production stages test setup/removal/restart and no impact
+reroll. New source VM exports 14 steps/all 2500 slots (35000 records/280000
+fields) plus cursors/registrations/time. Imports original random attributes for
+test initialization; full UUID/pool/RNG order is NOT certified. No GPU/browser/
+input: TextureLoader image I/O returns an empty handle in source VM.
+
+Source keys model stable component identities through queued mutations; complete
+pooled Shot/Splat aliasing and actual image readiness remain incomplete. Match
+clock/within-frame getter/host-pause timing, GPU point coverage/clamp/texture
+orientation and whole-mode 1:1 remain unverified. All 105 tests pass. Earlier
+notes saying fixed buffers were unimplemented describe the prior state.
+
+Release application and snowball_capture diagnostic build successfully. Neither
+was launched; user game/window/input remained untouched.

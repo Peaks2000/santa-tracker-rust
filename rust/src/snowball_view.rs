@@ -146,7 +146,7 @@ void main(){vec4 color=data.w==5.0?vec4(.94,.97,1.,1.):vec4(1.);if(data.y<.5)col
         let particle = make(
             r#"#version 100
 precision highp float;varying vec2 uv;varying vec4 tint;varying vec4 data;uniform sampler2D Texture;uniform float Time;uniform vec3 diffuse;uniform float opacity;
-void main(){if(data.z==-1.){gl_FragColor=vec4(diffuse,opacity);return;}if(data.w>.5){float scale=data.y/6.;float fade=(Time-data.x)/(700.*scale);float show=.5-length(uv-vec2(.5));gl_FragColor=vec4(.6666667,.8,1.,max(0.,(show-fade)/(3.*scale)));}else{float elapsed=min((Time-data.x)/300.,1.);vec4 c=texture2D(Texture,uv);if(c.a>.5)c.a=elapsed;gl_FragColor=c;}}"#,
+void main(){if(data.z==-1.){gl_FragColor=vec4(diffuse,opacity);return;}if(data.w>.5){float scale=data.y/6.;float fade=(Time-data.x)/(700.*scale);float show=.5-length(uv-vec2(.5));gl_FragColor=vec4(tint.rgb,max(0.,(show-fade)/(3.*scale)));}else{float elapsed=min((Time-data.x)/300.,1.);vec4 c=texture2D(Texture,uv);if(c.a>.5)c.a=elapsed;gl_FragColor=c;}}"#,
             false,
             false,
             vec![
@@ -656,7 +656,7 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             .flat_map(|trail| g.particles.iter().filter(move |p| p.trail == trail))
         {
             let born = p.born as f32;
-            let delta = g.time as f32 - born;
+            let delta = g.effects.time as f32 - born;
             let elapsed = delta / if p.trail { 700. } else { 300. };
             if elapsed >= 1. || if p.trail { born <= 0. } else { born < 1. } {
                 continue;
@@ -703,6 +703,14 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
                     uv,
                     WHITE,
                 );
+                if p.trail {
+                    v.color = [
+                        (p.color[0] * 255.).round() as u8,
+                        (p.color[1] * 255.).round() as u8,
+                        (p.color[2] * 255.).round() as u8,
+                        255,
+                    ];
+                }
                 v.normal = vec4(
                     p.born as f32,
                     p.size as f32,
@@ -713,7 +721,7 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             }
             mesh.indices.extend([n, n + 1, n + 2, n, n + 2, n + 3]);
         }
-        self.particle.set_uniform("Time", g.time as f32);
+        self.particle.set_uniform("Time", g.effects.time as f32);
         gl_use_material(&self.particle);
         draw_batched(&mesh);
         let mut ice = Mesh {

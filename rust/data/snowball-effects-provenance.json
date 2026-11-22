@@ -1,0 +1,33 @@
+{
+  "fixture": "snowball-effects-reference.json",
+  "source_execution": "14 steps executing unchanged original effect modules and actual THREE typed attributes; 2000 constructor random samples and every field in all 500+2000 slots compared at every step (35000 records / 280000 numeric fields), plus cursors, registrations and time uniforms. Seeded source constructor RNG includes THREE UUID consumption; native tests import resulting random attributes rather than certify whole-game RNG order.",
+  "cases": [
+    "duplicate trail registration and absent-remove splice(-1)",
+    "false and absent Trail component, float32 attributes/colors and 503-object overflow",
+    "LIFO duplicate stable component keys observing pre-flush mutation; absent Splat ignored at caller",
+    "1998 then 7 then 7 splats, preserving wrap cursor 1998 -> 5 -> 12",
+    "2003-particle out-of-range typed writes, exact remaining-capacity fill and zero quantity",
+    "no-op inherited effect teardown and unchanged persistent per-slot random values"
+  ],
+  "native_integration": "Actual finish_frame registers shots at setup, queues/removes on expiry/hit and flushes effects after parachutes before Map/Client/Bot/Player. Production test exercises setup -> removal -> restart and no reroll per impact. Frame rendering uses stored Effects.time, not new frame time.",
+  "restart": "Complete index.js startGame calls old game.teardown/removes DOM and constructs new SnowballGame. Thus native start recreates all effect buffers/random slots; inherited effect teardown itself is still a no-op. Placeholder splash map/effects consume no native gameplay randomness.",
+  "render_snapshot": "Derived age-filtered slot-order particle snapshot, reusing Vec capacity; trail hex colors retained. Original GPU uses all slots and discards expired records. Native quadrilateral point approximation remains unverified.",
+  "limits": [
+    "No GPU/window/input run. Pixel coverage/center snapping/hardware point-size range, texture orientation/minification and full compositing remain unverified.",
+    "Whole-game seeded random/UUID/object allocation and pooled Snowball/Splat component aliasing are incomplete.",
+    "Original image-loader map readiness, scene clock synchronization/within-frame getter timing, shell pause/route lifetime and every restart overlap are not certified by bounded checks.",
+    "Production integration test is native regression plus source-order tracing, not a whole original game/renderer execution."
+  ],
+  "reviewed_source_sha256": {
+    "static/scenes/snowball/index.js": "b2d959e02688b0f1e182255c24a543ee0358a596abb6642486eeea9034328175",
+    "static/scenes/snowball/js/snowball-game.js": "48d4ced63ac0e39fe3010e80472d333d26d838a54c23a5841941fe42458d4d4f",
+    "static/scenes/snowball/js/engine/core/game.js": "a8571291aa26baeae2a268cf693e69877f4407976ca4023dcc8f8eb6ad52e459",
+    "static/scenes/snowball/js/engine/utils/gamelike.js": "b4d6f26f87bf3bc2a64dbb1dfc75faf5049b0e58582319873aafb03900b24392",
+    "static/scenes/snowball/js/engine/systems/clock-system.js": "ec84c569632c34e49d6a8efde9d7888a9fd3518f6fc465cb10034517c82f2c0e",
+    "static/scenes/snowball/js/snowball/systems/snowball-system.js": "34445b3fa23074569d7e06fea56c3c2035178737205e4da67ad3c6507b6e25fb",
+    "static/scenes/snowball/js/snowball/entities/snowball.js": "3c0e0c2577486cf5c6827d8a178df4475c31ea34fa41c6860deabbcc5df15749",
+    "static/scenes/snowball/js/snowball/entities/snowballs/big-snowball.js": "1660b4aa4a18ebb31ee77cd8dfd1aefb535481f02632daeb5713e673b6a07b65",
+    "static/scenes/snowball/js/snowball/components/trail.js": "f2b181b2087fa14fa7d97500cc81c6dd16fde75c191e2c9d1bef6f1d328c6085",
+    "static/scenes/snowball/js/snowball/components/splat.js": "8609c6aceb6a10c3f6d7de75622ddab674cfd612eb7bb7518e1a0b0f9bc63fe2"
+  }
+}

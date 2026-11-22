@@ -2,6 +2,8 @@
 //! Copyright 2020 Google LLC, Apache-2.0. Browser/network scaffolding is separate.
 use crate::random::Random;
 use crate::snowball_collision::{Bounds, Collision, Id};
+use crate::snowball_effects::{Effects, SplatSample, TrailSample};
+pub use crate::snowball_effects::Particle;
 use crate::snowball_parachute::{Event as ParachuteEvent, Parachutes};
 use crate::snowball_removal::{ActorState, Event as RemovalEvent, Parent, Presence, Removal};
 use serde::{Deserialize, Serialize};
@@ -572,16 +574,6 @@ pub struct Drop {
     pub frozen: bool,
     pub z: f64,
 }
-#[derive(Clone)]
-pub struct Particle {
-    pub pos: V,
-    pub z: f64,
-    pub direction: V,
-    pub born: f64,
-    pub size: f64,
-    pub random: f64,
-    pub trail: bool,
-}
 #[derive(Clone, Copy, PartialEq)]
 pub enum Phase {
     Splash,
@@ -603,6 +595,7 @@ pub struct Snowball {
     pub drops: Vec<Drop>,
     pub shots: Vec<Shot>,
     pub particles: Vec<Particle>,
+    pub effects: Effects,
     pub client_arrival: crate::snowball_client::Arrival,
     pub client_ring: crate::snowball_lod::ClientRing,
     pub camera: V,
@@ -637,8 +630,11 @@ pub struct Snowball {
 }
 impl Snowball {
     pub fn new(seed: &str) -> Self {
-        let mut random = Random::seeded(seed);
-        let map_seed = (random.next() * 4294967296.) as u32;
+        let random = Random::seeded(seed);
+        // The source creates SnowballGame only after the intro. These unused
+        // buffers/map are placeholders until start() constructs that instance.
+        let effects = Effects::new(|| 0.);
+        let map_seed = 0;
         Self {
             removal: Removal::default(),
             parachutes: Parachutes::default(),
@@ -647,6 +643,7 @@ impl Snowball {
             drops: vec![],
             shots: vec![],
             particles: vec![],
+            effects,
             client_arrival: crate::snowball_client::Arrival::default(),
             client_ring: crate::snowball_lod::ClientRing::default(),
             camera: V::default(),
@@ -715,6 +712,9 @@ impl Snowball {
         self.players.clear();
         self.drops.clear();
         self.shots.clear();
+        // index.js restart destroys the old game and constructs new effects,
+        // even though EffectSystem.teardown itself leaves its buffers intact.
+        self.effects = Effects::new(|| self.random.next());
         self.particles.clear();
         self.parachutes = Parachutes::default();
         self.last_erode = 0.;
@@ -1249,6 +1249,7 @@ impl Snowball {
             for s in &mut self.shots[first_pending..] {
                 s.setup = true;
                 self.collision.add(Id::Shot(s.id));
+                self.effects.add(s.id);
             }
         }
         let mut removed = vec![];
@@ -1257,6 +1258,8 @@ impl Snowball {
             if self.shots[i].gone {
                 let s = self.shots.remove(i);
                 self.collision.remove(Id::Shot(s.id));
+                self.effects.remove(s.id);
+                self.effects.show_for(s.id);
                 removed.push(s);
                 // The source for-loop increments even after splice + continue.
                 i += 1;
@@ -1271,38 +1274,14 @@ impl Snowball {
             if s.gone {
                 let s = self.shots.remove(i);
                 self.collision.remove(Id::Shot(s.id));
+                self.effects.remove(s.id);
+                self.effects.show_for(s.id);
                 removed.push(s); /* source splice skips next */
                 i += 1
             } else {
                 i += 1
             }
         }
-        for s in removed {
-            for _ in 0..if s.big { 7 } else { 5 } {
-                self.particles.push(Particle {
-                    pos: s.pos,
-                    z: s.z,
-                    direction: s.target.sub(s.origin).norm(),
-                    born: self.time,
-                    size: if s.big { 75. } else { 40. },
-                    random: self.random.next(),
-                    trail: false,
-                })
-            }
-        }
-        for s in &self.shots {
-            self.particles.push(Particle {
-                pos: s.pos,
-                z: s.z + 1.,
-                direction: V::default(),
-                born: self.time,
-                size: if s.big { 10. } else { 6. },
-                random: 0.,
-                trail: true,
-            })
-        }
-        self.particles
-            .retain(|p| self.time - p.born < if p.trail { 700. } else { 300. });
         self.update_removal(tick, width, height);
         let mut collected_by_client = false;
         for (di, d) in self.drops.iter_mut().enumerate() {
@@ -1368,6 +1347,25 @@ impl Snowball {
             }
         }
         self.update_parachutes(tick);
+        // Source EffectSystem runs after parachutes, before Map/Client/Bot/Player.
+        // Removed shots are not reallocated before this flush, so their Splat
+        // component values remain stable here. Full pooled object identity is
+        // still handled separately from these persistent attribute buffers.
+        let splats: HashMap<_, _> = removed.iter().map(|s| (s.id, SplatSample {
+            position: [s.pos.x, s.pos.y, s.z],
+            direction: { let d = s.target.sub(s.origin).norm(); [d.x, d.y] },
+            size: if s.big { 75. } else { 40. },
+            quantity: if s.big { 7 } else { 5 },
+        })).collect();
+        let shots: HashMap<_, _> = self.shots.iter().map(|s| (s.id, s)).collect();
+        self.effects.update(self.time, |id| shots.get(&id).map(|s| TrailSample {
+            position: [s.pos.x, s.pos.y, s.z],
+            size: if s.big { 10. } else { 6. },
+            color: 0xaaccff,
+            show: true,
+        }), |id| splats.get(&id).cloned());
+        self.effects.write_particles(self.time, &mut self.particles);
+
         // MapSystem precedes Client/Player commands: retain this rendered marker
         // until the following map update, even if movement reaches its endpoint.
         if let Some(p) = self.players.first() {
@@ -1555,6 +1553,47 @@ pub fn circle_rect(c: V, r: f64, p: V, hw: f64, hh: f64) -> bool {
 #[cfg(test)]
 pub(crate) mod tests {
     use super::*;
+    #[test]
+    fn production_effects_follow_shot_stages_and_recreate_on_restart() {
+        let mut game = Snowball::new("effect-system-stages");
+        game.start();
+        game.players.clear();
+        game.drops.clear();
+        game.collision = Collision::new(Bounds::rect(V::default(), 10000., 10000.));
+        game.time = 1000.;
+        game.wall = 6000.;
+        game.shots.push(Shot {
+            id: 100, hit: None, setup: false, origin: V::default(),
+            target: V::new(100., 0.), pos: V::default(), z: 0.,
+            thrower: usize::MAX, big: false, born: -1., gone: false,
+            random: 0.25, skew: 0.,
+        });
+        let randoms: Vec<_> = game.effects.splats.iter().map(|p|p.random).collect();
+        game.finish_frame(1440.,800.);
+        assert_eq!(game.effects.registered, vec![100]);
+        assert_eq!(game.effects.next_trail,1);
+        assert_eq!(game.effects.trails[0].born,1000.);
+        assert_eq!(game.effects.trails[0].z,1.);
+        game.shots[0].gone = true;
+        game.time += 16.;
+        assert_eq!(game.effects.time,1000.); // render still uses preceding effect update
+        game.finish_frame(1440.,800.);
+        assert!(game.effects.registered.is_empty());
+        assert_eq!(game.effects.next_trail,1);
+        assert_eq!(game.effects.next_splat,5);
+        assert_eq!(game.effects.splats[0].born,1016.);
+        assert_eq!(game.effects.splats.iter().map(|p|p.random).collect::<Vec<_>>(),randoms);
+        game.start();
+        assert_eq!(game.effects.next_trail,0);
+        assert_eq!(game.effects.next_splat,0);
+        assert_eq!(game.effects.time,0.);
+        assert!(game.effects.registered.is_empty());
+        assert!(game.particles.is_empty());
+        assert!(game.effects.trails.iter().chain(&game.effects.splats).all(|p|p.size==0.));
+        assert_ne!(game.effects.splats[0].random,randoms[0]);
+        assert_eq!(game.time,0.);
+    }
+
     #[test]
     fn concrete_removal_stages_match_original_systems_and_parents() {
         let data: serde_json::Value = serde_json::from_str(include_str!(
