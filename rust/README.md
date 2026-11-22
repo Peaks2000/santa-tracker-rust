@@ -203,7 +203,7 @@ cargo run --release --manifest-path rust/Cargo.toml --example snowball_capture -
 
 A third argument `reference` imports the measured original render state and textures for an isolated geometry comparison; it omits source presents/projectiles and resets animation phase. `input` opens a 40-second live diagnostic using production mouse controls. These diagnostics do not certify an entire match or all input/animation states.
 
-The diagnostic `reference-pointer` case holds the measured original state still and asserts that a real pointer click on an elf produces a local shot. It requires interactive input; it is not a simulated whole-match check.
+The diagnostic `reference-pointer` case holds the measured original state until an input release, dispatches a production system frame and asserts that a pointer click on an elf queues a local shot. It requires interactive input; it is not a simulated whole-match check.
 
 Snowball now retains source animation actions/callbacks through throws, movement changes and falls. The `snowball_capture` diagnostic also accepts `action-N` (for example `action-4`) to inspect a state from the first original animation sequence in the measured render layout. The animation fixture checks 650 mixer states, 42 ready-model elf updates and sampled scaled vertex/normal output; remaining pool/LOD/collision/input/audio scope is in the coverage ledger.
 
@@ -218,3 +218,5 @@ For isolated arrival-marker rendering, `snowball_capture /tmp/marker.png 0 marke
 `cargo run --manifest-path rust/Cargo.toml --example snowball_texture_audit -- /tmp/snowball-images` measures the production CPU SVG decoder and optionally exports top-down PNGs. It creates no window or GPU context. The intro cloud and elf sheet now have enough raster samples for the checked 1x/2x display sizes; full browser/native texture clarity remains unverified.
 
 `cargo run --manifest-path rust/Cargo.toml --example snowball_elf_texture_audit -- /tmp/elf-textures` compares native CPU-generated elf textures with the 28 saved browser PNGs and exports optional before/after images. It creates no window or GPU context. Generated eye coverage is closer, with exact non-eye regions; residual antialiasing and complete world-texture rendering remain unfinished.
+
+The CPU-only command comparison runs with `cargo test --manifest-path rust/Cargo.toml --lib command_tests`. It compares 64 original frames at render/input/Player boundaries, including deferred throws, landing movement, charges and destination-marker timing. Geometry/projection checks do not certify full input or rendered-pixel parity.

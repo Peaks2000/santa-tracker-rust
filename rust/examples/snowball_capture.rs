@@ -342,6 +342,12 @@ async fn run() {
             view.draw(&assets, &game).unwrap();
             filter.finish_live(game.gameover);
             view.input(&mut game, true);
+            // Target requests now follow the real Client -> Player stage. Hold
+            // the imported pose until an input release, then dispatch one frame.
+            if is_mouse_button_released(MouseButton::Left) {
+                game.reset_collisions();
+                game.finish_frame(screen_width() as f64, screen_height() as f64);
+            }
             let vp = snowball_view::SnowballView::vp(&game);
             let target=game.players.iter().enumerate().filter(|(i,p)|*i>0&&p.arrived&&p.alive).find_map(|(i,p)|{let at=vp.transform_point3(vec3(p.pos.x as f32,p.pos.y as f32,18.));(at.x.abs()<0.75&&at.y.abs()<0.7).then_some(serde_json::json!({"index":i,"x":(at.x+1.)*screen_width()/2.,"y":(1.-at.y)*screen_height()/2.}))});
             std::fs::write("/tmp/snowball-input-state.json",serde_json::json!({"mouse":mouse_position(),"target":target,"local_shots":game.shots.iter().filter(|s|s.thrower==0).count(),"local_throw_event":game.sounds.contains(&"snowball_throw")}).to_string()).unwrap();

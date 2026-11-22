@@ -522,3 +522,46 @@ diagnostic to reproduce the comparison, never as the application generator.
 The 28-image regression checks non-eye identity and bounded improvement, not
 a false assertion of full equality. All 98 tests pass and the release builds;
 GPU sampling/lighting/composition/world clarity remain open.
+
+
+### Command-stage/destination-marker pass (22 November 2026)
+
+No windows/input during the user's game. Source oracles can run without a
+browser: `node --experimental-vm-modules rust/tools/snowball-command-reference.cjs`
+executes unchanged source modules with actual bundled THREE. This development
+CJS stays out of distribution; JSON fixtures and native tests are distributed.
+Canonical VM module identity matters for instanceof/static pools. See provenance
+for inert Canvas/image/DOM, low LOD, empty pools and all physics/UI/network stubs.
+It is not a full scene/engine/browser run.
+
+Native now stores map pick, Client destination/target and Player command queues
+separately. Input enemy targets copy position, whereas bot targets retain a player
+index resolved after arrivals are positioned. MainLevel feeds Client; living
+Client forwards, dead Client retains. Player drops dead/unarrived destinations,
+then handles all targets. Failed local paths enqueue Client for NEXT frame;
+failed NPC paths do nothing. Last target per player wins without changing first
+insertion order. Shots enter at Player stage, so their Snowball setup/birth is
+next update, still LIFO. Charges are chosen/decremented at dispatch. A target
+assigned to a dead player retains its animation flag until a living update.
+Living MainLevel clears an old dead-camera target without resetting velocity.
+
+MapSystem destination-marker state is stored before commands/movement, not read
+live from path while rendering. Destination shape is actual 12-vertex original
+geometry; rotate z=PI/4, world z=cellSize*.5/y=destination-20. Reuse the existing no-depth
+marker shader to stay under Macroquad's 32-pipeline limit. Camera matrix helper
+is extracted unchanged; three supplied viewport/cell-size clip cases use the
+production destination/viewport helpers and match THREE. GPU rendering
+remains untested. The reference-pointer diagnostic now dispatches one system
+frame after release; do not run it while the user plays or call it verified.
+
+14 original cases / 64 frames / 192 native snapshots compare render, input and
+post-Player stages. Source afterClient data is retained but not directly hooked
+in native tests. Bot commands are injected before native finish in these cases
+(they commute with early stubbed stages and avoid conflicting same-player Client/
+bot writes); actual AI, collisions, loaded models, RNG/pools, async I/O, network,
+raw mouse/octree/touch and entire scene lifecycle remain outside this evidence.
+Tests cover powerup swap/depletion and reached-marker lag as well as commands.
+Do not claim complete mode/input/animation parity from these comparisons.
+
+This command/marker pass passes all 100 native tests (89 library + 11 binary);
+release application/capture builds pass. No window or raw input was used.

@@ -1870,3 +1870,77 @@ tests pass; the release binary builds. No runtime/window/driver test was run.
 Full world-texture clarity, minified GPU appearance, CSS PNG sampling and model
 lighting/render/compositor fidelity remain open. Source linear/trilinear world
 filtering is retained rather than changed based on the blur report alone.
+
+
+### Snowball queued commands and destination marker — 22 November 2026
+
+Read the complete ClientSystem/PlayerSystem/SnowballSystem command paths,
+MagicHexGrid playerWaypointsForMap, Elf.update and the active components,
+MainLevel.update, MapSystem.update and DestinationMarker constructor/setup.
+The original Game/SnowballGame order is Level -> render/input -> collision/LOD
+-> Snowball -> removal/drop/parachute/effects/map -> Client -> network/bots ->
+Player. Native dispatch now respects the stages instead of executing targets
+at input and movement/fallback throws directly from the next level update.
+
+- Map picks stay pending until MainLevel, which forwards a living client's
+  destination to Client. Enemy target picks clone the point at input. Client
+  forwards both queues only while alive; death retains them. Player applies
+  destinations only after arrivals have been positioned, discarding unarrived
+  or dead entries at the end of that pass. Per-player maps keep insertion order
+  and replace values on repeated assignment.
+- A failed local path queues a Client target for the next update; failed NPC
+  paths do not throw. All destination requests precede all targeted positions.
+  Shots created at Player stage remain unparented/unborn until the following
+  Snowball update; multiple new shots still set up LIFO. The previous early
+  input throw bypassed this delay. Large-charge type/depletion is decided at
+  dispatch, after collection/swap, once per replaced target entry.
+- Bot target positions retain a player reference until Player command handling,
+  so an arriving target's reparented map position is used. Client's cloned point
+  remains fixed even if the selected actor later moves. Assigning a dead
+  player's target sets the source animation-request flag, even though no shot
+  fires; it remains until a living Elf update. Living MainLevel updates also
+  expire any old dead-camera pick, as the source always reassigns tracker.target.
+- MapSystem snapshots destination-marker position/visibility BEFORE commands
+  and movement. Renderer uses this state, preserving both appearance delay and
+  final reached-frame visibility. The cross now uses the actual 12-vertex
+  ShapeBufferGeometry instead of two overlapping screen-space line strips:
+  size 10, arm width 10/3, rotation z=PI/4, z=cellSize*.5 (32 in the game),
+  y=destination.y-20, color
+  0x22cc88/opacity .5, double-sided and depth testing disabled. Existing marker
+  shader pipelines are reused; no extra GPU pipeline is allocated. The camera
+  matrix is extracted unchanged into a context-free helper for CPU verification.
+
+`tools/snowball-command-reference.cjs` runs unchanged original modules and bundled
+THREE in Node SourceTextModule (canonical module identities), not a browser.
+14 cases / 64 frames include cloned targets, level/render delay, blocked paths,
+explicit target plus fallback, unarrived discard/landing-frame destination,
+death retention, per-player replacement, LIFO setup, landing target reference,
+failed NPC path, retained dead animation request, powerup charge selection and
+depletion, alive/dead camera target changes, and marker endpoint timing.
+Native production begin_frame/input APIs/finish_frame compare 192 full state
+snapshots (render, after input, after Player), including points/paths/facing,
+flags/queues, camera/velocity, charges, shot IDs/origins/targets/birth/setup/type,
+marker state and selected sound actions. The source's afterClient snapshots
+are also stored but not compared at a native intermediate hook.
+
+The reference uses explicit map/arrival/death/command inputs, Math.random=.5,
+empty actor/shot pools, low-LOD actors without loaded models, and inert image/
+Canvas/DOM I/O. UI/network/event sinks, collisions, LOD, effects and parachute
+callbacks are stubs; actual bot AI is not run. Native collision registration is
+reset empty per test frame for the same isolation. Explicit bot commands are
+queued before native finish (they commute with the earlier isolated stages in
+these cases, with no same-player Client/bot overwrite conflict). This does not
+certify asynchronous/loaded-model animations, actual collision interactions,
+RNG/UUID/pooling, all spawn/restart states, network or raw octree input.
+
+Three supplied viewports' original THREE marker clip coordinates also match
+the production native mesh/matrix helpers, including cell sizes 64 and 32. These are geometry/state comparisons, not GPU pixel renders.
+No window/input checks were run while the user plays. The pointer diagnostic
+now dispatches one real finish_frame after an input release so a queued target
+can be processed; that interactive path was updated but not executed this pass.
+No README faithfulness rating or user approval was changed. Full mode 1:1,
+rendering, touch/keyboard/host input and actual sound-bus fidelity remain open.
+
+Validation for this pass: all 100 native tests pass (89 library, 11 application
+unit tests); the release application and snowball_capture example build. These
+checks do not launch a window or certify interactive/GPU behavior.

@@ -21,6 +21,7 @@ pub struct SnowballView {
     shapes: crate::ui_render::Shapes,
     clip: Material,
     marker_mesh: Mesh,
+    destination_mesh: Mesh,
     tile: Material,
     particle: Material,
     iceberg: Material,
@@ -217,6 +218,9 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             shapes: crate::ui_render::Shapes::new()?,
             clip,
             marker_mesh: geometry(include_str!("../data/snowball-marker-geometry.json")),
+            destination_mesh: geometry(include_str!(
+                "../data/snowball-destination-marker-geometry.json"
+            )),
             tile,
             particle,
             iceberg,
@@ -306,7 +310,7 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             let hit = a + direction * t;
             if (hit.x - p.pos.x as f32).abs() <= 50. && (hit.y - p.pos.y as f32).abs() <= 50. {
                 let target = p.pos;
-                g.throw(0, target);
+                g.target_position(target);
                 return;
             }
         }
@@ -319,11 +323,7 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
         }
     }
     pub fn vp(g: &Snowball) -> Mat4 {
-        let w = screen_width();
-        let h = screen_height();
-        let p = Mat4::orthographic_rh_gl(-w / 2., w / 2., -h / 2., h / 2., 1., 100000.);
-        let eye = vec3(g.camera.x as f32, g.camera.y as f32, -3200.);
-        p * Mat4::look_at_rh(eye, eye + Vec3::Z, -Vec3::Y) * Mat4::from_rotation_x(4. * PI / 5.)
+        world_vp(g.camera, screen_width(), screen_height())
     }
     fn canopy_matrix(c: &Canopy) -> Mat4 {
         Mat4::from_translation(vec3(c.pos.x as f32, c.pos.y as f32, c.z as f32))
@@ -598,27 +598,14 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             );
             gl_use_material(&self.clip);
         }
-        if let Some(p) = g.players.first() {
-            if let Some(target) = p.path.last() {
-                let center = vp.transform_point3(vec3(target.x as f32, target.y as f32 - 20., 32.));
-                let screen = vec2(
-                    (center.x + 1.) * screen_width() / 2.,
-                    (1. - center.y) * screen_height() / 2.,
-                );
-                gl_use_default_material();
-                let c = Color::new(0.133, 0.8, 0.533, 0.5);
-                for direction in [-1., 1.] {
-                    draw_line(
-                        screen.x - 3.535,
-                        screen.y - 2.86 * direction,
-                        screen.x + 3.535,
-                        screen.y + 2.86 * direction,
-                        3.333,
-                        c,
-                    );
-                }
-                gl_use_material(&self.clip);
-            }
+        if let Some(marker) = g.destination_marker {
+            self.draw_symbol(
+                &self.destination_mesh,
+                vp,
+                destination_matrix(marker, g.map.grid.size as f32),
+                true,
+            );
+            gl_use_material(&self.clip);
         }
 
         gl_use_default_material();
@@ -626,16 +613,19 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
         Ok(())
     }
     fn draw_marker(&self, vp: Mat4, at: Mat4, arrival: bool) {
+        self.draw_symbol(&self.marker_mesh, vp, at, arrival);
+    }
+    fn draw_symbol(&self, geometry: &Mesh, vp: Mat4, at: Mat4, no_depth: bool) {
         let mut mesh = Mesh {
-            vertices: self.marker_mesh.vertices.clone(),
-            indices: self.marker_mesh.indices.clone(),
+            vertices: geometry.vertices.clone(),
+            indices: geometry.indices.clone(),
             texture: None,
         };
         for v in &mut mesh.vertices {
             v.position = vp.transform_point3(at.transform_point3(v.position));
             v.normal = vec4(0., 0., -1., 0.);
         }
-        gl_use_material(if arrival { &self.particle } else { &self.clip });
+        gl_use_material(if no_depth { &self.particle } else { &self.clip });
         draw_batched(&mesh);
     }
     fn effects(&self, assets: &Assets, g: &Snowball, vp: Mat4) {
@@ -1103,6 +1093,54 @@ mod removal_tests {
                         (a as f64 - b).abs() < 0.0003,
                         "{} {name}[{i}]: {a} vs {b}",
                         row["tick"]
+                    );
+                }
+            }
+        }
+    }
+}
+
+fn world_vp(camera: V, w: f32, h: f32) -> Mat4 {
+    let p = Mat4::orthographic_rh_gl(-w / 2., w / 2., -h / 2., h / 2., 1., 100000.);
+    let eye = vec3(camera.x as f32, camera.y as f32, -3200.);
+    p * Mat4::look_at_rh(eye, eye + Vec3::Z, -Vec3::Y) * Mat4::from_rotation_x(4. * PI / 5.)
+}
+
+fn destination_matrix(marker: V, cell_size: f32) -> Mat4 {
+    Mat4::from_translation(vec3(marker.x as f32, marker.y as f32, cell_size * 0.5))
+        * Mat4::from_rotation_z(PI / 4.)
+}
+
+#[cfg(test)]
+mod destination_tests {
+    use super::*;
+    #[test]
+    fn destination_shape_and_projection_match_actual_three() {
+        let data: Value =
+            serde_json::from_str(include_str!("../data/snowball-command-reference.json")).unwrap();
+        let mesh = geometry(include_str!(
+            "../data/snowball-destination-marker-geometry.json"
+        ));
+        assert_eq!(mesh.vertices.len(), 12);
+        for row in data["projections"].as_array().unwrap() {
+            let v = |a: &Value| V::new(a[0].as_f64().unwrap(), a[1].as_f64().unwrap());
+            let camera = v(&row["camera"]);
+            let target = v(&row["target"]);
+            let vp = world_vp(
+                camera,
+                row["width"].as_f64().unwrap() as f32,
+                row["height"].as_f64().unwrap() as f32,
+            );
+            let model = destination_matrix(
+                V::new(target.x, target.y - 20.),
+                row["cellSize"].as_f64().unwrap() as f32,
+            );
+            for (vertex, expected) in mesh.vertices.iter().zip(row["clip"].as_array().unwrap()) {
+                let clip = vp.transform_point3(model.transform_point3(vertex.position));
+                for (i, c) in clip.to_array().iter().enumerate() {
+                    assert!(
+                        (*c - expected[i].as_f64().unwrap() as f32).abs() < 1e-5,
+                        "{clip:?} != {expected}"
                     );
                 }
             }

@@ -587,6 +587,13 @@ pub enum Phase {
     Intro,
     Playing,
 }
+#[derive(Clone, Copy)]
+enum TargetPosition {
+    Point(V),
+    // BotSystem passes the target's position by reference. Resolve only after
+    // PlayerSystem has parented/positioned arrivals, like the source object.
+    Player(usize),
+}
 pub struct Snowball {
     pub removal: Removal,
     pub parachutes: Parachutes,
@@ -615,6 +622,11 @@ pub struct Snowball {
     last_bot: f64,
     pub seed: u32,
     pending_destination: Option<V>,
+    client_destination: Option<V>,
+    client_target: Option<V>,
+    player_destinations: Vec<(usize, V)>,
+    player_targets: Vec<(usize, TargetPosition)>,
+    pub destination_marker: Option<V>,
     camera_target: Option<V>,
     collision_limit: Option<(f64, f64, V)>,
     collision: Collision,
@@ -653,6 +665,11 @@ impl Snowball {
             last_bot: 0.,
             seed: map_seed,
             pending_destination: None,
+            client_destination: None,
+            client_target: None,
+            player_destinations: vec![],
+            player_targets: vec![],
+            destination_marker: None,
             camera_target: None,
             collision_limit: None,
             collision: Collision::new(Bounds::rect(
@@ -680,6 +697,11 @@ impl Snowball {
         self.client_arrival.teardown();
         self.removal.teardown();
         self.pending_destination = None;
+        self.client_destination = None;
+        self.client_target = None;
+        self.player_destinations.clear();
+        self.player_targets.clear();
+        self.destination_marker = None;
         self.camera_target = None;
         self.collision_limit = None;
         self.knocked_out = 0;
@@ -809,7 +831,34 @@ impl Snowball {
             z: 0.,
         })
     }
-    pub fn destination(&mut self, index: usize, pos: V) {
+    /// Source PlayerSystem maps retain first insertion order and last values.
+    pub fn assign_player_destination(&mut self, index: usize, pos: V) {
+        if self.players.get(index).is_some() {
+            if let Some((_, old)) = self
+                .player_destinations
+                .iter_mut()
+                .find(|(i, _)| *i == index)
+            {
+                *old = pos;
+            } else {
+                self.player_destinations.push((index, pos));
+            }
+        }
+    }
+    pub fn assign_player_target(&mut self, index: usize, pos: V) {
+        self.queue_player_target(index, TargetPosition::Point(pos));
+    }
+    fn queue_player_target(&mut self, index: usize, target: TargetPosition) {
+        // The source also sets hasAssignedTarget for a dead player; Elf.update
+        // retains that flag until a later living update, even when no shot fires.
+        self.players[index].pending_throw = true;
+        if let Some((_, old)) = self.player_targets.iter_mut().find(|(i, _)| *i == index) {
+            *old = target;
+        } else {
+            self.player_targets.push((index, target));
+        }
+    }
+    fn follow_destination(&mut self, index: usize, pos: V) {
         if !self.players[index].alive || !self.players[index].arrived {
             return;
         }
@@ -829,7 +878,7 @@ impl Snowball {
             points.push(pos);
             self.players[index].path = points
         } else if index == 0 {
-            self.throw(index, pos)
+            self.client_target = Some(pos)
         }
     }
     pub fn throw(&mut self, index: usize, target: V) {
@@ -1023,6 +1072,10 @@ impl Snowball {
             self.step(1. / 60., width, height)
         }
     }
+    /// Source ClientSystem.assignTarget clones the position at pick time.
+    pub fn target_position(&mut self, pos: V) {
+        self.client_target = Some(pos);
+    }
     pub fn pick_destination(&mut self, pos: V) {
         self.pending_destination = Some(pos);
     }
@@ -1059,13 +1112,21 @@ impl Snowball {
             self.gameover = true
         }
         if let Some(destination) = self.pending_destination.take() {
-            if self.players[0].alive {
-                self.destination(0, destination)
-            } else {
-                self.camera_target = Some(destination)
+            if let Some(p) = self.players.first() {
+                if p.alive {
+                    // MainLevel forwards to Client, not directly to PlayerSystem.
+                    self.client_destination = Some(destination);
+                } else {
+                    self.camera_target = Some(destination);
+                }
             }
         }
         if let Some(p) = self.players.first() {
+            // MainLevel always reassigns the living client as tracker target,
+            // including while unarrived/exiting; an old dead-player pick expires.
+            if p.alive {
+                self.camera_target = None;
+            }
             let target = if p.alive && p.arrived && !p.presence.exiting() && !p.presence.gone() {
                 Some(p.pos)
             } else if !p.alive {
@@ -1280,6 +1341,11 @@ impl Snowball {
             }
         }
         self.update_parachutes(tick);
+        // MapSystem precedes Client/Player commands: retain this rendered marker
+        // until the following map update, even if movement reaches its endpoint.
+        if let Some(p) = self.players.first() {
+            self.destination_marker = p.path.last().map(|p| V::new(p.x, p.y - 20.));
+        }
         self.client_arrival.update(
             self.players
                 .first()
@@ -1301,6 +1367,12 @@ impl Snowball {
         if self.players.first().is_some_and(|p| p.alive) {
             self.hud_knockouts = self.knocked_out;
             self.hud_time = self.time / 1000.;
+            if let Some(destination) = self.client_destination.take() {
+                self.assign_player_destination(0, destination);
+            }
+            if let Some(target) = self.client_target.take() {
+                self.assign_player_target(0, target);
+            }
         }
         // Bots consume randomness per rendered update, not a catch-up fixed loop.
         let mut moves = vec![];
@@ -1361,10 +1433,25 @@ impl Snowball {
             }
         }
         for (i, p) in moves {
-            self.destination(i, p)
+            self.assign_player_destination(i, p)
         }
         for (i, j) in throws {
-            self.throw(i, self.players[j].pos)
+            self.queue_player_target(i, TargetPosition::Player(j))
+        }
+        // All destinations precede all targeted positions. A failed local path
+        // feeds Client for its NEXT update; it cannot fire in this Player pass.
+        for (i, destination) in std::mem::take(&mut self.player_destinations) {
+            self.follow_destination(i, destination);
+        }
+        for (i, target) in std::mem::take(&mut self.player_targets) {
+            if !self.players[i].alive {
+                continue;
+            }
+            let position = match target {
+                TargetPosition::Point(p) => p,
+                TargetPosition::Player(j) => self.players[j].pos,
+            };
+            self.throw(i, position);
         }
         let mut freezing = vec![];
         for (i, p) in self.players.iter_mut().enumerate() {
@@ -2123,6 +2210,164 @@ pub(crate) mod tests {
                 assert_eq!(a, b["quantity"].as_i64().map(|v| v as i32))
             }
             assert_eq!(p.swapped, row["swapped"].as_bool().unwrap())
+        }
+    }
+}
+
+#[cfg(test)]
+mod command_tests {
+    use super::*;
+    fn vector(v: V) -> serde_json::Value {
+        serde_json::json!([v.x, v.y])
+    }
+    fn snapshot(g: &Snowball) -> serde_json::Value {
+        serde_json::json!({
+            "camera":vector(g.camera),
+            "cameraVelocity":vector(g.camera_velocity),
+            "sounds":g.sounds,
+            "pick":g.pending_destination.map(vector),
+            "clientDestination":g.client_destination.map(vector),
+            "clientTarget":g.client_target.map(vector),
+            "players":g.players.iter().map(|p|serde_json::json!({"position":vector(p.pos),"arrived":p.arrived,"alive":p.alive,"face":p.face,"path":p.path.iter().copied().map(vector).collect::<Vec<_>>(),"pending":p.pending_throw,"powerups":[p.powerups.primary,p.powerups.secondary,p.powerups.swapped]})).collect::<Vec<_>>(),
+            "destinations":g.player_destinations.iter().map(|(i,p)|serde_json::json!([i,vector(*p)])).collect::<Vec<_>>(),
+            "targets":g.player_targets.iter().map(|(i,p)|serde_json::json!([i,vector(match p {TargetPosition::Point(p)=>*p,TargetPosition::Player(j)=>g.players[*j].pos})])).collect::<Vec<_>>(),
+            "shots":g.shots.iter().map(|s|serde_json::json!({"id":s.id,"thrower":s.thrower,"origin":vector(s.origin),"target":vector(s.target),"born":s.born,"setup":s.setup,"big":s.big})).collect::<Vec<_>>(),
+            "marker":g.destination_marker.map(vector)
+        })
+    }
+    fn compare(a: &serde_json::Value, b: &serde_json::Value, path: &str) {
+        match (a, b) {
+            (serde_json::Value::Number(x), serde_json::Value::Number(y)) => assert!(
+                (x.as_f64().unwrap() - y.as_f64().unwrap()).abs() < 1e-8,
+                "{path}: {a} != {b}"
+            ),
+            (serde_json::Value::Array(x), serde_json::Value::Array(y)) => {
+                assert_eq!(x.len(), y.len(), "{path}: {a} != {b}");
+                for (i, (x, y)) in x.iter().zip(y).enumerate() {
+                    compare(x, y, &format!("{path}[{i}]"));
+                }
+            }
+            (serde_json::Value::Object(x), serde_json::Value::Object(y)) => {
+                assert_eq!(x.len(), y.len(), "{path}");
+                for (k, x) in x {
+                    compare(x, &y[k], &format!("{path}.{k}"));
+                }
+            }
+            _ => assert_eq!(a, b, "{path}"),
+        }
+    }
+    fn command(g: &mut Snowball, c: &serde_json::Value) {
+        let i = c["player"].as_u64().unwrap_or(0) as usize;
+        let position = || {
+            V::new(
+                c["position"][0].as_f64().unwrap(),
+                c["position"][1].as_f64().unwrap(),
+            )
+        };
+        match c["op"].as_str().unwrap() {
+            "map" => {
+                let p = if c["position"].is_array() {
+                    position()
+                } else {
+                    g.map.grid.pos(c["tile"].as_i64().unwrap() as i32)
+                };
+                g.pick_destination(p);
+            }
+            "target" => g.target_position(g.players[i].pos),
+            "relocate" => g.players[i].pos = position(),
+            "arrive" => g.players[0].arrived = true,
+            "dead" => g.players[i].alive = !c["value"].as_bool().unwrap(),
+            "collect" => g.players[i].powerups.collect(),
+            "swap" => g.players[i].powerups.swapped = !g.players[i].powerups.swapped,
+            "queue-target" => g.assign_player_target(i, position()),
+            "queue-player-target" => g.queue_player_target(
+                i,
+                TargetPosition::Player(c["target"].as_u64().unwrap() as usize),
+            ),
+            "queue-destination" => {
+                g.assign_player_destination(i, g.map.grid.pos(c["tile"].as_i64().unwrap() as i32))
+            }
+            _ => panic!("command {c}"),
+        }
+    }
+    #[test]
+    fn command_stages_match_original_client_player_and_snowball_systems() {
+        let data: serde_json::Value =
+            serde_json::from_str(include_str!("../data/snowball-command-reference.json")).unwrap();
+        assert_eq!(data["cases"].as_array().unwrap().len(), 14);
+        for case in data["cases"].as_array().unwrap() {
+            let mut g = Snowball::new("command-reference");
+            g.start();
+            g.players.truncate(2);
+            g.drops.clear();
+            g.shots.clear();
+            g.particles.clear();
+            g.parachutes = Parachutes::default();
+            g.all_time = 100;
+            g.map.states.fill(1);
+            g.map.obstacles.fill(-1);
+            for i in case["blocked"].as_array().unwrap() {
+                g.map.states[i.as_u64().unwrap() as usize] = 0;
+            }
+            for (i, p) in g.players.iter_mut().enumerate() {
+                p.tile = 2080 + i as i32;
+                p.arrived = !(i == 0 && case["air"].as_bool().unwrap());
+                p.landed = p.arrived;
+                p.setup = true;
+                p.bot = false;
+                p.active = true;
+                p.alive = true;
+                p.face = 0.;
+                p.path.clear();
+                p.pending_throw = false;
+                p.pos = if p.arrived {
+                    g.map.grid.pos(p.tile)
+                } else {
+                    V::default()
+                };
+                p.parent = if p.arrived {
+                    Parent::Map
+                } else {
+                    Parent::Detached
+                };
+            }
+            g.sounds.clear();
+            compare(
+                &snapshot(&g),
+                &case["initial"],
+                &format!("{} initial", case["name"]),
+            );
+            let mut previous = 0.;
+            for (index, row) in case["frames"].as_array().unwrap().iter().enumerate() {
+                g.sounds.clear();
+                let at = row["at"].as_f64().unwrap();
+                g.begin_frame((at - previous) / 1000., 1440., 800.);
+                previous = at;
+                let label = format!("{} frame {index}", case["name"]);
+                compare(&snapshot(&g), &row["render"], &format!("{label} render"));
+                for c in row["input"]["input"].as_array().into_iter().flatten() {
+                    command(&mut g, c);
+                }
+                compare(&snapshot(&g), &row["afterInput"], &format!("{label} input"));
+                // These explicit bot-boundary calls only assign queues/flags;
+                // no source AI/physics decision is replaced or certified here.
+                for c in row["input"]["bot"].as_array().into_iter().flatten() {
+                    command(&mut g, c);
+                }
+                // The original oracle has no collision phase. Isolate the same
+                // boundary while running actual production begin/finish code.
+                g.collision = Collision::new(Bounds::rect(
+                    V::default(),
+                    g.map.grid.pixel_width(),
+                    g.map.grid.pixel_height(),
+                ));
+                g.finish_frame(1440., 800.);
+                compare(
+                    &snapshot(&g),
+                    &row["afterPlayer"],
+                    &format!("{label} player"),
+                );
+            }
         }
     }
 }

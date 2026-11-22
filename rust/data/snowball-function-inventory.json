@@ -1908,7 +1908,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/levels/main-level.js",
       "lines": 145,
-      "review": "Camera alive/arrival/exiting/gone guards and dead-target behavior checked in 28 explicit original frames. measure updates tether; initial level camera origin preserved. Full MainLevel setup/UI/teardown and map-pick/client command order remain partial.",
+      "review": "Local pick forwarding, alive-target reset and existing camera guards checked through actual production Native begin/finish and original MainLevel fixture. Complete setup/UI/teardown/input subscriptions remain partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs",
@@ -2091,7 +2091,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/player-system.js",
       "lines": 277,
-      "review": "New-player setup/queue after ParachuteSystem, same-frame landing/reparent before movement/targeted throws, handler activation and target-position reference through landing checked against actual source. Earlier pickup batching/hit checks retained. Full spawn RNG/pooling/freezing/teardown lifecycle remains partial.",
+      "review": "Per-player last-value/insertion-order queues, post-arrival destination processing, deferred local fallback, target alias resolution, charge selection and pending animation flag checked in 64-frame command fixture. Full spawn/actor pools, generic removal/network/null-map handling and collisions/model lifecycle remain partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -2297,7 +2297,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/map-system.js",
       "lines": 137,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Destination-marker update now snapshots pre-Client/Player path state, with delayed appearance/reached visibility checked in command fixture. Map rebuild/obstacle/input/camera general lifecycle remain partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -2508,7 +2508,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/client-system.js",
       "lines": 151,
-      "review": "Living arrival-marker branches and camera snap translated with attach-once, valid tile, landed detach, dead/no-player early returns and teardown. 28 original Client/MainLevel/tracker frames compare bounded state; prior concrete death observation checks remain. Deferred target/destination/network/host score, real player assignment/removal, retained restart fields remain partial. See SOURCE-COVERAGE client follow-up.",
+      "review": "Local destination/target clone/retention/forwarding order now checked with actual MainLevel/Client/Player/Snowball classes: 14 cases, 64 frames; source arrival/death evidence remains. Native network/host score events, generic assignment/removal and complete lifecycle remain partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs",
@@ -2955,7 +2955,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/entities/destination-marker.js",
       "lines": 76,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Actual constructor 12-vertex ShapeBufferGeometry and setup rotation/z/material semantics translated; two viewport CPU clip-coordinate comparisons pass. GPU pixels/transparent ordering/host composition unverified.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
