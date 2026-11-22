@@ -1763,3 +1763,48 @@ not filtering/material/camera issues. Native trilinear filtering is applied more
 broadly than original THREE's three memoized maps; CSS UI and generated textures
 still need matched sampling/render-scale evidence. No speculative sharpening,
 nearest filtering or art changes were applied, and clarity remains unresolved.
+
+
+### Snowball intro SVG density — 22 November 2026 (no window tests)
+
+Source reread: complete scene index.js, index.html and index.scss, the powerup
+status element, and the active SVG decoder/draw paths. Actual CPU decode, not
+an assumed viewBox size, establishes the intro sampling gap:
+
+- The loading-cloud vector decodes to 118x71 and the existing draw stretches it
+  to 426.546x256 logical pixels on desktop. Its sample coverage was about .277
+  per display pixel at 1x and .139 at 2x. Raster scale 8 produces 944x568;
+  coverage is now at least 1.106 samples per display pixel at 2x.
+- The parachuting-elf SVG has a 512x512 viewBox and old decode; the selected
+  quarter is 256x256, displayed at 160x160 (or 100x100 on mobile). It already
+  covered 1x, but its .8 samples per pixel at 2x required enlargement. Raster
+  scale 2 produces a 1024x1024 sheet / 512x512 selected crop, covering 2x at
+  1.6 samples per pixel. The initial unmeasured 90x90 claim was incorrect and
+  was corrected before this change. Do not repeat it as source evidence.
+
+Only two SVG raster-scale branches changed. Original SVG bytes, PNGs,
+scene_size logical bounds, fractional source crop, destination size/position,
+animation clocks, input and world textures remain unchanged. The production
+CPU decoder reports the same decoded bounds after dividing out the raster
+scale, and no enlarged bitmap is needed for the recorded 1x/2x cases.
+Decoded RGBA storage grows by 5,256,984 bytes for these two textures; GPU mipmaps
+add further storage. Cold-load/upload timing has not been profiled.
+
+The new ordinary-main `snowball_texture_audit` example runs without a window,
+GPU or input. It exports top-down CPU PNG bytes directly (Macroquad's Image
+export_png flips GPU readback rows, so is unsuitable here). Before/after records,
+source hashes and scope are in `snowball-intro-density-audit.json`. An offline
+bilinear illustration of decoded pixels was inspected: the cloud no longer
+shows the pronounced low-resolution enlarged edge. This is not a native GPU or
+Chromium screenshot comparison; browser filter/compositor parity remains open.
+All 97 existing tests pass and the release binary builds. No window or interactive tests were run, preserving
+the user's request to leave their game alone.
+
+This addresses a specific intro bitmap-density error. It does not establish
+that all reported unclear Snowball/world textures are fixed. CSS PNG sampling,
+3D minification, generated elf-map eye raster and their visual appearance still
+require matched evidence; do not replace source filters with arbitrary nearest
+sampling or sharpening. The saved original elf texture samples differ from the
+current binary-circle reconstruction at 302 eye-edge pixels per 512x512 sheet;
+that offline reconstruction is only a locator for future native-generator work,
+not verification of all generated textures or the cause of scene-wide blur.

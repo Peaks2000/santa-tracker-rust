@@ -324,6 +324,14 @@ fn svg_raster_scale(key: &str) -> f32 {
         3.
     } else if key.starts_with("scenes/_shared/img/button/") {
         4.
+    } else if key == "scenes/snowball/img/loading-cloud.svg" {
+        // CSS draws this 117.8x70.7 vector at 426.55x256 logical pixels.
+        // Preserve the layout size while covering the original 2x pixel density.
+        8.
+    } else if key == "scenes/snowball/img/elves-parachuting.svg" {
+        // One quarter of the 512x512 sheet occupies 160x160 logical pixels.
+        // Keep the same source crop; extra samples avoid 2x-density enlargement.
+        2.
     } else if key.ends_with("jetpack/img/levelclouds.svg") {
         5.
     } else {

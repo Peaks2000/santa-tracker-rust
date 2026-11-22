@@ -1,0 +1,132 @@
+{
+  "method": "Actual before/after production CPU decoder. Source CSS desktop cloud height 256 and contained 117.8/70.7 aspect; parachuting-elf sheet background-size 200% and 160x160 selected quarter. Original image assets, renderer destination/crop formulas and simulation are unchanged. Extra decode samples cover 1x and 2x; no GPU/browser render or monitor-DPI-event test was run while the user is playing. The optional saved preview is a CPU bilinear illustration only. This corrects a demonstrated intro SVG sample-density gap, not all unclear world textures. Initial unmeasured 90x90 elf claim was wrong; the actual old full-sheet decode is 512x512 with a 256x256 crop.",
+  "before_reference_commit": "d825d24ce42cd619b8ed7be6ca52de9789a10e29",
+  "source_sha256": {
+    "static/scenes/snowball/index.html": "d8bb81beea01614e4493ef04fc5463db53f3f6830d83fdebe814b8d33f26870e",
+    "static/scenes/snowball/index.scss": "aca651827e912cac3214c87e2eac4eac4e54a1217b2c14c7ecce4510152c20f1",
+    "static/scenes/snowball/index.js": "b2d959e02688b0f1e182255c24a543ee0358a596abb6642486eeea9034328175",
+    "static/scenes/snowball/img/loading-cloud.svg": "e8d6cc8d4f9aea12e201b6cfd8f3f629010f6a3712d1f5f9e317f70ba1f08f2c",
+    "static/scenes/snowball/img/elves-parachuting.svg": "ce31ff22af3371ef7c4b1d9823470cfc1327043c011427786bfacd2da6feda15"
+  },
+  "images": [
+    {
+      "file": "scenes/snowball/img/loading-cloud.svg",
+      "before": {
+        "decoded_size": [
+          118,
+          71
+        ],
+        "display_size_desktop": [
+          426.5459688826025,
+          256.0
+        ],
+        "file": "scenes/snowball/img/loading-cloud.svg",
+        "samples_per_display_pixel_1x": [
+          0.27664075764006796,
+          0.27734375
+        ],
+        "samples_per_display_pixel_2x": [
+          0.13832037882003398,
+          0.138671875
+        ],
+        "source_crop_size": [
+          118.0,
+          71.0
+        ],
+        "svg_size": [
+          117.80000305175781,
+          70.69999694824219
+        ]
+      },
+      "after": {
+        "decoded_size": [
+          944,
+          568
+        ],
+        "display_size_desktop": [
+          426.5459688826025,
+          256.0
+        ],
+        "file": "scenes/snowball/img/loading-cloud.svg",
+        "samples_per_display_pixel_1x": [
+          2.2131260611205437,
+          2.21875
+        ],
+        "samples_per_display_pixel_2x": [
+          1.1065630305602718,
+          1.109375
+        ],
+        "source_crop_size": [
+          944.0,
+          568.0
+        ],
+        "svg_size": [
+          117.80000305175781,
+          70.69999694824219
+        ]
+      },
+      "logical_decoded_bounds_unchanged": true
+    },
+    {
+      "file": "scenes/snowball/img/elves-parachuting.svg",
+      "before": {
+        "decoded_size": [
+          512,
+          512
+        ],
+        "display_size_desktop": [
+          160.0,
+          160.0
+        ],
+        "file": "scenes/snowball/img/elves-parachuting.svg",
+        "samples_per_display_pixel_1x": [
+          1.6,
+          1.6
+        ],
+        "samples_per_display_pixel_2x": [
+          0.8,
+          0.8
+        ],
+        "source_crop_size": [
+          256.0,
+          256.0
+        ],
+        "svg_size": [
+          512.0,
+          512.0
+        ]
+      },
+      "after": {
+        "decoded_size": [
+          1024,
+          1024
+        ],
+        "display_size_desktop": [
+          160.0,
+          160.0
+        ],
+        "file": "scenes/snowball/img/elves-parachuting.svg",
+        "samples_per_display_pixel_1x": [
+          3.2,
+          3.2
+        ],
+        "samples_per_display_pixel_2x": [
+          1.6,
+          1.6
+        ],
+        "source_crop_size": [
+          512.0,
+          512.0
+        ],
+        "svg_size": [
+          512.0,
+          512.0
+        ]
+      },
+      "logical_decoded_bounds_unchanged": true
+    }
+  ],
+  "native_draw_source_sha256_unchanged": "39288ff5da409546b677444b523984cbc41c7c38fe295b005b4bbf64553f6259",
+  "native_asset_policy_sha256": "7fdd6873d334b7796ce424a6d8ac30804e6a5bc2cb04c9f79bcf8de8e4c55a1c",
+  "decoded_rgba_storage_growth_bytes": 5256984
+}

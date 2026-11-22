@@ -470,3 +470,26 @@ an untouched Splash does not start Snowball; earlier time-only app screenshots
 were still the splash. A first XTest attempt failed to capture; injected owned
 X11 window events later produced the recorded descent/game-over images. Do not
 repeat that input test while the user is playing.
+
+
+### Offline intro texture-density pass (22 November 2026)
+
+No window/input tests while the user is playing. `snowball_texture_audit` is a
+normal-main CPU-only example: it invokes the actual Assets decoder, parses
+source SVG bounds and records sample coverage for existing CSS/draw sizes.
+The cloud was 118x71 enlarged to 426.546x256; scale 8 now decodes 944x568.
+The elf sheet was 512x512 with a 256x256 selected quarter, so 160x160 at 2x
+was enlarged. Scale 2 now yields 1024x1024 with a 512x512 selected crop.
+Only raster density changed; logical bounds/crops/destinations/timing remain.
+See `snowball-intro-density-audit.json` for before/after/source hashes and scope.
+The first 90x90 elf claim was an unmeasured mistake, corrected before the change;
+actual CPU decode measured 512x512. Do not copy that initial claim.
+
+The offline bilinear preview demonstrates the cloud's former enlarged-bitmap
+edge, not Chromium or native GPU rendering. All 97 tests pass; no GPU/window
+check was run after this density change. Two RGBA decodes add about 5 MiB plus
+mipmaps; cold-load timing is unprofiled. General unclear world textures remain
+open. Existing reference elf texture PNGs can locate the binary-circle eye-AA
+difference without opening a window; source PNG byte identity does not prove
+sampling or generated-texture parity. CPU Image.export_png flips rows because
+it targets GPU readbacks: use png::Encoder on decoded top-down bytes instead.
