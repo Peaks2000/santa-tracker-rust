@@ -21,22 +21,26 @@ pub fn physical_clip(
     };
     (left, top, width, height)
 }
+/// Size of the current draw surface, including offscreen render targets.
+pub fn framebuffer_size() -> (u32, u32) {
+    use macroquad::prelude::*;
+    unsafe {
+        let gl = get_internal_gl();
+        if let Some(pass) = gl.quad_gl.get_active_render_pass() {
+            let texture = gl.quad_context.render_pass_texture(pass);
+            gl.quad_context.texture_size(texture)
+        } else {
+            let (w, h) = macroquad::miniquad::window::screen_size();
+            (w as u32, h as u32)
+        }
+    }
+}
 pub fn scissor(clip: Option<(i32, i32, i32, i32)>) {
     use macroquad::prelude::*;
     let logical = (screen_width(), screen_height());
+    let clip = clip.map(|clip| physical_clip(clip, logical, framebuffer_size()));
     unsafe {
-        let gl = get_internal_gl();
-        let clip = clip.map(|clip| {
-            let physical = if let Some(pass) = gl.quad_gl.get_active_render_pass() {
-                let texture = gl.quad_context.render_pass_texture(pass);
-                gl.quad_context.texture_size(texture)
-            } else {
-                let (w, h) = macroquad::miniquad::window::screen_size();
-                (w as u32, h as u32)
-            };
-            physical_clip(clip, logical, physical)
-        });
-        gl.quad_gl.scissor(clip);
+        get_internal_gl().quad_gl.scissor(clip);
     }
 }
 #[cfg(test)]

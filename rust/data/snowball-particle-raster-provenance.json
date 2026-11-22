@@ -1,0 +1,97 @@
+{
+  "method": "Complete original effect/component/projectile module review and renderer material-uniform dispatch source tracing. No renderer, GPU, browser, native window or OS input.",
+  "changes": {
+    "point_size": "Trail and Snowsplat use RawShaderMaterial explicit gl_PointSize. THREE refreshUniformsPoints applies DPR only to PointsMaterial, so native quad extents must divide by current physical framebuffer dimensions, not logical window size.",
+    "ordering": "EffectSystem adds Trail layer then Snowsplat layer. Native now emits all trail particles before all impacts. Within-layer ring-buffer indexing remains unfinished.",
+    "arithmetic": "Vertex elapsed/random calculations now cast uniform/attribute inputs to f32 before operations, and trail uses source literal PI=3.14159. Native still does not emulate GPU transcendental precision or pixel rasterization.",
+    "visibility": "Trail displayTime<=0 and impact displayTime<1 now suppressed like source fragments, plus existing duration end guards."
+  },
+  "dimension_examples": [
+    {
+      "logical": [
+        1440,
+        800
+      ],
+      "physical": [
+        1440,
+        800
+      ],
+      "point_size": 60,
+      "expected_logical_width": 60
+    },
+    {
+      "logical": [
+        1440,
+        800
+      ],
+      "physical": [
+        1800,
+        1000
+      ],
+      "point_size": 60,
+      "expected_logical_width": 48
+    },
+    {
+      "logical": [
+        1440,
+        800
+      ],
+      "physical": [
+        2880,
+        1600
+      ],
+      "point_size": 60,
+      "expected_logical_width": 30
+    }
+  ],
+  "example_scope": "Analytical viewport conversion, not observed GPU point coverage. Hardware point-size range/clamping/point coverage are not emulated by native quads.",
+  "unfinished": [
+    "Fixed 500 trail / 2000 impact rings, persistent random-per-slot values, wrap/drop indexing, source pooled registration/removal and restart lifetime.",
+    "Source effect-stage enqueue/flush order and whole-match RNG consumption; native particles are still unbounded chronological emissions retained by age.",
+    "GPU point coverage/subpixel center rounding, point size hardware limits, effect texture orientation/minification and complete composite draw order.",
+    "General user texture-clarity report and all-scene parity remain unverified."
+  ],
+  "source_sha256": {
+    "static/scenes/snowball/js/snowball/effects/trail-effect.js": "2a86c3cd50ac602779908019033e24294f599cb7d5c6ddc2777f871b8661efa8",
+    "static/scenes/snowball/js/snowball/effects/snowsplat-effect.js": "5275032a11f78d821dc5e64ab3573cc2096596e16c258f76aa29f1c63ad2f11e",
+    "static/scenes/snowball/js/snowball/systems/effect-system.js": "87107f41fd15ae291aa8f192f5e83c3ab6825de09239af7f89835a7d160a183d",
+    "static/scenes/snowball/js/snowball/entities/snowball.js": "3c0e0c2577486cf5c6827d8a178df4475c31ea34fa41c6860deabbcc5df15749",
+    "static/scenes/snowball/js/snowball/entities/snowballs/big-snowball.js": "1660b4aa4a18ebb31ee77cd8dfd1aefb535481f02632daeb5713e673b6a07b65",
+    "static/scenes/snowball/js/snowball/components/trail.js": "f2b181b2087fa14fa7d97500cc81c6dd16fde75c191e2c9d1bef6f1d328c6085",
+    "static/scenes/snowball/js/snowball/components/splat.js": "8609c6aceb6a10c3f6d7de75622ddab674cfd612eb7bb7518e1a0b0f9bc63fe2",
+    "static/third_party/lib/three/build/three.js": "6467e0098991c58a5c6e64415c7126079672b4e0927c3203589644db96c64b60"
+  },
+  "original_constructor_observation": {
+    "scope": "Original effect constructors and actual THREE transparent-list sort; no renderer or shader execution. Constant RNG .5 only initializes unused random attributes; no updates/gameplay/load IO executed.",
+    "layers": [
+      {
+        "name": "trail",
+        "isPoints": true,
+        "raw": true,
+        "pointsMaterial": false,
+        "depthTest": false,
+        "transparent": true,
+        "capacity": 500,
+        "vertexPointSize": [
+          "gl_PointSize = size * scale;"
+        ]
+      },
+      {
+        "name": "impact",
+        "isPoints": true,
+        "raw": true,
+        "pointsMaterial": false,
+        "depthTest": false,
+        "transparent": true,
+        "capacity": 2000,
+        "vertexPointSize": [
+          "gl_PointSize = (halfSize * random + halfSize + eighthSize) * (1.0 - elapsed);"
+        ]
+      }
+    ],
+    "transparentOrder": [
+      "trail",
+      "impact"
+    ]
+  }
+}

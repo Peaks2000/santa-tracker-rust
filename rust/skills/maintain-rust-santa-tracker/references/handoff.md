@@ -639,3 +639,21 @@ unresolved pending visual verification; don't claim full mode 1:1.
 
 All 103 tests pass (92 library + 11 binary). Release application and capture
 diagnostic build; neither was executed. No window, GPU context or input used.
+
+
+### Raw particle raster pass (22 November 2026)
+
+No windows/input. Both original effects are RawShaderMaterial Points, not
+PointsMaterial, so their explicit gl_PointSize is physical pixels without DPR
+uniform scaling. Native quads now divide by surface::framebuffer_size (extracted
+from existing scissor lookup). Trail layer draws before impact layer, confirmed
+by CPU actual effect constructors/THREE transparent sort. Vertex elapsed/random
+math now uses f32 source attribute inputs, trail PI=3.14159 and fragment birth
+cutoffs. See particle-raster provenance and reference-only VM script.
+This does NOT implement fixed 500/2000 slot rings, persistent random slots, source
+wrap bug, pooled registration/restart lifetime or precise effect-stage updates.
+GPU point-size hardware clamp/coverage/rounding, texture orientation and complete
+scene sorting remain unverified. All 103 tests pass; no windows were launched.
+
+Release application and snowball_capture diagnostic build. Neither was run;
+GPU appearance remains unverified while the user plays.

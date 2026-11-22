@@ -2452,7 +2452,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/effect-system.js",
       "lines": 53,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; native physical-pixel point quad sizes, layer ordering, birth guards and f32 input arithmetic corrected from complete source; original constructors/THREE stable transparent sorting CPU-observed; fixed ring indexing/random reuse/update lifetime and GPU point raster remain unfinished",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -3046,7 +3046,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/effects/trail-effect.js",
       "lines": 175,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; native physical-pixel point quad sizes, layer ordering, birth guards and f32 input arithmetic corrected from complete source; original constructors/THREE stable transparent sorting CPU-observed; fixed ring indexing/random reuse/update lifetime and GPU point raster remain unfinished",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -3093,7 +3093,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/effects/snowsplat-effect.js",
       "lines": 193,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; native physical-pixel point quad sizes, layer ordering, birth guards and f32 input arithmetic corrected from complete source; original constructors/THREE stable transparent sorting CPU-observed; fixed ring indexing/random reuse/update lifetime and GPU point raster remain unfinished",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"

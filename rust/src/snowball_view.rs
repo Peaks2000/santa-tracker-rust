@@ -647,28 +647,38 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             indices: vec![],
             texture: Some(assets.scene("snowball", "snowball.png").clone()),
         };
-        for p in &g.particles {
-            let elapsed = ((g.time - p.born) / if p.trail { 700. } else { 300. }) as f32;
-            if elapsed >= 1. {
+        // RawShaderMaterial gl_PointSize is in framebuffer pixels: THREE's
+        // PointsMaterial-only pixel-ratio scaling does not apply here.
+        let (pixel_width, pixel_height) = santa_tracker::surface::framebuffer_size();
+        // EffectSystem draws the entire trail layer before the impact layer.
+        for p in [true, false]
+            .into_iter()
+            .flat_map(|trail| g.particles.iter().filter(move |p| p.trail == trail))
+        {
+            let born = p.born as f32;
+            let delta = g.time as f32 - born;
+            let elapsed = delta / if p.trail { 700. } else { 300. };
+            if elapsed >= 1. || if p.trail { born <= 0. } else { born < 1. } {
                 continue;
             }
             let (offset, size) = if p.trail {
                 (
-                    vec2(0., -(75. - (PI / 2. + PI / 2. * elapsed).sin() * 75.)),
+                    vec2(0., -(75. - (3.14159 / 2. + 3.14159 / 2. * elapsed).sin() * 75.)),
                     p.size as f32 * (10. - elapsed * 7.5),
                 )
             } else {
-                let spread = PI / -3. * p.random as f32 + PI / 6.;
+                let random = p.random as f32;
+                let spread = PI / -3. * random + PI / 6.;
                 let d = vec2(p.direction.x as f32, p.direction.y as f32);
                 let rotated = vec2(
                     spread.cos() * d.x + spread.sin() * d.y,
                     -spread.sin() * d.x + spread.cos() * d.y,
                 );
-                let mut offset = rotated * ((p.random * 7.158).fract() as f32 * 85. * elapsed);
+                let mut offset = rotated * ((random * 7.158).fract() * 85. * elapsed);
                 offset.y -= (3. * elapsed).powi(2);
                 (
                     offset,
-                    (p.size / 2. * p.random + p.size / 2. + p.size / 8.) as f32 * (1. - elapsed),
+                    (p.size as f32 / 2. * random + p.size as f32 / 2. + p.size as f32 / 8.) * (1. - elapsed),
                 )
             };
             let center = vp.transform_point3(vec3(
@@ -686,8 +696,8 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
                 let mut v = Vertex::new2(
                     center
                         + vec3(
-                            delta.x * size / screen_width(),
-                            delta.y * size / screen_height(),
+                            delta.x * size / pixel_width as f32,
+                            delta.y * size / pixel_height as f32,
                             0.,
                         ),
                     uv,

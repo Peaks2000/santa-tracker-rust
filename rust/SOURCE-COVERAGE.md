@@ -2081,3 +2081,45 @@ remain incomplete. No window/focus/input or README/user-rating change.
 
 All 103 tests pass (92 library + 11 binary). Release application and capture
 diagnostic build; neither was executed. No window, GPU context or input used.
+
+
+### Snowball point-effect raster configuration (22 November 2026)
+
+Complete TrailEffect, SnowsplatEffect, EffectSystem, Trail/Splat components and
+normal/big Snowball source reviewed. Both effect layers use Points with explicit
+RawShaderMaterial gl_PointSize. Renderer refreshUniformsPoints multiplies size
+by pixel ratio only for isPointsMaterial, which these materials are not. Native
+quad expansion previously divided size by logical screen dimensions, enlarging
+points at high DPI. It now divides by the active physical framebuffer size,
+including offscreen targets. For an analytical 60px point at 1/1.25/2x, logical
+width is 60/48/30px. These are viewport equations, not observed raster footprints.
+Existing active-target size lookup was extracted from surface::scissor and
+shared; clipping arithmetic and caller coordinates remain unchanged.
+
+Native emits trails before impacts rather than interleaving chronological
+emissions. CPU original effect constructors plus actual THREE WebGLRenderList
+sort (pushed in reverse to distinguish insertion from stable ID sorting) confirm
+trail then impact for their equal transform/depth/order roots. Raw material flags,
+depthTest=false, capacities 500/2000 and literal point-size shader assignments
+are observed. The reference script adds only an internal export to the bundle;
+source modules are unchanged. Constant RNG=.5 applies only to construction's
+unused random array, not gameplay parity. No renderer/window/GPU/network/input.
+
+Vertex arithmetic now starts from f32 uniform/attribute inputs like source: time
+and displayTime cast separately before subtraction, random cast before fract,
+float size calculations; trail retains its own PI=3.14159 literal. Native also
+honors source trail displayTime<=0 and impact displayTime<1 fragment guards.
+No new pipeline or texture filtering change. GPU transcendental precision,
+point coverage/center rounding, hardware size-range clamping, texture orientation
+and complete scene transparent ordering remain unverified. Fixed source 500/2000
+slot rings, persistent per-slot randoms, wrap quirks, exact effect-stage emission
+and pooled registration/restart lifecycle are NOT implemented by this pass.
+Native remains chronological age-retained emissions within each layer.
+
+All 103 tests pass (92 library + 11 binary); no new mirror tests were added for
+these source-traced render changes. See snowball-particle-raster-provenance.json
+for observed flags, source hashes and explicit limits. General texture clarity
+and full mode/site 1:1 remain unfinished; user feedback/README ratings preserved.
+
+Release application and snowball_capture diagnostic build. Neither was run;
+GPU appearance remains unverified while the user plays.
