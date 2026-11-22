@@ -133,22 +133,20 @@ impl View {
         }
     }
     fn clip(&self, r: Option<Rect>) {
-        unsafe {
-            get_internal_gl().quad_gl.scissor(r.map(|r| {
-                let x = self.x + r.x * self.scale;
-                let y = self.y + r.y * self.scale;
-                let l = x.max(0.).floor();
-                let t = y.max(0.).floor();
-                let right = (x + r.w * self.scale).min(screen_width()).ceil();
-                let bottom = (y + r.h * self.scale).min(screen_height()).ceil();
-                (
-                    l as i32,
-                    t as i32,
-                    (right - l).max(0.) as i32,
-                    (bottom - t).max(0.) as i32,
-                )
-            }));
-        }
+        santa_tracker::surface::scissor(r.map(|r| {
+            let x = self.x + r.x * self.scale;
+            let y = self.y + r.y * self.scale;
+            let l = x.max(0.).floor();
+            let t = y.max(0.).floor();
+            let right = (x + r.w * self.scale).min(screen_width()).ceil();
+            let bottom = (y + r.h * self.scale).min(screen_height()).ceil();
+            (
+                l as i32,
+                t as i32,
+                (right - l).max(0.) as i32,
+                (bottom - t).max(0.) as i32,
+            )
+        }));
     }
     fn text(&self, text: &str, x: f32, y: f32, size: f32, alpha: f32, title: bool) {
         draw_text_ex(
@@ -178,14 +176,12 @@ impl View {
         // Background .wall isn't transformed; only its CSS height and the window
         // tile size change with media queries. Its pattern is centered on viewport.
         let wall_height = layout.wall_height as f32;
-        unsafe {
-            get_internal_gl().quad_gl.scissor(Some((
-                0,
-                self.y as i32,
-                screen_width() as i32,
-                wall_height.ceil() as i32,
-            )));
-        }
+        santa_tracker::surface::scissor(Some((
+            0,
+            self.y as i32,
+            screen_width() as i32,
+            wall_height.ceil() as i32,
+        )));
         let tw = 368. * s;
         let mut px = screen_width() / 2. - tw / 2.;
         while px > 0. {

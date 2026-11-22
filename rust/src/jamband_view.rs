@@ -369,11 +369,7 @@ impl JambandView {
             });
         }
         if let Some(c) = current_clip {
-            unsafe {
-                get_internal_gl()
-                    .quad_gl
-                    .scissor(Some((c.x as i32, c.y as i32, c.w as i32, c.h as i32)));
-            }
+            santa_tracker::surface::scissor(Some((c.x as i32, c.y as i32, c.w as i32, c.h as i32)));
         }
         let bg = rgba(&n.bg, alpha);
         if bg.a > 0. {
@@ -423,11 +419,9 @@ impl JambandView {
         for child in &n.children {
             self.node(a, child, m, t, alpha, viewport, environment, current_clip)
         }
-        unsafe {
-            get_internal_gl()
-                .quad_gl
-                .scissor(clip.map(|c| (c.x as i32, c.y as i32, c.w as i32, c.h as i32)));
-        }
+        santa_tracker::surface::scissor(
+            clip.map(|c| (c.x as i32, c.y as i32, c.w as i32, c.h as i32)),
+        );
     }
     pub fn draw(&mut self, a: &Assets, g: &mut Jamband, input: bool) {
         let (w, h) = (screen_width(), screen_height());
@@ -655,20 +649,16 @@ impl JambandView {
                 n.wh[1] * gui,
             );
             if !collapsed && self.drag.as_ref().is_none_or(|d| d.0 != i) {
-                unsafe {
-                    get_internal_gl().quad_gl.scissor(Some((
-                        tray.x as i32,
-                        tray.y as i32,
-                        tray.w as i32,
-                        tray.h as i32,
-                    )));
-                }
+                santa_tracker::surface::scissor(Some((
+                    tray.x as i32,
+                    tray.y as i32,
+                    tray.w as i32,
+                    tray.h as i32,
+                )));
                 let mat = Mat3::from_translation(r.point() + r.size() * 0.1)
                     * Mat3::from_scale(vec2(gui * 0.8, gui * 0.8));
                 self.node(a, n, mat, 0., 1., vec2(w, h), false, Some(tray));
-                unsafe {
-                    get_internal_gl().quad_gl.scissor(None);
-                }
+                santa_tracker::surface::scissor(None);
                 if r.contains(m) && tray.contains(m) {
                     hit = Some((i, r));
                 }

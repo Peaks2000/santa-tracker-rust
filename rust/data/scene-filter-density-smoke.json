@@ -1,0 +1,249 @@
+{
+  "disabled": [
+    {
+      "green": [
+        55,
+        88,
+        62,
+        255
+      ],
+      "ratio": 2.0
+    },
+    {
+      "green": [
+        55,
+        88,
+        62,
+        255
+      ],
+      "ratio": 1.25
+    },
+    {
+      "green": [
+        55,
+        88,
+        62,
+        255
+      ],
+      "ratio": 1.0
+    },
+    {
+      "green": [
+        55,
+        88,
+        62,
+        255
+      ],
+      "ratio": 2.0
+    }
+  ],
+  "enabled": [
+    {
+      "clip_blue": [
+        0,
+        119,
+        242,
+        255
+      ],
+      "clip_outside": [
+        17,
+        34,
+        51,
+        255
+      ],
+      "green": [
+        0,
+        226,
+        48,
+        255
+      ],
+      "logical": [
+        320.0,
+        240.0
+      ],
+      "presented_green": [
+        0,
+        226,
+        48,
+        255
+      ],
+      "ratio": 1.0,
+      "red": [
+        229,
+        40,
+        56,
+        255
+      ],
+      "target": [
+        320,
+        240
+      ]
+    },
+    {
+      "clip_blue": [
+        0,
+        119,
+        242,
+        255
+      ],
+      "clip_outside": [
+        17,
+        34,
+        51,
+        255
+      ],
+      "green": [
+        0,
+        226,
+        48,
+        255
+      ],
+      "logical": [
+        320.0,
+        240.0
+      ],
+      "presented_green": [
+        0,
+        226,
+        48,
+        255
+      ],
+      "ratio": 2.0,
+      "red": [
+        229,
+        40,
+        56,
+        255
+      ],
+      "target": [
+        640,
+        480
+      ]
+    },
+    {
+      "clip_blue": [
+        0,
+        119,
+        242,
+        255
+      ],
+      "clip_outside": [
+        17,
+        34,
+        51,
+        255
+      ],
+      "green": [
+        0,
+        226,
+        48,
+        255
+      ],
+      "logical": [
+        320.0,
+        240.0
+      ],
+      "presented_green": [
+        0,
+        226,
+        48,
+        255
+      ],
+      "ratio": 1.25,
+      "red": [
+        229,
+        40,
+        56,
+        255
+      ],
+      "target": [
+        400,
+        300
+      ]
+    },
+    {
+      "clip_blue": [
+        0,
+        119,
+        242,
+        255
+      ],
+      "clip_outside": [
+        17,
+        34,
+        51,
+        255
+      ],
+      "green": [
+        0,
+        226,
+        48,
+        255
+      ],
+      "logical": [
+        320.0,
+        240.0
+      ],
+      "presented_green": [
+        0,
+        226,
+        48,
+        255
+      ],
+      "ratio": 1.0,
+      "red": [
+        229,
+        40,
+        56,
+        255
+      ],
+      "target": [
+        320,
+        240
+      ]
+    },
+    {
+      "clip_blue": [
+        0,
+        119,
+        242,
+        255
+      ],
+      "clip_outside": [
+        17,
+        34,
+        51,
+        255
+      ],
+      "green": [
+        0,
+        226,
+        48,
+        255
+      ],
+      "logical": [
+        320.0,
+        240.0
+      ],
+      "presented_green": [
+        0,
+        226,
+        48,
+        255
+      ],
+      "ratio": 2.0,
+      "red": [
+        229,
+        40,
+        56,
+        255
+      ],
+      "target": [
+        640,
+        480
+      ]
+    }
+  ],
+  "method": "Actual production SceneFilter and framebuffer-aware logical scissor helper with GPU readback. Explicit ratios exercise physical target sizes, logical geometry/clipping/blit, resize/reallocation, opaque enabled presentation and disabled cached fades. Actual OS DPI is recorded; override tests do not certify native monitor/DPI event delivery or every scene/font/UI path.",
+  "os_ratio": 1.0
+}

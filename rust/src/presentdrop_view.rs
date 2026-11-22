@@ -248,14 +248,12 @@ impl PresentDropView {
             Vec2::ZERO,
         );
         // The source stage clips all inner content, including scrolling backgrounds.
-        unsafe {
-            get_internal_gl().quad_gl.scissor(Some((
-                st.x.round() as i32,
-                st.y.round() as i32,
-                (889. * s).round() as i32,
-                (660. * s).round() as i32,
-            )));
-        }
+        santa_tracker::surface::scissor(Some((
+            st.x.round() as i32,
+            st.y.round() as i32,
+            (889. * s).round() as i32,
+            (660. * s).round() as i32,
+        )));
         rect(st, 0., 0., 889., 660., 0x002c65);
         rect(st, 0., 0., 889., 10., 0x818181);
         for x in [90., 290., 490., 690.] {
@@ -515,8 +513,6 @@ impl PresentDropView {
                 Color::new(0., 0., 0., 0.1),
             );
         }
-        unsafe {
-            get_internal_gl().quad_gl.scissor(None);
-        }
+        santa_tracker::surface::scissor(None);
     }
 }

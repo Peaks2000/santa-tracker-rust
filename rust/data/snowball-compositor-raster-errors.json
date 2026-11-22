@@ -1,0 +1,502 @@
+{
+  "scope": "27 isolated original/native present/canopy/iceberg cases at logical 1440x800 and pixel ratios 1, 1.25 and 2. Original bundled THREE uses actual browser deviceScaleFactor and renderer pixel ratio. Native uses production SceneFilter with an explicit surface pixel ratio, GPU readback and opaque RGB presentation equivalent; actual OS DPI is 1, so monitor events and every scene/font/UI path are not certified. Native imports measured original transforms; not whole-match or whole-scene parity. Earlier direct-window MSAA captures bypassed the production compositor and must not be treated as application raster output.",
+  "normal_density_unchanged_cases": [
+    [
+      "arrival",
+      0
+    ],
+    [
+      "arrival",
+      30
+    ],
+    [
+      "arrival",
+      130
+    ],
+    [
+      "arrival",
+      299
+    ],
+    [
+      "removal",
+      6
+    ],
+    [
+      "removal",
+      7
+    ],
+    [
+      "removal",
+      43
+    ],
+    [
+      "removal",
+      81
+    ],
+    [
+      "removal",
+      126
+    ]
+  ],
+  "frames": [
+    {
+      "mode": "arrival",
+      "ratio": 1,
+      "tick": 0,
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        676,
+        66,
+        764,
+        160
+      ],
+      "mae": 0.0018486689814814813,
+      "roi_mae": 0.2574548678272082
+    },
+    {
+      "mode": "arrival",
+      "ratio": 1,
+      "tick": 30,
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        676,
+        90,
+        764,
+        185
+      ],
+      "mae": 0.0017936921296296295,
+      "roi_mae": 0.24716905901116426
+    },
+    {
+      "mode": "arrival",
+      "ratio": 1,
+      "tick": 130,
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        676,
+        172,
+        764,
+        267
+      ],
+      "mae": 0.0017230902777777776,
+      "roi_mae": 0.2374401913875598
+    },
+    {
+      "mode": "arrival",
+      "ratio": 1,
+      "tick": 299,
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        676,
+        312,
+        764,
+        406
+      ],
+      "mae": 0.0021649305555555554,
+      "roi_mae": 0.3014990328820116
+    },
+    {
+      "mode": "arrival",
+      "ratio": 1.25,
+      "tick": 0,
+      "size": [
+        1800,
+        1000
+      ],
+      "box": [
+        845,
+        82,
+        955,
+        200
+      ],
+      "mae": 0.0017755555555555556,
+      "roi_mae": 0.24622496147919878
+    },
+    {
+      "mode": "arrival",
+      "ratio": 1.25,
+      "tick": 30,
+      "size": [
+        1800,
+        1000
+      ],
+      "box": [
+        846,
+        113,
+        956,
+        231
+      ],
+      "mae": 0.001596851851851852,
+      "roi_mae": 0.22144324601951723
+    },
+    {
+      "mode": "arrival",
+      "ratio": 1.25,
+      "tick": 130,
+      "size": [
+        1800,
+        1000
+      ],
+      "box": [
+        844,
+        215,
+        954,
+        334
+      ],
+      "mae": 0.0016081481481481483,
+      "roi_mae": 0.22113572701807996
+    },
+    {
+      "mode": "arrival",
+      "ratio": 1.25,
+      "tick": 299,
+      "size": [
+        1800,
+        1000
+      ],
+      "box": [
+        845,
+        390,
+        955,
+        508
+      ],
+      "mae": 0.0013577777777777778,
+      "roi_mae": 0.18828967642526964
+    },
+    {
+      "mode": "arrival",
+      "ratio": 2,
+      "tick": 0,
+      "size": [
+        2880,
+        1600
+      ],
+      "box": [
+        1352,
+        132,
+        1528,
+        320
+      ],
+      "mae": 0.0008170572916666666,
+      "roi_mae": 0.11378747582205029
+    },
+    {
+      "mode": "arrival",
+      "ratio": 2,
+      "tick": 30,
+      "size": [
+        2880,
+        1600
+      ],
+      "box": [
+        1353,
+        181,
+        1529,
+        370
+      ],
+      "mae": 0.0008694299768518518,
+      "roi_mae": 0.12044051627384961
+    },
+    {
+      "mode": "arrival",
+      "ratio": 2,
+      "tick": 130,
+      "size": [
+        2880,
+        1600
+      ],
+      "box": [
+        1351,
+        346,
+        1527,
+        535
+      ],
+      "mae": 0.0008249421296296296,
+      "roi_mae": 0.11427769761103095
+    },
+    {
+      "mode": "arrival",
+      "ratio": 2,
+      "tick": 299,
+      "size": [
+        2880,
+        1600
+      ],
+      "box": [
+        1352,
+        624,
+        1528,
+        812
+      ],
+      "mae": 0.0007418258101851852,
+      "roi_mae": 0.10331036428110896
+    },
+    {
+      "mode": "removal",
+      "ratio": 1,
+      "tick": 6,
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        699,
+        353,
+        741,
+        397
+      ],
+      "mae": 4.6874999999999994e-05,
+      "roi_mae": 0.02922077922077922
+    },
+    {
+      "mode": "removal",
+      "ratio": 1,
+      "tick": 7,
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        699,
+        353,
+        741,
+        397
+      ],
+      "mae": 3.84837962962963e-05,
+      "roi_mae": 0.023989898989898988
+    },
+    {
+      "mode": "removal",
+      "ratio": 1,
+      "tick": 43,
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        677,
+        372,
+        764,
+        464
+      ],
+      "mae": 0.0005326967592592592,
+      "roi_mae": 0.07666999833416625
+    },
+    {
+      "mode": "removal",
+      "ratio": 1,
+      "tick": 81,
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        680,
+        356,
+        761,
+        450
+      ],
+      "mae": 0.0010309606481481483,
+      "roi_mae": 0.15598458979073637
+    },
+    {
+      "mode": "removal",
+      "ratio": 1,
+      "tick": 126,
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        678,
+        356,
+        763,
+        449
+      ],
+      "mae": 0.0015755208333333333,
+      "roi_mae": 0.22960151802656545
+    },
+    {
+      "mode": "removal",
+      "ratio": 1.25,
+      "tick": 6,
+      "size": [
+        1800,
+        1000
+      ],
+      "box": [
+        874,
+        441,
+        926,
+        496
+      ],
+      "mae": 3.1296296296296295e-05,
+      "roi_mae": 0.019696969696969695
+    },
+    {
+      "mode": "removal",
+      "ratio": 1.25,
+      "tick": 7,
+      "size": [
+        1800,
+        1000
+      ],
+      "box": [
+        874,
+        442,
+        927,
+        497
+      ],
+      "mae": 3.5000000000000004e-05,
+      "roi_mae": 0.021612349914236707
+    },
+    {
+      "mode": "removal",
+      "ratio": 1.25,
+      "tick": 43,
+      "size": [
+        1800,
+        1000
+      ],
+      "box": [
+        847,
+        465,
+        954,
+        580
+      ],
+      "mae": 0.0005196296296296295,
+      "roi_mae": 0.07601246105919003
+    },
+    {
+      "mode": "removal",
+      "ratio": 1.25,
+      "tick": 81,
+      "size": [
+        1800,
+        1000
+      ],
+      "box": [
+        850,
+        445,
+        951,
+        563
+      ],
+      "mae": 0.0009487037037037038,
+      "roi_mae": 0.14328466744979582
+    },
+    {
+      "mode": "removal",
+      "ratio": 1.25,
+      "tick": 126,
+      "size": [
+        1800,
+        1000
+      ],
+      "box": [
+        848,
+        445,
+        954,
+        561
+      ],
+      "mae": 0.0009762962962962963,
+      "roi_mae": 0.1429191064844936
+    },
+    {
+      "mode": "removal",
+      "ratio": 2,
+      "tick": 6,
+      "size": [
+        2880,
+        1600
+      ],
+      "box": [
+        1398,
+        706,
+        1482,
+        794
+      ],
+      "mae": 2.9947916666666665e-05,
+      "roi_mae": 0.01866883116883117
+    },
+    {
+      "mode": "removal",
+      "ratio": 2,
+      "tick": 7,
+      "size": [
+        2880,
+        1600
+      ],
+      "box": [
+        1398,
+        707,
+        1483,
+        795
+      ],
+      "mae": 0.0001490162037037037,
+      "roi_mae": 0.09180035650623886
+    },
+    {
+      "mode": "removal",
+      "ratio": 2,
+      "tick": 43,
+      "size": [
+        2880,
+        1600
+      ],
+      "box": [
+        1355,
+        744,
+        1527,
+        928
+      ],
+      "mae": 0.0004992766203703703,
+      "roi_mae": 0.07269548365352207
+    },
+    {
+      "mode": "removal",
+      "ratio": 2,
+      "tick": 81,
+      "size": [
+        2880,
+        1600
+      ],
+      "box": [
+        1360,
+        712,
+        1522,
+        901
+      ],
+      "mae": 0.000816550925925926,
+      "roi_mae": 0.12289067433100355
+    },
+    {
+      "mode": "removal",
+      "ratio": 2,
+      "tick": 126,
+      "size": [
+        2880,
+        1600
+      ],
+      "box": [
+        1356,
+        712,
+        1527,
+        898
+      ],
+      "mae": 0.0008854890046296296,
+      "roi_mae": 0.12828816365884843
+    }
+  ]
+}

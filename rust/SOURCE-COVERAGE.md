@@ -1620,12 +1620,74 @@ Evidence and scope:
   in object-region crops. Original/native/difference crops were inspected.
   These are isolated effects, not full-scene visual or lifecycle certification.
 
-A remaining raster mismatch is explicit: native main/example windows request
-4x MSAA while original RenderSystem constructs THREE.WebGLRenderer with its
-default antialias=false (checked in bundled THREE). Iceberg/present edges remain
-softer natively. Correcting this without changing other scenes is future work.
+The direct-window diagnostic's softer edges were initially attributed to the
+application's MSAA. That conclusion was incorrect: the application already
+renders through SceneFilter's single-sample target. The following compositor
+follow-up corrects the diagnostic and records the actual high-DPI allocation bug.
+Historical direct-window image metrics above are not application-raster proof.
 Other remaining work includes full actor/model/material/particle reuse, complete
 initialization/scene restart and LOD/readiness, Client arrival marker/camera/input,
 responsive host overlays, audio buses/scheduling and all effect combinations.
 All 95 tests pass; release builds and a 150-second native simulation completes.
 Snowball Storm remains Very similar, target 1:1.
+
+
+### Production compositor, device density and clipping — 22 November 2026
+
+The Snowball diagnostic now follows the actual application path:
+SceneFilter.begin -> SnowballView.draw -> SceneFilter.finish_live. It previously
+drew directly into a 4x-MSAA window, while main.rs already used a single-sample
+scene target. The earlier claim that the app's scene MSAA caused those edges was
+wrong. Old direct-window metric files retain their numbers but are explicitly
+marked historical. No normal-density application MSAA setting changed here.
+
+A separate real issue was found in the shared compositor: scene and filtered
+targets used logical dimensions even when the native window had a higher pixel
+ratio. The original RenderSystem sets renderer pixel ratio from self.devicePixelRatio.
+SceneFilter now allocates logical width/height * native screen_dpi_scale,
+while layout, camera, mouse input and final presentation dimensions remain
+logical. The disabled copy uses an explicit logical destination rectangle so a
+higher-resolution texture fills the intended area. Density/size changes replace
+the targets and invalidate the cached disabled image. Scene targets explicitly
+remain single-sample. Existing blur shader formulas/timing remain unchanged;
+this pass does not certify the original CSS blur kernel.
+
+`src/surface.rs` converts logical scissor rectangles using the active render-pass
+texture dimensions, or the window's physical dimensions when drawing directly.
+24 clipping calls across Snowball, coding/results, Elf Maker, Elf Jamband, Selfie,
+Present Drop, toolbar, village and shared action renderer now use that helper.
+Their logical rectangle expressions and ordering are preserved (audited after
+whitespace/optional trailing-comma normalization). Empty clipping remains empty,
+including at fractional ratios. This is a GPU coordinate-unit correction, not a
+translation/change to those scenes' gameplay or CSS layout decisions.
+
+Evidence:
+
+- `scene-filter-density-smoke.json` and provenance: actual production GPU
+  allocation/readback at explicit ratios 1, 2, 1.25, 1, 2. Checks physical target
+  dimensions, logical geometry and clipping, opaque enabled presentation, then
+  disabled cached presentation while changing density. The test detects wrong
+  size, crop, clip placement and cache invalidation. Actual OS DPI is 1; these
+  explicit-ratio checks do not test monitor change events or every font/UI path.
+- `snowball-compositor-raster-errors.json`: 27 isolated original/native present,
+  canopy and iceberg captures at ratios 1, 1.25 and 2 (1440x800 logical; 1440x800,
+  1800x1000 and 2880x1600 physical). Original THREE runs at actual browser DPR;
+  native captures production scene target RGB at an explicit density, with the
+  same opaque A=1 presentation as SceneFilter. Imported source transforms and
+  blank maps isolate raster behavior; no full-match/whole-scene claim follows.
+  Mean whole-image RGB error is 0.0000299–0.002165 / 255 and object-region error
+  0.0187–0.3015 / 255. Original/native/difference crops were inspected. All nine
+  selected normal-density images are byte-identical before/after the allocation
+  change. Residual edge/filter/shader differences remain.
+- The density GPU diagnostic is `cargo run --manifest-path rust/Cargo.toml
+  --example scene_filter_density -- /tmp/density.json`. Snowball capture accepts
+  a final pixel-ratio argument after mode (for example output.png 0 removal-81 2).
+  This exports enabled scene RGB at target resolution, not native OS DPI events
+  or a disabled host screenshot. Original render exporters support the same DPR.
+
+All 96 native tests and the GPU density/clipping/cached-presentation diagnostic
+pass. Source comparison still does not certify full high-DPI font/asset raster
+resolution, host/overlay behavior, input, model loading or all scenes. No README
+rating or user approval changes follow; full 1:1 remains unfinished.
+
+The current release builds. Owned normal-density application captures for Elf Maker, Santa Selfie and Present Drop also render without panic and were inspected; they are smoke checks, not whole-mode visual certification.

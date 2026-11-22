@@ -1,0 +1,56 @@
+{
+  "method": "Current application main.rs already wraps SnowballView.draw in SceneFilter.begin/finish_live. Older snowball_capture drew directly to the 4x-MSAA default window, so those edges did not represent app raster output. Corrected diagnostic uses the production compositor. Shared target now allocates screen logical size times native dpi_scale; camera/blit remain logical, and clipping derives scale from active framebuffer texture/window dimensions. 24 original logical scissor argument lists are preserved after whitespace and optional outer call trailing-comma normalization; only their API delegates changed. GPU tests and 27 source/native isolated images have explicit surface pixel ratios; actual host DPI=1, not a real monitor-DPI change test.",
+  "before_reference_commit": "40d3fa6927614c739d77b3d8b3fd991d1fdc36cf",
+  "library_versions": {
+    "macroquad": "0.4.16",
+    "miniquad": "0.4.11"
+  },
+  "clip_argument_checks": {
+    "rust/src/coding_result_view.rs": {
+      "count": 2,
+      "normalized_arguments_sha256": "d13e1fc66c9bfaad11acb8ae682e25baf6216fe13f72a3bb06693673b49c266f"
+    },
+    "rust/src/coding_view.rs": {
+      "count": 5,
+      "normalized_arguments_sha256": "7f75331e87f1bf66f215a47f0310d1c3b2dc23a367b582553f5974f4aef39130"
+    },
+    "rust/src/jamband_view.rs": {
+      "count": 4,
+      "normalized_arguments_sha256": "965ad950b3176bb07494a887b0eda47d99c12183ffe707122573e5be13f4a54a"
+    },
+    "rust/src/elfmaker_view.rs": {
+      "count": 2,
+      "normalized_arguments_sha256": "2f8ecd7b93d5e23175b4fecbe20b26e079a139da8ed40b54ebe3db6dee95f71c"
+    },
+    "rust/src/selfie_view.rs": {
+      "count": 2,
+      "normalized_arguments_sha256": "d180dcc7f82e25ecccf4c2026799014f2b6e5dc836b169c3e5f2ac4cdf4316e5"
+    },
+    "rust/src/presentdrop_view.rs": {
+      "count": 2,
+      "normalized_arguments_sha256": "0005a35da52e45bc84cac9ef7fb4a6993b2dad1a7c5593faae0d8eb879903eb3"
+    },
+    "rust/src/chrome.rs": {
+      "count": 2,
+      "normalized_arguments_sha256": "1f937245a6c6262270e85c6c7b51c84dfa0bf05c46a258f0ad346ca163e9c3f3"
+    },
+    "rust/src/village.rs": {
+      "count": 1,
+      "normalized_arguments_sha256": "e2bdf09ee3bacc37e5b26c3f618bca1ca596c91a67d06958d6d4bec6c35af3fd"
+    },
+    "rust/src/render.rs": {
+      "count": 2,
+      "normalized_arguments_sha256": "3138f4f3bb51bd856d9bb86e1eb6773cc346106760d57359b60b8206206bb3a6"
+    },
+    "rust/src/snowball_view.rs": {
+      "count": 2,
+      "normalized_arguments_sha256": "e4478ea8b0e14a61482e4dcf86317cbc261a98fe661860a2f8583f553f46c8ef"
+    }
+  },
+  "source_sha256": {
+    "static/scenes/snowball/js/engine/systems/render-system.js": "028b2df9ab7a95627c247c10285539086552ef302e8863f95272d56c5958ccef",
+    "static/scenes/snowball/js/engine/utils/basic-element.js": "aca9b10971063aebf7a41ce12e5d717f8c2979758cf3f7c2958da8b28f16085c",
+    "static/third_party/lib/three/build/three.js": "6467e0098991c58a5c6e64415c7126079672b4e0927c3203589644db96c64b60"
+  },
+  "before_distribution_commit": "c7c79160ec774cdff59b6f5bccfb5cd7303c58ad"
+}

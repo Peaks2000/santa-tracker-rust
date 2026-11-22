@@ -54,8 +54,13 @@ void main(){gl_FragColor=vec4(texture2D(Texture,uv).rgb,1.0);}"#,
         })
     }
     pub fn begin(&mut self) {
-        let w = screen_width() as u32;
-        let h = screen_height() as u32;
+        self.begin_with_pixel_ratio(screen_dpi_scale());
+    }
+    /// Explicit density also lets owned GPU diagnostics exercise a high-DPI
+    /// surface without changing the user's display configuration.
+    pub fn begin_with_pixel_ratio(&mut self, pixel_ratio: f32) {
+        let w = (screen_width() * pixel_ratio) as u32;
+        let h = (screen_height() * pixel_ratio) as u32;
         if self
             .target
             .as_ref()
@@ -65,6 +70,7 @@ void main(){gl_FragColor=vec4(texture2D(Texture,uv).rgb,1.0);}"#,
                 w,
                 h,
                 RenderTargetParams {
+                    sample_count: 1,
                     depth: true,
                     ..Default::default()
                 },
@@ -72,10 +78,16 @@ void main(){gl_FragColor=vec4(texture2D(Texture,uv).rgb,1.0);}"#,
             self.filtered = Some(render_target(w, h));
             self.cached = -1.;
         }
-        let mut camera = Camera2D::from_display_rect(Rect::new(0., 0., w as f32, h as f32));
+        // Layout/input remain in logical pixels; the render target is physical.
+        let mut camera =
+            Camera2D::from_display_rect(Rect::new(0., 0., screen_width(), screen_height()));
         camera.render_target = self.target.clone();
         set_camera(&camera);
         clear_background(BLACK);
+    }
+    #[allow(dead_code)] // Readback diagnostics; the application uses finish/finish_live.
+    pub fn scene_texture(&self) -> &Texture2D {
+        &self.target.as_ref().expect("scene begin").texture
     }
     pub fn finish(&mut self, disabled: bool) {
         self.finish_impl(disabled, false);
@@ -111,6 +123,7 @@ void main(){gl_FragColor=vec4(texture2D(Texture,uv).rgb,1.0);}"#,
                 0.,
                 WHITE,
                 DrawTextureParams {
+                    dest_size: Some(vec2(screen_width(), screen_height())),
                     flip_y: true,
                     ..Default::default()
                 },

@@ -109,16 +109,14 @@ fn cover(t: &Texture2D, r: Rect) {
     );
 }
 fn clip(rect: Option<Rect>) {
-    unsafe {
-        get_internal_gl().quad_gl.scissor(rect.map(|r| {
-            (
-                r.x.max(0.) as i32,
-                r.y.max(0.) as i32,
-                r.w.max(0.) as i32,
-                r.h.max(0.) as i32,
-            )
-        }));
-    }
+    santa_tracker::surface::scissor(rect.map(|r| {
+        (
+            r.x.max(0.) as i32,
+            r.y.max(0.) as i32,
+            r.w.max(0.) as i32,
+            r.h.max(0.) as i32,
+        )
+    }));
 }
 pub(crate) fn rounded(r: Rect, radius: f32, c: Color) {
     let d = radius.min(r.w / 2.).min(r.h / 2.);

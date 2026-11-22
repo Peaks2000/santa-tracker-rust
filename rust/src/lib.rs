@@ -13,6 +13,7 @@ pub mod random;
 pub mod runner;
 pub mod selfie;
 pub mod ski;
+pub mod surface;
 pub mod tracker;
 pub mod tutorial;
 pub mod ui;

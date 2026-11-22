@@ -529,14 +529,12 @@ impl Chrome {
                     "?".into()
                 };
                 // Clip the two sliding labels to the original .item box.
-                unsafe {
-                    get_internal_gl().quad_gl.scissor(Some((
-                        (left + widths[0] as f32) as i32,
-                        top as i32,
-                        widths[1] as i32,
-                        40,
-                    )));
-                }
+                santa_tracker::surface::scissor(Some((
+                    (left + widths[0] as f32) as i32,
+                    top as i32,
+                    widths[1] as i32,
+                    40,
+                )));
                 self.label(&score, middle + 56. * t, top + 21., 17, 1. - t, -1.);
                 self.label("SCORE", middle + 56. * t, top + 34., 9, 1. - t, 0.);
                 if let Some(level) = game.level {
@@ -561,9 +559,7 @@ impl Chrome {
                     );
                     self.label("LEVEL", middle, top + 34. - 40. * (1. - t), 9, t, 0.);
                 }
-                unsafe {
-                    get_internal_gl().quad_gl.scissor(None);
-                }
+                santa_tracker::surface::scissor(None);
             }
         }
         result

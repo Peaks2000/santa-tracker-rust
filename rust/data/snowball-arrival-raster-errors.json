@@ -1,5 +1,5 @@
 {
-  "scope": "Isolated original/native present and parachute, blank map, matched camera and imported source canopy states. Both source textures awaited; first incomplete-loading capture discarded. Does not certify full scene, async readiness, input/lifecycle or alpha ordering across other objects.",
+  "scope": "Isolated original/native present and parachute, blank map, matched camera and imported source canopy states. Both source textures awaited; first incomplete-loading capture discarded. Does not certify full scene, async readiness, input/lifecycle or alpha ordering across other objects. Historical direct-window diagnostic: it bypassed the application SceneFilter compositor. These retained values do not represent the application raster path; use snowball-compositor-raster-errors.json for corrected compositor comparisons.",
   "frames": [
     {
       "tick": 0,

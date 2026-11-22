@@ -389,8 +389,39 @@ restart/actor-model pool/LOD readiness certification follows. Diagnostic third
 argument `removal-6`, `removal-7`, `removal-43`, `removal-81`, `removal-126` after
 output/seconds (seconds 0) imports only measured body/present state on blank map.
 
-Next concrete rendering gap: native main/example requests sample_count=4,
-whereas original RenderSystem uses WebGLRenderer default antialias=false in the
-bundled THREE. Inspected iceberg/present crops show softer native edges. Address
-scene-specific raster behavior without silently changing other games' output.
+The above direct-window captures were initially misread as an application MSAA
+mismatch. That was wrong: main already renders through a single-sample SceneFilter.
+The later compositor follow-up below corrects that conclusion and its diagnostic.
+Do not change the application window MSAA based on those old diagnostic edges.
 Ice opacity now uses Float32 vertex data instead of byte-quantized tint alpha.
+
+
+### Compositor/density follow-up (22 November 2026)
+
+Before diagnosing pixels, trace main.rs -> SceneFilter.begin -> scene draw ->
+finish/finish_live. `snowball_capture` formerly bypassed that path and rendered
+directly into the 4x-MSAA default window. The application already used a
+single-sample scene target. Historical direct-window metrics are labeled; use
+`snowball-compositor-raster-errors.json` for corrected application-path evidence.
+The diagnostic now includes the production compositor and high_dpi window flag.
+
+The real shared issue was logical-sized framebuffer allocation on high-DPI
+windows. SceneFilter now allocates logical size * native dpi_scale and keeps
+camera/presentation in logical units, including disabled texture copies. Density
+or size changes invalidate cached filtered surfaces. `surface::scissor` converts
+24 existing clip calls by active render-pass texture dimensions (or physical
+window dimensions), with unchanged logical expressions. At 1x it preserves the
+rectangles; empty clips must remain empty at fractional density. Do not scale
+layout or input to fix framebuffer units, or use the window density for a
+separately sized render target.
+
+Evidence: actual GPU density/clipping/cached-presentation diagnostic and 27
+isolated original/native present/canopy/iceberg captures at 1, 1.25 and 2 pixel
+ratios. The nine selected normal-density captures are unchanged by the allocation
+fix. Source uses actual browser DPR, native diagnostic uses explicit target
+ratio; actual OS DPI remains 1, so monitor events/all font and UI density are not
+certified. `snowball_capture output.png 0 removal-81 2` exports opaque scene RGB
+at 2880x1600 from a 1440x800 logical viewport. A final explicit ratio is for an
+enabled scene diagnostic, not a disabled host screenshot. `scene_filter_density`
+exercises the actual shared GPU path and cache, without changing user display
+settings. Residual shader/filter edges and whole-scene/match scope remain open.

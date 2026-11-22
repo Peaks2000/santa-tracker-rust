@@ -1098,9 +1098,7 @@ impl CodingView {
             } else {
                 self.lab_scene(assets, panel_x, scene_width, h);
             }
-            unsafe {
-                get_internal_gl().quad_gl.scissor(None);
-            }
+            santa_tracker::surface::scissor(None);
             let r = Rect::new(
                 panel_x - 60.,
                 h - if w > 1024. { 135. } else { 200. },
@@ -1378,11 +1376,7 @@ impl CodingView {
         }
     }
     fn lab_scene(&mut self, assets: &Assets, x: f32, w: f32, h: f32) {
-        unsafe {
-            get_internal_gl()
-                .quad_gl
-                .scissor(Some((x as i32, 0, w.ceil() as i32, h as i32)));
-        }
+        santa_tracker::surface::scissor(Some((x as i32, 0, w.ceil() as i32, h as i32)));
         let l = self.level().clone();
         draw_rectangle(x, 0., w, h, WHITE);
         let tile = coding::lab_viewport(screen_width() as f64, h as f64).tile as f32;
@@ -1594,9 +1588,7 @@ impl CodingView {
         clear_background(Color::from_rgba(54, 65, 137, 255));
         let (_, width, _) = self.layout(screen_width(), screen_height());
         self.dance_scene(assets, screen_width() - width, width, screen_height());
-        unsafe {
-            get_internal_gl().quad_gl.scissor(None);
-        }
+        santa_tracker::surface::scissor(None);
     }
     fn dance_scene(&mut self, assets: &mut Assets, x: f32, w: f32, h: f32) {
         self.stage_clip(x, w, h);
@@ -1674,14 +1666,12 @@ impl CodingView {
                 let clip_top = (r[1] as f32).max(0.);
                 let clip_right = ((r[0] + r[2]) as f32).min(x + w);
                 let clip_bottom = ((r[1] + r[3]) as f32).min(h);
-                unsafe {
-                    get_internal_gl().quad_gl.scissor(Some((
-                        clip_left.floor() as i32,
-                        clip_top.floor() as i32,
-                        (clip_right - clip_left).max(0.).ceil() as i32,
-                        (clip_bottom - clip_top).max(0.).ceil() as i32,
-                    )));
-                }
+                santa_tracker::surface::scissor(Some((
+                    clip_left.floor() as i32,
+                    clip_top.floor() as i32,
+                    (clip_right - clip_left).max(0.).ceil() as i32,
+                    (clip_bottom - clip_top).max(0.).ceil() as i32,
+                )));
                 self.character(
                     assets,
                     if is_teacher || level.freestyle {
@@ -1779,11 +1769,7 @@ impl CodingView {
         }
     }
     fn stage_clip(&self, x: f32, w: f32, h: f32) {
-        unsafe {
-            get_internal_gl()
-                .quad_gl
-                .scissor(Some((x as i32, 0, w.ceil() as i32, h as i32)));
-        }
+        santa_tracker::surface::scissor(Some((x as i32, 0, w.ceil() as i32, h as i32)));
     }
     fn cover(&self, texture: &Texture2D, r: Rect, opacity: f32) {
         let scale = (r.w / texture.width()).max(r.h / texture.height());

@@ -514,11 +514,7 @@ impl SelfieView {
                 Rect::new(pole.x + 31. * s, pole.y + s, 118. * s, 378. * s),
             );
             let r = Rect::new(pole.x + 43. * s, pole.y + 62. * s, 94. * s, 257. * s);
-            unsafe {
-                get_internal_gl()
-                    .quad_gl
-                    .scissor(Some((r.x as i32, r.y as i32, r.w as i32, r.h as i32)));
-            }
+            santa_tracker::surface::scissor(Some((r.x as i32, r.y as i32, r.w as i32, r.h as i32)));
             draw(
                 "background/pole--stripes.svg",
                 Rect::new(
@@ -528,9 +524,7 @@ impl SelfieView {
                     600. * s,
                 ),
             );
-            unsafe {
-                get_internal_gl().quad_gl.scissor(None);
-            }
+            santa_tracker::surface::scissor(None);
             draw("background/pole--foreground.svg", pole);
         }
         draw(

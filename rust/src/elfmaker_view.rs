@@ -483,18 +483,14 @@ impl ElfMakerView {
                 }
                 let t = &self.previews[&key];
                 let rr = Rect::new(inner.center().x - 60., inner.y, 120., inner.h.max(140.));
-                unsafe {
-                    get_internal_gl().quad_gl.scissor(Some((
-                        inner.x.max(px) as i32,
-                        inner.y.max(fy) as i32,
-                        (inner.w.min(w - inner.x)).max(0.) as i32,
-                        (inner.h.min(h - inner.y)).max(0.) as i32,
-                    )));
-                }
+                santa_tracker::surface::scissor(Some((
+                    inner.x.max(px) as i32,
+                    inner.y.max(fy) as i32,
+                    (inner.w.min(w - inner.x)).max(0.) as i32,
+                    (inner.h.min(h - inner.y)).max(0.) as i32,
+                )));
                 image(t, rr);
-                unsafe {
-                    get_internal_gl().quad_gl.scissor(None);
-                }
+                santa_tracker::surface::scissor(None);
             }
             if click && r.contains(m) && m.y >= fy && m.x >= px {
                 g.choose(i);

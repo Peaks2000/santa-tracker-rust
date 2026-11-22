@@ -2,6 +2,8 @@
 //! Owned native Snowball diagnostic; production model/renderer, no web runtime.
 #[path = "../src/assets.rs"]
 mod assets;
+#[path = "../src/scene_filter.rs"]
+mod scene_filter;
 #[path = "../src/ski_view.rs"]
 mod ski_view;
 #[path = "../src/snowball_model.rs"]
@@ -23,6 +25,7 @@ fn main() {
             window_width: 1440,
             window_height: 800,
             sample_count: 4,
+            high_dpi: true,
             ..Default::default()
         },
         run(),
@@ -36,6 +39,10 @@ async fn run() {
     assets.load_scene("snowball").unwrap();
     let mut view = snowball_view::SnowballView::new().unwrap();
     let mut game = santa_tracker::snowball::Snowball::new("snowball-test");
+    let mut filter = scene_filter::SceneFilter::new().unwrap();
+    let pixel_ratio = args
+        .get(4)
+        .map(|s| s.parse::<f32>().expect("capture pixel ratio"));
     if args.get(3).is_some_and(|s| s == "input") {
         let started = get_time();
         let mut count = 0;
@@ -45,7 +52,9 @@ async fn run() {
                 screen_width() as f64,
                 screen_height() as f64,
             );
+            filter.begin();
             view.draw(&assets, &game).unwrap();
+            filter.finish_live(game.gameover);
             view.input(&mut game, true);
             if updating {
                 game.finish_frame(screen_width() as f64, screen_height() as f64);
@@ -301,7 +310,9 @@ async fn run() {
     if args.get(3).is_some_and(|s| s == "reference-pointer") {
         let began = get_time();
         while get_time() - began < 9. {
+            filter.begin();
             view.draw(&assets, &game).unwrap();
+            filter.finish_live(game.gameover);
             view.input(&mut game, true);
             let vp = snowball_view::SnowballView::vp(&game);
             let target=game.players.iter().enumerate().filter(|(i,p)|*i>0&&p.arrived&&p.alive).find_map(|(i,p)|{let at=vp.transform_point3(vec3(p.pos.x as f32,p.pos.y as f32,18.));(at.x.abs()<0.75&&at.y.abs()<0.7).then_some(serde_json::json!({"index":i,"x":(at.x+1.)*screen_width()/2.,"y":(1.-at.y)*screen_height()/2.}))});
@@ -315,15 +326,40 @@ async fn run() {
         return;
     }
     for _ in 0..2 {
+        if let Some(ratio) = pixel_ratio {
+            filter.begin_with_pixel_ratio(ratio);
+        } else {
+            filter.begin();
+        }
         view.draw(&assets, &game).unwrap();
+        filter.finish_live(game.gameover);
         next_frame().await
     }
+    if let Some(ratio) = pixel_ratio {
+        filter.begin_with_pixel_ratio(ratio);
+    } else {
+        filter.begin();
+    }
     view.draw(&assets, &game).unwrap();
-    get_screen_data().export_png(
-        args.get(1)
-            .map(String::as_str)
-            .unwrap_or("/tmp/snowball-native-game.png"),
-    );
+    filter.finish_live(game.gameover);
+    let output = args
+        .get(1)
+        .map(String::as_str)
+        .unwrap_or("/tmp/snowball-native-game.png");
+    if pixel_ratio.is_some() {
+        assert!(
+            !game.gameover,
+            "density diagnostic captures the enabled scene"
+        );
+        let mut pixels = filter.scene_texture().get_texture_data();
+        // The production opaque-copy shader presents exactly this RGB with A=1.
+        for rgba in pixels.bytes.chunks_exact_mut(4) {
+            rgba[3] = 255;
+        }
+        pixels.export_png(output);
+    } else {
+        get_screen_data().export_png(output);
+    }
     println!(
         "players {} alive {}, knockouts {}, map seed {}",
         game.players.len(),

@@ -209,4 +209,6 @@ Snowball now retains source animation actions/callbacks through throws, movement
 
 For isolated parachute rendering, `snowball_capture /tmp/carry.png 0 arrival-130` imports a measured original present/canopy state on a blank map. Available ticks are 0, 30, 130 and 299. This checks parent transforms/rendering; it does not certify full-scene arrival, loading or input parity.
 
-The `snowball_capture` third argument also accepts `removal-6`, `removal-7`, `removal-43`, `removal-81` or `removal-126` (seconds 0) for isolated measured frozen-present/iceberg rendering. These captures expose remaining MSAA/edge differences and do not certify whole-scene parity.
+The `snowball_capture` third argument also accepts `removal-6`, `removal-7`, `removal-43`, `removal-81` or `removal-126` (seconds 0) for isolated measured frozen-present/iceberg rendering. Historical direct-window captures bypassed the application compositor; the corrected captures below still leave small edge differences and do not certify whole-scene parity.
+
+Snowball captures now include the production scene compositor. A final optional pixel ratio, such as `output.png 0 removal-81 2`, exports the enabled scene target at that density. `cargo run --manifest-path rust/Cargo.toml --example scene_filter_density -- /tmp/density.json` checks physical target allocation, logical clipping/presentation and disabled-cache resizing on the GPU. Explicit-density checks do not certify native monitor events or all font/UI density.

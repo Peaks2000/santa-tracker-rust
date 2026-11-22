@@ -1,5 +1,5 @@
 {
-  "scope": "Isolated actual original/native frozen present and iceberg with blank map and explicit matching camera; native imports measured body/actor state. Does not establish full-scene transparency, loading, input, pooled actors or scene lifecycle parity.",
+  "scope": "Isolated actual original/native frozen present and iceberg with blank map and explicit matching camera; native imports measured body/actor state. Does not establish full-scene transparency, loading, input, pooled actors or scene lifecycle parity. Historical direct-window diagnostic: it bypassed the application SceneFilter compositor. These retained values do not represent the application raster path; use snowball-compositor-raster-errors.json for corrected compositor comparisons.",
   "frames": [
     {
       "tick": 6,

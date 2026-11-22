@@ -792,14 +792,12 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
         let Some(p) = g.players.first() else { return };
         let responsive = if screen_width() <= 768. { 0.7 } else { 1. };
         let now = g.wall / 1000.;
-        unsafe {
-            get_internal_gl().quad_gl.scissor(Some((
-                0,
-                (screen_height() - 265. * responsive) as i32,
-                (212. * responsive) as i32,
-                (265. * responsive) as i32,
-            )));
-        }
+        santa_tracker::surface::scissor(Some((
+            0,
+            (screen_height() - 265. * responsive) as i32,
+            (212. * responsive) as i32,
+            (265. * responsive) as i32,
+        )));
         for slot in 0..2 {
             let quantity = if slot == 0 {
                 p.powerups.primary
@@ -870,9 +868,7 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
                 );
             }
         }
-        unsafe {
-            get_internal_gl().quad_gl.scissor(None);
-        }
+        santa_tracker::surface::scissor(None);
     }
     fn splash(&self, assets: &Assets, g: &Snowball) {
         clear_background(Color::from_hex(0x7ca6d6));

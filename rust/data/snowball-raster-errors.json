@@ -1,5 +1,5 @@
 {
-  "method": "Isolated imported original render-state geometry comparison at 1440x800. Original actors/models awaited; native imports source positions/maps/textures but omits presents/projectiles and resets animation phase. Not a seeded gameplay or full mode parity check.",
+  "method": "Isolated imported original render-state geometry comparison at 1440x800. Original actors/models awaited; native imports source positions/maps/textures but omits presents/projectiles and resets animation phase. Not a seeded gameplay or full mode parity check. Historical direct-window diagnostic: it bypassed the application SceneFilter compositor. These retained values do not represent the application raster path; use snowball-compositor-raster-errors.json for corrected compositor comparisons.",
   "size": [
     1440,
     800

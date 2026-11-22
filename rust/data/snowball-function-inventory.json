@@ -1166,10 +1166,12 @@
     {
       "file": "static/scenes/snowball/js/engine/systems/render-system.js",
       "lines": 78,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Actual app already uses single-sample SceneFilter; direct-window diagnostic MSAA was an invalid app-raster comparison and is corrected. Shared native target density now follows original renderer pixel ratio while keeping logical layout/presentation and framebuffer-aware scissor. 27 isolated source/native captures at 1/1.25/2 DPR plus GPU cache/clipping smoke checks cover selected states, not full host/scene/monitor lifecycle.",
       "native": [
         "rust/src/snowball.rs",
-        "rust/src/snowball_view.rs"
+        "rust/src/snowball_view.rs",
+        "rust/src/scene_filter.rs",
+        "rust/src/surface.rs"
       ],
       "functions": [
         {

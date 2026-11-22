@@ -641,13 +641,13 @@
       "user_notes": "",
       "priority": "normal",
       "agent_status": "partial",
-      "agent_progress": "Playable native local Snowball Storm with original art, skinned elf animations, seeded island/erosion, paths, bots, normal/large snowballs, presents, parachutes, HUD, audio actions and game-over. Source checks cover map/path/trajectory/powerups, persistent ordered collisions and repeated hit/pickup actions, 650 mixer states, 42 ready-model elf updates, full and sampled scaled skin output. Carry/landing now follows the original Drop -> Parachute -> Player stages with stored transforms, Infinity-to-actual dropped ticks, separate map attachment, the present detached frame and the rotated -84 carrying offset. Four parachute cases (21 updates), three actual stage cases (22 frames), 210 THREE parent matrices and four isolated original/native present-canopy captures verify this pass. Input and 150-second simulation smoke checks exist; full mode remains partial, target 1:1. Added stored source Presence/iceberg/teleport lifecycle, LIFO attachment/pool state, explicit actor parents, visible frozen presents and once-only cleanup, plus separate client death-observation timing. Four original removal cases (26 updates), three actual system cases (19 frames), ten THREE matrices and five isolated iceberg/present captures verify this pass; full mode remains partial.",
+      "agent_progress": "Playable native local Snowball Storm with original art, skinned elf animations, seeded island/erosion, paths, bots, normal/large snowballs, presents, parachutes, HUD, audio actions and game-over. Source checks cover map/path/trajectory/powerups, persistent ordered collisions and repeated hit/pickup actions, 650 mixer states, 42 ready-model elf updates, full and sampled scaled skin output. Carry/landing now follows the original Drop -> Parachute -> Player stages with stored transforms, Infinity-to-actual dropped ticks, separate map attachment, the present detached frame and the rotated -84 carrying offset. Four parachute cases (21 updates), three actual stage cases (22 frames), 210 THREE parent matrices and four isolated original/native present-canopy captures verify this pass. Input and 150-second simulation smoke checks exist; full mode remains partial, target 1:1. Added stored source Presence/iceberg/teleport lifecycle, LIFO attachment/pool state, explicit actor parents, visible frozen presents and once-only cleanup, plus separate client death-observation timing. Four original removal cases (26 updates), three actual system cases (19 frames), ten THREE matrices and five isolated iceberg/present captures verify this pass; full mode remains partial. Corrected the diagnostic to use the actual single-sample production compositor, then fixed shared high-DPI target allocation/logical presentation and framebuffer-aware clipping. GPU density/cache/clipping checks and 27 isolated source/native images at 1x/1.25x/2x pass; nine selected normal-density images are unchanged by the allocation fix.",
       "agent_known_issues": [
         "Full seeded match/random consumption, UUID and pooled actor/material/particle reuse do not yet match end to end.",
         "Selected carry/landing/freezing/teleport registration and parent overlaps are checked. Full spawned-match initialization, actor/model/material reuse, general scene teardown/restart and generic collision debug/subscription or mid-pass mutation remain partial.",
         "Loaded-model actions now have source checks, but model readiness/LOD timing, initial poses and original pooled position/facing/cached Model reuse across spawns/restarts still differ.",
         "Responsive intro/powerup phases, full touch/keyboard/accessibility and input octree ordering are not certified.",
-        "Particle-ring reuse and all effect combinations need broader comparisons. Isolated iceberg/present captures still have edge/raster differences: native 4x MSAA differs from the source WebGLRenderer antialias=false. Full Client arrival marker/camera/input and LOD/loading behavior remain unfinished.",
+        "Particle-ring reuse, all effect combinations and residual edge/filter/shader differences remain. The earlier application-MSAA diagnosis was wrong: only the old diagnostic bypassed the single-sample compositor. Shared high-DPI allocation/clipping now has GPU checks, but complete native monitor/DPI events, font/asset density and every UI path are unverified. Full Client arrival marker/camera/input and LOD/loading remain unfinished.",
         "Shared overlay focus/blur and exact audio group/bus/retrigger/scheduling remain unverified."
       ],
       "agent_evidence": [
@@ -682,7 +682,13 @@
         "rust/data/snowball-removal-stages-reference.json",
         "rust/data/snowball-removal-stages-provenance.json",
         "rust/data/snowball-removal-render-reference.json",
-        "rust/data/snowball-removal-raster-errors.json"
+        "rust/data/snowball-removal-raster-errors.json",
+        "rust/src/scene_filter.rs",
+        "rust/src/surface.rs",
+        "rust/examples/scene_filter_density.rs",
+        "rust/data/scene-filter-density-smoke.json",
+        "rust/data/scene-filter-density-provenance.json",
+        "rust/data/snowball-compositor-raster-errors.json"
       ]
     },
     {

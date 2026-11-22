@@ -182,14 +182,12 @@ impl CodingView {
                         .clamp(0., (total - inner.h).max(0.));
                 }
                 let scroll = self.result_code_scroll[index].clamp(0., (total - inner.h).max(0.));
-                unsafe {
-                    get_internal_gl().quad_gl.scissor(Some((
-                        inner.x.ceil() as i32,
-                        inner.y.ceil() as i32,
-                        inner.w.floor() as i32,
-                        inner.h.floor() as i32,
-                    )));
-                }
+                santa_tracker::surface::scissor(Some((
+                    inner.x.ceil() as i32,
+                    inner.y.ceil() as i32,
+                    inner.w.floor() as i32,
+                    inner.h.floor() as i32,
+                )));
                 let advance = ResultFont::Mono.width("M", size);
                 // Position each preformatted line independently to preserve
                 // leading spaces. Soft-wrap break selection still needs a
@@ -212,9 +210,7 @@ impl CodingView {
                     };
                     self.result_text(&text, ResultFont::Mono, 1., 0., "white");
                 }
-                unsafe {
-                    get_internal_gl().quad_gl.scissor(None);
-                }
+                santa_tracker::surface::scissor(None);
             }
             // CSS opacity on the buttons container composites the complete
             // subtree once, including shadows and overlapping label glyphs.
