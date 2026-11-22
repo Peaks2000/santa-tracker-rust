@@ -425,3 +425,48 @@ at 2880x1600 from a 1440x800 logical viewport. A final explicit ratio is for an
 enabled scene diagnostic, not a disabled host screenshot. `scene_filter_density`
 exercises the actual shared GPU path and cache, without changing user display
 settings. Residual shader/filter edges and whole-scene/match scope remain open.
+
+
+### Client arrival marker/camera follow-up (22 November 2026)
+
+There are TWO PlayerMarkers. `client_arrival` stores ClientSystem's direct
+playerLayer marker, independently of the ring under the elf's dolly. Attach
+only if alive, not arrived, tile > -1 and no parent. Store its transform once;
+subsequent tile/dolly changes don't move it. Camera snaps to tile.x/tile.y*-0.75
+without the old native dolly-y offset. Landing removes it. Dead/no-player early
+returns preserve the attached marker, including death during descent. Start
+clears this state and begins with the source level camera at the origin.
+MainLevel's living camera also requires !presence.exiting and !presence.gone.
+The tracker retains the source browser `length`=0 quirk and per-update friction.
+
+`data/snowball-client-reference.json`/provenance contains four cases / 28 frames
+from actual Client/MainLevel/Tracker/THREE/grid. The native test invokes actual
+Snowball.begin_frame camera gates. Player/UI/event sinks and clock are explicit
+stubs; full target/destination/network/HUD/assignment/removal are not checked.
+Native local spawn still chooses missing tiles earlier than original PlayerSystem;
+do not call these explicit-tile tests a whole initialization check. Pooled shared
+elf-marker visibility, model/LOD loading and transparent ordering remain partial.
+
+Both ring paths use exported original 50-vertex ShapeBufferGeometry and exact
+indices with float diffuse/opacity. Arrival depth testing is disabled. Reuse
+existing clip and particle pipelines: the full app eagerly loads all scenes and
+Macroquad 0.4.16 has a fixed 32-pipeline limit. A first two-material attempt
+passed isolated capture but failed actual app startup, and was replaced. A
+negative per-vertex data.z tag selects the unlit ring branch; ordinary clip
+geometry uses zero and particle random is nonnegative. Preserve their existing
+shader paths. `snowball_capture output.png 0 marker-attached` (or retained,
+landed, dead) isolates the measured arrival marker, not an entire elf/match.
+
+
+Current user constraint: they are playing and asked to stop interrupting their
+game. No more app/browser windows, focus changes or input injection during that
+session, even for an owned smoke process. Source reads, saved-image review,
+compiles and headless/unit work can continue. Offline texture audit confirms
+seven original PNGs are byte-identical in distribution; their reported unclear
+textures are still unresolved. Inspect sampling/render scale and generated
+textures before proposing any sharpening. Last actual live app smoke showed
+descent and later game over, not a source-matched complete match. --advance on
+an untouched Splash does not start Snowball; earlier time-only app screenshots
+were still the splash. A first XTest attempt failed to capture; injected owned
+X11 window events later produced the recorded descent/game-over images. Do not
+repeat that input test while the user is playing.

@@ -142,6 +142,7 @@ pub mod coding_host;
 pub mod coding_user_code;
 
 pub mod snowball;
+pub mod snowball_client;
 
 pub mod snowball_collision;
 

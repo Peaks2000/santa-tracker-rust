@@ -1,0 +1,13 @@
+{
+  "method": "Unmodified original ClientSystem, MainLevel.update, TetheredCameraTracker and PlayerMarker in Chromium with bundled THREE. Actual MagicHexGrid. Explicit plain Object3D player health/arrival/presence/dolly state; UI updates, player removal and santaApp events stubbed. requestAnimationFrame disabled and performance clock held at 100ms to isolate living arrival/camera branches; NOT death timer/input/network/score/actor loading/init order or complete restart verification. MainLevel receives real source browser window.length=0; resize only changes explicit game dimensions. Marker geometry and material are actual constructor output; teardown tests marker detach, not concrete PlayerSystem removal.",
+  "files": {
+    "static/scenes/snowball/js/snowball/systems/client-system.js": "0f8aded75ed447fbfede07eaa10485180aa54d1e2de101ba9a6a77fe7a0aa7d8",
+    "static/scenes/snowball/js/snowball/entities/player-marker.js": "9ea345e315ba34920fe325e9a3e4083adab61a5a2d0d092cb22b92ec7341f544",
+    "static/scenes/snowball/js/snowball/levels/main-level.js": "0b079ed3f800b4c3dcf3a81f2fca44968a8bc240ab5901f14460013a78253452",
+    "static/scenes/snowball/js/snowball/levels/local-level.js": "058cd94969c0f64708d5fdfad70298e539a0eefc9b3d11c856fac53674f386de",
+    "static/scenes/snowball/js/snowball/utils/camera-tracking.js": "2ca29bbc8392bb6848113641eda97e34656971fb9aa6e71735e488dacfb030e2",
+    "static/scenes/snowball/js/snowball/entities/elf.js": "d5fd37bbe1201b63143898793fbe0b9e7036805e513b1af6aa4a48f0226f5cf2",
+    "static/scenes/snowball/js/snowball-game.js": "48d4ced63ac0e39fe3010e80472d333d26d838a54c23a5841941fe42458d4d4f",
+    "static/scenes/snowball/js/engine/core/game.js": "a8571291aa26baeae2a268cf693e69877f4407976ca4023dcc8f8eb6ad52e459"
+  }
+}

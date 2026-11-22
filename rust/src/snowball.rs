@@ -595,6 +595,7 @@ pub struct Snowball {
     pub drops: Vec<Drop>,
     pub shots: Vec<Shot>,
     pub particles: Vec<Particle>,
+    pub client_arrival: crate::snowball_client::Arrival,
     pub camera: V,
     pub camera_velocity: V,
     pub time: f64,
@@ -632,6 +633,7 @@ impl Snowball {
             drops: vec![],
             shots: vec![],
             particles: vec![],
+            client_arrival: crate::snowball_client::Arrival::default(),
             camera: V::default(),
             camera_velocity: V::default(),
             time: 0.,
@@ -675,6 +677,7 @@ impl Snowball {
         self.splash_until = self.wall + 1000.;
         self.gameover = false;
         self.client_dead_at = 0.;
+        self.client_arrival.teardown();
         self.removal.teardown();
         self.pending_destination = None;
         self.camera_target = None;
@@ -700,8 +703,7 @@ impl Snowball {
             self.add_drop();
             self.add_player(true)
         }
-        let p = self.map.grid.pos(self.players[0].tile);
-        self.camera = V::new(p.x, -0.75 * (p.y - 10.));
+        self.camera = V::default();
         self.camera_velocity = V::default();
         self.sounds.push("music_start_ingame")
     }
@@ -1064,7 +1066,7 @@ impl Snowball {
             }
         }
         if let Some(p) = self.players.first() {
-            let target = if p.alive && p.arrived {
+            let target = if p.alive && p.arrived && !p.presence.exiting() && !p.presence.gone() {
                 Some(p.pos)
             } else if !p.alive {
                 self.camera_target
@@ -1072,26 +1074,13 @@ impl Snowball {
                 None
             };
             if let Some(target) = target {
-                let delta = V::new(target.x, -0.75 * target.y).sub(self.camera);
-                let tether = 0.05 * width.max(height);
-                if delta.len() >= tether {
-                    self.camera_velocity = self.camera_velocity.add(delta.norm().mul(0.15))
-                } /* source's else uses global window.length (0), subtracting zero */
-                if self.camera_velocity.len() > 0.1 {
-                    self.camera_velocity.x += if self.camera_velocity.x > 0. {
-                        -0.1
-                    } else {
-                        0.1
-                    };
-                    self.camera_velocity.y += if self.camera_velocity.y > 0. {
-                        -0.1
-                    } else {
-                        0.1
-                    }
-                } else {
-                    self.camera_velocity = V::default()
-                }
-                self.camera = self.camera.add(self.camera_velocity)
+                crate::snowball_client::track(
+                    &mut self.camera,
+                    &mut self.camera_velocity,
+                    target,
+                    width,
+                    height,
+                );
             }
         }
         true
@@ -1291,6 +1280,16 @@ impl Snowball {
             }
         }
         self.update_parachutes(tick);
+        self.client_arrival.update(
+            self.players
+                .first()
+                .map(|p| (p.alive, p.arrived, p.tile, -10., PI / 2.25)),
+            self.players
+                .first()
+                .map(|p| grid.pos(p.tile))
+                .unwrap_or_default(),
+            &mut self.camera,
+        );
         if let Some(p) = self.players.first().filter(|p| !p.alive) {
             if self.client_dead_at == 0. {
                 self.client_dead_at = self.time;

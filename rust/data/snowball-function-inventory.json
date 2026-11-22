@@ -1145,10 +1145,11 @@
     {
       "file": "static/scenes/snowball/js/snowball/utils/camera-tracking.js",
       "lines": 66,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Source per-update tether/acceleration/friction and window.length=0 quirk checked against 28 Client/MainLevel frames using native production begin_frame. Width/height remain logical. Full host/input/spawn initialization not certified.",
       "native": [
         "rust/src/snowball.rs",
-        "rust/src/snowball_view.rs"
+        "rust/src/snowball_view.rs",
+        "rust/src/snowball_client.rs"
       ],
       "functions": [
         {
@@ -1907,10 +1908,11 @@
     {
       "file": "static/scenes/snowball/js/snowball/levels/main-level.js",
       "lines": 145,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Camera alive/arrival/exiting/gone guards and dead-target behavior checked in 28 explicit original frames. measure updates tether; initial level camera origin preserved. Full MainLevel setup/UI/teardown and map-pick/client command order remain partial.",
       "native": [
         "rust/src/snowball.rs",
-        "rust/src/snowball_view.rs"
+        "rust/src/snowball_view.rs",
+        "rust/src/snowball_client.rs"
       ],
       "functions": [
         {
@@ -2506,11 +2508,12 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/client-system.js",
       "lines": 151,
-      "review": "Source separate dead-observation time, strict >2500ms fallback and gone shortcut translated at Client stage; checked in concrete removal fixture. Complete Client arrival marker, camera, destination/target/network/HUD lifecycle still partial, not inactive.",
+      "review": "Living arrival-marker branches and camera snap translated with attach-once, valid tile, landed detach, dead/no-player early returns and teardown. 28 original Client/MainLevel/tracker frames compare bounded state; prior concrete death observation checks remain. Deferred target/destination/network/host score, real player assignment/removal, retained restart fields remain partial. See SOURCE-COVERAGE client follow-up.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs",
-        "rust/src/snowball_removal.rs"
+        "rust/src/snowball_removal.rs",
+        "rust/src/snowball_client.rs"
       ],
       "functions": [
         {
@@ -3186,10 +3189,11 @@
     {
       "file": "static/scenes/snowball/js/snowball/entities/player-marker.js",
       "lines": 53,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Actual constructor geometry exported (50 vertices/exact indices), unlit source color/opacity uniforms and separate arrival depth-test behavior translated. Isolated marker raster comparison only; shared elf-marker parent/visibility through pooling/death and full transparent sorting remain partial.",
       "native": [
         "rust/src/snowball.rs",
-        "rust/src/snowball_view.rs"
+        "rust/src/snowball_view.rs",
+        "rust/src/snowball_client.rs"
       ],
       "functions": [
         {

@@ -86,6 +86,34 @@ async fn run() {
     }
     game.start();
     game.advance(seconds, 1440., 800.);
+    if let Some(name) = args.get(3).and_then(|s| s.strip_prefix("marker-")) {
+        let data: serde_json::Value =
+            serde_json::from_str(include_str!("../data/snowball-client-reference.json")).unwrap();
+        let row = data["renders"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .find(|r| r["name"] == name)
+            .expect("marker phase");
+        game.players.clear();
+        game.drops.clear();
+        game.shots.clear();
+        game.particles.clear();
+        game.map.states.fill(0);
+        game.map.obstacles.fill(-1);
+        game.splash_until = 0.;
+        game.camera = santa_tracker::snowball::V::new(
+            row["camera"][0].as_f64().unwrap(),
+            row["camera"][1].as_f64().unwrap(),
+        );
+        if !row["marker"].is_null() {
+            let marker = &row["marker"];
+            game.client_arrival.marker = Some(santa_tracker::snowball_client::ArrivalMarker {
+                position: std::array::from_fn(|i| marker["position"][i].as_f64().unwrap()),
+                rotation: marker["rotation"].as_f64().unwrap(),
+            });
+        }
+    }
     if let Some(tick) = args
         .get(3)
         .and_then(|s| s.strip_prefix("removal-"))

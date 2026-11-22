@@ -1691,3 +1691,75 @@ resolution, host/overlay behavior, input, model loading or all scenes. No README
 rating or user approval changes follow; full 1:1 remains unfinished.
 
 The current release builds. Owned normal-density application captures for Elf Maker, Santa Selfie and Present Drop also render without panic and were inspected; they are smoke checks, not whole-mode visual certification.
+
+### Snowball client arrival marker and camera — 22 November 2026
+
+Read the complete ClientSystem, PlayerMarker, MainLevel, LocalLevel,
+TetheredCameraTracker, Elf and PlayerSystem source, together with the engine
+Game/SnowballGame update ordering. The two markers have separate parents and
+lifetimes: Elf's shared clientPlayerMarker is under the dolly, whereas Client's
+arrivalMarker lives directly in playerLayer and disables depth testing.
+
+- `snowball_client::Arrival` stores the arrival marker. Client-stage updates
+  attach it only for a living, unarrived player with tileIndex > -1 and no
+  existing parent; the recorded transform stays unchanged on later tile/dolly
+  changes. Its local position is (tile.x, tile.y + dolly.y, 19), rotation.x is
+  dolly.rotation.x. Attachment snaps camera to (tile.x, tile.y * -0.75).
+  Arrival detaches it; no-player and dead early returns leave it unchanged.
+  Start clears the marker and resets level camera to the origin; it no longer
+  applies the old invented dolly-y offset to camera placement.
+- MainLevel's camera follows a living arrived player only while neither exiting
+  nor gone. The extracted tracker retains source per-update acceleration,
+  friction and browser `length` quirk (zero in the checked source context).
+  Dead-player map picks retain their separate camera target.
+- Both ring render paths now use the actual original PlayerMarker constructor's
+  ShapeBufferGeometry (50 vertices and exact indices), instead of an invented
+  48-segment ring. The material remains unlit, 0x22cc88, opacity .5, straight
+  alpha. Arrival uses disabled depth testing, separately from the elf's ring.
+
+`snowball-client-reference.json` and provenance run unmodified original Client,
+MainLevel.update and tracker with actual THREE/grid and explicit player states.
+Four cases / 28 frames cover invalid tile, attach-once, altered tile/dolly,
+landing, exiting/gone camera guards, diagonal friction, resize, dead-camera
+picks, death during descent, missing player and marker teardown. The native
+oracle runs actual production Snowball.begin_frame for the camera branch and
+production Arrival.update for the client branch. UI/event sinks and concrete
+PlayerSystem removal are stubbed; clock remains 100ms, so this evidence does
+not extend the previous death-timer certification or verify input/network.
+
+Remaining source functions/branches: assignTarget cloning and deferred target
+queue, assignDestination/PlayerSystem forwarding/network hooks, full HUD/host
+score event timing, and actual player assignment/removal remain partial. Setup
+is empty in source. Constructor's unused pendingSpawnAt has no active consumer;
+source-wide unused imports/constants are not runtime behavior. Full restart
+retained client fields, pooled shared elf-marker parent/visibility, model/LOD
+readiness and transparent object sorting remain unfinished. Native local spawn
+still picks the tile eagerly, while source PlayerSystem chooses a missing tile
+AFTER ClientSystem; these tests use explicit tiles and do not prove that complete
+initialization sequence. Do not infer full 1:1 from these bounded checks.
+
+Four isolated original/native marker captures at 1440x800 were inspected with
+20x difference crops. Attached/retained masks have identical coverage with a
+one-unit green-channel difference; landed removal is pixel-identical blank
+background. The dead-during-descent capture has one edge coverage discrepancy
+(max channel error 41; union-object RGB MAE .47034/255). Full-image MAE is at
+most .0000964/255; these tiny masks do not certify a full scene. Durable metrics
+are in `snowball-marker-raster-errors.json`. Prior isolated arrival-130 and
+removal-81 captures remain byte-identical after reusing the shader pipelines.
+All 97 tests pass and the release builds. Adding two separate marker pipelines
+initially exceeded Macroquad's fixed 32-pipeline capacity in the actual app;
+existing compatible clip/particle pipelines now select the unlit marker branch
+with a negative vertex tag instead. Normal geometry/random tags remain outside
+that branch. Actual app startup checks pass; an owned live app with injected
+X11 splash/F12 events also showed descent with the separate marker, followed
+by game over. The latter is a smoke check, not a verified landed/whole-match
+comparison. The earlier --advance-only captures remained on the splash screen.
+
+The user then requested that tests stop interrupting their game and reported
+unclear textures. No more windows/input tests will run during their game. Offline
+`snowball-texture-audit.json` verifies the seven distributed PNGs retain source
+bytes and dimensions. This rules out file replacement/resizing for those PNGs,
+not filtering/material/camera issues. Native trilinear filtering is applied more
+broadly than original THREE's three memoized maps; CSS UI and generated textures
+still need matched sampling/render-scale evidence. No speculative sharpening,
+nearest filtering or art changes were applied, and clarity remains unresolved.

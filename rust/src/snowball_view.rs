@@ -11,15 +11,16 @@ use santa_tracker::snowball_removal::{Ice, Parent};
 use serde_json::Value;
 use std::{collections::HashMap, f32::consts::PI};
 const VERT: &str = r#"#version 100
-attribute vec3 position;attribute vec2 texcoord;attribute vec4 color0;varying vec2 uv;varying vec4 tint;
-void main(){gl_Position=vec4(position,1.0);uv=texcoord;tint=color0/255.0;}"#;
+attribute vec3 position;attribute vec2 texcoord;attribute vec4 color0;attribute vec4 normal;varying vec2 uv;varying vec4 tint;varying vec4 data;
+void main(){gl_Position=vec4(position,1.0);uv=texcoord;tint=color0/255.0;data=normal;}"#;
 const FRAG: &str = r#"#version 100
-precision highp float;uniform sampler2D Texture;varying vec2 uv;varying vec4 tint;
-void main(){vec4 c=texture2D(Texture,uv)*tint;if(c.a<0.1)discard;gl_FragColor=c;}"#;
+precision highp float;uniform sampler2D Texture;uniform vec3 diffuse;uniform float opacity;varying vec2 uv;varying vec4 tint;varying vec4 data;
+void main(){if(data.z==-1.){gl_FragColor=vec4(diffuse,opacity);return;}vec4 c=texture2D(Texture,uv)*tint;if(c.a<0.1)discard;gl_FragColor=c;}"#;
 pub struct SnowballView {
     model: Option<ElfModel>,
     shapes: crate::ui_render::Shapes,
     clip: Material,
+    marker_mesh: Mesh,
     tile: Material,
     particle: Material,
     iceberg: Material,
@@ -37,7 +38,7 @@ pub struct SnowballView {
 fn geometry(data: &str) -> Mesh {
     let v: Value = serde_json::from_str(data).unwrap();
     let p = v["position"].as_array().unwrap();
-    let uv = v["uv"].as_array().unwrap();
+    let uv = v["uv"].as_array();
     Mesh {
         vertices: p
             .chunks_exact(3)
@@ -47,8 +48,8 @@ fn geometry(data: &str) -> Mesh {
                     p[0].as_f64().unwrap() as f32,
                     p[1].as_f64().unwrap() as f32,
                     p[2].as_f64().unwrap() as f32,
-                    uv[i * 2].as_f64().unwrap() as f32,
-                    1. - uv[i * 2 + 1].as_f64().unwrap() as f32,
+                    uv.map_or(0., |uv| uv[i * 2].as_f64().unwrap() as f32),
+                    uv.map_or(0., |uv| 1. - uv[i * 2 + 1].as_f64().unwrap() as f32),
                     WHITE,
                 )
             })
@@ -70,6 +71,10 @@ impl SnowballView {
                 fragment: FRAG,
             },
             MaterialParams {
+                uniforms: vec![
+                    UniformDesc::new("diffuse", UniformType::Float3),
+                    UniformDesc::new("opacity", UniformType::Float1),
+                ],
                 pipeline_params: PipelineParams {
                     depth_test: Comparison::LessOrEqual,
                     depth_write: true,
@@ -93,14 +98,14 @@ impl SnowballView {
 attribute vec3 position;attribute vec2 texcoord;attribute vec4 color0;attribute vec4 normal;
 varying vec2 uv;varying vec4 tint;varying vec4 data;
 void main(){gl_Position=vec4(position,1.0);uv=texcoord;tint=color0/255.0;data=normal;}"#;
-        let make = |fragment: &str, additive: bool, depth: bool| {
+        let make = |fragment: &str, additive: bool, depth: bool, uniforms: Vec<UniformDesc>| {
             load_material(
                 ShaderSource::Glsl {
                     vertex: vertex_data,
                     fragment,
                 },
                 MaterialParams {
-                    uniforms: vec![UniformDesc::new("Time", UniformType::Float1)],
+                    uniforms,
                     pipeline_params: PipelineParams {
                         depth_test: if depth {
                             Comparison::LessOrEqual
@@ -135,20 +140,35 @@ precision highp float;varying vec2 uv;varying vec4 tint;varying vec4 data;unifor
 void main(){vec4 color=data.w==5.0?vec4(.94,.97,1.,1.):vec4(1.);if(data.y<.5)color=vec4(.8,.87,.86,1.)+data.y/7.;if(data.w==2.){float t=.15+abs(sin(Time/300.))*.15;color.rgb*=vec3(1.-.45*t,1.-.75*t,1.);}gl_FragColor=vec4(color.rgb,color.a*tint.a);}"#,
             false,
             true,
+            vec![UniformDesc::new("Time", UniformType::Float1)],
         )?;
         let particle = make(
             r#"#version 100
-precision highp float;varying vec2 uv;varying vec4 tint;varying vec4 data;uniform sampler2D Texture;uniform float Time;
-void main(){if(data.w>.5){float scale=data.y/6.;float fade=(Time-data.x)/(700.*scale);float show=.5-length(uv-vec2(.5));gl_FragColor=vec4(.6666667,.8,1.,max(0.,(show-fade)/(3.*scale)));}else{float elapsed=min((Time-data.x)/300.,1.);vec4 c=texture2D(Texture,uv);if(c.a>.5)c.a=elapsed;gl_FragColor=c;}}"#,
+precision highp float;varying vec2 uv;varying vec4 tint;varying vec4 data;uniform sampler2D Texture;uniform float Time;uniform vec3 diffuse;uniform float opacity;
+void main(){if(data.z==-1.){gl_FragColor=vec4(diffuse,opacity);return;}if(data.w>.5){float scale=data.y/6.;float fade=(Time-data.x)/(700.*scale);float show=.5-length(uv-vec2(.5));gl_FragColor=vec4(.6666667,.8,1.,max(0.,(show-fade)/(3.*scale)));}else{float elapsed=min((Time-data.x)/300.,1.);vec4 c=texture2D(Texture,uv);if(c.a>.5)c.a=elapsed;gl_FragColor=c;}}"#,
             false,
             false,
+            vec![
+                UniformDesc::new("Time", UniformType::Float1),
+                UniformDesc::new("diffuse", UniformType::Float3),
+                UniformDesc::new("opacity", UniformType::Float1),
+            ],
         )?;
+        // Reuse the existing equal-depth and no-depth straight-alpha pipelines.
+        // Macroquad has a fixed 32-pipeline limit across all eagerly loaded scenes.
+        // Marker data.z is -1; ordinary clip geometry uses 0 and particles use
+        // their nonnegative random value, so their shader branches stay unchanged.
+        for material in [&clip, &particle] {
+            material.set_uniform("diffuse", vec3(34. / 255., 204. / 255., 136. / 255.));
+            material.set_uniform("opacity", 0.5f32);
+        }
         let iceberg = make(
             r#"#version 100
 precision highp float;varying vec2 uv;varying vec4 tint;varying vec4 data;uniform float Time;
 void main(){float alpha=pow(length(abs(uv-vec2(.5))),3.);if(data.y<0.)alpha=min(0.,.5-data.y);gl_FragColor=vec4(.6,.9,1.,(alpha*.9+.1)*data.w);}"#,
             true,
             true,
+            vec![UniformDesc::new("Time", UniformType::Float1)],
         )?;
         let projectile = make(
             r#"#version 100
@@ -156,6 +176,7 @@ precision highp float;varying vec2 uv;varying vec4 tint;varying vec4 data;unifor
 void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.y)-.5;vec2 q=mat2(cos(a),-sin(a),sin(a),cos(a))*p+.5;vec4 c=texture2D(Texture,vec2(q.x,1.-q.y));c-=vec4(.05,.015,0.,0.)*cos(Time/30.*data.x);gl_FragColor=c;}"#,
             false,
             true,
+            vec![UniformDesc::new("Time", UniformType::Float1)],
         )?;
         let vertex = include_str!("../assets/shaders/ski-standard.vert")
             .replace("#define USE_MAP", "#define USE_MAP\n#define USE_COLOR")
@@ -195,6 +216,7 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             model: None,
             shapes: crate::ui_render::Shapes::new()?,
             clip,
+            marker_mesh: geometry(include_str!("../data/snowball-marker-geometry.json")),
             tile,
             particle,
             iceberg,
@@ -564,31 +586,8 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
             draw_batched(&mesh);
             gl_use_material(&self.clip);
             if i == 0 && p.alive && p.arrived {
-                let mut ring = Mesh {
-                    vertices: vec![],
-                    indices: vec![],
-                    texture: None,
-                };
-                let at = model * Mat4::from_rotation_x(-PI / 2.);
-                for k in 0..=48 {
-                    let a = k as f32 / 48. * 2. * PI;
-                    for r in [15., 11.] {
-                        ring.vertices.push(Vertex::new2(
-                            vp.transform_point3(at.transform_point3(vec3(
-                                a.cos() * r,
-                                a.sin() * r,
-                                0.,
-                            ))),
-                            Vec2::ZERO,
-                            Color::new(0.133, 0.8, 0.533, 0.5),
-                        ));
-                    }
-                    if k > 0 {
-                        let n = k * 2;
-                        ring.indices.extend([n - 2, n - 1, n, n, n - 1, n + 1]);
-                    }
-                }
-                draw_batched(&ring)
+                self.draw_marker(vp, model * Mat4::from_rotation_x(-PI / 2.), false);
+                gl_use_material(&self.clip);
             }
         }
         draw_batched(&parachutes);
@@ -620,6 +619,18 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
         draw_batched(&shots);
         gl_use_material(&self.clip);
         self.effects(assets, g, vp);
+        if let Some(marker) = g.client_arrival.marker {
+            self.draw_marker(
+                vp,
+                Mat4::from_translation(vec3(
+                    marker.position[0] as f32,
+                    marker.position[1] as f32,
+                    marker.position[2] as f32,
+                )) * Mat4::from_rotation_x(marker.rotation as f32),
+                true,
+            );
+            gl_use_material(&self.clip);
+        }
         if let Some(p) = g.players.first() {
             if let Some(target) = p.path.last() {
                 let center = vp.transform_point3(vec3(target.x as f32, target.y as f32 - 20., 32.));
@@ -646,6 +657,19 @@ void main(){float a=Time/(1000.+5000.*data.x)*3.14159*2.;vec2 p=vec2(uv.x,1.-uv.
         gl_use_default_material();
         self.powerups(assets, g);
         Ok(())
+    }
+    fn draw_marker(&self, vp: Mat4, at: Mat4, arrival: bool) {
+        let mut mesh = Mesh {
+            vertices: self.marker_mesh.vertices.clone(),
+            indices: self.marker_mesh.indices.clone(),
+            texture: None,
+        };
+        for v in &mut mesh.vertices {
+            v.position = vp.transform_point3(at.transform_point3(v.position));
+            v.normal = vec4(0., 0., -1., 0.);
+        }
+        gl_use_material(if arrival { &self.particle } else { &self.clip });
+        draw_batched(&mesh);
     }
     fn effects(&self, assets: &Assets, g: &Snowball, vp: Mat4) {
         let mut mesh = Mesh {

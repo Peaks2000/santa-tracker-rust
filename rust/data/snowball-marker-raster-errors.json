@@ -1,0 +1,72 @@
+{
+  "method": "Actual original PlayerMarker/bundled THREE and native production SnowballView/SceneFilter on blank maps, 1440x800 DPR1. Imported measured Client transforms/cameras isolate geometry/material raster. No elf models/occlusion/transparent sorting/LOD or full-scene initialization/control verification. Native capture gameover false; production opaque compositor. Object error mask is union of non-background source/native pixels. Two earlier isolated canopy/present/iceberg images remain byte-identical after pipeline reuse.",
+  "frames": [
+    {
+      "name": "attached",
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        705,
+        387,
+        735,
+        409
+      ],
+      "whole_rgb_mae_per_255": 6.944444444444444e-05,
+      "object_rgb_mae_per_255": 0.3333333333333333,
+      "max_channel_error": 1.0,
+      "different_pixels": 240
+    },
+    {
+      "name": "retained",
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        705,
+        387,
+        735,
+        409
+      ],
+      "whole_rgb_mae_per_255": 6.944444444444444e-05,
+      "object_rgb_mae_per_255": 0.3333333333333333,
+      "max_channel_error": 1.0,
+      "different_pixels": 240
+    },
+    {
+      "name": "landed",
+      "size": [
+        1440,
+        800
+      ],
+      "box": null,
+      "whole_rgb_mae_per_255": 0.0,
+      "object_rgb_mae_per_255": 0,
+      "max_channel_error": 0.0,
+      "different_pixels": 0
+    },
+    {
+      "name": "dead",
+      "size": [
+        1440,
+        800
+      ],
+      "box": [
+        705,
+        310,
+        735,
+        332
+      ],
+      "whole_rgb_mae_per_255": 9.635416666666667e-05,
+      "object_rgb_mae_per_255": 0.4703389830508475,
+      "max_channel_error": 41.0,
+      "different_pixels": 236
+    }
+  ],
+  "previous_raster_cases_unchanged": [
+    "arrival-130",
+    "removal-81"
+  ]
+}

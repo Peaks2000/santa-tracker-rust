@@ -1,0 +1,68 @@
+{
+  "method": "Offline PNG dimensions/SHA256 audit, source texts and existing saved screenshots only. User reported unclear textures and requested no window/input tests during their game. Original files are retained exactly in the public native distribution; byte identity does not certify correct sampling, generated elf/present textures, SVG density, material/camera/compositing or visual clarity. Native assets.rs currently applies trilinear minification to every Snowball image; original THREE uses textureMemo only for tiles/snowball/parachute while remaining image UI is CSS. Sampling/render-scale comparisons remain open; no sharpen/nearest-filter substitution was made.",
+  "images": [
+    {
+      "file": "static/scenes/snowball/img/item-frame.png",
+      "dimensions": [
+        201,
+        209
+      ],
+      "sha256": "a5c3b709d8ddf1708a563cd8f680d57d210868d23766f7a4f050c058c64f098c",
+      "distribution_bytes_identical": true
+    },
+    {
+      "file": "static/scenes/snowball/img/parachute-button.png",
+      "dimensions": [
+        343,
+        471
+      ],
+      "sha256": "32964043a0755ace5f80e9b58701d91e89d3b9bcbca9a61d59999de9a0a94d91",
+      "distribution_bytes_identical": true
+    },
+    {
+      "file": "static/scenes/snowball/img/parachute.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "sha256": "fa15863824ca57ff48feed85227a495ba807364e135dec2ace48a01d986ce66f",
+      "distribution_bytes_identical": true
+    },
+    {
+      "file": "static/scenes/snowball/img/powerup-1.png",
+      "dimensions": [
+        141,
+        141
+      ],
+      "sha256": "8091920a18e8d4d59c8bc2a454e1fe9a59ce99e4fdd122f42a9ae8bd4e0eb7cf",
+      "distribution_bytes_identical": true
+    },
+    {
+      "file": "static/scenes/snowball/img/sleigh.png",
+      "dimensions": [
+        1028,
+        181
+      ],
+      "sha256": "9cc82e0a5091b7fd65d7f9f3411487546a8566e78fea572e1c9a7919ba4b40de",
+      "distribution_bytes_identical": true
+    },
+    {
+      "file": "static/scenes/snowball/img/snowball.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "38da7d66dd1774510c53c493b58517b61d1edde77cd8455db1981d5e1c921a05",
+      "distribution_bytes_identical": true
+    },
+    {
+      "file": "static/scenes/snowball/img/tiles.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sha256": "9a57e45534f5752abd5702a83a4a5369d4a2a4365f27fbe46744d786fc1154a8",
+      "distribution_bytes_identical": true
+    }
+  ]
+}
