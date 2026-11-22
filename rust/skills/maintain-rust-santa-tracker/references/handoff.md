@@ -286,3 +286,36 @@ resize/MainLevel.measure recreates that limit at the origin.
 Full dynamic Set/handler ordering/deduplication, persistent quad nodes, shot/shot
 contacts, pickups/arrivals and original pools remain partial. Do not claim these
 narrow cases certify the whole match. No rating/user-feedback changes follow.
+
+
+### Snowball ordered-contact follow-up (22 November 2026)
+
+Production now uses `snowball_collision::Collision`: ordered registration,
+persistent Quad (including source clearDynamic empty-node retention), exact
+asymmetric measuredCollisions branches and directed notifications. Stable
+Shot.id/hit survive Vec splices; player setup/arrived handler flags and drop
+landing/colliding-player state keep subscription/registration separate from
+health. Ordinary frames must not call reset_collisions; it is for fresh-map or
+explicit diagnostic state import. Bots query the same retained frame quad.
+Shot/shot contacts, every hit sound, thrower exclusion, incoming facing -PI/2,
+repeated fall callbacks with first exit timestamp, first-notified Elf pickup
+(including simultaneous death), next-pass spin deregistration and one local
+pickup sound per frame now have actual concrete-source checks.
+
+Evidence: `snowball-collision-lifecycle-reference.json` (five original persistent
+collision sequences, 22 frames) and `snowball-contact-actions-reference.json`
+(five actual actor/system sequences, 20 frames), with provenance explaining
+scaffolds. The latter starts actors arrived with ready models, imported measured
+poses/scales, map held at state 1, no bot/parachute/LOD/input/effect integration,
+and controlled fall selection. Do not certify full-match random/pooling/arrival
+behavior from it. Earlier dynamic-contact gaps are superseded within this scope;
+full spawn/landing/freezing/restart phases, generic collision subscription/debug
+and mid-pass XY/registry mutation remain unverified. Normal active callbacks do
+not mutate XY/registry, so ordered measured-pair dispatch is valid for this path.
+
+Reference server imports rewrite to ?module. Harness imports of Elf/Snowball
+must use that same canonical URL: mixing direct .js and .js?module creates two
+class identities and silently breaks instanceof-based pickup/death handlers.
+An initial contact run was discarded after debugger confirmation; final fixtures
+use canonical imports. Do not infer inactive handlers from a duplicate-module
+harness. Existing formula/shape tests do not depend on those instance checks.

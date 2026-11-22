@@ -130,7 +130,7 @@
     {
       "file": "static/scenes/snowball/js/engine/utils/quad-tree.js",
       "lines": 165,
-      "review": "native dynamic tree ordering checked by 40 actual original queries; persistent registration and static branch lifecycle still partial",
+      "review": "Persistent clearDynamic/split/redistribution/candidate ordering and bounds reset with statics checked against actual original in 22 frames, including stale statics after Set removal. Generic explicit QuadTree.remove is unused by active local collision management and not ported.",
       "native": [
         "rust/src/snowball_collision.rs"
       ],
@@ -1368,10 +1368,11 @@
     {
       "file": "static/scenes/snowball/js/engine/systems/collision-2d-system.js",
       "lines": 240,
-      "review": "Tree-primary contacts and shared previous-LOD limit/reset checked against actual original; dynamic Set/handler/deduplication and persistent registration still partial.",
+      "review": "Active directed contact measurement/cache branches and persistent Set order checked against actual original in 22 frames; native dispatch translates concrete local handlers. Generic handler subscription/mutation/debug paths are not certified; complete spawn/arrival/freezing/restart cadence remains partial.",
       "native": [
         "rust/src/snowball.rs",
-        "rust/src/snowball_view.rs"
+        "rust/src/snowball_view.rs",
+        "rust/src/snowball_collision.rs"
       ],
       "functions": [
         {
@@ -2086,7 +2087,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/player-system.js",
       "lines": 277,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Actual original contact/powerup/update sequences verify repeated falls, collision removal and once-per-frame local pickup sound. Spawn/landing/destination/target queues and pooling still require full lifecycle matching.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -2470,7 +2471,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/drop-system.js",
       "lines": 150,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Actual original landed contact/pickup/spin-removal sequences checked. Native registration is persistent at system stages; full parachute/new-drop/freezing/reuse cadence remains partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -2757,7 +2758,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/entities/elf.js",
       "lines": 441,
-      "review": "Ready-model idle/run/throw/fall update ordering checked in 42 actual Elf.update states with matched incoming transforms; dynamic loading/LOD, material/actor pooling and collision/input registration still partial.",
+      "review": "Ready Model/actual Elf.update checks, plus actual collision handlers verify incoming facing, repeated die/fall callbacks and first exit time. Subscription phase is tracked natively; original pool/LOD/loading and freeze/arrival timing remain partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_animation.rs",
@@ -2889,7 +2890,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/entities/drop.js",
       "lines": 210,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Actual original handler and DropSystem fixture verifies first-notified Elf, simultaneous lethal/pickup and spin transforms, with imported initial scale. Original pooled allocation/parent/freeze lifecycle remains partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -3107,7 +3108,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/entities/snowball.js",
       "lines": 256,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "Source trajectory formulas retained; actual original collision handlers verify all directed hits, thrower exclusion, last collidedWith and sound notifications including snowball/snowball contacts. Pooled materials/effect reuse remains partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"

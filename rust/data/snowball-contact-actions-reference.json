@@ -1,0 +1,1787 @@
+{
+  "cases": [
+    {
+      "name": "shot-shot",
+      "initial": {
+        "players": [
+          {
+            "pos": [
+              0,
+              0,
+              0
+            ],
+            "face": 0
+          },
+          {
+            "pos": [
+              400,
+              0,
+              0
+            ],
+            "face": 0
+          }
+        ],
+        "drops": [],
+        "shots": [
+          {
+            "id": 0,
+            "thrower": 0,
+            "origin": [
+              0,
+              0
+            ],
+            "target": [
+              256,
+              0
+            ],
+            "pos": [
+              200,
+              0,
+              32
+            ],
+            "born": 0
+          },
+          {
+            "id": 1,
+            "thrower": 0,
+            "origin": [
+              0,
+              0
+            ],
+            "target": [
+              256,
+              0
+            ],
+            "pos": [
+              200,
+              0,
+              32
+            ],
+            "born": 0
+          }
+        ],
+        "order": [
+          "p0",
+          "p1",
+          "s0",
+          "s1"
+        ]
+      },
+      "frames": [
+        {
+          "at": 100,
+          "afterCollision": {
+            "players": [
+              true,
+              true
+            ],
+            "drops": []
+          },
+          "contactLog": [
+            [
+              "s0",
+              "s1"
+            ],
+            [
+              "s1",
+              "s0"
+            ]
+          ],
+          "order": [
+            "p0",
+            "p1",
+            "s1"
+          ],
+          "sounds": [
+            "snowball_hit",
+            "snowball_hit"
+          ],
+          "players": [
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            },
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [],
+          "shots": [
+            {
+              "id": 1,
+              "hit": "s0",
+              "pos": [
+                200,
+                0,
+                32
+              ],
+              "born": 0
+            }
+          ]
+        },
+        {
+          "at": 100,
+          "afterCollision": {
+            "players": [
+              true,
+              true
+            ],
+            "drops": []
+          },
+          "contactLog": [],
+          "order": [
+            "p0",
+            "p1"
+          ],
+          "sounds": [],
+          "players": [
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            },
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [],
+          "shots": []
+        },
+        {
+          "at": 116.6667,
+          "afterCollision": {
+            "players": [
+              true,
+              true
+            ],
+            "drops": []
+          },
+          "contactLog": [],
+          "order": [
+            "p0",
+            "p1"
+          ],
+          "sounds": [],
+          "players": [
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            },
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [],
+          "shots": []
+        },
+        {
+          "at": 450,
+          "afterCollision": {
+            "players": [
+              true,
+              true
+            ],
+            "drops": []
+          },
+          "contactLog": [],
+          "order": [
+            "p0",
+            "p1"
+          ],
+          "sounds": [],
+          "players": [
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            },
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [],
+          "shots": []
+        }
+      ]
+    },
+    {
+      "name": "pickup-first-registered",
+      "initial": {
+        "players": [
+          {
+            "pos": [
+              0,
+              0,
+              0
+            ],
+            "face": 0
+          },
+          {
+            "pos": [
+              0,
+              0,
+              0
+            ],
+            "face": 0
+          }
+        ],
+        "drops": [
+          {
+            "pos": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              18.5555313645428,
+              15.807324514017392,
+              13.320872331574462
+            ],
+            "rotation": 0,
+            "z": 32
+          }
+        ],
+        "shots": [],
+        "order": [
+          "p1",
+          "d0",
+          "p0"
+        ]
+      },
+      "frames": [
+        {
+          "at": 100,
+          "afterCollision": {
+            "players": [
+              true,
+              true
+            ],
+            "drops": [
+              "p1"
+            ]
+          },
+          "contactLog": [
+            [
+              "p1",
+              "d0"
+            ],
+            [
+              "d0",
+              "p1"
+            ],
+            [
+              "p1",
+              "p0"
+            ],
+            [
+              "p0",
+              "p1"
+            ],
+            [
+              "d0",
+              "p1"
+            ],
+            [
+              "p1",
+              "d0"
+            ],
+            [
+              "d0",
+              "p0"
+            ],
+            [
+              "p0",
+              "d0"
+            ],
+            [
+              "p0",
+              "p1"
+            ],
+            [
+              "p1",
+              "p0"
+            ]
+          ],
+          "order": [
+            "p1",
+            "d0",
+            "p0"
+          ],
+          "sounds": [],
+          "players": [
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            },
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": 3,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [
+            {
+              "label": "d0",
+              "spin": 100,
+              "colliding": null,
+              "rotation": 0.01,
+              "z": 32,
+              "scale": [
+                18.5555313645428,
+                15.807324514017392,
+                13.320872331574462
+              ]
+            }
+          ],
+          "shots": []
+        },
+        {
+          "at": 100,
+          "afterCollision": {
+            "players": [
+              true,
+              true
+            ],
+            "drops": [
+              null
+            ]
+          },
+          "contactLog": [
+            [
+              "p1",
+              "d0"
+            ],
+            [
+              "d0",
+              "p1"
+            ],
+            [
+              "p1",
+              "p0"
+            ],
+            [
+              "p0",
+              "p1"
+            ],
+            [
+              "d0",
+              "p1"
+            ],
+            [
+              "p1",
+              "d0"
+            ],
+            [
+              "d0",
+              "p0"
+            ],
+            [
+              "p0",
+              "d0"
+            ],
+            [
+              "p0",
+              "p1"
+            ],
+            [
+              "p1",
+              "p0"
+            ]
+          ],
+          "order": [
+            "p1",
+            "p0"
+          ],
+          "sounds": [],
+          "players": [
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            },
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": 3,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [
+            {
+              "label": "d0",
+              "spin": 100,
+              "colliding": null,
+              "rotation": 0.01,
+              "z": 32,
+              "scale": [
+                18.5555313645428,
+                15.807324514017392,
+                13.320872331574462
+              ]
+            }
+          ],
+          "shots": []
+        },
+        {
+          "at": 116.6667,
+          "afterCollision": {
+            "players": [
+              true,
+              true
+            ],
+            "drops": [
+              null
+            ]
+          },
+          "contactLog": [
+            [
+              "p1",
+              "p0"
+            ],
+            [
+              "p0",
+              "p1"
+            ],
+            [
+              "p0",
+              "p1"
+            ],
+            [
+              "p1",
+              "p0"
+            ]
+          ],
+          "order": [
+            "p1",
+            "p0"
+          ],
+          "sounds": [],
+          "players": [
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            },
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": 3,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [
+            {
+              "label": "d0",
+              "spin": 100,
+              "colliding": null,
+              "rotation": 0.30406093066689815,
+              "z": 34.99528004389376,
+              "scale": [
+                19.423953439543734,
+                16.547127071270342,
+                13.944305816918547
+              ]
+            }
+          ],
+          "shots": []
+        },
+        {
+          "at": 450,
+          "afterCollision": {
+            "players": [
+              true,
+              true
+            ],
+            "drops": [
+              null
+            ]
+          },
+          "contactLog": [
+            [
+              "p1",
+              "p0"
+            ],
+            [
+              "p0",
+              "p1"
+            ],
+            [
+              "p0",
+              "p1"
+            ],
+            [
+              "p1",
+              "p0"
+            ]
+          ],
+          "order": [
+            "p1",
+            "p0"
+          ],
+          "sounds": [],
+          "players": [
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            },
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": 3,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [],
+          "shots": []
+        }
+      ]
+    },
+    {
+      "name": "pickup-client-once-for-two-drops",
+      "initial": {
+        "players": [
+          {
+            "pos": [
+              0,
+              0,
+              0
+            ],
+            "face": 0
+          },
+          {
+            "pos": [
+              400,
+              0,
+              0
+            ],
+            "face": 0
+          }
+        ],
+        "drops": [
+          {
+            "pos": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              16.097119727327886,
+              14.850263588080093,
+              13.666343594936736
+            ],
+            "rotation": 0,
+            "z": 32
+          },
+          {
+            "pos": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              18.166701940575013,
+              14.766795662761126,
+              11.129404230187859
+            ],
+            "rotation": 0,
+            "z": 32
+          }
+        ],
+        "shots": [],
+        "order": [
+          "p0",
+          "p1",
+          "d0",
+          "d1"
+        ]
+      },
+      "frames": [
+        {
+          "at": 100,
+          "afterCollision": {
+            "players": [
+              true,
+              true
+            ],
+            "drops": [
+              "p0",
+              "p0"
+            ]
+          },
+          "contactLog": [
+            [
+              "p0",
+              "d0"
+            ],
+            [
+              "d0",
+              "p0"
+            ],
+            [
+              "p0",
+              "d1"
+            ],
+            [
+              "d1",
+              "p0"
+            ],
+            [
+              "d0",
+              "p0"
+            ],
+            [
+              "p0",
+              "d0"
+            ],
+            [
+              "d0",
+              "d1"
+            ],
+            [
+              "d1",
+              "d0"
+            ],
+            [
+              "d1",
+              "p0"
+            ],
+            [
+              "p0",
+              "d1"
+            ]
+          ],
+          "order": [
+            "p0",
+            "p1",
+            "d0",
+            "d1"
+          ],
+          "sounds": [
+            "snowball_pickup"
+          ],
+          "players": [
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": 3,
+              "secondary": 3,
+              "swapped": false
+            },
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [
+            {
+              "label": "d0",
+              "spin": 100,
+              "colliding": null,
+              "rotation": 0.01,
+              "z": 32,
+              "scale": [
+                16.097119727327886,
+                14.850263588080093,
+                13.666343594936736
+              ]
+            },
+            {
+              "label": "d1",
+              "spin": 100,
+              "colliding": null,
+              "rotation": 0.01,
+              "z": 32,
+              "scale": [
+                18.166701940575013,
+                14.766795662761126,
+                11.129404230187859
+              ]
+            }
+          ],
+          "shots": []
+        },
+        {
+          "at": 100,
+          "afterCollision": {
+            "players": [
+              true,
+              true
+            ],
+            "drops": [
+              null,
+              null
+            ]
+          },
+          "contactLog": [
+            [
+              "p0",
+              "d0"
+            ],
+            [
+              "d0",
+              "p0"
+            ],
+            [
+              "p0",
+              "d1"
+            ],
+            [
+              "d1",
+              "p0"
+            ],
+            [
+              "d0",
+              "p0"
+            ],
+            [
+              "p0",
+              "d0"
+            ],
+            [
+              "d0",
+              "d1"
+            ],
+            [
+              "d1",
+              "d0"
+            ],
+            [
+              "d1",
+              "p0"
+            ],
+            [
+              "p0",
+              "d1"
+            ]
+          ],
+          "order": [
+            "p0",
+            "p1"
+          ],
+          "sounds": [],
+          "players": [
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": 3,
+              "secondary": 3,
+              "swapped": false
+            },
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [
+            {
+              "label": "d0",
+              "spin": 100,
+              "colliding": null,
+              "rotation": 0.01,
+              "z": 32,
+              "scale": [
+                16.097119727327886,
+                14.850263588080093,
+                13.666343594936736
+              ]
+            },
+            {
+              "label": "d1",
+              "spin": 100,
+              "colliding": null,
+              "rotation": 0.01,
+              "z": 32,
+              "scale": [
+                18.166701940575013,
+                14.766795662761126,
+                11.129404230187859
+              ]
+            }
+          ],
+          "shots": []
+        },
+        {
+          "at": 116.6667,
+          "afterCollision": {
+            "players": [
+              true,
+              true
+            ],
+            "drops": [
+              null,
+              null
+            ]
+          },
+          "contactLog": [],
+          "order": [
+            "p0",
+            "p1"
+          ],
+          "sounds": [],
+          "players": [
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": 3,
+              "secondary": 3,
+              "swapped": false
+            },
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [
+            {
+              "label": "d0",
+              "spin": 100,
+              "colliding": null,
+              "rotation": 0.30406093066689815,
+              "z": 34.99528004389376,
+              "scale": [
+                16.850485063006538,
+                15.545274497016631,
+                14.305945567482194
+              ]
+            },
+            {
+              "label": "d1",
+              "spin": 100,
+              "colliding": null,
+              "rotation": 0.30406093066689815,
+              "z": 34.99528004389376,
+              "scale": [
+                19.0169263122308,
+                15.457900168400585,
+                11.650274267548928
+              ]
+            }
+          ],
+          "shots": []
+        },
+        {
+          "at": 450,
+          "afterCollision": {
+            "players": [
+              true,
+              true
+            ],
+            "drops": [
+              null,
+              null
+            ]
+          },
+          "contactLog": [],
+          "order": [
+            "p0",
+            "p1"
+          ],
+          "sounds": [],
+          "players": [
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": 3,
+              "secondary": 3,
+              "swapped": false
+            },
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [],
+          "shots": []
+        }
+      ]
+    },
+    {
+      "name": "two-shots-hit-elf-and-present",
+      "initial": {
+        "players": [
+          {
+            "pos": [
+              0,
+              0,
+              0
+            ],
+            "face": 0
+          },
+          {
+            "pos": [
+              100,
+              0,
+              0
+            ],
+            "face": 0
+          }
+        ],
+        "drops": [
+          {
+            "pos": [
+              100,
+              0,
+              0
+            ],
+            "scale": [
+              17.001664565542654,
+              15.269640928566465,
+              10.631127006528637
+            ],
+            "rotation": 0,
+            "z": 32
+          }
+        ],
+        "shots": [
+          {
+            "id": 0,
+            "thrower": 0,
+            "origin": [
+              0,
+              0
+            ],
+            "target": [
+              256,
+              0
+            ],
+            "pos": [
+              100,
+              0,
+              32
+            ],
+            "born": 0
+          },
+          {
+            "id": 1,
+            "thrower": 0,
+            "origin": [
+              0,
+              0
+            ],
+            "target": [
+              256,
+              0
+            ],
+            "pos": [
+              100,
+              0,
+              32
+            ],
+            "born": 0
+          }
+        ],
+        "order": [
+          "p0",
+          "p1",
+          "d0",
+          "s0",
+          "s1"
+        ]
+      },
+      "frames": [
+        {
+          "at": 100,
+          "afterCollision": {
+            "players": [
+              true,
+              false
+            ],
+            "drops": [
+              "p1"
+            ]
+          },
+          "contactLog": [
+            [
+              "p1",
+              "d0"
+            ],
+            [
+              "d0",
+              "p1"
+            ],
+            [
+              "p1",
+              "s0"
+            ],
+            [
+              "s0",
+              "p1"
+            ],
+            [
+              "p1",
+              "s1"
+            ],
+            [
+              "s1",
+              "p1"
+            ],
+            [
+              "d0",
+              "s0"
+            ],
+            [
+              "s0",
+              "d0"
+            ],
+            [
+              "d0",
+              "s1"
+            ],
+            [
+              "s1",
+              "d0"
+            ],
+            [
+              "s0",
+              "s1"
+            ],
+            [
+              "s1",
+              "s0"
+            ]
+          ],
+          "order": [
+            "p0",
+            "d0",
+            "s1"
+          ],
+          "sounds": [
+            "snowball_hit",
+            "snowball_hit",
+            "snowball_hit",
+            "snowball_hit",
+            "snowball_hit",
+            "snowball_hit"
+          ],
+          "players": [
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            },
+            {
+              "alive": false,
+              "face": -1.5707963267948966,
+              "exit": 100,
+              "playing": "elf_rig_fall_down_2",
+              "listeners": 2,
+              "primary": 3,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [
+            {
+              "label": "d0",
+              "spin": 100,
+              "colliding": null,
+              "rotation": 0.01,
+              "z": 32,
+              "scale": [
+                17.001664565542654,
+                15.269640928566465,
+                10.631127006528637
+              ]
+            }
+          ],
+          "shots": [
+            {
+              "id": 1,
+              "hit": "s0",
+              "pos": [
+                100,
+                0,
+                32
+              ],
+              "born": 0
+            }
+          ]
+        },
+        {
+          "at": 100,
+          "afterCollision": {
+            "players": [
+              true,
+              false
+            ],
+            "drops": [
+              null
+            ]
+          },
+          "contactLog": [
+            [
+              "d0",
+              "s1"
+            ],
+            [
+              "s1",
+              "d0"
+            ]
+          ],
+          "order": [
+            "p0"
+          ],
+          "sounds": [
+            "snowball_hit"
+          ],
+          "players": [
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            },
+            {
+              "alive": false,
+              "face": -1.5707963267948966,
+              "exit": 100,
+              "playing": "elf_rig_fall_down_2",
+              "listeners": 2,
+              "primary": 3,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [
+            {
+              "label": "d0",
+              "spin": 100,
+              "colliding": null,
+              "rotation": 0.01,
+              "z": 32,
+              "scale": [
+                17.001664565542654,
+                15.269640928566465,
+                10.631127006528637
+              ]
+            }
+          ],
+          "shots": []
+        },
+        {
+          "at": 116.6667,
+          "afterCollision": {
+            "players": [
+              true,
+              false
+            ],
+            "drops": [
+              null
+            ]
+          },
+          "contactLog": [],
+          "order": [
+            "p0"
+          ],
+          "sounds": [],
+          "players": [
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            },
+            {
+              "alive": false,
+              "face": -1.5707963267948966,
+              "exit": 100,
+              "playing": "elf_rig_fall_down_2",
+              "listeners": 2,
+              "primary": 3,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [
+            {
+              "label": "d0",
+              "spin": 100,
+              "colliding": null,
+              "rotation": 0.30406093066689815,
+              "z": 34.99528004389376,
+              "scale": [
+                17.79736373095118,
+                15.984279221547066,
+                11.128677046634186
+              ]
+            }
+          ],
+          "shots": []
+        },
+        {
+          "at": 450,
+          "afterCollision": {
+            "players": [
+              true,
+              false
+            ],
+            "drops": [
+              null
+            ]
+          },
+          "contactLog": [],
+          "order": [
+            "p0"
+          ],
+          "sounds": [],
+          "players": [
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            },
+            {
+              "alive": false,
+              "face": -1.5707963267948966,
+              "exit": 100,
+              "playing": "elf_rig_fall_down_2",
+              "listeners": 2,
+              "primary": 3,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [],
+          "shots": []
+        }
+      ]
+    },
+    {
+      "name": "thrower-overlap-and-dead-pickup",
+      "initial": {
+        "players": [
+          {
+            "pos": [
+              0,
+              0,
+              0
+            ],
+            "face": 0
+          },
+          {
+            "pos": [
+              100,
+              0,
+              0
+            ],
+            "face": 0
+          }
+        ],
+        "drops": [
+          {
+            "pos": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              17.008527064373727,
+              14.05155774500519,
+              10.798403423919504
+            ],
+            "rotation": 0,
+            "z": 32
+          }
+        ],
+        "shots": [
+          {
+            "id": 0,
+            "thrower": 1,
+            "origin": [
+              100,
+              0
+            ],
+            "target": [
+              356,
+              0
+            ],
+            "pos": [
+              0,
+              0,
+              32
+            ],
+            "born": 0
+          },
+          {
+            "id": 1,
+            "thrower": 0,
+            "origin": [
+              0,
+              0
+            ],
+            "target": [
+              256,
+              0
+            ],
+            "pos": [
+              0,
+              0,
+              32
+            ],
+            "born": 0
+          }
+        ],
+        "order": [
+          "p0",
+          "p1",
+          "d0",
+          "s0",
+          "s1"
+        ]
+      },
+      "frames": [
+        {
+          "at": 100,
+          "afterCollision": {
+            "players": [
+              false,
+              true
+            ],
+            "drops": [
+              "p0"
+            ]
+          },
+          "contactLog": [
+            [
+              "p0",
+              "d0"
+            ],
+            [
+              "d0",
+              "p0"
+            ],
+            [
+              "p0",
+              "s0"
+            ],
+            [
+              "s0",
+              "p0"
+            ],
+            [
+              "p0",
+              "s1"
+            ],
+            [
+              "s1",
+              "p0"
+            ],
+            [
+              "d0",
+              "p0"
+            ],
+            [
+              "p0",
+              "d0"
+            ],
+            [
+              "d0",
+              "s0"
+            ],
+            [
+              "s0",
+              "d0"
+            ],
+            [
+              "d0",
+              "s1"
+            ],
+            [
+              "s1",
+              "d0"
+            ],
+            [
+              "s0",
+              "p0"
+            ],
+            [
+              "p0",
+              "s0"
+            ],
+            [
+              "s0",
+              "s1"
+            ],
+            [
+              "s1",
+              "s0"
+            ],
+            [
+              "s1",
+              "p0"
+            ],
+            [
+              "p0",
+              "s1"
+            ]
+          ],
+          "order": [
+            "p1",
+            "d0",
+            "s1"
+          ],
+          "sounds": [
+            "snowball_hit",
+            "snowball_hit",
+            "snowball_hit",
+            "snowball_hit",
+            "snowball_hit",
+            "snowball_hit",
+            "snowball_pickup"
+          ],
+          "players": [
+            {
+              "alive": false,
+              "face": -1.5707963267948966,
+              "exit": 100,
+              "playing": "elf_rig_fall_down_2",
+              "listeners": 2,
+              "primary": 3,
+              "secondary": null,
+              "swapped": false
+            },
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [
+            {
+              "label": "d0",
+              "spin": 100,
+              "colliding": null,
+              "rotation": 0.01,
+              "z": 32,
+              "scale": [
+                17.008527064373727,
+                14.05155774500519,
+                10.798403423919504
+              ]
+            }
+          ],
+          "shots": [
+            {
+              "id": 1,
+              "hit": "s0",
+              "pos": [
+                0,
+                0,
+                32
+              ],
+              "born": 0
+            }
+          ]
+        },
+        {
+          "at": 100,
+          "afterCollision": {
+            "players": [
+              false,
+              true
+            ],
+            "drops": [
+              null
+            ]
+          },
+          "contactLog": [
+            [
+              "d0",
+              "s1"
+            ],
+            [
+              "s1",
+              "d0"
+            ]
+          ],
+          "order": [
+            "p1"
+          ],
+          "sounds": [
+            "snowball_hit"
+          ],
+          "players": [
+            {
+              "alive": false,
+              "face": -1.5707963267948966,
+              "exit": 100,
+              "playing": "elf_rig_fall_down_2",
+              "listeners": 2,
+              "primary": 3,
+              "secondary": null,
+              "swapped": false
+            },
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [
+            {
+              "label": "d0",
+              "spin": 100,
+              "colliding": null,
+              "rotation": 0.01,
+              "z": 32,
+              "scale": [
+                17.008527064373727,
+                14.05155774500519,
+                10.798403423919504
+              ]
+            }
+          ],
+          "shots": []
+        },
+        {
+          "at": 116.6667,
+          "afterCollision": {
+            "players": [
+              false,
+              true
+            ],
+            "drops": [
+              null
+            ]
+          },
+          "contactLog": [],
+          "order": [
+            "p1"
+          ],
+          "sounds": [],
+          "players": [
+            {
+              "alive": false,
+              "face": -1.5707963267948966,
+              "exit": 100,
+              "playing": "elf_rig_fall_down_2",
+              "listeners": 2,
+              "primary": 3,
+              "secondary": null,
+              "swapped": false
+            },
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [
+            {
+              "label": "d0",
+              "spin": 100,
+              "colliding": null,
+              "rotation": 0.30406093066689815,
+              "z": 34.99528004389376,
+              "scale": [
+                17.804547403310377,
+                14.709188221555735,
+                11.303782209569194
+              ]
+            }
+          ],
+          "shots": []
+        },
+        {
+          "at": 450,
+          "afterCollision": {
+            "players": [
+              false,
+              true
+            ],
+            "drops": [
+              null
+            ]
+          },
+          "contactLog": [],
+          "order": [
+            "p1"
+          ],
+          "sounds": [],
+          "players": [
+            {
+              "alive": false,
+              "face": -1.5707963267948966,
+              "exit": 100,
+              "playing": "elf_rig_fall_down_2",
+              "listeners": 2,
+              "primary": 3,
+              "secondary": null,
+              "swapped": false
+            },
+            {
+              "alive": true,
+              "face": 0,
+              "exit": -1,
+              "playing": "elf_rig_idle",
+              "listeners": 0,
+              "primary": null,
+              "secondary": null,
+              "swapped": false
+            }
+          ],
+          "drops": [],
+          "shots": []
+        }
+      ]
+    }
+  ]
+}

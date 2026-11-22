@@ -1332,8 +1332,8 @@ Target remains 1:1; this pass is **Very similar**, not certified 1:1. All own-sc
 | `index.js`, `index.html`, `index.scss` | `snowball.rs`, `snowball_view.rs`: original splash assets, sleigh bob, pressed button, five-second cloud/elf intro, one-second retained splash, local match/restart. Weather has no `active` attribute: its cloud-frac/clouds/directional-strength attributes are unused by the actual component. | Responsive intro phases, keyboard/accessibility and route teardown need complete comparisons. |
 | `snowball-game.js`; engine `Game`, `Gamelike`, `ClockSystem`, render/input systems; Main/Local levels | Separate `begin_frame` and `finish_frame` retain Level/camera/erosion → render → input → simulation ordering, one update per rendered frame, wall-derived 60Hz tick, strict 16/625/128 tick gates, 100-player cap, shared host game-over and restart. | Async asset readiness, exact initialization/random consumption, persistent collision registration, input octree sorting and full host lifecycle are incomplete. Source win repeats stop notifications; native stores game-over state. |
 | `game-map.js`, `MagicHexGrid`, `HexGrid`, `HexCoord`, `SeedRandom`, priorityqueue | `snowball.rs`: source grid/coordinate formulas, seeded island/trees/raised frontier, independent erosion seed, rings, habitat/nearby selection, source greedy path cost and queue tie ordering, waypoint compression. | Unused general conversions/network serialization not ported. The nearby selection's original origin-vs-candidate test is retained. |
-| State/Client/Player/Bot systems; Elf; all component classes | `snowball.rs`: arrival queues, per-render-frame 2.25 movement / 0.75 bot speed, click-to-move and blocked-tile/elf targeting, quantities/swapping fallback, spawn/population cadence, camera tether/damping, last valid host time/count, death/knockout. | Bot random order and pooled object reuse are not matched end to end; source late queues, offscreen LOD and interrupted action state need work. Native collision registration order differs in some arrival/removal cases. |
-| Collision2DSystem, QuadTree, collision shape helpers, Tree | `snowball_collision.rs`, `snowball.rs`: native quad partition/candidate order, original circle containment quirk, tree-primary projectile contacts and shared collision-limit camera lag/reset. | Full dynamic Set/handler notification ordering, persistent quad nodes and debug-only methods remain partial. Trees are absent from the local dynamic rebuild but still query moving objects from the outer collidables loop; the earlier inactive-tree conclusion was incorrect. |
+| State/Client/Player/Bot systems; Elf; all component classes | `snowball.rs`: arrival queues, per-render-frame 2.25 movement / 0.75 bot speed, click-to-move and blocked-tile/elf targeting, quantities/swapping fallback, spawn/population cadence, camera tether/damping, last valid host time/count, death/knockout. | Bot random order and pooled object reuse are not matched end to end; source late queues, offscreen LOD and interrupted action state need work. Registration is now persistent and contact-handler order is checked below; full landing/freezing/pooling cadence still needs comparisons. |
+| Collision2DSystem, QuadTree, collision shape helpers, Tree | `snowball_collision.rs`, `snowball.rs`: persistent native quad partition/candidate order, Set registration order, directed pair notifications/asymmetric measurement cache, tree and shot/shot contacts, original circle containment quirk and shared collision-limit camera lag/reset. | Full spawn/landing/freezing/restart cadence, UUID/object pool reuse and generic subscription/debug methods remain partial. Trees are absent from the local dynamic rebuild but still query moving objects from the outer collidables loop; the earlier inactive-tree conclusion was incorrect. |
 | `models.js`, Elf texture and animation methods, actual GLTFLoader/Skeleton path | `snowball_model.rs`: original glTF/bin, skin weights/joints/inverse bind transforms, source linear/spherical interpolation, vertex colours, idle/run/throw/three falls. `snowball_view.rs`: original generated colour bands, cache key, source material/light parameters. | Complete THREE action interruption, thrown-action crossfades, fall callback timing, model loading/LOD phase and pooled material reuse remain partial. Selected pose position tests do not certify normals or every action combination. |
 | HexMap/Obstacles and shader partials | Source cylinder vertex/index fixture, 144-degree gimbal and actual camera orientation, original atlas/obstacle tilt, per-fragment tile tones/alpha, shaking/sinking/raised geometry and continuous meshes. | Large viewports, all erosion phases and transparent object ordering still need coverage. GPU batching avoids Macroquad geometry clamping. |
 | Snowball/BigSnowball, SnowballSystem, Trajectory, Trail/Splat and effects | Source 256px/42-frame distance-dependent shot, arc, ignored skew preserved, large radius/quantity, snowball rotation/colour shader, source trail/splat equations and textures. | Source preallocated particle-ring/random consumption, overlapping effects and collision/exhaustion removal ordering remain partial. |
@@ -1429,11 +1429,75 @@ implementations. Four limit frames use actual LodSystem after collision and a
 resize reset. Native tests exercise production tree queries, the game shot loop,
 map-tree placement and that shared limit sequence.
 
-This remains a bounded correction: full dynamic-pair notification/deduplication,
-persistent quad topology, registration/arrival/removal order, shot/shot contacts,
-pooled actors and exact full-match randomness still need work. In particular,
-native dynamic contacts are still grouped by shot rather than the full source
-Set iteration, and pickups remain a separate later pass. The rating stays
-Very similar; these fixtures do not establish whole-mode 1:1.
+At this stage dynamic contacts were still grouped by shot and pickups used a
+later scan. The ordered-contact follow-up below supersedes those limitations,
+including persistent quad topology and shot/shot contacts. Full arrival/freezing
+phase timing, pooled actors and exact full-match randomness remain unfinished.
+The rating stays Very similar; these fixtures do not establish whole-mode 1:1.
 
 Validation for this correction: all 87 native tests pass and the release binary builds.
+
+
+### Snowball Storm persistent collision and concrete contact actions — 22 November 2026
+
+The production game now retains collider registration order and quad topology
+instead of rebuilding grouped player/drop/shot lists every frame. It translates
+the original directed notification and asymmetric measuredCollisions branches,
+including the initial empty cache entry. Quad.clearDynamic preserves split child
+nodes (the source checks this.nodes.length, not child contents). A source bounds
+reset reinserts registered objects, including statics. Removal changes the Set,
+not the current quad; bot queries use that same frame's retained quad.
+
+Stable shot identities survive vector splices. New player setup, arrived-handler
+activation, drop landing/spin removal, shot LIFO setup and shot/player removals
+now change registration at their corresponding native system stages. Full
+parachute/arrival phase timing and freezing-parent transforms are still partial.
+The active local contact handlers run in the original notification order:
+
+- Snowballs hit other snowballs, trees, presents and elves other than their
+  thrower; every notification updates collidedWith and emits its hit event.
+- An elf faces the incoming trajectory with the original -PI/2 formula. Each
+  collision calls die/fall again, retaining repeated fall callbacks, while the
+  first health/presence exit timestamp is preserved.
+- A present keeps the first touching Elf instance, including one killed in the
+  same pass. Pickup no longer scans living players later in vector order. Its
+  collider persists through the next collision pass before DropSystem removes
+  it during spin. PlayerSystem batches local pickup sound once per frame, even
+  for multiple presents. The subsequent spin transforms retain source clocks.
+
+`snowball-collision-lifecycle-reference.json` records five actual original
+Collision2DSystem sequences / 22 frames: ordered directed notifications, nearby
+candidate lists, node counts, moves across quadrants, removals/readds, bounds
+reset with statics, stale statics retained by the original quad and primary-only
+camera limits. Callbacks here only record notifications; they do not mutate
+registration or XY during a pass. The actual active local callbacks also do not
+change registration/XY during dispatch, allowing measured pairs to be dispatched
+in the same order by Rust. Generic mid-pass mutation/subscription/debug behavior
+is not certified.
+
+`snowball-contact-actions-reference.json` separately runs unchanged actual
+Elf/Drop/Snowball handlers plus Player/Drop/Snowball/EntityRemoval systems and
+ready Model/THREE in five sequences / 20 frames. It checks shot/shot contact,
+competing pickup order, multiple local pickups, repeated simultaneous lethal
+hits, thrower exclusion, dead-player pickup, last collidedWith, sounds, registry
+order, fall/listener state, exit timestamps and spin geometry. Native comparisons
+use tolerance 1e-9. Actors start arrived with explicit measured transforms and
+scales; map states are held at 1, and bot/parachute/LOD/input/effect integration
+is inactive. Source collision random selects fall 2; native test selects a seed
+with that sequence. This is not random/pool/arrival or whole-match certification.
+
+The reference server rewrites dependency URLs to ?module. Direct harness imports
+must use that same canonical URL for classes tested with instanceof. An initial
+noncanonical handler run loaded two Elf/Snowball class identities and invalidated
+pickup/death results; it was diagnosed with an unmodified-function debugger
+breakpoint, discarded and regenerated with canonical imports before comparisons.
+Do not preserve its inactive-handler conclusion. The older formula/shape oracles
+do not rely on these instance checks.
+
+All 89 native tests pass. Broader gaps remain: seeded full-match random/UUID and
+object/model/particle pooling, exact parachute/freezing phases and asynchronous
+LOD readiness, responsive/input/host lifecycle, audio buses/scheduling and full
+visual/effect phase coverage. The scene stays Very similar, target 1:1.
+
+The updated release builds, and a 150-second native simulation completes without panic.
+That smoke check does not certify full-match equivalence or all rendered phases.

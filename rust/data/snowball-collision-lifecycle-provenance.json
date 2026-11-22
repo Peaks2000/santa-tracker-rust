@@ -1,0 +1,8 @@
+{
+  "method": "Unmodified original Collision2DSystem and QuadTree, actual original Circle/Rectangle and bundled THREE in Chromium. RAF held, scene entry suppressed. Plain collidable objects use explicit unique UUID strings, shape/position/registration/bounds/limit inputs; every registered handler only records directed notifications. No callbacks mutate registration/bounds mid-pass. This verifies measured contact order, dynamic clears, surviving quad topology and add/remove/readd/bounds-reset behavior; actor pooling, concrete handler actions and debug rendering are not certified.",
+  "files": {
+    "static/scenes/snowball/js/engine/systems/collision-2d-system.js": "0c6d78d78bdc7015adfd8d370ffdfc0c7e083d0ad27c0ca307a8903841dbc1c7",
+    "static/scenes/snowball/js/engine/utils/quad-tree.js": "36e561167a9ee4e0096f3f48f00ccc65c13a173b61c99853abbc80c9abb35146",
+    "static/scenes/snowball/js/engine/utils/collision-2d.js": "e3813be39a28288bc8784000bb612e002588e14078ce3bd2e5d74827bc175807"
+  }
+}

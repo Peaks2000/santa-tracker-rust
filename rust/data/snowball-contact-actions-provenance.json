@@ -1,0 +1,13 @@
+{
+  "method": "All dynamic imports use the dev server canonical ?module URLs, preventing duplicate Elf/Snowball class identities in instanceof callbacks. Actual original Elf/Drop/Snowball handlers, Collision2DSystem, PlayerSystem, DropSystem, SnowballSystem, EntityRemovalSystem and ready original Model/THREE. Actors deliberately start arrived at explicit positions; bot/parachute/LOD/input/effect integration is held inactive. Map tile states are held at 1 to isolate non-freezing contact actions. Source fall random is .5 during collision only (variant 2); native test selects an RNG seed yielding that sequence, not full random/pool parity. Original actors are not freed/reused across cases. Clock/RAF controlled. Source handlers, powerups, Model actions, splice/removal and presence timing are unchanged.",
+  "files": {
+    "static/scenes/snowball/js/snowball/entities/elf.js": "d5fd37bbe1201b63143898793fbe0b9e7036805e513b1af6aa4a48f0226f5cf2",
+    "static/scenes/snowball/js/snowball/entities/drop.js": "80e22ed1bd2af68ff7544a3d724848980cc7bd921317978ec0362cef56567a64",
+    "static/scenes/snowball/js/snowball/entities/snowball.js": "3c0e0c2577486cf5c6827d8a178df4475c31ea34fa41c6860deabbcc5df15749",
+    "static/scenes/snowball/js/snowball/systems/player-system.js": "37e8c893a3643f5bc0940524ea23cc51a8ba9b575365d6ef555b9966836461b0",
+    "static/scenes/snowball/js/snowball/systems/drop-system.js": "d0230bcf979a736698ed41013451ebea345ee2d8b8580b59ea375880f55b1db2",
+    "static/scenes/snowball/js/snowball/systems/snowball-system.js": "34445b3fa23074569d7e06fea56c3c2035178737205e4da67ad3c6507b6e25fb",
+    "static/scenes/snowball/js/snowball/systems/entity-removal-system.js": "1153d0a20db468fe7ced48d9d3f977c1e1adacf2c07ec1aa59e813224374ba5c",
+    "static/scenes/snowball/js/snowball/components/presence.js": "6f8513b648efae9fe9c4cc6aa59a49180e2ebd7b6ad09c4fa3fa37158e1d9e76"
+  }
+}
