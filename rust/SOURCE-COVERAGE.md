@@ -2766,3 +2766,41 @@ All 123 tests pass (109 library, 14 application). Release application and Jetpac
 capture are compiled only; neither launched. No windows, injected input, focus
 changes or audio while the user plays. Keep existing README user ratings and
 mode partial status; no new 1:1 claim.
+
+## Elf Jetpack goal geometry (23 November 2026)
+
+Supersedes the geometry/paint/resize defects recorded in the alpha pass. Re-read
+complete goal.js, game.js, index HTML, scene SCSS and goal Sass. Source goal is
+outside the transformed scene, has the same z-index but occurs before it, and
+uses contain/top-right 412x452 PNG artwork in a 452x412 box capped at 50% viewport
+width. Native now draws the correctly fitted goal before clouds/items/player,
+without scene scaling. Arrival target is captured at level-10 entry, matching
+Goal.transition's one-time transform assignment; resize changes its background
+width but does not recalculate the assigned vertical target. Preserve source
+arithmetic height - 412 - height * 10 / 100 (not height*.1).
+
+`tools/jetpack-goal-reference.cjs` runs unmodified original Goal constructor,
+reset, transition and Game.watchSceneSize_/setScale in CPU VM. Fake jQuery
+records classes/style and supplies CSS height; fake window records the 3500ms
+timeout and invokes the actual resize callback. Thirty viewport/header cases
+and thirty resizes check native target capture and source-declared contain-fit
+geometry. Fixture includes source hashes. Rectangle fitting is an analytic CSS
+model, not browser-computed layout. Original hidden/shown classes and timer
+registration are recorded; callback scheduling/execution is not modeled.
+
+Native test uses real Jetpack level transition and resize plus the renderer's
+shared goal_image_rect function. First run caught arithmetic-order rounding;
+matching the original multiplication/division order now passes exact target
+comparison. Bounds tolerance 1e-10. Full suite: 124 passing (110 lib +14 app).
+No artwork/filter/alpha changes in this pass.
+
+Remaining: native retains its prior elapsed-time interpolation. Source removes
+display:none goal--hidden then assigns transform in the same task: declared 3s
+transition alone cannot prove that an entrance transition actually runs. Need
+actual browser computed-style/animation evidence when interactive checks are
+permitted. Native goal timer still freezes on pause, unlike source setTimeout.
+Goal reset/timer callbacks across restart/dispose, source header integration,
+subpixel GPU raster and all animation phases remain unverified. No window/input/
+audio/focus changes. README/user approval unchanged; mode remains partial.
+
+Release application and Jetpack capture build pass; compiled only, not launched.

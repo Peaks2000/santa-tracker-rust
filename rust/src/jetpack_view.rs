@@ -155,6 +155,23 @@ impl JetpackView {
                 },
             );
         }
+        // The goal and scene share z-index 2; the later scene paints above it.
+        // CSS goal dimensions are viewport pixels, independent of scene scale.
+        if game.finished {
+            let progress = (game.goal_time / 3.).clamp(0., 1.);
+            let top = -412. + (game.goal_target_y + 412.) * progress;
+            let [x, y, w, h] = santa_tracker::jetpack::goal_image_rect(screen_width() as f64, top);
+            self.image(
+                assets.scene("jetpack", "goal.png"),
+                x as f32,
+                y as f32,
+                WHITE,
+                DrawTextureParams {
+                    dest_size: Some(vec2(w as f32, h as f32)),
+                    ..Default::default()
+                },
+            );
+        }
         let draw = |name: &str,
                     x: f32,
                     y: f32,
@@ -475,21 +492,6 @@ impl JetpackView {
         }
         unsafe {
             get_internal_gl().quad_gl.pop_model_matrix();
-        }
-        if game.finished {
-            let target = (game.height as f32 - 412. - game.height as f32 * 0.1) * scale;
-            let width = 452f32.min(game.width as f32 / 2.) * scale;
-            let progress = (game.goal_time as f32 / 3.).clamp(0., 1.);
-            self.image(
-                assets.scene("jetpack", "goal.png"),
-                screen_width() - width,
-                -412. * scale + (target + 412. * scale) * progress,
-                WHITE,
-                DrawTextureParams {
-                    dest_size: Some(vec2(width, width * 412. / 452.)),
-                    ..Default::default()
-                },
-            );
         }
         gl_use_default_material();
     }

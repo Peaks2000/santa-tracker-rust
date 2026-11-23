@@ -62,6 +62,7 @@ pub struct Jetpack {
     pub transition: Option<f64>,
     pub background_level: u32,
     pub goal_time: f64,
+    pub goal_target_y: f64,
     pub sounds: Vec<&'static str>,
     random: Random,
     next_item: f64,
@@ -100,6 +101,7 @@ impl Jetpack {
             transition: None,
             background_level: 0,
             goal_time: 0.,
+            goal_target_y: 0.,
             sounds: vec!["music_start_ingame", "jp_start_game"],
             random: Random::seeded(seed),
             next_item: 0.,
@@ -237,6 +239,7 @@ impl Jetpack {
             if self.level == 10 {
                 self.finished = true;
                 self.goal_time = 0.;
+                self.goal_target_y = self.height - 412. - self.height * 10. / 100.;
             } else {
                 self.transition = Some(0.);
                 self.next_level = 21.;
@@ -366,5 +369,57 @@ impl Jetpack {
     }
     pub fn snapshot(&self) -> serde_json::Value {
         serde_json::json!({"x":self.player.x,"y":self.player.y,"vx":self.player.vx,"vy":self.player.vy,"shake":self.player.shake,"hit":self.player.hit,"hit_duration":self.player.hit_duration,"going_up":self.player.going_up,"level":self.level,"score":self.score,"countdown":self.countdown,"playing":self.playing,"entities":self.entities.iter().map(|e|serde_json::json!({"kind":e.kind,"style":e.style,"x":e.x,"y":e.y,"speed":e.speed,"hit":e.hit})).collect::<Vec<_>>()})
+    }
+}
+
+/// Original goal CSS background: 412x452 artwork, contain/top-right inside
+/// a 452x412 box capped at half the viewport. It is outside the scaled scene.
+pub fn goal_image_rect(viewport_width: f64, top: f64) -> [f64; 4] {
+    let box_width = 452f64.min(viewport_width / 2.);
+    let fit = (box_width / 412.).min(412. / 452.);
+    let width = 412. * fit;
+    [viewport_width - width, top, width, 452. * fit]
+}
+
+#[cfg(test)]
+mod goal_tests {
+    use super::*;
+    #[test]
+    fn source_goal_target_and_contain_fit_survive_resize() {
+        let data: serde_json::Value =
+            serde_json::from_str(include_str!("../data/jetpack-goal-reference.json")).unwrap();
+        for case in data["cases"].as_array().unwrap() {
+            let n = |v: &serde_json::Value| v.as_f64().unwrap();
+            let mut game = Jetpack::new(
+                "goal-layout",
+                n(&case["scene"]["width"]),
+                n(&case["scene"]["height"]),
+            );
+            game.level = 9;
+            game.next_level = 0.;
+            game.step(1. / 60., (0., 0.));
+            assert!(game.finished);
+            assert_eq!(game.goal_target_y, n(&case["target"]));
+            for (viewport, expected) in [
+                (n(&case["width"]), &case["rect"]),
+                (n(&case["resized"]["width"]), &case["resized"]["rect"]),
+            ] {
+                let rect = goal_image_rect(viewport, game.goal_target_y);
+                for (actual, expected) in rect.into_iter().zip(expected.as_array().unwrap()) {
+                    assert!(
+                        (actual - n(expected)).abs() < 1e-10,
+                        "{case}: {actual} != {expected}"
+                    );
+                }
+            }
+            game.resize(
+                n(&case["resized"]["scene"]["width"]),
+                n(&case["resized"]["scene"]["height"]),
+            );
+            assert_eq!(game.goal_target_y, n(&case["resized"]["target"]));
+            assert_eq!(case["timers"], serde_json::json!([3500]));
+            assert_eq!(case["hidden"], true);
+            assert_eq!(case["shown"], true);
+        }
     }
 }

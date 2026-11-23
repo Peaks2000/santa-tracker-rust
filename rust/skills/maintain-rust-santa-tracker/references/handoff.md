@@ -988,3 +988,22 @@ currently pauses incorrectly. Levelcloud/number opacity belongs to one group,
 not two separate .3 source-over draws. Mobile touchpad presentation incomplete.
 Do not launch tests/windows or inject input/audio while user is playing. Texture
 clarity across other modes, display density/minification remain open.
+
+### Jetpack goal geometry pass (23 November 2026)
+
+Supersedes preceding goal geometry/stacking/resize defects: native uses original
+contain/top-right 412x452 image inside capped 452x412 viewport box, draws goal
+before scene sprites and captures target once on level10 (resize retains it).
+CPU original Goal constructor/reset/transition plus actual Game resize callback:
+30 cases +30 resizes, source hashes in jetpack-goal-reference.json. CSS fit is
+analytic, NOT browser computed layout. Source target arithmetic uses *10/100;
+*.1 first failed exact double comparison. All124 tests pass (110lib+14app).
+
+NEXT goal clock/reset lifecycle still incomplete: native timer freezes on pause;
+source setTimeout doesn't, can survive restart/dispose. Do not infer entrance
+animation from declared transition alone: source removes display:none and assigns
+transform in same task, actual browser transition might not run. Existing native
+interpolation retained pending evidence. Levelcloud/number group opacity and
+mobile touchpad remain. No windows/GPU/input/audio; don't interrupt user game.
+
+Release application and Jetpack capture build pass; compiled only, not launched.
