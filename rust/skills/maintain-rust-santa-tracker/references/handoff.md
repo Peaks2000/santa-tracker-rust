@@ -1055,3 +1055,27 @@ route lifecycle and mobile touchpad remain open. No interactive testing, windows
 input or audio while user is playing. Do not upgrade mode/README ratings.
 
 Release app and Jetpack capture build pass; compiled only, neither launched.
+
+### Jetpack Controls state pass (23 November 2026)
+
+New jetpack_controls module translates complete Controls state/method logic.
+Original CPU VM six cases/58 action snapshots check key/touch/GUI/vector/nub/
+tutorial fields. Reset is EMPTY in source: retain keys/touch/lifetime flags on
+in-scene restart. Touchstart sets origin/ID but NOT touchCurrent; keyboard keeps
+controlling until first move. getCurrentTouch recovers missing iOS end by hiding
+only when ID absent in changed+target lists. GUI flag updates before active-ID
+rejection. Source hide preserves start coordinates. These quirks are intentional.
+
+Native mouse adapter now uses model, returns raw input to core's existing one
+normalization; route entry calls reset_controls fresh, ordinary restart doesn't.
+Actual browser source binds TOUCH, not mouse. Existing native mouse extension
+retained. Native held-key polling/active-only sampling, real multitouch dispatch,
+GUI/default prevention, model tutorial event delivery and widget rendering remain
+unwired/unverified. Host tutorial wrapper still dismisses separately. Don't claim
+whole controls or mode 1:1 from CPU state checks. 126 tests pass (112lib+14app).
+
+Next: touchpad/nub drawing and actual event adapter; resting-background cloud
+visibility and linebox geometry; level-group new GPU path/goal entrance still
+unverified. User playing: no windows, graphics contexts, input injection or audio.
+
+Release app and Jetpack capture compile successfully; neither launched.

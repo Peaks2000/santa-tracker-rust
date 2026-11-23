@@ -1131,6 +1131,7 @@ async fn run(opts: Options) {
                     "jetpack" => {
                         let (w, h) = jetpack_view::JetpackView::dimensions();
                         jetpack = Jetpack::new(&opts.seed, w, h);
+                        jet_view.reset_controls();
                     }
                     "boatload" => {
                         boat = santa_tracker::boatload::Boatload::new(

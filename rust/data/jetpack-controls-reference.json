@@ -1,0 +1,2131 @@
+{
+  "method": "Unmodified original Controls methods/constants in CPU VM, fake jQuery widget records visibility/nub; supplied DOM-shaped touch/key events and explicit onFrame. No OS/browser event dispatch, live input or pixels. Controls.start binding is source-reviewed, not exercised.",
+  "cases": [
+    {
+      "name": "keys-normalize-cancel-and-retain-on-reset",
+      "frames": [
+        {
+          "action": [
+            "down",
+            37
+          ],
+          "output": {
+            "keys": [
+              true,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [
+              "keys-leftright",
+              "spacenav-leftright"
+            ],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "down",
+            38
+          ],
+          "output": {
+            "keys": [
+              true,
+              true,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [
+              "keys-updown",
+              "spacenav-updown"
+            ],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              true,
+              true,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              -0.7071067811865475,
+              -0.7071067811865475
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "down",
+            39
+          ],
+          "output": {
+            "keys": [
+              true,
+              true,
+              true,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              -0.7071067811865475,
+              -0.7071067811865475
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              true,
+              true,
+              true,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              -1
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "reset"
+          ],
+          "output": {
+            "keys": [
+              true,
+              true,
+              true,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              -1
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              true,
+              true,
+              true,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              -1
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "up",
+            37
+          ],
+          "output": {
+            "keys": [
+              false,
+              true,
+              true,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              -1
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "up",
+            38
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              true,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              -1
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              true,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              1,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "down",
+            65
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              true,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              1,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "up",
+            65
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              true,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              1,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "up",
+            39
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              1,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "start-before-move-keeps-keyboard",
+      "frames": [
+        {
+          "action": [
+            "down",
+            39
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              true,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [
+              "keys-leftright",
+              "spacenav-leftright"
+            ],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              true,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              1,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "start",
+            {
+              "id": 1,
+              "x": 100,
+              "y": 200
+            },
+            false
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              true,
+              false
+            ],
+            "id": 1,
+            "start": [
+              100,
+              200
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": false,
+            "input": [
+              1,
+              0
+            ],
+            "dismissed": [
+              "touch-updown"
+            ],
+            "prevented": true
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              true,
+              false
+            ],
+            "id": 1,
+            "start": [
+              100,
+              200
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": false,
+            "input": [
+              1,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "move",
+            [
+              {
+                "id": 1,
+                "x": 135,
+                "y": 200
+              }
+            ],
+            [
+              {
+                "id": 1,
+                "x": 135,
+                "y": 200
+              }
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              true,
+              false
+            ],
+            "id": 1,
+            "start": [
+              100,
+              200
+            ],
+            "current": [
+              135,
+              200
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": false,
+            "input": [
+              1,
+              0
+            ],
+            "dismissed": [],
+            "prevented": true
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              true,
+              false
+            ],
+            "id": 1,
+            "start": [
+              100,
+              200
+            ],
+            "current": [
+              135,
+              200
+            ],
+            "nub": [
+              35,
+              0
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              0.5,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "reset"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              true,
+              false
+            ],
+            "id": 1,
+            "start": [
+              100,
+              200
+            ],
+            "current": [
+              135,
+              200
+            ],
+            "nub": [
+              35,
+              0
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              0.5,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              true,
+              false
+            ],
+            "id": 1,
+            "start": [
+              100,
+              200
+            ],
+            "current": [
+              135,
+              200
+            ],
+            "nub": [
+              35,
+              0
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              0.5,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "end",
+            [
+              {
+                "id": 1,
+                "x": 135,
+                "y": 200
+              }
+            ],
+            []
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              true,
+              false
+            ],
+            "id": null,
+            "start": [
+              100,
+              200
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0.5,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              true,
+              false
+            ],
+            "id": null,
+            "start": [
+              100,
+              200
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              1,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "diagonal-nub-and-first-touch-only",
+      "frames": [
+        {
+          "action": [
+            "start",
+            {
+              "id": 7,
+              "x": 10,
+              "y": 20
+            },
+            false
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 7,
+            "start": [
+              10,
+              20
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [
+              "touch-updown"
+            ],
+            "prevented": true
+          }
+        },
+        {
+          "action": [
+            "start",
+            {
+              "id": 8,
+              "x": 99,
+              "y": 88
+            },
+            false
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 7,
+            "start": [
+              10,
+              20
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "move",
+            [
+              {
+                "id": 8,
+                "x": 1,
+                "y": 1
+              }
+            ],
+            [
+              {
+                "id": 7,
+                "x": 10,
+                "y": 20
+              },
+              {
+                "id": 8,
+                "x": 1,
+                "y": 1
+              }
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 7,
+            "start": [
+              10,
+              20
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": true
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 7,
+            "start": [
+              10,
+              20
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "move",
+            [
+              {
+                "id": 7,
+                "x": 150,
+                "y": -120
+              }
+            ],
+            [
+              {
+                "id": 7,
+                "x": 150,
+                "y": -120
+              }
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 7,
+            "start": [
+              10,
+              20
+            ],
+            "current": [
+              150,
+              -120
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": true
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 7,
+            "start": [
+              10,
+              20
+            ],
+            "current": [
+              150,
+              -120
+            ],
+            "nub": [
+              49.49747468305832,
+              -49.49747468305832
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              0.7071067811865475,
+              -0.7071067811865475
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "end",
+            [
+              {
+                "id": 8,
+                "x": 1,
+                "y": 1
+              }
+            ],
+            [
+              {
+                "id": 7,
+                "x": 150,
+                "y": -120
+              }
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 7,
+            "start": [
+              10,
+              20
+            ],
+            "current": [
+              150,
+              -120
+            ],
+            "nub": [
+              49.49747468305832,
+              -49.49747468305832
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              0.7071067811865475,
+              -0.7071067811865475
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 7,
+            "start": [
+              10,
+              20
+            ],
+            "current": [
+              150,
+              -120
+            ],
+            "nub": [
+              49.49747468305832,
+              -49.49747468305832
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              0.7071067811865475,
+              -0.7071067811865475
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "end",
+            [
+              {
+                "id": 7,
+                "x": 150,
+                "y": -120
+              }
+            ],
+            []
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              10,
+              20
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0.7071067811865475,
+              -0.7071067811865475
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              10,
+              20
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "gui-start-and-active-gui-flag-overwrite",
+      "frames": [
+        {
+          "action": [
+            "start",
+            {
+              "id": 1,
+              "x": 2,
+              "y": 3
+            },
+            true
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": true,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": true,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "start",
+            {
+              "id": 2,
+              "x": 4,
+              "y": 5
+            },
+            false
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 2,
+            "start": [
+              4,
+              5
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [
+              "touch-updown"
+            ],
+            "prevented": true
+          }
+        },
+        {
+          "action": [
+            "start",
+            {
+              "id": 3,
+              "x": 7,
+              "y": 8
+            },
+            true
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 2,
+            "start": [
+              4,
+              5
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": true,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "move",
+            [
+              {
+                "id": 2,
+                "x": 4,
+                "y": 75
+              }
+            ],
+            [
+              {
+                "id": 2,
+                "x": 4,
+                "y": 75
+              }
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 2,
+            "start": [
+              4,
+              5
+            ],
+            "current": [
+              4,
+              75
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": true,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": true
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 2,
+            "start": [
+              4,
+              5
+            ],
+            "current": [
+              4,
+              75
+            ],
+            "nub": [
+              0,
+              70
+            ],
+            "visible": true,
+            "gui": true,
+            "input": [
+              0,
+              1
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "end",
+            [
+              {
+                "id": 2,
+                "x": 4,
+                "y": 75
+              }
+            ],
+            []
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              4,
+              5
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": true,
+            "input": [
+              0,
+              1
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "start",
+            {
+              "id": 4,
+              "x": 0,
+              "y": 0
+            },
+            false
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 4,
+            "start": [
+              0,
+              0
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              1
+            ],
+            "dismissed": [],
+            "prevented": true
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 4,
+            "start": [
+              0,
+              0
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "missing-ios-end-recovery",
+      "frames": [
+        {
+          "action": [
+            "start",
+            {
+              "id": 1,
+              "x": 20,
+              "y": 30
+            },
+            false
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 1,
+            "start": [
+              20,
+              30
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [
+              "touch-updown"
+            ],
+            "prevented": true
+          }
+        },
+        {
+          "action": [
+            "move",
+            [
+              {
+                "id": 1,
+                "x": 10,
+                "y": 20
+              }
+            ],
+            [
+              {
+                "id": 1,
+                "x": 10,
+                "y": 20
+              }
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 1,
+            "start": [
+              20,
+              30
+            ],
+            "current": [
+              10,
+              20
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": true
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 1,
+            "start": [
+              20,
+              30
+            ],
+            "current": [
+              10,
+              20
+            ],
+            "nub": [
+              -10,
+              -10
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              -0.14285714285714285,
+              -0.14285714285714285
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "move",
+            [
+              {
+                "id": 2,
+                "x": 0,
+                "y": 0
+              }
+            ],
+            []
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              20,
+              30
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              -0.14285714285714285,
+              -0.14285714285714285
+            ],
+            "dismissed": [],
+            "prevented": true
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              20,
+              30
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "start",
+            {
+              "id": 3,
+              "x": 10,
+              "y": 10
+            },
+            false
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 3,
+            "start": [
+              10,
+              10
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": true
+          }
+        },
+        {
+          "action": [
+            "end",
+            [
+              {
+                "id": 9,
+                "x": 0,
+                "y": 0
+              }
+            ],
+            []
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              10,
+              10
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              10,
+              10
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "untracked-moves-and-zero-drag",
+      "frames": [
+        {
+          "action": [
+            "move",
+            [
+              {
+                "id": 1,
+                "x": 1,
+                "y": 1
+              }
+            ],
+            []
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": true
+          }
+        },
+        {
+          "action": [
+            "end",
+            [
+              {
+                "id": 1,
+                "x": 1,
+                "y": 1
+              }
+            ],
+            []
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "start",
+            {
+              "id": 2,
+              "x": 0,
+              "y": 0
+            },
+            false
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 2,
+            "start": [
+              0,
+              0
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [
+              "touch-updown"
+            ],
+            "prevented": true
+          }
+        },
+        {
+          "action": [
+            "move",
+            [
+              {
+                "id": 2,
+                "x": 0,
+                "y": 0
+              }
+            ],
+            [
+              {
+                "id": 2,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 2,
+            "start": [
+              0,
+              0
+            ],
+            "current": [
+              0,
+              0
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": true
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 2,
+            "start": [
+              0,
+              0
+            ],
+            "current": [
+              0,
+              0
+            ],
+            "nub": [
+              0,
+              0
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        },
+        {
+          "action": [
+            "move",
+            [
+              {
+                "id": 2,
+                "x": -70,
+                "y": 0
+              }
+            ],
+            [
+              {
+                "id": 2,
+                "x": -70,
+                "y": 0
+              }
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 2,
+            "start": [
+              0,
+              0
+            ],
+            "current": [
+              -70,
+              0
+            ],
+            "nub": [
+              0,
+              0
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [],
+            "prevented": true
+          }
+        },
+        {
+          "action": [
+            "frame"
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 2,
+            "start": [
+              0,
+              0
+            ],
+            "current": [
+              -70,
+              0
+            ],
+            "nub": [
+              -70,
+              0
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              -1,
+              0
+            ],
+            "dismissed": [],
+            "prevented": false
+          }
+        }
+      ]
+    }
+  ],
+  "source_sha256": {
+    "static/scenes/jetpack/js/constants.js": "f9e9061eccbe3d4bbec86fe0e472d1c7ca594708b7413ec73dd8df8246b70a88",
+    "static/scenes/jetpack/js/controls.js": "1d0130df2a3db4bd8cd4fe5c265e56e925afac697fa1b9fab25352bafddc4ea2"
+  }
+}

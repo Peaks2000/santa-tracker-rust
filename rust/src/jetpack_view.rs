@@ -12,7 +12,7 @@ pub struct JetpackView {
     level_layer: Option<LevelLayer>,
     font: Font,
     title: Font,
-    touch: Option<Vec2>,
+    controls: santa_tracker::jetpack_controls::Controls,
     fire: Transition<1>,
     last_time: f64,
 }
@@ -34,7 +34,7 @@ impl JetpackView {
             .map_err(|e| e.to_string())?,
             title: load_ttf_font_from_bytes(include_bytes!("../assets/fonts/Lobster-Regular.ttf"))
                 .map_err(|e| e.to_string())?,
-            touch: None,
+            controls: Default::default(),
             fire: Transition::new([1.]),
             last_time: 0.,
         })
@@ -163,26 +163,54 @@ impl JetpackView {
             (screen_height() / scale) as f64,
         )
     }
+    pub fn reset_controls(&mut self) {
+        self.controls = Default::default();
+    }
     pub fn input(&mut self, block_mouse: bool) -> (f64, f64) {
-        let mut input = (
-            f64::from(is_key_down(KeyCode::Right)) - f64::from(is_key_down(KeyCode::Left)),
-            f64::from(is_key_down(KeyCode::Down)) - f64::from(is_key_down(KeyCode::Up)),
-        );
-        if !block_mouse
-            && is_mouse_button_pressed(MouseButton::Left)
-            && !crate::chrome::over_controls(Vec2::from(mouse_position()), 3)
-        {
-            self.touch = Some(Vec2::from(mouse_position()));
-        }
-        if let Some(start) = self.touch {
-            if !block_mouse && is_mouse_button_down(MouseButton::Left) {
-                let delta = (Vec2::from(mouse_position()) - start) / 70.;
-                input = (delta.x as f64, delta.y as f64);
+        use santa_tracker::jetpack_controls::Touch;
+        for (code, key) in [
+            (37, KeyCode::Left),
+            (38, KeyCode::Up),
+            (39, KeyCode::Right),
+            (40, KeyCode::Down),
+        ] {
+            if is_key_down(key) {
+                self.controls.key_down(code);
             } else {
-                self.touch = None;
+                self.controls.key_up(code);
             }
         }
-        input
+        // Preserve the existing native mouse-as-touch adapter. Source web
+        // controls bind touch events only; actual multi-touch wiring is pending.
+        let (x, y) = mouse_position();
+        let touch = Touch {
+            id: 0,
+            x: x as f64,
+            y: y as f64,
+        };
+        if !block_mouse && is_mouse_button_pressed(MouseButton::Left) {
+            let gui = crate::chrome::over_controls(vec2(x, y), 3);
+            self.controls.touch_start(touch, gui);
+        }
+        if self.controls.touch_id.is_some() {
+            if !block_mouse && is_mouse_button_down(MouseButton::Left) {
+                let previous = if self.controls.current[0].is_some() {
+                    self.controls.current
+                } else {
+                    self.controls.start
+                };
+                if previous != [Some(touch.x), Some(touch.y)] {
+                    self.controls.touch_move(&[touch], &[touch]);
+                }
+            } else {
+                self.controls.touch_end(&[touch], &[]);
+            }
+        }
+        self.controls.frame();
+        // Existing Jetpack.step performs the Controls normalization once.
+        // Returning the normalized vector here would normalize it twice.
+        let [x, y] = self.controls.raw_input();
+        (x, y)
     }
     pub fn draw(&mut self, assets: &Assets, game: &Jetpack) {
         let scale = (screen_width() / 980.).min(1.);

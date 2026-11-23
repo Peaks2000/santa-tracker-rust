@@ -2900,3 +2900,47 @@ completed-background art. Prior native geometry is retained, not certified as
 CSS layout. Full mode remains partial; existing user README category unchanged.
 
 Release app and Jetpack capture build pass; compiled only, neither launched.
+
+## Elf Jetpack Controls event state (23 November 2026)
+
+Read complete controls.js (266 lines), source sensitivity and touchpad styles,
+existing view adapter and active main/tutorial input call sites. Controls has a
+no-op reset, unlike common input-reset assumptions. New jetpack_controls native
+module translates its state and methods; native adapter uses it for the existing
+mouse-as-touch input extension, returning raw input to Jetpack.step for one
+normalization. It does not feed an already normalized vector through a second
+normalization. In-scene restart retains the Controls instance. New route entry
+constructs fresh state, matching original constructor versus reset distinction.
+
+| Original function/branch | Native scope |
+| --- | --- |
+| constructor | Controls::default keys, nullable coordinates/ID, GUI flag and per-lifetime tutorial flags; native route reset freshens instance. |
+| reset | Deliberate no-op, preserving keys/touch/tutorial flags. |
+| start | Browser event registration source-reviewed. Native currently polls keyboard and mouse only while active; actual registration/event lifecycle not equivalent. |
+| onFrame | raw_input/frame: touch-current overrides keys only after first move; squared-length >1 normalization; normalized nub translation and player vector. Native step normalizes returned raw input once. |
+| onKeydown / onKeyup | Four source codes, unknown-key no-op, opposing keys and one-time horizontal/vertical tutorial emissions. Native adapter polls held keys; shared host tutorial wrapper still handles actual dismissals separately. |
+| onTouchstart | GUI flag updates even while already tracking; ignores GUI/second touch, tracks first supplied touch, one-time touch tutorial event. Native adapter supplies synthetic mouse touch; actual simultaneous-touch ordering remains unwired. |
+| onTouchmove / onTouchend | Changed tracked touch updates coordinates/ends; nonmatching touch ignored unless active ID disappeared. Pure state translated and checked; native multi-touch event dispatch pending. |
+| getCurrentTouch | Changed list wins; target-list presence retains tracking; absence in both hides widget for missing iOS touchend. |
+| showTouchWidget / hideTouchWidget | Source visibility/nub/ID/start/current state translated. Show does not initialize touchCurrent; hide preserves old start. Native widget/nub rendering still missing. |
+
+`jetpack-controls-reference.cjs` executes original methods/constants in CPU VM
+with supplied DOM-shaped events and jQuery widget recorders. Six cases/58 action
+snapshots compare keys/ID/start/current/nub/visibility/GUI flag/input/tutorial
+emissions. Source prevention calls are recorded but excluded from the Rust state
+comparison (native OS default handling is not modeled). Numeric JSON integers
+and floats compare by exact f64 value, not serialized number type or signed-zero
+bits; fixtures do not cover NaN/Infinity/invalid DOM arrays. First test run caught
+a JSON integer-vs-float assertion mismatch; numeric equivalence resolves it
+without loosening finite numerical tolerance.
+
+Native adapter now preserves keyboard control until the first drag movement,
+matching source touch-start behavior. Original web scene does not bind mouse
+input; native mouse-as-touch is an existing extension retained here. Sampling
+while paused, route/GUI/default-prevention delivery, physical touch IDs/order,
+full tutorial dispatch and widget pixels remain incomplete. Source Controls reset
+does not clear active touch; do not add such a reset on native in-scene restart.
+125 earlier tests plus the new state comparison pass: 126 total (112 lib +14 app).
+No windows, graphics contexts, injected input or audio; no live test interruption.
+
+Release app and Jetpack capture compile successfully; neither launched.
