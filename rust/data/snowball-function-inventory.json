@@ -1994,7 +1994,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/state-system.js",
       "lines": 88,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; five actual original fresh-spawn cases (26 frames, creation plus 52 core snapshots) now compare deferred drop-before-player FIFO tile choices/map RNG, connected allTime, arrival/parent/queues/transforms and undefined failure. Native sparse/missing-ring error handling, remaining population fields, full pools/global RNG/AI and pixels still partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -2091,7 +2091,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/player-system.js",
       "lines": 277,
-      "review": "Per-player last-value/insertion-order queues, post-arrival destination processing, deferred local fallback, target alias resolution, charge selection and pending animation flag checked in 64-frame command fixture. Full spawn/actor pools, generic removal/network/null-map handling and collisions/model lifecycle remain partial.",
+      "review": "Per-player last-value/insertion-order queues, post-arrival destination processing, deferred local fallback, target alias resolution, charge selection and pending animation flag checked in 64-frame command fixture. Full spawn/actor pools, generic removal/network/null-map handling and collisions/model lifecycle remain partial.; five actual original fresh-spawn cases (26 frames, creation plus 52 core snapshots) now compare deferred drop-before-player FIFO tile choices/map RNG, connected allTime, arrival/parent/queues/transforms and undefined failure. Native sparse/missing-ring error handling, remaining population fields, full pools/global RNG/AI and pixels still partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -2187,7 +2187,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/parachute-system.js",
       "lines": 131,
-      "review": "Native snowball_parachute.rs matches active FIFO carry/start ticks, stored descent/sway, arrival/free detach and remove/teardown queue quirks in 21 actual original updates. System-stage landing registration checked in 22 frames. Duplicate simultaneous redrops, full actor/resource reuse and scene teardown/restart are not certified.",
+      "review": "Native snowball_parachute.rs matches active FIFO carry/start ticks, stored descent/sway, arrival/free detach and remove/teardown queue quirks in 21 actual original updates. System-stage landing registration checked in 22 frames. Duplicate simultaneous redrops, full actor/resource reuse and scene teardown/restart are not certified.; five actual original fresh-spawn cases (26 frames, creation plus 52 core snapshots) now compare deferred drop-before-player FIFO tile choices/map RNG, connected allTime, arrival/parent/queues/transforms and undefined failure. Native sparse/missing-ring error handling, remaining population fields, full pools/global RNG/AI and pixels still partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs",
@@ -2478,7 +2478,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/drop-system.js",
       "lines": 150,
-      "review": "Source new-drop setup/carry queue before ParachuteSystem, one-frame detached arrival then map attachment/collider registration checked against actual original stages. Earlier contact/pickup/spin checks retained. Frozen parents, pooled allocation/reuse and complete restart remain partial.",
+      "review": "Source new-drop setup/carry queue before ParachuteSystem, one-frame detached arrival then map attachment/collider registration checked against actual original stages. Earlier contact/pickup/spin checks retained. Frozen parents, pooled allocation/reuse and complete restart remain partial.; five actual original fresh-spawn cases (26 frames, creation plus 52 core snapshots) now compare deferred drop-before-player FIFO tile choices/map RNG, connected allTime, arrival/parent/queues/transforms and undefined failure. Native sparse/missing-ring error handling, remaining population fields, full pools/global RNG/AI and pixels still partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -3663,7 +3663,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/components/game-map.js",
       "lines": 255,
-      "review": "native formulas checked against actual original map/grid/path oracle; general unused grid conversion helpers remain unported; map/performance clock separated from game time; source float32 raised/transition timestamps and stored hex/obstacle uniforms compare against original modules/THREE for ten frames/all 4096 tiles. Float tile/tree fade attributes replace byte rounding. GLSL pixels/deformation/tone, per-getter timing/loading/host clock remain unverified; unused erode shader export is not the active shake/sink path.",
+      "review": "native formulas checked against actual original map/grid/path oracle; general unused grid conversion helpers remain unported; map/performance clock separated from game time; source float32 raised/transition timestamps and stored hex/obstacle uniforms compare against original modules/THREE for ten frames/all 4096 tiles. Float tile/tree fade attributes replace byte rounding. GLSL pixels/deformation/tone, per-getter timing/loading/host clock remain unverified; unused erode shader export is not the active shake/sink path.; five actual original fresh-spawn cases (26 frames, creation plus 52 core snapshots) now compare deferred drop-before-player FIFO tile choices/map RNG, connected allTime, arrival/parent/queues/transforms and undefined failure. Native sparse/missing-ring error handling, remaining population fields, full pools/global RNG/AI and pixels still partial.",
       "native": [
         "rust/src/snowball.rs"
       ],
@@ -3760,7 +3760,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/components/arrival.js",
       "lines": 39,
-      "review": "Infinity default, actual droppedAt tick and arrive flags translated and checked with original carry/landing queues in held/irregular/long frames. isDropping has no active source callers and no separate native method; dropped/arrived state is retained.",
+      "review": "Infinity default, actual droppedAt tick and arrive flags translated and checked with original carry/landing queues in held/irregular/long frames. isDropping has no active source callers and no separate native method; dropped/arrived state is retained.; five actual original fresh-spawn cases (26 frames, creation plus 52 core snapshots) now compare deferred drop-before-player FIFO tile choices/map RNG, connected allTime, arrival/parent/queues/transforms and undefined failure. Native sparse/missing-ring error handling, remaining population fields, full pools/global RNG/AI and pixels still partial.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs",

@@ -1,0 +1,15 @@
+{
+  "all_time": 100,
+  "drops": 42,
+  "frames": 10800,
+  "gameover": true,
+  "knocked_out": 65,
+  "map_rings": 16,
+  "particle_slots": 2500,
+  "players": 100,
+  "scope": "CPU-only native regression, not source/full-game parity or GPU validation",
+  "seconds": 180,
+  "shots": 11,
+  "undefined_drop_tiles": 0,
+  "undefined_player_tiles": 0
+}

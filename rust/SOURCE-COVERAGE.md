@@ -2398,3 +2398,58 @@ GPU output or original full-game simulation. All 111 tests pass (100 library +
 
 Release application and snowball_capture diagnostic build successfully. Neither
 was launched; user game/focus/input stayed untouched.
+
+
+### Deferred spawn tile/count staging (23 November 2026)
+
+Read complete PlayerSystem/DropSystem, Arrival/StateSystem, GameMap habitable
+lookup and ParachuteSystem update branches. Original addPlayer/addDrop creates
+arrival request -1 (or explicit tile), without calling map habitable selection.
+DropSystem newDrops.shift processes setup then fallback tile choice and canopy
+queue. PlayerSystem newPlayers.shift chooses fallback later, then setup/queue
+and recordPlayerConnected. Native previously chose during alternating actor
+creation and incremented allTime there, changing the map RNG/tile order.
+Native creation now stores -1; Drop and Player setup select at their actual
+system stages in FIFO order, and player setup increments cumulative allTime.
+Explicit tile values remain untouched. Other Population fields/remote events
+are not certified by this allTime change. Local-level gating uses the corrected
+connected count; no fixed caps or new game rules were introduced.
+
+Source exhausted habitable lookup returns undefined, distinct from request -1.
+Native UNDEFINED_TILE=i32::MIN is an internal tag, not a valid grid index; no
+random repick for an existing undefined component. Grid position of that tag
+is NaN, and NaN position->index stays invalid instead of Rust integer-casting
+onto tile0. Source tile/NaN fields compare as JSON null. This models the checked
+failure path, not every JS numeric/default-argument/network coercion. A dedicated
+case injects undefined into Arrival after construction (distinct from default
+function arguments). Native missing/sparse ring defensive skips still differ
+from source potential undefined-ring exceptions; empty-ring return is checked.
+
+CPU snowball-spawn-reference.cjs runs unchanged GameMap, Player/Drop/Parachute/
+Client/LOD/State and actual THREE, canonical modules and fresh actor pools per
+case. Global constructor RNG seeded; GLTF FileLoader remains pending, image/
+Canvas IO adapted; collisions/input/network/events are inert. No LocalLevel/AI
+or collision step, renderer, browser, GPU or input. Five cases cover original
+26-player/25-drop initial cohort, explicit and late cohorts, 30 erosion updates
+between creation and processing, existing undefined indices and exhausted rings.
+Native actual finish_frame compares both map RNGs, connected count, all actor
+tile/arrival/dropped-tick/setup/position/parent records, client marker/camera and
+canopy queues/transforms. There are 26 frames/52 before-after snapshots plus
+five creation snapshots, 70 fresh actor allocations. No map RNG draw occurs
+at creation, matching source; drop draws precede player draws. Carry/landing
+through the undefined failure path also matches these bounded snapshots.
+
+All 112 tests pass (101 library + 11 binary). New snowball_state_smoke is an
+ordinary CPU main with no window/graphics/assets/audio/input APIs. Running
+`cargo run --manifest-path rust/Cargo.toml --release --example snowball_state_smoke
+-- rust/data/snowball-spawn-smoke.json` simulates 180 seconds/10800 updates.
+It passes, reaches allTime100 with the existing cap, and retains 2500 particle
+slots. Report player/drop counts are retained native records, not source active
+array sizes. This is native stability coverage, NOT original whole-match parity
+or frame-rate/input-latency measurement. Pooled retained actor position/facing/
+model state, full global RNG/UUID/appearance, AI, sparse ring exceptions, model
+readiness/graphics and full boot/host clocks remain unfinished. No user approval
+or README rating change, and no window/focus/input was used.
+
+Release application/capture builds pass; CPU-only state-smoke also builds/runs.
+No app window, GPU context, focus change, audio playback or input was used.

@@ -1,0 +1,41 @@
+{
+  "fixture": "snowball-spawn-reference.json",
+  "counts": {
+    "cases": 5,
+    "frames": 26,
+    "before_after_snapshots": 52,
+    "creation_snapshots": 5,
+    "fresh_actor_allocations": 70
+  },
+  "source_execution": "Original GameMap, Player/Drop/Parachute/Client/LOD/State systems and actual THREE in CPU VM. Actor pools cleared per case. Canonical imports, seeded global constructor RNG; GLTF FileLoader held pending, image/Canvas IO adapted, input/collision/network/event sinks inert. No LocalLevel, AI, collision step, renderer or GPU.",
+  "changes": [
+    "Creation records tile request -1 without consuming GameMap.seedRandom. Drop setup chooses first at Drop stage, player setup chooses later FIFO at Player stage. Explicit tiles remain unchanged.",
+    "Connected all_time count increments after player setup/parachute enqueue, not actor creation.",
+    "Habitable exhaustion returns a tagged undefined tile distinct from -1; coordinates become NaN like source undefined index. Reserved i32::MIN is an internal tag, not a real tile; nonfinite position-index lookup preserves invalid state rather than coercing tile zero.",
+    "Source undefined component index comparison skips random selection; a dedicated fixture injects that field after allocation, separate from constructor default arguments."
+  ],
+  "cases": [
+    "26-player/25-drop original initial cohort",
+    "preassigned tiles and later mixed cohort",
+    "30 erosion updates after actor creation but before tile selection",
+    "existing undefined component tile indices",
+    "empty rings returning undefined through carry/landing"
+  ],
+  "native_regression": "Actual finish_frame compares map and erosion RNG state, connected count, actor tile/arrival/dropped tick/parent/position/setup, client marker/camera and parachute queues/transforms. CPU-only 180-second native smoke passes; counts are retained native records, not source active-array sizes.",
+  "limits": [
+    "Fresh actors only; pooled retained position/facing/model state, full global RNG/UUID/appearance and AI remain unfinished.",
+    "Only all_time connected count covered, not all Population fields/remote events.",
+    "Sparse/nonempty missing-ring defensive handling in native habitable lookup still differs from source potential throw; empty-ring return is checked.",
+    "Undefined tag covers failure/NaN paths in this corpus, not complete JS numeric/coercion/network serialization semantics.",
+    "No model readiness, pixel, audio scheduling, full game/host/clock or whole-mode/site 1:1 claim."
+  ],
+  "reviewed_source_sha256": {
+    "static/scenes/snowball/js/snowball/systems/player-system.js": "37e8c893a3643f5bc0940524ea23cc51a8ba9b575365d6ef555b9966836461b0",
+    "static/scenes/snowball/js/snowball/systems/drop-system.js": "d0230bcf979a736698ed41013451ebea345ee2d8b8580b59ea375880f55b1db2",
+    "static/scenes/snowball/js/snowball/components/game-map.js": "a345fe09864dc60d56a926dd7dcae0224847a3cdfc50365fe4f280836c9a2c2c",
+    "static/scenes/snowball/js/snowball/components/arrival.js": "ec8d83b69b92298a2ad6a5b061af737b498e44e6ad0740a27c59f2f069413894",
+    "static/scenes/snowball/js/snowball/levels/local-level.js": "058cd94969c0f64708d5fdfad70298e539a0eefc9b3d11c856fac53674f386de",
+    "static/scenes/snowball/js/snowball/systems/state-system.js": "786084366dca60a9355b02d1c80522adc9e0028b36a1987f8d63d1658a8c169c",
+    "static/scenes/snowball/js/snowball/systems/parachute-system.js": "c26622b7497d442c327eb903cdd8fff7a82456dd8b09caa4d1c7fa2a69bcd80b"
+  }
+}

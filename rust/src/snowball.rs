@@ -57,6 +57,9 @@ impl SeedRandom {
         low + ((high - low) as f64 * self.next()).trunc() as i32
     }
 }
+/// JS undefined tile after the source exhausts habitable candidates. Distinct
+/// from -1, which requests a random tile during new-actor processing.
+pub const UNDEFINED_TILE: i32 = i32::MIN;
 #[derive(Clone, Copy)]
 pub struct Grid {
     pub width: i32,
@@ -107,6 +110,7 @@ impl Grid {
         self.index(c[0], c[2] + (c[0] - (c[0] & 1)) / 2)
     }
     pub fn pos(self, i: i32) -> V {
+        if i == UNDEFINED_TILE { return V::new(f64::NAN, f64::NAN); }
         let [x, _, z] = self.cube(i);
         V::new(
             (0.5 + 0.75 * x as f64) * self.size - self.pixel_width() / 2.,
@@ -115,6 +119,7 @@ impl Grid {
         )
     }
     pub fn position_index(self, p: V) -> i32 {
+        if p.x.is_nan() || p.y.is_nan() { return UNDEFINED_TILE; }
         let x = p.x + self.pixel_width() / 2. - self.pixel_width() * 0.5 / self.width as f64;
         let y = self.pixel_height() / 2. - p.y - self.pixel_height() * 0.5 / self.height as f64;
         let q = x * 2. / 3. / (self.size / 2.);
@@ -421,7 +426,7 @@ impl Map {
                 return i;
             }
         }
-        -1
+        UNDEFINED_TILE
     }
     pub fn nearby(&self, index: i32, max_radius: i32, rng: &mut Random) -> i32 {
         let r = (rng.next() * (max_radius - 1) as f64).floor() as i32 + 1;
@@ -800,7 +805,7 @@ impl Snowball {
         }
     }
     fn add_player(&mut self, bot: bool) {
-        let tile = self.map.habitable();
+        let tile = -1;
         let color = (self.random.next() * 6.) as usize;
         let skin = (self.random.next() * 4.) as usize;
         let hair = (self.random.next() * 4.) as usize;
@@ -839,10 +844,9 @@ impl Snowball {
             anim: "elf_rig_idle".into(),
             fall: 1,
         });
-        self.all_time += 1
     }
     fn add_drop(&mut self) {
-        let tile = self.map.habitable();
+        let tile = -1;
         let color = (self.random.next() * 7.) as usize;
         let scale = [
             self.random.next() * 7. + 12.,
@@ -1339,6 +1343,7 @@ impl Snowball {
                 d.tilt = PI / 2.5;
                 d.rotation = 0.;
                 d.opacity = 1.;
+                if d.tile < 0 && d.tile != UNDEFINED_TILE { d.tile = self.map.habitable(); }
                 self.parachutes.drop_entity(Id::Drop(di));
             }
             if d.arrived && !d.landed {
@@ -1492,6 +1497,7 @@ impl Snowball {
         }
         for (i, p) in self.players.iter_mut().enumerate() {
             if !p.setup {
+                if p.tile < 0 && p.tile != UNDEFINED_TILE { p.tile = self.map.habitable(); }
                 p.setup = true;
                 self.collision.add(Id::Player(i));
                 if i == 0 {
@@ -1500,6 +1506,7 @@ impl Snowball {
                 if !p.arrived {
                     self.parachutes.drop_entity(Id::Player(i));
                 }
+                self.all_time += 1;
             }
         }
         for p in &mut self.players {
@@ -1602,6 +1609,61 @@ pub fn circle_rect(c: V, r: f64, p: V, hw: f64, hh: f64) -> bool {
 #[cfg(test)]
 pub(crate) mod tests {
     use super::*;
+    #[test]
+    fn deferred_spawn_tiles_counts_and_arrivals_match_original_systems() {
+        let data: serde_json::Value = serde_json::from_str(include_str!(
+            "../data/snowball-spawn-reference.json"
+        )).unwrap();
+        fn add(game: &mut Snowball, op: &serde_json::Value, labels: &mut Vec<(String,Id)>) {
+            let name=format!("{}{}",op["kind"].as_str().unwrap(),op["id"].as_u64().unwrap());
+            let tile=if op["undefinedTile"].as_bool().unwrap_or(false) {UNDEFINED_TILE} else {op["tile"].as_i64().unwrap() as i32};
+            let id=if op["kind"]=="p" {
+                game.add_player(false);
+                let index=game.players.len()-1;game.players[index].tile=tile;Id::Player(index)
+            } else {
+                game.add_drop();
+                let index=game.drops.len()-1;game.drops[index].tile=tile;Id::Drop(index)
+            };
+            labels.push((name,id));
+        }
+        fn snapshot(game: &Snowball, labels: &[(String,Id)]) -> serde_json::Value {
+            let label=|id:Id|labels.iter().find(|(_,i)|*i==id).unwrap().0.clone();
+            let actors=labels.iter().map(|(name,id)| {
+                let (tile,arrived,dropped,setup,pos,z,parent)=match *id {
+                    Id::Player(i)=>{let p=&game.players[i];(p.tile,p.arrived,p.dropped,p.setup,p.pos,p.z,p.parent)},
+                    Id::Drop(i)=>{let d=&game.drops[i];(d.tile,d.arrived,d.dropped,d.setup,d.pos,d.entity_z,d.parent)},
+                    _=>unreachable!(),
+                };
+                let tile=if tile==UNDEFINED_TILE {None} else {Some(tile)};
+                serde_json::json!({"name":name,"tile":tile,"arrived":arrived,"dropped":dropped,"setup":setup,"position":[pos.x,pos.y,z],"parent":match parent {Parent::Detached=>"none",Parent::Canopy=>"canopy",Parent::Map=>"map",Parent::Ice(_)=>"unexpected"}})
+            }).collect::<Vec<_>>();
+            serde_json::json!({"seed":game.map.random.0,"erodeSeed":game.map.erode_random.0,"allTime":game.all_time,"camera":[game.camera.x,game.camera.y],"marker":game.client_arrival.marker.map(|m|m.position),"actors":actors,"undropped":game.parachutes.undropped.iter().copied().map(label).collect::<Vec<_>>(),"dropping":game.parachutes.dropping.iter().copied().map(label).collect::<Vec<_>>(),"canopies":game.parachutes.canopies.iter().map(|c|serde_json::json!({"name":label(c.entity),"position":[c.pos.x,c.pos.y,c.z],"rotation":c.rotation})).collect::<Vec<_>>()})
+        }
+        for case in data["cases"].as_array().unwrap() {
+            let mut game=Snowball::new("spawn-stage-reference");
+            game.phase=Phase::Playing;
+            game.map=Map::new(Grid::default(),case["seed"].as_u64().unwrap() as u32);
+            let mut labels=vec![];
+            assert_eq!(game.map.random.0 as u64,case["seedBefore"].as_u64().unwrap());
+            for op in case["initial"].as_array().unwrap() {add(&mut game,op,&mut labels);}
+            assert_json_close(&snapshot(&game,&labels),&case["created"],&format!("{} created",case["name"]));
+            for (frame,row) in case["frames"].as_array().unwrap().iter().enumerate() {
+                let input=&row["input"];
+                game.time=input["at"].as_f64().unwrap();game.wall=game.time;
+                for op in input["add"].as_array().into_iter().flatten() {add(&mut game,op,&mut labels);}
+                if input["empty"].as_bool().unwrap_or(false) {game.map.rings.clear();}
+                for _ in 0..input["erode"].as_u64().unwrap_or(0) {game.map.erode(game.wall);}
+                let name=format!("{} frame{frame}",case["name"]);
+                assert_json_close(&snapshot(&game,&labels),&row["before"],&format!("{name} before"));
+                // Source oracle runs core spawn systems with inert collisions,
+                // no LocalLevel/AI and unresolved model/image I/O.
+                game.collision=Collision::new(Bounds::rect(V::default(),10000.,10000.));
+                game.finish_frame(1440.,800.);
+                assert_json_close(&snapshot(&game,&labels),&row["after"],&format!("{name} after"));
+            }
+        }
+    }
+
     #[test]
     fn map_performance_clock_and_float_states_match_original_system() {
         let data: serde_json::Value = serde_json::from_str(include_str!(

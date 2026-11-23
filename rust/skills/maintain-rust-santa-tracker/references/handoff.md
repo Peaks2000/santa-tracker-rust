@@ -784,3 +784,31 @@ tests pass. Full global ties/model readiness/geometry/routing still unfinished.
 
 Release application and snowball_capture diagnostic build successfully. Neither
 was launched; user game/focus/input stayed untouched.
+
+
+### Deferred spawn setup pass (23 November 2026)
+
+add_player/add_drop no longer pick tiles on creation. Source arrivals hold -1;
+Drop stage selects FIFO first, Player stage later selects FIFO before setup.
+Cumulative all_time increments only at player setup/queue, matching connected
+record timing. Source fresh initial 26p/25d cohort now gets the same per-actor
+tiles/map RNG under a supplied map seed; don't revive eager tile selection.
+
+UNDEFINED_TILE=i32::MIN tags failed/undefined indices separately from request
+-1. Its position is NaN; NaN position lookup remains invalid rather than tile0.
+Existing undefined components skip fallback. Not full JS coercion/serialization.
+Native sparse/missing-ring defensive skips still differ from potential source
+exceptions, while empty-ring undefined return is checked.
+
+Original GameMap/Player/Drop/Parachute/Client/LOD/State CPU oracle, fresh pools,
+held model IO/adapted Canvas/image and inert collision/input/network/events:
+five cases/26 frames plus creation =57 snapshots, 70 actors. Actual native
+finish_frame checks tile/count/arrival/parent/queues/transforms/RNG/camera. No
+LocalLevel/AI/whole pool identity/global RNG/graphics certification. All 112 tests
+pass. CPU-only example snowball_state_smoke ran 180s/10800 steps and reached
+allTime100 without windows; results stored in spawn-smoke.json, not parity proof.
+Pooled position/facing/model reuse, sparse exceptions, AI/global RNG and GPU
+still unfinished. Earlier handoff notes about eager tile choice are superseded.
+
+Release application/capture builds pass; CPU-only state-smoke also builds/runs.
+No app window, GPU context, focus change, audio playback or input was used.
