@@ -1,4 +1,4 @@
-use santa_tracker::audio::{Command, Mixer, Sample};
+use santa_tracker::audio::{Command, Mixer, PlayPolicy, Sample};
 use serde_json::Value;
 use std::{
     collections::HashMap,
@@ -506,7 +506,18 @@ impl Sound {
         if let Some(actions) = actions {
             for &(id, play, delay, fade) in actions {
                 if play {
-                    self.play_source(id, root, delay, fade, true);
+                    self.play_source_policy(
+                        id,
+                        root,
+                        delay,
+                        fade,
+                        true,
+                        if event == "jp_start_game" {
+                            Some(PlayPolicy::FadeInLoop)
+                        } else {
+                            None
+                        },
+                    );
                 } else {
                     self.commands
                         .send(Command::StopSource {
@@ -553,6 +564,17 @@ impl Sound {
         );
     }
     fn play_source(&mut self, key: &str, root: &Path, delay: f64, fade_in: f64, pausable: bool) {
+        self.play_source_policy(key, root, delay, fade_in, pausable, None);
+    }
+    fn play_source_policy(
+        &mut self,
+        key: &str,
+        root: &Path,
+        delay: f64,
+        fade_in: f64,
+        pausable: bool,
+        policy: Option<PlayPolicy>,
+    ) {
         let Some(id) = self.source(key, 0) else {
             return;
         };
@@ -587,7 +609,11 @@ impl Sound {
             .send(Command::Play {
                 pausable,
                 id: id.clone(),
-                retrigger: source["retrig"].as_bool().unwrap_or(true),
+                policy: policy.unwrap_or(if source["retrig"].as_bool().unwrap_or(true) {
+                    PlayPolicy::Retrigger
+                } else {
+                    PlayPolicy::IfAbsent
+                }),
                 delay,
                 fade_in,
                 sample: Arc::clone(&self.samples[&id]),

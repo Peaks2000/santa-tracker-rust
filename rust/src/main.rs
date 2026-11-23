@@ -370,7 +370,11 @@ async fn run(opts: Options) {
             && route != "codelab"
             && route != "snowball";
         if restart {
-            sound.stop();
+            if route == "jetpack" {
+                sound.paused(false);
+            } else {
+                sound.stop();
+            }
             match route.as_str() {
                 "elfmaker" => {
                     maker = santa_tracker::elfmaker::ElfMaker::new(&opts.seed);
@@ -820,7 +824,9 @@ async fn run(opts: Options) {
                         sound.paused(false);
                     }
                     overlay::Action::Restart => {
-                        if route != "codelab" && route != "codeboogie" {
+                        if route == "jetpack" {
+                            sound.paused(false);
+                        } else if route != "codelab" && route != "codeboogie" {
                             sound.stop();
                         }
                         if route == "snowball" {
@@ -1018,7 +1024,9 @@ async fn run(opts: Options) {
                     _ => {}
                 },
                 chrome::Action::Restart => {
-                    if route != "codelab" && route != "codeboogie" {
+                    if route == "jetpack" {
+                        sound.paused(false);
+                    } else if route != "codelab" && route != "codeboogie" {
                         sound.stop();
                     }
                     match route.as_str() {

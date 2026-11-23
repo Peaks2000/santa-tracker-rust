@@ -1175,3 +1175,28 @@ and cross-queue parameter/name ordering unverified/incomplete. Source process
 oracle uses property recorders, NOT real WebAudio/PCM reference or AudioTag
 fallback. Keep no live audio or window testing while user plays. Prior touch-
 target, clock, GPU group/layout work remains open; whole-site goal unachieved.
+
+### Jetpack active-loop restart/recovery (23 November 2026)
+
+Three in-scene restart paths now sound.paused(false), not stop-all. jp_start_game
+uses PlayPolicy::FadeInLoop (ordinary retrigger/if-absent semantics unchanged).
+Active loop returns without resetting phase/automation/voice; pending cancellable
+mixer fade can reverse from current level. Per-loop envelope replaces old product
+of fade-in/fade-out. Ten original complete fadeInAndPlay supplied-state snapshots
+plus synthetic phase/PCM/end/immediate-stop checks; all134 tests pass (120lib+14app).
+Builds pass; no devices/windows/audio/input opened.
+
+CRITICAL REMAINING: actual source fadeOut timer fires duration-.2s ahead of end.
+For .3 fade, at .1 it clears _stopping and schedules buffer.stop at .3. Restart in
+that window returns (playing=true, stopping=false), cannot cancel scheduled stop.
+Separate callback_reference runs actual source timer closure/stop/getter and
+proves this. Native still permits cancellation to ramp end: NOT matched; this
+reference subrecord is NOT asserted by native tests. Need task/audio clock model.
+
+Next related foundation: native music_ingame_gameover globalStop cuts Jetpack
+fade immediately. Actual transition config + full Util.transition reviewed in
+coverage: five music loops only, source beat sync, special offset, outgoing .1,
+OckO jingle follow-up7.128712871s. Don't approximate with blanket stop. Native
+pause freezes phase while source yX_P gain fades .3; muted-launch recovery also
+open. Active live-round loop reuse is improved; terminal fade/music lifecycle
+not certified. Prior touch targets, Date/frame clocks, GPU/textures still open.

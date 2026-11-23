@@ -1,0 +1,263 @@
+{
+  "method": "Exact unmodified bundled AudioSource.fadeInAndPlay function evaluated in CPU VM for the original two loop configs. Existing playing/end/stopping flags and gain.value are supplied; AudioParam scheduling, play and timeout cancellation are call recorders. Tests compare active-return/recovery decisions, normalized envelope endpoints and retained phase, NOT actual AudioSource.play, WebAudio automation, scheduled buffer lifecycle or PCM rendering.",
+  "source_sha256": {
+    "static/third_party/lib/klang/klang.js": "300a1a830937223118a3e098f041efaf8878941ec24dca68731d93fcc9bb6e3c",
+    "static/third_party/lib/klang/config.js": "42f22aadadf1aaf2ff3ea97c7011575b7beede10a76ad6587a50427d0d2973c6"
+  },
+  "callback_reference": {
+    "method": "Actual fadeOutAndStop timer closure, stop method and playing getter, with recorded buffer-stop and AudioParam calls; AudioSource.play not modeled. Native cancellation lifetime does not yet match this branch.",
+    "delay_ms": 99.99999999999997,
+    "timer_at": 10.1,
+    "stopping_after_timer": false,
+    "playing_after_timer": true,
+    "end_time": 10.3,
+    "ops": [
+      [
+        "bufferStop",
+        10.3
+      ]
+    ],
+    "reentry_ops": []
+  },
+  "function_sha256": "f2779a39016ff47e131e151eba7991408c663bc4b0b992984d9e3c6d0802b4ea",
+  "cases": [
+    {
+      "id": "XgMa",
+      "state": "playing-fade-in",
+      "present": true,
+      "initial_gain": 0.25,
+      "volume": 1,
+      "stopping": false,
+      "duration": 0.3,
+      "now": 10,
+      "ops": [],
+      "final_stopping": false
+    },
+    {
+      "id": "XgMa",
+      "state": "playing-full",
+      "present": true,
+      "initial_gain": 1,
+      "volume": 1,
+      "stopping": false,
+      "duration": 0.3,
+      "now": 10,
+      "ops": [],
+      "final_stopping": false
+    },
+    {
+      "id": "XgMa",
+      "state": "pending-fade-out",
+      "present": true,
+      "initial_gain": 0.375,
+      "volume": 1,
+      "stopping": true,
+      "duration": 0.3,
+      "now": 10,
+      "ops": [
+        [
+          "cancel",
+          10
+        ],
+        [
+          "clearTimeout",
+          99
+        ],
+        [
+          "set",
+          0.375,
+          10
+        ],
+        [
+          "ramp",
+          1,
+          10.3
+        ]
+      ],
+      "final_stopping": false
+    },
+    {
+      "id": "XgMa",
+      "state": "pending-zero-gain",
+      "present": true,
+      "initial_gain": 0,
+      "volume": 1,
+      "stopping": true,
+      "duration": 0.3,
+      "now": 10,
+      "ops": [
+        [
+          "cancel",
+          10
+        ],
+        [
+          "clearTimeout",
+          99
+        ],
+        [
+          "set",
+          0,
+          10
+        ],
+        [
+          "ramp",
+          1,
+          10.3
+        ]
+      ],
+      "final_stopping": false
+    },
+    {
+      "id": "XgMa",
+      "state": "new-loop",
+      "present": false,
+      "initial_gain": 1,
+      "volume": 1,
+      "stopping": false,
+      "duration": 0.3,
+      "now": 10,
+      "ops": [
+        [
+          "cancel",
+          10
+        ],
+        [
+          "play",
+          0,
+          0,
+          5
+        ],
+        [
+          "set",
+          0,
+          10
+        ],
+        [
+          "ramp",
+          1,
+          10.3
+        ]
+      ],
+      "final_stopping": false
+    },
+    {
+      "id": "Kzah",
+      "state": "playing-fade-in",
+      "present": true,
+      "initial_gain": 0.08849322308143,
+      "volume": 0.35397289232572,
+      "stopping": false,
+      "duration": 0.3,
+      "now": 10,
+      "ops": [],
+      "final_stopping": false
+    },
+    {
+      "id": "Kzah",
+      "state": "playing-full",
+      "present": true,
+      "initial_gain": 0.35397289232572,
+      "volume": 0.35397289232572,
+      "stopping": false,
+      "duration": 0.3,
+      "now": 10,
+      "ops": [],
+      "final_stopping": false
+    },
+    {
+      "id": "Kzah",
+      "state": "pending-fade-out",
+      "present": true,
+      "initial_gain": 0.132739834622145,
+      "volume": 0.35397289232572,
+      "stopping": true,
+      "duration": 0.3,
+      "now": 10,
+      "ops": [
+        [
+          "cancel",
+          10
+        ],
+        [
+          "clearTimeout",
+          99
+        ],
+        [
+          "set",
+          0.132739834622145,
+          10
+        ],
+        [
+          "ramp",
+          0.35397289232572,
+          10.3
+        ]
+      ],
+      "final_stopping": false
+    },
+    {
+      "id": "Kzah",
+      "state": "pending-zero-gain",
+      "present": true,
+      "initial_gain": 0,
+      "volume": 0.35397289232572,
+      "stopping": true,
+      "duration": 0.3,
+      "now": 10,
+      "ops": [
+        [
+          "cancel",
+          10
+        ],
+        [
+          "clearTimeout",
+          99
+        ],
+        [
+          "set",
+          0,
+          10
+        ],
+        [
+          "ramp",
+          0.35397289232572,
+          10.3
+        ]
+      ],
+      "final_stopping": false
+    },
+    {
+      "id": "Kzah",
+      "state": "new-loop",
+      "present": false,
+      "initial_gain": 0.35397289232572,
+      "volume": 0.35397289232572,
+      "stopping": false,
+      "duration": 0.3,
+      "now": 10,
+      "ops": [
+        [
+          "cancel",
+          10
+        ],
+        [
+          "play",
+          0,
+          0,
+          5
+        ],
+        [
+          "set",
+          0,
+          10
+        ],
+        [
+          "ramp",
+          0.35397289232572,
+          10.3
+        ]
+      ],
+      "final_stopping": false
+    }
+  ]
+}

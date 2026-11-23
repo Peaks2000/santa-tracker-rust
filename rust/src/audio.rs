@@ -35,11 +35,33 @@ impl Sample {
         self.samples.len() / self.channels
     }
 }
+#[derive(Clone, Copy, PartialEq)]
+pub enum PlayPolicy {
+    Retrigger,
+    IfAbsent,
+    FadeInLoop,
+}
+#[derive(Clone, Copy)]
+struct LoopEnvelope {
+    from: f32,
+    to: f32,
+    elapsed: usize,
+    total: usize,
+    stopping: bool,
+}
+impl LoopEnvelope {
+    fn level(self) -> f32 {
+        if self.total == 0 {
+            return self.to;
+        }
+        self.from + (self.to - self.from) * (self.elapsed as f32 / self.total as f32).min(1.)
+    }
+}
 pub enum Command {
     Play {
         pausable: bool,
         id: String,
-        retrigger: bool,
+        policy: PlayPolicy,
         delay: f64,
         fade_in: f64,
         sample: Arc<Sample>,
@@ -81,6 +103,7 @@ struct Voice {
     age: usize,
     fade_in: usize,
     fade_out: Option<(usize, usize)>,
+    loop_envelope: Option<LoopEnvelope>,
     sample: Arc<Sample>,
     position: f64,
     step: f64,
@@ -144,7 +167,18 @@ impl Mixer {
                 Command::StopSource { id, fade } => {
                     for voice in self.voices.iter_mut().filter(|v| v.id == id) {
                         let frames = (fade.max(0.) * 48000.) as usize;
-                        voice.fade_out = Some((frames, frames));
+                        if let Some(envelope) = &mut voice.loop_envelope {
+                            let level = envelope.level();
+                            *envelope = LoopEnvelope {
+                                from: if level == 0. { 1. } else { level },
+                                to: 0.,
+                                elapsed: 0,
+                                total: if voice.age == 0 { 0 } else { frames },
+                                stopping: true,
+                            };
+                        } else {
+                            voice.fade_out = Some((frames, frames));
+                        }
                     }
                 }
                 Command::Paused(p) => self.paused = p,
@@ -152,7 +186,7 @@ impl Mixer {
                 Command::Play {
                     pausable,
                     id,
-                    retrigger,
+                    policy,
                     delay,
                     fade_in,
                     sample,
@@ -162,7 +196,43 @@ impl Mixer {
                     offset,
                     end,
                 } => {
-                    if !retrigger
+                    if policy == PlayPolicy::FadeInLoop && loop_start.is_some() {
+                        if let Some(voice) = self
+                            .voices
+                            .iter_mut()
+                            .find(|v| v.id == id && v.loop_start.is_some() && v.delay == 0)
+                        {
+                            if let Some(envelope) = &mut voice.loop_envelope {
+                                if envelope.stopping {
+                                    *envelope = LoopEnvelope {
+                                        from: envelope.level(),
+                                        to: 1.,
+                                        elapsed: 0,
+                                        total: (fade_in.max(0.) * 48000.) as usize,
+                                        stopping: false,
+                                    };
+                                }
+                            } else if let Some((remaining, total)) = voice.fade_out {
+                                let fade_in_level = if voice.fade_in > 0 {
+                                    (voice.age as f32 / voice.fade_in as f32).min(1.)
+                                } else {
+                                    1.
+                                };
+                                voice.loop_envelope = Some(LoopEnvelope {
+                                    from: fade_in_level * remaining as f32 / total.max(1) as f32,
+                                    to: 1.,
+                                    elapsed: 0,
+                                    total: (fade_in.max(0.) * 48000.) as usize,
+                                    stopping: false,
+                                });
+                                voice.fade_out = None;
+                            }
+                            // Active loop: original fadeInAndPlay returns without
+                            // resetting phase, gain automation or sample.
+                            continue;
+                        }
+                    }
+                    if policy == PlayPolicy::IfAbsent
                         && self
                             .voices
                             .iter()
@@ -184,6 +254,17 @@ impl Mixer {
                         age: 0,
                         fade_in: (fade_in.max(0.) * 48000.) as usize,
                         fade_out: None,
+                        loop_envelope: if policy == PlayPolicy::FadeInLoop {
+                            Some(LoopEnvelope {
+                                from: 0.,
+                                to: 1.,
+                                elapsed: 0,
+                                total: (fade_in.max(0.) * 48000.) as usize,
+                                stopping: false,
+                            })
+                        } else {
+                            None
+                        },
                         step: sr / 48000. * rate,
                         sample,
                         position,
@@ -204,7 +285,11 @@ impl Mixer {
                     voice.delay -= 1;
                     continue;
                 }
-                let mut envelope = if voice.fade_in > 0 {
+                let mut envelope = if let Some(ramp) = &mut voice.loop_envelope {
+                    let level = ramp.level();
+                    ramp.elapsed = ramp.elapsed.saturating_add(1);
+                    level
+                } else if voice.fade_in > 0 {
                     (voice.age as f32 / voice.fade_in as f32).min(1.)
                 } else {
                     1.
@@ -265,13 +350,157 @@ impl Mixer {
             }
         }
         self.voices.retain(|v| {
-            !matches!(v.fade_out, Some((0, _))) && (v.loop_start.is_some() || v.position < v.end)
+            !matches!(v.fade_out, Some((0, _)))
+                && v.loop_envelope
+                    .is_none_or(|e| !e.stopping || e.elapsed < e.total)
+                && (v.loop_start.is_some() || v.position < v.end)
         });
     }
 }
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn original_jetpack_loop_reentry_decisions_preserve_phase() {
+        let data: serde_json::Value =
+            serde_json::from_str(include_str!("../data/jetpack-loop-reference.json")).unwrap();
+        for case in data["cases"].as_array().unwrap() {
+            let (tx, rx) = std::sync::mpsc::channel();
+            let mut mixer = Mixer::new(rx);
+            let id = case["id"].as_str().unwrap();
+            let volume = case["volume"].as_f64().unwrap() as f32;
+            let play = || Command::Play {
+                pausable: true,
+                id: id.into(),
+                policy: PlayPolicy::FadeInLoop,
+                delay: 0.,
+                fade_in: 0.3,
+                sample: Arc::new(Sample {
+                    samples: vec![0.1; 32],
+                    channels: 2,
+                    rate: 48000,
+                }),
+                volume,
+                rate: 1.,
+                loop_start: Some(0.),
+                offset: 0.,
+                end: None,
+            };
+            if case["present"] == true {
+                tx.send(play()).unwrap();
+                mixer.mix(&mut []);
+                let voice = &mut mixer.voices[0];
+                voice.position = 1.5;
+                voice.age = 5;
+                voice.loop_envelope = Some(LoopEnvelope {
+                    from: case["initial_gain"].as_f64().unwrap() as f32 / volume,
+                    to: if case["stopping"] == true { 0. } else { 1. },
+                    elapsed: 0,
+                    total: 48000,
+                    stopping: case["stopping"].as_bool().unwrap(),
+                });
+            }
+            tx.send(play()).unwrap();
+            mixer.mix(&mut []);
+            assert_eq!(mixer.voices.len(), 1, "{case}");
+            let voice = &mixer.voices[0];
+            let envelope = voice.loop_envelope.unwrap();
+            assert_eq!(
+                voice.position,
+                if case["present"] == true { 1.5 } else { 0. },
+                "{case}"
+            );
+            let ops = case["ops"].as_array().unwrap();
+            if ops.is_empty() {
+                assert_eq!(envelope.total, 48000, "active loop automation changed");
+            } else {
+                assert!(!envelope.stopping);
+                let set = ops.iter().find(|op| op[0] == "set").unwrap();
+                let ramp = ops.iter().find(|op| op[0] == "ramp").unwrap();
+                assert!(
+                    (envelope.from * volume - set[1].as_f64().unwrap() as f32).abs() < 1e-6,
+                    "{case}"
+                );
+                assert!(
+                    (envelope.to * volume - ramp[1].as_f64().unwrap() as f32).abs() < 1e-6,
+                    "{case}"
+                );
+                assert_eq!(envelope.total, 14400);
+                assert_eq!(
+                    ops.iter().any(|op| op[0] == "play"),
+                    case["present"] == false
+                );
+            }
+        }
+    }
+    #[test]
+    fn loop_restart_keeps_phase_and_reverses_fade_without_duplication() {
+        let (tx, rx) = std::sync::mpsc::channel();
+        let mut mixer = Mixer::new(rx);
+        let play = || Command::Play {
+            pausable: true,
+            id: "loop".into(),
+            policy: PlayPolicy::FadeInLoop,
+            delay: 0.,
+            fade_in: 4. / 48000.,
+            sample: Arc::new(Sample {
+                samples: vec![1.; 64],
+                channels: 2,
+                rate: 48000,
+            }),
+            volume: 1.,
+            rate: 1.,
+            loop_start: Some(0.),
+            offset: 0.,
+            end: None,
+        };
+        tx.send(play()).unwrap();
+        let mut first = [0.; 4];
+        mixer.mix(&mut first);
+        assert_eq!(first, [0., 0., 0.25, 0.25]);
+        tx.send(play()).unwrap();
+        let mut one = [0.; 2];
+        mixer.mix(&mut one);
+        assert_eq!(one, [0.5, 0.5]);
+        assert_eq!(mixer.voices.len(), 1);
+        tx.send(Command::StopSource {
+            id: "loop".into(),
+            fade: 4. / 48000.,
+        })
+        .unwrap();
+        let mut fading = [0.; 4];
+        mixer.mix(&mut fading);
+        assert_eq!(fading, [0.75, 0.75, 0.5625, 0.5625]);
+        tx.send(play()).unwrap();
+        let mut recovering = [0.; 8];
+        mixer.mix(&mut recovering);
+        assert_eq!(
+            recovering,
+            [0.375, 0.375, 0.53125, 0.53125, 0.6875, 0.6875, 0.84375, 0.84375]
+        );
+        assert_eq!(mixer.voices.len(), 1);
+        assert_eq!(mixer.voices[0].position, 9.);
+        tx.send(Command::StopSource {
+            id: "loop".into(),
+            fade: 2. / 48000.,
+        })
+        .unwrap();
+        let mut tail = [0.; 4];
+        mixer.mix(&mut tail);
+        assert_eq!(tail, [1., 1., 0.5, 0.5]);
+        assert!(mixer.voices.is_empty());
+        // Source fadeOutAndStop stops immediately when when<=startTime.
+        tx.send(play()).unwrap();
+        tx.send(Command::StopSource {
+            id: "loop".into(),
+            fade: 0.3,
+        })
+        .unwrap();
+        mixer.mix(&mut one);
+        assert_eq!(one, [0., 0.]);
+        assert!(mixer.voices.is_empty());
+    }
+
     #[test]
     fn shared_bus_gain_and_pan_preserve_stem_levels_and_playback_position() {
         let (tx, rx) = std::sync::mpsc::channel();
@@ -290,7 +519,7 @@ mod tests {
         let play = |id: &str, volume| Command::Play {
             pausable: true,
             id: id.into(),
-            retrigger: true,
+            policy: PlayPolicy::Retrigger,
             delay: 0.,
             fade_in: 0.,
             sample: sample.clone(),
@@ -349,7 +578,7 @@ mod tests {
         tx.send(Command::Play {
             pausable: true,
             id: "sled".into(),
-            retrigger: false,
+            policy: PlayPolicy::IfAbsent,
             delay: 0.,
             fade_in: 0.,
             sample: Arc::new(Sample {
@@ -394,7 +623,7 @@ mod tests {
         tx.send(Command::Play {
             pausable: true,
             id: "test".into(),
-            retrigger: true,
+            policy: PlayPolicy::Retrigger,
             delay: 0.,
             fade_in: 0.,
             sample,
@@ -427,7 +656,7 @@ mod tests {
         tx.send(Command::Play {
             pausable: true,
             id: "dryer".into(),
-            retrigger: false,
+            policy: PlayPolicy::IfAbsent,
             delay: 2. / 48000.,
             fade_in: 2. / 48000.,
             sample,
@@ -458,7 +687,7 @@ mod tests {
             tx.send(Command::Play {
                 id: id.into(),
                 pausable,
-                retrigger: true,
+                policy: PlayPolicy::Retrigger,
                 delay: 0.,
                 fade_in: 0.,
                 sample: Arc::new(Sample {

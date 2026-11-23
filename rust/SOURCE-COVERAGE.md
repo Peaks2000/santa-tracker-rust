@@ -3155,3 +3155,63 @@ native parameter mapping. Full audio remains partial.
 All132 tests pass (118 library +14 application). Release app/capture compile;
 neither launched. No audio device/window/context/input automation while user
 plays. Keep existing README rating/user feedback; no whole-mode 1:1 claim.
+
+## Elf Jetpack active loop reuse and conditional fade recovery (23 November 2026)
+
+Read complete selected AudioSource constructor, fadeInAndPlay/fadeOutAndStop/
+stop/playing getter/scheduledToPlay methods, actual config start/end/gameover
+functions and current native Mixer/Sound/three restart paths. Also read actual
+music_start_ingame/music_ingame_gameover/global_pause/global_unpause/transition
+config functions and full bundled Util.transition while tracing interactions.
+Jetpack own-scene source was fully reviewed in preceding passes.
+
+Native keyboard/overlay/chrome in-scene Jetpack restart now unpauses audio without
+global Sound.stop. Route changes still stop as before. Sound jp_start_game uses
+new PlayPolicy::FadeInLoop for XgMa/Kzah; ordinary retrigger/if-absent policies
+retain previous behaviour. Source fadeInAndPlay ignores an already-playing loop,
+even when retrig=true. Native now keeps its single voice, sample phase and gain
+automation. A still-cancellable native fade can be reversed in place to the
+stem's original volume, without a new sample or seek. New loop envelope replaces
+multiplying unfinished fade-in/fade-out curves for these loop voices; ordinary
+voices retain their old envelopes. Source's zero-current-gain fallback in stop
+and immediate stop at/before start are represented by the selected immediate
+native path; full scheduled/paused timestamp semantics remain unverified.
+
+`jetpack-loop-reference.cjs` extracts the exact complete source fadeInAndPlay
+function into CPU VM; original two loop configurations and ten supplied
+playing/stopping/gain states. AudioParam/play/timeout cancellation are recorders;
+NOT actual AudioSource.play or WebAudio automation. Rust checks conditional
+return/recovery/new-voice decisions, envelope endpoints and preserved phase.
+Synthetic PCM test checks unchanged fade-in on repeated start, phase/voice count,
+fade-out interrupted at current gain, ramp to full, final removal and no pulse
+when stopped before first sample. No audio device/window/context or playback.
+
+IMPORTANT UNMATCHED CALLBACK: fixture's separate callback_reference executes
+actual fadeOutAndStop timer closure, stop and playing getter. _scheduleAhead=.2
+causes a .3-second fade's stop callback at .1 seconds: it clears _stopping and
+schedules buffer.stop at .3 seconds. A restart in that intervening window sees
+playing=true, stopping=false and returns without undoing the scheduled stop.
+Native currently permits ramp cancellation until its end. This source callback
+record is explicitly NOT a passing native assertion; conditional ten-state tests
+do not certify the natural stopping-flag lifetime. Need a real task/audio-clock
+scheduler port before claiming full fade-reentry parity.
+
+Other required work discovered in the trace: music_ingame_gameover currently
+uses native global Stop, killing the Jetpack fade immediately. Original music
+transition touches five music sources, not the ambience. Config transition uses
+actual Util.transition (four-beat fallback even though sync0 is passed), bpm117
+from R5CC or202 otherwise, .1-second outgoing fade, special R5CC->TcWr offset,
+and schedules OckO after the gameover jingle at7.128712871287128s. These music
+transitions/queries/timers are not implemented; don't replace them with another
+approximate blanket stop. Current live-round restart reuse works without that
+terminal-music path; rapid end-screen fade recovery is NOT certified.
+
+Global pause fades yX_P bus over .3s while native pauses source progression;
+that phase/envelope difference remains. Muted-launch recovery, source-scheduled
+future buffers, parent filters/resampling, callback quantum and full runtime
+PCM/source lifecycle also remain incomplete. No 1:1 category changes.
+
+All134 tests pass (120 library +14 application); all-target compile check and
+release app/Jetpack capture builds pass. Neither launched; no input/audio/UI
+interruption. Internal Command::Play now uses explicit policies instead of a
+boolean; all in-repository call sites are migrated and checked.
