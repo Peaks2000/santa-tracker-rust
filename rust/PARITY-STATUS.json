@@ -665,13 +665,14 @@
       "user_notes": "",
       "priority": "high",
       "agent_status": "partial",
-      "agent_progress": "Native implementation exists; full 1:1 parity not established. Updated premultiplied image rendering, spray/decor compositing and identical-beard surface reuse; removed constraint-list allocations without changing the source physics oracle. Corrected mirror/chair SVG aspect fitting, mobile tool tray/media boundaries, eye image fitting, source-resolution hair raster and wall-clock blink/RNG during pause. Matched desktop idle capture mean RGB error 0.610/255. Face/body CSS SVGs now rasterize at their fitted physical display bounds instead of enlarging intrinsic-size bitmaps (e.g. 25px eye into 35em box). Per-image parsed-tree cache retains one current-size texture and rebuilds on physical-size changes; premultiplied blending and logical fit/pose remain. Original beard/hair canvas resolution is deliberately retained after source review: its canvas sizes use scaleFactor without devicePixelRatio. CPU audit of eight actual face/body SVGs passes 32 scale/density cases and associated-alpha/coverage checks; all150tests pass. No window/device/input/GPU comparison was opened.",
+      "agent_progress": "Native implementation exists; full 1:1 parity not established. Updated premultiplied image rendering, spray/decor compositing and identical-beard surface reuse; removed constraint-list allocations without changing the source physics oracle. Corrected mirror/chair SVG aspect fitting, mobile tool tray/media boundaries, eye image fitting, source-resolution hair raster and wall-clock blink/RNG during pause. Matched desktop idle capture mean RGB error 0.610/255. Face/body CSS SVGs now rasterize at their fitted physical display bounds instead of enlarging intrinsic-size bitmaps (e.g. 25px eye into 35em box). Per-image parsed-tree cache retains one current-size texture and rebuilds on physical-size changes; premultiplied blending and logical fit/pose remain. Original beard/hair canvas resolution is deliberately retained after source review: its canvas sizes use scaleFactor without devicePixelRatio. CPU audit of eight actual face/body SVGs passes 32 scale/density cases and associated-alpha/coverage checks; all150tests pass. No window/device/input/GPU comparison was opened. Nose squash now follows the original 0.3s ease transform transition, including shortened reversal. Hairdryer mouth left now follows its original 0.3s ease transition; exiting the transition-bearing class snaps/cancels even if destination left is unchanged. Expression targets and strict dryer/nose boundaries moved into selfie_face and match 168 actual Face.mouseChanged plus compiled-source-Sass CPU cases. Existing eyebrow mouse.relY=0 source quirk retained. All152tests and release build pass; no live animation/window/input checks.",
       "agent_known_issues": [
         "User reports subtle dark edges; compare original/native tools, face and beard.",
         "Frame pacing and input latency need measurement.",
         "Small SVG/filtering differences still need user review; no claim of complete edge parity.",
         "All effect phases/viewports and original URL sharing remain incomplete.",
-        "Face/body SVG physical sampling is corrected, but browser/native GPU pixels, filtering at fractional positions, resize/DPI cache behaviour and first-use timing remain unverified. Static backgrounds/tools and other modes retain previous sampling paths. The original beard canvas is intentionally logical resolution; do not apply the Elf Maker high-DPI policy to it."
+        "Face/body SVG physical sampling is corrected, but browser/native GPU pixels, filtering at fractional positions, resize/DPI cache behaviour and first-use timing remain unverified. Static backgrounds/tools and other modes retain previous sampling paths. The original beard canvas is intentionally logical resolution; do not apply the Elf Maker high-DPI policy to it.",
+        "Nose/mouth target and selected transition logic is now ported, but actual browser transition frames, style-flush/event ordering, DOM nose geometry/header offsets and resize behaviour still need live comparison. The 168-case oracle supplies a nose rectangle and implements only the relevant simple CSS class cascade; it is not a browser renderer."
       ],
       "agent_evidence": [
         "rust/SOURCE-COVERAGE.md",
@@ -680,7 +681,10 @@
         "rust/src/selfie_vector.rs",
         "rust/src/selfie_view.rs vector_texture and draw closure",
         "rust/examples/selfie_vector_audit.rs",
-        "rust/data/selfie-vector-audit.json"
+        "rust/data/selfie-vector-audit.json",
+        "rust/src/selfie_face.rs",
+        "rust/data/selfie-face-reference.json",
+        "rust/src/selfie_view.rs expression motion integration"
       ]
     },
     {
@@ -969,7 +973,8 @@
       "Assembled shared music controller: original selected-source initialization plus transition/lifecycle execution match 225 sequences / 925 action snapshots. Bundled Rust music specs checked against original config; unsupported newly active config branches fail validation. Native mixer connection remains pending.",
       "Connected five shared music events to scheduled native PCM runtime; game-over no longer globally stops other voices. Separate source metadata/physical buffers/gain timelines/wall deadlines; music parent pause curves and fixed original bus gains. CPU-only original-track decode/render smoke passes; all148tests pass. No live audio validation.",
       "Elf Maker dynamic character and preview vector bitmaps now cover physical display density, with logical-pixel shadow radius and cache invalidation. CPU audit1x–3x passes; 1x character bitmap unchanged. Live GPU appearance/performance and broader texture clarity remain unverified.",
-      "Santa Selfie face/body CSS SVGs now sample fitted physical bounds, with one current-size bitmap per parsed vector. Retained original beard/hair logical-resolution canvases. CPU32-case original-SVG audit passes; live GPU fidelity/performance remain unverified."
+      "Santa Selfie face/body CSS SVGs now sample fitted physical bounds, with one current-size bitmap per parsed vector. Retained original beard/hair logical-resolution canvases. CPU32-case original-SVG audit passes; live GPU fidelity/performance remain unverified.",
+      "Santa Selfie nose/mouth source CSS transition timing now drives the renderer. Actual face method plus source Sass cascade matches168CPU target cases; selected reversal/property-removal regressions pass. All152tests; no live visual certification."
     ],
     "remaining": [
       "Thirteen native scenes remain partial; 42 source scenes have no native implementation.",
@@ -1011,7 +1016,9 @@
       "rust/examples/elfmaker_density_audit.rs",
       "rust/src/selfie_vector.rs",
       "rust/data/selfie-vector-audit.json",
-      "rust/examples/selfie_vector_audit.rs"
+      "rust/examples/selfie_vector_audit.rs",
+      "rust/src/selfie_face.rs",
+      "rust/data/selfie-face-reference.json"
     ]
   },
   "agent_tracking": {

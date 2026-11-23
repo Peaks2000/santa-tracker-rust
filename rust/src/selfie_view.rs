@@ -76,6 +76,7 @@ fn vector_texture(
 }
 pub struct SelfieView {
     vectors: Vectors,
+    face_motion: santa_tracker::selfie_face::Motion,
     hair: Texture2D,
     hair_scale: f32,
     target: Option<RenderTarget>,
@@ -199,6 +200,7 @@ impl SelfieView {
             export_pending: false,
             export_message: String::new(),
             tool_used: -100.,
+            face_motion: Default::default(),
             vectors: std::rc::Rc::new(std::cell::RefCell::new(std::collections::HashMap::new())),
             button_motion: std::array::from_fn(|_| Transition::new([0.])),
             button_held: None,
@@ -600,12 +602,24 @@ impl SelfieView {
         let rel = vec2(2. * mouse.x / w - 1., 2. * mouse.y / h - 1.);
         let face = Self::face_rect(game, mouse);
         draw("santa/face.svg", face);
-        let dryer = game.tool == Tool::Dryer && game.mouse.down;
-        let rel_x = 2. * mouse.x as f64 / w as f64 - 1.;
-        let dryer_center = dryer && rel_x.abs() < 0.3;
-        let dryer_left = dryer && rel_x < -0.3;
-        let dryer_right = dryer && rel_x > 0.3;
-        let alarmed = game.tool == Tool::Clipper;
+        let expression = self.face_motion.update(
+            game.wall_time,
+            s as f64,
+            santa_tracker::selfie_face::Input {
+                clipper: game.tool == Tool::Clipper,
+                dryer: game.tool == Tool::Dryer,
+                down: game.mouse.down,
+                rel_x: 2. * mouse.x as f64 / w as f64 - 1.,
+                x: mouse.x as f64,
+                y: mouse.y as f64,
+                nose_x: (face.x + 279. * s) as f64,
+                nose_y: (face.y + 222. * s) as f64,
+            },
+        );
+        let dryer_left = expression.target.dryer_left;
+        let dryer_right = expression.target.dryer_right;
+        let dryer_center = expression.target.dryer_center;
+        let alarmed = expression.target.alarmed;
         for side in 0..2 {
             let ex = if side == 0 { 164. } else { 359. };
             let blink = game.blink_remaining > 0.
@@ -652,39 +666,29 @@ impl SelfieView {
             crate::village::rounded(r, 8. * s, WHITE);
         }
         self.beard(assets, game, face, s);
-        let squash = alarmed
-            && game.mouse.down
-            && (mouse.x - (face.x + 279. * s)).hypot(mouse.y - 86. - (face.y + 222. * s)) < 120.;
+        let nose_scale = expression.nose_scale as f32;
         draw(
             "face/nose.svg",
             Rect::new(
                 face.x + 215.5 * s,
-                face.y + (170. + if squash { 15.6 } else { 0. }) * s,
+                face.y + (170. + 104. * (1. - nose_scale) / 2.) * s,
                 127. * s,
-                104. * s * if squash { 0.7 } else { 1. },
+                104. * s * nose_scale,
             ),
         );
-        let (mouth, mx, mw, mh) = if alarmed {
-            ("face/mouth--breath.svg", 250.5, 57., 57.)
-        } else if dryer_center || dryer_left || dryer_right {
-            (
-                "face/mouth--breath.svg",
-                if dryer_left {
-                    304.
-                } else if dryer_right {
-                    234.
-                } else {
-                    259.
-                },
-                40.,
-                40.,
-            )
+        let mouth = if expression.target.mouth_height == 45. {
+            "face/mouth--smile.svg"
         } else {
-            ("face/mouth--smile.svg", 234., 90., 45.)
+            "face/mouth--breath.svg"
         };
         draw(
             mouth,
-            Rect::new(face.x + mx * s, face.y + 295. * s, mw * s, mh * s),
+            Rect::new(
+                face.x + expression.mouth_left as f32,
+                face.y + 295. * s,
+                expression.target.mouth_width as f32 * s,
+                expression.target.mouth_height as f32 * s,
+            ),
         );
         self.draw_tools(assets, game, mouse, s);
         for (index, key) in ["refresh", "share"].iter().enumerate() {

@@ -1,0 +1,4044 @@
+{
+  "scope": "Actual complete Face.mouseChanged and source Sass compiled by installed sass; selected simple CSS ancestor/class cascade resolved by recorder. Supplied nose DOM rectangle; no browser style/layout engine or transition interpolation. Includes impossible simultaneous-tool flags to retain branch precedence. Mouse.relY remains source constructor default0. Native motion interpolation tested separately, not browser-certified.",
+  "source_sha256": {
+    "static/scenes/santaselfie/js/face.js": "9f4fd19d42a6e07a6193b87fffeba684c7abf7f1db85e218e9450f0b0bd0b5ed",
+    "static/scenes/santaselfie/sass/_santa.scss": "e31e362f7bf49eeb680830ea051626ff1a66f6a3c1a67a3f64864b2c3a6879ef",
+    "static/scenes/santaselfie/sass/_expressions.scss": "c0bac355a150c4d8d2a7bb8266902bb01cfe5654a7bed7adf07e7b421e1800f3",
+    "static/scenes/santaselfie/js/mouse.js": "ddbc2b1c7fa0389c1e88228d61c6375f6c1f4e581eae27f3f8bbf951d95387a4"
+  },
+  "compiled_css_sha256": "c4196a95bfc6ebf5e63456965f2984045ca40c602fac14d860329694d1815bbc",
+  "cases": [
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": -1,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": -1,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": -1,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": -0.3,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": -0.3,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": -0.3,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": -0.299999,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": -0.299999,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": -0.299999,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": 0,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": 0,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": 0,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": 0.299999,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": 0.299999,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": 0.299999,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": 0.3,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": 0.3,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": 0.3,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": 1,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": 1,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": false,
+        "rel_x": 1,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": -1,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": -1,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": -1,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": -0.3,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": -0.3,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": -0.3,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": -0.299999,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": -0.299999,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": -0.299999,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": 0,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": 0,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": 0,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": 0.299999,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": 0.299999,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": 0.299999,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": 0.3,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": 0.3,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": 0.3,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": 1,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": 1,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": false,
+        "down": true,
+        "rel_x": 1,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": -1,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": -1,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": -1,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": -0.3,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": -0.3,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": -0.3,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": -0.299999,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": -0.299999,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": -0.299999,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": 0,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": 0,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": 0,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": 0.299999,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": 0.299999,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": 0.299999,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": 0.3,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": 0.3,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": 0.3,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": 1,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": 1,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": false,
+        "rel_x": 1,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": -1,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": true,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 304,
+        "mouth_width": 40,
+        "mouth_height": 40,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": -1,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": true,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 304,
+        "mouth_width": 40,
+        "mouth_height": 40,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": -1,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": true,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 304,
+        "mouth_width": 40,
+        "mouth_height": 40,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": -0.3,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": -0.3,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": -0.3,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": -0.299999,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": true,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 259,
+        "mouth_width": 40,
+        "mouth_height": 40,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": -0.299999,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": true,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 259,
+        "mouth_width": 40,
+        "mouth_height": 40,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": -0.299999,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": true,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 259,
+        "mouth_width": 40,
+        "mouth_height": 40,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": 0,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": true,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 259,
+        "mouth_width": 40,
+        "mouth_height": 40,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": 0,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": true,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 259,
+        "mouth_width": 40,
+        "mouth_height": 40,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": 0,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": true,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 259,
+        "mouth_width": 40,
+        "mouth_height": 40,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": 0.299999,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": true,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 259,
+        "mouth_width": 40,
+        "mouth_height": 40,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": 0.299999,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": true,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 259,
+        "mouth_width": 40,
+        "mouth_height": 40,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": 0.299999,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": true,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 259,
+        "mouth_width": 40,
+        "mouth_height": 40,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": 0.3,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": 0.3,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": 0.3,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 90,
+        "mouth_height": 45,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": 1,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": true,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 40,
+        "mouth_height": 40,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": 1,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": true,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 40,
+        "mouth_height": 40,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": false,
+        "dryer": true,
+        "down": true,
+        "rel_x": 1,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": true,
+        "dryer_center": false,
+        "alarmed": false,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 234,
+        "mouth_width": 40,
+        "mouth_height": 40,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": -1,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": -1,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": -1,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": -0.3,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": -0.3,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": -0.3,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": -0.299999,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": -0.299999,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": -0.299999,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": 0,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": 0,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": 0,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": 0.299999,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": 0.299999,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": 0.299999,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": 0.3,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": 0.3,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": 0.3,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": 1,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": 1,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": false,
+        "rel_x": 1,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": -1,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": true,
+        "nose_scale": 0.7,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": -1,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": -1,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": -0.3,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": true,
+        "nose_scale": 0.7,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": -0.3,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": -0.3,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": -0.299999,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": true,
+        "nose_scale": 0.7,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": -0.299999,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": -0.299999,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": 0,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": true,
+        "nose_scale": 0.7,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": 0,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": 0,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": 0.299999,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": true,
+        "nose_scale": 0.7,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": 0.299999,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": 0.299999,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": 0.3,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": true,
+        "nose_scale": 0.7,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": 0.3,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": 0.3,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": 1,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": true,
+        "nose_scale": 0.7,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": 1,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": false,
+        "down": true,
+        "rel_x": 1,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": -1,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": -1,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": -1,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": -0.3,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": -0.3,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": -0.3,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": -0.299999,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": -0.299999,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": -0.299999,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": 0,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": 0,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": 0,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": 0.299999,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": 0.299999,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": 0.299999,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": 0.3,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": 0.3,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": 0.3,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": 1,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": 1,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": false,
+        "rel_x": 1,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": -1,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": true,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": true,
+        "nose_scale": 0.7,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": -1,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": true,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": -1,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": true,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": -0.3,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": true,
+        "nose_scale": 0.7,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": -0.3,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": -0.3,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": -0.299999,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": true,
+        "alarmed": true,
+        "shaving": true,
+        "nose_scale": 0.7,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": -0.299999,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": true,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": -0.299999,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": true,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": 0,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": true,
+        "alarmed": true,
+        "shaving": true,
+        "nose_scale": 0.7,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": 0,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": true,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": 0,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": true,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": 0.299999,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": true,
+        "alarmed": true,
+        "shaving": true,
+        "nose_scale": 0.7,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": 0.299999,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": true,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": 0.299999,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": true,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": 0.3,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": true,
+        "nose_scale": 0.7,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": 0.3,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": 0.3,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": false,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": 1,
+        "x": 519.999,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": true,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": true,
+        "nose_scale": 0.7,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": 1,
+        "x": 520,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": true,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0.3
+      }
+    },
+    {
+      "input": {
+        "clipper": true,
+        "dryer": true,
+        "down": true,
+        "rel_x": 1,
+        "x": 520.001,
+        "y": 686,
+        "nose_x": 400,
+        "nose_y": 600
+      },
+      "output": {
+        "dryer_left": false,
+        "dryer_right": true,
+        "dryer_center": false,
+        "alarmed": true,
+        "shaving": false,
+        "nose_scale": 1,
+        "mouth_left": 250.5,
+        "mouth_width": 57,
+        "mouth_height": 57,
+        "mouth_duration": 0.3
+      }
+    }
+  ]
+}

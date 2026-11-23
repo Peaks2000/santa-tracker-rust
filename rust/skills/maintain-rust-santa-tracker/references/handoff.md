@@ -1387,3 +1387,24 @@ first-use/per-frame performance when user invites testing. Current evidence is
 CPU dimensions/coverage/associated-alpha, not renderer/whole-mode certification.
 First use parses/rasterizes/uploads each selected SVG; parsed trees then persist.
 Still broader texture/scene/audio issues; preserve ratings/public Rust-only repo.
+
+### Santa Selfie nose/mouth transitions (23 November 2026)
+
+`selfie_face.rs` now computes actual Face.mouseChanged flags/targets and drives
+SelfieView nose/mouth Motion. Nose transform.3s/ease + reversing-shortening;
+hairdryer mouth left.3s/ease. On leaving transition-bearing mouth styles cancel
+immediately, including dryer-right→smile where destination234em is unchanged.
+Don't rely on Transition::set same-target no-op for property removal. Mouth left
+stored logical pixels for scale changes; nose scale dimensionless/centered.
+
+168CPU cases actual source Face method + compiled original Sass/simple class
+cascade match exactly (source hashes). data/selfie-face-reference.json; dev
+CJS stays outside native distro. Oracle supplied DOM nose rect, not browser layout
+or CSS interpolation. Separate CPU reversal/cancellation/ease regressions. All152
+138lib+14app tests pass; release app/audit compile. No live window/input/device/GPU.
+
+Preserve source quirk eyebrows use mouse.relY (constructor0, never updated), not
+coords.relY. Strict dryer±.3 and nose sqrt<120 with86px offset retained. Source
+Face--happy persistent; sad/delighted not added by active JS. Need actual CSS
+frames/style-flush/first-style/resize and header/nose geometry comparisons later;
+not whole-mode animation certification. Live checks still wait for user readiness.

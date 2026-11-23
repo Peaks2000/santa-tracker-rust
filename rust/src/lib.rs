@@ -168,3 +168,4 @@ pub mod audio_param;
 pub mod music_runtime;
 pub mod raster_density;
 pub mod selfie_vector;
+pub mod selfie_face;

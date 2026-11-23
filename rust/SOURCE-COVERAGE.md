@@ -3569,3 +3569,48 @@ sound was opened while user plays. Still need actual browser/native comparisons,
 GPU interpolation/alpha boundaries, DPI/resize/cache interaction and performance.
 Cold per-image parsing/raster/upload occurs on first draw; no latency/smoothness
 claim. Existing mode ratings/user feedback unchanged; whole-site1:1 remains open.
+
+### Santa Selfie nose/mouth expression transitions (23 November 2026)
+
+Re-read complete Face and Mouse source classes, Utils, Tools selection/clipper
+selection sections, source Face HTML classes and complete Santa/expressions Sass
+(the complete styles were also read in the prior sampling pass). Source face
+starts Face--happy and toggles dryerLeft/Right/Center, alarmed and shaving per
+mouseChanged. No active JS adds sad/delighted; those CSS branches remain inactive
+for this selection. Eyebrow translation uses mouse.relY, which is initialized0
+and never updated, unlike transformed mouseCoords.relY. Native retains that quirk.
+
+Native had instantaneous nose squash and mouth left changes. `selfie_face.rs`
+now derives those source flags/targets, including strict ±.3 dryer boundaries and
+sqrt(dx²+dy²)<120 after the original86px y offset. SelfieView uses the resulting
+nose scale/mouth left and dimensions. Nose always has transform0.3s/default ease;
+centered transform keeps its bounding center fixed. Hairdryer mouth has left0.3s;
+non-dryer styles omit the transition and cancel/snap. Removing transition:left
+must cancel even when destination left stays234em (dryer-right→smile), so that
+branch explicitly clears its Motion transition. CSS reversing-shortening uses
+the existing shared Transition implementation. Mouth left is stored in logical
+pixels so active resize targets include changed em scale. Nose remains dimensionless.
+Widths/heights, images and pose formulas retained. SVG nose sampling remains
+before scaleY, avoiding a new bitmap at every interpolated transform frame.
+
+`selfie-face-reference.cjs` executes the actual full Face.mouseChanged against
+property/class recorders, compiles actual Santa/expressions Sass using installed
+sass, then resolves the selected simple class/ancestor cascade using PostCSS.
+168 cases include all tool/down combinations, exact±.3 and adjacent values,
+119.999/120/120.001 distance boundaries, plus impossible simultaneous-tool flags
+to verify CSS/source branch precedence. Source/compiled-style hashes recorded.
+Rust typed targets match exactly; comparison normalizes JSON integer-vs-float
+representation through typed deserialization. No source methods patched.
+
+This oracle supplies the nose DOM rect and default mouse.relY0; it is NOT a
+browser layout/style/animation engine. Unexpected receiver throw, Face.start
+blink scheduler and other tool methods are outside this pass (previous blink
+coverage retained). Separate CPU regression checks half-phase ease, nose reversal,
+mouth interpolation, class-exit cancellation and unchanged-destination cancellation.
+Those analytic checks do not certify actual browser CSS frames or task/style-flush
+ordering. Source-to-native DOM/header geometry, first-style timing, CSS/layout
+rounding, high-DPI/resizing and every effect phase still need live verification.
+
+All152tests pass138lib+14app. Release app and selfie_vector_audit compile; neither
+app nor GPU/window/device/input test launched. Existing cloth/render sampling/
+audio rules unchanged. User feedback/scene ratings unchanged; not whole-mode1:1.
