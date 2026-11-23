@@ -1,0 +1,2175 @@
+{
+  "method": "Unmodified original Bot.setup/update, Path, Arrival, GameMap nearby search, MagicHexGrid and bundled THREE in CPU VM. Per-case explicit ordered target list replaces quadTree.getObjectsNear; source quad traversal is NOT exercised. Player allocation callback returns a plain source-shaped actor; setup uses actual Rectangle allocation/position reference and UUID, then update random tape is reset. Map seed 1, supplied origin state/tree override. Commands recorded at PlayerSystem boundary; no Player stage, pools, network, render/audio/window/input.",
+  "cases": [
+    {
+      "name": "unarrived-retains-state",
+      "input": {
+        "position": [
+          100,
+          100,
+          0
+        ],
+        "arrived": false,
+        "path": true,
+        "tick": 500,
+        "lastThrow": 0,
+        "lastTarget": 0,
+        "dead": false,
+        "gone": false,
+        "originState": null,
+        "originTile": null,
+        "targets": [
+          {
+            "id": 0,
+            "position": [
+              101,
+              100,
+              0
+            ]
+          }
+        ],
+        "random": []
+      },
+      "output": {
+        "draws": 0,
+        "queries": 0,
+        "commands": [],
+        "lastThrow": 0,
+        "lastTarget": 0
+      }
+    },
+    {
+      "name": "wandering-threshold-equal",
+      "input": {
+        "position": [
+          100,
+          100,
+          0
+        ],
+        "arrived": true,
+        "path": false,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": null,
+        "originTile": null,
+        "targets": [],
+        "random": [
+          0.985
+        ]
+      },
+      "output": {
+        "draws": 1,
+        "queries": 1,
+        "commands": [],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "stationary-below-threshold",
+      "input": {
+        "position": [
+          100,
+          100,
+          0
+        ],
+        "arrived": true,
+        "path": false,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": null,
+        "originTile": null,
+        "targets": [],
+        "random": [
+          0
+        ]
+      },
+      "output": {
+        "draws": 1,
+        "queries": 1,
+        "commands": [],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "zero-position-target-skips-random",
+      "input": {
+        "position": [
+          100,
+          100,
+          0
+        ],
+        "arrived": true,
+        "path": true,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": null,
+        "originTile": null,
+        "targets": [
+          {
+            "id": 0,
+            "position": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "random": []
+      },
+      "output": {
+        "draws": 0,
+        "queries": 1,
+        "commands": [],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "z-only-target-is-not-origin",
+      "input": {
+        "position": [
+          100,
+          100,
+          0
+        ],
+        "arrived": true,
+        "path": true,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": null,
+        "originTile": null,
+        "targets": [
+          {
+            "id": 0,
+            "position": [
+              0,
+              0,
+              1
+            ]
+          }
+        ],
+        "random": [
+          0.75,
+          0.75
+        ]
+      },
+      "output": {
+        "draws": 2,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "target",
+            "id": 1,
+            "position": [
+              0,
+              0,
+              1
+            ],
+            "reference": 0
+          }
+        ],
+        "lastThrow": 41,
+        "lastTarget": 0
+      }
+    },
+    {
+      "name": "three-dimensional-out-of-range",
+      "input": {
+        "position": [
+          100,
+          100,
+          0
+        ],
+        "arrived": true,
+        "path": true,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": null,
+        "originTile": null,
+        "targets": [
+          {
+            "id": 0,
+            "position": [
+              101,
+              100,
+              321
+            ]
+          }
+        ],
+        "random": [
+          0.75
+        ]
+      },
+      "output": {
+        "draws": 1,
+        "queries": 1,
+        "commands": [],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "exact-range-excluded",
+      "input": {
+        "position": [
+          100,
+          100,
+          0
+        ],
+        "arrived": true,
+        "path": true,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": null,
+        "originTile": null,
+        "targets": [
+          {
+            "id": 0,
+            "position": [
+              420,
+              100,
+              0
+            ]
+          }
+        ],
+        "random": [
+          1
+        ]
+      },
+      "output": {
+        "draws": 1,
+        "queries": 1,
+        "commands": [],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "just-inside-range",
+      "input": {
+        "position": [
+          100,
+          100,
+          0
+        ],
+        "arrived": true,
+        "path": true,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": null,
+        "originTile": null,
+        "targets": [
+          {
+            "id": 0,
+            "position": [
+              419.999999,
+              100,
+              0
+            ]
+          }
+        ],
+        "random": [
+          0.250000001,
+          0.500000001
+        ]
+      },
+      "output": {
+        "draws": 2,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "target",
+            "id": 1,
+            "position": [
+              419.999999,
+              100,
+              0
+            ],
+            "reference": 0
+          }
+        ],
+        "lastThrow": 41,
+        "lastTarget": 0
+      }
+    },
+    {
+      "name": "target-selection-threshold-equal",
+      "input": {
+        "position": [
+          100,
+          100,
+          0
+        ],
+        "arrived": true,
+        "path": true,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": null,
+        "originTile": null,
+        "targets": [
+          {
+            "id": 0,
+            "position": [
+              101,
+              100,
+              0
+            ]
+          }
+        ],
+        "random": [
+          0.25
+        ]
+      },
+      "output": {
+        "draws": 1,
+        "queries": 1,
+        "commands": [],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "throw-threshold-equal-updates-cooldown",
+      "input": {
+        "position": [
+          100,
+          100,
+          0
+        ],
+        "arrived": true,
+        "path": true,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": null,
+        "originTile": null,
+        "targets": [
+          {
+            "id": 0,
+            "position": [
+              101,
+              100,
+              0
+            ]
+          }
+        ],
+        "random": [
+          0.75,
+          0.5
+        ]
+      },
+      "output": {
+        "draws": 2,
+        "queries": 1,
+        "commands": [],
+        "lastThrow": 41,
+        "lastTarget": 0
+      }
+    },
+    {
+      "name": "throw-cooldown-equal",
+      "input": {
+        "position": [
+          100,
+          100,
+          0
+        ],
+        "arrived": true,
+        "path": true,
+        "tick": 40,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": null,
+        "originTile": null,
+        "targets": [
+          {
+            "id": 0,
+            "position": [
+              101,
+              100,
+              0
+            ]
+          }
+        ],
+        "random": [
+          0.75
+        ]
+      },
+      "output": {
+        "draws": 1,
+        "queries": 1,
+        "commands": [],
+        "lastThrow": 0,
+        "lastTarget": 0
+      }
+    },
+    {
+      "name": "retained-target-no-selection-draw",
+      "input": {
+        "position": [
+          100,
+          100,
+          0
+        ],
+        "arrived": true,
+        "path": true,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": 0,
+        "dead": false,
+        "gone": false,
+        "originState": null,
+        "originTile": null,
+        "targets": [
+          {
+            "id": 0,
+            "position": [
+              1000,
+              1000,
+              1000
+            ]
+          }
+        ],
+        "random": [
+          0.75
+        ]
+      },
+      "output": {
+        "draws": 1,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "target",
+            "id": 1,
+            "position": [
+              1000,
+              1000,
+              1000
+            ],
+            "reference": 0
+          }
+        ],
+        "lastThrow": 41,
+        "lastTarget": 0
+      }
+    },
+    {
+      "name": "retained-self-is-not-refiltered",
+      "input": {
+        "position": [
+          100,
+          100,
+          0
+        ],
+        "arrived": true,
+        "path": true,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": 1,
+        "dead": false,
+        "gone": false,
+        "originState": null,
+        "originTile": null,
+        "targets": [
+          {
+            "id": 1,
+            "position": [
+              100,
+              100,
+              0
+            ]
+          }
+        ],
+        "random": [
+          0.75
+        ]
+      },
+      "output": {
+        "draws": 1,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "target",
+            "id": 1,
+            "position": [
+              100,
+              100,
+              0
+            ],
+            "reference": 0
+          }
+        ],
+        "lastThrow": 41,
+        "lastTarget": 1
+      }
+    },
+    {
+      "name": "retained-zero-is-not-refiltered",
+      "input": {
+        "position": [
+          100,
+          100,
+          0
+        ],
+        "arrived": true,
+        "path": true,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": 0,
+        "dead": false,
+        "gone": false,
+        "originState": null,
+        "originTile": null,
+        "targets": [
+          {
+            "id": 0,
+            "position": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "random": [
+          0.75
+        ]
+      },
+      "output": {
+        "draws": 1,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "target",
+            "id": 1,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "reference": 0
+          }
+        ],
+        "lastThrow": 41,
+        "lastTarget": 0
+      }
+    },
+    {
+      "name": "absent-retained-target-replaced",
+      "input": {
+        "position": [
+          100,
+          100,
+          0
+        ],
+        "arrived": true,
+        "path": true,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": 3,
+        "dead": false,
+        "gone": false,
+        "originState": null,
+        "originTile": null,
+        "targets": [
+          {
+            "id": null,
+            "position": [
+              101,
+              100,
+              0
+            ]
+          },
+          {
+            "id": 1,
+            "position": [
+              100,
+              100,
+              0
+            ]
+          },
+          {
+            "id": 0,
+            "position": [
+              102,
+              100,
+              0
+            ]
+          }
+        ],
+        "random": [
+          0.75,
+          0.75
+        ]
+      },
+      "output": {
+        "draws": 2,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "target",
+            "id": 1,
+            "position": [
+              102,
+              100,
+              0
+            ],
+            "reference": 2
+          }
+        ],
+        "lastThrow": 41,
+        "lastTarget": 0
+      }
+    },
+    {
+      "name": "selection-consumes-draw-before-range",
+      "input": {
+        "position": [
+          100,
+          100,
+          0
+        ],
+        "arrived": true,
+        "path": true,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": null,
+        "originTile": null,
+        "targets": [
+          {
+            "id": 2,
+            "position": [
+              500,
+              100,
+              0
+            ]
+          },
+          {
+            "id": 0,
+            "position": [
+              101,
+              100,
+              0
+            ]
+          }
+        ],
+        "random": [
+          0.75,
+          0.75,
+          0.75
+        ]
+      },
+      "output": {
+        "draws": 3,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "target",
+            "id": 1,
+            "position": [
+              101,
+              100,
+              0
+            ],
+            "reference": 1
+          }
+        ],
+        "lastThrow": 41,
+        "lastTarget": 0
+      }
+    },
+    {
+      "name": "removed-bot-still-decides",
+      "input": {
+        "position": [
+          100,
+          100,
+          0
+        ],
+        "arrived": true,
+        "path": true,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": true,
+        "gone": true,
+        "originState": null,
+        "originTile": null,
+        "targets": [
+          {
+            "id": 0,
+            "position": [
+              101,
+              100,
+              0
+            ]
+          }
+        ],
+        "random": [
+          0.75,
+          0.75
+        ]
+      },
+      "output": {
+        "draws": 2,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "target",
+            "id": 1,
+            "position": [
+              101,
+              100,
+              0
+            ],
+            "reference": 0
+          }
+        ],
+        "lastThrow": 41,
+        "lastTarget": 0
+      }
+    },
+    {
+      "name": "dead-bot-retains-target-and-cooldown",
+      "input": {
+        "position": [
+          100,
+          100,
+          0
+        ],
+        "arrived": true,
+        "path": true,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": 0,
+        "dead": true,
+        "gone": false,
+        "originState": null,
+        "originTile": null,
+        "targets": [
+          {
+            "id": 0,
+            "position": [
+              101,
+              100,
+              0
+            ]
+          }
+        ],
+        "random": [
+          0.75
+        ]
+      },
+      "output": {
+        "draws": 1,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "target",
+            "id": 1,
+            "position": [
+              101,
+              100,
+              0
+            ],
+            "reference": 0
+          }
+        ],
+        "lastThrow": 41,
+        "lastTarget": 0
+      }
+    },
+    {
+      "name": "underflow-zero-vector-skips",
+      "input": {
+        "position": [
+          1,
+          1,
+          0
+        ],
+        "arrived": true,
+        "path": true,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": null,
+        "originTile": null,
+        "targets": [
+          {
+            "id": 0,
+            "position": [
+              1e-200,
+              0,
+              0
+            ]
+          }
+        ],
+        "random": []
+      },
+      "output": {
+        "draws": 0,
+        "queries": 1,
+        "commands": [],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "wander-0-state-1",
+      "input": {
+        "position": [
+          -1512,
+          1755.4764334110812,
+          0
+        ],
+        "arrived": true,
+        "path": false,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": 1,
+        "originTile": 0,
+        "targets": [],
+        "random": [
+          1,
+          0.73,
+          0.2682926829268293,
+          0.6829268292682927,
+          0.0975609756097561,
+          0.5121951219512195,
+          0.926829268292683,
+          0.34146341463414637,
+          0.7560975609756098,
+          0.17073170731707318,
+          0.5853658536585366,
+          0,
+          0.4146341463414634,
+          0.8292682926829268,
+          0.24390243902439024,
+          0.6585365853658537,
+          0.07317073170731707,
+          0.4878048780487805,
+          0.9024390243902439,
+          0.3170731707317073,
+          0.7317073170731707,
+          0.14634146341463414,
+          0.5609756097560976,
+          0.975609756097561,
+          0.3902439024390244,
+          0.8048780487804879,
+          0.21951219512195122,
+          0.6341463414634146,
+          0.04878048780487805,
+          0.4634146341463415,
+          0.8780487804878049,
+          0.2926829268292683,
+          0.7073170731707317,
+          0.12195121951219512,
+          0.5365853658536586,
+          0.9512195121951219,
+          0.36585365853658536,
+          0.7804878048780488,
+          0.1951219512195122,
+          0.6097560975609756,
+          0.024390243902439025,
+          0.43902439024390244
+        ]
+      },
+      "output": {
+        "draws": 3,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "move",
+            "id": 1,
+            "index": 131,
+            "position": [
+              -1416,
+              1589.199555884469,
+              0
+            ]
+          }
+        ],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "wander-0-state-2",
+      "input": {
+        "position": [
+          -1512,
+          1755.4764334110812,
+          0
+        ],
+        "arrived": true,
+        "path": false,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": 2,
+        "originTile": 0,
+        "targets": [],
+        "random": [
+          1,
+          0.73,
+          0.2682926829268293,
+          0.6829268292682927,
+          0.0975609756097561,
+          0.5121951219512195,
+          0.926829268292683,
+          0.34146341463414637,
+          0.7560975609756098,
+          0.17073170731707318,
+          0.5853658536585366,
+          0,
+          0.4146341463414634,
+          0.8292682926829268,
+          0.24390243902439024,
+          0.6585365853658537,
+          0.07317073170731707,
+          0.4878048780487805,
+          0.9024390243902439,
+          0.3170731707317073,
+          0.7317073170731707,
+          0.14634146341463414,
+          0.5609756097560976,
+          0.975609756097561,
+          0.3902439024390244,
+          0.8048780487804879,
+          0.21951219512195122,
+          0.6341463414634146,
+          0.04878048780487805,
+          0.4634146341463415,
+          0.8780487804878049,
+          0.2926829268292683,
+          0.7073170731707317,
+          0.12195121951219512,
+          0.5365853658536586,
+          0.9512195121951219,
+          0.36585365853658536,
+          0.7804878048780488,
+          0.1951219512195122,
+          0.6097560975609756,
+          0.024390243902439025,
+          0.43902439024390244
+        ]
+      },
+      "output": {
+        "draws": 26,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "move",
+            "id": 1,
+            "index": 0,
+            "position": [
+              -1512,
+              1755.4764334110812,
+              0
+            ]
+          }
+        ],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "wander-0-state-3",
+      "input": {
+        "position": [
+          -1512,
+          1755.4764334110812,
+          0
+        ],
+        "arrived": true,
+        "path": false,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": 3,
+        "originTile": 0,
+        "targets": [],
+        "random": [
+          1,
+          0.73,
+          0.2682926829268293,
+          0.6829268292682927,
+          0.0975609756097561,
+          0.5121951219512195,
+          0.926829268292683,
+          0.34146341463414637,
+          0.7560975609756098,
+          0.17073170731707318,
+          0.5853658536585366,
+          0,
+          0.4146341463414634,
+          0.8292682926829268,
+          0.24390243902439024,
+          0.6585365853658537,
+          0.07317073170731707,
+          0.4878048780487805,
+          0.9024390243902439,
+          0.3170731707317073,
+          0.7317073170731707,
+          0.14634146341463414,
+          0.5609756097560976,
+          0.975609756097561,
+          0.3902439024390244,
+          0.8048780487804879,
+          0.21951219512195122,
+          0.6341463414634146,
+          0.04878048780487805,
+          0.4634146341463415,
+          0.8780487804878049,
+          0.2926829268292683,
+          0.7073170731707317,
+          0.12195121951219512,
+          0.5365853658536586,
+          0.9512195121951219,
+          0.36585365853658536,
+          0.7804878048780488,
+          0.1951219512195122,
+          0.6097560975609756,
+          0.024390243902439025,
+          0.43902439024390244
+        ]
+      },
+      "output": {
+        "draws": 26,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "move",
+            "id": 1,
+            "index": 0,
+            "position": [
+              -1512,
+              1755.4764334110812,
+              0
+            ]
+          }
+        ],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "wander-63-state-1",
+      "input": {
+        "position": [
+          -1512,
+          -1736.337994647775,
+          0
+        ],
+        "arrived": true,
+        "path": false,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": 1,
+        "originTile": 63,
+        "targets": [],
+        "random": [
+          1,
+          0.73,
+          0.2682926829268293,
+          0.6829268292682927,
+          0.0975609756097561,
+          0.5121951219512195,
+          0.926829268292683,
+          0.34146341463414637,
+          0.7560975609756098,
+          0.17073170731707318,
+          0.5853658536585366,
+          0,
+          0.4146341463414634,
+          0.8292682926829268,
+          0.24390243902439024,
+          0.6585365853658537,
+          0.07317073170731707,
+          0.4878048780487805,
+          0.9024390243902439,
+          0.3170731707317073,
+          0.7317073170731707,
+          0.14634146341463414,
+          0.5609756097560976,
+          0.975609756097561,
+          0.3902439024390244,
+          0.8048780487804879,
+          0.21951219512195122,
+          0.6341463414634146,
+          0.04878048780487805,
+          0.4634146341463415,
+          0.8780487804878049,
+          0.2926829268292683,
+          0.7073170731707317,
+          0.12195121951219512,
+          0.5365853658536586,
+          0.9512195121951219,
+          0.36585365853658536,
+          0.7804878048780488,
+          0.1951219512195122,
+          0.6097560975609756,
+          0.024390243902439025,
+          0.43902439024390244
+        ]
+      },
+      "output": {
+        "draws": 3,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "move",
+            "id": 1,
+            "index": -1,
+            "position": [
+              -1560,
+              1783.1892463321833,
+              0
+            ]
+          }
+        ],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "wander-63-state-2",
+      "input": {
+        "position": [
+          -1512,
+          -1736.337994647775,
+          0
+        ],
+        "arrived": true,
+        "path": false,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": 2,
+        "originTile": 63,
+        "targets": [],
+        "random": [
+          1,
+          0.73,
+          0.2682926829268293,
+          0.6829268292682927,
+          0.0975609756097561,
+          0.5121951219512195,
+          0.926829268292683,
+          0.34146341463414637,
+          0.7560975609756098,
+          0.17073170731707318,
+          0.5853658536585366,
+          0,
+          0.4146341463414634,
+          0.8292682926829268,
+          0.24390243902439024,
+          0.6585365853658537,
+          0.07317073170731707,
+          0.4878048780487805,
+          0.9024390243902439,
+          0.3170731707317073,
+          0.7317073170731707,
+          0.14634146341463414,
+          0.5609756097560976,
+          0.975609756097561,
+          0.3902439024390244,
+          0.8048780487804879,
+          0.21951219512195122,
+          0.6341463414634146,
+          0.04878048780487805,
+          0.4634146341463415,
+          0.8780487804878049,
+          0.2926829268292683,
+          0.7073170731707317,
+          0.12195121951219512,
+          0.5365853658536586,
+          0.9512195121951219,
+          0.36585365853658536,
+          0.7804878048780488,
+          0.1951219512195122,
+          0.6097560975609756,
+          0.024390243902439025,
+          0.43902439024390244
+        ]
+      },
+      "output": {
+        "draws": 26,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "move",
+            "id": 1,
+            "index": 63,
+            "position": [
+              -1512,
+              -1736.337994647775,
+              0
+            ]
+          }
+        ],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "wander-63-state-3",
+      "input": {
+        "position": [
+          -1512,
+          -1736.337994647775,
+          0
+        ],
+        "arrived": true,
+        "path": false,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": 3,
+        "originTile": 63,
+        "targets": [],
+        "random": [
+          1,
+          0.73,
+          0.2682926829268293,
+          0.6829268292682927,
+          0.0975609756097561,
+          0.5121951219512195,
+          0.926829268292683,
+          0.34146341463414637,
+          0.7560975609756098,
+          0.17073170731707318,
+          0.5853658536585366,
+          0,
+          0.4146341463414634,
+          0.8292682926829268,
+          0.24390243902439024,
+          0.6585365853658537,
+          0.07317073170731707,
+          0.4878048780487805,
+          0.9024390243902439,
+          0.3170731707317073,
+          0.7317073170731707,
+          0.14634146341463414,
+          0.5609756097560976,
+          0.975609756097561,
+          0.3902439024390244,
+          0.8048780487804879,
+          0.21951219512195122,
+          0.6341463414634146,
+          0.04878048780487805,
+          0.4634146341463415,
+          0.8780487804878049,
+          0.2926829268292683,
+          0.7073170731707317,
+          0.12195121951219512,
+          0.5365853658536586,
+          0.9512195121951219,
+          0.36585365853658536,
+          0.7804878048780488,
+          0.1951219512195122,
+          0.6097560975609756,
+          0.024390243902439025,
+          0.43902439024390244
+        ]
+      },
+      "output": {
+        "draws": 26,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "move",
+            "id": 1,
+            "index": 63,
+            "position": [
+              -1512,
+              -1736.337994647775,
+              0
+            ]
+          }
+        ],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "wander-64-state-1",
+      "input": {
+        "position": [
+          -1464,
+          1727.763620489979,
+          0
+        ],
+        "arrived": true,
+        "path": false,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": 1,
+        "originTile": 64,
+        "targets": [],
+        "random": [
+          1,
+          0.73,
+          0.2682926829268293,
+          0.6829268292682927,
+          0.0975609756097561,
+          0.5121951219512195,
+          0.926829268292683,
+          0.34146341463414637,
+          0.7560975609756098,
+          0.17073170731707318,
+          0.5853658536585366,
+          0,
+          0.4146341463414634,
+          0.8292682926829268,
+          0.24390243902439024,
+          0.6585365853658537,
+          0.07317073170731707,
+          0.4878048780487805,
+          0.9024390243902439,
+          0.3170731707317073,
+          0.7317073170731707,
+          0.14634146341463414,
+          0.5609756097560976,
+          0.975609756097561,
+          0.3902439024390244,
+          0.8048780487804879,
+          0.21951219512195122,
+          0.6341463414634146,
+          0.04878048780487805,
+          0.4634146341463415,
+          0.8780487804878049,
+          0.2926829268292683,
+          0.7073170731707317,
+          0.12195121951219512,
+          0.5365853658536586,
+          0.9512195121951219,
+          0.36585365853658536,
+          0.7804878048780488,
+          0.1951219512195122,
+          0.6097560975609756,
+          0.024390243902439025,
+          0.43902439024390244
+        ]
+      },
+      "output": {
+        "draws": 3,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "move",
+            "id": 1,
+            "index": 195,
+            "position": [
+              -1368,
+              1561.4867429633669,
+              0
+            ]
+          }
+        ],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "wander-64-state-2",
+      "input": {
+        "position": [
+          -1464,
+          1727.763620489979,
+          0
+        ],
+        "arrived": true,
+        "path": false,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": 2,
+        "originTile": 64,
+        "targets": [],
+        "random": [
+          1,
+          0.73,
+          0.2682926829268293,
+          0.6829268292682927,
+          0.0975609756097561,
+          0.5121951219512195,
+          0.926829268292683,
+          0.34146341463414637,
+          0.7560975609756098,
+          0.17073170731707318,
+          0.5853658536585366,
+          0,
+          0.4146341463414634,
+          0.8292682926829268,
+          0.24390243902439024,
+          0.6585365853658537,
+          0.07317073170731707,
+          0.4878048780487805,
+          0.9024390243902439,
+          0.3170731707317073,
+          0.7317073170731707,
+          0.14634146341463414,
+          0.5609756097560976,
+          0.975609756097561,
+          0.3902439024390244,
+          0.8048780487804879,
+          0.21951219512195122,
+          0.6341463414634146,
+          0.04878048780487805,
+          0.4634146341463415,
+          0.8780487804878049,
+          0.2926829268292683,
+          0.7073170731707317,
+          0.12195121951219512,
+          0.5365853658536586,
+          0.9512195121951219,
+          0.36585365853658536,
+          0.7804878048780488,
+          0.1951219512195122,
+          0.6097560975609756,
+          0.024390243902439025,
+          0.43902439024390244
+        ]
+      },
+      "output": {
+        "draws": 26,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "move",
+            "id": 1,
+            "index": 64,
+            "position": [
+              -1464,
+              1727.763620489979,
+              0
+            ]
+          }
+        ],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "wander-64-state-3",
+      "input": {
+        "position": [
+          -1464,
+          1727.763620489979,
+          0
+        ],
+        "arrived": true,
+        "path": false,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": 3,
+        "originTile": 64,
+        "targets": [],
+        "random": [
+          1,
+          0.73,
+          0.2682926829268293,
+          0.6829268292682927,
+          0.0975609756097561,
+          0.5121951219512195,
+          0.926829268292683,
+          0.34146341463414637,
+          0.7560975609756098,
+          0.17073170731707318,
+          0.5853658536585366,
+          0,
+          0.4146341463414634,
+          0.8292682926829268,
+          0.24390243902439024,
+          0.6585365853658537,
+          0.07317073170731707,
+          0.4878048780487805,
+          0.9024390243902439,
+          0.3170731707317073,
+          0.7317073170731707,
+          0.14634146341463414,
+          0.5609756097560976,
+          0.975609756097561,
+          0.3902439024390244,
+          0.8048780487804879,
+          0.21951219512195122,
+          0.6341463414634146,
+          0.04878048780487805,
+          0.4634146341463415,
+          0.8780487804878049,
+          0.2926829268292683,
+          0.7073170731707317,
+          0.12195121951219512,
+          0.5365853658536586,
+          0.9512195121951219,
+          0.36585365853658536,
+          0.7804878048780488,
+          0.1951219512195122,
+          0.6097560975609756,
+          0.024390243902439025,
+          0.43902439024390244
+        ]
+      },
+      "output": {
+        "draws": 26,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "move",
+            "id": 1,
+            "index": 64,
+            "position": [
+              -1464,
+              1727.763620489979,
+              0
+            ]
+          }
+        ],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "wander-2080-state-1",
+      "input": {
+        "position": [
+          24,
+          -18.143593539449057,
+          0
+        ],
+        "arrived": true,
+        "path": false,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": 1,
+        "originTile": 2080,
+        "targets": [],
+        "random": [
+          1,
+          0.73,
+          0.2682926829268293,
+          0.6829268292682927,
+          0.0975609756097561,
+          0.5121951219512195,
+          0.926829268292683,
+          0.34146341463414637,
+          0.7560975609756098,
+          0.17073170731707318,
+          0.5853658536585366,
+          0,
+          0.4146341463414634,
+          0.8292682926829268,
+          0.24390243902439024,
+          0.6585365853658537,
+          0.07317073170731707,
+          0.4878048780487805,
+          0.9024390243902439,
+          0.3170731707317073,
+          0.7317073170731707,
+          0.14634146341463414,
+          0.5609756097560976,
+          0.975609756097561,
+          0.3902439024390244,
+          0.8048780487804879,
+          0.21951219512195122,
+          0.6341463414634146,
+          0.04878048780487805,
+          0.4634146341463415,
+          0.8780487804878049,
+          0.2926829268292683,
+          0.7073170731707317,
+          0.12195121951219512,
+          0.5365853658536586,
+          0.9512195121951219,
+          0.36585365853658536,
+          0.7804878048780488,
+          0.1951219512195122,
+          0.6097560975609756,
+          0.024390243902439025,
+          0.43902439024390244
+        ]
+      },
+      "output": {
+        "draws": 3,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "move",
+            "id": 1,
+            "index": 2211,
+            "position": [
+              120,
+              -184.42047106606128,
+              0
+            ]
+          }
+        ],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "wander-2080-state-2",
+      "input": {
+        "position": [
+          24,
+          -18.143593539449057,
+          0
+        ],
+        "arrived": true,
+        "path": false,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": 2,
+        "originTile": 2080,
+        "targets": [],
+        "random": [
+          1,
+          0.73,
+          0.2682926829268293,
+          0.6829268292682927,
+          0.0975609756097561,
+          0.5121951219512195,
+          0.926829268292683,
+          0.34146341463414637,
+          0.7560975609756098,
+          0.17073170731707318,
+          0.5853658536585366,
+          0,
+          0.4146341463414634,
+          0.8292682926829268,
+          0.24390243902439024,
+          0.6585365853658537,
+          0.07317073170731707,
+          0.4878048780487805,
+          0.9024390243902439,
+          0.3170731707317073,
+          0.7317073170731707,
+          0.14634146341463414,
+          0.5609756097560976,
+          0.975609756097561,
+          0.3902439024390244,
+          0.8048780487804879,
+          0.21951219512195122,
+          0.6341463414634146,
+          0.04878048780487805,
+          0.4634146341463415,
+          0.8780487804878049,
+          0.2926829268292683,
+          0.7073170731707317,
+          0.12195121951219512,
+          0.5365853658536586,
+          0.9512195121951219,
+          0.36585365853658536,
+          0.7804878048780488,
+          0.1951219512195122,
+          0.6097560975609756,
+          0.024390243902439025,
+          0.43902439024390244
+        ]
+      },
+      "output": {
+        "draws": 26,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "move",
+            "id": 1,
+            "index": 2080,
+            "position": [
+              24,
+              -18.143593539449057,
+              0
+            ]
+          }
+        ],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "wander-2080-state-3",
+      "input": {
+        "position": [
+          24,
+          -18.143593539449057,
+          0
+        ],
+        "arrived": true,
+        "path": false,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": 3,
+        "originTile": 2080,
+        "targets": [],
+        "random": [
+          1,
+          0.73,
+          0.2682926829268293,
+          0.6829268292682927,
+          0.0975609756097561,
+          0.5121951219512195,
+          0.926829268292683,
+          0.34146341463414637,
+          0.7560975609756098,
+          0.17073170731707318,
+          0.5853658536585366,
+          0,
+          0.4146341463414634,
+          0.8292682926829268,
+          0.24390243902439024,
+          0.6585365853658537,
+          0.07317073170731707,
+          0.4878048780487805,
+          0.9024390243902439,
+          0.3170731707317073,
+          0.7317073170731707,
+          0.14634146341463414,
+          0.5609756097560976,
+          0.975609756097561,
+          0.3902439024390244,
+          0.8048780487804879,
+          0.21951219512195122,
+          0.6341463414634146,
+          0.04878048780487805,
+          0.4634146341463415,
+          0.8780487804878049,
+          0.2926829268292683,
+          0.7073170731707317,
+          0.12195121951219512,
+          0.5365853658536586,
+          0.9512195121951219,
+          0.36585365853658536,
+          0.7804878048780488,
+          0.1951219512195122,
+          0.6097560975609756,
+          0.024390243902439025,
+          0.43902439024390244
+        ]
+      },
+      "output": {
+        "draws": 26,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "move",
+            "id": 1,
+            "index": 2080,
+            "position": [
+              24,
+              -18.143593539449057,
+              0
+            ]
+          }
+        ],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "wander-4095-state-1",
+      "input": {
+        "position": [
+          1512,
+          -1764.050807568877,
+          0
+        ],
+        "arrived": true,
+        "path": false,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": 1,
+        "originTile": 4095,
+        "targets": [],
+        "random": [
+          1,
+          0.73,
+          0.2682926829268293,
+          0.6829268292682927,
+          0.0975609756097561,
+          0.5121951219512195,
+          0.926829268292683,
+          0.34146341463414637,
+          0.7560975609756098,
+          0.17073170731707318,
+          0.5853658536585366,
+          0,
+          0.4146341463414634,
+          0.8292682926829268,
+          0.24390243902439024,
+          0.6585365853658537,
+          0.07317073170731707,
+          0.4878048780487805,
+          0.9024390243902439,
+          0.3170731707317073,
+          0.7317073170731707,
+          0.14634146341463414,
+          0.5609756097560976,
+          0.975609756097561,
+          0.3902439024390244,
+          0.8048780487804879,
+          0.21951219512195122,
+          0.6341463414634146,
+          0.04878048780487805,
+          0.4634146341463415,
+          0.8780487804878049,
+          0.2926829268292683,
+          0.7073170731707317,
+          0.12195121951219512,
+          0.5365853658536586,
+          0.9512195121951219,
+          0.36585365853658536,
+          0.7804878048780488,
+          0.1951219512195122,
+          0.6097560975609756,
+          0.024390243902439025,
+          0.43902439024390244
+        ]
+      },
+      "output": {
+        "draws": 3,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "move",
+            "id": 1,
+            "index": -1,
+            "position": [
+              -1560,
+              1783.1892463321833,
+              0
+            ]
+          }
+        ],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "wander-4095-state-2",
+      "input": {
+        "position": [
+          1512,
+          -1764.050807568877,
+          0
+        ],
+        "arrived": true,
+        "path": false,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": 2,
+        "originTile": 4095,
+        "targets": [],
+        "random": [
+          1,
+          0.73,
+          0.2682926829268293,
+          0.6829268292682927,
+          0.0975609756097561,
+          0.5121951219512195,
+          0.926829268292683,
+          0.34146341463414637,
+          0.7560975609756098,
+          0.17073170731707318,
+          0.5853658536585366,
+          0,
+          0.4146341463414634,
+          0.8292682926829268,
+          0.24390243902439024,
+          0.6585365853658537,
+          0.07317073170731707,
+          0.4878048780487805,
+          0.9024390243902439,
+          0.3170731707317073,
+          0.7317073170731707,
+          0.14634146341463414,
+          0.5609756097560976,
+          0.975609756097561,
+          0.3902439024390244,
+          0.8048780487804879,
+          0.21951219512195122,
+          0.6341463414634146,
+          0.04878048780487805,
+          0.4634146341463415,
+          0.8780487804878049,
+          0.2926829268292683,
+          0.7073170731707317,
+          0.12195121951219512,
+          0.5365853658536586,
+          0.9512195121951219,
+          0.36585365853658536,
+          0.7804878048780488,
+          0.1951219512195122,
+          0.6097560975609756,
+          0.024390243902439025,
+          0.43902439024390244
+        ]
+      },
+      "output": {
+        "draws": 26,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "move",
+            "id": 1,
+            "index": 4095,
+            "position": [
+              1512,
+              -1764.050807568877,
+              0
+            ]
+          }
+        ],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "wander-4095-state-3",
+      "input": {
+        "position": [
+          1512,
+          -1764.050807568877,
+          0
+        ],
+        "arrived": true,
+        "path": false,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": 3,
+        "originTile": 4095,
+        "targets": [],
+        "random": [
+          1,
+          0.73,
+          0.2682926829268293,
+          0.6829268292682927,
+          0.0975609756097561,
+          0.5121951219512195,
+          0.926829268292683,
+          0.34146341463414637,
+          0.7560975609756098,
+          0.17073170731707318,
+          0.5853658536585366,
+          0,
+          0.4146341463414634,
+          0.8292682926829268,
+          0.24390243902439024,
+          0.6585365853658537,
+          0.07317073170731707,
+          0.4878048780487805,
+          0.9024390243902439,
+          0.3170731707317073,
+          0.7317073170731707,
+          0.14634146341463414,
+          0.5609756097560976,
+          0.975609756097561,
+          0.3902439024390244,
+          0.8048780487804879,
+          0.21951219512195122,
+          0.6341463414634146,
+          0.04878048780487805,
+          0.4634146341463415,
+          0.8780487804878049,
+          0.2926829268292683,
+          0.7073170731707317,
+          0.12195121951219512,
+          0.5365853658536586,
+          0.9512195121951219,
+          0.36585365853658536,
+          0.7804878048780488,
+          0.1951219512195122,
+          0.6097560975609756,
+          0.024390243902439025,
+          0.43902439024390244
+        ]
+      },
+      "output": {
+        "draws": 26,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "move",
+            "id": 1,
+            "index": 4095,
+            "position": [
+              1512,
+              -1764.050807568877,
+              0
+            ]
+          }
+        ],
+        "lastThrow": 0,
+        "lastTarget": null
+      }
+    },
+    {
+      "name": "wander-then-search-and-throw",
+      "input": {
+        "position": [
+          24,
+          -18.143593539449057,
+          0
+        ],
+        "arrived": true,
+        "path": false,
+        "tick": 41,
+        "lastThrow": 0,
+        "lastTarget": null,
+        "dead": false,
+        "gone": false,
+        "originState": 1,
+        "originTile": 2080,
+        "targets": [
+          {
+            "id": null,
+            "position": [
+              25,
+              -17.143593539449057,
+              0
+            ]
+          },
+          {
+            "id": 0,
+            "position": [
+              25,
+              -17.143593539449057,
+              0
+            ]
+          }
+        ],
+        "random": [
+          1,
+          0.6,
+          0.3,
+          0.75,
+          0.75
+        ]
+      },
+      "output": {
+        "draws": 5,
+        "queries": 1,
+        "commands": [
+          {
+            "kind": "move",
+            "id": 1,
+            "index": 2274,
+            "position": [
+              168,
+              -156.7076581449594,
+              0
+            ]
+          },
+          {
+            "kind": "target",
+            "id": 1,
+            "position": [
+              25,
+              -17.143593539449057,
+              0
+            ],
+            "reference": 1
+          }
+        ],
+        "lastThrow": 41,
+        "lastTarget": 0
+      }
+    }
+  ],
+  "source_sha256": {
+    "static/scenes/snowball/js/engine/core/entity.js": "d846a4e29e7f6664d422212d8746746da32c0a2e2a91e51b52f26b00ab0028ce",
+    "static/scenes/snowball/js/engine/utils/allocatable.js": "c4ab5759c61e9c933e3fb009cc6d3f59e0e83e5cb951444ba45b6a1c1c7ad628",
+    "static/scenes/snowball/js/engine/utils/collision-2d.js": "e3813be39a28288bc8784000bb612e002588e14078ce3bd2e5d74827bc175807",
+    "static/scenes/snowball/js/engine/utils/hex-coord.js": "1d82e0d4fa01bc627f1f2d69f731c759c48b1fb0f4f9e21aff2121467e453c1d",
+    "static/scenes/snowball/js/engine/utils/hex-grid.js": "17b0a79fa57ed702028678af932862b0a8d2c7a239eb9d09c981d833d29572d5",
+    "static/scenes/snowball/js/snowball/components/arrival.js": "ec8d83b69b92298a2ad6a5b061af737b498e44e6ad0740a27c59f2f069413894",
+    "static/scenes/snowball/js/snowball/components/component.js": "0838cddfc50a779e2bd45ecce0c15911f22883040bb93ce64c09387ba4bda76f",
+    "static/scenes/snowball/js/snowball/components/game-map.js": "a345fe09864dc60d56a926dd7dcae0224847a3cdfc50365fe4f280836c9a2c2c",
+    "static/scenes/snowball/js/snowball/components/path.js": "cd0d22a56343ea733c2880dea5b86e38fd91576e161ee9195e0666a91b68c447",
+    "static/scenes/snowball/js/snowball/entities/bot.js": "cfd847069244d475487af40edde7cb1a95f254f6ec6322b1fb55916d6508883e",
+    "static/scenes/snowball/js/snowball/utils/magic-hex-grid.js": "23047e1e5a716d8f9c03c91d754f7571bbe41d4f0eb9059db8700cffe3742a6e",
+    "static/scenes/snowball/js/snowball/utils/seed-random.js": "7da1a70134a36731ed08478f6bcae64f6d24ca68835ef1119bd0412c9b3a002f",
+    "static/scenes/snowball/js/third_party/priorityqueue.js": "ed022abe889bc674bdc04d6bb3bf1f6e3c8b04085fc95d7fbae7f6a267aca56b",
+    "static/third_party/lib/three/build/three.js": "6467e0098991c58a5c6e64415c7126079672b4e0927c3203589644db96c64b60"
+  },
+  "limits": [
+    "Not full BotSystem new/old queue staging, actor pooling/aliasing, UUID/global RNG or complete seeded match.",
+    "No real collision query/whole-frame system or movement/throw execution; command reference index identifies the actual supplied target Vector3.",
+    "Source removeBot old-queue typo remains an explicit unported/unverified branch."
+  ]
+}

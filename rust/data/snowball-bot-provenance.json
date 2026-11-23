@@ -1,0 +1,55 @@
+{
+  "method": "Unmodified original Bot.setup/update, Path, Arrival, GameMap nearby search, MagicHexGrid and bundled THREE in CPU VM. Per-case explicit ordered target list replaces quadTree.getObjectsNear; source quad traversal is NOT exercised. Player allocation callback returns a plain source-shaped actor; setup uses actual Rectangle allocation/position reference and UUID, then update random tape is reset. Map seed 1, supplied origin state/tree override. Commands recorded at PlayerSystem boundary; no Player stage, pools, network, render/audio/window/input.",
+  "cases": 35,
+  "random_draws": 303,
+  "move_requests": 16,
+  "target_requests": 10,
+  "production_changes": [
+    "Removed the presence.gone early return from the Bot pass; source bot ownership persists after Player removal. Later dead-player guard still blocks actual throws.",
+    "Target origin/range checks use original Vector3 square/sum/sqrt, including z and underflow-to-zero behavior.",
+    "Production helper keeps >.985 wandering, origin-state nearby-map quirk, query-after-wander, retained targets without re-filtering, selection-draw-before-distance, strict >40 cooldown and advancement even when >.5 throw coin fails.",
+    "Map nearby method accepts a random closure; legacy Random wrapper delegates. Source uses global Math.random here, not the optional seedRandom argument."
+  ],
+  "checked_cases": [
+    "Arrival early return retains state/no random/query; path-gated wandering and exact threshold.",
+    "Origin/underflow-zero and self/nonplayer exclusion without random.",
+    "Vertical-only target, z-distance rejection, 320 strict limit, >.25 selection.",
+    "Retained far/self/zero targets bypass selection filters; missing target replaced; far candidates consume selection random.",
+    "Strict cooldown and .5 no-throw still updating cooldown; dead/removed owner decisions.",
+    "Fifteen actual nearby-map searches from five center/edge/corner indices and states1/2/3; source origin-not-candidate test retained.",
+    "Combined wander, query, target/throw order with supplied tape."
+  ],
+  "checks": [
+    "35 unmodified source update cases, 303 random draws, 16 move and 10 target commands; native production helper compares commands/state/draws/query count at 1e-9.",
+    "Actual native finish_frame with inactive/dead/gone bot: request marks pending target/cooldown, dead Player stage creates no projectile.",
+    "All116 tests pass (103 library +13 binary).",
+    "CPU-only native 180-second/10800-step state smoke reaches allTime100/knockedOut70; source full-match parity NOT established.",
+    "Release application and snowball_capture diagnostic build successfully; neither launched."
+  ],
+  "limits": [
+    "Not full BotSystem new/old queue staging, actor pooling/aliasing, UUID/global RNG or complete seeded match.",
+    "No real collision query/whole-frame system or movement/throw execution; command reference index identifies the actual supplied target Vector3.",
+    "Source removeBot old-queue typo remains an explicit unported/unverified branch.",
+    "Native bot state is still embedded in retained Player records; source Bot objects can alias Elf objects recycled for later players. Full BotSystem late creation and pooled aliasing remain unfinished.",
+    "Wander command source positions are Vector3 with z=0; native movement stores xy because Elf.update uses Vector2. Tests compare the canonical zero-z source adapter, not arbitrary 3D paths.",
+    "Global game UUID/constructor/actor RNG and full seeded replay are not matched by resetting the decision tape after source setup.",
+    "Arbitrary NaN/Infinity/invalid duplicate-player IDs and generic numeric coercion are not certified.",
+    "No window, GPU/browser rendering, focus/input/audio or end-to-end latency checks."
+  ],
+  "source_sha256": {
+    "static/scenes/snowball/js/engine/core/entity.js": "d846a4e29e7f6664d422212d8746746da32c0a2e2a91e51b52f26b00ab0028ce",
+    "static/scenes/snowball/js/engine/utils/allocatable.js": "c4ab5759c61e9c933e3fb009cc6d3f59e0e83e5cb951444ba45b6a1c1c7ad628",
+    "static/scenes/snowball/js/engine/utils/collision-2d.js": "e3813be39a28288bc8784000bb612e002588e14078ce3bd2e5d74827bc175807",
+    "static/scenes/snowball/js/engine/utils/hex-coord.js": "1d82e0d4fa01bc627f1f2d69f731c759c48b1fb0f4f9e21aff2121467e453c1d",
+    "static/scenes/snowball/js/engine/utils/hex-grid.js": "17b0a79fa57ed702028678af932862b0a8d2c7a239eb9d09c981d833d29572d5",
+    "static/scenes/snowball/js/snowball/components/arrival.js": "ec8d83b69b92298a2ad6a5b061af737b498e44e6ad0740a27c59f2f069413894",
+    "static/scenes/snowball/js/snowball/components/component.js": "0838cddfc50a779e2bd45ecce0c15911f22883040bb93ce64c09387ba4bda76f",
+    "static/scenes/snowball/js/snowball/components/game-map.js": "a345fe09864dc60d56a926dd7dcae0224847a3cdfc50365fe4f280836c9a2c2c",
+    "static/scenes/snowball/js/snowball/components/path.js": "cd0d22a56343ea733c2880dea5b86e38fd91576e161ee9195e0666a91b68c447",
+    "static/scenes/snowball/js/snowball/entities/bot.js": "cfd847069244d475487af40edde7cb1a95f254f6ec6322b1fb55916d6508883e",
+    "static/scenes/snowball/js/snowball/utils/magic-hex-grid.js": "23047e1e5a716d8f9c03c91d754f7571bbe41d4f0eb9059db8700cffe3742a6e",
+    "static/scenes/snowball/js/snowball/utils/seed-random.js": "7da1a70134a36731ed08478f6bcae64f6d24ca68835ef1119bd0412c9b3a002f",
+    "static/scenes/snowball/js/third_party/priorityqueue.js": "ed022abe889bc674bdc04d6bb3bf1f6e3c8b04085fc95d7fbae7f6a267aca56b",
+    "static/third_party/lib/three/build/three.js": "6467e0098991c58a5c6e64415c7126079672b4e0927c3203589644db96c64b60"
+  }
+}

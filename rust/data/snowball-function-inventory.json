@@ -1945,7 +1945,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/levels/local-level.js",
       "lines": 90,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; complete reread for bot cadence/ownership; native still creates bot players early instead of queuing BotSystem creation. Full spawn/global RNG/pool parity remains unfinished",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -2557,7 +2557,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/bot-system.js",
       "lines": 62,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; complete reread; local active new-bot stage and separate controller ownership still unfinished natively. removeBot has no active local caller; original oldBots update uses this.bits.splice typo and errors, not silently corrected or certified",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -2978,10 +2978,11 @@
     {
       "file": "static/scenes/snowball/js/snowball/entities/bot.js",
       "lines": 118,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; complete setup/update reread; actual original decision CPU oracle checks35cases/303draws, Vector3 origin/range, retained-target filters, cooldown and wandering/query order. Production removes gone guard. UUID/setup timing and pooled Bot/Elf ownership remain incomplete",
       "native": [
         "rust/src/snowball.rs",
-        "rust/src/snowball_view.rs"
+        "rust/src/snowball_view.rs",
+        "rust/src/snowball_bot.rs"
       ],
       "functions": [
         {
@@ -3596,7 +3597,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/components/path.js",
       "lines": 39,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; complete reread confirms destinationReached is waypoints.length===0; Bot helper uses native path empty, source movement remains XY Vector2 even when generated waypoint has z0",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -3663,7 +3664,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/components/game-map.js",
       "lines": 255,
-      "review": "native formulas checked against actual original map/grid/path oracle; general unused grid conversion helpers remain unported; map/performance clock separated from game time; source float32 raised/transition timestamps and stored hex/obstacle uniforms compare against original modules/THREE for ten frames/all 4096 tiles. Float tile/tree fade attributes replace byte rounding. GLSL pixels/deformation/tone, per-getter timing/loading/host clock remain unverified; unused erode shader export is not the active shake/sink path.; five actual original fresh-spawn cases (26 frames, creation plus 52 core snapshots) now compare deferred drop-before-player FIFO tile choices/map RNG, connected allTime, arrival/parent/queues/transforms and undefined failure. Native sparse/missing-ring error handling, remaining population fields, full pools/global RNG/AI and pixels still partial.",
+      "review": "native formulas checked against actual original map/grid/path oracle; general unused grid conversion helpers remain unported; map/performance clock separated from game time; source float32 raised/transition timestamps and stored hex/obstacle uniforms compare against original modules/THREE for ten frames/all 4096 tiles. Float tile/tree fade attributes replace byte rounding. GLSL pixels/deformation/tone, per-getter timing/loading/host clock remain unverified; unused erode shader export is not the active shake/sink path.; five actual original fresh-spawn cases (26 frames, creation plus 52 core snapshots) now compare deferred drop-before-player FIFO tile choices/map RNG, connected allTime, arrival/parent/queues/transforms and undefined failure. Native sparse/missing-ring error handling, remaining population fields, full pools/global RNG/AI and pixels still partial.; actual getRandomNearbyPassableTileIndex compared across15 origin/state cases plus combined wander/throw. Uses Math.random despite optional seedRandom parameter; source tests origin state/obstacle instead of candidate, retained unchanged",
       "native": [
         "rust/src/snowball.rs"
       ],

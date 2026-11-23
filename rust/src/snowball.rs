@@ -429,10 +429,13 @@ impl Map {
         UNDEFINED_TILE
     }
     pub fn nearby(&self, index: i32, max_radius: i32, rng: &mut Random) -> i32 {
-        let r = (rng.next() * (max_radius - 1) as f64).floor() as i32 + 1;
+        self.nearby_with_random(index, max_radius, &mut || rng.next())
+    }
+    pub fn nearby_with_random(&self, index: i32, max_radius: i32, random: &mut impl FnMut() -> f64) -> i32 {
+        let r = (random() * (max_radius - 1) as f64).floor() as i32 + 1;
         let mut ring = self.grid.ring(index, r);
         while !ring.is_empty() {
-            let k = (rng.next() * ring.len() as f64).floor() as usize;
+            let k = (random() * ring.len() as f64).floor() as usize;
             let tile = ring[k]; /* Source tests origin, not candidate. */
             if self.state(index) == 1 && self.obstacle(index) == -1 {
                 return tile;
@@ -1453,44 +1456,32 @@ impl Snowball {
                 self.assign_player_target(0, target);
             }
         }
-        // Bots consume randomness per rendered update, not a catch-up fixed loop.
+        // Source Bot.update runs once per system pass, even for a removed elf.
+        // It reads the retained collision quad before the Player stage.
         let mut moves = vec![];
         let mut throws = vec![];
         for i in 1..self.players.len() {
             let p = &self.players[i];
-            if !p.bot || !p.arrived || p.gone {
+            if !p.bot || !p.arrived {
                 continue;
             }
-            if p.path.is_empty() && self.random.next() > 0.985 {
-                let tile = self
-                    .map
-                    .nearby(grid.position_index(p.pos), 6, &mut self.random);
-                moves.push((i, grid.pos(tile)))
-            }
-            let nearby = self.collision.quad.near(Bounds::rect(p.pos, 200., 200.));
-            let mut target = p.last_target.filter(|&j| nearby.contains(&Id::Player(j)));
-            if target.is_none() {
-                for id in nearby {
-                    let Id::Player(j) = id else { continue };
-                    let other = &self.players[j];
-                    if j == i || other.pos.len() == 0. {
-                        continue;
-                    }
-                    if self.random.next() > 0.25 && p.pos.sub(other.pos).len() < 320. {
-                        target = Some(j);
-                        break;
-                    }
-                }
-            }
-            if let Some(j) = target {
-                if tick - p.last_throw > 40. {
-                    if self.random.next() > 0.5 {
-                        throws.push((i, j))
-                    }
-                    self.players[i].last_throw = tick
-                }
-            }
-            self.players[i].last_target = target;
+            let mut state = crate::snowball_bot::State {
+                last_target: p.last_target, last_throw: p.last_throw,
+            };
+            let decision = crate::snowball_bot::update(
+                &mut state,
+                crate::snowball_bot::Player {
+                    id: i, position: [p.pos.x, p.pos.y, p.z],
+                    arrived: p.arrived, destination_reached: p.path.is_empty(),
+                }, tick, &mut || self.random.next(),
+                |random| grid.pos(self.map.nearby_with_random(grid.position_index(p.pos), 6, random)),
+                || self.collision.quad.near(Bounds::rect(p.pos, 200., 200.)),
+                |j| {let p = &self.players[j]; [p.pos.x, p.pos.y, p.z]},
+            );
+            if let Some(destination) = decision.destination { moves.push((i, destination)); }
+            if let Some(target) = decision.target { throws.push((i, target)); }
+            self.players[i].last_throw = state.last_throw;
+            self.players[i].last_target = state.last_target;
         }
         if collected_by_client {
             self.sounds.push("snowball_pickup");
@@ -1609,6 +1600,44 @@ pub fn circle_rect(c: V, r: f64, p: V, hw: f64, hh: f64) -> bool {
 #[cfg(test)]
 pub(crate) mod tests {
     use super::*;
+    #[test]
+    fn removed_bot_still_queues_target_and_advances_cooldown_in_production_stage() {
+        let mut game = Snowball::new("removed-bot-integration");
+        game.start();
+        game.players.truncate(2);
+        game.drops.clear();
+        game.map.states.fill(1);
+        game.map.obstacles.fill(-1);
+        for (i,p) in game.players.iter_mut().enumerate() {
+            p.pos = V::new(100. + i as f64, 100.);
+            p.arrived = true;
+            p.landed = true;
+            p.setup = true;
+        }
+        let p = &mut game.players[1];
+        p.active = false;
+        p.alive = false;
+        p.gone = true;
+        p.path = vec![V::new(800., 0.)];
+        p.last_target = None;
+        p.last_throw = 0.;
+        game.time = 1000.;
+        game.wall = 1000.;
+        game.random = (0..100).find_map(|i| {
+            let rng = Random::seeded(&format!("removed-bot-{i}"));
+            let mut trial = rng.clone();
+            (trial.next() > 0.25 && trial.next() > 0.5).then_some(rng)
+        }).unwrap();
+        game.reset_collisions();
+        game.finish_frame(1440., 800.);
+        assert_eq!(game.players[1].last_target, Some(0));
+        assert_eq!(game.players[1].last_throw, 60.);
+        // Bot's request sets this flag, while the later dead Player guard
+        // prevents an actual projectile. Do not skip Bot on presence.gone.
+        assert!(game.players[1].pending_throw);
+        assert!(game.shots.is_empty());
+    }
+
     #[test]
     fn deferred_spawn_tiles_counts_and_arrivals_match_original_systems() {
         let data: serde_json::Value = serde_json::from_str(include_str!(

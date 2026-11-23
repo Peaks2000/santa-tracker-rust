@@ -838,3 +838,32 @@ whole-scene/site fidelity remain unfinished; do not label the user report solved
 
 Release application and snowball_capture diagnostic build successfully. Neither
 was launched; no GPU/window/focus/input or audio test was used.
+
+### Bot decision pass (23 November 2026)
+
+snowball_bot::update is now the production decision helper. Source Bot.update
+only returns for unarrived, not dead/gone; native gone guard removed. Vector3
+root z now participates in origin/range checks (old native used XY only).
+Preserve >.985 empty-path wander, nearby lookup before query, origin-not-candidate
+map quirk, cached target bypassing filters, random-before-distance, strict >40
+cooldown, and cooldown advance on failed >.5 coin. Retained collision quad query
+still comes before Player stage. Dead Player blocks projectile but pending flag
+remains; concrete finish_frame test covers inactive/dead/gone owner.
+
+35 actual original CPU-VM decision cases compare303draws/16move/10target requests
+and state/query count, including15 nearby searches/edge/corner/states1,2,3.
+Explicit nearby lists and random tape after real source setup; plain actor
+allocation boundary, no real quad in this new fixture or Player execution.
+Canonical z0 move adapter matches source generated Vector3; Elf movement is XY.
+All116 tests pass (103lib+13bin); CPU180s smoke reaches100 connected/70KO.
+No window/input/GPU/audio; smoke is not source whole-match parity.
+
+Next ownership gaps are material: bots still embed controller state in native
+Player records and create players early. Source BotSystem queues actual player
+allocation late and old Bot controllers alias recycled Elf instances. Do not
+claim pool/global-RNG/whole-match parity from the decision oracle. Source
+removeBot has no local caller; oldBots uses this.bits.splice typo/error, remains
+unported/unverified. General nonfinite/invalid-ID behavior also uncertified.
+
+Release application/capture builds pass. Neither was launched; user game,
+focus, input and audio stayed untouched.

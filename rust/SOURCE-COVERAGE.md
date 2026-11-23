@@ -2501,3 +2501,55 @@ No window, GL context, focus change, audio playback or OS input was used.
 
 Release application and snowball_capture diagnostic build successfully. Neither
 was launched; no GPU/window/focus/input or audio test was used.
+
+### Snowball bot decisions, Vector3 and removed owners (23 November 2026)
+
+Read complete Bot, BotSystem, LocalLevel, Path, GameMap, MagicHexGrid, Speed,
+PlayerSystem and allocator/Entity helpers for this path. Source Bot.update has
+no health/presence/gone guard: only !arrival.arrived returns. BotSystem retains
+controllers after PlayerSystem removes/frees an elf. The native gone guard
+therefore incorrectly stopped random consumption/target requests. It is removed;
+a later dead Player guard still prevents a projectile while hasAssignedTarget
+remains set. Native keeps controller state in Player records; separate source
+Bot ownership and recycled-Elf aliasing are NOT yet matched.
+
+Source target origin exclusion and range checks use Vector3 length/distance,
+not Vector2. Production snowball_bot helper now includes root z with the same
+square/sum/sqrt order, including underflow-to-zero and strict <320. It retains
+source quirks: cached target found in nearby list bypasses self/origin/range
+filters; rejected far candidates consume >.25 coin; strict >40 cooldown advances
+even when >.5 throw coin fails. Wandering only when path empty, at >.985; actual
+nearby GameMap lookup occurs before the quad query. Nearby's optional random
+parameter is ignored in source: global Math.random supplies radius/candidate
+choices. Its origin-state/obstacle check (rather than candidate) is preserved.
+
+CPU VM fixture runs unchanged Bot.setup/update, Path/Arrival, actual GameMap
+nearby search/MagicHexGrid and bundled THREE. Source setup allocates actual
+Rectangle/UUID but PlayerSystem.addPlayer returns a plain source-shaped actor.
+Then an explicit random tape starts for update. An ordered supplied target list
+adapts quadTree.getObjectsNear; this does NOT validate quad traversal/registration.
+Commands are recorded at PlayerSystem boundary, not executed through Player.
+35 cases compare 303 random draws, 16 move and 10 targeted-position commands,
+last target/cooldown and query count against the production native helper.
+Cases cover dead/gone owner, unarrived/path gates, threshold equality, zero/self/
+nonplayer/underflow/vertical targets, retained targets, distance/cooldown limits,
+15 source nearby searches over five edge/corner/center indices and states1/2/3,
+and combined wander-before-query/throw order. Native XY move values are compared
+with canonical source zero-z Vector3 output; actual Elf movement uses Vector2.
+
+A production finish_frame test keeps an inactive/dead/gone bot in the pass and
+checks its pending target/cooldown while no projectile is created. All116 tests
+pass (103 library +13 binary). CPU-only 180s/10800-step native smoke reaches
+allTime100 and knockedOut70, with no undefined tile spawns in this seed. This
+is a stability regression, NOT an original full-match/AI/visual comparison.
+
+Full BotSystem late creation (native still allocates players early), UUID/global
+random consumption, independent controller/recycled actor aliases, general pool
+and restart semantics, arbitrary nonfinite/numeric/duplicate IDs and complete
+match parity remain open. removeBot has no local caller (source search); its
+oldBots path contains this.bits.splice typo and error behavior is explicitly
+unported/unverified, not silently fixed. No window, GPU/browser, focus change,
+OS input or audio playback was used.
+
+Release application/capture builds pass. Neither was launched; user game,
+focus, input and audio stayed untouched.
