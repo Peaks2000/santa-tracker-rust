@@ -2553,3 +2553,55 @@ OS input or audio playback was used.
 
 Release application/capture builds pass. Neither was launched; user game,
 focus, input and audio stayed untouched.
+
+### Snowball queued BotSystem creation (23 November 2026)
+
+Full reread for active order: LocalLevel/MainLevel, BotSystem/Bot, SnowballGame
+update/setup, PlayerSystem/DropSystem/ParachuteSystem and the active State/Map/
+LOD/Client/BasicElement/Level/camera helpers. Source maximumPlayers getter is100.
+LocalLevel.setup creates only local player and25 drops, queuing25 no-argument
+Bot requests. LocalLevel.update also queues a Bot when tick-lastBotTick>128;
+Bot.setup creates the Elf only after ClientSystem in SnowballGame.update.
+Native previously created26 players at start and allocated late bots in Level.
+
+Native now keeps pending request count, drains it at the real Bot stage after
+Client, and creates new players there. Initial players.len is1; after the first
+Bot stage it is26, with allTime still0 until Player setup increments it. This
+also moves palette draws and lastThrow initialization to that stage. Pending
+requests reset on restart. The no-argument fresh local queue has FIFO-equivalent
+creation order; native independent Bot objects/Elf pool aliases remain open.
+
+Actual original LocalLevel/MainLevel setup/update and Bot/Player/Drop/Parachute/
+Map/Client/LOD/State systems run in CPU VM, manually following SnowballGame's
+active order. THREE handles actual scene objects/attributes/maths. BasicElement
+DOM templates/classList/query nodes and input/collision/network/audio/image IO
+are adapted; GLTF FileLoader stays pending. window.length is supplied0. A wrapper
+only records the original map construction seed, which native imports. Per-frame
+clock is explicit; original constructor RNG is seeded, but native global RNG/
+UUID/appearance is NOT matched. Collision query returns no candidates, and an
+explicit nonempty path per existing actor prevents bot wander during clock
+jumps. Snowball/effect/removal/collision systems and real renderer/DOM do not run.
+
+61 states (creation plus five stages in12 frames) compare against production
+begin_frame and the actual finish_frame driver with observers. The live call
+monomorphizes an empty observer, without replacing/splitting any stage. Checks
+include pending/active bot count and lastThrow, map/erosion RNG, player/drop
+creation, setup/tile/arrival/local3D positions/parents, newPlayers and parachute
+queues, camera, and strict16/17,128/129,257/258,625/626 tick gates. Final cohort29
+players/26 drops. All118 tests pass (105lib+13bin), including restart before first
+Bot pass replacing the queue, not accumulating51 players. Older single-system
+fixtures explicitly suppress queued bots or create their two non-bot actors,
+matching their source isolation; they don't preserve obsolete live eager setup.
+
+Earlier notes that native still creates bot players early are superseded. Full
+separate Bot ownership, recycled Elf aliases/transforms/model state, global RNG,
+constructor/cache timing, natural AI/collisions/host restart, arbitrary invalid
+or network inputs and whole-match/site 1:1 remain unfinished. All work here uses
+CPU/source only; no window, GPU/browser, focus change, OS input or audio playback.
+
+Updated CPU-only180s/10800-step smoke passes: initial1 player,26 connected
+after first step, final allTime100/knockedOut70. Retained native records are
+not source active-array lengths or original whole-match parity.
+
+Release application and snowball_capture diagnostic build successfully. Neither
+was launched; no window/focus/input/audio or GPU test was used.

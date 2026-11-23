@@ -867,3 +867,35 @@ unported/unverified. General nonfinite/invalid-ID behavior also uncertified.
 
 Release application/capture builds pass. Neither was launched; user game,
 focus, input and audio stayed untouched.
+
+### Queued bot creation pass (23 November 2026)
+
+Startup now has1 player/25 drops/25 queued bots. Late requests enqueue too.
+setup_queued_bots drains only after Client, before Bot decisions and Player;
+new player palette/lastThrow initialize then, allTime increments at Player setup.
+Restart replaces pending count. Do NOT restore start-time26-player allocation.
+The earlier bot-decision note about early creation is now superseded.
+
+Actual original LocalLevel/MainLevel plus Bot/Player/Drop/Parachute/Map/Client/
+LOD/State CPU oracle checks61 states over12 frames (creation + Level/Drop/Client/
+Bot/Player), strict16/17,128/129,257/258,625/626 gates, pending/active bot state,
+map RNG, actor tile/setup/arrival/root positions/parent, queues and camera.
+Source map construction seed imported; constructor/global RNG/appearance NOT
+matched. Fake DOM/image/input/collision/network/audio; models held pending;
+no collision targets and explicit nonempty paths isolate wandering. Not full
+SnowballGame/host/render or whole-match parity. Source methods unchanged.
+
+Production finish_frame uses same driver with empty observer; tests observe
+boundaries without substituting work. Old isolated fixtures disable pending
+bots or explicitly supply two non-bot actors when their source oracle omits bots.
+All118 tests pass (105lib+13bin). CPU smoke now asserts initial1 and26 connected
+after first step. No window/GPU/input/audio while user plays. Separate Bot object
+ownership and old controllers aliasing recycled Elf instances remain unfinished;
+queued count only represents source's identical no-argument local requests.
+
+Updated CPU-only180s/10800-step smoke passes: initial1 player,26 connected
+after first step, final allTime100/knockedOut70. Retained native records are
+not source active-array lengths or original whole-match parity.
+
+Release application and snowball_capture diagnostic build successfully. Neither
+was launched; no window/focus/input/audio or GPU test was used.

@@ -4,12 +4,16 @@ fn main() {
     let mut game = Snowball::new("spawn-late-match-smoke");
     game.start();
     assert_eq!(game.all_time, 0);
-    assert_eq!(game.players.len(), 26);
+    assert_eq!(game.players.len(), 1);
     assert_eq!(game.drops.len(), 25);
     assert!(game.players.iter().all(|p| p.tile == -1));
     assert!(game.drops.iter().all(|d| d.tile == -1));
-    for _ in 0..180 * 60 {
+    for frame in 0..180 * 60 {
         game.step(1. / 60., 1440., 800.);
+        if frame == 0 {
+            assert_eq!(game.players.len(), 26);
+            assert_eq!(game.all_time, 26);
+        }
         game.sounds.clear();
     }
     assert!(game.all_time <= 100);

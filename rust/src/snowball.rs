@@ -644,6 +644,7 @@ pub struct Snowball {
     last_erode: f64,
     last_drop: f64,
     last_bot: f64,
+    queued_bots: usize,
     pub seed: u32,
     pending_destination: Option<V>,
     client_destination: Option<V>,
@@ -695,6 +696,7 @@ impl Snowball {
             last_erode: 0.,
             last_drop: 0.,
             last_bot: 0.,
+            queued_bots: 0,
             seed: map_seed,
             pending_destination: None,
             client_destination: None,
@@ -764,6 +766,7 @@ impl Snowball {
         self.last_erode = 0.;
         self.last_drop = 0.;
         self.last_bot = 0.;
+        self.queued_bots = 0;
         self.seed = (self.random.next() * 4294967296.) as u32;
         self.map = Map::new_at(Grid::default(), self.seed, self.wall);
         self.reset_collisions();
@@ -771,11 +774,18 @@ impl Snowball {
         self.add_player(false);
         for _ in 0..25 {
             self.add_drop();
-            self.add_player(true)
+            self.queued_bots += 1;
         }
         self.camera = V::default();
         self.camera_velocity = V::default();
         self.sounds.push("music_start_ingame")
+    }
+    /// Source BotSystem.newBots drains only after ClientSystem. Initial and
+    /// LocalLevel late requests must not allocate Elf/player state before this.
+    fn setup_queued_bots(&mut self) {
+        for _ in 0..std::mem::take(&mut self.queued_bots) {
+            self.add_player(true);
+        }
     }
     /// Rebuild registration for a fresh map or an explicitly imported diagnostic
     /// state. Ordinary frames retain registration order and quad topology.
@@ -1159,7 +1169,7 @@ impl Snowball {
             self.map.erode(self.wall)
         }
         if self.all_time < 100 && tick - self.last_bot > 128. {
-            self.add_player(true);
+            self.queued_bots += 1;
             self.last_bot = tick
         }
         if self.knocked_out >= 99 {
@@ -1203,6 +1213,11 @@ impl Snowball {
     /// Original render/input precede all simulation systems. Keep one update
     /// per presented frame; tick is wall time, not a fixed-step catch-up loop.
     pub fn finish_frame(&mut self, width: f64, height: f64) {
+        self.finish_frame_observed(width, height, |_, _| {});
+    }
+    // The production path monomorphizes an empty observer. CPU source fixtures
+    // use these boundaries without splitting or replacing the real stage work.
+    fn finish_frame_observed(&mut self, width: f64, height: f64, mut observe: impl FnMut(&str, &Self)) {
         let grid = self.map.grid;
         let tick = (self.time * 0.06).floor();
         // MainLevel.measure creates the shared limit at the origin; LodSystem
@@ -1399,6 +1414,7 @@ impl Snowball {
                 }
             }
         }
+        observe("drop", self);
         self.update_parachutes(tick);
         // Source EffectSystem runs after parachutes, before Map/Client/Bot/Player.
         // Removed shots are not reallocated before this flush, so their Splat
@@ -1456,6 +1472,8 @@ impl Snowball {
                 self.assign_player_target(0, target);
             }
         }
+        observe("client", self);
+        self.setup_queued_bots();
         // Source Bot.update runs once per system pass, even for a removed elf.
         // It reads the retained collision quad before the Player stage.
         let mut moves = vec![];
@@ -1483,6 +1501,7 @@ impl Snowball {
             self.players[i].last_throw = state.last_throw;
             self.players[i].last_target = state.last_target;
         }
+        observe("bot", self);
         if collected_by_client {
             self.sounds.push("snowball_pickup");
         }
@@ -1587,6 +1606,7 @@ impl Snowball {
         for i in freezing {
             self.kill(i, true)
         }
+        observe("player", self);
     }
 }
 pub fn circle_rect(c: V, r: f64, p: V, hw: f64, hh: f64) -> bool {
@@ -1601,9 +1621,104 @@ pub fn circle_rect(c: V, r: f64, p: V, hw: f64, hh: f64) -> bool {
 pub(crate) mod tests {
     use super::*;
     #[test]
+    fn queued_bot_creation_matches_original_local_level_and_system_boundaries() {
+        let data: serde_json::Value =
+            serde_json::from_str(include_str!("../data/snowball-bot-stages-reference.json"))
+                .unwrap();
+        fn snapshot(g: &Snowball) -> serde_json::Value {
+            let label = |id| match id {
+                Id::Player(i) => format!("p{i}"),
+                Id::Drop(i) => format!("d{i}"),
+                _ => unreachable!(),
+            };
+            let parent = |p| match p {
+                Parent::Detached => "none",
+                Parent::Map => "map",
+                Parent::Canopy => "canopy",
+                _ => "ice",
+            };
+            serde_json::json!({
+                "camera":[g.camera.x,g.camera.y], "seed":g.map.random.0,
+                "erodeSeed":g.map.erode_random.0,"allTime":g.all_time,
+                "pendingBots":g.queued_bots,
+                "bots":g.players.iter().enumerate().filter(|(_,p)|p.bot)
+                    .map(|(i,p)|serde_json::json!({"player":format!("p{i}"),"lastThrow":p.last_throw})).collect::<Vec<_>>(),
+                "players":g.players.iter().enumerate().map(|(i,p)|serde_json::json!({
+                    "name":format!("p{i}"),"tile":p.tile,"arrived":p.arrived,"setup":p.setup,
+                    "position":[p.pos.x,p.pos.y,p.z],"parent":parent(p.parent)
+                })).collect::<Vec<_>>(),
+                "drops":g.drops.iter().enumerate().map(|(i,d)|serde_json::json!({
+                    "name":format!("d{i}"),"tile":d.tile,"arrived":d.arrived,"setup":d.setup,
+                    "position":[d.pos.x,d.pos.y,d.entity_z],"parent":parent(d.parent)
+                })).collect::<Vec<_>>(),
+                "newPlayers":g.players.iter().enumerate().filter(|(_,p)|!p.setup).map(|(i,_)|format!("p{i}")).collect::<Vec<_>>(),
+                "undropped":g.parachutes.undropped.iter().copied().map(label).collect::<Vec<_>>(),
+                "dropping":g.parachutes.dropping.iter().copied().map(label).collect::<Vec<_>>(),
+            })
+        }
+        let mut game = Snowball::new("bot-stages");
+        game.start();
+        // Import the source's original construction seed, not its final map RNG.
+        // Whole UUID/appearance/global-RNG equality is a separate open gap.
+        game.seed = data["mapSeed"].as_u64().unwrap() as u32;
+        game.map = Map::new_at(Grid::default(), game.seed, 0.);
+        assert_json_close(&snapshot(&game), &data["created"], "created");
+        let mut checked = 1;
+        for (frame, row) in data["frames"].as_array().unwrap().iter().enumerate() {
+            game.time = row["at"].as_f64().unwrap();
+            game.wall = game.time;
+            assert_eq!((game.time * 0.06).floor(), row["tick"].as_f64().unwrap());
+            for p in &mut game.players {
+                p.path = vec![V::new(1000000., 1000000.)];
+            }
+            assert!(game.begin_frame(0., 1440., 800.));
+            let points = row["checkpoints"].as_array().unwrap();
+            assert_eq!(points[0]["stage"], "level");
+            assert_json_close(
+                &snapshot(&game),
+                &points[0]["state"],
+                &format!("frame{frame} level"),
+            );
+            checked += 1;
+            // The source collision adapter is inert. Retain the real native
+            // stage driver but supply its equivalent empty collision world.
+            game.collision = Collision::new(Bounds::rect(V::default(), 10000., 10000.));
+            let mut point = 1;
+            game.finish_frame_observed(1440., 800., |stage, g| {
+                assert_eq!(points[point]["stage"], stage);
+                assert_json_close(
+                    &snapshot(g),
+                    &points[point]["state"],
+                    &format!("frame{frame} {stage}"),
+                );
+                point += 1;
+                checked += 1;
+            });
+            assert_eq!(point, points.len());
+        }
+        assert_eq!(checked, 61);
+    }
+
+    #[test]
+    fn restart_replaces_unprocessed_bot_queue_instead_of_accumulating_it() {
+        let mut game = Snowball::new("queued-bot-restart");
+        for _ in 0..2 {
+            game.start();
+            assert_eq!(game.players.len(), 1);
+            assert_eq!(game.queued_bots, 25);
+            assert_eq!(game.all_time, 0);
+        }
+        game.finish_frame(1440., 800.);
+        assert_eq!(game.queued_bots, 0);
+        assert_eq!(game.players.len(), 26);
+        assert_eq!(game.all_time, 26);
+    }
+
+    #[test]
     fn removed_bot_still_queues_target_and_advances_cooldown_in_production_stage() {
         let mut game = Snowball::new("removed-bot-integration");
         game.start();
+        game.setup_queued_bots();
         game.players.truncate(2);
         game.drops.clear();
         game.map.states.fill(1);
@@ -1702,6 +1817,7 @@ pub(crate) mod tests {
         game.wall = data["initialPerf"].as_f64().unwrap();
         game.start();
         fn isolate(game: &mut Snowball) {
+            game.queued_bots = 0; // Source oracle does not run BotSystem.
             game.players.clear();
             game.drops.clear();
             game.map = Map::new_at(Grid::default(),1,game.wall);
@@ -1752,6 +1868,7 @@ pub(crate) mod tests {
             "../data/snowball-projectile-reference.json"
         )).unwrap();
         fn isolate(game: &mut Snowball) {
+            game.queued_bots = 0; // Source oracle does not run BotSystem.
             game.players.truncate(1);
             game.drops.clear();
             game.map.states.fill(1);
@@ -1830,6 +1947,7 @@ pub(crate) mod tests {
     fn production_effects_follow_shot_stages_and_recreate_on_restart() {
         let mut game = Snowball::new("effect-system-stages");
         game.start();
+        game.queued_bots = 0; // This fixture isolates effects from bots.
         game.players.clear();
         game.drops.clear();
         game.collision = Collision::new(Bounds::rect(V::default(), 10000., 10000.));
@@ -2224,6 +2342,7 @@ pub(crate) mod tests {
         for case in data["elfCases"].as_array().unwrap() {
             let mut game = Snowball::new("animation-integration");
             game.start();
+            game.queued_bots = 0; // Source oracle runs one Elf, not BotSystem.
             game.players.truncate(1);
             game.drops.clear();
             game.shots.clear();
@@ -2643,6 +2762,8 @@ mod command_tests {
         for case in data["cases"].as_array().unwrap() {
             let mut g = Snowball::new("command-reference");
             g.start();
+            g.queued_bots = 0; // Source fixture supplies two non-bot actors.
+            g.add_player(false);
             g.players.truncate(2);
             g.drops.clear();
             g.shots.clear();
@@ -2786,6 +2907,8 @@ mod lod_tests {
         for case in data["cases"].as_array().unwrap() {
             let mut g = Snowball::new("lod-reference");
             g.start();
+            g.queued_bots = 0; // Source fixture supplies two non-bot actors.
+            g.add_player(false);
             g.players.truncate(2);
             g.drops.clear();
             g.shots.clear();
