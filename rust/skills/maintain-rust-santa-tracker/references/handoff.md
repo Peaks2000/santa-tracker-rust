@@ -1200,3 +1200,29 @@ OckO jingle follow-up7.128712871s. Don't approximate with blanket stop. Native
 pause freezes phase while source yX_P gain fades .3; muted-launch recovery also
 open. Active live-round loop reuse is improved; terminal fade/music lifecycle
 not certified. Prior touch targets, Date/frame clocks, GPU/textures still open.
+
+### Shared music transition planner (23 November 2026)
+
+New music_transition module translates actual config transition + complete
+Util.transition using raw source metadata; actual source playing/position/stop/
+scheduled getters exercised by CPU oracle303 cases. Track ordering,117/202 BPM,
+bar4/default truthiness, half-beat threshold, special offset, array selection,
+stale empty-buffer stop, utility fades/offsets and lounge follow-up represented.
+Source .play attempts can update startTime/loopStartTime without restarting the
+buffer, while startOffset updates only after early-return guards. Do NOT derive
+source reported position from native voice cursor. All135 tests pass (121lib+14app).
+
+NOT WIRED TO PLAYBACK YET: runtime game-over global Stop is still wrong. Next
+source-faithful transport needs AudioSource.play metadata/guard/cancellation and
+pending-buffer lifetime, absolute context clock and actual source fade/timer
+execution. Planner tests record calls, not execution;40s synthetic source inputs,
+stable clock, no OS/audio/mid-call time proof. Source track configs/music bus are
+retained in fixture. Jd9u input gain .5623413 currently missing from native mix;
+parent automation, n6Xc/pattern side effects and prior pause/mute remain open.
+Source stop may empty handle array before scheduled buffer stop completes.
+
+Don't claim this component fixes the app yet. No device, audio, window or input
+opened while user plays. Prior early fade cancellation window, touch targets,
+Date/frame clock and GPU/texture comparisons remain unresolved; goal stays broad.
+
+Release app and Jetpack capture compile successfully; neither launched.

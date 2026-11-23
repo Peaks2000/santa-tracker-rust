@@ -3215,3 +3215,53 @@ All134 tests pass (120 library +14 application); all-target compile check and
 release app/Jetpack capture builds pass. Neither launched; no input/audio/UI
 interruption. Internal Command::Play now uses explicit policies instead of a
 boolean; all in-repository call sites are migrated and checked.
+
+## Shared music transition planning/source timing queries (23 November 2026)
+
+Read complete selected config music_start/ingame_gameover/transition functions,
+full bundled Util.transition, AudioSource.play, position/playing/scheduledToPlay
+getters and stop. Native voice sample position is not a substitute for source
+metadata: play updates startTime/loopStartTime BEFORE some retrigger early returns,
+and startOffset only after them. An audible buffer can continue while reported
+source position resets or becomes scheduled. Runtime transport must preserve this.
+
+New music_transition Rust module implements complete selected transition process
+and utility call planning with raw source metadata getters and stop-query effects.
+Track order it5v/TcWr/R5CC/OckO/z9yE retained. It selects the first playing track,
+stops all five music sources if the selected one is gameover, preserves the stale
+empty-buffer stop quirk (endTime unchanged), and plans utility calls plus lounge
+follow-up. Defaults bpm0->120, sync0->4, fadeOut0->2, JS remainder and falsey NaN
+position fallback are preserved. Source-specific117/202 BPM, R5CC->TcWr offset,
+strict half-beat threshold, already-active return, scheduled-source preference,
+from arrays, immediate fade arithmetic/shortened duration, optional offsets/fade-in
+and gameover7.128712871s follow-up are represented. This is call planning, NOT
+AudioSource.play/buffer execution or application music integration.
+
+`music-transition-reference.cjs` runs actual original config transition process,
+complete Util.transition and actual AudioSource position/playing/stop/scheduled
+methods in CPU VM. Play/fade are call recorders; source timing/flags/counts are
+supplied (synthetic40s durations to exercise wrap boundaries). 303 cases cover all
+track pairs, multiple/stale/stopping/scheduled states, buffer wrap, defaults,
+source position with zero loop range (NaN), zero duration, negative remainder and
+utility-only branches. Rust checks all call plans/return times and source
+query/stop results, numerical tolerance1e-10. JSON distinguishes unavailable
+nonfinite position values as null. Native metadata inputs are typed; arbitrary
+JS dynamic types and mid-call clock advances/read-order are not certified.
+
+First fixture execution exposed a missing Util closure binding in the VM harness;
+binding original utility scope fixed execution without changing the source.
+No native formula was tuned to manufactured outputs. Fixture retains source
+hashes, original track configs and music bus data. All135 tests pass (121lib+14app).
+
+RUNTIME STILL UNCHANGED for this planner: Sound's old music_ingame_gameover global
+Stop remains wrong. Next required transport must update metadata exactly around
+AudioSource.play guards (including late-request rejection), retain pending buffer
+and stop callbacks, execute beat-scheduled fades/plays and follow-up requests, and
+apply Jd9u input gain .56234132519035 plus parent bus automation/filtering. Source
+AudioSource.stop can remove a retrig source handle while scheduling its future
+buffer stop; source metadata and still-audible buffer lifetime can diverge.
+Do not wire this planner to approximate live voice phase and call it complete.
+Music-start pattern/bus side effects outside the transition process are unported.
+No AudioContext/SDL/graphics/device/input/audio tests; user's game untouched.
+
+Release app and Jetpack capture compile successfully; neither launched.
