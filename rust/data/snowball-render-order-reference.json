@@ -1,0 +1,1086 @@
+{
+  "method": "Actual Iceberg/marker/client/effect constructors, fixed-radius reuse, THREE world/camera matrices/frustum and WebGLRenderList.sort. Scene poses and marker locations supplied; no full game update, rendering, GPU/browser/window/input. Mesh/points eligibility traversal is fixture code matching the relevant source path, with groupOrder=0. Comparator pairs call actual original helper.",
+  "rows": [
+    {
+      "input": {
+        "name": "mixed-depth",
+        "camera": [
+          0,
+          0
+        ],
+        "size": [
+          1440,
+          800
+        ],
+        "layer": [
+          5,
+          1,
+          3,
+          0,
+          4,
+          2
+        ],
+        "positions": [
+          [
+            0,
+            -90,
+            32
+          ],
+          [
+            0,
+            90,
+            32
+          ],
+          [
+            50,
+            0,
+            32
+          ],
+          [
+            -50,
+            0,
+            32
+          ],
+          [
+            20,
+            30,
+            -20
+          ],
+          [
+            -20,
+            -30,
+            70
+          ]
+        ]
+      },
+      "records": [
+        {
+          "name": "player",
+          "id": 5,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9483801635766336
+        },
+        {
+          "name": "arrival",
+          "id": 6,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9483801635766336
+        },
+        {
+          "name": "destination",
+          "id": 7,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9483801635766336
+        },
+        {
+          "name": "trail",
+          "id": 9,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9360193601936019
+        },
+        {
+          "name": "impact",
+          "id": 10,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9360193601936019
+        },
+        {
+          "name": "ice5",
+          "id": 22,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9375046699902002
+        },
+        {
+          "name": "ice1",
+          "id": 14,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9354791122133956
+        },
+        {
+          "name": "ice3",
+          "id": 18,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        },
+        {
+          "name": "ice0",
+          "id": 12,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9375951602821292
+        },
+        {
+          "name": "ice4",
+          "id": 20,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9353430754816293
+        },
+        {
+          "name": "ice2",
+          "id": 16,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        }
+      ],
+      "order": [
+        "trail",
+        "impact",
+        "player",
+        "arrival",
+        "destination",
+        "ice4",
+        "ice1",
+        "ice2",
+        "ice3",
+        "ice5",
+        "ice0"
+      ],
+      "iceOrder": [
+        4,
+        1,
+        2,
+        3,
+        5,
+        0
+      ],
+      "graphicIds": [
+        12,
+        14,
+        16,
+        18,
+        20,
+        22
+      ]
+    },
+    {
+      "input": {
+        "name": "equal-depth-reparent",
+        "camera": [
+          8,
+          5
+        ],
+        "size": [
+          375,
+          300
+        ],
+        "layer": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "positions": [
+          [
+            -50,
+            0,
+            32
+          ],
+          [
+            -30,
+            0,
+            32
+          ],
+          [
+            -10,
+            0,
+            32
+          ],
+          [
+            10,
+            0,
+            32
+          ],
+          [
+            30,
+            0,
+            32
+          ],
+          [
+            50,
+            0,
+            32
+          ]
+        ]
+      },
+      "records": [
+        {
+          "name": "player",
+          "id": 5,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9483801635766336
+        },
+        {
+          "name": "arrival",
+          "id": 6,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9483801635766336
+        },
+        {
+          "name": "destination",
+          "id": 7,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9483801635766336
+        },
+        {
+          "name": "trail",
+          "id": 9,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9360193601936019
+        },
+        {
+          "name": "impact",
+          "id": 10,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9360193601936019
+        },
+        {
+          "name": "ice5",
+          "id": 22,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        },
+        {
+          "name": "ice4",
+          "id": 20,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        },
+        {
+          "name": "ice3",
+          "id": 18,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        },
+        {
+          "name": "ice2",
+          "id": 16,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        },
+        {
+          "name": "ice1",
+          "id": 14,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        },
+        {
+          "name": "ice0",
+          "id": 12,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        }
+      ],
+      "order": [
+        "trail",
+        "impact",
+        "player",
+        "arrival",
+        "destination",
+        "ice0",
+        "ice1",
+        "ice2",
+        "ice3",
+        "ice4",
+        "ice5"
+      ],
+      "iceOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "graphicIds": [
+        12,
+        14,
+        16,
+        18,
+        20,
+        22
+      ]
+    },
+    {
+      "input": {
+        "name": "equal-depth-reuse",
+        "camera": [
+          0,
+          0
+        ],
+        "size": [
+          1440,
+          800
+        ],
+        "layer": [
+          1,
+          4,
+          0,
+          5,
+          3,
+          2
+        ],
+        "positions": [
+          [
+            -50,
+            0,
+            32
+          ],
+          [
+            -30,
+            0,
+            32
+          ],
+          [
+            -10,
+            0,
+            32
+          ],
+          [
+            10,
+            0,
+            32
+          ],
+          [
+            30,
+            0,
+            32
+          ],
+          [
+            50,
+            0,
+            32
+          ]
+        ],
+        "reuse": [
+          1,
+          4
+        ]
+      },
+      "records": [
+        {
+          "name": "player",
+          "id": 5,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9483801635766336
+        },
+        {
+          "name": "arrival",
+          "id": 6,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9483801635766336
+        },
+        {
+          "name": "destination",
+          "id": 7,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9483801635766336
+        },
+        {
+          "name": "trail",
+          "id": 9,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9360193601936019
+        },
+        {
+          "name": "impact",
+          "id": 10,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9360193601936019
+        },
+        {
+          "name": "ice1",
+          "id": 14,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        },
+        {
+          "name": "ice4",
+          "id": 20,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        },
+        {
+          "name": "ice0",
+          "id": 12,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        },
+        {
+          "name": "ice5",
+          "id": 22,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        },
+        {
+          "name": "ice3",
+          "id": 18,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        },
+        {
+          "name": "ice2",
+          "id": 16,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        }
+      ],
+      "order": [
+        "trail",
+        "impact",
+        "player",
+        "arrival",
+        "destination",
+        "ice0",
+        "ice1",
+        "ice2",
+        "ice3",
+        "ice4",
+        "ice5"
+      ],
+      "iceOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "graphicIds": [
+        12,
+        14,
+        16,
+        18,
+        20,
+        22
+      ]
+    },
+    {
+      "input": {
+        "name": "near-depth-ties",
+        "camera": [
+          0,
+          -7
+        ],
+        "size": [
+          1440,
+          800
+        ],
+        "layer": [
+          4,
+          5,
+          3,
+          2,
+          1,
+          0
+        ],
+        "positions": [
+          [
+            0,
+            0,
+            32
+          ],
+          [
+            0,
+            1e-12,
+            32
+          ],
+          [
+            0,
+            -1e-12,
+            32
+          ],
+          [
+            0,
+            1e-10,
+            32
+          ],
+          [
+            0,
+            -1e-10,
+            32
+          ],
+          [
+            0,
+            1e-8,
+            32
+          ]
+        ]
+      },
+      "records": [
+        {
+          "name": "player",
+          "id": 5,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9483801635766336
+        },
+        {
+          "name": "arrival",
+          "id": 6,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9483801635766336
+        },
+        {
+          "name": "destination",
+          "id": 7,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9483801635766336
+        },
+        {
+          "name": "trail",
+          "id": 9,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9360193601936019
+        },
+        {
+          "name": "impact",
+          "id": 10,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9360193601936019
+        },
+        {
+          "name": "ice4",
+          "id": 20,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477636
+        },
+        {
+          "name": "ice5",
+          "id": 22,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362476448
+        },
+        {
+          "name": "ice3",
+          "id": 18,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477612
+        },
+        {
+          "name": "ice2",
+          "id": 16,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        },
+        {
+          "name": "ice1",
+          "id": 14,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        },
+        {
+          "name": "ice0",
+          "id": 12,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        }
+      ],
+      "order": [
+        "trail",
+        "impact",
+        "player",
+        "arrival",
+        "destination",
+        "ice5",
+        "ice3",
+        "ice0",
+        "ice1",
+        "ice2",
+        "ice4"
+      ],
+      "iceOrder": [
+        5,
+        3,
+        0,
+        1,
+        2,
+        4
+      ],
+      "graphicIds": [
+        12,
+        14,
+        16,
+        18,
+        20,
+        22
+      ]
+    },
+    {
+      "input": {
+        "name": "height-and-y",
+        "camera": [
+          -10,
+          -7
+        ],
+        "size": [
+          980,
+          600
+        ],
+        "layer": [
+          2,
+          5,
+          4,
+          1,
+          0,
+          3
+        ],
+        "positions": [
+          [
+            0,
+            -70,
+            -40
+          ],
+          [
+            0,
+            70,
+            90
+          ],
+          [
+            0,
+            20,
+            70
+          ],
+          [
+            0,
+            -20,
+            -30
+          ],
+          [
+            0,
+            0,
+            32
+          ],
+          [
+            0,
+            0,
+            33
+          ]
+        ]
+      },
+      "records": [
+        {
+          "name": "player",
+          "id": 5,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9483801635766336
+        },
+        {
+          "name": "arrival",
+          "id": 6,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9483801635766336
+        },
+        {
+          "name": "destination",
+          "id": 7,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9483801635766336
+        },
+        {
+          "name": "trail",
+          "id": 9,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9360193601936019
+        },
+        {
+          "name": "impact",
+          "id": 10,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9360193601936019
+        },
+        {
+          "name": "ice2",
+          "id": 16,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9369168788599965
+        },
+        {
+          "name": "ice5",
+          "id": 22,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365533167494549
+        },
+        {
+          "name": "ice4",
+          "id": 20,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        },
+        {
+          "name": "ice1",
+          "id": 14,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.936652697763643
+        },
+        {
+          "name": "ice0",
+          "id": 12,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9361950477081865
+        },
+        {
+          "name": "ice3",
+          "id": 18,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9357690615949079
+        }
+      ],
+      "order": [
+        "trail",
+        "impact",
+        "player",
+        "arrival",
+        "destination",
+        "ice3",
+        "ice0",
+        "ice4",
+        "ice5",
+        "ice1",
+        "ice2"
+      ],
+      "iceOrder": [
+        3,
+        0,
+        4,
+        5,
+        1,
+        2
+      ],
+      "graphicIds": [
+        12,
+        14,
+        16,
+        18,
+        20,
+        22
+      ]
+    },
+    {
+      "input": {
+        "name": "mobile-camera",
+        "camera": [
+          8,
+          5
+        ],
+        "size": [
+          375,
+          300
+        ],
+        "layer": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "positions": [
+          [
+            0,
+            -70,
+            -40
+          ],
+          [
+            0,
+            70,
+            90
+          ],
+          [
+            0,
+            20,
+            70
+          ],
+          [
+            0,
+            -20,
+            -30
+          ],
+          [
+            0,
+            0,
+            32
+          ],
+          [
+            0,
+            0,
+            33
+          ]
+        ]
+      },
+      "records": [
+        {
+          "name": "player",
+          "id": 5,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9483801635766336
+        },
+        {
+          "name": "arrival",
+          "id": 6,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9483801635766336
+        },
+        {
+          "name": "destination",
+          "id": 7,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9483801635766336
+        },
+        {
+          "name": "trail",
+          "id": 9,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9360193601936019
+        },
+        {
+          "name": "impact",
+          "id": 10,
+          "groupOrder": 0,
+          "renderOrder": 0,
+          "z": -0.9360193601936019
+        },
+        {
+          "name": "ice0",
+          "id": 12,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9361950477081865
+        },
+        {
+          "name": "ice1",
+          "id": 14,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.936652697763643
+        },
+        {
+          "name": "ice2",
+          "id": 16,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9369168788599965
+        },
+        {
+          "name": "ice3",
+          "id": 18,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9357690615949079
+        },
+        {
+          "name": "ice4",
+          "id": 20,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365371362477624
+        },
+        {
+          "name": "ice5",
+          "id": 22,
+          "groupOrder": 0,
+          "renderOrder": 1,
+          "z": -0.9365533167494549
+        }
+      ],
+      "order": [
+        "trail",
+        "impact",
+        "player",
+        "arrival",
+        "destination",
+        "ice3",
+        "ice0",
+        "ice4",
+        "ice5",
+        "ice1",
+        "ice2"
+      ],
+      "iceOrder": [
+        3,
+        0,
+        4,
+        5,
+        1,
+        2
+      ],
+      "graphicIds": [
+        12,
+        14,
+        16,
+        18,
+        20,
+        22
+      ]
+    }
+  ],
+  "pairs": [
+    {
+      "a": {
+        "id": 9,
+        "groupOrder": 0,
+        "renderOrder": 0,
+        "z": 0.8
+      },
+      "b": {
+        "id": 1,
+        "groupOrder": 0,
+        "renderOrder": 1,
+        "z": -0.8
+      },
+      "result": -1
+    },
+    {
+      "a": {
+        "id": 9,
+        "groupOrder": 2,
+        "renderOrder": 0,
+        "z": 0.8
+      },
+      "b": {
+        "id": 1,
+        "groupOrder": 0,
+        "renderOrder": 1,
+        "z": -0.8
+      },
+      "result": 1
+    },
+    {
+      "a": {
+        "id": 9,
+        "groupOrder": 0,
+        "renderOrder": 1,
+        "z": 0.8
+      },
+      "b": {
+        "id": 1,
+        "groupOrder": 0,
+        "renderOrder": 1,
+        "z": -0.8
+      },
+      "result": -1
+    },
+    {
+      "a": {
+        "id": 9,
+        "groupOrder": 0,
+        "renderOrder": 1,
+        "z": 0.8
+      },
+      "b": {
+        "id": 1,
+        "groupOrder": 0,
+        "renderOrder": 1,
+        "z": 0.8
+      },
+      "result": 1
+    },
+    {
+      "a": {
+        "id": 9,
+        "groupOrder": 0,
+        "renderOrder": 1,
+        "z": null
+      },
+      "b": {
+        "id": 1,
+        "groupOrder": 0,
+        "renderOrder": 1,
+        "z": 0.8
+      },
+      "result": 0
+    },
+    {
+      "a": {
+        "id": 9,
+        "groupOrder": 0,
+        "renderOrder": 1,
+        "z": 0
+      },
+      "b": {
+        "id": 1,
+        "groupOrder": 0,
+        "renderOrder": 1,
+        "z": 0
+      },
+      "result": 1
+    }
+  ],
+  "source_sha256": {
+    "static/scenes/snowball/js/engine/core/entity.js": "d846a4e29e7f6664d422212d8746746da32c0a2e2a91e51b52f26b00ab0028ce",
+    "static/scenes/snowball/js/engine/utils/allocatable.js": "c4ab5759c61e9c933e3fb009cc6d3f59e0e83e5cb951444ba45b6a1c1c7ad628",
+    "static/scenes/snowball/js/snowball/effects/snowsplat-effect.js": "5275032a11f78d821dc5e64ab3573cc2096596e16c258f76aa29f1c63ad2f11e",
+    "static/scenes/snowball/js/snowball/effects/trail-effect.js": "2a86c3cd50ac602779908019033e24294f599cb7d5c6ddc2777f871b8661efa8",
+    "static/scenes/snowball/js/snowball/entities/destination-marker.js": "60ec3e652c38b625c939d9831ebcb526cddb4c7141997ba471ed3b58ed696e5d",
+    "static/scenes/snowball/js/snowball/entities/iceberg.js": "6d6e9c5a4a9516db6b48b4532d2ddc035104d65b322299aa98bc2b67151990b5",
+    "static/scenes/snowball/js/snowball/entities/player-marker.js": "9ea345e315ba34920fe325e9a3e4083adab61a5a2d0d092cb22b92ec7341f544",
+    "static/scenes/snowball/js/snowball/shader-partials.js": "1fc9cbe411bc773abe913ca1b692f485b510abd4e77a922eff189d333235ec3c",
+    "static/scenes/snowball/js/snowball/systems/client-system.js": "0f8aded75ed447fbfede07eaa10485180aa54d1e2de101ba9a6a77fe7a0aa7d8",
+    "static/scenes/snowball/js/snowball/systems/effect-system.js": "87107f41fd15ae291aa8f192f5e83c3ab6825de09239af7f89835a7d160a183d",
+    "static/scenes/snowball/js/snowball/textures.js": "e910084cc44c6757f4daef16f1f2e2539fbd22b391ebab159f644dfdb7c59eb3",
+    "static/third_party/lib/three/build/three.js": "6467e0098991c58a5c6e64415c7126079672b4e0927c3203589644db96c64b60"
+  },
+  "limits": [
+    "Native production uses sorting only for iceberg shells and their renderOrder=1 tail priority; global order-zero object sorting is still unfinished.",
+    "Graphic-ID tie equivalence relies on fixed source cellSize64/radius32 and unchanged graphic creation order per body; radius replacement is outside scope.",
+    "CPU requested order/matrices, not GPU blending/occlusion/pixels; actual whole-game IDs, model readiness and group/frustum lifecycle remain unverified."
+  ]
+}

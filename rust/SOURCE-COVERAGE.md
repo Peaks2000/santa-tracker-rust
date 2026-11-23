@@ -2348,3 +2348,53 @@ build. Neither was launched. Texture/model readiness, driver front-face behavior
 source callback/full object identity, global transparency sorting and all pixels
 remain unverified. Source/provenance JSON records hashes and precise scope.
 No window/focus/input change, user approval change or README rating change.
+
+
+### Iceberg shell render priority and ordering (23 November 2026)
+
+Source Iceberg.setup gives its graphic renderOrder=1 explicitly so frozen
+children render correctly. THREE sorts transparent entries by groupOrder,
+renderOrder, descending object-origin clip depth then Object3D.id. Source
+ordinary scene groups/render orders are zero; iceberg shells therefore draw
+after ordinary world objects even when arrival/destination markers disable
+depth testing. Native previously drew shells inside effects(), then markers.
+Shell pass now runs after those markers and before HUD, preserving priority.
+This does NOT finish the global order-zero queue: other native draw groups
+remain fixed, and their source depth/ID interleaving still needs implementation.
+
+Shells now sort by original default local camera/gimbal double clip depth, not
+GPU/f32 vertex depth. Source quaternion-derived gimbal rotation and camera's
+fixed X=-PI/Z=0 (after Game.setLevel lookAt/z reset), near=1/far=100000 are
+represented in f64. Actual source camera/matrix comparisons bound this helper;
+arbitrary camera projections/rotation are not generalized. Equal shell depths
+use body slot creation order: source cellSize is fixed64, so each radius32
+graphic is created once per body and retains its Object3D ID across free/reuse.
+This equivalence is checked against actual graphic IDs; changing radius can
+recreate a graphic and requires separate ID-generation tracking, still outside
+this pass. Native body pool indices are not claimed as all scene object IDs.
+
+New source comparator mirrors branch order, including pairwise NaN subtraction
+returning JS-sort equality without falling through to ID. Only finite production
+shell poses are in the ordered corpus; arbitrary multi-NaN sort algorithm
+behavior is not certified. Generic comparator is currently used for shells,
+not as a claim that all THREE rendering has been translated.
+
+CPU snowball-render-order-reference.cjs uses unchanged original Iceberg/marker/
+client/effect constructors, fixed-radius allocate/free/setup reuse, actual THREE
+world/camera matrices, Frustum and WebGLRenderList.sort. Eligibility traversal is
+fixture code for visible mesh/points with default ancestor visibility/layers and
+groupOrder=0; it is not the whole renderer. Six controlled scenes cover mixed
+depths/heights, equal/near ties, reverse insertion/reparenting, pool reuse and
+mobile/camera changes. All six shells remain within source frustum in every
+case. Production helper depths match within 2e-15 and sorted slots match exactly.
+Native may still submit offscreen shells; GPU clipping/blending/coverage, whole
+scene IDs/async model readiness, global sorting and radius changes remain open.
+
+Comparator tests also reproduce actual source ordinary+ice order from captured
+source keys, verifying shell priority despite nearer markers, plus group/priority/
+depth/ID/signed-zero/NaN pair branches. This is CPU requested draw order, not
+GPU output or original full-game simulation. All 111 tests pass (100 library +
+11 binary). No window, focus/input action, user approval or README rating change.
+
+Release application and snowball_capture diagnostic build successfully. Neither
+was launched; user game/focus/input stayed untouched.

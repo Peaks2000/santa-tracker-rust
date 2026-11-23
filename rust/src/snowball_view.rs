@@ -563,6 +563,9 @@ void main(){float time=data.y;float a=time/(1000.+5000.*data.x)*3.14159*2.;vec2 
             gl_use_material(&self.clip);
         }
 
+        // Source iceberg graphic renderOrder=1 comes after every ordinary
+        // transparent object, including no-depth arrival/destination markers.
+        self.icebergs(g, vp);
         gl_use_default_material();
         self.powerups(assets, g);
         Ok(())
@@ -666,12 +669,14 @@ void main(){float time=data.y;float a=time/(1000.+5000.*data.x)*3.14159*2.;vec2 
         self.particle.set_uniform("Time", g.effects.time as f32);
         gl_use_material(&self.particle);
         draw_batched(&mesh);
+    }
+    fn icebergs(&self, g: &Snowball, vp: Mat4) {
         let mut ice = Mesh {
             vertices: vec![],
             indices: vec![],
             texture: None,
         };
-        for &slot in &g.removal.layer {
+        for slot in santa_tracker::snowball_render_order::iceberg_slots(&g.removal, g.camera) {
             let body = &g.removal.bodies[slot];
             let radius = body.radius.unwrap_or(32.) as f32;
             let model = Self::ice_matrix(body);

@@ -1,0 +1,28 @@
+{
+  "fixture": "snowball-render-order-reference.json",
+  "source_execution": "Six controlled scenes using actual Iceberg/marker/client/effect constructors, fixed-radius pool reuse, THREE world/camera matrices/frustum and WebGLRenderList.sort. Relevant mesh/points traversal is fixture code; all ancestor visibility/layers and groupOrder are default. No game update/renderer/GPU/browser/window/input.",
+  "changes": [
+    "Iceberg renderOrder1 shell pass moved after all ordinary world objects including no-depth markers, before native HUD.",
+    "Within the shell pass, compare double object-origin clip depth descending then original graphic creation order. Fixed-radius body-slot creation order is equivalent to relative source Object3D IDs across reuse.",
+    "Production source comparator branch order includes groupOrder, renderOrder, descending depth then ID. Pairwise NaN returns equal, matching JS comparator NaN-as-zero; arbitrary multi-NaN sort behavior not certified."
+  ],
+  "checks": [
+    "Actual source order versus production comparator across all recorded ordinary/ice items; source shells form the renderOrder1 tail even with nearer markers.",
+    "Production iceberg ordering/depths versus six source scenes: mixed depths, equal and nearly equal keys, reversed insertion, fixed-radius reuse, heights, camera translation and mobile viewport.",
+    "Source doubles versus native depth within 2e-15 and exact sorted slot order in these fixtures."
+  ],
+  "limits": [
+    "Native global order-zero objects still render in fixed groups; this is NOT a completed full transparency queue.",
+    "Fixed original local camera/gimbal, groupOrder0 and cellSize64/radius32 only; other projections, nonzero groups and graphic recreation on radius change require further integration.",
+    "Source CPU requested ordering, not GPU blending/occlusion/frustum/pixels. Native may still submit offscreen shells; fixture keeps all six shells within actual source frustum.",
+    "Full scene object IDs/model readiness, global ties/pooling and arbitrary nonfinite sort sequences remain unverified."
+  ],
+  "reviewed_source_sha256": {
+    "static/scenes/snowball/js/snowball/entities/iceberg.js": "6d6e9c5a4a9516db6b48b4532d2ddc035104d65b322299aa98bc2b67151990b5",
+    "static/scenes/snowball/js/snowball/systems/entity-removal-system.js": "1153d0a20db468fe7ced48d9d3f977c1e1adacf2c07ec1aa59e813224374ba5c",
+    "static/scenes/snowball/js/snowball/levels/main-level.js": "0b079ed3f800b4c3dcf3a81f2fca44968a8bc240ab5901f14460013a78253452",
+    "static/scenes/snowball/js/snowball-game.js": "48d4ced63ac0e39fe3010e80472d333d26d838a54c23a5841941fe42458d4d4f",
+    "static/scenes/snowball/js/engine/core/game.js": "a8571291aa26baeae2a268cf693e69877f4407976ca4023dcc8f8eb6ad52e459",
+    "static/third_party/lib/three/build/three.js": "6467e0098991c58a5c6e64415c7126079672b4e0927c3203589644db96c64b60"
+  }
+}

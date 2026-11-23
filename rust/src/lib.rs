@@ -153,3 +153,4 @@ pub mod snowball_collision;
 pub mod snowball_animation;
 pub mod snowball_parachute;
 pub mod snowball_removal;
+pub mod snowball_render_order;

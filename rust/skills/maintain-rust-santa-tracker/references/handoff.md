@@ -762,3 +762,25 @@ configurations and actual plane triangles compare to production policy/helpers.
 All 109 tests pass; release app/capture build, not run. Positive determinants
 only; arbitrary reflections, GPU winding/coverage/pixels, full sorting/readiness
 and whole-mode/site 1:1 remain unverified. See material-state reference/provenance.
+
+
+### Iceberg priority/order pass (23 November 2026)
+
+Shells moved out of effects() to after arrival/destination markers, before HUD: custom
+source graphic renderOrder=1 outranks all ordinary world objects (order/group0).
+snowball_render_order comparator mirrors source group/render/depth/ID branch
+order; production uses it only for shell pass, NOT whole global sorting. Shell
+depth uses default local camera/gimbal f64 origin, preserving source sort namespace.
+At fixed cellSize=64/radius=32, body creation slots preserve relative graphic IDs
+through reuse; radius-driven graphic replacement remains unsupported by this
+ID equivalence. Other normal objects still use fixed draw groups: unfinished.
+
+Actual source constructors/pool reuse + THREE matrices/frustum/WebGLRenderList
+fixture covers six controlled scenes, exact slot order and depth within 2e-15.
+Visible/default-layer/group0 traversal is fixture code, not renderer execution.
+Generic source-key tests prove priority/ID and pairwise NaN behavior; arbitrary
+nonfinite sort sequences remain unverified. No GPU/pixels/window/input. All 111
+tests pass. Full global ties/model readiness/geometry/routing still unfinished.
+
+Release application and snowball_capture diagnostic build successfully. Neither
+was launched; user game/focus/input stayed untouched.

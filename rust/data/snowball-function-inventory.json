@@ -2415,7 +2415,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/systems/entity-removal-system.js",
       "lines": 161,
-      "review": "snowball_removal.rs translates Presence guard/first exit, LIFO freeze attachment, constant stored drift/bob/opacity, strict bounds, null-map return, teleport thresholds and pool/teardown state. Four actual original cases/26 updates plus three concrete stages/19 frames check active behavior. Full actor/model reuse, all scene restart overlaps and asynchronous LOD remain partial.",
+      "review": "snowball_removal.rs translates Presence guard/first exit, LIFO freeze attachment, constant stored drift/bob/opacity, strict bounds, null-map return, teleport thresholds and pool/teardown state. Four actual original cases/26 updates plus three concrete stages/19 frames check active behavior. Full actor/model reuse, all scene restart overlaps and asynchronous LOD remain partial.; iceberg graphic renderOrder1 tail placement and depth/creation-ID shell order now match six controlled original THREE scenes including fixed-radius reuse. Global ordinary-object sorting, radius-driven graphic ID replacement and GPU pixels remain unverified.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs",
@@ -3278,7 +3278,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/entities/iceberg.js",
       "lines": 165,
-      "review": "Native stored Ice/setup/update, retained pooled rotation/uniform state and grid z reset checked with actual source. Ten THREE matrices and five isolated original/native renders check parent/geometry/alpha; opacity uses Float32 data instead of byte tint. Edge/MSAA raster differences remain; full pooled child graph/scenario-wide combinations not certified.; source constructor material/front/depth/blend settings now compared to production pipeline policy across 12 kinds. Original GLTF material parser plus source-reviewed Elf transparent clone override; original backend function bodies with recording adapters. Quad topology matches actual THREE plane. GPU cull/front-facing/pixels, reflected transforms and whole transparency order remain unverified.",
+      "review": "Native stored Ice/setup/update, retained pooled rotation/uniform state and grid z reset checked with actual source. Ten THREE matrices and five isolated original/native renders check parent/geometry/alpha; opacity uses Float32 data instead of byte tint. Edge/MSAA raster differences remain; full pooled child graph/scenario-wide combinations not certified.; source constructor material/front/depth/blend settings now compared to production pipeline policy across 12 kinds. Original GLTF material parser plus source-reviewed Elf transparent clone override; original backend function bodies with recording adapters. Quad topology matches actual THREE plane. GPU cull/front-facing/pixels, reflected transforms and whole transparency order remain unverified.; iceberg graphic renderOrder1 tail placement and depth/creation-ID shell order now match six controlled original THREE scenes including fixed-radius reuse. Global ordinary-object sorting, radius-driven graphic ID replacement and GPU pixels remain unverified.",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs",
