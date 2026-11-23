@@ -1079,3 +1079,25 @@ visibility and linebox geometry; level-group new GPU path/goal entrance still
 unverified. User playing: no windows, graphics contexts, input injection or audio.
 
 Release app and Jetpack capture compile successfully; neither launched.
+
+### Jetpack touchpad presentation (23 November 2026)
+
+Touchpad/nub now render from original 334x258 sheet, crops [79,0,255,258] and
+[0,0,79,85], using associated image path. Geometry is outside scene scale: .6/.8
+at 668px, parent center origin, -125 margins; nub49.02%/48.45%, -35 margins plus
+normalized control displacement. Sixty analytic CSS cases from twelve original
+control states/five widths, tolerance1e-10. Not browser computed/pixel evidence.
+Reference property parser initially confused top/margin-top; anchored and fixed.
+
+Widget sits at stacking0 between current sky0 and incoming background1, below
+goal/scene2. Sky clear/gradient separated; draw_sky capture wrapper retains both.
+Continuous mesh/colors unchanged but no new GPU run. Source resting/current cloud
+art remains missing. Native hides by skipping draw, versus source offscreen9999
+translation; extreme tall viewport not modeled. All127 tests pass (113lib+14app).
+
+NEXT actual touch adapter and paused/GUI event delivery/tutor callbacks; widget
+pixels/DPI/clipping/stack and current/next cloud layout; prior new GPU group path
+and goal entrance remain unverified. User still playing: no windows, graphics
+contexts, injected input or audio. Keep whole-site goal and conservative ratings.
+
+Release app and Jetpack capture compile successfully; neither launched.

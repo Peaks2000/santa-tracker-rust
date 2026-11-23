@@ -126,12 +126,24 @@ impl JetpackView {
             },
         );
     }
+    #[allow(dead_code)] // Also used by the standalone gradient capture example.
     pub fn draw_sky(background_level: u32, transition: Option<f64>) {
+        Self::clear_sky(background_level);
+        Self::sky_transition(background_level, transition);
+    }
+    fn clear_sky(background_level: u32) {
         let colors = [
             0x90d4f5, 0xad95f5, 0xf59393, 0xebca46, 0xed5b37, 0xc93c3c, 0x9719d1, 0x4d2dc2,
             0x51057a, 0x04266e, 0x04266e,
         ];
         clear_background(Color::from_hex(colors[(background_level as usize).min(10)]));
+    }
+    fn sky_transition(background_level: u32, transition: Option<f64>) {
+        gl_use_default_material();
+        let colors = [
+            0x90d4f5, 0xad95f5, 0xf59393, 0xebca46, 0xed5b37, 0xc93c3c, 0x9719d1, 0x4d2dc2,
+            0x51057a, 0x04266e, 0x04266e,
+        ];
         if let Some(progress) = transition {
             let c = Color::from_hex(colors[((background_level + 1) as usize).min(10)]);
             let y = (-1. + progress as f32) * screen_height() * 2.;
@@ -154,6 +166,35 @@ impl JetpackView {
                 indices: vec![0, 1, 2, 0, 2, 3, 3, 2, 4, 3, 4, 5],
                 texture: None,
             });
+        }
+    }
+    fn touchpad(&self, assets: &Assets) {
+        if !self.controls.visible {
+            return;
+        }
+        let (Some(x), Some(y)) = (self.controls.start[0], self.controls.start[1]) else {
+            return;
+        };
+        let rectangles = santa_tracker::jetpack_controls::widget_layout(
+            screen_width() as f64,
+            [x, y],
+            self.controls.nub.unwrap_or([0., 0.]),
+        );
+        for (rect, source) in rectangles
+            .into_iter()
+            .zip([Rect::new(79., 0., 255., 258.), Rect::new(0., 0., 79., 85.)])
+        {
+            self.image(
+                assets.scene("jetpack", "touchpad.png"),
+                rect[0] as f32,
+                rect[1] as f32,
+                WHITE,
+                DrawTextureParams {
+                    dest_size: Some(vec2(rect[2] as f32, rect[3] as f32)),
+                    source: Some(source),
+                    ..Default::default()
+                },
+            );
         }
     }
     pub fn dimensions() -> (f64, f64) {
@@ -225,7 +266,11 @@ impl JetpackView {
             .set(game.time, [game.player.fire_scale], 0.2, Ease::Default);
         let fire_scale = self.fire.value(game.time)[0] as f32;
         gl_use_default_material();
-        Self::draw_sky(game.background_level, game.transition);
+        Self::clear_sky(game.background_level);
+        // Transformed touchpad has stack level 0: above current sky, below
+        // incoming background (z=1), goal and scene (z=2).
+        self.touchpad(assets);
+        Self::sky_transition(game.background_level, game.transition);
         if let Some(progress) = game.transition {
             self.level_layer(assets, game.background_level + 2, progress);
         }

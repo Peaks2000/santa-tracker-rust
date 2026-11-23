@@ -2944,3 +2944,45 @@ does not clear active touch; do not add such a reset on native in-scene restart.
 No windows, graphics contexts, injected input or audio; no live test interruption.
 
 Release app and Jetpack capture compile successfully; neither launched.
+
+## Elf Jetpack touchpad artwork and stacking (23 November 2026)
+
+Re-read complete scene SCSS (touchpad/nub/hidden styles), background styles and
+Background ordering (reviewed completely in preceding passes), HTML and active
+native sky/control/render path. Widget is outside the scaled scene. Original
+334x258 sheet contains base crop [79,0,255,258] and nub crop [0,0,79,85]. Native
+now draws both with associated image blending from unchanged original asset.
+
+Widget layout follows source CSS: margins -125px, parent center transform origin,
+scale .6 below 668px / .8 at or above it, nub left 49.02% and top 48.45% with -35px
+margins plus normalized control displacement. Start and nub state come directly
+from the source-translated Controls model. First touch shows the centered nub;
+move updates it; end hides it. Existing native mouse-as-touch extension drives
+this renderer; actual native multitouch event dispatch remains unwired.
+
+Source touchpad transform creates stack level 0, after current background level
+0 but before incoming background z=1 and goal/scene z=2. Native sky clear and
+incoming-gradient draw are now separate so widget paints between them, rather
+than incorrectly overlaying player/items or the incoming level. The public
+standalone draw_sky wrapper composes those same sky operations for the existing
+capture example; continuous gradient mesh geometry/colors are unchanged. No GPU
+rerun was performed, so earlier gradient raster evidence predates this extraction.
+Current/resting level-cloud artwork remains a separate existing omission.
+
+`jetpack-touchpad-layout.cjs` reads declared SCSS properties, source PNG dimensions
+and original Controls fixture states. Twelve distinct origin/nub states at five
+viewport widths (including 667.99 and 668) yield 60 analytic geometry cases.
+Native renderer uses the tested widget_layout helper; rectangle tolerance 1e-10.
+This is CSS transform algebra, not computed browser layout, fixed-point CSS
+rounding or pixel/GPU proof. First test caught the reference parser's unanchored
+`top` lookup matching margin-top; anchored property parsing corrected the fixture,
+without changing source or weakening geometric tolerance.
+
+All 127 tests pass (113 library +14 application). Remaining: actual touch event
+adapter, GUI/paused event routing, source tutorial dispatch, source computed
+bounds/antialias/filtering and stack captures, clipped-edge and DPI comparisons.
+Hidden source widget uses translateY(9999px) with scale overridden; native skips
+its offscreen draw (extreme viewports reaching that position not modeled).
+No live windows/graphics contexts/input injection/audio; user's game untouched.
+
+Release app and Jetpack capture compile successfully; neither launched.

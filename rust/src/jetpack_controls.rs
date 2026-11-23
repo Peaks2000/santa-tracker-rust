@@ -115,9 +115,49 @@ impl Controls {
     }
 }
 
+/// CSS touchpad and nub rectangles in viewport pixels (outside scene scale).
+/// Sprite crops are pad [79,0,255,258], nub [0,0,79,85].
+pub fn widget_layout(
+    viewport_width: f64,
+    origin: [f64; 2],
+    translation: [f64; 2],
+) -> [[f64; 4]; 2] {
+    let scale = if viewport_width >= 668. { 0.8 } else { 0.6 };
+    let x = origin[0] - 125. + 255. / 2. * (1. - scale);
+    let y = origin[1] - 125. + 258. / 2. * (1. - scale);
+    [
+        [x, y, 255. * scale, 258. * scale],
+        [
+            x + (255. * 49.02 / 100. - 35. + translation[0]) * scale,
+            y + (258. * 48.45 / 100. - 35. + translation[1]) * scale,
+            79. * scale,
+            85. * scale,
+        ],
+    ]
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn touchpad_rectangles_follow_source_css_and_original_nub_states() {
+        let fixture: serde_json::Value =
+            serde_json::from_str(include_str!("../data/jetpack-touchpad-layout.json")).unwrap();
+        assert_eq!(fixture["image"], serde_json::json!([334, 258]));
+        assert_eq!(fixture["pad_source"], serde_json::json!([79, 0, 255, 258]));
+        assert_eq!(fixture["nub_source"], serde_json::json!([0, 0, 79, 85]));
+        for case in fixture["cases"].as_array().unwrap() {
+            let origin: [f64; 2] = serde_json::from_value(case["start"].clone()).unwrap();
+            let nub: [f64; 2] = serde_json::from_value(case["nub"].clone()).unwrap();
+            let rects = widget_layout(case["width"].as_f64().unwrap(), origin, nub);
+            for (actual, expected) in rects.iter().zip([&case["pad"], &case["nub_rect"]]) {
+                for (a, b) in actual.iter().zip(expected.as_array().unwrap()) {
+                    assert!((a - b.as_f64().unwrap()).abs() < 1e-10, "{case}");
+                }
+            }
+        }
+    }
+
     #[test]
     fn original_controls_event_sequences_and_frame_vectors() {
         let reference: serde_json::Value =
