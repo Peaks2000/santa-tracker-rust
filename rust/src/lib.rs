@@ -163,3 +163,4 @@ pub mod jetpack_audio;
 pub mod music_transition;
 pub mod music_source;
 pub mod music_lifecycle;
+pub mod music_control;

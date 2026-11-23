@@ -1276,3 +1276,31 @@ phase-pause/muted-launch and missing parent music bus gain remain unresolved.
 Textures/rendering/input/other scenes still need work; no scene rating upgraded.
 
 Release app + jetpack_background_capture compile successfully, neither launched.
+
+### Assembled shared music controller (23 November 2026)
+
+`music_control.rs` now builds selected initialized music state from specs/buffer
+durations and executes transition plans through source lifecycle. Spec::music()
+loads bundled audio.json, checked against original config, rejects newly present
+unsupported source branch fields. Actual original constructors/init + config
+transition/Util.transition/source methods in CPU VM match225sequences/925actions,
+all five states and ordered backend ops checked1e-10. All138tests pass124lib+14app.
+Fixture synthetic durations, initial unused undefined startOffset/loopPlaying
+encoded0/false. Init/connect-stack loader stubbed; constructor gain ops discarded
+before action snapshots. No renderer/AudioParam/PCM/device equivalence certified.
+
+NEXT implement backend execution of music_control calls: separate source metadata
+from real buffer lifetimes; absolute starts/stops, exact gain automation and
+context/wall timers. Then wire Sound music events; currently NOT wired and old
+music/globalStop remains active. Per-source node/timer IDs are recorder labels,
+not global handles. Timer closures need captured stop_at and shared flag checks.
+Don't substitute sample position for source.position or drop old callbacks.
+
+Original n6Xc action fully read: EMPTY, no extra pattern work needed. Start_ingame
+curves yX_P and Jd9u output gains1 over.5s; start_scene has no such curves. Jd9u
+input gain.56234132519035; village wkQ_ output gain.3981071705535. Global pause
+curves yX_P0/1 over.3s rather than freezing source progression. Preserve these in
+integration. All unsupported loading/Edge/graph/clock/PCM/rendering/other-scene
+work remains explicit; no scene rating upgraded. No app/device/input launched.
+
+Release app and jetpack_background_capture compile successfully; neither launched.

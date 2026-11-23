@@ -3358,3 +3358,53 @@ No window, device or input opened while the user plays; compilation only.
 Release application and `jetpack_background_capture` compile successfully; neither
 was launched. The first build command named a nonexistent `jetpack_capture`
 example; corrected to the actual target before the successful release check.
+
+### Assembled shared music control and initialized source state (23 November 2026)
+
+`music_control.rs` initializes the five selected source specs from native bundled
+`audio.json`, then executes music_transition plans through music_lifecycle instead
+of treating play/fade/stop as inert recorders. This remains a producer of backend
+operations, not a native audio renderer. Source node identity and queued timers
+remain per-source stable labels, distinct from actual audio lifetime.
+
+Read complete original Audio constructor (Klang 2964–2979), complete AudioSource
+constructor and init (3218–3311), connect/disconnect and setLoopRegion adjacent
+methods, selected inherited output getter and previously covered play/lifecycle/
+playing/position/scheduled methods. The comparison executes actual Audio and
+AudioSource constructors plus init, complete config transition action,
+Util.transition and selected complete source methods/getters together. Synthetic
+buffer durations, no real AudioContext; post-load init is deferred then invoked
+explicitly, and connect-stack registration is a no-op. Output getter aliases
+_output, as the read inherited getter does. Constructor gain calls are recorded
+but discarded before transition snapshots; initial source volume is retained in
+state. Full graph wiring is not implemented or certified.
+
+`music-control-reference.cjs` checks 225 sequences / 925 action snapshots: all25
+source/target pairs at8elapsed boundaries, rapid repeated changes, game-over
+cleanup, scheduled lounge follow-up and explicit old/new callbacks. Rust compares
+all five complete source states, initialized state and ordered node/gain/timer
+ops after every action at1e-10. Bundled native specs also match the original config
+specs. Original constructors, engine/config and transition hashes retained.
+Fixture stores each case on one JSON line to avoid excessive whitespace.
+
+Selected music configs have no streaming/reverse/xfade/panner/priority/random or
+max-source override. Native spec loading refuses these newly present fields for
+review instead of silently implementing only a subset. No Edge branch, deferred
+loader behaviour, arbitrary dynamic constructor inputs, PCM or physical node
+validation verified. Initial unused undefined startOffset/loopPlaying are encoded
+0/false for state serialization; selected methods do not read them before first
+write. Source missing-buffer/init path remains outside assembled initialization.
+Gain.value inputs are supplied per track; source-play holds remain symbolic.
+No gain automation evaluation, browser task/timer timing, live mid-call clocks,
+filter/resampling or device output verified.
+
+Also read complete original start_ingame/start_scene/gameover/global pause and
+unpause processes and n6Xc action through config evaluation. n6Xc is empty, so it
+requires no native audio work. Start_ingame curves both yX_P and Jd9u output gains;
+these bus effects, Jd9u input_vol .56234132519035, wkQ_ output_vol .3981071705535
+and global pause .3s bus fades remain outside music_control and must be connected
+by the runtime. Existing native generic music/global Stop/pause behaviour remains
+unchanged. This is not audible end-to-end parity. Full138 tests pass (124lib+14app).
+No window, device, sound playback or input automation while the user plays.
+
+Release app and jetpack_background_capture compile successfully; neither launched.
