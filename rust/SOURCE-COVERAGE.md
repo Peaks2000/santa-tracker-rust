@@ -2605,3 +2605,72 @@ not source active-array lengths or original whole-match parity.
 
 Release application and snowball_capture diagnostic build successfully. Neither
 was launched; no window/focus/input/audio or GPU test was used.
+
+### Snowball within-match Elf pool and independent controllers (23 November 2026)
+
+Reread full Elf and allocator plus the PlayerSystem removal/allocation and
+BotSystem/Bot paths, components and removal/arrival callbacks. Source Player
+removal frees non-client elves while BotSystem retains controllers. A later
+Elf.allocate pops the same physical object LIFO: old/new controllers can point
+to one elf and retain different lastTarget/lastThrow. Native previously stored
+those fields in every newly appended Player record, losing these aliases.
+
+Controller state now lives in snowball_bot::Controller with stable player-slot
+reference. Player speed.scale is explicit. Gone non-client teardown unregisters
+collision/LOD/pick flags and frees the slot. Reallocation resets components in
+place (health/presence/arrival/path/powerups/speed/pending flags), retaining root
+XYZ/parent, facing, LOD/model-request flags and animator/model state. No animator
+clone/allocation on reuse. Source opacity reset is translated; actual loaded
+material/AnimationMixer lifecycle is not certified by held GLTF I/O here.
+
+Monotonic spawn order represents source PlayerSystem.players array order,
+separate from physical body/THREE object identity. New setup, landing, active
+updates and free follow it; e.g. free[1,3], reuse[3,1] yields active[0,2,3,1],
+then free[3,1], reuse[1,3] yields[0,2,1,3]. Source Bot requests now enter native
+maps immediately per controller, before Player setup/landing, with target-slot
+references resolved afterwards. Multiple controllers' requests for one current
+elf overwrite value while retaining first key insertion, as source maps do.
+
+The source palette texture cache keys major/minor only. Physical slot overwrites
+would lose earliest hair/ponytail choices in a delayed native render, so an
+at-most24 first-allocation pair history now drives texture preloading. Art bytes,
+filtering, shaders and decoded density are unchanged. Global async image/model
+readiness and GPU sampling remain unverified, including general non-local calls.
+
+CPU VM runs actual Elf/Allocatable/PlayerSystem, BotSystem/Bot, Parachute/Client/
+LOD/State/GameMap and bundled THREE. AddPlayer wrapper records physical slots
+and current generation without altering arguments. Bot.update wrapper selects
+actual shared Random input per frame, skipping four native palette inputs per
+queued request and restoring constructor LCG outside the method. This supplies
+matching decision input, NOT global UUID/appearance/constructor RNG equality.
+Explicit landed roots/paths and manual dead/gone inputs isolate two reuse cycles.
+Model IO stays pending; Canvas/images/input/collision/network/audio are inert.
+Source query supplies elf2; native driver contains that sole collider, so no pair
+can notify. Source Snowball creation records calls at PlayerSystem boundary;
+native actual emitted shot records compare origin/target/order. Effects and
+projectile/collision behavior are outside this new source oracle's coverage.
+
+41 snapshots over10 frames compare four physical elves/eight connected
+lifetimes/seven independent controllers, insertion/free order, reset/retained
+fields, handler/LOD registration, pending/active queues, controller state/aliases
+and throw requests. Throw logs are copied at each source snapshot, so later
+calls cannot retroactively change earlier states. All119 tests pass (106lib+
+13bin); all-target compilation passes (two existing unused-import warnings).
+CPU180s/10800-step smoke reaches100 connections/99 controllers with50 physical
+slots,26 active players and74KO. This is native stability, not source match
+statistics, frame/input latency or visual certification. No window/GPU/input.
+
+Cross-restart class pools still clear at native start, unlike source module
+pools. Old-ID PlayerMap aliases/generic network routing, full marker/dolly/model
+ownership, loaded animation/material/async readiness and complete collision/
+particle/pool overlaps remain unfinished. Earlier notes that Bot state remains
+inside Player or all within-match root/facing pooling is missing are superseded.
+The source read also identifies a remaining numeric difference: Elf.update uses
+computed normalized-vector length for its stop comparison, while native uses
+configured step; zero/NaN normalization differs in code shape. These branches
+need dedicated original boundary fixtures/correction before numeric 1:1 claims.
+
+Release application/capture builds pass; neither launched. User game/focus/input
+and audio stayed untouched. Also audit distinct wall/game clocks next: source
+Client death wait uses performance.now while native currently stores game time;
+existing equal-clock fixtures cannot establish those divergent-clock branches.

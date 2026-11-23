@@ -17,12 +17,13 @@ fn main() {
         game.sounds.clear();
     }
     assert!(game.all_time <= 100);
-    assert!(game.players.iter().all(|p| p.setup));
+    assert!(game.players.iter().all(|p| !p.active || p.setup));
     assert!(game.drops.iter().all(|d| d.setup));
     let report = serde_json::json!({
         "scope":"CPU-only native regression, not source/full-game parity or GPU validation",
         "seconds":180,"frames":180*60,"all_time":game.all_time,
-        "players":game.players.len(),"drops":game.drops.len(),
+        "player_slots":game.players.len(),"active_players":game.players.iter().filter(|p|p.active).count(),
+        "bot_controllers":game.bots.len(),"drops":game.drops.len(),
         "knocked_out":game.knocked_out,"gameover":game.gameover,
         "map_rings":game.map.rings.len(),
         "undefined_player_tiles":game.players.iter().filter(|p|p.tile==UNDEFINED_TILE).count(),

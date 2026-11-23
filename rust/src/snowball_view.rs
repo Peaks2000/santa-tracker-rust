@@ -334,8 +334,8 @@ void main(){float time=data.y;float a=time/(1000.+5000.*data.x)*3.14159*2.;vec2 
             self.model = Some(ElfModel::load(&assets.root.join("scenes/snowball/models"))?)
         }
         // Source texture cache is populated in allocation order, even offscreen.
-        for p in &g.players {
-            self.elf_texture(p.color, p.skin, p.hair, p.pony);
+        for &(color, skin, hair, pony) in &g.elf_appearances {
+            self.elf_texture(color, skin, hair, pony);
         }
         clear_background(Color::from_hex(0x71a7db));
         let vp = Self::vp(g);

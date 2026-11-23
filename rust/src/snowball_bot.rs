@@ -7,6 +7,12 @@ pub struct State {
     pub last_target: Option<usize>,
     pub last_throw: f64,
 }
+/// Source Bot owns this state independently from its pooled Elf reference.
+#[derive(Clone, Copy)]
+pub struct Controller {
+    pub player: usize,
+    pub state: State,
+}
 #[derive(Clone, Copy)]
 pub struct Player {
     pub id: usize,

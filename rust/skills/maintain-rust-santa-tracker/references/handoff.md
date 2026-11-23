@@ -899,3 +899,45 @@ not source active-array lengths or original whole-match parity.
 
 Release application and snowball_capture diagnostic build successfully. Neither
 was launched; no window/focus/input/audio or GPU test was used.
+
+### Within-match Elf reuse and controllers (23 November 2026)
+
+Player vector now contains PHYSICAL ELF SLOTS, not all historical spawns or source
+active array order. player_order() returns active insertion order using per-life
+order. Free NPC slots LIFO; client0 is not freed inside a match. Controller lives
+in public bots Vec with .player slot/.state.last_target/.state.last_throw;
+Player now has .speed instead of .bot and no controller fields. Old controllers
+persist and alias reused slots alongside new controllers, per source behavior.
+
+On reuse reset components in place; retain root position/z/parent, facing, LOD/
+model-request and animator state. No animator cloning/recreation. Teardown clears
+setup/pick handler and collision registration for freed NPCs. Setup/landing/
+updates/free use generation order. Bot commands enter queues immediately during
+Bot stage, with target position references resolved after Player landing.
+Palette first-pair history (max24) preserves hair/pony cache choice despite slot
+overwrites; renderer preloads it. Filtering/art/shaders/density unchanged.
+
+Actual source allocator/Elf/Player/Bot and named arrival/LOD systems compare41
+CPU snapshots,4 bodies/8 connected lives/7 controllers over two LIFO reuse cycles,
+reset and retained fields/registrations/queues/throw boundary. Source decision
+RNG controlled at Bot method entry using actual shared Random; constructor LCG,
+UUID/palette/global RNG excluded. GLTF held pending; collision query supplied
+elf2, native sole collider avoids contact pairs; source throws recorded rather
+than executing projectile system. Snapshot logs copied, not mutable aliases.
+All119 tests pass (106lib+13bin), all-target check passes; CPU180s smoke ends with
+100 connections/99 controllers/50 slots/26 active/74KO. Not original match stats,
+GPU appearance or latency proof. No window/input/audio.
+
+NEXT: start still clears all elf slots/free list (cross-restart pool missing),
+loaded model/animator/material/async and global marker ownership not certified,
+old PlayerMap IDs aliasing recycled elves/network paths remain incomplete.
+Numeric source discrepancy found: source movement stops against delta.length()
+after normalization, native compares configured step; V::norm zero/NaN behavior
+also needs exact source boundaries. Keep these explicit; no whole-mode 1:1.
+Earlier notes about controller fields in Player and no within-match reuse are
+superseded. GPU checks remain prohibited while user is playing.
+
+Release application/capture builds pass; neither launched. User game/focus/input
+and audio stayed untouched. Also audit distinct wall/game clocks next: source
+Client death wait uses performance.now while native currently stores game time;
+existing equal-clock fixtures cannot establish those divergent-clock branches.

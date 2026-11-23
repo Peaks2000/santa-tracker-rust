@@ -507,7 +507,8 @@ pub struct Player {
     pub tile: i32,
     pub dropped: f64,
     pub arrived: bool,
-    pub bot: bool,
+    pub speed: f64,
+    pub order: u64,
     pub path: Vec<V>,
     pub face: f64,
     pub alive: bool,
@@ -519,8 +520,6 @@ pub struct Player {
     pub hair: usize,
     pub pony: bool,
     pub powerups: Powerups,
-    pub last_throw: f64,
-    pub last_target: Option<usize>,
     pub animator: crate::snowball_animation::Animator,
     pending_throw: bool,
     pub anim: String,
@@ -645,6 +644,10 @@ pub struct Snowball {
     last_drop: f64,
     last_bot: f64,
     queued_bots: usize,
+    pub bots: Vec<crate::snowball_bot::Controller>,
+    free_players: Vec<usize>,
+    next_player_order: u64,
+    pub elf_appearances: Vec<(usize, usize, usize, bool)>,
     pub seed: u32,
     pending_destination: Option<V>,
     client_destination: Option<V>,
@@ -697,6 +700,10 @@ impl Snowball {
             last_drop: 0.,
             last_bot: 0.,
             queued_bots: 0,
+            bots: vec![],
+            free_players: vec![],
+            next_player_order: 0,
+            elf_appearances: vec![],
             seed: map_seed,
             pending_destination: None,
             client_destination: None,
@@ -749,6 +756,9 @@ impl Snowball {
         self.hud_time = 0.;
         self.all_time = 0;
         self.players.clear();
+        self.bots.clear();
+        self.free_players.clear();
+        self.next_player_order = 0;
         self.drops.clear();
         // Source teardown frees pending shots before active shots. Its class
         // pools survive new SnowballGame instances in the same module realm.
@@ -784,8 +794,22 @@ impl Snowball {
     /// LocalLevel late requests must not allocate Elf/player state before this.
     fn setup_queued_bots(&mut self) {
         for _ in 0..std::mem::take(&mut self.queued_bots) {
-            self.add_player(true);
+            let player = self.add_player(true);
+            self.bots.push(crate::snowball_bot::Controller {
+                player,
+                state: crate::snowball_bot::State {
+                    last_target: None, last_throw: (self.time * 0.06).floor(),
+                },
+            });
         }
+    }
+    /// Source PlayerSystem.players insertion order, independent from physical
+    /// Elf pool slot/THREE object identity. Reallocated elves append to that list.
+    pub fn player_order(&self) -> Vec<usize> {
+        let mut order: Vec<_> = self.players.iter().enumerate()
+            .filter(|(_, p)| p.active).map(|(i, _)| i).collect();
+        order.sort_by_key(|&i| self.players[i].order);
+        order
     }
     /// Rebuild registration for a fresh map or an explicitly imported diagnostic
     /// state. Ordinary frames retain registration order and quad topology.
@@ -817,12 +841,32 @@ impl Snowball {
             }
         }
     }
-    fn add_player(&mut self, bot: bool) {
+    fn add_player(&mut self, bot: bool) -> usize {
         let tile = -1;
         let color = (self.random.next() * 6.) as usize;
         let skin = (self.random.next() * 4.) as usize;
         let hair = (self.random.next() * 4.) as usize;
         let pony = self.random.next() >= 0.5;
+        if !self.elf_appearances.iter().any(|&(c, s, _, _)| c == color && s == skin) {
+            self.elf_appearances.push((color, skin, hair, pony));
+        }
+        let order = self.next_player_order;
+        self.next_player_order += 1;
+        if let Some(slot) = self.free_players.pop() {
+            // Elf.onAllocated replaces components while leaving the physical
+            // root/dolly/LOD/model/animator and their pending actions intact.
+            let p = &mut self.players[slot];
+            p.active = true;
+            p.presence = Presence::default();
+            p.opacity = 1.; p.material_opacity = 1.;
+            p.setup = false; p.landed = false; p.collision_handler = false;
+            p.tile = tile; p.dropped = f64::INFINITY; p.arrived = false;
+            p.speed = if bot { 0.75 } else { 1. }; p.order = order;
+            p.path.clear(); p.alive = true; p.death = 0.; p.gone = false; p.frozen = false;
+            p.color = color; p.skin = skin; p.hair = hair; p.pony = pony;
+            p.powerups = Powerups::default(); p.pending_throw = false;
+            return slot;
+        }
         self.players.push(Player {
             active: true,
             parent: Parent::Detached,
@@ -838,7 +882,8 @@ impl Snowball {
             tile,
             dropped: f64::INFINITY,
             arrived: false,
-            bot,
+            speed: if bot { 0.75 } else { 1. },
+            order,
             path: vec![],
             face: 0.,
             alive: true,
@@ -850,13 +895,12 @@ impl Snowball {
             hair,
             pony,
             powerups: Default::default(),
-            last_throw: (self.time * 0.06).floor(),
-            last_target: None,
             animator: crate::snowball_animation::Animator::new(),
             pending_throw: false,
             anim: "elf_rig_idle".into(),
             fall: 1,
         });
+        self.players.len() - 1
     }
     fn add_drop(&mut self) {
         let tile = -1;
@@ -1476,16 +1520,11 @@ impl Snowball {
         self.setup_queued_bots();
         // Source Bot.update runs once per system pass, even for a removed elf.
         // It reads the retained collision quad before the Player stage.
-        let mut moves = vec![];
-        let mut throws = vec![];
-        for i in 1..self.players.len() {
+        for bot_index in 0..self.bots.len() {
+            let bot = self.bots[bot_index];
+            let i = bot.player;
+            let mut state = bot.state;
             let p = &self.players[i];
-            if !p.bot || !p.arrived {
-                continue;
-            }
-            let mut state = crate::snowball_bot::State {
-                last_target: p.last_target, last_throw: p.last_throw,
-            };
             let decision = crate::snowball_bot::update(
                 &mut state,
                 crate::snowball_bot::Player {
@@ -1496,16 +1535,17 @@ impl Snowball {
                 || self.collision.quad.near(Bounds::rect(p.pos, 200., 200.)),
                 |j| {let p = &self.players[j]; [p.pos.x, p.pos.y, p.z]},
             );
-            if let Some(destination) = decision.destination { moves.push((i, destination)); }
-            if let Some(target) = decision.target { throws.push((i, target)); }
-            self.players[i].last_throw = state.last_throw;
-            self.players[i].last_target = state.last_target;
+            self.bots[bot_index].state = state;
+            if let Some(destination) = decision.destination { self.assign_player_destination(i, destination); }
+            if let Some(target) = decision.target { self.queue_player_target(i, TargetPosition::Player(target)); }
         }
         observe("bot", self);
         if collected_by_client {
             self.sounds.push("snowball_pickup");
         }
-        for (i, p) in self.players.iter_mut().enumerate() {
+        let player_order = self.player_order();
+        for &i in &player_order {
+            let p = &mut self.players[i];
             if !p.setup {
                 if p.tile < 0 && p.tile != UNDEFINED_TILE { p.tile = self.map.habitable(); }
                 p.setup = true;
@@ -1519,18 +1559,13 @@ impl Snowball {
                 self.all_time += 1;
             }
         }
-        for p in &mut self.players {
+        for &i in &player_order {
+            let p = &mut self.players[i];
             if p.arrived && !p.landed {
                 p.landed = true;
                 p.parent = Parent::Map;
                 p.pos = grid.pos(p.tile);
             }
-        }
-        for (i, p) in moves {
-            self.assign_player_destination(i, p)
-        }
-        for (i, j) in throws {
-            self.queue_player_target(i, TargetPosition::Player(j))
         }
         // All destinations precede all targeted positions. A failed local path
         // feeds Client for its NEXT update; it cannot fire in this Player pass.
@@ -1548,10 +1583,8 @@ impl Snowball {
             self.throw(i, position);
         }
         let mut freezing = vec![];
-        for (i, p) in self.players.iter_mut().enumerate() {
-            if !p.active {
-                continue;
-            }
+        for i in player_order {
+            let p = &mut self.players[i];
             self.client_ring
                 .update(i, i == 0, p.arrived, p.alive, p.presence.exiting());
             if p.arrived {
@@ -1561,7 +1594,7 @@ impl Snowball {
             if p.alive {
                 if let Some(&next) = p.path.first() {
                     let d = next.sub(p.pos);
-                    let step = 2.25 * if p.bot { 0.75 } else { 1. };
+                    let step = 2.25 * p.speed;
                     let v = d.norm().mul(step);
                     if d.len() <= step {
                         p.pos = next;
@@ -1598,8 +1631,12 @@ impl Snowball {
                 p.active = false;
                 self.knocked_out += 1;
                 self.sounds.push("snowball_frozen");
-                if i != 0 && p.parent == Parent::Map {
-                    p.parent = Parent::Detached;
+                if i != 0 {
+                    if p.parent == Parent::Map { p.parent = Parent::Detached; }
+                    p.setup = false;
+                    p.collision_handler = false;
+                    self.collision.remove(Id::Player(i));
+                    self.free_players.push(i);
                 }
             }
         }
@@ -1621,6 +1658,116 @@ pub fn circle_rect(c: V, r: f64, p: V, hw: f64, hh: f64) -> bool {
 pub(crate) mod tests {
     use super::*;
     #[test]
+    fn within_match_elf_pool_and_independent_bot_aliases_match_original_systems() {
+        let data: serde_json::Value =
+            serde_json::from_str(include_str!("../data/snowball-elf-pool-reference.json")).unwrap();
+        fn snapshot(g: &Snowball, first_shot: usize) -> serde_json::Value {
+            let target = |t: &TargetPosition| match t {
+                TargetPosition::Player(i) => *i,
+                _ => panic!("expected source Bot reference"),
+            };
+            let parent = |p| match p {
+                Parent::Map => "map",
+                Parent::Detached => "none",
+                Parent::Canopy => "canopy",
+                _ => "ice",
+            };
+            serde_json::json!({
+                "active":g.player_order(),"free":g.free_players,"allTime":g.all_time,"pendingBots":g.queued_bots,
+                "actors":g.players.iter().map(|p|serde_json::json!({
+                    "generation":p.order,"active":p.active,"setup":p.setup,"handler":p.collision_handler,"alive":p.alive,"present":p.presence.present,"exit":p.presence.exit_time,
+                    "arrived":p.arrived,"tile":p.tile,"position":[p.pos.x,p.pos.y,p.z],"face":p.face,"parent":parent(p.parent),"speed":p.speed,
+                    "path":p.path.iter().map(|v|[v.x,v.y]).collect::<Vec<_>>(),"pending":p.pending_throw,"high":p.lod.high,"dirty":p.lod.needs_update,"visible":p.lod.root_visible,"requested":p.lod.model_requested,
+                    "primary":p.powerups.primary,"secondary":p.powerups.secondary,"swapped":p.powerups.swapped
+                })).collect::<Vec<_>>(),
+                "bots":g.bots.iter().map(|b|serde_json::json!({"player":b.player,"lastTarget":b.state.last_target,"lastThrow":b.state.last_throw})).collect::<Vec<_>>(),
+                "newPlayers":g.player_order().into_iter().filter(|i|!g.players[*i].setup).collect::<Vec<_>>(),
+                "undropped":g.parachutes.undropped.iter().map(|id|if let Id::Player(i)=id{*i}else{panic!("player")}).collect::<Vec<_>>(),
+                "dropping":g.parachutes.dropping.iter().map(|id|if let Id::Player(i)=id{*i}else{panic!("player")}).collect::<Vec<_>>(),
+                "destinations":g.player_destinations.iter().map(|(i,p)|serde_json::json!({"player":i,"position":[p.x,p.y]})).collect::<Vec<_>>(),
+                "targets":g.player_targets.iter().map(|(i,t)|serde_json::json!({"player":i,"target":target(t)})).collect::<Vec<_>>(),
+                "throws":g.shots.iter().filter(|s|s.id>=first_shot).map(|s|serde_json::json!({"player":s.thrower,"origin":[s.origin.x,s.origin.y],"target":[s.target.x,s.target.y]})).collect::<Vec<_>>()
+            })
+        }
+        let mut game = Snowball::new("elf-pool");
+        game.map = Map::new(Grid::default(), 1);
+        game.map.states.fill(1);
+        game.map.obstacles.fill(-1);
+        game.add_player(false);
+        game.queued_bots = 3;
+        game.setup_queued_bots();
+        for (i, p) in game.players.iter_mut().enumerate() {
+            p.tile = 2080 + i as i32;
+            p.arrived = true;
+            p.landed = true;
+            p.parent = Parent::Map;
+            p.pos = V::new(100. + i as f64 * 30., 100.);
+            p.path = vec![V::new(10000., 10000.)];
+        }
+        assert_json_close(&snapshot(&game, 0), &data["created"], "pool created");
+        let mut checked = 1;
+        for (frame, row) in data["frames"].as_array().unwrap().iter().enumerate() {
+            let input = &row["input"];
+            game.time = input["at"].as_f64().unwrap();
+            game.wall = game.time;
+            let first_shot = game.next_shot_id;
+            for bi in input["retain"].as_array().into_iter().flatten() {
+                game.bots[bi.as_u64().unwrap() as usize].state.last_target = Some(2);
+            }
+            if input["paths"].as_bool().unwrap_or(false) {
+                for p in &mut game.players {
+                    if p.active {
+                        p.path = vec![V::new(10000., 10000.)];
+                    }
+                }
+            }
+            for i in input["free"].as_array().into_iter().flatten() {
+                let i = i.as_u64().unwrap() as usize;
+                let p = &mut game.players[i];
+                p.pos = V::new(200. + i as f64 * 13., 120. + i as f64 * 7.);
+                p.z = i as f64 / 10.;
+                p.face = 0.4 + i as f64 / 10.;
+                p.alive = false;
+                p.presence.finish();
+                p.powerups.collect();
+                p.powerups.swapped = true;
+            }
+            game.queued_bots += input["queue"].as_u64().unwrap_or(0) as usize;
+            game.random = Random::seeded(row["seed"].as_str().unwrap());
+            let points = row["checkpoints"].as_array().unwrap();
+            assert_json_close(
+                &snapshot(&game, first_shot),
+                &points[0]["state"],
+                &format!("pool frame{frame} before"),
+            );
+            checked += 1;
+            game.collision = Collision::new(Bounds::rect(V::default(), 10000., 10000.));
+            // One collider cannot notify a pair. Its root quad supplies the
+            // same explicit elf2 candidate as the source collision adapter.
+            game.collision.add(Id::Player(2));
+            let mut point = 1;
+            game.finish_frame_observed(1440., 800., |stage, g| {
+                if stage == "drop" {
+                    return;
+                }
+                assert_eq!(points[point]["stage"], stage);
+                assert_json_close(
+                    &snapshot(g, first_shot),
+                    &points[point]["state"],
+                    &format!("pool frame{frame} {stage}"),
+                );
+                point += 1;
+                checked += 1;
+            });
+            assert_eq!(point, points.len());
+        }
+        assert_eq!(checked, 41);
+        assert_eq!(game.players.len(), 4);
+        assert_eq!(game.bots.len(), 7);
+        assert_eq!(game.all_time, 8);
+    }
+
+    #[test]
     fn queued_bot_creation_matches_original_local_level_and_system_boundaries() {
         let data: serde_json::Value =
             serde_json::from_str(include_str!("../data/snowball-bot-stages-reference.json"))
@@ -1641,8 +1788,7 @@ pub(crate) mod tests {
                 "camera":[g.camera.x,g.camera.y], "seed":g.map.random.0,
                 "erodeSeed":g.map.erode_random.0,"allTime":g.all_time,
                 "pendingBots":g.queued_bots,
-                "bots":g.players.iter().enumerate().filter(|(_,p)|p.bot)
-                    .map(|(i,p)|serde_json::json!({"player":format!("p{i}"),"lastThrow":p.last_throw})).collect::<Vec<_>>(),
+                "bots":g.bots.iter().map(|b|serde_json::json!({"player":format!("p{}",b.player),"lastThrow":b.state.last_throw})).collect::<Vec<_>>(),
                 "players":g.players.iter().enumerate().map(|(i,p)|serde_json::json!({
                     "name":format!("p{i}"),"tile":p.tile,"arrived":p.arrived,"setup":p.setup,
                     "position":[p.pos.x,p.pos.y,p.z],"parent":parent(p.parent)
@@ -1720,6 +1866,7 @@ pub(crate) mod tests {
         game.start();
         game.setup_queued_bots();
         game.players.truncate(2);
+        game.bots.truncate(1);
         game.drops.clear();
         game.map.states.fill(1);
         game.map.obstacles.fill(-1);
@@ -1734,8 +1881,8 @@ pub(crate) mod tests {
         p.alive = false;
         p.gone = true;
         p.path = vec![V::new(800., 0.)];
-        p.last_target = None;
-        p.last_throw = 0.;
+        game.bots[0].state.last_target = None;
+        game.bots[0].state.last_throw = 0.;
         game.time = 1000.;
         game.wall = 1000.;
         game.random = (0..100).find_map(|i| {
@@ -1745,8 +1892,8 @@ pub(crate) mod tests {
         }).unwrap();
         game.reset_collisions();
         game.finish_frame(1440., 800.);
-        assert_eq!(game.players[1].last_target, Some(0));
-        assert_eq!(game.players[1].last_throw, 60.);
+        assert_eq!(game.bots[0].state.last_target, Some(0));
+        assert_eq!(game.bots[0].state.last_throw, 60.);
         // Bot's request sets this flag, while the later dead Player guard
         // prevents an actual projectile. Do not skip Bot on presence.gone.
         assert!(game.players[1].pending_throw);
@@ -1877,7 +2024,7 @@ pub(crate) mod tests {
             player.arrived = true;
             player.landed = true;
             player.setup = true;
-            player.bot = false;
+            player.speed = 1.;
             player.parent = Parent::Map;
             player.pos = V::new(12.,34.);
             player.path.clear();
@@ -2158,10 +2305,11 @@ pub(crate) mod tests {
                     &format!("{path} before"),
                 );
                 if frame["botLanding"].as_bool().unwrap_or(false) {
-                    game.players[1].bot = true;
+                    game.players[1].speed = 0.75;
+                    game.bots = vec![crate::snowball_bot::Controller { player: 1, state: Default::default() }];
                     game.players[1].path = vec![V::new(800., 0.)];
-                    game.players[1].last_target = Some(0);
-                    game.players[1].last_throw = (game.time * 0.06).floor() - 41.;
+                    game.bots[0].state.last_target = Some(0);
+                    game.bots[0].state.last_throw = (game.time * 0.06).floor() - 41.;
                     game.random = (0..100)
                         .find_map(|i| {
                             let rng = Random::seeded(&format!("landing-throw-{i}"));
@@ -2780,7 +2928,7 @@ mod command_tests {
                 p.arrived = !(i == 0 && case["air"].as_bool().unwrap());
                 p.landed = p.arrived;
                 p.setup = true;
-                p.bot = false;
+                p.speed = 1.;
                 p.active = true;
                 p.alive = true;
                 p.face = 0.;
@@ -2928,7 +3076,7 @@ mod lod_tests {
                 p.landed = p.arrived;
                 p.setup = false;
                 p.active = true;
-                p.bot = false;
+                p.speed = 1.;
                 p.face = 0.;
                 p.pos = if p.arrived {
                     g.map.grid.pos(p.tile)
