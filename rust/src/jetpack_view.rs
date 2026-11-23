@@ -12,7 +12,9 @@ pub struct JetpackView {
     level_layer: Option<LevelLayer>,
     font: Font,
     title: Font,
-    controls: santa_tracker::jetpack_controls::Controls,
+    input: santa_tracker::jetpack_input::Adapter,
+    input_events: santa_tracker::jetpack_input::Events,
+    input_subscriber: usize,
     fire: Transition<1>,
     last_time: f64,
 }
@@ -34,7 +36,9 @@ impl JetpackView {
             .map_err(|e| e.to_string())?,
             title: load_ttf_font_from_bytes(include_bytes!("../assets/fonts/Lobster-Regular.ttf"))
                 .map_err(|e| e.to_string())?,
-            controls: Default::default(),
+            input: Default::default(),
+            input_events: Default::default(),
+            input_subscriber: macroquad::input::utils::register_input_subscriber(),
             fire: Transition::new([1.]),
             last_time: 0.,
         })
@@ -169,16 +173,17 @@ impl JetpackView {
         }
     }
     fn touchpad(&self, assets: &Assets) {
-        if !self.controls.visible {
+        if !self.input.controls.visible {
             return;
         }
-        let (Some(x), Some(y)) = (self.controls.start[0], self.controls.start[1]) else {
+        let (Some(x), Some(y)) = (self.input.controls.start[0], self.input.controls.start[1])
+        else {
             return;
         };
         let rectangles = santa_tracker::jetpack_controls::widget_layout(
             screen_width() as f64,
             [x, y],
-            self.controls.nub.unwrap_or([0., 0.]),
+            self.input.controls.nub.unwrap_or([0., 0.]),
         );
         for (rect, source) in rectangles
             .into_iter()
@@ -205,53 +210,35 @@ impl JetpackView {
         )
     }
     pub fn reset_controls(&mut self) {
-        self.controls = Default::default();
+        self.input.reset();
     }
-    pub fn input(&mut self, block_mouse: bool) -> (f64, f64) {
-        use santa_tracker::jetpack_controls::Touch;
-        for (code, key) in [
-            (37, KeyCode::Left),
-            (38, KeyCode::Up),
-            (39, KeyCode::Right),
-            (40, KeyCode::Down),
-        ] {
-            if is_key_down(key) {
-                self.controls.key_down(code);
-            } else {
-                self.controls.key_up(code);
-            }
+    pub fn input(&mut self, enabled: bool, playing: bool, block_pointer: bool) -> (f64, f64) {
+        self.input_events.0.clear();
+        // Replay only into a CPU collector, not into the platform/window.
+        macroquad::input::utils::repeat_all_miniquad_input(
+            &mut self.input_events,
+            self.input_subscriber,
+        );
+        self.input.apply(
+            &self.input_events.0,
+            screen_dpi_scale(),
+            enabled,
+            playing,
+            |x, y| block_pointer || crate::chrome::over_controls(vec2(x as f32, y as f32), 3),
+        );
+        if !is_mouse_button_down(MouseButton::Left) && self.input.release_missing_mouse() && playing
+        {
+            self.input.controls.frame();
         }
-        // Preserve the existing native mouse-as-touch adapter. Source web
-        // controls bind touch events only; actual multi-touch wiring is pending.
-        let (x, y) = mouse_position();
-        let touch = Touch {
-            id: 0,
-            x: x as f64,
-            y: y as f64,
-        };
-        if !block_mouse && is_mouse_button_pressed(MouseButton::Left) {
-            let gui = crate::chrome::over_controls(vec2(x, y), 3);
-            self.controls.touch_start(touch, gui);
+        let [x, y] = self.input.controls.raw_input();
+        if enabled {
+            (x, y)
+        } else {
+            (0., 0.)
         }
-        if self.controls.touch_id.is_some() {
-            if !block_mouse && is_mouse_button_down(MouseButton::Left) {
-                let previous = if self.controls.current[0].is_some() {
-                    self.controls.current
-                } else {
-                    self.controls.start
-                };
-                if previous != [Some(touch.x), Some(touch.y)] {
-                    self.controls.touch_move(&[touch], &[touch]);
-                }
-            } else {
-                self.controls.touch_end(&[touch], &[]);
-            }
-        }
-        self.controls.frame();
-        // Existing Jetpack.step performs the Controls normalization once.
-        // Returning the normalized vector here would normalize it twice.
-        let [x, y] = self.controls.raw_input();
-        (x, y)
+    }
+    pub fn tutorial_dismissals(&mut self) -> impl Iterator<Item = &'static str> + '_ {
+        self.input.controls.dismissed.drain(..)
     }
     pub fn draw(&mut self, assets: &Assets, game: &Jetpack) {
         let scale = (screen_width() / 980.).min(1.);

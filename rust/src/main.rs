@@ -508,7 +508,7 @@ async fn run(opts: Options) {
         let tutorial_mouse = opts.profile.is_none()
             && opts.frames.is_none()
             && tutorial.button_input(get_time(), tutorial_playing && !interlude.busy());
-        if opts.profile.is_none() && opts.frames.is_none() {
+        if opts.profile.is_none() && opts.frames.is_none() && route != "jetpack" {
             tutorial.controls(
                 &route,
                 get_time(),
@@ -524,7 +524,20 @@ async fn run(opts: Options) {
                 jam.advance(get_frame_time() as f64);
             }
         }
-        let mut jet_input = (0., 0.);
+        // Drain every frame, including other routes, so the event subscriber
+        // cannot retain an unbounded history while Jetpack is not selected.
+        let jet_enabled = route == "jetpack"
+            && opts.profile.is_none()
+            && opts.frames.is_none()
+            && !just_loaded;
+        let jet_input = jet_view.input(
+            jet_enabled,
+            active && jet_enabled && jetpack.playing && !jetpack.paused,
+            tutorial_mouse,
+        );
+        for event in jet_view.tutorial_dismissals() {
+            tutorial.state.dismiss(&[event], get_time());
+        }
         if active {
             if route == "runner" {
                 runner.visible_width = screen_width() as f64 * 1.5;
@@ -546,9 +559,6 @@ async fn run(opts: Options) {
                     }
                     "boatload" => boat_view.input(&mut boat, tutorial_mouse),
                     "presentdrop" => drop_view.input(&mut drop_game, tutorial_mouse),
-                    "jetpack" => {
-                        jet_input = jet_view.input(tutorial_mouse);
-                    }
                     "santaselfie" => selfie_view.input(&mut selfie, opts.frames.is_some()),
                     _ => {}
                 }

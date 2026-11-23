@@ -158,3 +158,4 @@ pub mod snowball_render_order;
 pub mod snowball_bot;
 
 pub mod jetpack_controls;
+pub mod jetpack_input;

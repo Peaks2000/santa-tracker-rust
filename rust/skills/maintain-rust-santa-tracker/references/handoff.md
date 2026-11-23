@@ -1101,3 +1101,30 @@ and goal entrance remain unverified. User still playing: no windows, graphics
 contexts, injected input or audio. Keep whole-site goal and conservative ratings.
 
 Release app and Jetpack capture compile successfully; neither launched.
+
+### Jetpack ordered native events (23 November 2026)
+
+New jetpack_input collector/adapter wires real key/touch callbacks to Controls.
+One Macroquad subscriber drains EVERY frame even on other routes (ignore packets
+when disabled). Tracked move/end and key state process paused; frame/nub update
+only while playing; new blocked starts treated GUI. Model tutorial events now
+forward to host; old Jetpack TutorialView key polling branch is skipped.
+Macroquad Stage emits synthetic mouse immediately before touch; matching adjacent
+pairs deduped locally, no global emulation changes. ID tracking, f64 DPI division,
+cancel-registry/no source cancel handler and mouse lost-release fallback included.
+In-scene restart retains adapter; route reset constructs fresh state.
+
+CPU native protocol -> original Controls: seven batches cases/25 snapshots.
+Actual Rust EventHandler callbacks/Adapter/Controls run in test; fake DOM/GUI,
+explicit active registry/playing flags; not actual OS/Stage/subscriber runtime.
+Additional disabled-route/mouse-fallback test. All129 tests pass (115lib+14app).
+
+CRITICAL next fidelity gap: native/harness contacts all share one target, whereas
+browser targetTouches is per initial DOM element (W3C link in coverage). Original
+getCurrentTouch can hide tracked gesture when another element's finger moves.
+Need source element geometry/hit testing and retained target IDs; don't assume
+shared native canvas equals DOM target behavior. Also actual device/focus/GUI/
+preventDefault, mixed mouse+touch, within-batch DPI change and event timing remain
+unverified. No live OS/window/GPU/input/audio tests while user is playing.
+
+Release app and Jetpack capture compile successfully; neither launched.

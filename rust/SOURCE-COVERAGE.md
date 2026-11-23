@@ -2986,3 +2986,60 @@ its offscreen draw (extreme viewports reaching that position not modeled).
 No live windows/graphics contexts/input injection/audio; user's game untouched.
 
 Release app and Jetpack capture compile successfully; neither launched.
+
+## Elf Jetpack ordered native input adapter (23 November 2026)
+
+Supersedes active-only held-key polling and unwired real-touch input. Source
+Controls (fully read in preceding pass) registers keydown/up and touchstart/move/
+end, not touchcancel. Traced actual locked Macroquad 0.4.16 input subscriber,
+MiniquadInputEvent storage/replay, Stage mouse/key/touch handlers and miniquad
+EventHandler contract. Native Events collector implements callbacks without
+calling platform/window APIs; subscriber replay only fills its reusable buffer.
+
+View registers one subscriber and drains it every main-loop frame, including
+other routes/profile/frozen diagnostics. Disabled routes discard packets. Main
+now calls input outside active-only simulation gating; source-tracked touch
+move/end and keyboard events update state during pause, while Controls::frame
+and nub/player input updates remain frozen. New pointer starts while overlays/
+interlude block gameplay are treated as GUI. Host focus/DOM routing is not
+certified by this native policy. Startup just-loaded packets are discarded.
+
+Adapter tracks real touch IDs and active contacts, converting physical callback
+coordinates by current display density in f64. Macroquad Stage emits synthetic
+mouse immediately before corresponding touch: matching adjacent packet pairs are
+consumed as one real touch without changing mouse-emulation configuration for
+other modes. Original source has no touchcancel handler; cancel updates registry
+but doesn't run Controls until a later source-bound event recovers loss. Native
+mouse-as-touch extension remains, with first-pointer ownership and missing mouse
+release recovery from existing button state. Ordered keydown/up in one frame are
+no longer collapsed by held-key polling. Shared native tutorial polling is skipped
+for Jetpack; actual model tutorial emissions now dismiss host Tutorial state.
+Buffers/active contact storage retain capacity; no extra polling-created touch
+Vec or unbounded subscriber history across other selected scenes.
+
+`jetpack-native-input-reference.cjs`: explicit native-protocol batches and GUI
+mask supplied to unchanged original Controls in CPU VM; active touch registry
+is part of the harness adapter, NOT browser dispatch. Seven cases/25 snapshots:
+within-frame key order, dedup/second finger, move/end/replacement in one batch,
+paused tracked events, cancel/missing-end recovery, GUI rejection and fractional
+DPI. Rust test invokes actual collector EventHandler callbacks plus Adapter and
+Controls; compares state/nub/vector/tutorial events. Additional test covers
+inactive-route rejection and mouse lost-release fallback without releasing a
+real finger. All129 tests pass (115 library +14 application).
+
+IMPORTANT REMAINING DIFFERENCE: harness/native registry treats the whole scene
+as one touch target. Browser targetTouches is scoped to the element where each
+contact started, per the [W3C Touch Events definition](https://www.w3.org/TR/touch-events/#widl-TouchEvent-targetTouches).
+Original getCurrentTouch can therefore behave differently when another finger
+moves on a different child element. Per-element geometry/hit testing/retained
+initial targets are not implemented; do not call this complete multitouch parity.
+The original model's explicit supplied-target-list oracle remains separate and
+checks its loss-recovery branches, not the correctness of the native registry.
+
+Remaining: actual Stage/subscriber/OS execution, device/browser captures, source
+focus/default-prevention/GUI semantics, target-specific multi-contact grouping,
+DPI changes inside buffered batches, mouse+touch concurrency, keyboard focus loss
+and main-loop callback timing. No live event injection, window/graphics context,
+input automation or audio. Current user game untouched; no 1:1 rating change.
+
+Release app and Jetpack capture compile successfully; neither launched.

@@ -1,0 +1,1110 @@
+{
+  "method": "CPU native-protocol harness supplies ordered batches/DPI/logical GUI mask and active-touch registry to unmodified original Controls. Original has no touchcancel handler; cancel only changes target registry. Matching preceding emulated mouse packets discarded by adapter policy. playing=false suppresses onFrame and marks new pointer targets GUI, while tracked move/end handlers run. Harness treats the game as one touch target; original DOM per-element targetTouches/hit testing is not modeled. Not execution of Macroquad Stage/subscriber, OS input/focus/GUI hit testing, browser task dispatch or rendering.",
+  "cases": [
+    {
+      "name": "key-order-within-frame",
+      "dpi": 1,
+      "frames": [
+        {
+          "e": [
+            [
+              "down",
+              37
+            ],
+            [
+              "up",
+              37
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [
+              "keys-leftright",
+              "spacenav-leftright"
+            ]
+          }
+        },
+        {
+          "e": [
+            [
+              "down",
+              38
+            ],
+            [
+              "down",
+              39
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              true,
+              true,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0.7071067811865475,
+              -0.7071067811865475
+            ],
+            "dismissed": [
+              "keys-updown",
+              "spacenav-updown"
+            ]
+          }
+        },
+        {
+          "e": [
+            [
+              "up",
+              38
+            ],
+            [
+              "up",
+              39
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "touch-emulated-mouse-dedup-and-second-finger",
+      "dpi": 2,
+      "frames": [
+        {
+          "e": [
+            [
+              "md",
+              200,
+              400
+            ],
+            [
+              "ts",
+              7,
+              200,
+              400
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 7,
+            "start": [
+              100,
+              200
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [
+              "touch-updown"
+            ]
+          }
+        },
+        {
+          "e": [
+            [
+              "mm",
+              340,
+              400
+            ],
+            [
+              "tm",
+              7,
+              340,
+              400
+            ],
+            [
+              "md",
+              400,
+              500
+            ],
+            [
+              "ts",
+              8,
+              400,
+              500
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 7,
+            "start": [
+              100,
+              200
+            ],
+            "current": [
+              170,
+              200
+            ],
+            "nub": [
+              70,
+              0
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              1,
+              0
+            ],
+            "dismissed": []
+          }
+        },
+        {
+          "e": [
+            [
+              "mu",
+              400,
+              500
+            ],
+            [
+              "te",
+              8,
+              400,
+              500
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 7,
+            "start": [
+              100,
+              200
+            ],
+            "current": [
+              170,
+              200
+            ],
+            "nub": [
+              70,
+              0
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              1,
+              0
+            ],
+            "dismissed": []
+          }
+        },
+        {
+          "e": [
+            [
+              "mu",
+              340,
+              400
+            ],
+            [
+              "te",
+              7,
+              340,
+              400
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              100,
+              200
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "move-end-replace-in-one-batch",
+      "dpi": 1,
+      "frames": [
+        {
+          "e": [
+            [
+              "ts",
+              1,
+              100,
+              100
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 1,
+            "start": [
+              100,
+              100
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [
+              "touch-updown"
+            ]
+          }
+        },
+        {
+          "e": [
+            [
+              "tm",
+              1,
+              170,
+              100
+            ],
+            [
+              "te",
+              1,
+              170,
+              100
+            ],
+            [
+              "ts",
+              2,
+              300,
+              200
+            ],
+            [
+              "tm",
+              2,
+              265,
+              235
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 2,
+            "start": [
+              300,
+              200
+            ],
+            "current": [
+              265,
+              235
+            ],
+            "nub": [
+              -35,
+              35
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              -0.5,
+              0.5
+            ],
+            "dismissed": []
+          }
+        },
+        {
+          "e": [
+            [
+              "te",
+              2,
+              265,
+              235
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              300,
+              200
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "tracked-motion-and-end-while-paused",
+      "dpi": 1,
+      "frames": [
+        {
+          "e": [
+            [
+              "down",
+              39
+            ],
+            [
+              "ts",
+              4,
+              100,
+              100
+            ],
+            [
+              "tm",
+              4,
+              100,
+              30
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              true,
+              false
+            ],
+            "id": 4,
+            "start": [
+              100,
+              100
+            ],
+            "current": [
+              100,
+              30
+            ],
+            "nub": [
+              0,
+              -70
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              -1
+            ],
+            "dismissed": [
+              "keys-leftright",
+              "spacenav-leftright",
+              "touch-updown"
+            ]
+          }
+        },
+        {
+          "e": [
+            [
+              "tm",
+              4,
+              170,
+              100
+            ],
+            [
+              "up",
+              39
+            ]
+          ],
+          "playing": false,
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 4,
+            "start": [
+              100,
+              100
+            ],
+            "current": [
+              170,
+              100
+            ],
+            "nub": [
+              0,
+              -70
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              -1
+            ],
+            "dismissed": []
+          }
+        },
+        {
+          "e": [
+            [
+              "te",
+              4,
+              170,
+              100
+            ]
+          ],
+          "playing": false,
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              100,
+              100
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              -1
+            ],
+            "dismissed": []
+          }
+        },
+        {
+          "e": [],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              100,
+              100
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "cancel-has-no-original-handler-next-move-recovers",
+      "dpi": 1,
+      "frames": [
+        {
+          "e": [
+            [
+              "ts",
+              1,
+              100,
+              100
+            ],
+            [
+              "tm",
+              1,
+              170,
+              100
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 1,
+            "start": [
+              100,
+              100
+            ],
+            "current": [
+              170,
+              100
+            ],
+            "nub": [
+              70,
+              0
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              1,
+              0
+            ],
+            "dismissed": [
+              "touch-updown"
+            ]
+          }
+        },
+        {
+          "e": [
+            [
+              "tc",
+              1,
+              170,
+              100
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 1,
+            "start": [
+              100,
+              100
+            ],
+            "current": [
+              170,
+              100
+            ],
+            "nub": [
+              70,
+              0
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              1,
+              0
+            ],
+            "dismissed": []
+          }
+        },
+        {
+          "e": [
+            [
+              "ts",
+              2,
+              200,
+              200
+            ],
+            [
+              "tm",
+              2,
+              210,
+              210
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              100,
+              100
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": false,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": []
+          }
+        },
+        {
+          "e": [
+            [
+              "te",
+              2,
+              210,
+              210
+            ],
+            [
+              "ts",
+              3,
+              300,
+              200
+            ],
+            [
+              "tm",
+              3,
+              300,
+              270
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 3,
+            "start": [
+              300,
+              200
+            ],
+            "current": [
+              300,
+              270
+            ],
+            "nub": [
+              0,
+              70
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              0,
+              1
+            ],
+            "dismissed": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "gui-rejection-and-active-flag-overwrite",
+      "dpi": 1,
+      "frames": [
+        {
+          "e": [
+            [
+              "ts",
+              1,
+              20,
+              100
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              null,
+              null
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": true,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": []
+          }
+        },
+        {
+          "e": [
+            [
+              "ts",
+              2,
+              100,
+              100
+            ],
+            [
+              "ts",
+              3,
+              30,
+              120
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 2,
+            "start": [
+              100,
+              100
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": true,
+            "gui": true,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": [
+              "touch-updown"
+            ]
+          }
+        },
+        {
+          "e": [
+            [
+              "tm",
+              2,
+              100,
+              170
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 2,
+            "start": [
+              100,
+              100
+            ],
+            "current": [
+              100,
+              170
+            ],
+            "nub": [
+              0,
+              70
+            ],
+            "visible": true,
+            "gui": true,
+            "input": [
+              0,
+              1
+            ],
+            "dismissed": []
+          }
+        },
+        {
+          "e": [
+            [
+              "te",
+              2,
+              100,
+              170
+            ],
+            [
+              "te",
+              1,
+              20,
+              100
+            ],
+            [
+              "te",
+              3,
+              30,
+              120
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              100,
+              100
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": true,
+            "input": [
+              0,
+              0
+            ],
+            "dismissed": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "fractional-density-and-paused-new-start",
+      "dpi": 1.25,
+      "frames": [
+        {
+          "e": [
+            [
+              "ts",
+              1,
+              140,
+              240
+            ],
+            [
+              "tm",
+              1,
+              180,
+              275
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 1,
+            "start": [
+              112,
+              192
+            ],
+            "current": [
+              144,
+              220
+            ],
+            "nub": [
+              32,
+              28
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              0.45714285714285713,
+              0.4
+            ],
+            "dismissed": [
+              "touch-updown"
+            ]
+          }
+        },
+        {
+          "e": [
+            [
+              "te",
+              1,
+              180,
+              275
+            ],
+            [
+              "ts",
+              2,
+              300,
+              300
+            ]
+          ],
+          "playing": false,
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": null,
+            "start": [
+              112,
+              192
+            ],
+            "current": [
+              null,
+              null
+            ],
+            "nub": null,
+            "visible": false,
+            "gui": true,
+            "input": [
+              0.45714285714285713,
+              0.4
+            ],
+            "dismissed": []
+          }
+        },
+        {
+          "e": [
+            [
+              "te",
+              2,
+              300,
+              300
+            ],
+            [
+              "ts",
+              3,
+              400,
+              400
+            ],
+            [
+              "tm",
+              3,
+              312.5,
+              400
+            ]
+          ],
+          "output": {
+            "keys": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "id": 3,
+            "start": [
+              320,
+              320
+            ],
+            "current": [
+              250,
+              320
+            ],
+            "nub": [
+              -70,
+              0
+            ],
+            "visible": true,
+            "gui": false,
+            "input": [
+              -1,
+              0
+            ],
+            "dismissed": []
+          }
+        }
+      ]
+    }
+  ],
+  "source_sha256": {
+    "static/scenes/jetpack/js/constants.js": "f9e9061eccbe3d4bbec86fe0e472d1c7ca594708b7413ec73dd8df8246b70a88",
+    "static/scenes/jetpack/js/controls.js": "1d0130df2a3db4bd8cd4fe5c265e56e925afac697fa1b9fab25352bafddc4ea2"
+  }
+}
