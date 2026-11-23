@@ -270,12 +270,44 @@ impl Button {
 
 /// Browser-style interpolation for native Lottie surfaces. RGB is already
 /// multiplied by alpha before filtering; apply opacity once, then source-over.
-pub fn premultiplied_material() -> Result<Material, String> {
-    load_material(ShaderSource::Glsl {vertex:r#"#version 100
+pub type PremultipliedMaterial = std::rc::Rc<Material>;
+thread_local! {
+    static PREMULT_CACHE: std::cell::RefCell<std::rc::Weak<Material>> =
+        std::cell::RefCell::new(std::rc::Weak::new());
+}
+
+pub fn premultiplied_material() -> Result<PremultipliedMaterial, String> {
+    // This shader has no scene-specific uniforms. Share its pipeline across
+    // views; the last owner releases it before context shutdown, like Shapes.
+    if let Some(material) = PREMULT_CACHE.with(|cache| cache.borrow().upgrade()) {
+        return Ok(material);
+    }
+    let material = std::rc::Rc::new(load_material(
+        ShaderSource::Glsl {
+            vertex: r#"#version 100
 attribute vec3 position;attribute vec2 texcoord;attribute vec4 color0;uniform mat4 Model;uniform mat4 Projection;varying vec2 uv;varying vec4 tint;
-void main(){gl_Position=Projection*Model*vec4(position,1.0);uv=texcoord;tint=color0/255.0;}"#,fragment:r#"#version 100
+void main(){gl_Position=Projection*Model*vec4(position,1.0);uv=texcoord;tint=color0/255.0;}"#,
+            fragment: r#"#version 100
 precision highp float;varying vec2 uv;varying vec4 tint;uniform sampler2D Texture;
-void main(){vec4 c=texture2D(Texture,uv);gl_FragColor=vec4(c.rgb*tint.rgb*tint.a,c.a*tint.a);}"#},MaterialParams {pipeline_params:PipelineParams {color_blend:Some(BlendState::new(Equation::Add,BlendFactor::One,BlendFactor::OneMinusValue(BlendValue::SourceAlpha))),alpha_blend:Some(BlendState::new(Equation::Add,BlendFactor::One,BlendFactor::OneMinusValue(BlendValue::SourceAlpha))),..Default::default()},..Default::default()}).map_err(|e|e.to_string())
+void main(){vec4 c=texture2D(Texture,uv);gl_FragColor=vec4(c.rgb*tint.rgb*tint.a,c.a*tint.a);}"#,
+        },
+        MaterialParams {
+            pipeline_params: PipelineParams {
+                color_blend: Some(BlendState::new(
+                    Equation::Add, BlendFactor::One,
+                    BlendFactor::OneMinusValue(BlendValue::SourceAlpha),
+                )),
+                alpha_blend: Some(BlendState::new(
+                    Equation::Add, BlendFactor::One,
+                    BlendFactor::OneMinusValue(BlendValue::SourceAlpha),
+                )),
+                ..Default::default()
+            },
+            ..Default::default()
+        },
+    ).map_err(|e| e.to_string())?);
+    PREMULT_CACHE.with(|cache| *cache.borrow_mut() = std::rc::Rc::downgrade(&material));
+    Ok(material)
 }
 
 /// The native window is opaque, like the original page. Default sprite/font

@@ -10,7 +10,7 @@ pub struct LoaderAnimation {
     frames: mpsc::Receiver<(u32, u32, Vec<u8>)>,
     worker: Option<thread::JoinHandle<()>>,
     texture: Option<Texture2D>,
-    material: Material,
+    material: crate::ui_render::PremultipliedMaterial,
 }
 impl LoaderAnimation {
     pub fn new(root: PathBuf) -> Self {

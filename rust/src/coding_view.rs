@@ -234,7 +234,7 @@ pub struct CodingView {
     workspace: Workspace,
     images: HashMap<String, Image>,
     shapes: Shapes,
-    premult: Material,
+    premult: crate::ui_render::PremultipliedMaterial,
     font: Font,
     lobster: Font,
     messages: HashMap<String, String>,

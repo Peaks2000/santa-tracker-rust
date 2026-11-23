@@ -121,6 +121,18 @@ enum LoadEvent {
     Image(String, Image),
     Done(Result<(), String>),
 }
+/// CSS images filter premultiplied color; THREE's world maps keep straight RGBA.
+fn snowball_css_image(key: &str) -> bool {
+    matches!(
+        key,
+        "scenes/snowball/img/item-frame.png"
+            | "scenes/snowball/img/powerup-1.png"
+            | "scenes/snowball/img/sleigh.png"
+            | "scenes/snowball/img/parachute-button.png"
+            | "scenes/snowball/img/loading-cloud.svg"
+            | "scenes/snowball/img/elves-parachuting.svg"
+    )
+}
 fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
     let path = root.join(key);
     let data = if key == "native/tutorial/elfski.png" {
@@ -131,7 +143,8 @@ fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
     let premultiplied = key.starts_with("scenes/santaselfie/")
         || key.starts_with("scenes/_shared/img/button/")
         || key.starts_with("scenes/boatload/")
-        || key.starts_with("img/sleigh/");
+        || key.starts_with("img/sleigh/")
+        || snowball_css_image(key);
     let mut image = if key.ends_with(".svg") {
         let options = resvg::usvg::Options {
             resources_dir: path.parent().map(Path::to_path_buf),
@@ -351,5 +364,68 @@ fn svg_raster_scale(key: &str) -> f32 {
         5.
     } else {
         1.
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn snowball_css_uploads_are_premultiplied_and_world_maps_stay_straight() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../static");
+        for (name, css) in [
+            ("item-frame.png", true),
+            ("powerup-1.png", true),
+            ("sleigh.png", true),
+            ("parachute-button.png", true),
+            ("tiles.png", false),
+            ("snowball.png", false),
+            ("parachute.png", false),
+        ] {
+            let key = format!("scenes/snowball/img/{name}");
+            let original =
+                Image::from_file_with_format(&std::fs::read(root.join(&key)).unwrap(), None)
+                    .unwrap();
+            let decoded = decode_image(&root, &key).unwrap();
+            assert_eq!(
+                (decoded.width, decoded.height),
+                (original.width, original.height)
+            );
+            for (input, output) in original
+                .bytes
+                .chunks_exact(4)
+                .zip(decoded.bytes.chunks_exact(4))
+            {
+                assert_eq!(output[3], input[3], "{name}: alpha changed");
+                for c in 0..3 {
+                    let expected = if css {
+                        ((u16::from(input[c]) * u16::from(input[3]) + 127) / 255) as u8
+                    } else {
+                        input[c]
+                    };
+                    assert_eq!(output[c], expected, "{name}: wrong alpha representation");
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn snowball_css_vectors_retain_premultiplied_coverage_at_existing_density() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../static");
+        for (name, size) in [
+            ("loading-cloud.svg", (944, 568)),
+            ("elves-parachuting.svg", (1024, 1024)),
+        ] {
+            let image = decode_image(&root, &format!("scenes/snowball/img/{name}")).unwrap();
+            assert_eq!((image.width, image.height), size);
+            assert!(image.bytes.chunks_exact(4).any(|p| p[3] > 0 && p[3] < 255));
+            for pixel in image.bytes.chunks_exact(4) {
+                assert!(
+                    pixel[..3].iter().all(|c| *c <= pixel[3]),
+                    "{name}: unassociated color"
+                );
+            }
+        }
     }
 }

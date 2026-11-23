@@ -208,7 +208,7 @@ fn quad(t: Option<&Texture2D>, r: Rect, m: Mat3, c: Color) {
 pub struct JambandView {
     data: std::collections::HashMap<String, Node>,
     shapes: Shapes,
-    premult: Material,
+    premult: crate::ui_render::PremultipliedMaterial,
     drag: Option<(usize, Vec2, Rect)>,
     scroll: Transition<1>,
     scroll_target: f32,

@@ -93,7 +93,7 @@ pub struct ElfMakerView {
     shapes: Shapes,
     pub photo: Option<Texture2D>,
     photo_at: f64,
-    premult: Material,
+    premult: crate::ui_render::PremultipliedMaterial,
     photo_shown: bool,
     buttons: [Button; 4],
     icons: HashMap<String, Texture2D>,

@@ -1,0 +1,57 @@
+{
+  "images": [
+    {
+      "after_max_error_per_255": 0.46397058823529014,
+      "after_mean_error_per_255": 0.13993282982028654,
+      "before_max_error_per_255": 63.750000000000014,
+      "before_mean_error_per_255": 2.4084990213040363,
+      "file": "scenes/snowball/img/item-frame.png",
+      "fractional_samples": 8724,
+      "rgb_components": 104688,
+      "size": [
+        201,
+        209
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.4705882352941343,
+      "after_mean_error_per_255": 0.09055385693830048,
+      "before_max_error_per_255": 63.750000000000014,
+      "before_mean_error_per_255": 2.366415229574335,
+      "file": "scenes/snowball/img/powerup-1.png",
+      "fractional_samples": 7395,
+      "rgb_components": 88740,
+      "size": [
+        141,
+        141
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.3683823529411828,
+      "after_mean_error_per_255": 0.03072254079454628,
+      "before_max_error_per_255": 59.0,
+      "before_mean_error_per_255": 3.9253234297835924,
+      "file": "scenes/snowball/img/sleigh.png",
+      "fractional_samples": 49347,
+      "rgb_components": 592164,
+      "size": [
+        1028,
+        181
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.3044117647058969,
+      "after_mean_error_per_255": 0.012491287711890784,
+      "before_max_error_per_255": 63.750000000000014,
+      "before_mean_error_per_255": 3.915320544832507,
+      "file": "scenes/snowball/img/parachute-button.png",
+      "fractional_samples": 36447,
+      "rgb_components": 437364,
+      "size": [
+        343,
+        471
+      ]
+    }
+  ],
+  "method": "Actual native CPU decoder bytes compared with analytic exact-float premultiplication-before-bilinear-filtering/source-over. Three subpixel phases, two source HUD backgrounds and two opacities. Not a browser/GPU screenshot or minification/mipmap oracle; does not prove whole-scene texture clarity."
+}

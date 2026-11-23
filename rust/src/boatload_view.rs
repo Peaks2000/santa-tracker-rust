@@ -5,7 +5,7 @@ use santa_tracker::boatload::Boatload;
 pub struct BoatloadView {
     font: Font,
     shapes: Shapes,
-    premult: Material,
+    premult: crate::ui_render::PremultipliedMaterial,
     touch: bool,
     space_down: bool,
 }

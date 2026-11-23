@@ -19,6 +19,7 @@ void main(){if(data.z==-1.){gl_FragColor=vec4(diffuse,opacity);return;}vec4 c=te
 pub struct SnowballView {
     model: Option<ElfModel>,
     shapes: crate::ui_render::Shapes,
+    css_images: crate::ui_render::PremultipliedMaterial,
     clip: Material,
     marker_mesh: Mesh,
     destination_mesh: Mesh,
@@ -168,6 +169,7 @@ void main(){float time=data.y;float a=time/(1000.+5000.*data.x)*3.14159*2.;vec2 
         Ok(Self {
             model: None,
             shapes: crate::ui_render::Shapes::new()?,
+            css_images: crate::ui_render::premultiplied_material()?,
             clip,
             marker_mesh: geometry(include_str!("../data/snowball-marker-geometry.json")),
             destination_mesh: geometry(include_str!(
@@ -757,14 +759,19 @@ void main(){float time=data.y;float a=time/(1000.+5000.*data.x)*3.14159*2.;vec2 
             (212. * responsive) as i32,
             (265. * responsive) as i32,
         )));
-        for slot in 0..2 {
+        gl_use_material(&self.css_images);
+        // Source active status has z-index:2, inactive status z-index:1.
+        // This priority changes immediately when .swap toggles, independently
+        // of the two ongoing transform transitions.
+        let active_slot = usize::from(p.powerups.swapped);
+        for slot in [1 - active_slot, active_slot] {
             let quantity = if slot == 0 {
                 p.powerups.primary
             } else {
                 p.powerups.secondary
             }
             .unwrap_or(0);
-            let active = (slot == 0) != p.powerups.swapped;
+            let active = slot == active_slot;
             let target = if active {
                 [51.2, if quantity > 0 { 0. } else { 266.189 }, 1.]
             } else {
@@ -828,6 +835,7 @@ void main(){float time=data.y;float a=time/(1000.+5000.*data.x)*3.14159*2.;vec2 
             }
         }
         santa_tracker::surface::scissor(None);
+        gl_use_default_material();
     }
     fn splash(&self, assets: &Assets, g: &Snowball) {
         clear_background(Color::from_hex(0x7ca6d6));
@@ -843,6 +851,7 @@ void main(){float time=data.y;float a=time/(1000.+5000.*data.x)*3.14159*2.;vec2 
         } else {
             vec2(514., 90.5)
         };
+        gl_use_material(&self.css_images);
         draw_texture_ex(
             assets.scene("snowball", "sleigh.png"),
             (w - size.x) / 2.,
@@ -854,6 +863,7 @@ void main(){float time=data.y;float a=time/(1000.+5000.*data.x)*3.14159*2.;vec2 
             },
         );
         if g.phase == Phase::Playing {
+            gl_use_default_material();
             return;
         }
         if g.phase == Phase::Intro {
@@ -891,8 +901,10 @@ void main(){float time=data.y;float a=time/(1000.+5000.*data.x)*3.14159*2.;vec2 
                     },
                 );
             }
+            gl_use_default_material();
             return;
         }
+        gl_use_default_material();
         let scale = if small { 0.75 } else { 1. };
         let c = vec2(w / 2., h / 2.);
         self.shapes.circle(c, 140. * scale, WHITE, 0.);
@@ -911,6 +923,7 @@ void main(){float time=data.y;float a=time/(1000.+5000.*data.x)*3.14159*2.;vec2 
         );
         let size = 98.56 * scale;
         let tex = assets.scene("snowball", "parachute-button.png");
+        gl_use_material(&self.css_images);
         draw_texture_ex(
             tex,
             c.x - 1.4 * scale - size / 2.,
@@ -921,6 +934,7 @@ void main(){float time=data.y;float a=time/(1000.+5000.*data.x)*3.14159*2.;vec2 
                 ..Default::default()
             },
         );
+        gl_use_default_material();
     }
 }
 

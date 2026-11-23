@@ -42,7 +42,7 @@ pub struct SelfieView {
     hair_material: Material,
     spray_material: Material,
     copy_material: Material,
-    image_material: Material,
+    image_material: crate::ui_render::PremultipliedMaterial,
     font: Font,
     pub export_open: bool,
     pub export_message: String,

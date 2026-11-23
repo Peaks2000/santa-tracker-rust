@@ -54,7 +54,7 @@ pub struct Village<'a> {
     pub notice: Option<String>,
     pub sounds: Vec<&'static str>,
     shapes: Shapes,
-    animation_material: Material,
+    animation_material: crate::ui_render::PremultipliedMaterial,
     play_motion: Transition<4>,
     play_ripple: Transition<2>,
     play_hover: bool,

@@ -1,0 +1,48 @@
+{
+  "method": "Full selected source HTML/SCSS and both powerup UI modules reread. They use CSS background images, distinct from the three TextureLoader world maps. Native CPU decoder checked against original PNG RGBA and analytic premultiplication-before-interpolation/source-over. No browser, GL context, driver query, window, focus change, audio or OS input.",
+  "css_images": [
+    "item-frame.png",
+    "powerup-1.png",
+    "sleigh.png",
+    "parachute-button.png",
+    "loading-cloud.svg",
+    "elves-parachuting.svg"
+  ],
+  "world_images_unchanged": [
+    "tiles.png",
+    "snowball.png",
+    "parachute.png",
+    "generated elf/gift maps"
+  ],
+  "changes": [
+    "Four PNGs premultiplied once at decode; two SVGs retain resvg premultiplied bytes. Alpha/layout/source crops/density unchanged.",
+    "All six production HUD/splash draw paths use the existing premultiplied shader and ONE/ONE_MINUS_SRC_ALPHA for RGB and alpha. Opacity multiplies both associated RGB and alpha once.",
+    "Premultiplied material factory now uses weak Rc cache, with no new shader, custom uniform or blend state. Same pipeline per concurrent owner lifetime; last owner releases GPU handle. Caller field types updated in eight views.",
+    "Powerup active slot paints after inactive slot, matching source immediate z-index:2 versus 1 across swap, regardless ongoing transforms."
+  ],
+  "checks": {
+    "png_uploads": 4,
+    "world_rgba_controls": 3,
+    "svg_density_and_associated_channels": 2,
+    "suite": "114 tests (101 library + 13 binary) pass; check --all-targets passes with two pre-existing unused-import example warnings",
+    "analytic": "snowball-hud-alpha-audit.json compares bilinear samples at three phases, two source background colors and opacities 1/.35. Native 8-bit rounding max < .5/255 versus exact-float premultiplied target; this is NOT an observed browser error.",
+    "release": "Application and snowball_capture diagnostic build; neither launched."
+  },
+  "limits": [
+    "No GPU render, browser-native pixels, driver mipmap behavior, trilinear minification/anisotropy, exact CSS filtering or runtime cache allocation/release measurement. Existing Snowball minification policy retained.",
+    "No claim of complete HUD phase/layout/stacking-context/input or texture clarity parity; full world/elf-eye AA/compositing remain open.",
+    "No shader pipeline behavior changed in other views; they share the same shader without scene-specific uniforms. Automatic model/projection/default texture state remains Macroquad-managed."
+  ],
+  "source_sha256": {
+    "static/scenes/snowball/index.html": "d8bb81beea01614e4493ef04fc5463db53f3f6830d83fdebe814b8d33f26870e",
+    "static/scenes/snowball/index.scss": "aca651827e912cac3214c87e2eac4eac4e54a1217b2c14c7ecce4510152c20f1",
+    "static/scenes/snowball/js/snowball/ui/powerup-ui.js": "8dc0c02bc84c0f7aa609438ff39c84fa09c66d1287be1a7e791137ecd2dadef3",
+    "static/scenes/snowball/js/snowball/ui/powerup-status.js": "5b7895afc584f662429a8d44abb1f02c328d08714a85272f8f472804967e4a62",
+    "static/scenes/snowball/js/snowball/textures.js": "e910084cc44c6757f4daef16f1f2e2539fbd22b391ebab159f644dfdb7c59eb3"
+  },
+  "premult_shader_sha256": [
+    "5121d70e85b5bd91caa9d7ceadf2655c3f690d9a6d18df7a4a2f6088532e2927",
+    "645197afc06c5c7c7b20748b019d61da9afdeaac8923118c1439dd0705792ea4"
+  ],
+  "before_reference_commit": "fcac5fccc75aad9039fc5884eb8641239af59876"
+}

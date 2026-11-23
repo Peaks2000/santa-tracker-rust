@@ -12,7 +12,7 @@ use santa_tracker::{
 pub struct SantaView {
     chimney: [Chimney; 2],
     frames: [Vec<Texture2D>; 2],
-    premult: Material,
+    premult: crate::ui_render::PremultipliedMaterial,
     shadow: Material,
     group: Option<RenderTarget>,
     bounce_clock: tracker_santa::SleighClock,

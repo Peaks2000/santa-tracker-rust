@@ -2453,3 +2453,51 @@ or README rating change, and no window/focus/input was used.
 
 Release application/capture builds pass; CPU-only state-smoke also builds/runs.
 No app window, GPU context, focus change, audio playback or input was used.
+
+### Snowball CSS-image alpha and HUD priority (23 November 2026)
+
+Read the complete index.html/index.scss and powerup-ui.js/powerup-status.js.
+These six images are CSS backgrounds, distinct from textures.js's three
+TextureLoader world maps: item-frame, powerup-1, sleigh, parachute-button,
+loading-cloud and elves-parachuting. The previous native decoder left them
+straight RGBA and the default sprite pipeline filtered them before multiplying
+alpha. Transparent black around original artwork therefore contaminated
+interpolated edge RGB. The original asset bytes were not the problem.
+
+Four PNGs now premultiply once at decode; both SVGs retain resvg's premultiplied
+coverage bytes. All six production draw paths now use the existing associated
+RGB shader with ONE/ONE_MINUS_SRC_ALPHA for RGB and alpha. Vertex opacity applies
+once to both RGB and alpha. Dimensions, source crops, layout, alpha, original
+artwork, existing density and minification settings are unchanged. No sharpen
+or nearest-filter substitution. World tiles/snowball/parachute and generated
+elf/gift maps remain straight RGBA, retaining their THREE policy.
+
+The shared compositing factory now holds a weak Rc cache. Concurrent views own
+the same material; the last owner frees the existing guarded Macroquad pipeline.
+All eight prior callers adopt the shared handle; Snowball adds its own owner.
+There are no custom uniforms/textures to leak between scenes; the GLSL strings
+and source-over factors are identical to the preceding production factory.
+Automatic model/projection/default-texture state remains Macroquad-managed.
+This avoids consuming another of Macroquad's 32 pipeline slots. Runtime GPU
+allocation/release and cross-scene rendering have not been measured this pass.
+
+The active powerup status also now paints last: the source declares active
+z-index:2, inactive z-index:1, switching immediately with .swap while transforms
+continue. Native fixed slot0-before-slot1 order previously put inactive over
+active in the default state. This is source-translated priority, not a complete
+CSS stacking-context/transition certification.
+
+CPU upload tests compare every channel of four PNGs and three unchanged world
+maps; SVG tests preserve 944x568 and 1024x1024 bounds and associated edge channels.
+All 114 tests pass (101 library + 13 binary). The ordinary-main
+snowball_hud_alpha_audit runs the actual decoder and compares three bilinear
+phases/two background colors/two opacities against analytic exact-float
+premultiplication-before-filtering/source-over. On the fractional samples,
+maximum RGB errors fall from 59--63.75/255 to <.5/255, the 8-bit rounding bound.
+These are analytic CPU errors, NOT browser/native screenshot differences or
+minification/mipmap coverage. Original/browser GPU filtering, cache lifetime,
+remaining world/eye raster and overall unclear textures remain unverified.
+No window, GL context, focus change, audio playback or OS input was used.
+
+Release application and snowball_capture diagnostic build successfully. Neither
+was launched; no GPU/window/focus/input or audio test was used.

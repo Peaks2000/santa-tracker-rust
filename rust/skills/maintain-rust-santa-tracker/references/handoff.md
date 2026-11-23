@@ -812,3 +812,29 @@ still unfinished. Earlier handoff notes about eager tile choice are superseded.
 
 Release application/capture builds pass; CPU-only state-smoke also builds/runs.
 No app window, GPU context, focus change, audio playback or input was used.
+
+### CSS HUD image alpha and priority pass (23 November 2026)
+
+Snowball's six CSS images now decode premultiplied and draw through the existing
+premultiplied shader: item-frame, powerup-1, sleigh, parachute-button, loading-cloud,
+elves-parachuting. Do not send these through straight/default sprite blending.
+3 world maps and generated elf/gifts stay straight RGBA. No asset bytes/dimensions,
+source crop/alpha/layout/density/minification changes. Original PNG transparent
+RGB is black; straight interpolation darkened edges before source-over.
+
+ui_render::premultiplied_material returns Rc<Material>, weakly cached like Shapes.
+Eight prior callers plus Snowball retain shared handles; last owner releases GPU
+pipeline. Shader strings/blend factors unchanged; no custom uniforms/textures.
+No added pipeline slot; cache/runtime GPU and cross-scene behavior unverified.
+Powerup inactive status paints first, active second, per source immediate z1/z2
+swap priority, independent of ongoing transforms. Full HUD phase parity open.
+
+All114 tests pass (101lib+13bin). CPU snowball_hud_alpha_audit compares actual
+PNG decoder with analytic premultiplied bilinear/source-over: fractional-sample
+max59--63.75/255 old vs <.5 new. NOT browser/GPU pixels or mipmap proof. Two SVG
+associated-channel/density checks, 4PNG once-premultiply and3world byte controls.
+No window/input while user plays. World clarity, eye-AA, GPU/CSS filtering and
+whole-scene/site fidelity remain unfinished; do not label the user report solved.
+
+Release application and snowball_capture diagnostic build successfully. Neither
+was launched; no GPU/window/focus/input or audio test was used.

@@ -1718,7 +1718,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/ui/powerup-ui.js",
       "lines": 148,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; complete reread for CSS-image alpha and source active/inactive z-index priority pass, native premultiplied HUD draws and immediate active-last order; full layout/transition/device/stacking context remains unverified",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
@@ -1764,7 +1764,7 @@
     {
       "file": "static/scenes/snowball/js/snowball/ui/powerup-status.js",
       "lines": 154,
-      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons",
+      "review": "partial native translation; active branches require broader lifecycle/render/audio comparisons; complete reread for CSS-image alpha and source active/inactive z-index priority pass, native premultiplied HUD draws and immediate active-last order; full layout/transition/device/stacking context remains unverified",
       "native": [
         "rust/src/snowball.rs",
         "rust/src/snowball_view.rs"
