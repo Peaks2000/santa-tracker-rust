@@ -941,3 +941,31 @@ Release application/capture builds pass; neither launched. User game/focus/input
 and audio stayed untouched. Also audit distinct wall/game clocks next: source
 Client death wait uses performance.now while native currently stores game time;
 existing equal-clock fixtures cannot establish those divergent-clock branches.
+
+### Vector endpoints and Client clock pass (23 November 2026)
+
+V::norm now uses source length||1: preserve signed zero/subnormals, NaN length
+fallback doesn't poison other components. Player movement compares distance to
+computed normalized vector length, not configured speed; no epsilon/hypot.
+Actual original THREE Vector2/Elf setup-update CPU oracle:225 normalizations,
+621 steps (384endpoint+225vector+12speed), exact component bits/waypoint count,
+NaN class only, atan2 face tolerance1e-12. Native real Player stage tested.
+
+Client dead wait uses wall (source performance.now), keeping strict>2500ms,
+gone bypass, zero sentinel and no reset on revive. Actual ClientSystem six cases/
+25 frames test split/frozen/jumping game clocks and timestamp/stop/HUD values,
+including missing actor. Native actor inactive to isolate Client branch.
+All three new tests fail before correction and pass after. Older removal fixture
+now sets wall=time=source input.at; expected data unchanged. All122 tests pass
+(109lib+13bin). No window/GPU/input/audio. Previous numeric/Client mismatch notes
+are superseded, not a claim of all invalid-number or clock-domain equivalence.
+
+Remaining: cross-restart Elf pool/class/marker/model lifecycle, generic old-ID
+routing, global RNG and loaded async/graphics; Health/Presence/Removal/animation
+clock domains and actual app pause/background/absolute wall origin not certified.
+User texture clarity is still open; source-based CPU work continues without
+interrupting their game. Keep whole-site goal and conservative README ratings.
+
+All three new tests also pass optimized release mode. Application/capture release
+builds pass; neither launched. CPU180s smoke completes (100 connected,99
+controllers,50 slots,26 active,74KO), not source match/graphics/latency proof.

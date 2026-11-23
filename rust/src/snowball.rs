@@ -32,11 +32,9 @@ impl V {
     }
     pub fn norm(self) -> Self {
         let l = self.len();
-        if l == 0. {
-            Self::default()
-        } else {
-            self.mul(1. / l)
-        }
+        // THREE divides by (length || 1): preserve signed zero/subnormals,
+        // and a NaN length must not contaminate a still-finite component.
+        self.mul(1. / if l == 0. || l.is_nan() { 1. } else { l })
     }
 }
 #[derive(Clone, Debug)]
@@ -1499,10 +1497,11 @@ impl Snowball {
             &mut self.camera,
         );
         if let Some(p) = self.players.first().filter(|p| !p.alive) {
+            // ClientSystem's deadline uses performance.now, not game time.
             if self.client_dead_at == 0. {
-                self.client_dead_at = self.time;
+                self.client_dead_at = self.wall;
             }
-            if p.presence.gone() || self.time - self.client_dead_at > 2500. {
+            if p.presence.gone() || self.wall - self.client_dead_at > 2500. {
                 self.gameover = true;
             }
         }
@@ -1594,9 +1593,11 @@ impl Snowball {
             if p.alive {
                 if let Some(&next) = p.path.first() {
                     let d = next.sub(p.pos);
-                    let step = 2.25 * p.speed;
-                    let v = d.norm().mul(step);
-                    if d.len() <= step {
+                    let length = d.len();
+                    let v = d.norm().mul(2.25 * p.speed);
+                    // Source compares the computed vector length, including
+                    // normalization rounding, rather than the configured step.
+                    if length <= v.len() {
                         p.pos = next;
                         p.path.remove(0);
                     } else {
@@ -1657,6 +1658,123 @@ pub fn circle_rect(c: V, r: f64, p: V, hw: f64, hh: f64) -> bool {
 #[cfg(test)]
 pub(crate) mod tests {
     use super::*;
+    fn source_f64(bits: &serde_json::Value) -> f64 {
+        f64::from_bits(u64::from_str_radix(bits.as_str().unwrap(), 16).unwrap())
+    }
+    fn assert_source_f64(actual: f64, bits: &serde_json::Value, label: &str) {
+        let expected = source_f64(bits);
+        if expected.is_nan() {
+            assert!(actual.is_nan(), "{label}: expected NaN, got {actual}");
+        } else {
+            assert_eq!(
+                actual.to_bits(),
+                expected.to_bits(),
+                "{label}: {actual} vs {expected}"
+            );
+        }
+    }
+    #[test]
+    fn source_vector_normalization_keeps_signed_zero_and_javascript_fallback() {
+        let data: serde_json::Value =
+            serde_json::from_str(include_str!("../data/snowball-movement-reference.json")).unwrap();
+        assert_eq!(data["normalizations"].as_array().unwrap().len(), 225);
+        for (i, row) in data["normalizations"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .enumerate()
+        {
+            let input = V::new(source_f64(&row["input"][0]), source_f64(&row["input"][1]));
+            assert_source_f64(input.len(), &row["length"], &format!("norm{i} length"));
+            let output = input.norm();
+            assert_source_f64(output.x, &row["output"][0], &format!("norm{i} x"));
+            assert_source_f64(output.y, &row["output"][1], &format!("norm{i} y"));
+        }
+    }
+    #[test]
+    fn source_elf_movement_matches_exact_endpoint_and_vector_boundaries() {
+        let data: serde_json::Value =
+            serde_json::from_str(include_str!("../data/snowball-movement-reference.json")).unwrap();
+        assert_eq!(data["movement"].as_array().unwrap().len(), 621);
+        let mut game = Snowball::new("movement-boundaries");
+        game.map.states.fill(1);
+        game.map.obstacles.fill(-1);
+        game.add_player(false);
+        for (i, row) in data["movement"].as_array().unwrap().iter().enumerate() {
+            let p = &mut game.players[0];
+            p.pos = V::default();
+            p.z = 0.;
+            p.alive = true;
+            p.arrived = true;
+            p.landed = true;
+            p.speed = source_f64(&row["speed"]);
+            p.path = vec![V::new(
+                source_f64(&row["target"][0]),
+                source_f64(&row["target"][1]),
+            )];
+            game.collision = Collision::new(Bounds::rect(V::default(), 10000., 10000.));
+            game.finish_frame(1440., 800.);
+            let p = &game.players[0];
+            let label = format!("movement{i} {}", row["kind"]);
+            assert_eq!(
+                p.path.len() as u64,
+                row["remaining"].as_u64().unwrap(),
+                "{label} remaining"
+            );
+            assert_source_f64(p.pos.x, &row["position"][0], &format!("{label} x"));
+            assert_source_f64(p.pos.y, &row["position"][1], &format!("{label} y"));
+            let face = source_f64(&row["face"]);
+            if face.is_nan() {
+                assert!(p.face.is_nan(), "{label} angle");
+            } else {
+                assert!(
+                    (p.face - face).abs() <= 1e-12,
+                    "{label} angle {} vs {face}",
+                    p.face
+                );
+            }
+        }
+    }
+    #[test]
+    fn source_client_performance_clock_is_separate_from_game_time() {
+        let data: serde_json::Value =
+            serde_json::from_str(include_str!("../data/snowball-client-clock-reference.json"))
+                .unwrap();
+        assert_eq!(data["cases"].as_array().unwrap().len(), 6);
+        let mut frames = 0;
+        for case in data["cases"].as_array().unwrap() {
+            let mut game = Snowball::new("client-clock");
+            game.add_player(false);
+            let mut actor = game.players[0].clone();
+            actor.active = false;
+            actor.arrived = true;
+            actor.landed = true;
+            for (i, row) in case["frames"].as_array().unwrap().iter().enumerate() {
+                let input = &row["input"];
+                game.wall = input["perf"].as_f64().unwrap();
+                game.time = input["time"].as_f64().unwrap();
+                game.knocked_out = input["score"].as_u64().unwrap_or(0) as u32;
+                game.players.clear();
+                if !input["absent"].as_bool().unwrap_or(false) {
+                    let mut p = actor.clone();
+                    p.alive = input["alive"].as_bool().unwrap_or(false);
+                    p.presence.present = !input["gone"].as_bool().unwrap_or(false);
+                    p.presence.exit_time = -1.;
+                    game.players.push(p);
+                }
+                game.collision = Collision::new(Bounds::rect(V::default(), 10000., 10000.));
+                game.finish_frame(1440., 800.);
+                assert_json_close(
+                    &serde_json::json!({"deadAt":game.client_dead_at,"stopped":game.gameover,"score":game.hud_knockouts,"time":game.hud_time}),
+                    &row["output"],
+                    &format!("{} frame{i}", case["name"]),
+                );
+                frames += 1;
+            }
+        }
+        assert_eq!(frames, 25);
+    }
+
     #[test]
     fn within_match_elf_pool_and_independent_bot_aliases_match_original_systems() {
         let data: serde_json::Value =
@@ -2206,6 +2324,8 @@ pub(crate) mod tests {
             for frame in case["frames"].as_array().unwrap() {
                 let input = &frame["input"];
                 game.time = input["at"].as_f64().unwrap();
+                // Original harness sets performance.now and game clock to at.
+                game.wall = game.time;
                 game.sounds.clear();
                 if input["size"].is_array() {
                     w = input["size"][0].as_f64().unwrap();

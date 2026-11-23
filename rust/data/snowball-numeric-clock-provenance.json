@@ -1,0 +1,63 @@
+{
+  "method": "Actual original THREE Vector2/Elf.update and ClientSystem methods in CPU VM; native production V::norm/Player stage and real finish_frame Client branch compared. Movement uses raw IEEE754 bit strings; timer uses independent supplied performance and game clocks. No browser, GPU/window, focus/input/audio or host execution.",
+  "normalizations": 225,
+  "movements": 621,
+  "timer_cases": 6,
+  "timer_frames": 25,
+  "changes": [
+    "V::norm divides by length||1, preserving signed zero/subnormals and retaining non-NaN components when length is NaN.",
+    "Elf movement compares source-computed normalized vector length, not configured step. Squared/sum/sqrt and multiplication order retained; no epsilon/Math.hypot substitution.",
+    "Client death stores and compares wall/performance namespace, retaining strict >2500ms, immediate gone path, zero sentinel and original no-reset-on-revive behavior."
+  ],
+  "checks": [
+    "All122 tests pass (109 library +13 binary).",
+    "Before correction, three new tests failed against actual source: signed-zero normalization; endpoint path consumed one frame early; native death timestamp32 versus source10000.",
+    "225 vector lengths/normalizations and621 actual Elf updates compare component bits (NaN class instead of payload) and exact remaining waypoint count; face atan2 uses1e-12 tolerance. Corpus includes384 near-endpoint cases,225 vector boundaries and12 speed boundaries.",
+    "Six actual ClientSystem cases/25 frames compare death timestamp, sticky stop state and retained HUD score/time: frozen/jumping game clocks, strict deadline, gone, missing player, zero sentinel and revive quirks.",
+    "Older removal oracle sets performance.now and game clock to the same input.at; native fixture now supplies both, with immutable expected output unchanged.",
+    "All three new numeric/clock tests also pass in optimized release mode.",
+    "Release application and snowball_capture diagnostic build successfully; neither launched.",
+    "CPU-only180s/10800-step native smoke passes:100 connections/99 controllers/50 elf slots/26 active/74KO. Not original match statistics or latency proof."
+  ],
+  "limits": [
+    "NaN payload/sign is not a JavaScript numeric contract; compare NaN class, not payload bits.",
+    "Angles use 1e-12 tolerance for cross-libm atan2; path count and vector bits otherwise exact.",
+    "Generic invalid-number grid/path/collision/render/network behavior is outside this vector/Elf fixture.",
+    "No full animated Model/graphics/audio/input or whole-match parity claim.",
+    "Checks native stop boolean/death timestamp/retained HUD values, not complete host event payload/focus/overlay dispatch or application pause scheduling.",
+    "Supplied wall namespace models performance.now; actual native absolute origin/background/suspended clock remains unverified.",
+    "Does not establish all Health/Presence/Removal/animation clock lifetimes or general invalid clocks.",
+    "No full Health/Presence/Removal/animation clock port or native host pause/background/absolute-origin certification.",
+    "Raw vector/Elf invalid-number checks do not establish generic invalid grid/collision/renderer behavior.",
+    "Cross-restart pooled elves, full loaded-model/async/material/marker lifecycle, global RNG and whole-mode/site fidelity remain incomplete."
+  ],
+  "before_reference_commit": "43152979bf71b33fada1f0d17a831da4fb0d0e4d",
+  "source_sha256": {
+    "static/scenes/snowball/js/engine/core/entity.js": "d846a4e29e7f6664d422212d8746746da32c0a2e2a91e51b52f26b00ab0028ce",
+    "static/scenes/snowball/js/engine/utils/allocatable.js": "c4ab5759c61e9c933e3fb009cc6d3f59e0e83e5cb951444ba45b6a1c1c7ad628",
+    "static/scenes/snowball/js/engine/utils/collision-2d.js": "e3813be39a28288bc8784000bb612e002588e14078ce3bd2e5d74827bc175807",
+    "static/scenes/snowball/js/engine/utils/function.js": "c802732d13117236459f527ce06e8e411503991f7a7b37fd1926fb3bfbe12b2e",
+    "static/scenes/snowball/js/snowball/components/arrival.js": "ec8d83b69b92298a2ad6a5b061af737b498e44e6ad0740a27c59f2f069413894",
+    "static/scenes/snowball/js/snowball/components/component.js": "0838cddfc50a779e2bd45ecce0c15911f22883040bb93ce64c09387ba4bda76f",
+    "static/scenes/snowball/js/snowball/components/health.js": "912e9d5d5d0fdaea5d42a8921c98e955cabd67e40d701fc51a384f652ceaa5c4",
+    "static/scenes/snowball/js/snowball/components/path.js": "cd0d22a56343ea733c2880dea5b86e38fd91576e161ee9195e0666a91b68c447",
+    "static/scenes/snowball/js/snowball/components/powerup.js": "685f22ecf8a5b18d6d52a20a4f3919578987d9c008a23ef5cdaae3d965600696",
+    "static/scenes/snowball/js/snowball/components/presence.js": "6f8513b648efae9fe9c4cc6aa59a49180e2ebd7b6ad09c4fa3fa37158e1d9e76",
+    "static/scenes/snowball/js/snowball/components/speed.js": "c4962b20c238cb55787d86d863530c9adfc9249108fed2f93dae294da621048e",
+    "static/scenes/snowball/js/snowball/components/splat.js": "8609c6aceb6a10c3f6d7de75622ddab674cfd612eb7bb7518e1a0b0f9bc63fe2",
+    "static/scenes/snowball/js/snowball/components/trail.js": "f2b181b2087fa14fa7d97500cc81c6dd16fde75c191e2c9d1bef6f1d328c6085",
+    "static/scenes/snowball/js/snowball/components/trajectory.js": "4e87f2e0dccad053e24d658ba0bccb38363a1a56c247c2faf7bd52206ceacad4",
+    "static/scenes/snowball/js/snowball/components/visibility.js": "9aba7abd79812704ab02b66282f3e900be098bdec8d0e2e77cb5031887cc49a5",
+    "static/scenes/snowball/js/snowball/entities/elf.js": "d5fd37bbe1201b63143898793fbe0b9e7036805e513b1af6aa4a48f0226f5cf2",
+    "static/scenes/snowball/js/snowball/entities/player-marker.js": "9ea345e315ba34920fe325e9a3e4083adab61a5a2d0d092cb22b92ec7341f544",
+    "static/scenes/snowball/js/snowball/entities/snowball.js": "3c0e0c2577486cf5c6827d8a178df4475c31ea34fa41c6860deabbcc5df15749",
+    "static/scenes/snowball/js/snowball/models.js": "90578c9e8ea0b6106693faa6c8ce84d1667831f1eb249ac0915598ec03720d86",
+    "static/scenes/snowball/js/snowball/systems/lod-system.js": "d214e05189514a66ba84142872cd49b6722a4d3b8e8e8d76728932f6c2edd8c6",
+    "static/scenes/snowball/js/snowball/textures.js": "e910084cc44c6757f4daef16f1f2e2539fbd22b391ebab159f644dfdb7c59eb3",
+    "static/third_party/lib/three/build/three.js": "6467e0098991c58a5c6e64415c7126079672b4e0927c3203589644db96c64b60",
+    "static/third_party/lib/three/examples/js/loaders/GLTFLoader.js": "d679f38015daeaefec97ada4792f356f939597fe4c68d573c1743704bc1ec3dc",
+    "static/scenes/snowball/js/snowball/systems/client-system.js": "0f8aded75ed447fbfede07eaa10485180aa54d1e2de101ba9a6a77fe7a0aa7d8"
+  },
+  "older_fixture_sha256": "c1f2b0b604c8fa6ac52da44b3da735509900bb157927cf41354678001a4e9a14",
+  "before_distribution_commit": "575c89bdaead9307c15f371af96738340e47d953"
+}

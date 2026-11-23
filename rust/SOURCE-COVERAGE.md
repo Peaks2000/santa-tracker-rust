@@ -2674,3 +2674,50 @@ Release application/capture builds pass; neither launched. User game/focus/input
 and audio stayed untouched. Also audit distinct wall/game clocks next: source
 Client death wait uses performance.now while native currently stores game time;
 existing equal-clock fixtures cannot establish those divergent-clock branches.
+
+### Snowball vector boundaries and Client performance deadline (23 November 2026)
+
+Full original Elf and ClientSystem reread, with active THREE Vector2 sub/length/
+normalize/divideScalar/multiplyScalar methods traced and executed unchanged.
+Native norm previously replaced zero vectors with fresh positive zeros, and
+propagated NaN length into otherwise non-NaN components. Source divides by
+(length||1), retaining signed zero/subnormals and using1 for NaN length. Native
+now follows that operation. Elf.update measures normalized delta.length(),
+whereas native compared configured step. Near an endpoint, rounding can leave
+a source waypoint for one more frame; negative/nonfinite speed boundaries also
+differ. Native now measures the computed vector, in source operation order,
+without an invented epsilon or hypot substitution.
+
+CPU VM executes original THREE Vector2 and actual Elf.setup/update with held
+GLTF/model IO, Canvas/input/collision/LOD-registration adapters and explicit
+origin/speed/waypoint. 225 normalization pairs and621 Elf calls (384 near-endpoint,
+225 vector-boundary and12 speed-boundary cases) include signed zeros, subnormal/
+overflow/NaN/infinity inputs. Raw IEEE754 bit strings preserve source inputs and
+outputs. Native actual Player stage matches vector bits and remaining waypoint
+count; NaN payload/sign is excluded, and face uses1e-12 atan2 tolerance. This is
+not generic invalid-grid/collision/render behavior or loaded-model animation.
+
+ClientSystem.dead uses performance.now, independently of clockSystem.time used
+for displayed score time. Native stored/read game time for the2500ms wait; it
+now uses its wall/performance namespace. Preserve source strict >2500, immediate
+presence.gone, zero sentinel, and no reset on revive. Actual original Client/
+Health/Presence/Path/Arrival methods with THREE run six cases/25 frames: frozen
+and jumping game clock, equal/just-after deadline, gone, absent player, zero
+sentinel and revive. Real native finish_frame, with actor inactive to isolate
+Client, matches death timestamp, sticky stop flag and last HUD score/time.
+Host event payload/dispatch, application clock acquisition/pause/background and
+other Health/Presence/Removal/animation clock domains remain unverified.
+
+All three new tests fail against prior native code: norm(0,-0) loses sign, an
+actual source endpoint retains one waypoint when native consumes it, and death
+at performance10000/game32 stores32 natively. They pass after correction. An
+older removal fixture omitted wall input despite its source harness setting
+performance.now and clockSystem.time to input.at; native now supplies both,
+without altering source/expected data. All122 tests pass (109lib+13bin).
+No browser, window, GPU context, focus change, OS input or audio playback was used.
+Earlier handoff notes about these unmatched vector/Client branches are superseded;
+full component/host/numeric/visual and cross-restart pooling remain unfinished.
+
+All three new tests also pass optimized release mode. Application/capture release
+builds pass; neither launched. CPU180s smoke completes (100 connected,99
+controllers,50 slots,26 active,74KO), not source match/graphics/latency proof.

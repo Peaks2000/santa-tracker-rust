@@ -1,0 +1,482 @@
+{
+  "method": "Actual unmodified ClientSystem and Health/Presence/Path/Arrival with bundled THREE in CPU VM. Separate explicit performance.now and clockSystem.time inputs, alive/gone/null-player inputs; score/stop events recorded. No host/Player/clock-loop, rendering, browser/window/GPU/input/audio. Native test runs real finish_frame with inactive actor to isolate Client branch.",
+  "cases": [
+    {
+      "name": "separate-clocks-and-frozen-game-time",
+      "frames": [
+        {
+          "input": {
+            "perf": 9000,
+            "time": 16,
+            "alive": true,
+            "score": 3
+          },
+          "output": {
+            "deadAt": 0,
+            "stopped": false,
+            "score": 3,
+            "time": 0.016
+          },
+          "events": [
+            {
+              "type": "game-score",
+              "payload": {
+                "level": 3,
+                "maxLevel": -1,
+                "time": 0.016
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "perf": 10000,
+            "time": 32
+          },
+          "output": {
+            "deadAt": 10000,
+            "stopped": false,
+            "score": 3,
+            "time": 0.016
+          },
+          "events": []
+        },
+        {
+          "input": {
+            "perf": 12500,
+            "time": 32
+          },
+          "output": {
+            "deadAt": 10000,
+            "stopped": false,
+            "score": 3,
+            "time": 0.016
+          },
+          "events": []
+        },
+        {
+          "input": {
+            "perf": 12500.0001,
+            "time": 32
+          },
+          "output": {
+            "deadAt": 10000,
+            "stopped": true,
+            "score": 3,
+            "time": 0.016
+          },
+          "events": [
+            {
+              "type": "game-stop",
+              "payload": {
+                "level": 3,
+                "maxLevel": -1
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "perf": 13000,
+            "time": 100,
+            "alive": true,
+            "score": 7
+          },
+          "output": {
+            "deadAt": 10000,
+            "stopped": true,
+            "score": 7,
+            "time": 0.1
+          },
+          "events": [
+            {
+              "type": "game-score",
+              "payload": {
+                "level": 7,
+                "maxLevel": -1,
+                "time": 0.1
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "perf": 13010,
+            "time": 101
+          },
+          "output": {
+            "deadAt": 10000,
+            "stopped": true,
+            "score": 7,
+            "time": 0.1
+          },
+          "events": []
+        }
+      ]
+    },
+    {
+      "name": "game-clock-jump-does-not-end-wait",
+      "frames": [
+        {
+          "input": {
+            "perf": 100,
+            "time": 0,
+            "alive": true,
+            "score": 2
+          },
+          "output": {
+            "deadAt": 0,
+            "stopped": false,
+            "score": 2,
+            "time": 0
+          },
+          "events": [
+            {
+              "type": "game-score",
+              "payload": {
+                "level": 2,
+                "maxLevel": -1,
+                "time": 0
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "perf": 200,
+            "time": 60000
+          },
+          "output": {
+            "deadAt": 200,
+            "stopped": false,
+            "score": 2,
+            "time": 0
+          },
+          "events": []
+        },
+        {
+          "input": {
+            "perf": 201,
+            "time": 1000000
+          },
+          "output": {
+            "deadAt": 200,
+            "stopped": false,
+            "score": 2,
+            "time": 0
+          },
+          "events": []
+        },
+        {
+          "input": {
+            "perf": 2700,
+            "time": 1000000
+          },
+          "output": {
+            "deadAt": 200,
+            "stopped": false,
+            "score": 2,
+            "time": 0
+          },
+          "events": []
+        },
+        {
+          "input": {
+            "perf": 2700.001,
+            "time": 1000000
+          },
+          "output": {
+            "deadAt": 200,
+            "stopped": true,
+            "score": 2,
+            "time": 0
+          },
+          "events": [
+            {
+              "type": "game-stop",
+              "payload": {
+                "level": 2,
+                "maxLevel": -1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gone-bypasses-deadline",
+      "frames": [
+        {
+          "input": {
+            "perf": 12,
+            "time": 0,
+            "gone": true
+          },
+          "output": {
+            "deadAt": 12,
+            "stopped": true,
+            "score": 0,
+            "time": 0
+          },
+          "events": [
+            {
+              "type": "game-stop",
+              "payload": {
+                "level": 0,
+                "maxLevel": -1
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "perf": 13,
+            "time": 0,
+            "gone": true
+          },
+          "output": {
+            "deadAt": 12,
+            "stopped": true,
+            "score": 0,
+            "time": 0
+          },
+          "events": []
+        }
+      ]
+    },
+    {
+      "name": "zero-sentinel-restarts-timestamp",
+      "frames": [
+        {
+          "input": {
+            "perf": 0,
+            "time": 100
+          },
+          "output": {
+            "deadAt": 0,
+            "stopped": false,
+            "score": 0,
+            "time": 0
+          },
+          "events": []
+        },
+        {
+          "input": {
+            "perf": 1000,
+            "time": 100
+          },
+          "output": {
+            "deadAt": 1000,
+            "stopped": false,
+            "score": 0,
+            "time": 0
+          },
+          "events": []
+        },
+        {
+          "input": {
+            "perf": 3500,
+            "time": 100
+          },
+          "output": {
+            "deadAt": 1000,
+            "stopped": false,
+            "score": 0,
+            "time": 0
+          },
+          "events": []
+        },
+        {
+          "input": {
+            "perf": 3500.01,
+            "time": 100
+          },
+          "output": {
+            "deadAt": 1000,
+            "stopped": true,
+            "score": 0,
+            "time": 0
+          },
+          "events": [
+            {
+              "type": "game-stop",
+              "payload": {
+                "level": 0,
+                "maxLevel": -1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "missing-player-retains-score-and-clock",
+      "frames": [
+        {
+          "input": {
+            "perf": 1000,
+            "time": 1000,
+            "alive": true,
+            "score": 5
+          },
+          "output": {
+            "deadAt": 0,
+            "stopped": false,
+            "score": 5,
+            "time": 1
+          },
+          "events": [
+            {
+              "type": "game-score",
+              "payload": {
+                "level": 5,
+                "maxLevel": -1,
+                "time": 1
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "perf": 3000,
+            "time": 0,
+            "absent": true
+          },
+          "output": {
+            "deadAt": 0,
+            "stopped": false,
+            "score": 5,
+            "time": 1
+          },
+          "events": []
+        },
+        {
+          "input": {
+            "perf": 6000,
+            "time": 10
+          },
+          "output": {
+            "deadAt": 6000,
+            "stopped": false,
+            "score": 5,
+            "time": 1
+          },
+          "events": []
+        },
+        {
+          "input": {
+            "perf": 8500,
+            "time": 10
+          },
+          "output": {
+            "deadAt": 6000,
+            "stopped": false,
+            "score": 5,
+            "time": 1
+          },
+          "events": []
+        },
+        {
+          "input": {
+            "perf": 8500.001,
+            "time": 10
+          },
+          "output": {
+            "deadAt": 6000,
+            "stopped": true,
+            "score": 5,
+            "time": 1
+          },
+          "events": [
+            {
+              "type": "game-stop",
+              "payload": {
+                "level": 5,
+                "maxLevel": -1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "revive-does-not-reset-source-death-timestamp",
+      "frames": [
+        {
+          "input": {
+            "perf": 100,
+            "time": 0
+          },
+          "output": {
+            "deadAt": 100,
+            "stopped": false,
+            "score": 0,
+            "time": 0
+          },
+          "events": []
+        },
+        {
+          "input": {
+            "perf": 200,
+            "time": 1,
+            "alive": true,
+            "score": 9
+          },
+          "output": {
+            "deadAt": 100,
+            "stopped": false,
+            "score": 9,
+            "time": 0.001
+          },
+          "events": [
+            {
+              "type": "game-score",
+              "payload": {
+                "level": 9,
+                "maxLevel": -1,
+                "time": 0.001
+              }
+            }
+          ]
+        },
+        {
+          "input": {
+            "perf": 2700,
+            "time": 2
+          },
+          "output": {
+            "deadAt": 100,
+            "stopped": true,
+            "score": 9,
+            "time": 0.001
+          },
+          "events": [
+            {
+              "type": "game-stop",
+              "payload": {
+                "level": 9,
+                "maxLevel": -1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "source_sha256": {
+    "static/scenes/snowball/js/engine/core/entity.js": "d846a4e29e7f6664d422212d8746746da32c0a2e2a91e51b52f26b00ab0028ce",
+    "static/scenes/snowball/js/snowball/components/arrival.js": "ec8d83b69b92298a2ad6a5b061af737b498e44e6ad0740a27c59f2f069413894",
+    "static/scenes/snowball/js/snowball/components/component.js": "0838cddfc50a779e2bd45ecce0c15911f22883040bb93ce64c09387ba4bda76f",
+    "static/scenes/snowball/js/snowball/components/health.js": "912e9d5d5d0fdaea5d42a8921c98e955cabd67e40d701fc51a384f652ceaa5c4",
+    "static/scenes/snowball/js/snowball/components/path.js": "cd0d22a56343ea733c2880dea5b86e38fd91576e161ee9195e0666a91b68c447",
+    "static/scenes/snowball/js/snowball/components/presence.js": "6f8513b648efae9fe9c4cc6aa59a49180e2ebd7b6ad09c4fa3fa37158e1d9e76",
+    "static/scenes/snowball/js/snowball/entities/player-marker.js": "9ea345e315ba34920fe325e9a3e4083adab61a5a2d0d092cb22b92ec7341f544",
+    "static/scenes/snowball/js/snowball/systems/client-system.js": "0f8aded75ed447fbfede07eaa10485180aa54d1e2de101ba9a6a77fe7a0aa7d8",
+    "static/third_party/lib/three/build/three.js": "6467e0098991c58a5c6e64415c7126079672b4e0927c3203589644db96c64b60"
+  },
+  "limits": [
+    "Checks native stop boolean/death timestamp/retained HUD values, not complete host event payload/focus/overlay dispatch or application pause scheduling.",
+    "Supplied wall namespace models performance.now; actual native absolute origin/background/suspended clock remains unverified.",
+    "Does not establish all Health/Presence/Removal/animation clock lifetimes or general invalid clocks."
+  ]
+}
