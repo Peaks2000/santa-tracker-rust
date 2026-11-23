@@ -3099,3 +3099,59 @@ seconds into1/60 for reproducibility; they do not model the interactive render
 schedule. No live windows/GPU/input/audio tests while user plays; no 1:1 upgrade.
 
 Release app and Jetpack capture compile successfully; neither launched.
+
+## Elf Jetpack movement/position audio parameters (23 November 2026)
+
+Supersedes the unported Player.updateSound parameter path recorded above. Read
+complete Player/updateSound/reset, selected complete SmartValue methods and
+native Mixer/command/start/render dispatch. Extracted complete selected original
+Klang config action/at_action functions through CPU VM (not minified line search).
+Traced cXIa bus, both source configs/Ogg identification headers and parent chain;
+read actual Bus constructor/init/output/effects accessors, StereoPanner class,
+AudioSource.fadeInAndPlay/fadeOutAndStop relevant branches in bundled Klang.
+
+Player reset samples velocity0/pan0 and advances frame counter once. Native now
+initializes those parameter events/caches and counter1. After collision stage,
+every third game frame computes speed and x-offset/(sceneWidth/2)*.85, emitting
+moving then position only when SmartValue changes. Pause blocks game frames;
+restart resets sampling caches/counter and appends reset events. Existing
+223-frame original Game/Controls/Player/SmartValue test now checks all133 parameter
+events (names/order/count, values tolerance1e-9), alongside movement/boundary
+checks. Sampling is every third rendered GAME frame, not fixed20Hz at all FPS.
+
+Original config moving process assigns cXIa output gain max(speed,.5); position
+clamps its StereoPanner.pan to ±.75. Only XgMa wind and Kzah jetpack route directly
+through cXIa; both original Oggs are stereo44.1kHz. Native jetpack_audio maps each
+bus parameter to one grouped mixer command over both IDs. Atomic group dispatch
+avoids updating one stem a mixer callback earlier than the other. Pan uses the
+existing stereo equal-power path; shared gain multiplies independently from each
+stem's original volume and fades. Mixer caches group settings per source for
+new voices and updates current/fading voices in place; no restart/seek for a
+parameter change. Other sources retain default bus gain1. Parameter queue drains
+before ordinary scene events, preserving initial settings before loop playback;
+complete cross-queue event-time ordering is not certified.
+
+Evidence: `jetpack-audio-parameters.cjs` executes actual config action functions
+on gain/pan property recorders,20 boundary/interior values including sqrt2 gain.
+Fixture retains routing/config/Ogg hashes, source volumes/channels/rates. Rust
+command-plan test checks exact f32 gain/pan values and membership. CPU Mixer test
+checks both stereo stems, preserved base levels, source-volume independence,
+in-place playback progression, pan/gain updates and persistence across voice
+stop/new play. No SDL, audio device, browser AudioContext or audible playback.
+These are source-process and synthetic PCM checks, not original PCM certification.
+
+Remaining source branches: AudioSource.fadeInAndPlay returns without restarting
+already-playing loops and can abort pending fade-out. Native host still stops
+all voices on in-scene restart and creates new loops; reentry/fade reversal and
+phase are not equivalent. Native Source fade envelopes/callback quantum vs real
+WebAudio are unverified. Muted launch creates no device and drops commands;
+unmute creates fresh Mixer without replaying active loops or latest parameters.
+Parent cXIa bus configuration defaults to unit gain, but upstream xw3v low-pass20kHz isn't implemented
+by this path. Decode/resampling/filtering/loop seams and pause/mute/destination
+lifecycle need audio-output comparisons. AudioTag fallback actions and inactive
+StereoPanner scheduling/polyfill paths are not ported by this WebAudio-targeted
+native parameter mapping. Full audio remains partial.
+
+All132 tests pass (118 library +14 application). Release app/capture compile;
+neither launched. No audio device/window/context/input automation while user
+plays. Keep existing README rating/user feedback; no whole-mode 1:1 claim.

@@ -1153,3 +1153,25 @@ velocity/pan and frameCounter%3 are NOT ported (native Sound ignores those names
 Collision ordering and prior target-specific touch/GPU/layout work remain open.
 
 Release app and Jetpack capture compile successfully; neither launched.
+
+### Jetpack player audio parameters (23 November 2026)
+
+Player emits typed player_sounds at source frameCounter%3 cadence/change suppression,
+reset0-speed/0-pan sample ->counter1. Original223-frame oracle now checks133
+parameter events, tolerance1e-9 plus names/order/count. Main drains parameters to
+Sound.jetpack_parameter before ordinary names. Actual Klang config processes:
+gain=max(speed,.5), pan clamp±.75 on buscXIa. Only XgMa/Kzah, both stereo44.1k Ogg.
+Native jetpack_audio ->one GroupBusGain/GroupPanSource command over both IDs,
+atomic per callback. Mixer separate bus_gain preserves original stem volume/fade
+and current playback position; persists setting for new voices. Other gains1.
+Original config20 values/membership and synthetic stereo PCM tests; all132 tests
+pass (118lib+14app). Release builds pass, no devices/windows/audio opened.
+
+NEXT source AudioSource.fadeInAndPlay already-playing-loop early return and
+abort-fade behavior NOT matched: host restart still sound.stop then replays loops.
+Muted launch ->fresh device on unmute loses active voices/cached param state.
+Upstream20k lowpass, native resampling/mixer quantum, loop/pause/mute/fade reversal
+and cross-queue parameter/name ordering unverified/incomplete. Source process
+oracle uses property recorders, NOT real WebAudio/PCM reference or AudioTag
+fallback. Keep no live audio or window testing while user plays. Prior touch-
+target, clock, GPU group/layout work remains open; whole-site goal unachieved.

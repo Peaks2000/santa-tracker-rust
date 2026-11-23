@@ -49,6 +49,14 @@ pub enum Command {
         offset: f64,
         end: Option<f64>,
     },
+    GroupBusGain {
+        ids: Vec<String>,
+        gain: f32,
+    },
+    GroupPanSource {
+        ids: Vec<String>,
+        pan: f32,
+    },
     SourceGain {
         id: String,
         volume: f32,
@@ -77,6 +85,7 @@ struct Voice {
     position: f64,
     step: f64,
     volume: f32,
+    bus_gain: f32,
     loop_start: Option<f64>,
     end: f64,
 }
@@ -86,6 +95,7 @@ pub struct Mixer {
     paused: bool,
     gain: f32,
     pans: std::collections::HashMap<String, f32>,
+    bus_gains: std::collections::HashMap<String, f32>,
 }
 impl Mixer {
     pub fn new(commands: Receiver<Command>) -> Self {
@@ -95,11 +105,29 @@ impl Mixer {
             paused: false,
             gain: 1.,
             pans: std::collections::HashMap::new(),
+            bus_gains: std::collections::HashMap::new(),
         }
     }
     pub fn mix(&mut self, output: &mut [f32]) {
         for command in self.commands.try_iter() {
             match command {
+                Command::GroupBusGain { ids, gain } => {
+                    for id in ids {
+                        for voice in self.voices.iter_mut().filter(|v| v.id == id) {
+                            voice.bus_gain = gain;
+                        }
+                        self.bus_gains.insert(id, gain);
+                    }
+                }
+                Command::GroupPanSource { ids, pan } => {
+                    let pan = pan.clamp(-1., 1.);
+                    for id in ids {
+                        for voice in self.voices.iter_mut().filter(|v| v.id == id) {
+                            voice.pan = Some(pan);
+                        }
+                        self.pans.insert(id, pan);
+                    }
+                }
                 Command::SourceGain { id, volume } => {
                     for v in self.voices.iter_mut().filter(|v| v.id == id) {
                         v.volume = volume;
@@ -150,6 +178,7 @@ impl Mixer {
                     self.voices.push(Voice {
                         pausable,
                         pan: self.pans.get(&id).copied(),
+                        bus_gain: self.bus_gains.get(&id).copied().unwrap_or(1.),
                         id,
                         delay: (delay.max(0.) * 48000.) as usize,
                         age: 0,
@@ -230,7 +259,7 @@ impl Mixer {
                     }
                 }
                 for (out, sample) in frame.iter_mut().zip(channels) {
-                    *out += sample * voice.volume * self.gain * envelope;
+                    *out += sample * voice.volume * voice.bus_gain * self.gain * envelope;
                 }
                 voice.position += voice.step;
             }
@@ -243,6 +272,71 @@ impl Mixer {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn shared_bus_gain_and_pan_preserve_stem_levels_and_playback_position() {
+        let (tx, rx) = std::sync::mpsc::channel();
+        let mut mixer = Mixer::new(rx);
+        let ids = vec!["wind".to_owned(), "jet".to_owned()];
+        tx.send(Command::GroupBusGain {
+            ids: ids.clone(),
+            gain: 0.5,
+        })
+        .unwrap();
+        let sample = Arc::new(Sample {
+            samples: vec![0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8],
+            channels: 2,
+            rate: 48000,
+        });
+        let play = |id: &str, volume| Command::Play {
+            pausable: true,
+            id: id.into(),
+            retrigger: true,
+            delay: 0.,
+            fade_in: 0.,
+            sample: sample.clone(),
+            volume,
+            rate: 1.,
+            loop_start: Some(0.),
+            offset: 0.,
+            end: None,
+        };
+        tx.send(play("wind", 0.2)).unwrap();
+        tx.send(play("jet", 0.4)).unwrap();
+        let mut output = [0.; 2];
+        mixer.mix(&mut output);
+        assert!((output[0] - 0.03).abs() < 1e-6 && (output[1] - 0.06).abs() < 1e-6);
+        tx.send(Command::GroupBusGain {
+            ids: ids.clone(),
+            gain: 1.5,
+        })
+        .unwrap();
+        tx.send(Command::GroupPanSource {
+            ids: ids.clone(),
+            pan: 0.75,
+        })
+        .unwrap();
+        mixer.mix(&mut output);
+        let angle = 0.75f32 * std::f32::consts::FRAC_PI_2;
+        assert!((output[0] - 0.3 * angle.cos() * 0.6 * 1.5).abs() < 1e-6);
+        assert!((output[1] - (0.4 + 0.3 * angle.sin()) * 0.6 * 1.5).abs() < 1e-6);
+        // Independent source volume remains independent of shared bus gain.
+        tx.send(Command::SourceGain {
+            id: "wind".into(),
+            volume: 0.8,
+        })
+        .unwrap();
+        mixer.mix(&mut output);
+        assert!((output[0] - 0.5 * angle.cos() * 1.2 * 1.5).abs() < 1e-6);
+        assert!((output[1] - (0.6 + 0.5 * angle.sin()) * 1.2 * 1.5).abs() < 1e-6);
+        // Bus state persists when voices stop/restart, like the original bus.
+        tx.send(Command::Stop).unwrap();
+        tx.send(play("wind", 0.2)).unwrap();
+        tx.send(play("jet", 0.4)).unwrap();
+        mixer.mix(&mut output);
+        assert!((output[0] - 0.1 * angle.cos() * 0.6 * 1.5).abs() < 1e-6);
+        assert!((output[1] - (0.2 + 0.1 * angle.sin()) * 0.6 * 1.5).abs() < 1e-6);
+    }
+
     #[test]
     fn stereo_pan_moves_audio_without_advancing_or_restarting_it() {
         let (tx, rx) = std::sync::mpsc::channel();

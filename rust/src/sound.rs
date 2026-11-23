@@ -169,6 +169,11 @@ impl Sound {
         let index = macroquad::rand::gen_range(0, content.len());
         self.source(content[index].as_str()?, depth + 1)
     }
+    pub fn jetpack_parameter(&mut self, event: &santa_tracker::jetpack::PlayerSound) {
+        if let Some(command) = santa_tracker::jetpack_audio::commands(event) {
+            self.commands.send(command).ok();
+        }
+    }
     pub fn presentdrop_pan(&mut self, position: f64) {
         let pan = position.clamp(-0.5, 0.5) as f32;
         self.commands

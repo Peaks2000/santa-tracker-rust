@@ -46,6 +46,11 @@ pub struct Player {
     pub fire_scale: f64,
     pub rotation: f64,
 }
+#[derive(Clone, Debug, Serialize)]
+pub struct PlayerSound {
+    pub name: &'static str,
+    pub args: [f64; 1],
+}
 pub struct Jetpack {
     pub player: Player,
     pub entities: Vec<Entity>,
@@ -66,6 +71,10 @@ pub struct Jetpack {
     wall_time: f64,
     goal_deadlines: Vec<f64>,
     pub sounds: Vec<&'static str>,
+    pub player_sounds: Vec<PlayerSound>,
+    sound_counter: u8,
+    sound_velocity: Option<f64>,
+    sound_position: Option<f64>,
     random: Random,
     next_item: f64,
     next_danger: f64,
@@ -107,6 +116,19 @@ impl Jetpack {
             wall_time: 0.,
             goal_deadlines: vec![],
             sounds: vec!["music_start_ingame", "jp_start_game"],
+            player_sounds: vec![
+                PlayerSound {
+                    name: "jp_player_moving",
+                    args: [0.],
+                },
+                PlayerSound {
+                    name: "jp_player_position",
+                    args: [0.],
+                },
+            ],
+            sound_counter: 1,
+            sound_velocity: Some(0.),
+            sound_position: Some(0.),
             random: Random::seeded(seed),
             next_item: 0.,
             next_danger: 0.,
@@ -125,6 +147,9 @@ impl Jetpack {
         let mut sounds = std::mem::take(&mut self.sounds);
         sounds.append(&mut fresh.sounds);
         fresh.sounds = sounds;
+        let mut player_sounds = std::mem::take(&mut self.player_sounds);
+        player_sounds.append(&mut fresh.player_sounds);
+        fresh.player_sounds = player_sounds;
         *self = fresh;
     }
     pub fn wall_step(&mut self, dt: f64) {
@@ -232,6 +257,26 @@ impl Jetpack {
                 self.collect(i);
             }
         }
+        if self.sound_counter == 0 {
+            let velocity =
+                (self.player.vx * self.player.vx + self.player.vy * self.player.vy).sqrt();
+            if self.sound_velocity != Some(velocity) {
+                self.sound_velocity = Some(velocity);
+                self.player_sounds.push(PlayerSound {
+                    name: "jp_player_moving",
+                    args: [velocity],
+                });
+            }
+            let panning = (self.player.x - 490.) / (self.width / 2.) * 0.85;
+            if self.sound_position != Some(panning) {
+                self.sound_position = Some(panning);
+                self.player_sounds.push(PlayerSound {
+                    name: "jp_player_position",
+                    args: [panning],
+                });
+            }
+        }
+        self.sound_counter = (self.sound_counter + 1) % 3;
         if !self.finished {
             self.countdown -= dt;
             let second = self.countdown.ceil();
@@ -420,6 +465,7 @@ mod goal_tests {
             game.next_cloud = f64::INFINITY;
             game.next_level = f64::INFINITY;
             let mut keys = [false; 4];
+            game.player_sounds.clear();
             for frame in case["frames"].as_array().unwrap() {
                 let input = &frame["input"];
                 if input["keys"].is_array() {
@@ -462,6 +508,27 @@ mod goal_tests {
                 }
                 for key in ["hit", "going_up"] {
                     assert_eq!(actual[key], expected[key], "{} {input}", case["name"]);
+                }
+                let source_parameters: Vec<_> = frame["sound_events"]
+                    .as_array()
+                    .unwrap()
+                    .iter()
+                    .map(|e| &e["payload"])
+                    .filter(|e| e["name"].is_string())
+                    .collect();
+                assert_eq!(
+                    game.player_sounds.len(),
+                    source_parameters.len(),
+                    "{} {input}",
+                    case["name"]
+                );
+                for (actual, source) in game.player_sounds.drain(..).zip(source_parameters) {
+                    assert_eq!(actual.name, source["name"].as_str().unwrap());
+                    assert!(
+                        (actual.args[0] - source["args"][0].as_f64().unwrap()).abs() < 1e-9,
+                        "{} {input}",
+                        case["name"]
+                    );
                 }
                 let boundary: Vec<_> = game
                     .sounds

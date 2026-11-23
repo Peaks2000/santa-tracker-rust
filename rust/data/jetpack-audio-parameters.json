@@ -1,0 +1,155 @@
+{
+  "method": "Actual unmodified config.js jp_player_moving/position action functions run in CPU VM against gain/pan property recorders. Bus routing/source volumes and original Ogg identification headers retained. No real Klang Bus/AudioNodes, WebAudio/AudioTag fallback, PCM reference rendering or device playback. Native maps one shared bus update atomically over its two stereo source IDs.",
+  "source_sha256": {
+    "static/third_party/lib/klang/config.js": "42f22aadadf1aaf2ff3ea97c7011575b7beede10a76ad6587a50427d0d2973c6"
+  },
+  "bus": {
+    "type": "Bus",
+    "output_vol": 0.44668359215096,
+    "destination_name": "yX_P",
+    "effects": [
+      {
+        "type": "StereoPanner",
+        "pan": 0
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "Kzah",
+      "volume": 0.35397289232572,
+      "channels": 2,
+      "rate": 44100,
+      "sha256": "981d37710d63fbb3608cc580e3f2df8bde36e170881065bd2acf5aae0669a4ce"
+    },
+    {
+      "id": "XgMa",
+      "volume": 1,
+      "channels": 2,
+      "rate": 44100,
+      "sha256": "d771aeafb49d2e0ae260a2594355a33909d11e800992073afb3f59ac9cd67da4"
+    }
+  ],
+  "cases": [
+    {
+      "name": "jp_player_moving",
+      "value": -2,
+      "gain": 0.5,
+      "pan": 0
+    },
+    {
+      "name": "jp_player_moving",
+      "value": -0.75,
+      "gain": 0.5,
+      "pan": 0
+    },
+    {
+      "name": "jp_player_moving",
+      "value": -0.25,
+      "gain": 0.5,
+      "pan": 0
+    },
+    {
+      "name": "jp_player_moving",
+      "value": 0,
+      "gain": 0.5,
+      "pan": 0
+    },
+    {
+      "name": "jp_player_moving",
+      "value": 0.25,
+      "gain": 0.5,
+      "pan": 0
+    },
+    {
+      "name": "jp_player_moving",
+      "value": 0.5,
+      "gain": 0.5,
+      "pan": 0
+    },
+    {
+      "name": "jp_player_moving",
+      "value": 0.75,
+      "gain": 0.75,
+      "pan": 0
+    },
+    {
+      "name": "jp_player_moving",
+      "value": 1,
+      "gain": 1,
+      "pan": 0
+    },
+    {
+      "name": "jp_player_moving",
+      "value": 1.4142135623730951,
+      "gain": 1.4142135623730951,
+      "pan": 0
+    },
+    {
+      "name": "jp_player_moving",
+      "value": 2,
+      "gain": 2,
+      "pan": 0
+    },
+    {
+      "name": "jp_player_position",
+      "value": -2,
+      "gain": 2,
+      "pan": -0.75
+    },
+    {
+      "name": "jp_player_position",
+      "value": -0.75,
+      "gain": 2,
+      "pan": -0.75
+    },
+    {
+      "name": "jp_player_position",
+      "value": -0.25,
+      "gain": 2,
+      "pan": -0.25
+    },
+    {
+      "name": "jp_player_position",
+      "value": 0,
+      "gain": 2,
+      "pan": 0
+    },
+    {
+      "name": "jp_player_position",
+      "value": 0.25,
+      "gain": 2,
+      "pan": 0.25
+    },
+    {
+      "name": "jp_player_position",
+      "value": 0.5,
+      "gain": 2,
+      "pan": 0.5
+    },
+    {
+      "name": "jp_player_position",
+      "value": 0.75,
+      "gain": 2,
+      "pan": 0.75
+    },
+    {
+      "name": "jp_player_position",
+      "value": 1,
+      "gain": 2,
+      "pan": 0.75
+    },
+    {
+      "name": "jp_player_position",
+      "value": 1.4142135623730951,
+      "gain": 2,
+      "pan": 0.75
+    },
+    {
+      "name": "jp_player_position",
+      "value": 2,
+      "gain": 2,
+      "pan": 0.75
+    }
+  ]
+}

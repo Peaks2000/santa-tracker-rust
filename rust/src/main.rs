@@ -691,6 +691,9 @@ async fn run(opts: Options) {
                 scene_filter.finish(runner.paused || !runner.playing);
             }
             "jetpack" => {
+                for event in jetpack.player_sounds.drain(..) {
+                    sound.jetpack_parameter(&event);
+                }
                 for event in jetpack.sounds.drain(..) {
                     sound.trigger(event, &assets.root);
                 }
