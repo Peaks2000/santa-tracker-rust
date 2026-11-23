@@ -6,6 +6,8 @@ mod assets;
 mod capture;
 #[path = "../src/glider_view.rs"]
 mod glider_view;
+#[path = "../src/ui_render.rs"]
+mod ui_render;
 use macroquad::prelude::*;
 fn main() {
     let a: Vec<_> = std::env::args().skip(1).collect();

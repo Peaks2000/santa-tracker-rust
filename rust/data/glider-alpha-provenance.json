@@ -1,0 +1,95 @@
+{
+  "scope": "Glider associated-alpha image upload/filter/compositing correction. Complete scene source previously reviewed (coverage ledger); complete JS/HTML/styles rechecked in bounded reads this pass. Selected production decoder bytes and analytic bilinear/source-over only, not browser/GPU raster verification.",
+  "source_files": [
+    {
+      "path": "static/scenes/glider/js/building.js",
+      "sha256": "2e60a6481ef10d20a206983640a718cfd62468ca46821dab86384e0e68a7bc5b"
+    },
+    {
+      "path": "static/scenes/glider/js/chimney.js",
+      "sha256": "4d9138d4d5560b28458721286c02b6aa66d68cbbe1f5ae4419be8489cb345856"
+    },
+    {
+      "path": "static/scenes/glider/js/cloud.js",
+      "sha256": "b4c6262bc78a90082a5631e2e08ea8397bd8d40a8c5d7020ddfb7aafd71560cb"
+    },
+    {
+      "path": "static/scenes/glider/js/collision.js",
+      "sha256": "59035592e9ac774efaa40600dae58fbdd7711dd9e279a17d3197e2e7c78a704e"
+    },
+    {
+      "path": "static/scenes/glider/js/constants.js",
+      "sha256": "b267cec5ac3bd1669ea686dd690a35f8cfca1581dd92a692f84d4f58a41c473e"
+    },
+    {
+      "path": "static/scenes/glider/js/controls.js",
+      "sha256": "78d479039f0c22855d116ea80f38dc95bacb855f0ea3ed0523eb3fe201914fad"
+    },
+    {
+      "path": "static/scenes/glider/js/entity.js",
+      "sha256": "14367d5b4f7066520d97acd6fce5449ff3bac3db41a01e49a5b9e0dcaa2847f9"
+    },
+    {
+      "path": "static/scenes/glider/js/game.js",
+      "sha256": "bad5306d211f923d8f17e29e9073c6ff4510f057133606d084ca997810f72dfd"
+    },
+    {
+      "path": "static/scenes/glider/js/item.js",
+      "sha256": "172b601a82dddb222d80087575843f94ae4ba7076cc1b3bf8683b75c899dadd0"
+    },
+    {
+      "path": "static/scenes/glider/js/obstacle.js",
+      "sha256": "608f995c4c596eea2e0448ed8fff5e5244ece5af8c96da4d65afec38887d0d03"
+    },
+    {
+      "path": "static/scenes/glider/js/player.js",
+      "sha256": "edb523b7a1d5a8770d55854c620c3366eb8f9bc5896d8326f4093adf7039c49b"
+    },
+    {
+      "path": "static/scenes/glider/js/present.js",
+      "sha256": "d55f45a80a9e1764a1c4e3af8f4ebc41d5a967473f853f06150e0257a3c5bda4"
+    },
+    {
+      "path": "static/scenes/glider/js/utils.js",
+      "sha256": "ff0f7c0687a02d24e9637747f711b31ce317ddb71d5e8a32f216e1a00d9f33aa"
+    },
+    {
+      "path": "static/scenes/glider/index.html",
+      "sha256": "2777e6e7238d45b91006e4b50a5c150748b3f68abd56a16bed0792a9642956ee"
+    },
+    {
+      "path": "static/scenes/glider/glider-scene.scss",
+      "sha256": "959c478e6a965e3c8e2033f26b78a3cf4ffae72207d765be6cd4289e417a61f0"
+    },
+    {
+      "path": "static/scenes/glider/sass/_buildings.scss",
+      "sha256": "fb6e5be2ffbfffd8d26d5fdf10e51340232d9b92b49f0df5f8fe8661ed649182"
+    },
+    {
+      "path": "static/scenes/glider/sass/_collisions.scss",
+      "sha256": "2926f431d4794ff2b492e5d7ab2ac6698d6505b926e99e63a6f05c9d975c9275"
+    },
+    {
+      "path": "static/scenes/glider/sass/_environment.scss",
+      "sha256": "c9f8c310a2c816adb7bada1431c2984308620d23a00ceff9792435707963f3ae"
+    },
+    {
+      "path": "static/scenes/glider/sass/_items.scss",
+      "sha256": "7a202638d02d4aaf2c51106dabc9949c354dfa3b99dacb9f3f673022a183ced4"
+    },
+    {
+      "path": "static/scenes/glider/sass/_obstacles.scss",
+      "sha256": "3fc9fe8a3480708d571e6e69173d9f7856adc8ca623a983cf754ac7645e93095"
+    },
+    {
+      "path": "static/scenes/glider/sass/_player.scss",
+      "sha256": "5968a58cc999b069e14753cfcd98ea75906041efdbea64b80e49cb9feccfbcb0"
+    },
+    {
+      "path": "static/scenes/glider/sass/_presents.scss",
+      "sha256": "899a95ed786e237813710960ce850d0b5239308fb3da3288f41bb65ec80d3aee"
+    }
+  ],
+  "evidence": "glider-alpha-audit.json",
+  "constraints": "CPU only while user plays: no app/browser/focus/GPU/audio/input. Original assets, dimensions, SVG sampling scale, atlas crop ratios, view geometry, linear filtering, simulation, CSS clocks and sounds retained. Glider upload stays associated; all production image helpers/background layers now use shared premultiplied source-over material, resetting before fonts/other drawing. Runtime shader and live browser/native visuals still unverified."
+}

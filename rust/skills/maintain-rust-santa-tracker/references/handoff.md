@@ -1485,3 +1485,22 @@ load, drains logical DOM/resize on next home frame; actual resize uses draw
 metrics. Don't claim browser scheduling or whole-mode1:1. ThorVG endpoint clamp,
 DPI4096cap, clipped-edge differences and CPU2x cost remain. While user plays,
 continue only source/CPU/saved-capture work: no launch/focus/GPU/audio/input.
+
+
+### Glider associated-alpha image correction (23 November 2026)
+
+Glider now keeps resvg associated color in assets decoder and uses shared
+premultiplied material in all background/bg/sprite image paths. Original crops,
+raster sizes and clocks unchanged; reset material before fonts/other drawing.
+CPU12asset audit reconstructs actual prior unassociation+bleed and evaluates
+3bilinear phases/2sky backgrounds/opacities1/.35. Atlas prior max37.303/255,
+new0 relative to same associated SVG raster. Uniform-white cloud unchanged.
+This is not updated Chromium/GPU pixel certification. Sixasset upload test;
+all160tests143lib+17app pass; release app/glider_reference compile. No launch.
+
+NEXT clarity: Glider SVG atlas remains3x, rest1x; high-DPI/enlarged art still
+magnifies samples. Need source-preserving physical vector sampling and browser
+comparison once user permits live checks. Existing captures/perf are historical.
+Provenance glider-alpha-provenance.json and glider-alpha-audit.json; source own
+13JS/HTML/7Sass/scene SCSS rechecked. Full mode/site1:1 remains unproven.
+Do not interrupt user game with windows, GPU/audio contexts, focus or input.

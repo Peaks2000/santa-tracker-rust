@@ -3794,3 +3794,46 @@ high-DPI CPU cost remain as previously recorded. No clarity/smoothness claim
 from these lifecycle tests alone. All159tests pass143lib+16app; release app
 compiles. No app/window/browser/GPU/audio-device/input automation; user game
 remains undisturbed. README categories and user feedback unchanged.
+
+
+### Glider SVG associated-alpha correction (23 November 2026)
+
+Texture-clarity follow-up without interrupting the user's running game. Complete
+Glider own-scene JS (all13files), HTML, scene SCSS and all7Sass partials rechecked
+in bounded reads; hashes in glider-alpha-provenance.json. All functions already
+mapped in the Glider coverage section; this pass changes upload/compositing,
+not gameplay/events/source clocks. CSS background/SVG layers with transparent
+edges must retain associated color through filtering. Native Glider previously
+unassociated resvg pixels with integer truncation and applied two-pass transparent
+bleeding, then default straight-alpha interpolation/blending. Bleeding cannot
+correct partially transparent adjacent texels with different colors/coverage.
+
+assets decoder now preserves Glider SVG associated bytes directly. GliderView
+owns the shared weak-cached premultiplied material and uses it for all three
+background textures, bg() images and atlas sprite() calls. Source-over uses ONE
+for RGB and alpha; opacity multiplies RGB and alpha once. Helpers reset default
+material before text/other drawing. Verified no other native path consumes
+these scene image textures. Original asset files, SVG raster dimensions (3x
+atlas/1x rest), source crop fractions, fitted rectangles, rotations, layer order,
+linear sampler and simulation remain unchanged. glider_reference diagnostic
+now includes the shared ui_render module and compiles; it was NOT launched.
+
+CPU glider_alpha_audit independently renders12original SVGs, calls production
+decode, requires byte-for-byte associated color/coverage, reconstructs prior
+unassociation+two-pass bleed, then evaluates three bilinear subpixel phases,
+two original sky endpoints and opacities1/.35. Prior atlas fractional-edge max
+37.303/255, house14max28.812, candy19.703, time-orb back34.166. New representation
+matches analytic same-raster associated filtering exactly (0error). Uniform
+white cloud already matched; unchanged edges are not claimed improved. This
+is selected color/coverage math, NOT Chromium SVG antialiasing, GPU execution,
+minification/mipmap/rotation output, every pixel or subjective clarity proof.
+Six-asset production upload regression preserves original byte coverage and
+sampling dimensions, including atlas/present/score/cloud/house/candy paths.
+
+All160tests143lib+17app pass; release app/reference diagnostic compile verified.
+No app/browser/GPU/audio-device/window/focus/input used. Original historical
+captures/performance precede this change; don't claim updated render parity or
+latency. High-density sampling remains fixed and can magnify small SVG buffers;
+source vector viewport sampling is next work. Full music/sensor/input/effect
+and shared host limitations in existing Glider coverage remain. User feedback
+and README categories preserved; no whole-mode/site1:1 claim.

@@ -1,0 +1,161 @@
+{
+  "images": [
+    {
+      "after_max_error_per_255": 0.0,
+      "after_mean_error_per_255": 0.0,
+      "before_max_error_per_255": 37.30294117647059,
+      "before_mean_error_per_255": 0.19488833383885554,
+      "file": "scenes/glider/img/glider-sprite.svg",
+      "fractional_samples": 215622,
+      "rgb_components": 2587464,
+      "size": [
+        1200,
+        1800
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.0,
+      "after_mean_error_per_255": 0.0,
+      "before_max_error_per_255": 0.0,
+      "before_mean_error_per_255": 0.0,
+      "file": "scenes/glider/img/cloud.svg",
+      "fractional_samples": 38880,
+      "rgb_components": 466560,
+      "size": [
+        173,
+        104
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.0,
+      "after_mean_error_per_255": 0.0,
+      "before_max_error_per_255": 14.315211397058825,
+      "before_mean_error_per_255": 0.16161173797744313,
+      "file": "scenes/glider/img/hit-house-01.svg",
+      "fractional_samples": 4209,
+      "rgb_components": 50508,
+      "size": [
+        400,
+        212
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.0,
+      "after_mean_error_per_255": 0.0,
+      "before_max_error_per_255": 28.811764705882368,
+      "before_mean_error_per_255": 0.15056367278985533,
+      "file": "scenes/glider/img/hit-house-14.svg",
+      "fractional_samples": 7761,
+      "rgb_components": 93132,
+      "size": [
+        400,
+        670
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.0,
+      "after_mean_error_per_255": 0.0,
+      "before_max_error_per_255": 24.850367647058842,
+      "before_mean_error_per_255": 0.25173765043597035,
+      "file": "scenes/glider/img/hit-tree-1.svg",
+      "fractional_samples": 7185,
+      "rgb_components": 86220,
+      "size": [
+        192,
+        370
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.0,
+      "after_mean_error_per_255": 0.0,
+      "before_max_error_per_255": 19.703354779411782,
+      "before_mean_error_per_255": 0.44570282615394224,
+      "file": "scenes/glider/img/treat-candy.svg",
+      "fractional_samples": 1038,
+      "rgb_components": 12456,
+      "size": [
+        56,
+        34
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.0,
+      "after_mean_error_per_255": 0.0,
+      "before_max_error_per_255": 3.0937500000000173,
+      "before_mean_error_per_255": 0.169517342298761,
+      "file": "scenes/glider/img/present-01.svg",
+      "fractional_samples": 228,
+      "rgb_components": 2736,
+      "size": [
+        34,
+        34
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.0,
+      "after_mean_error_per_255": 0.0,
+      "before_max_error_per_255": 7.453125000000016,
+      "before_mean_error_per_255": 0.6288185366739281,
+      "file": "scenes/glider/img/present-05.svg",
+      "fractional_samples": 243,
+      "rgb_components": 2916,
+      "size": [
+        26,
+        26
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.0,
+      "after_mean_error_per_255": 0.0,
+      "before_max_error_per_255": 2.149218749999999,
+      "before_mean_error_per_255": 0.17172384860796175,
+      "file": "scenes/glider/img/orb-time-front.svg",
+      "fractional_samples": 1713,
+      "rgb_components": 20556,
+      "size": [
+        90,
+        90
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.0,
+      "after_mean_error_per_255": 0.0,
+      "before_max_error_per_255": 34.16580882352941,
+      "before_mean_error_per_255": 0.8342802735384421,
+      "file": "scenes/glider/img/orb-time-back.svg",
+      "fractional_samples": 1707,
+      "rgb_components": 20484,
+      "size": [
+        90,
+        90
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.0,
+      "after_mean_error_per_255": 0.0,
+      "before_max_error_per_255": 0.8312499999999801,
+      "before_mean_error_per_255": 0.09457192853102726,
+      "file": "scenes/glider/img/points-100.svg",
+      "fractional_samples": 546,
+      "rgb_components": 6552,
+      "size": [
+        70,
+        62
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.0,
+      "after_mean_error_per_255": 0.0,
+      "before_max_error_per_255": 7.171874999999996,
+      "before_mean_error_per_255": 0.024330656451997137,
+      "file": "scenes/glider/img/hit-beam.svg",
+      "fractional_samples": 17418,
+      "rgb_components": 209016,
+      "size": [
+        214,
+        1200
+      ]
+    }
+  ],
+  "method": "Actual native CPU decoder bytes compared with independently rendered original associated SVG bytes and analytic bilinear-filtering/source-over. Three subpixel phases, two source Glider sky backgrounds and two opacities. Baseline includes actual prior two-pass edge bleeding. Not a browser/GPU screenshot or minification/mipmap oracle; does not prove whole-scene texture clarity."
+}

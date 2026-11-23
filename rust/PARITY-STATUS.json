@@ -266,12 +266,13 @@
       "user_notes": "",
       "priority": "normal",
       "agent_status": "partial",
-      "agent_progress": "Playable native Elf Glider with source FIFO pools/random consumption, movement, delayed repeat drops, gravity/chimney scores, items/obstacles, callbacks across pause/restart, responsive art/backgrounds, sprite phases, tutorials, original audio actions and shared HUD/overlays. Seven original scenarios compare 52 states at 1e-7; 147 motion threshold samples and 14 animation lifecycle checkpoints are checked. Five controlled captures have mean RGB errors 0.44–0.68/255.",
+      "agent_progress": "Playable native Elf Glider with source FIFO pools/random consumption, movement, delayed repeat drops, gravity/chimney scores, items/obstacles, callbacks across pause/restart, responsive art/backgrounds, sprite phases, tutorials, original audio actions and shared HUD/overlays. Seven original scenarios compare 52 states at 1e-7; 147 motion threshold samples and 14 animation lifecycle checkpoints are checked. Five controlled captures have mean RGB errors 0.44–0.68/255. Glider SVG uploads now retain the original associated-alpha raster instead of unassociating/bleeding, and every image layer uses the shared premultiplied source-over material. Twelve actual assets audited analytically at three bilinear phases/two source sky backgrounds/two opacities; prior atlas edge maximum37.30/255 becomes0 relative to the same associated SVG raster. Original art/crops/dimensions/clocks retained. All160tests pass143lib+17app; CPU-only verification while user plays.",
       "agent_known_issues": [
         "Native OS device-orientation/motion sensor delivery is not connected; translated motion calculations alone do not provide native tilt control.",
         "More score/effect/resize/input states and complete audio bus/mixer behavior need comparisons.",
         "Small SVG/font raster differences remain; no whole-mode 1:1 certification.",
-        "Idle profile averages near 60 fps locally, with occasional presentation stalls; end-to-end input latency is not measured."
+        "Idle profile averages near 60 fps locally, with occasional presentation stalls; end-to-end input latency is not measured.",
+        "Associated-alpha correction has CPU decoder/filter/source-over evidence only; runtime shader execution and updated browser/native captures remain unverified while user plays. Prior capture errors precede this change. SVG bitmap sampling sizes are still fixed (3x atlas/1x other Glider SVGs); high-DPI/enlarged artwork can still magnify texels. No overall clarity/smoothness or whole-mode1:1 claim."
       ],
       "agent_evidence": [
         "rust/data/glider-reference.json",
@@ -280,7 +281,12 @@
         "rust/data/glider-layout-reference.json",
         "rust/data/glider-capture-errors.json",
         "rust/data/glider-performance.json",
-        "rust/SOURCE-COVERAGE.md"
+        "rust/SOURCE-COVERAGE.md",
+        "rust/data/glider-alpha-provenance.json",
+        "rust/data/glider-alpha-audit.json",
+        "rust/examples/glider_alpha_audit.rs",
+        "rust/src/assets.rs glider_vectors_keep_associated_color_and_original_coverage",
+        "rust/src/glider_view.rs premultiplied image helpers"
       ]
     },
     {

@@ -144,6 +144,7 @@ fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
         || key.starts_with("scenes/_shared/img/button/")
         || key.starts_with("scenes/jetpack/img/")
         || key.starts_with("scenes/boatload/")
+        || key.starts_with("scenes/glider/img/")
         || key.starts_with("img/sleigh/")
         || snowball_css_image(key);
     let mut image = if key.ends_with(".svg") {
@@ -372,6 +373,41 @@ fn svg_raster_scale(key: &str) -> f32 {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn glider_vectors_keep_associated_color_and_original_coverage() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../static");
+        for name in [
+            "glider-sprite.svg",
+            "cloud.svg",
+            "hit-house-01.svg",
+            "treat-candy.svg",
+            "present-05.svg",
+            "points-100.svg",
+        ] {
+            let key = format!("scenes/glider/img/{name}");
+            let data = std::fs::read(root.join(&key)).unwrap();
+            let tree = resvg::usvg::Tree::from_data(&data, &Default::default()).unwrap();
+            let scale = if name == "glider-sprite.svg" { 3. } else { 1. };
+            let size = tree.size().to_int_size().scale_by(scale).unwrap();
+            let mut original = resvg::tiny_skia::Pixmap::new(size.width(), size.height()).unwrap();
+            resvg::render(
+                &tree,
+                resvg::tiny_skia::Transform::from_scale(scale, scale),
+                &mut original.as_mut(),
+            );
+            let upload = decode_image(&root, &key).unwrap();
+            assert_eq!(
+                (u32::from(upload.width), u32::from(upload.height)),
+                (size.width(), size.height())
+            );
+            assert_eq!(
+                upload.bytes,
+                original.data(),
+                "{name}: do not unassociate or bleed original vector pixels"
+            );
+        }
+    }
 
     #[test]
     fn jetpack_uploads_preserve_source_coverage_and_associate_color_once() {
