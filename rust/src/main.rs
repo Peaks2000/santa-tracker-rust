@@ -400,7 +400,8 @@ async fn run(opts: Options) {
                 }
                 "jetpack" => {
                     let (w, h) = jetpack_view::JetpackView::dimensions();
-                    jetpack = Jetpack::new(&opts.seed, w, h);
+                    jetpack.resize(w, h);
+                    jetpack.restart();
                 }
                 "codelab" => lab_view.reset(),
                 "codeboogie" => dance_view.reset(),
@@ -484,6 +485,9 @@ async fn run(opts: Options) {
             if opts.frames.is_none() && !just_loaded {
                 glider.wall_step(get_frame_time() as f64);
             }
+        }
+        if route == "jetpack" && opts.frames.is_none() && !just_loaded {
+            jetpack.wall_step(get_frame_time() as f64);
         }
         if route == "boatload" {
             boat.resize(screen_width() as f64, screen_height() as f64);
@@ -778,7 +782,7 @@ async fn run(opts: Options) {
             } else if route == "elfski" {
                 (false, !ski.playing)
             } else {
-                (jetpack.paused, !jetpack.playing)
+                (jetpack.paused && jetpack.playing, !jetpack.playing)
             };
             if let Some(action) = overlay
                 .draw(&mut assets, &chrome, &mut village, &route, paused, gameover)
@@ -831,7 +835,8 @@ async fn run(opts: Options) {
                             );
                         } else {
                             let (w, h) = jetpack_view::JetpackView::dimensions();
-                            jetpack = Jetpack::new(&opts.seed, w, h);
+                            jetpack.resize(w, h);
+                            jetpack.restart();
                         }
                         accumulated = 0.;
                     }
@@ -919,7 +924,7 @@ async fn run(opts: Options) {
             }),
             "jetpack" => Some(chrome::GameHud {
                 playing: jetpack.playing,
-                paused: jetpack.paused,
+                paused: jetpack.paused && jetpack.playing,
                 score: jetpack.score,
                 countdown: jetpack.countdown.ceil(),
                 level: Some(jetpack.level + 1),
@@ -1024,7 +1029,8 @@ async fn run(opts: Options) {
                         }
                         "jetpack" => {
                             let (w, h) = jetpack_view::JetpackView::dimensions();
-                            jetpack = Jetpack::new(&opts.seed, w, h);
+                            jetpack.resize(w, h);
+                            jetpack.restart();
                         }
                         _ => {}
                     }

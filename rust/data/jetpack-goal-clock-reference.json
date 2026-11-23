@@ -1,0 +1,627 @@
+{
+  "method": "Unmodified original Game restart/pause/resume/updateLevel_/freeze/unfreeze/gameover and Goal constructor/reset/transition executed in CPU VM. Explicit wall milliseconds and deterministic callback queue; fake DOM, scoreboard/player/controls/background reset bodies, host audio/view recorders and held requestAnimationFrame. Not a browser task scheduler, CSS transition, source player physics, actual app clock or route disposal oracle.",
+  "cases": [
+    {
+      "name": "paused-at-deadline",
+      "frames": [
+        {
+          "action": [
+            "finish"
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "wall",
+            1000
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "pause"
+          ],
+          "output": {
+            "running": false,
+            "paused": true,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "wall",
+            2499
+          ],
+          "output": {
+            "running": false,
+            "paused": true,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "wall",
+            1
+          ],
+          "output": {
+            "running": false,
+            "paused": true,
+            "finished": true,
+            "level": 10,
+            "pending": 0,
+            "gameovers": 1
+          },
+          "sounds": [
+            "jp_game_over",
+            "music_ingame_gameover"
+          ]
+        },
+        {
+          "action": [
+            "wall",
+            100
+          ],
+          "output": {
+            "running": false,
+            "paused": true,
+            "finished": true,
+            "level": 10,
+            "pending": 0,
+            "gameovers": 1
+          },
+          "sounds": []
+        }
+      ]
+    },
+    {
+      "name": "restart-does-not-cancel-old-goal",
+      "frames": [
+        {
+          "action": [
+            "finish"
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "wall",
+            1000
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "restart"
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": false,
+            "level": 0,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": [
+            "music_start_ingame",
+            "jp_start_game"
+          ]
+        },
+        {
+          "action": [
+            "wall",
+            2499
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": false,
+            "level": 0,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "wall",
+            1
+          ],
+          "output": {
+            "running": false,
+            "paused": false,
+            "finished": false,
+            "level": 0,
+            "pending": 0,
+            "gameovers": 1
+          },
+          "sounds": [
+            "jp_game_over",
+            "music_ingame_gameover"
+          ]
+        },
+        {
+          "action": [
+            "wall",
+            100
+          ],
+          "output": {
+            "running": false,
+            "paused": false,
+            "finished": false,
+            "level": 0,
+            "pending": 0,
+            "gameovers": 1
+          },
+          "sounds": []
+        }
+      ]
+    },
+    {
+      "name": "two-finishes-across-restart",
+      "frames": [
+        {
+          "action": [
+            "finish"
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "wall",
+            1000
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "restart"
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": false,
+            "level": 0,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": [
+            "music_start_ingame",
+            "jp_start_game"
+          ]
+        },
+        {
+          "action": [
+            "finish"
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 2,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "wall",
+            2500
+          ],
+          "output": {
+            "running": false,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 1
+          },
+          "sounds": [
+            "jp_game_over",
+            "music_ingame_gameover"
+          ]
+        },
+        {
+          "action": [
+            "wall",
+            1000
+          ],
+          "output": {
+            "running": false,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 0,
+            "gameovers": 2
+          },
+          "sounds": [
+            "jp_game_over",
+            "music_ingame_gameover"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "callback-repeats-gameover-after-earlier-stop",
+      "frames": [
+        {
+          "action": [
+            "finish"
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "wall",
+            500
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "gameover"
+          ],
+          "output": {
+            "running": false,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 1
+          },
+          "sounds": [
+            "jp_game_over",
+            "music_ingame_gameover"
+          ]
+        },
+        {
+          "action": [
+            "wall",
+            3000
+          ],
+          "output": {
+            "running": false,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 0,
+            "gameovers": 2
+          },
+          "sounds": [
+            "jp_game_over",
+            "music_ingame_gameover"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "unpaused-deadline-boundary",
+      "frames": [
+        {
+          "action": [
+            "finish"
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "wall",
+            3499
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "wall",
+            1
+          ],
+          "output": {
+            "running": false,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 0,
+            "gameovers": 1
+          },
+          "sounds": [
+            "jp_game_over",
+            "music_ingame_gameover"
+          ]
+        },
+        {
+          "action": [
+            "wall",
+            9999
+          ],
+          "output": {
+            "running": false,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 0,
+            "gameovers": 1
+          },
+          "sounds": []
+        }
+      ]
+    },
+    {
+      "name": "reset-and-long-clock-jump",
+      "frames": [
+        {
+          "action": [
+            "finish"
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "restart"
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": false,
+            "level": 0,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": [
+            "music_start_ingame",
+            "jp_start_game"
+          ]
+        },
+        {
+          "action": [
+            "pause"
+          ],
+          "output": {
+            "running": false,
+            "paused": true,
+            "finished": false,
+            "level": 0,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "wall",
+            10000
+          ],
+          "output": {
+            "running": false,
+            "paused": true,
+            "finished": false,
+            "level": 0,
+            "pending": 0,
+            "gameovers": 1
+          },
+          "sounds": [
+            "jp_game_over",
+            "music_ingame_gameover"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pause-resume-before-deadline",
+      "frames": [
+        {
+          "action": [
+            "finish"
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "wall",
+            1000
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "pause"
+          ],
+          "output": {
+            "running": false,
+            "paused": true,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "wall",
+            500
+          ],
+          "output": {
+            "running": false,
+            "paused": true,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "resume"
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "wall",
+            1999
+          ],
+          "output": {
+            "running": true,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 1,
+            "gameovers": 0
+          },
+          "sounds": []
+        },
+        {
+          "action": [
+            "wall",
+            1
+          ],
+          "output": {
+            "running": false,
+            "paused": false,
+            "finished": true,
+            "level": 10,
+            "pending": 0,
+            "gameovers": 1
+          },
+          "sounds": [
+            "jp_game_over",
+            "music_ingame_gameover"
+          ]
+        }
+      ]
+    }
+  ],
+  "source_sha256": {
+    "static/scenes/jetpack/js/constants.js": "f9e9061eccbe3d4bbec86fe0e472d1c7ca594708b7413ec73dd8df8246b70a88",
+    "static/scenes/jetpack/js/game.js": "26e00a980e4ab431e3c4f16c0a561ca57df4a234ad162fbd1efa003e316248c5",
+    "static/scenes/jetpack/js/goal.js": "3e00f1b1537f0cac98b27d7032231fa25188785775b75036702f5f081b04ed48"
+  },
+  "reviewed_source_sha256": {
+    "static/scenes/jetpack/js/background.js": "f88e0970a22ca92ea3c93ed6d1abc724e7dd3f6d19ba958d10dc5b3754f56af4",
+    "static/scenes/_shared/js/scoreboard.js": "c8ca5700268a9f8ea4ae8065720027709d7432ab64b465f279cb3e3c7c5c7323",
+    "static/scenes/_shared/js/gameover.js": "997bbfab794e4840a8ab9de8a574bbc98ef11cca81122e454d9c26f5e26b4c98",
+    "static/src/scene/api.js": "28475142637b83f1210683fece178ea61b2c1de12f9d6b324a6a21a0c41ec07c",
+    "static/entrypoint.js": "e45d5a78a6a96344816417de5277149902cf6216191c7a5d68976c1f39be6615"
+  }
+}

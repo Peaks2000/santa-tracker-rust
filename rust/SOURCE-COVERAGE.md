@@ -2804,3 +2804,55 @@ subpixel GPU raster and all animation phases remain unverified. No window/input/
 audio/focus changes. README/user approval unchanged; mode remains partial.
 
 Release application and Jetpack capture build pass; compiled only, not launched.
+
+## Elf Jetpack goal wall callback lifecycle (23 November 2026)
+
+Re-read Goal completely and Game restart/frame/level/freeze/unfreeze/gameover/
+pause/resume/dispose. Traced shared Gameover.show -> scene API -> host gameover
+handler and host overlay subscription. Read shared Scoreboard completely and
+Background completely for the active level-sound path. Own-scene source had
+already been fully read before the prior alpha pass.
+
+Goal transition queues a 3500ms wall timeout; neither reset nor restart cancels
+it. Native wall_step now dispatches goal deadlines even while paused/stopped,
+independent of simulation ticks. Goal elapsed presentation clock also advances
+while paused (actual hidden-to-visible entrance animation remains unverified).
+Native restart keeps pending deadlines, wall origin and native RNG stream;
+keyboard, overlay and chrome restart all retain the scene instance. Route entry
+still creates a new instance. Pending storage is scanned in place, without a
+per-frame take/reallocation. CPU advance drives both clocks, including paused
+or stopped time; step alone only drives gameplay.
+
+Original gameover always fires its notifications/sound calls, even if already
+frozen. Native no longer discards repeated goal callbacks after an earlier stop.
+Original host status gameover overrides pause presentation without resetting the
+scene's paused field. Native Jetpack overlay/HUD arguments now give stopped
+state precedence over the retained pause flag. Wiring is source-traced and
+compiled, not a live host visual/event-loop comparison.
+
+Removed native jp_level_up emission: original Game.updateLevel_, Background and
+Scoreboard.setLevel do not request that event (the sound config defines it but
+scene source never calls it). CPU sound comparisons include all goal/restart
+trigger and ambient event names without suppressing level-up differences.
+They do not verify mixer output, loop/fade/gain or real host dispatch timing.
+
+`jetpack-goal-clock-reference.cjs` executes unmodified original lifecycle methods
+in CPU VM with explicit wall milliseconds and a deterministic callback queue.
+DOM and player/controls/scoreboard/background resets are stubs; rAF is held.
+Only goal timers are queued, not Scoreboard's announcement timer. Seven cases /
+37 snapshots cover paused deadline, pending callback across restart, two goals
+across restart, already-stopped notification, exact 3499/3500ms boundary, long
+jump and pause/resume before deadline. Native real level transition/restart/
+wall_step/gameover match state, pending count and sound-event sequence. Source
+hashes distinguish executed files from additional reviewed source.
+
+All 125 tests pass (111 library +14 application). Remaining: browser timer task
+ordering/throttling, actual app pause/background/suspension/frame acquisition,
+route dispose/orphan callbacks, shared score announcements/complete player and
+controls resets/pooling and arbitrary clock numeric cases. Native restart still
+uses its existing player-reset model; that whole reset is not source-certified.
+Source resume after terminal stop/host overlay transitions and sound mixer state
+also need full comparisons. Levelcloud group opacity, mobile touchpad and texture
+clarity across other scenes remain open. No interactive checks while user plays.
+
+Release app and Jetpack capture compile successfully; neither launched.

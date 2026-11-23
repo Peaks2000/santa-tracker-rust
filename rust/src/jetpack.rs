@@ -63,6 +63,8 @@ pub struct Jetpack {
     pub background_level: u32,
     pub goal_time: f64,
     pub goal_target_y: f64,
+    wall_time: f64,
+    goal_deadlines: Vec<f64>,
     pub sounds: Vec<&'static str>,
     random: Random,
     next_item: f64,
@@ -102,6 +104,8 @@ impl Jetpack {
             background_level: 0,
             goal_time: 0.,
             goal_target_y: 0.,
+            wall_time: 0.,
+            goal_deadlines: vec![],
             sounds: vec!["music_start_ingame", "jp_start_game"],
             random: Random::seeded(seed),
             next_item: 0.,
@@ -112,14 +116,41 @@ impl Jetpack {
             next_level: 21.,
         }
     }
+    pub fn restart(&mut self) {
+        // Original reset hides the goal but never cancels its setTimeout.
+        let mut fresh = Self::new("", self.width, self.height);
+        fresh.random = self.random.clone();
+        fresh.wall_time = self.wall_time;
+        fresh.goal_deadlines = std::mem::take(&mut self.goal_deadlines);
+        let mut sounds = std::mem::take(&mut self.sounds);
+        sounds.append(&mut fresh.sounds);
+        fresh.sounds = sounds;
+        *self = fresh;
+    }
+    pub fn wall_step(&mut self, dt: f64) {
+        self.wall_time += dt;
+        if self.finished {
+            self.goal_time += dt;
+        }
+        let mut i = 0;
+        while i < self.goal_deadlines.len() {
+            if self.wall_time >= self.goal_deadlines[i] {
+                self.goal_deadlines.remove(i);
+                self.gameover();
+            } else {
+                i += 1;
+            }
+        }
+    }
     pub fn resize(&mut self, width: f64, height: f64) {
         self.width = width;
         self.height = height;
     }
     pub fn advance(&mut self, duration: f64, input: (f64, f64)) {
         let mut left = duration;
-        while left > 0. && self.playing && !self.paused {
+        while left > 0. {
             let dt = left.min(1. / 60.);
+            self.wall_step(dt);
             self.step(dt, input);
             left -= dt;
         }
@@ -235,20 +266,14 @@ impl Jetpack {
         self.next_level -= dt;
         if self.next_level <= 0. {
             self.level += 1;
-            self.sounds.push("jp_level_up");
             if self.level == 10 {
                 self.finished = true;
                 self.goal_time = 0.;
                 self.goal_target_y = self.height - 412. - self.height * 10. / 100.;
+                self.goal_deadlines.push(self.wall_time + 3.5);
             } else {
                 self.transition = Some(0.);
                 self.next_level = 21.;
-            }
-        }
-        if self.finished {
-            self.goal_time += dt;
-            if self.goal_time >= 3.5 {
-                self.gameover();
             }
         }
         for e in &mut self.entities {
@@ -361,11 +386,10 @@ impl Jetpack {
         self.entities.push(e);
     }
     pub fn gameover(&mut self) {
-        if self.playing {
-            self.playing = false;
-            self.sounds
-                .extend(["jp_game_over", "music_ingame_gameover"]);
-        }
+        // Source callback fires sound/host notification even if already frozen.
+        self.playing = false;
+        self.sounds
+            .extend(["jp_game_over", "music_ingame_gameover"]);
     }
     pub fn snapshot(&self) -> serde_json::Value {
         serde_json::json!({"x":self.player.x,"y":self.player.y,"vx":self.player.vx,"vy":self.player.vy,"shake":self.player.shake,"hit":self.player.hit,"hit_duration":self.player.hit_duration,"going_up":self.player.going_up,"level":self.level,"score":self.score,"countdown":self.countdown,"playing":self.playing,"entities":self.entities.iter().map(|e|serde_json::json!({"kind":e.kind,"style":e.style,"x":e.x,"y":e.y,"speed":e.speed,"hit":e.hit})).collect::<Vec<_>>()})
@@ -384,6 +408,45 @@ pub fn goal_image_rect(viewport_width: f64, top: f64) -> [f64; 4] {
 #[cfg(test)]
 mod goal_tests {
     use super::*;
+    #[test]
+    fn source_goal_wall_callbacks_survive_pause_restart_and_prior_gameover() {
+        let reference: serde_json::Value =
+            serde_json::from_str(include_str!("../data/jetpack-goal-clock-reference.json"))
+                .unwrap();
+        for case in reference["cases"].as_array().unwrap() {
+            let mut game = Jetpack::new("goal-clock", 1440., 800.);
+            game.sounds.clear();
+            let mut gameovers = 0;
+            for frame in case["frames"].as_array().unwrap() {
+                let action = frame["action"].as_array().unwrap();
+                match action[0].as_str().unwrap() {
+                    "finish" => {
+                        game.level = 9;
+                        game.next_level = 0.;
+                        game.step(0., (0., 0.));
+                    }
+                    "wall" => game.wall_step(action[1].as_f64().unwrap() / 1000.),
+                    "pause" => game.paused = true,
+                    "resume" => game.paused = false,
+                    "restart" => game.restart(),
+                    "gameover" => game.gameover(),
+                    _ => unreachable!(),
+                }
+                let sounds: Vec<_> = game.sounds.drain(..).collect();
+                gameovers += sounds.iter().filter(|s| **s == "jp_game_over").count();
+                let output = serde_json::json!({"running":game.playing && !game.paused,"paused":game.paused,
+                    "finished":game.finished,"level":game.level,"pending":game.goal_deadlines.len(),"gameovers":gameovers});
+                assert_eq!(output, frame["output"], "{} {action:?}", case["name"]);
+                assert_eq!(
+                    serde_json::json!(sounds),
+                    frame["sounds"],
+                    "{} {action:?}",
+                    case["name"]
+                );
+            }
+        }
+    }
+
     #[test]
     fn source_goal_target_and_contain_fit_survive_resize() {
         let data: serde_json::Value =

@@ -1007,3 +1007,27 @@ interpolation retained pending evidence. Levelcloud/number group opacity and
 mobile touchpad remain. No windows/GPU/input/audio; don't interrupt user game.
 
 Release application and Jetpack capture build pass; compiled only, not launched.
+
+### Jetpack wall callback pass (23 November 2026)
+
+Goal timer no longer freezes with simulation: wall_step drives deadlines and
+presentation elapsed time, even paused/stopped. All three in-scene host restart
+paths call restart(), preserving queued callbacks/wall/native RNG; route entry
+still new(). Original pending goal callback can stop restarted round, and emits
+notifications again after earlier gameover; native preserves these source quirks.
+Host overlay/HUD gives gameover precedence over retained paused field. Removed
+invented jp_level_up call (not requested by original Game/Background/Scoreboard).
+
+Original lifecycle CPU VM seven cases/37 snapshots in goal-clock fixture: state,
+pending goal count, exact sound/ambient names/order. Fake DOM, scoreboard/player/
+controls/background reset stubs, held rAF, explicit scheduler; not whole event
+loop or mixer. All125 tests pass. Full details/limits in SOURCE-COVERAGE.
+
+NEXT: source display:none -> goal visible may suppress declared CSS transition;
+actual entrance still unverified. Timer dispatch is render-frame based, not
+browser task/throttle timing. Route disposal/orphan callbacks, actual app clock,
+player/input/pool reset, global RNG consumption, host callbacks/audio incomplete.
+Levelcloud/number group alpha and touchpad pending. Do not open windows or inject
+input/audio while user plays. All-mode 1:1 remains unachieved; keep ratings.
+
+Release app and Jetpack capture compile successfully; neither launched.
