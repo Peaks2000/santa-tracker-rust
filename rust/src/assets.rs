@@ -7,21 +7,36 @@ use std::{
 pub struct Assets {
     pub root: PathBuf,
     textures: HashMap<String, Texture2D>,
+    logical_sizes: HashMap<String, Vec2>,
     loading: Option<SceneLoad>,
+    sampling: Option<SamplingLoad>,
+    glider_density: HashMap<String, f32>,
 }
 impl Assets {
     pub fn new(root: PathBuf) -> Self {
         Self {
             root,
             textures: HashMap::new(),
+            logical_sizes: HashMap::new(),
             loading: None,
+            sampling: None,
+            glider_density: HashMap::new(),
         }
     }
     pub fn load(&mut self, key: &str) -> Result<(), String> {
         if self.textures.contains_key(key) {
             return Ok(());
         }
-        let texture = Texture2D::from_image(&decode_image(&self.root, key)?);
+        let density = santa_tracker::glider_sampling::density_for_viewport(
+            screen_width(),
+            screen_dpi_scale(),
+        );
+        let decoded = decode_with_metrics(&self.root, key, Some(density))?;
+        let texture = Texture2D::from_image(&decoded.image);
+        self.logical_sizes.insert(key.into(), decoded.logical_size);
+        if santa_tracker::glider_sampling::selected(key) {
+            self.glider_density.insert(key.into(), density);
+        }
         configure_texture(key, &texture);
         self.textures.insert(key.into(), texture);
         Ok(())
@@ -35,12 +50,16 @@ impl Assets {
             .filter(|key| !self.has(key))
             .collect::<Vec<_>>();
         let root = self.root.clone();
+        let density = santa_tracker::glider_sampling::density_for_viewport(
+            screen_width(),
+            screen_dpi_scale(),
+        );
         let (tx, rx) = std::sync::mpsc::sync_channel(2);
         std::thread::spawn(move || {
             for key in keys {
-                match decode_image(&root, &key) {
+                match decode_with_metrics(&root, &key, Some(density)) {
                     Ok(image) => {
-                        if tx.send(LoadEvent::Image(key, image)).is_err() {
+                        if tx.send(LoadEvent::Image(key, image, density)).is_err() {
                             return;
                         }
                     }
@@ -63,8 +82,12 @@ impl Assets {
         for _ in 0..2 {
             let event = self.loading.as_ref()?.rx.try_recv();
             match event {
-                Ok(LoadEvent::Image(key, image)) => {
-                    let texture = Texture2D::from_image(&image);
+                Ok(LoadEvent::Image(key, image, density)) => {
+                    if santa_tracker::glider_sampling::selected(&key) {
+                        self.glider_density.insert(key.clone(), density);
+                    }
+                    let texture = Texture2D::from_image(&image.image);
+                    self.logical_sizes.insert(key.clone(), image.logical_size);
                     configure_texture(&key, &texture);
                     self.textures.insert(key, texture);
                 }
@@ -81,6 +104,63 @@ impl Assets {
             }
         }
         None
+    }
+    /// Keep existing textures visible during CPU resampling. One upload per
+    /// frame; no simulation, input, scene-load completion or clock side effects.
+    /// Sampling multiplier includes current scene scale as well as display DPI.
+    pub fn refresh_glider_sampling(&mut self) {
+        if let Some(load) = &self.sampling {
+            match load.rx.try_recv() {
+                Ok((key, Ok(image))) => {
+                    let texture = Texture2D::from_image(&image.image);
+                    self.logical_sizes.insert(key.clone(), image.logical_size);
+                    configure_texture(&key, &texture);
+                    self.glider_density.insert(key.clone(), load.density);
+                    self.textures.insert(key, texture);
+                }
+                Ok((key, Err(error))) => {
+                    // Retain the previous valid image and avoid retrying a bad
+                    // source every frame at this density. A higher DPI can retry.
+                    eprintln!("{key}: {error}");
+                    self.glider_density.insert(key, load.density);
+                }
+                Err(std::sync::mpsc::TryRecvError::Empty) => {}
+                Err(std::sync::mpsc::TryRecvError::Disconnected) => {
+                    self.sampling = None;
+                }
+            }
+        }
+        if self.sampling.is_none() {
+            let density = santa_tracker::glider_sampling::density_for_viewport(
+                screen_width(),
+                screen_dpi_scale(),
+            );
+            let mut keys: Vec<_> = self
+                .glider_density
+                .iter()
+                .filter(|(key, previous)| {
+                    if density <= **previous {
+                        return false;
+                    }
+                    let logical = self.logical_sizes[*key];
+                    let present = self.textures[*key].width() / logical.x;
+                    santa_tracker::glider_sampling::scale(
+                        key,
+                        [logical.x, logical.y],
+                        density,
+                        svg_raster_scale(key),
+                    ) > present
+                })
+                .map(|(key, _)| key.clone())
+                .collect();
+            keys.sort();
+            if !keys.is_empty() {
+                self.sampling = Some(SamplingLoad {
+                    density,
+                    rx: sampling_stream(self.root.clone(), keys, density),
+                });
+            }
+        }
     }
     pub fn texture(&self, key: &str) -> &Texture2D {
         &self.textures[key]
@@ -100,13 +180,7 @@ impl Assets {
     /// CSS/SVG dimensions stay independent of texture sampling resolution.
     pub fn scene_size(&self, scene: &str, name: &str) -> Vec2 {
         let key = format!("scenes/{scene}/img/{name}");
-        let texture = self.texture(&key);
-        let scale = if key.ends_with(".svg") {
-            svg_raster_scale(&key)
-        } else {
-            1.
-        };
-        vec2(texture.width() / scale, texture.height() / scale)
+        self.logical_sizes[&key]
     }
     pub fn scene(&self, scene: &str, name: &str) -> &Texture2D {
         self.texture(&format!("scenes/{scene}/img/{name}"))
@@ -118,8 +192,28 @@ struct SceneLoad {
     rx: std::sync::mpsc::Receiver<LoadEvent>,
 }
 enum LoadEvent {
-    Image(String, Image),
+    Image(String, DecodedImage, f32),
     Done(Result<(), String>),
+}
+struct SamplingLoad {
+    density: f32,
+    rx: std::sync::mpsc::Receiver<(String, Result<DecodedImage, String>)>,
+}
+fn sampling_stream(
+    root: PathBuf,
+    keys: Vec<String>,
+    density: f32,
+) -> std::sync::mpsc::Receiver<(String, Result<DecodedImage, String>)> {
+    let (tx, rx) = std::sync::mpsc::sync_channel(2);
+    std::thread::spawn(move || {
+        for key in keys {
+            let image = decode_with_metrics(&root, &key, Some(density));
+            if tx.send((key, image)).is_err() {
+                return;
+            }
+        }
+    });
+    rx
 }
 /// CSS images filter premultiplied color; THREE's world maps keep straight RGBA.
 fn snowball_css_image(key: &str) -> bool {
@@ -133,7 +227,23 @@ fn snowball_css_image(key: &str) -> bool {
             | "scenes/snowball/img/elves-parachuting.svg"
     )
 }
+#[allow(dead_code)] // CPU baseline diagnostics; production supplies display density.
 fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
+    decode_image_at_density(root, key, None)
+}
+#[allow(dead_code)] // CPU decoder audits do not upload textures.
+fn decode_image_at_density(root: &Path, key: &str, density: Option<f32>) -> Result<Image, String> {
+    Ok(decode_with_metrics(root, key, density)?.image)
+}
+struct DecodedImage {
+    image: Image,
+    logical_size: Vec2,
+}
+fn decode_with_metrics(
+    root: &Path,
+    key: &str,
+    density: Option<f32>,
+) -> Result<DecodedImage, String> {
     let path = root.join(key);
     let data = if key == "native/tutorial/elfski.png" {
         include_bytes!("../assets/tutorial/elfski.png").to_vec()
@@ -147,6 +257,7 @@ fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
         || key.starts_with("scenes/glider/img/")
         || key.starts_with("img/sleigh/")
         || snowball_css_image(key);
+    let mut backing_scale = 1.;
     let mut image = if key.ends_with(".svg") {
         let options = resvg::usvg::Options {
             resources_dir: path.parent().map(Path::to_path_buf),
@@ -154,7 +265,17 @@ fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
         };
         let tree =
             resvg::usvg::Tree::from_data(&data, &options).map_err(|e| format!("{key}: {e}"))?;
-        let render_scale = svg_raster_scale(key);
+        let render_scale = if let Some(density) = density {
+            santa_tracker::glider_sampling::scale(
+                key,
+                [tree.size().width(), tree.size().height()],
+                density,
+                svg_raster_scale(key),
+            )
+        } else {
+            svg_raster_scale(key)
+        };
+        backing_scale = render_scale;
         // CSS background images retain their intrinsic SVG proportions inside
         // the element box. The elf is centered; boat1 is top-left aligned.
         let background = match key {
@@ -236,7 +357,13 @@ fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
             image.height as usize,
         );
     }
-    Ok(image)
+    Ok(DecodedImage {
+        logical_size: vec2(
+            image.width as f32 / backing_scale,
+            image.height as f32 / backing_scale,
+        ),
+        image,
+    })
 }
 fn scene_keys(root: &Path, scene: &str) -> Result<Vec<String>, String> {
     let mut keys = vec![];
@@ -373,6 +500,45 @@ fn svg_raster_scale(key: &str) -> f32 {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn glider_density_worker_preserves_layout_and_survives_decode_errors() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../static");
+        let keys: Vec<String> = [
+            "cloud.svg",
+            "missing.svg",
+            "present-05.svg",
+            "points-100.svg",
+        ]
+        .map(|n| format!("scenes/glider/img/{n}"))
+        .into();
+        let rx = sampling_stream(root.clone(), keys.clone(), 2.);
+        for key in keys {
+            let (actual, decoded) = rx.recv_timeout(std::time::Duration::from_secs(10)).unwrap();
+            assert_eq!(actual, key);
+            if key.ends_with("missing.svg") {
+                assert!(decoded.is_err());
+                continue;
+            }
+            let decoded = decoded.unwrap();
+            let original = decode_with_metrics(&root, &key, None).unwrap();
+            assert_eq!(
+                decoded.logical_size, original.logical_size,
+                "do not change CSS geometry"
+            );
+            assert!(decoded.image.width > original.image.width);
+            assert!(decoded.image.height > original.image.height);
+            assert!(decoded
+                .image
+                .bytes
+                .chunks_exact(4)
+                .all(|p| p[..3].iter().all(|c| *c <= p[3])));
+        }
+        assert!(matches!(
+            rx.recv_timeout(std::time::Duration::from_secs(10)),
+            Err(std::sync::mpsc::RecvTimeoutError::Disconnected)
+        ));
+    }
 
     #[test]
     fn glider_vectors_keep_associated_color_and_original_coverage() {

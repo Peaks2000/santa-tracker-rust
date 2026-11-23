@@ -679,6 +679,7 @@ async fn run(opts: Options) {
                 }
             }
             "glider" => {
+                assets.refresh_glider_sampling();
                 for event in glider.sounds.drain(..) {
                     sound.trigger(event, &assets.root);
                 }

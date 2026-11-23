@@ -10,16 +10,18 @@ pub struct GliderView {
     last_size: (f32, f32),
     keys: [bool; 5],
 }
-fn bg(material: &Material, t: &Texture2D, r: Rect, angle: f32, alpha: f32) {
+fn bg(material: &Material, a: &Assets, name: &str, r: Rect, angle: f32, alpha: f32) {
+    let t = a.scene("glider", name);
+    let logical = a.scene_size("glider", name);
     gl_use_material(material);
-    let scale = (r.w / t.width()).min(r.h / t.height());
+    let scale = (r.w / logical.x).min(r.h / logical.y);
     draw_texture_ex(
         t,
         r.x,
         r.y,
         Color::new(1., 1., 1., alpha),
         DrawTextureParams {
-            dest_size: Some(vec2(t.width(), t.height()) * scale),
+            dest_size: Some(logical * scale),
             rotation: angle,
             pivot: Some(r.center()),
             ..Default::default()
@@ -179,8 +181,9 @@ impl GliderView {
             ("bg-tile-trees.svg", w * 2., 21. * e, 50.),
         ] {
             let t = a.scene("glider", name);
-            let sc = (width / t.width()).min(height / t.height());
-            let (tw, th) = (t.width() * sc, t.height() * sc);
+            let logical = a.scene_size("glider", name);
+            let sc = (width / logical.x).min(height / logical.y);
+            let (tw, th) = (logical.x * sc, logical.y * sc);
             let shift = -(width * 0.5) * (g.bg_time as f32 / duration).fract();
             let x = shift.rem_euclid(tw) - tw;
             let mut xx = x;
@@ -223,7 +226,8 @@ impl GliderView {
                         let sc = obj.size as f32;
                         bg(
                             &self.images,
-                            a.scene("glider", "cloud.svg"),
+                            a,
+                            "cloud.svg",
                             Rect::new(
                                 x + 9. * e * (1. - sc),
                                 y + 5.4 * e * (1. - sc),
@@ -285,7 +289,8 @@ impl GliderView {
                         } else if obj.style == 0 {
                             bg(
                                 &self.images,
-                                a.scene("glider", "treat-candy.svg"),
+                                a,
+                                "treat-candy.svg",
                                 Rect::new(x, y, 6. * e, 6. * e),
                                 -(age as f32 / 4.).fract() * std::f32::consts::TAU,
                                 1.,
@@ -293,14 +298,16 @@ impl GliderView {
                         } else {
                             bg(
                                 &self.images,
-                                a.scene("glider", "orb-time-back.svg"),
+                                a,
+                                "orb-time-back.svg",
                                 Rect::new(x, y, 6. * e, 6. * e),
                                 -(age as f32 / 2.).fract() * std::f32::consts::TAU,
                                 1.,
                             );
                             bg(
                                 &self.images,
-                                a.scene("glider", "orb-time-front.svg"),
+                                a,
+                                "orb-time-front.svg",
                                 Rect::new(x, y, 6. * e, 6. * e),
                                 0.,
                                 1.,
@@ -335,14 +342,12 @@ impl GliderView {
                             }
                             1 | 2 => bg(
                                 &self.images,
-                                a.scene(
-                                    "glider",
-                                    if obj.style == 1 {
-                                        "hit-beam.svg"
-                                    } else {
-                                        "hit-box.svg"
-                                    },
-                                ),
+                                a,
+                                if obj.style == 1 {
+                                    "hit-beam.svg"
+                                } else {
+                                    "hit-box.svg"
+                                },
                                 Rect::new(
                                     x,
                                     y,
@@ -376,7 +381,8 @@ impl GliderView {
                         if obj.style > 0 {
                             bg(
                                 &self.images,
-                                a.scene("glider", &format!("present-{:02}.svg", obj.style)),
+                                a,
+                                &format!("present-{:02}.svg", obj.style),
                                 Rect::new(x, y, 2.5 * e, 2.5 * e),
                                 0.,
                                 1.,
@@ -393,7 +399,8 @@ impl GliderView {
                         };
                         bg(
                             &self.images,
-                            a.scene("glider", &name),
+                            a,
+                            &name,
                             Rect::new(x, top, bw * e, bh * e),
                             0.,
                             1.,
@@ -415,7 +422,8 @@ impl GliderView {
                                 };
                                 bg(
                                     &self.images,
-                                    a.scene("glider", &format!("points-{}.svg", c.points)),
+                                    a,
+                                    &format!("points-{}.svg", c.points),
                                     Rect::new(
                                         x + (cx as f32 + left) * e,
                                         top + (cy as f32 - 8.) * e,

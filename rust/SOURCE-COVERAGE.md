@@ -3837,3 +3837,72 @@ latency. High-density sampling remains fixed and can magnify small SVG buffers;
 source vector viewport sampling is next work. Full music/sensor/input/effect
 and shared host limitations in existing Glider coverage remain. User feedback
 and README categories preserved; no whole-mode/site1:1 claim.
+
+
+### Glider physical SVG sampling and background upgrades (23 November 2026)
+
+Supersedes fixed3x-atlas/1x-rest gap for45active source SVGs, not the wide-scene/
+collision-transform exclusions below. Prior pass read complete own-scene source;
+selected HTML/Sass/background/renderer paths remain unchanged in reference.
+glider-svg-sampling.cjs extracts original26building CSS boxes, cloud/item/orb/
+present/points/beam/box dimensions, 40em60em atlas and trees height from complete
+source partials plus BASE_FONT_SIZE10/MAX_SCALE1.25. Excludes unused logo/loading/
+santa/snow artwork; active ITEM_TYPES contains candy/time only. Fixture contains
+declarations, source hashes and44actual complete watchSceneSize_/setScale/px2em
+method cases at11widths/fourDPRs. jQuery listener/CSS setters and restartAnimation
+are backend recorders/no-op; no actual resize task/animation scheduling claim.
+Native desktop scale/DPR multiplier matches those44cases within1e-6. Native
+sensor/mobile scene control remains unfinished; selected policy is desktop only.
+
+New glider_sampling selects backing integer multiple >= fitted current logical
+viewport times display density, retaining old3x-atlas/1x minimum. Maximum-view
+policy normalized by actual desktop em/MAX_SCALE so small windows don't pay for
+largest desktop layout. Integer factors keep original SVG bitmap aspect/crop
+fractions. Original45active viewBoxes checked integer; policy covers8effective
+sampling multipliers in unit test. Background/ordinary image geometry now uses
+stored logical dimensions, so changing texture width cannot change fit or scroll
+period. Atlas crop coordinates already normalize by actual texture dimensions.
+No source assets, sprite phases, offsets, rotations, physics or sounds changed.
+
+Assets decode now returns logical metrics alongside pixels; every synchronous,
+initial scene-thread and quality-thread upload retains them. scene_size keeps
+its previous logical semantics for other modes (bitmap dimensions/base scale),
+including Boatload's padded background boxes. Scene-thread/sync initial loads
+use current viewport/DPI. CPU baseline diagnostics decode_image(None) keep old
+fixed sampling; glider_alpha_audit tool/report now explicitly identify that
+baseline, avoiding claims it represents current density-aware loading.
+
+Native Glider calls refresh_glider_sampling before drawing. Higher viewport/DPI
+only requests keys whose required integer factor exceeds the cached backing.
+One bounded-channel CPU worker (two queued results), at most one replacement
+upload per frame; old valid texture stays visible until replacement. Shrink/
+DPI decrease retains higher backing; unchanged factor never rerenders. Worker
+can continue after a bad source, retaining old image and marking failed density
+attempt to avoid per-frame retry; later higher density can retry. No scene-load
+completion/route, simulation, input or animation-clock mutation. Source transport
+semantics are not being asserted by this optimization. A paused/inactive route
+can retain a blocked producer with two results until Glider returns or Assets
+drops; no unlimited result history. Runtime GPU lifetime/swap/latency unverified.
+
+Worker CPU regression sends cloud/missing/present/score through actual producer,
+checks order/error continuation, larger dimensions, identical logical metrics,
+associated color and terminal channel disconnection. glider_density_audit uses
+actual production decoder for45SVGs/eightviewport-DPR pairs (360cases), independent
+resvg pixel render, physical coverage, associated bytes and retained natural
+logical bounds. Selected maximum desktop width1500/DPR2:88,684,880RGBA bytes and
+~124.5ms summed CPU decode; DPR3:177,524,432bytes/~237.2ms. Width375/DPR2:
+23,013,040bytes/~39.8ms; width1440/DPR2:75,004,880bytes/~102.5ms. Single release
+samples include parse/raster/allocation, exclude independent reference. They are
+cold CPU work/resource evidence, NOT app frame/GPU upload/input latency measures.
+Initial synchronous loads remain possible and can hitch; no smoothness claim.
+
+Remaining rendering: stars5500-wide and mountains10000-wide need tiled sampling
+instead of generating textures beyond existing16384limit. They keep old raster
+sizes; no silent quality certification. Collision puff scale up to3 still uses
+ordinary atlas backing; crop-specific sampling preferable to oversized full
+atlas. Source/browser antialiasing, minification/rotation, fractional positions,
+actual window/DPI cache swaps and live frame pacing still need comparison after
+user allows window checks. Existing historical captures/perf are not current
+visual certification. All163tests145lib+18app pass; release app/glider_reference
+compile;360CPU audit cases pass. No window/browser/GPU/audio-device/focus/input;
+README ratings and user feedback preserved. Whole-mode/site1:1 remains unproven.

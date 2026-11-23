@@ -1,4 +1,4 @@
-//! CPU-only audit of the production Glider decoder; never opens a window.
+//! CPU-only alpha audit at retained legacy SVG sampling dimensions; no window.
 #![allow(dead_code)]
 mod assets {
     include!(concat!(env!("CARGO_MANIFEST_DIR"), "/src/assets.rs"));
@@ -136,7 +136,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!(
         "{}",
         serde_json::to_string_pretty(&serde_json::json!({
-            "method":"Actual native CPU decoder bytes compared with independently rendered original associated SVG bytes and analytic bilinear-filtering/source-over. Three subpixel phases, two source Glider sky backgrounds and two opacities. Baseline includes actual prior two-pass edge bleeding. Not a browser/GPU screenshot or minification/mipmap oracle; does not prove whole-scene texture clarity.",
+            "method":"Native CPU decoder at fixed legacy sampling dimensions (density absent, not the density-aware production loader) compared with independently rendered original associated SVG bytes and analytic bilinear-filtering/source-over. Three subpixel phases, two source Glider sky backgrounds and two opacities. Baseline includes actual prior two-pass edge bleeding. Not a browser/GPU screenshot or minification/mipmap oracle; does not prove whole-scene texture clarity.",
             "images":rows
         }))?
     );

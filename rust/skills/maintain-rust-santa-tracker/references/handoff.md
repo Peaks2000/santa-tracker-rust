@@ -1504,3 +1504,39 @@ comparison once user permits live checks. Existing captures/perf are historical.
 Provenance glider-alpha-provenance.json and glider-alpha-audit.json; source own
 13JS/HTML/7Sass/scene SCSS rechecked. Full mode/site1:1 remains unproven.
 Do not interrupt user game with windows, GPU/audio contexts, focus or input.
+
+
+### Glider density-aware SVG backing NOW implemented (23 November 2026)
+
+Supersedes fixed45asset sampling gap above. glider_sampling.rs uses source CSS
+boxes in glider-svg-sampling.json, integer scale preserving original aspect/crop,
+normalized by current native desktop em and display DPR.44actual source complete
+watchSceneSize_/setScale/px2em cases checked; CSS/listener/restart backend stubs.
+Logical dimensions stored with every decoded texture; Glider bg/trees fit uses
+those metrics, so quality changes can't alter geometry/scroll period. Other
+modes keep bitmap/base-scale scene_size semantics. Atlas minimum3x retained.
+
+Assets::refresh_glider_sampling called from native Glider route: only larger
+required integer backing requests CPU work, one worker/two-result queue, one
+replacement upload per frame, old texture until ready. Shrinks retain quality.
+Decode errors retain old texture and suppress same-density retries. Inactive
+route may leave bounded producer waiting until return/drop. No clock/input/
+scene-completion mutations. Initial scene/sync loads use current width/DPR;
+initial synchronous path can still hitch. No runtime GPU/cache swap tests yet.
+
+360production CPU SVG audit cases (45assets/eightviewport-DPR pairs), independent
+resvg pixel bytes/physical coverage/logical metrics; worker ordering/error/
+completion regression. All163tests145lib+18app pass; release app/reference compile.
+At width1500/DPR2 selected pixels~88.7MB/~124.5ms summed cold decode; DPR3~177.5MB/
+~237.2ms. Width375/DPR2~23MB/~39.8ms. These exclude GPU, not frame/latency metrics.
+CPU diagnostic decode_image(None) is fixed legacy backing; current production
+uses decode_with_metrics(Some(effective_density)), which includes desktop scene
+scale. Don't confuse effective_density with display DPR in future changes.
+
+NEXT: wide stars/mountains need tiling (10000-wide cannot blindly upsample under
+16384limit); collision puff transform3 needs crop-specific high-density bitmap.
+Source/browser AA/minification/rotation/DPI cache swaps still unverified. No
+windows/GPU/audio/focus/input while user plays. Root README ratings unchanged;
+full-mode1:1 not certified. glider_alpha_audit remains a fixed-backing alpha
+baseline; new density audit is current sampling evidence. Source CJS stays out
+of native distribution. See coverage for exact scope and remaining limitations.

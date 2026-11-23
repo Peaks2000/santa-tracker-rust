@@ -172,3 +172,5 @@ pub mod selfie_face;
 pub mod lottie_layout;
 pub mod module_playback;
 pub mod module_viewport;
+
+pub mod glider_sampling;

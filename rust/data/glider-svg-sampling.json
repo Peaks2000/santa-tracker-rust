@@ -1,0 +1,492 @@
+{
+  "scope": "Original CSS declarations at BASE_FONT_SIZE10 and desktop MAX_SCALE. Integer backing multiplier covers fitted logical viewport times effective density. Effective density includes actual desktop em/MAX_SCALE; 44cases execute complete actual watchSceneSize_,setScale,px2em with supplied width/height, no-op restartAnimation/CSS setters/jQuery listener backend. Not a scheduler or raster oracle. Full SVG atlas covers ordinary source-size cells; collision puff transform up to3 is not covered. Wide stars/mountains need tiled rendering and are excluded. Other inactive image names excluded.",
+  "base_font_size": 10,
+  "max_scale": 1.25,
+  "boxes": {
+    "hit-house-01.svg": [
+      319,
+      170
+    ],
+    "hit-house-02.svg": [
+      265,
+      170
+    ],
+    "hit-house-03.svg": [
+      316,
+      160
+    ],
+    "hit-house-04.svg": [
+      329,
+      170
+    ],
+    "hit-house-05.svg": [
+      318,
+      270
+    ],
+    "hit-house-06.svg": [
+      316,
+      150
+    ],
+    "hit-house-07.svg": [
+      320,
+      160
+    ],
+    "hit-house-08.svg": [
+      323,
+      210
+    ],
+    "hit-house-09.svg": [
+      319,
+      180
+    ],
+    "hit-house-10.svg": [
+      318,
+      430
+    ],
+    "hit-house-11.svg": [
+      345,
+      250
+    ],
+    "hit-house-12.svg": [
+      324,
+      190
+    ],
+    "hit-house-13.svg": [
+      330,
+      160
+    ],
+    "hit-house-14.svg": [
+      317,
+      530
+    ],
+    "hit-house-15.svg": [
+      318,
+      210
+    ],
+    "hit-house-16.svg": [
+      327,
+      180
+    ],
+    "hit-house-17.svg": [
+      315,
+      480
+    ],
+    "hit-house-18.svg": [
+      319,
+      160
+    ],
+    "hit-house-19.svg": [
+      323,
+      150
+    ],
+    "hit-house-20.svg": [
+      320,
+      160
+    ],
+    "hit-house-21.svg": [
+      312,
+      410
+    ],
+    "hit-house-22.svg": [
+      323,
+      180
+    ],
+    "hit-house-23.svg": [
+      323,
+      150
+    ],
+    "hit-house-24.svg": [
+      320,
+      240
+    ],
+    "hit-tree-1.svg": [
+      167,
+      320
+    ],
+    "hit-tree-2.svg": [
+      166,
+      260
+    ],
+    "cloud.svg": [
+      180,
+      108
+    ],
+    "treat-candy.svg": [
+      60,
+      60
+    ],
+    "orb-time-back.svg": [
+      60,
+      60
+    ],
+    "orb-time-front.svg": [
+      60,
+      60
+    ],
+    "present-01.svg": [
+      25,
+      25
+    ],
+    "present-02.svg": [
+      25,
+      25
+    ],
+    "present-03.svg": [
+      25,
+      25
+    ],
+    "present-04.svg": [
+      25,
+      25
+    ],
+    "present-05.svg": [
+      25,
+      25
+    ],
+    "present-06.svg": [
+      25,
+      25
+    ],
+    "present-07.svg": [
+      25,
+      25
+    ],
+    "present-08.svg": [
+      25,
+      25
+    ],
+    "points-100.svg": [
+      80,
+      70
+    ],
+    "points-200.svg": [
+      80,
+      70
+    ],
+    "points-300.svg": [
+      80,
+      70
+    ],
+    "hit-beam.svg": [
+      112,
+      630
+    ],
+    "hit-box.svg": [
+      112,
+      755
+    ],
+    "glider-sprite.svg": [
+      400,
+      600
+    ],
+    "bg-tile-trees.svg": [
+      null,
+      210
+    ]
+  },
+  "source_files": [
+    {
+      "path": "static/scenes/glider/js/game.js",
+      "sha256": "bad5306d211f923d8f17e29e9073c6ff4510f057133606d084ca997810f72dfd"
+    },
+    {
+      "path": "static/scenes/glider/js/constants.js",
+      "sha256": "b267cec5ac3bd1669ea686dd690a35f8cfca1581dd92a692f84d4f58a41c473e"
+    },
+    {
+      "path": "static/scenes/glider/sass/_buildings.scss",
+      "sha256": "fb6e5be2ffbfffd8d26d5fdf10e51340232d9b92b49f0df5f8fe8661ed649182"
+    },
+    {
+      "path": "static/scenes/glider/sass/_environment.scss",
+      "sha256": "c9f8c310a2c816adb7bada1431c2984308620d23a00ceff9792435707963f3ae"
+    },
+    {
+      "path": "static/scenes/glider/sass/_items.scss",
+      "sha256": "7a202638d02d4aaf2c51106dabc9949c354dfa3b99dacb9f3f673022a183ced4"
+    },
+    {
+      "path": "static/scenes/glider/sass/_obstacles.scss",
+      "sha256": "3fc9fe8a3480708d571e6e69173d9f7856adc8ca623a983cf754ac7645e93095"
+    },
+    {
+      "path": "static/scenes/glider/sass/_player.scss",
+      "sha256": "5968a58cc999b069e14753cfcd98ea75906041efdbea64b80e49cb9feccfbcb0"
+    },
+    {
+      "path": "static/scenes/glider/sass/_presents.scss",
+      "sha256": "899a95ed786e237813710960ce850d0b5239308fb3da3288f41bb65ec80d3aee"
+    }
+  ],
+  "method_sha256": {
+    "watchSceneSize_": "ae91ba864259cca7d8f927b90bd765a3aa0764e11d35db91e3c5d9bb680d6a40",
+    "setScale": "a64ce313684bfd056a9d4fe3d955190e6d4fcb90a2a019aee7b18d8e22cdc83a",
+    "px2em": "28671e3be622e494090977879db4535d13d6e2da273e4cc671777b25fffa1f8c"
+  },
+  "viewport_cases": [
+    {
+      "width": 375,
+      "density": 1,
+      "scale": 0.3826530612244898,
+      "effective_density": 0.30612244897959184
+    },
+    {
+      "width": 375,
+      "density": 1.25,
+      "scale": 0.3826530612244898,
+      "effective_density": 0.3826530612244898
+    },
+    {
+      "width": 375,
+      "density": 2,
+      "scale": 0.3826530612244898,
+      "effective_density": 0.6122448979591837
+    },
+    {
+      "width": 375,
+      "density": 3,
+      "scale": 0.3826530612244898,
+      "effective_density": 0.9183673469387754
+    },
+    {
+      "width": 768,
+      "density": 1,
+      "scale": 0.7836734693877551,
+      "effective_density": 0.626938775510204
+    },
+    {
+      "width": 768,
+      "density": 1.25,
+      "scale": 0.7836734693877551,
+      "effective_density": 0.7836734693877551
+    },
+    {
+      "width": 768,
+      "density": 2,
+      "scale": 0.7836734693877551,
+      "effective_density": 1.253877551020408
+    },
+    {
+      "width": 768,
+      "density": 3,
+      "scale": 0.7836734693877551,
+      "effective_density": 1.8808163265306121
+    },
+    {
+      "width": 979.5,
+      "density": 1,
+      "scale": 0.9994897959183674,
+      "effective_density": 0.7995918367346939
+    },
+    {
+      "width": 979.5,
+      "density": 1.25,
+      "scale": 0.9994897959183674,
+      "effective_density": 0.9994897959183675
+    },
+    {
+      "width": 979.5,
+      "density": 2,
+      "scale": 0.9994897959183674,
+      "effective_density": 1.5991836734693878
+    },
+    {
+      "width": 979.5,
+      "density": 3,
+      "scale": 0.9994897959183674,
+      "effective_density": 2.3987755102040818
+    },
+    {
+      "width": 980,
+      "density": 1,
+      "scale": 1,
+      "effective_density": 0.8
+    },
+    {
+      "width": 980,
+      "density": 1.25,
+      "scale": 1,
+      "effective_density": 1
+    },
+    {
+      "width": 980,
+      "density": 2,
+      "scale": 1,
+      "effective_density": 1.6
+    },
+    {
+      "width": 980,
+      "density": 3,
+      "scale": 1,
+      "effective_density": 2.4
+    },
+    {
+      "width": 1024,
+      "density": 1,
+      "scale": 1,
+      "effective_density": 0.8
+    },
+    {
+      "width": 1024,
+      "density": 1.25,
+      "scale": 1,
+      "effective_density": 1
+    },
+    {
+      "width": 1024,
+      "density": 2,
+      "scale": 1,
+      "effective_density": 1.6
+    },
+    {
+      "width": 1024,
+      "density": 3,
+      "scale": 1,
+      "effective_density": 2.4
+    },
+    {
+      "width": 1200,
+      "density": 1,
+      "scale": 1,
+      "effective_density": 0.8
+    },
+    {
+      "width": 1200,
+      "density": 1.25,
+      "scale": 1,
+      "effective_density": 1
+    },
+    {
+      "width": 1200,
+      "density": 2,
+      "scale": 1,
+      "effective_density": 1.6
+    },
+    {
+      "width": 1200,
+      "density": 3,
+      "scale": 1,
+      "effective_density": 2.4
+    },
+    {
+      "width": 1200.1,
+      "density": 1,
+      "scale": 1.0000833333333332,
+      "effective_density": 0.8000666666666666
+    },
+    {
+      "width": 1200.1,
+      "density": 1.25,
+      "scale": 1.0000833333333332,
+      "effective_density": 1.0000833333333332
+    },
+    {
+      "width": 1200.1,
+      "density": 2,
+      "scale": 1.0000833333333332,
+      "effective_density": 1.6001333333333332
+    },
+    {
+      "width": 1200.1,
+      "density": 3,
+      "scale": 1.0000833333333332,
+      "effective_density": 2.4001999999999994
+    },
+    {
+      "width": 1440,
+      "density": 1,
+      "scale": 1.2,
+      "effective_density": 0.96
+    },
+    {
+      "width": 1440,
+      "density": 1.25,
+      "scale": 1.2,
+      "effective_density": 1.2
+    },
+    {
+      "width": 1440,
+      "density": 2,
+      "scale": 1.2,
+      "effective_density": 1.92
+    },
+    {
+      "width": 1440,
+      "density": 3,
+      "scale": 1.2,
+      "effective_density": 2.88
+    },
+    {
+      "width": 1500,
+      "density": 1,
+      "scale": 1.25,
+      "effective_density": 1
+    },
+    {
+      "width": 1500,
+      "density": 1.25,
+      "scale": 1.25,
+      "effective_density": 1.25
+    },
+    {
+      "width": 1500,
+      "density": 2,
+      "scale": 1.25,
+      "effective_density": 2
+    },
+    {
+      "width": 1500,
+      "density": 3,
+      "scale": 1.25,
+      "effective_density": 3
+    },
+    {
+      "width": 1920,
+      "density": 1,
+      "scale": 1.25,
+      "effective_density": 1
+    },
+    {
+      "width": 1920,
+      "density": 1.25,
+      "scale": 1.25,
+      "effective_density": 1.25
+    },
+    {
+      "width": 1920,
+      "density": 2,
+      "scale": 1.25,
+      "effective_density": 2
+    },
+    {
+      "width": 1920,
+      "density": 3,
+      "scale": 1.25,
+      "effective_density": 3
+    },
+    {
+      "width": 3440,
+      "density": 1,
+      "scale": 1.25,
+      "effective_density": 1
+    },
+    {
+      "width": 3440,
+      "density": 1.25,
+      "scale": 1.25,
+      "effective_density": 1.25
+    },
+    {
+      "width": 3440,
+      "density": 2,
+      "scale": 1.25,
+      "effective_density": 2
+    },
+    {
+      "width": 3440,
+      "density": 3,
+      "scale": 1.25,
+      "effective_density": 3
+    }
+  ]
+}

@@ -1,0 +1,9055 @@
+{
+  "rows": [
+    {
+      "alpha_coverage": 0.43415046598887125,
+      "cpu_decode_ms": 5.924231000000001,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/bg-tile-trees.svg",
+      "logical": [
+        900.0,
+        180.0
+      ],
+      "natural": [
+        900.0,
+        180.0
+      ],
+      "physical": [
+        1800,
+        360
+      ],
+      "required_maximum_physical": [
+        1312.5,
+        262.5
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.10568951124240641,
+      "cpu_decode_ms": 0.470404,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/cloud.svg",
+      "logical": [
+        173.0,
+        104.0
+      ],
+      "natural": [
+        173.0,
+        104.0
+      ],
+      "physical": [
+        346,
+        208
+      ],
+      "required_maximum_physical": [
+        224.56732177734375,
+        135.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.27251565541015954,
+      "cpu_decode_ms": 19.888089,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/glider-sprite.svg",
+      "logical": [
+        400.0,
+        600.0
+      ],
+      "natural": [
+        400.0,
+        600.0
+      ],
+      "physical": [
+        1200,
+        1800
+      ],
+      "required_maximum_physical": [
+        500.0,
+        750.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.058269226070490225,
+      "cpu_decode_ms": 0.373112,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-beam.svg",
+      "logical": [
+        214.0,
+        1200.0
+      ],
+      "natural": [
+        214.0,
+        1200.0
+      ],
+      "physical": [
+        214,
+        1200
+      ],
+      "required_maximum_physical": [
+        140.0,
+        785.0466918945312
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.09708548138356449,
+      "cpu_decode_ms": 0.7414630000000001,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-box.svg",
+      "logical": [
+        178.0,
+        1200.0
+      ],
+      "natural": [
+        178.0,
+        1200.0
+      ],
+      "physical": [
+        178,
+        1200
+      ],
+      "required_maximum_physical": [
+        139.98959350585938,
+        943.75
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7302721975582684,
+      "cpu_decode_ms": 0.682693,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-01.svg",
+      "logical": [
+        400.0,
+        212.0
+      ],
+      "natural": [
+        400.0,
+        212.0
+      ],
+      "physical": [
+        400,
+        212
+      ],
+      "required_maximum_physical": [
+        398.75,
+        211.33750915527344
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7384253599877451,
+      "cpu_decode_ms": 0.5854,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-02.svg",
+      "logical": [
+        400.0,
+        256.0
+      ],
+      "natural": [
+        400.0,
+        256.0
+      ],
+      "physical": [
+        400,
+        256
+      ],
+      "required_maximum_physical": [
+        331.25,
+        212.0
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7151824403028535,
+      "cpu_decode_ms": 1.4075739999999999,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-03.svg",
+      "logical": [
+        400.0,
+        202.0
+      ],
+      "natural": [
+        400.0,
+        202.0
+      ],
+      "physical": [
+        400,
+        202
+      ],
+      "required_maximum_physical": [
+        395.0,
+        199.47500610351562
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7126727227298687,
+      "cpu_decode_ms": 2.040504,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-04.svg",
+      "logical": [
+        400.0,
+        206.0
+      ],
+      "natural": [
+        400.0,
+        206.0
+      ],
+      "physical": [
+        800,
+        412
+      ],
+      "required_maximum_physical": [
+        411.25,
+        211.7937469482422
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7564241637831605,
+      "cpu_decode_ms": 0.639432,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-05.svg",
+      "logical": [
+        400.0,
+        340.0
+      ],
+      "natural": [
+        400.0,
+        340.0
+      ],
+      "physical": [
+        400,
+        340
+      ],
+      "required_maximum_physical": [
+        397.058837890625,
+        337.5
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7027200206398349,
+      "cpu_decode_ms": 0.8008540000000001,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-06.svg",
+      "logical": [
+        400.0,
+        190.0
+      ],
+      "natural": [
+        400.0,
+        190.0
+      ],
+      "physical": [
+        400,
+        190
+      ],
+      "required_maximum_physical": [
+        394.73687744140625,
+        187.5
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6466169607843139,
+      "cpu_decode_ms": 0.776048,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-07.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        400,
+        200
+      ],
+      "required_maximum_physical": [
+        400.0,
+        200.0
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.752796823152338,
+      "cpu_decode_ms": 1.4129749999999999,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-08.svg",
+      "logical": [
+        400.0,
+        260.0
+      ],
+      "natural": [
+        400.0,
+        260.0
+      ],
+      "physical": [
+        800,
+        520
+      ],
+      "required_maximum_physical": [
+        403.75,
+        262.4375
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6524134716386552,
+      "cpu_decode_ms": 1.46887,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-09.svg",
+      "logical": [
+        400.0,
+        224.0
+      ],
+      "natural": [
+        400.0,
+        224.0
+      ],
+      "physical": [
+        400,
+        224
+      ],
+      "required_maximum_physical": [
+        398.75,
+        223.3000030517578
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7270102923088053,
+      "cpu_decode_ms": 0.422554,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-10.svg",
+      "logical": [
+        400.0,
+        542.0
+      ],
+      "natural": [
+        400.0,
+        542.0
+      ],
+      "physical": [
+        400,
+        542
+      ],
+      "required_maximum_physical": [
+        396.678955078125,
+        537.5
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6845790145368511,
+      "cpu_decode_ms": 2.3586110000000002,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-11.svg",
+      "logical": [
+        400.0,
+        290.0
+      ],
+      "natural": [
+        400.0,
+        290.0
+      ],
+      "physical": [
+        800,
+        580
+      ],
+      "required_maximum_physical": [
+        431.03448486328125,
+        312.5
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.5734617165242165,
+      "cpu_decode_ms": 1.96394,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-12.svg",
+      "logical": [
+        400.0,
+        234.0
+      ],
+      "natural": [
+        400.0,
+        234.0
+      ],
+      "physical": [
+        800,
+        468
+      ],
+      "required_maximum_physical": [
+        405.0,
+        236.92498779296875
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.702382213968061,
+      "cpu_decode_ms": 1.1444400000000001,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-13.svg",
+      "logical": [
+        400.0,
+        194.0
+      ],
+      "natural": [
+        400.0,
+        194.0
+      ],
+      "physical": [
+        800,
+        388
+      ],
+      "required_maximum_physical": [
+        412.37115478515625,
+        200.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8025270705297044,
+      "cpu_decode_ms": 1.6553,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-14.svg",
+      "logical": [
+        400.0,
+        670.0
+      ],
+      "natural": [
+        400.0,
+        670.0
+      ],
+      "physical": [
+        400,
+        670
+      ],
+      "required_maximum_physical": [
+        395.52239990234375,
+        662.5
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6952360739750444,
+      "cpu_decode_ms": 0.45765,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-15.svg",
+      "logical": [
+        400.0,
+        264.0
+      ],
+      "natural": [
+        400.0,
+        264.0
+      ],
+      "physical": [
+        400,
+        264
+      ],
+      "required_maximum_physical": [
+        397.5,
+        262.3500061035156
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6643177139037431,
+      "cpu_decode_ms": 3.605495,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-16.svg",
+      "logical": [
+        400.0,
+        220.0
+      ],
+      "natural": [
+        400.0,
+        220.0
+      ],
+      "physical": [
+        800,
+        440
+      ],
+      "required_maximum_physical": [
+        408.75,
+        224.8125
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6854626486660238,
+      "cpu_decode_ms": 0.716306,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-17.svg",
+      "logical": [
+        400.0,
+        610.0
+      ],
+      "natural": [
+        400.0,
+        610.0
+      ],
+      "physical": [
+        400,
+        610
+      ],
+      "required_maximum_physical": [
+        393.442626953125,
+        600.0
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7113635784313727,
+      "cpu_decode_ms": 0.673946,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-18.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        400,
+        200
+      ],
+      "required_maximum_physical": [
+        398.75,
+        199.375
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6843363509382251,
+      "cpu_decode_ms": 2.0130019999999997,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-19.svg",
+      "logical": [
+        400.0,
+        186.0
+      ],
+      "natural": [
+        400.0,
+        186.0
+      ],
+      "physical": [
+        800,
+        372
+      ],
+      "required_maximum_physical": [
+        403.225830078125,
+        187.5
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7113635784313727,
+      "cpu_decode_ms": 0.635874,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-20.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        400,
+        200
+      ],
+      "required_maximum_physical": [
+        400.0,
+        200.0
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7639413628569297,
+      "cpu_decode_ms": 1.088585,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-21.svg",
+      "logical": [
+        400.0,
+        526.0
+      ],
+      "natural": [
+        400.0,
+        526.0
+      ],
+      "physical": [
+        400,
+        526
+      ],
+      "required_maximum_physical": [
+        389.7338562011719,
+        512.5
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6317627801120445,
+      "cpu_decode_ms": 2.764074,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-22.svg",
+      "logical": [
+        400.0,
+        224.0
+      ],
+      "natural": [
+        400.0,
+        224.0
+      ],
+      "physical": [
+        800,
+        448
+      ],
+      "required_maximum_physical": [
+        401.78570556640625,
+        225.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7132319075479654,
+      "cpu_decode_ms": 2.306193,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-23.svg",
+      "logical": [
+        400.0,
+        186.0
+      ],
+      "natural": [
+        400.0,
+        186.0
+      ],
+      "physical": [
+        800,
+        372
+      ],
+      "required_maximum_physical": [
+        403.225830078125,
+        187.5
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7374580392156863,
+      "cpu_decode_ms": 0.759718,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-24.svg",
+      "logical": [
+        400.0,
+        300.0
+      ],
+      "natural": [
+        400.0,
+        300.0
+      ],
+      "physical": [
+        400,
+        300
+      ],
+      "required_maximum_physical": [
+        400.0,
+        300.0
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.4378258313460511,
+      "cpu_decode_ms": 7.673869,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-tree-1.svg",
+      "logical": [
+        192.0,
+        370.0
+      ],
+      "natural": [
+        192.0,
+        370.0
+      ],
+      "physical": [
+        384,
+        740
+      ],
+      "required_maximum_physical": [
+        207.5675811767578,
+        400.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.5028664867330531,
+      "cpu_decode_ms": 5.5669200000000005,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-tree-2.svg",
+      "logical": [
+        194.0,
+        304.0
+      ],
+      "natural": [
+        194.0,
+        304.0
+      ],
+      "physical": [
+        388,
+        608
+      ],
+      "required_maximum_physical": [
+        207.40130615234375,
+        325.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7870999757927866,
+      "cpu_decode_ms": 0.108183,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/orb-time-back.svg",
+      "logical": [
+        90.0,
+        90.0
+      ],
+      "natural": [
+        90.0,
+        90.0
+      ],
+      "physical": [
+        90,
+        90
+      ],
+      "required_maximum_physical": [
+        75.0,
+        75.0
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.41559719196320527,
+      "cpu_decode_ms": 0.092704,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/orb-time-front.svg",
+      "logical": [
+        90.0,
+        90.0
+      ],
+      "natural": [
+        90.0,
+        90.0
+      ],
+      "physical": [
+        90,
+        90
+      ],
+      "required_maximum_physical": [
+        75.0,
+        75.0
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7226398301255957,
+      "cpu_decode_ms": 0.107622,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/points-100.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        140,
+        124
+      ],
+      "required_maximum_physical": [
+        98.79032135009766,
+        87.5
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7226398301255957,
+      "cpu_decode_ms": 0.12233000000000001,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/points-200.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        140,
+        124
+      ],
+      "required_maximum_physical": [
+        98.79032135009766,
+        87.5
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7226398301255957,
+      "cpu_decode_ms": 0.120887,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/points-300.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        140,
+        124
+      ],
+      "required_maximum_physical": [
+        98.79032135009766,
+        87.5
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8773526019404302,
+      "cpu_decode_ms": 0.026981,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/present-01.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        34,
+        34
+      ],
+      "required_maximum_physical": [
+        31.25,
+        31.25
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8773526019404302,
+      "cpu_decode_ms": 0.024746999999999998,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/present-02.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        34,
+        34
+      ],
+      "required_maximum_physical": [
+        31.25,
+        31.25
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8773526019404302,
+      "cpu_decode_ms": 0.023905,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/present-03.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        34,
+        34
+      ],
+      "required_maximum_physical": [
+        31.25,
+        31.25
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8773526019404302,
+      "cpu_decode_ms": 0.024546,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/present-04.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        34,
+        34
+      ],
+      "required_maximum_physical": [
+        31.25,
+        31.25
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8048961596472909,
+      "cpu_decode_ms": 0.029385,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/present-05.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        52,
+        52
+      ],
+      "required_maximum_physical": [
+        31.25,
+        31.25
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8048961596472909,
+      "cpu_decode_ms": 0.029165,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/present-06.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        52,
+        52
+      ],
+      "required_maximum_physical": [
+        31.25,
+        31.25
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8048961596472909,
+      "cpu_decode_ms": 0.028534,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/present-07.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        52,
+        52
+      ],
+      "required_maximum_physical": [
+        31.25,
+        31.25
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8048961596472909,
+      "cpu_decode_ms": 0.028263,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/present-08.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        52,
+        52
+      ],
+      "required_maximum_physical": [
+        31.25,
+        31.25
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6441979733069705,
+      "cpu_decode_ms": 0.164099,
+      "density": 1.0,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/treat-candy.svg",
+      "logical": [
+        56.0,
+        34.0
+      ],
+      "natural": [
+        56.0,
+        34.0
+      ],
+      "physical": [
+        112,
+        68
+      ],
+      "required_maximum_physical": [
+        75.0,
+        45.53571319580078
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.43415046598887125,
+      "cpu_decode_ms": 3.147755,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/bg-tile-trees.svg",
+      "logical": [
+        900.0,
+        180.0
+      ],
+      "natural": [
+        900.0,
+        180.0
+      ],
+      "physical": [
+        1800,
+        360
+      ],
+      "required_maximum_physical": [
+        1640.625,
+        328.125
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.10568951124240641,
+      "cpu_decode_ms": 0.447941,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/cloud.svg",
+      "logical": [
+        173.0,
+        104.0
+      ],
+      "natural": [
+        173.0,
+        104.0
+      ],
+      "physical": [
+        346,
+        208
+      ],
+      "required_maximum_physical": [
+        280.70916748046875,
+        168.75
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.27251565541015954,
+      "cpu_decode_ms": 14.032897,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/glider-sprite.svg",
+      "logical": [
+        400.0,
+        600.0
+      ],
+      "natural": [
+        400.0,
+        600.0
+      ],
+      "physical": [
+        1200,
+        1800
+      ],
+      "required_maximum_physical": [
+        625.0,
+        937.5
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.058269226070490225,
+      "cpu_decode_ms": 1.0650220000000001,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-beam.svg",
+      "logical": [
+        214.0,
+        1200.0
+      ],
+      "natural": [
+        214.0,
+        1200.0
+      ],
+      "physical": [
+        214,
+        1200
+      ],
+      "required_maximum_physical": [
+        175.0,
+        981.308349609375
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.09708548138356449,
+      "cpu_decode_ms": 0.701268,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-box.svg",
+      "logical": [
+        178.0,
+        1200.0
+      ],
+      "natural": [
+        178.0,
+        1200.0
+      ],
+      "physical": [
+        178,
+        1200
+      ],
+      "required_maximum_physical": [
+        174.98699951171875,
+        1179.6875
+      ],
+      "scale": 1.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.730274613854976,
+      "cpu_decode_ms": 2.228257,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-01.svg",
+      "logical": [
+        400.0,
+        212.0
+      ],
+      "natural": [
+        400.0,
+        212.0
+      ],
+      "physical": [
+        800,
+        424
+      ],
+      "required_maximum_physical": [
+        498.4375,
+        264.171875
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7386910041360295,
+      "cpu_decode_ms": 1.318157,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-02.svg",
+      "logical": [
+        400.0,
+        256.0
+      ],
+      "natural": [
+        400.0,
+        256.0
+      ],
+      "physical": [
+        800,
+        512
+      ],
+      "required_maximum_physical": [
+        414.0625,
+        265.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7155165987186952,
+      "cpu_decode_ms": 3.582782,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-03.svg",
+      "logical": [
+        400.0,
+        202.0
+      ],
+      "natural": [
+        400.0,
+        202.0
+      ],
+      "physical": [
+        800,
+        404
+      ],
+      "required_maximum_physical": [
+        493.75,
+        249.34375
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7126727227298687,
+      "cpu_decode_ms": 2.021228,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-04.svg",
+      "logical": [
+        400.0,
+        206.0
+      ],
+      "natural": [
+        400.0,
+        206.0
+      ],
+      "physical": [
+        800,
+        412
+      ],
+      "required_maximum_physical": [
+        514.0625,
+        264.7421875
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7564228517877737,
+      "cpu_decode_ms": 1.456877,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-05.svg",
+      "logical": [
+        400.0,
+        340.0
+      ],
+      "natural": [
+        400.0,
+        340.0
+      ],
+      "physical": [
+        800,
+        680
+      ],
+      "required_maximum_physical": [
+        496.32354736328125,
+        421.875
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7027179437564498,
+      "cpu_decode_ms": 2.09695,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-06.svg",
+      "logical": [
+        400.0,
+        190.0
+      ],
+      "natural": [
+        400.0,
+        190.0
+      ],
+      "physical": [
+        800,
+        380
+      ],
+      "required_maximum_physical": [
+        493.42108154296875,
+        234.375
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6467772058823531,
+      "cpu_decode_ms": 1.960534,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-07.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        800,
+        400
+      ],
+      "required_maximum_physical": [
+        500.0,
+        250.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.752796823152338,
+      "cpu_decode_ms": 1.4266610000000002,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-08.svg",
+      "logical": [
+        400.0,
+        260.0
+      ],
+      "natural": [
+        400.0,
+        260.0
+      ],
+      "physical": [
+        800,
+        520
+      ],
+      "required_maximum_physical": [
+        504.6875,
+        328.046875
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6525309108018202,
+      "cpu_decode_ms": 3.852969,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-09.svg",
+      "logical": [
+        400.0,
+        224.0
+      ],
+      "natural": [
+        400.0,
+        224.0
+      ],
+      "physical": [
+        800,
+        448
+      ],
+      "required_maximum_physical": [
+        498.4375,
+        279.125
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7270179301425367,
+      "cpu_decode_ms": 1.507642,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-10.svg",
+      "logical": [
+        400.0,
+        542.0
+      ],
+      "natural": [
+        400.0,
+        542.0
+      ],
+      "physical": [
+        800,
+        1084
+      ],
+      "required_maximum_physical": [
+        495.84869384765625,
+        671.875
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6845790145368511,
+      "cpu_decode_ms": 2.392756,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-11.svg",
+      "logical": [
+        400.0,
+        290.0
+      ],
+      "natural": [
+        400.0,
+        290.0
+      ],
+      "physical": [
+        800,
+        580
+      ],
+      "required_maximum_physical": [
+        538.7930908203125,
+        390.625
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.5734617165242165,
+      "cpu_decode_ms": 1.9714939999999999,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-12.svg",
+      "logical": [
+        400.0,
+        234.0
+      ],
+      "natural": [
+        400.0,
+        234.0
+      ],
+      "physical": [
+        800,
+        468
+      ],
+      "required_maximum_physical": [
+        506.25,
+        296.15625
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.702382213968061,
+      "cpu_decode_ms": 1.135784,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-13.svg",
+      "logical": [
+        400.0,
+        194.0
+      ],
+      "natural": [
+        400.0,
+        194.0
+      ],
+      "physical": [
+        800,
+        388
+      ],
+      "required_maximum_physical": [
+        515.4639282226562,
+        250.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8025259218612827,
+      "cpu_decode_ms": 5.360702,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-14.svg",
+      "logical": [
+        400.0,
+        670.0
+      ],
+      "natural": [
+        400.0,
+        670.0
+      ],
+      "physical": [
+        800,
+        1340
+      ],
+      "required_maximum_physical": [
+        494.40301513671875,
+        828.125
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6953016191325012,
+      "cpu_decode_ms": 1.129121,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-15.svg",
+      "logical": [
+        400.0,
+        264.0
+      ],
+      "natural": [
+        400.0,
+        264.0
+      ],
+      "physical": [
+        800,
+        528
+      ],
+      "required_maximum_physical": [
+        496.875,
+        327.9375
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6643177139037431,
+      "cpu_decode_ms": 3.5845759999999998,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-16.svg",
+      "logical": [
+        400.0,
+        220.0
+      ],
+      "natural": [
+        400.0,
+        220.0
+      ],
+      "physical": [
+        800,
+        440
+      ],
+      "required_maximum_physical": [
+        510.9375,
+        281.015625
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6854696721311478,
+      "cpu_decode_ms": 1.627098,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-17.svg",
+      "logical": [
+        400.0,
+        610.0
+      ],
+      "natural": [
+        400.0,
+        610.0
+      ],
+      "physical": [
+        800,
+        1220
+      ],
+      "required_maximum_physical": [
+        491.80328369140625,
+        750.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7113612622549025,
+      "cpu_decode_ms": 1.9174330000000002,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-18.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        800,
+        400
+      ],
+      "required_maximum_physical": [
+        498.4375,
+        249.21875
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6843363509382251,
+      "cpu_decode_ms": 1.9992059999999998,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-19.svg",
+      "logical": [
+        400.0,
+        186.0
+      ],
+      "natural": [
+        400.0,
+        186.0
+      ],
+      "physical": [
+        800,
+        372
+      ],
+      "required_maximum_physical": [
+        504.03228759765625,
+        234.375
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7113612622549025,
+      "cpu_decode_ms": 1.6978799999999998,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-20.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        800,
+        400
+      ],
+      "required_maximum_physical": [
+        500.0,
+        250.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7639424485573697,
+      "cpu_decode_ms": 3.110294,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-21.svg",
+      "logical": [
+        400.0,
+        526.0
+      ],
+      "natural": [
+        400.0,
+        526.0
+      ],
+      "physical": [
+        800,
+        1052
+      ],
+      "required_maximum_physical": [
+        487.1673278808594,
+        640.625
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6317627801120445,
+      "cpu_decode_ms": 2.698701,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-22.svg",
+      "logical": [
+        400.0,
+        224.0
+      ],
+      "natural": [
+        400.0,
+        224.0
+      ],
+      "physical": [
+        800,
+        448
+      ],
+      "required_maximum_physical": [
+        502.23211669921875,
+        281.25
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7132319075479654,
+      "cpu_decode_ms": 2.246631,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-23.svg",
+      "logical": [
+        400.0,
+        186.0
+      ],
+      "natural": [
+        400.0,
+        186.0
+      ],
+      "physical": [
+        800,
+        372
+      ],
+      "required_maximum_physical": [
+        504.03228759765625,
+        234.375
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.737455939542484,
+      "cpu_decode_ms": 2.0691479999999998,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-house-24.svg",
+      "logical": [
+        400.0,
+        300.0
+      ],
+      "natural": [
+        400.0,
+        300.0
+      ],
+      "physical": [
+        800,
+        600
+      ],
+      "required_maximum_physical": [
+        500.0,
+        375.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.4378258313460511,
+      "cpu_decode_ms": 7.507657,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-tree-1.svg",
+      "logical": [
+        192.0,
+        370.0
+      ],
+      "natural": [
+        192.0,
+        370.0
+      ],
+      "physical": [
+        384,
+        740
+      ],
+      "required_maximum_physical": [
+        259.45947265625,
+        500.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.5028664867330531,
+      "cpu_decode_ms": 5.505264,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/hit-tree-2.svg",
+      "logical": [
+        194.0,
+        304.0
+      ],
+      "natural": [
+        194.0,
+        304.0
+      ],
+      "physical": [
+        388,
+        608
+      ],
+      "required_maximum_physical": [
+        259.25164794921875,
+        406.25
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7866146211571023,
+      "cpu_decode_ms": 0.181341,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/orb-time-back.svg",
+      "logical": [
+        90.0,
+        90.0
+      ],
+      "natural": [
+        90.0,
+        90.0
+      ],
+      "physical": [
+        180,
+        180
+      ],
+      "required_maximum_physical": [
+        93.75,
+        93.75
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.41570951343500123,
+      "cpu_decode_ms": 0.15290700000000002,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/orb-time-front.svg",
+      "logical": [
+        90.0,
+        90.0
+      ],
+      "natural": [
+        90.0,
+        90.0
+      ],
+      "physical": [
+        180,
+        180
+      ],
+      "required_maximum_physical": [
+        93.75,
+        93.75
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7226398301255957,
+      "cpu_decode_ms": 0.110498,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/points-100.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        140,
+        124
+      ],
+      "required_maximum_physical": [
+        123.48789978027344,
+        109.375
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7226398301255957,
+      "cpu_decode_ms": 0.11451499999999999,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/points-200.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        140,
+        124
+      ],
+      "required_maximum_physical": [
+        123.48789978027344,
+        109.375
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7226398301255957,
+      "cpu_decode_ms": 0.128491,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/points-300.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        140,
+        124
+      ],
+      "required_maximum_physical": [
+        123.48789978027344,
+        109.375
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8772576158491078,
+      "cpu_decode_ms": 0.035636999999999995,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/present-01.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        68,
+        68
+      ],
+      "required_maximum_physical": [
+        39.0625,
+        39.0625
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8772576158491078,
+      "cpu_decode_ms": 0.034064,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/present-02.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        68,
+        68
+      ],
+      "required_maximum_physical": [
+        39.0625,
+        39.0625
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8772576158491078,
+      "cpu_decode_ms": 0.032360999999999994,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/present-03.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        68,
+        68
+      ],
+      "required_maximum_physical": [
+        39.0625,
+        39.0625
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8772576158491078,
+      "cpu_decode_ms": 0.032161,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/present-04.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        68,
+        68
+      ],
+      "required_maximum_physical": [
+        39.0625,
+        39.0625
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8048961596472909,
+      "cpu_decode_ms": 0.03167,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/present-05.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        52,
+        52
+      ],
+      "required_maximum_physical": [
+        39.0625,
+        39.0625
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8048961596472909,
+      "cpu_decode_ms": 0.028173,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/present-06.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        52,
+        52
+      ],
+      "required_maximum_physical": [
+        39.0625,
+        39.0625
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8048961596472909,
+      "cpu_decode_ms": 0.028443,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/present-07.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        52,
+        52
+      ],
+      "required_maximum_physical": [
+        39.0625,
+        39.0625
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8048961596472909,
+      "cpu_decode_ms": 0.028213,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/present-08.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        52,
+        52
+      ],
+      "required_maximum_physical": [
+        39.0625,
+        39.0625
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6441979733069705,
+      "cpu_decode_ms": 0.160011,
+      "density": 1.25,
+      "effective_density": 1.25,
+      "file": "scenes/glider/img/treat-candy.svg",
+      "logical": [
+        56.0,
+        34.0
+      ],
+      "natural": [
+        56.0,
+        34.0
+      ],
+      "physical": [
+        112,
+        68
+      ],
+      "required_maximum_physical": [
+        93.75,
+        56.919639587402344
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.43408354985342235,
+      "cpu_decode_ms": 6.352165,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/bg-tile-trees.svg",
+      "logical": [
+        900.0,
+        180.0
+      ],
+      "natural": [
+        900.0,
+        180.0
+      ],
+      "physical": [
+        2700,
+        540
+      ],
+      "required_maximum_physical": [
+        2625.0,
+        525.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.10571251226638013,
+      "cpu_decode_ms": 0.959863,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/cloud.svg",
+      "logical": [
+        173.0,
+        104.0
+      ],
+      "natural": [
+        173.0,
+        104.0
+      ],
+      "physical": [
+        519,
+        312
+      ],
+      "required_maximum_physical": [
+        449.1346435546875,
+        270.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.27251565541015954,
+      "cpu_decode_ms": 12.588513,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/glider-sprite.svg",
+      "logical": [
+        400.0,
+        600.0
+      ],
+      "natural": [
+        400.0,
+        600.0
+      ],
+      "physical": [
+        1200,
+        1800
+      ],
+      "required_maximum_physical": [
+        1000.0,
+        1500.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.05826808457027665,
+      "cpu_decode_ms": 3.936185,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-beam.svg",
+      "logical": [
+        214.0,
+        1200.0
+      ],
+      "natural": [
+        214.0,
+        1200.0
+      ],
+      "physical": [
+        428,
+        2400
+      ],
+      "required_maximum_physical": [
+        280.0,
+        1570.0933837890625
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.09692976610119731,
+      "cpu_decode_ms": 1.607991,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-box.svg",
+      "logical": [
+        178.0,
+        1200.0
+      ],
+      "natural": [
+        178.0,
+        1200.0
+      ],
+      "physical": [
+        356,
+        2400
+      ],
+      "required_maximum_physical": [
+        279.97918701171875,
+        1887.5
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.730274613854976,
+      "cpu_decode_ms": 2.027259,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-01.svg",
+      "logical": [
+        400.0,
+        212.0
+      ],
+      "natural": [
+        400.0,
+        212.0
+      ],
+      "physical": [
+        800,
+        424
+      ],
+      "required_maximum_physical": [
+        797.5,
+        422.6750183105469
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7386910041360295,
+      "cpu_decode_ms": 1.309541,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-02.svg",
+      "logical": [
+        400.0,
+        256.0
+      ],
+      "natural": [
+        400.0,
+        256.0
+      ],
+      "physical": [
+        800,
+        512
+      ],
+      "required_maximum_physical": [
+        662.5,
+        424.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7155165987186952,
+      "cpu_decode_ms": 3.456375,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-03.svg",
+      "logical": [
+        400.0,
+        202.0
+      ],
+      "natural": [
+        400.0,
+        202.0
+      ],
+      "physical": [
+        800,
+        404
+      ],
+      "required_maximum_physical": [
+        790.0,
+        398.95001220703125
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7126056010322103,
+      "cpu_decode_ms": 3.795101,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-04.svg",
+      "logical": [
+        400.0,
+        206.0
+      ],
+      "natural": [
+        400.0,
+        206.0
+      ],
+      "physical": [
+        1200,
+        618
+      ],
+      "required_maximum_physical": [
+        822.5,
+        423.5874938964844
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7564228517877737,
+      "cpu_decode_ms": 1.4793589999999999,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-05.svg",
+      "logical": [
+        400.0,
+        340.0
+      ],
+      "natural": [
+        400.0,
+        340.0
+      ],
+      "physical": [
+        800,
+        680
+      ],
+      "required_maximum_physical": [
+        794.11767578125,
+        675.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7027179437564498,
+      "cpu_decode_ms": 2.133769,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-06.svg",
+      "logical": [
+        400.0,
+        190.0
+      ],
+      "natural": [
+        400.0,
+        190.0
+      ],
+      "physical": [
+        800,
+        380
+      ],
+      "required_maximum_physical": [
+        789.4737548828125,
+        375.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6467772058823531,
+      "cpu_decode_ms": 1.946728,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-07.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        800,
+        400
+      ],
+      "required_maximum_physical": [
+        800.0,
+        400.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7527240321769739,
+      "cpu_decode_ms": 2.601157,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-08.svg",
+      "logical": [
+        400.0,
+        260.0
+      ],
+      "natural": [
+        400.0,
+        260.0
+      ],
+      "physical": [
+        1200,
+        780
+      ],
+      "required_maximum_physical": [
+        807.5,
+        524.875
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6525309108018202,
+      "cpu_decode_ms": 3.7369410000000003,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-09.svg",
+      "logical": [
+        400.0,
+        224.0
+      ],
+      "natural": [
+        400.0,
+        224.0
+      ],
+      "physical": [
+        800,
+        448
+      ],
+      "required_maximum_physical": [
+        797.5,
+        446.6000061035156
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7270179301425367,
+      "cpu_decode_ms": 0.8459,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-10.svg",
+      "logical": [
+        400.0,
+        542.0
+      ],
+      "natural": [
+        400.0,
+        542.0
+      ],
+      "physical": [
+        800,
+        1084
+      ],
+      "required_maximum_physical": [
+        793.35791015625,
+        1075.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6845796972428788,
+      "cpu_decode_ms": 4.626342999999999,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-11.svg",
+      "logical": [
+        400.0,
+        290.0
+      ],
+      "natural": [
+        400.0,
+        290.0
+      ],
+      "physical": [
+        1200,
+        870
+      ],
+      "required_maximum_physical": [
+        862.0689697265625,
+        625.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.5734679487179449,
+      "cpu_decode_ms": 3.914946,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-12.svg",
+      "logical": [
+        400.0,
+        234.0
+      ],
+      "natural": [
+        400.0,
+        234.0
+      ],
+      "physical": [
+        1200,
+        702
+      ],
+      "required_maximum_physical": [
+        810.0,
+        473.8499755859375
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7023893268647674,
+      "cpu_decode_ms": 2.1004069999999997,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-13.svg",
+      "logical": [
+        400.0,
+        194.0
+      ],
+      "natural": [
+        400.0,
+        194.0
+      ],
+      "physical": [
+        1200,
+        582
+      ],
+      "required_maximum_physical": [
+        824.7423095703125,
+        400.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8025259218612827,
+      "cpu_decode_ms": 4.900066,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-14.svg",
+      "logical": [
+        400.0,
+        670.0
+      ],
+      "natural": [
+        400.0,
+        670.0
+      ],
+      "physical": [
+        800,
+        1340
+      ],
+      "required_maximum_physical": [
+        791.0447998046875,
+        1325.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6953016191325012,
+      "cpu_decode_ms": 1.1438590000000002,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-15.svg",
+      "logical": [
+        400.0,
+        264.0
+      ],
+      "natural": [
+        400.0,
+        264.0
+      ],
+      "physical": [
+        800,
+        528
+      ],
+      "required_maximum_physical": [
+        795.0,
+        524.7000122070312
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6643045107942175,
+      "cpu_decode_ms": 7.07277,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-16.svg",
+      "logical": [
+        400.0,
+        220.0
+      ],
+      "natural": [
+        400.0,
+        220.0
+      ],
+      "physical": [
+        1200,
+        660
+      ],
+      "required_maximum_physical": [
+        817.5,
+        449.625
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6854696721311478,
+      "cpu_decode_ms": 2.026167,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-17.svg",
+      "logical": [
+        400.0,
+        610.0
+      ],
+      "natural": [
+        400.0,
+        610.0
+      ],
+      "physical": [
+        800,
+        1220
+      ],
+      "required_maximum_physical": [
+        786.88525390625,
+        1200.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7113612622549025,
+      "cpu_decode_ms": 1.995128,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-18.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        800,
+        400
+      ],
+      "required_maximum_physical": [
+        797.5,
+        398.75
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6843612223862023,
+      "cpu_decode_ms": 4.191135,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-19.svg",
+      "logical": [
+        400.0,
+        186.0
+      ],
+      "natural": [
+        400.0,
+        186.0
+      ],
+      "physical": [
+        1200,
+        558
+      ],
+      "required_maximum_physical": [
+        806.45166015625,
+        375.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7113612622549025,
+      "cpu_decode_ms": 1.728948,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-20.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        800,
+        400
+      ],
+      "required_maximum_physical": [
+        800.0,
+        400.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7639424485573697,
+      "cpu_decode_ms": 3.228386,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-21.svg",
+      "logical": [
+        400.0,
+        526.0
+      ],
+      "natural": [
+        400.0,
+        526.0
+      ],
+      "physical": [
+        800,
+        1052
+      ],
+      "required_maximum_physical": [
+        779.4677124023438,
+        1025.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6317777583255534,
+      "cpu_decode_ms": 4.898123,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-22.svg",
+      "logical": [
+        400.0,
+        224.0
+      ],
+      "natural": [
+        400.0,
+        224.0
+      ],
+      "physical": [
+        1200,
+        672
+      ],
+      "required_maximum_physical": [
+        803.5714111328125,
+        450.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7131298638929839,
+      "cpu_decode_ms": 4.4399820000000005,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-23.svg",
+      "logical": [
+        400.0,
+        186.0
+      ],
+      "natural": [
+        400.0,
+        186.0
+      ],
+      "physical": [
+        1200,
+        558
+      ],
+      "required_maximum_physical": [
+        806.45166015625,
+        375.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.737455939542484,
+      "cpu_decode_ms": 2.072254,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-house-24.svg",
+      "logical": [
+        400.0,
+        300.0
+      ],
+      "natural": [
+        400.0,
+        300.0
+      ],
+      "physical": [
+        800,
+        600
+      ],
+      "required_maximum_physical": [
+        800.0,
+        600.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.4374689027262604,
+      "cpu_decode_ms": 15.162941,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-tree-1.svg",
+      "logical": [
+        192.0,
+        370.0
+      ],
+      "natural": [
+        192.0,
+        370.0
+      ],
+      "physical": [
+        576,
+        1110
+      ],
+      "required_maximum_physical": [
+        415.1351623535156,
+        800.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.5028508033104166,
+      "cpu_decode_ms": 10.949364,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/hit-tree-2.svg",
+      "logical": [
+        194.0,
+        304.0
+      ],
+      "natural": [
+        194.0,
+        304.0
+      ],
+      "physical": [
+        582,
+        912
+      ],
+      "required_maximum_physical": [
+        414.8026123046875,
+        650.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7866146211571023,
+      "cpu_decode_ms": 0.183234,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/orb-time-back.svg",
+      "logical": [
+        90.0,
+        90.0
+      ],
+      "natural": [
+        90.0,
+        90.0
+      ],
+      "physical": [
+        180,
+        180
+      ],
+      "required_maximum_physical": [
+        150.0,
+        150.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.41570951343500123,
+      "cpu_decode_ms": 0.145954,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/orb-time-front.svg",
+      "logical": [
+        90.0,
+        90.0
+      ],
+      "natural": [
+        90.0,
+        90.0
+      ],
+      "physical": [
+        180,
+        180
+      ],
+      "required_maximum_physical": [
+        150.0,
+        150.0
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7226420890937001,
+      "cpu_decode_ms": 0.139352,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/points-100.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        210,
+        186
+      ],
+      "required_maximum_physical": [
+        197.5806427001953,
+        175.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7226420890937001,
+      "cpu_decode_ms": 0.14924099999999998,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/points-200.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        210,
+        186
+      ],
+      "required_maximum_physical": [
+        197.5806427001953,
+        175.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7226420890937001,
+      "cpu_decode_ms": 0.15553299999999998,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/points-300.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        210,
+        186
+      ],
+      "required_maximum_physical": [
+        197.5806427001953,
+        175.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8772576158491078,
+      "cpu_decode_ms": 0.036628999999999995,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/present-01.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        68,
+        68
+      ],
+      "required_maximum_physical": [
+        62.5,
+        62.5
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8772576158491078,
+      "cpu_decode_ms": 0.033151999999999994,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/present-02.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        68,
+        68
+      ],
+      "required_maximum_physical": [
+        62.5,
+        62.5
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8772576158491078,
+      "cpu_decode_ms": 0.032982,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/present-03.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        68,
+        68
+      ],
+      "required_maximum_physical": [
+        62.5,
+        62.5
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8772576158491078,
+      "cpu_decode_ms": 0.037079999999999995,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/present-04.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        68,
+        68
+      ],
+      "required_maximum_physical": [
+        62.5,
+        62.5
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8048420157017441,
+      "cpu_decode_ms": 0.038242,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/present-05.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        78,
+        78
+      ],
+      "required_maximum_physical": [
+        62.5,
+        62.5
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8048420157017441,
+      "cpu_decode_ms": 0.036128,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/present-06.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        78,
+        78
+      ],
+      "required_maximum_physical": [
+        62.5,
+        62.5
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8048420157017441,
+      "cpu_decode_ms": 0.036017,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/present-07.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        78,
+        78
+      ],
+      "required_maximum_physical": [
+        62.5,
+        62.5
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8048420157017441,
+      "cpu_decode_ms": 0.037419999999999995,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/present-08.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        78,
+        78
+      ],
+      "required_maximum_physical": [
+        62.5,
+        62.5
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6435521594258602,
+      "cpu_decode_ms": 0.219292,
+      "density": 2.0,
+      "effective_density": 2.0,
+      "file": "scenes/glider/img/treat-candy.svg",
+      "logical": [
+        56.0,
+        34.0
+      ],
+      "natural": [
+        56.0,
+        34.0
+      ],
+      "physical": [
+        168,
+        102
+      ],
+      "required_maximum_physical": [
+        150.0,
+        91.07142639160156
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.43401441781651656,
+      "cpu_decode_ms": 31.151943000000003,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/bg-tile-trees.svg",
+      "logical": [
+        900.0,
+        180.0
+      ],
+      "natural": [
+        900.0,
+        180.0
+      ],
+      "physical": [
+        4500,
+        900
+      ],
+      "required_maximum_physical": [
+        3937.5,
+        787.5
+      ],
+      "scale": 5.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.10571931751853339,
+      "cpu_decode_ms": 1.747984,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/cloud.svg",
+      "logical": [
+        173.0,
+        104.0
+      ],
+      "natural": [
+        173.0,
+        104.0
+      ],
+      "physical": [
+        692,
+        416
+      ],
+      "required_maximum_physical": [
+        673.7019653320312,
+        405.0
+      ],
+      "scale": 4.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.2725040635210929,
+      "cpu_decode_ms": 24.585784999999998,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/glider-sprite.svg",
+      "logical": [
+        400.0,
+        600.0
+      ],
+      "natural": [
+        400.0,
+        600.0
+      ],
+      "physical": [
+        1600,
+        2400
+      ],
+      "required_maximum_physical": [
+        1500.0,
+        2250.0
+      ],
+      "scale": 4.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.05826808457027665,
+      "cpu_decode_ms": 0.9202589999999999,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-beam.svg",
+      "logical": [
+        214.0,
+        1200.0
+      ],
+      "natural": [
+        214.0,
+        1200.0
+      ],
+      "physical": [
+        428,
+        2400
+      ],
+      "required_maximum_physical": [
+        420.0,
+        2355.14013671875
+      ],
+      "scale": 2.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.09688020897081316,
+      "cpu_decode_ms": 3.01233,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-box.svg",
+      "logical": [
+        178.0,
+        1200.0
+      ],
+      "natural": [
+        178.0,
+        1200.0
+      ],
+      "physical": [
+        534,
+        3600
+      ],
+      "required_maximum_physical": [
+        419.9687805175781,
+        2831.25
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7302733999260104,
+      "cpu_decode_ms": 4.014673,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-01.svg",
+      "logical": [
+        400.0,
+        212.0
+      ],
+      "natural": [
+        400.0,
+        212.0
+      ],
+      "physical": [
+        1200,
+        636
+      ],
+      "required_maximum_physical": [
+        1196.25,
+        634.0125122070312
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7386214128880733,
+      "cpu_decode_ms": 2.616206,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-02.svg",
+      "logical": [
+        400.0,
+        256.0
+      ],
+      "natural": [
+        400.0,
+        256.0
+      ],
+      "physical": [
+        1200,
+        768
+      ],
+      "required_maximum_physical": [
+        993.75,
+        636.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.715424879742877,
+      "cpu_decode_ms": 6.6231040000000005,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-03.svg",
+      "logical": [
+        400.0,
+        202.0
+      ],
+      "natural": [
+        400.0,
+        202.0
+      ],
+      "physical": [
+        1200,
+        606
+      ],
+      "required_maximum_physical": [
+        1185.0,
+        598.425048828125
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.712676732343417,
+      "cpu_decode_ms": 6.461851,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-04.svg",
+      "logical": [
+        400.0,
+        206.0
+      ],
+      "natural": [
+        400.0,
+        206.0
+      ],
+      "physical": [
+        1600,
+        824
+      ],
+      "required_maximum_physical": [
+        1233.75,
+        635.3812255859375
+      ],
+      "scale": 4.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7564268870947077,
+      "cpu_decode_ms": 2.788079,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-05.svg",
+      "logical": [
+        400.0,
+        340.0
+      ],
+      "natural": [
+        400.0,
+        340.0
+      ],
+      "physical": [
+        1200,
+        1020
+      ],
+      "required_maximum_physical": [
+        1191.176513671875,
+        1012.5
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7027367503726589,
+      "cpu_decode_ms": 4.099272999999999,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-06.svg",
+      "logical": [
+        400.0,
+        190.0
+      ],
+      "natural": [
+        400.0,
+        190.0
+      ],
+      "physical": [
+        1200,
+        570
+      ],
+      "required_maximum_physical": [
+        1184.210693359375,
+        562.5
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6466985294117603,
+      "cpu_decode_ms": 3.717155,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-07.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        1200,
+        600
+      ],
+      "required_maximum_physical": [
+        1200.0,
+        600.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7528047959087479,
+      "cpu_decode_ms": 4.378097,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-08.svg",
+      "logical": [
+        400.0,
+        260.0
+      ],
+      "natural": [
+        400.0,
+        260.0
+      ],
+      "physical": [
+        1600,
+        1040
+      ],
+      "required_maximum_physical": [
+        1211.25,
+        787.3125
+      ],
+      "scale": 4.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6524635757080612,
+      "cpu_decode_ms": 7.275099,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-09.svg",
+      "logical": [
+        400.0,
+        224.0
+      ],
+      "natural": [
+        400.0,
+        224.0
+      ],
+      "physical": [
+        1200,
+        672
+      ],
+      "required_maximum_physical": [
+        1196.25,
+        669.9000244140625
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7270177206183833,
+      "cpu_decode_ms": 1.8608170000000002,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-10.svg",
+      "logical": [
+        400.0,
+        542.0
+      ],
+      "natural": [
+        400.0,
+        542.0
+      ],
+      "physical": [
+        1200,
+        1626
+      ],
+      "required_maximum_physical": [
+        1190.036865234375,
+        1612.5
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6845829361054727,
+      "cpu_decode_ms": 8.009169,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-11.svg",
+      "logical": [
+        400.0,
+        290.0
+      ],
+      "natural": [
+        400.0,
+        290.0
+      ],
+      "physical": [
+        1600,
+        1160
+      ],
+      "required_maximum_physical": [
+        1293.103515625,
+        937.5
+      ],
+      "scale": 4.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.5734707374937099,
+      "cpu_decode_ms": 6.827158,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-12.svg",
+      "logical": [
+        400.0,
+        234.0
+      ],
+      "natural": [
+        400.0,
+        234.0
+      ],
+      "physical": [
+        1600,
+        936
+      ],
+      "required_maximum_physical": [
+        1215.0,
+        710.7749633789062
+      ],
+      "scale": 4.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7023926590610464,
+      "cpu_decode_ms": 3.393507,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-13.svg",
+      "logical": [
+        400.0,
+        194.0
+      ],
+      "natural": [
+        400.0,
+        194.0
+      ],
+      "physical": [
+        1600,
+        776
+      ],
+      "required_maximum_physical": [
+        1237.113525390625,
+        600.0
+      ],
+      "scale": 4.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.8025239391278902,
+      "cpu_decode_ms": 10.430177,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-14.svg",
+      "logical": [
+        400.0,
+        670.0
+      ],
+      "natural": [
+        400.0,
+        670.0
+      ],
+      "physical": [
+        1200,
+        2010
+      ],
+      "required_maximum_physical": [
+        1186.567138671875,
+        1987.5
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6953102346999422,
+      "cpu_decode_ms": 2.270787,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-15.svg",
+      "logical": [
+        400.0,
+        264.0
+      ],
+      "natural": [
+        400.0,
+        264.0
+      ],
+      "physical": [
+        1200,
+        792
+      ],
+      "required_maximum_physical": [
+        1192.5,
+        787.050048828125
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6643044730392167,
+      "cpu_decode_ms": 12.049249999999999,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-16.svg",
+      "logical": [
+        400.0,
+        220.0
+      ],
+      "natural": [
+        400.0,
+        220.0
+      ],
+      "physical": [
+        1600,
+        880
+      ],
+      "required_maximum_physical": [
+        1226.25,
+        674.4375
+      ],
+      "scale": 4.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6854682095789143,
+      "cpu_decode_ms": 3.500427,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-17.svg",
+      "logical": [
+        400.0,
+        610.0
+      ],
+      "natural": [
+        400.0,
+        610.0
+      ],
+      "physical": [
+        1200,
+        1830
+      ],
+      "required_maximum_physical": [
+        1180.327880859375,
+        1800.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7113678976034867,
+      "cpu_decode_ms": 3.81029,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-18.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        1200,
+        600
+      ],
+      "required_maximum_physical": [
+        1196.25,
+        598.125
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6843485103046532,
+      "cpu_decode_ms": 6.414693,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-19.svg",
+      "logical": [
+        400.0,
+        186.0
+      ],
+      "natural": [
+        400.0,
+        186.0
+      ],
+      "physical": [
+        1600,
+        744
+      ],
+      "required_maximum_physical": [
+        1209.677490234375,
+        562.5
+      ],
+      "scale": 4.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7113678976034867,
+      "cpu_decode_ms": 3.275194,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-20.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        1200,
+        600
+      ],
+      "required_maximum_physical": [
+        1200.0,
+        600.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.76394985586123,
+      "cpu_decode_ms": 6.671897,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-21.svg",
+      "logical": [
+        400.0,
+        526.0
+      ],
+      "natural": [
+        400.0,
+        526.0
+      ],
+      "physical": [
+        1200,
+        1578
+      ],
+      "required_maximum_physical": [
+        1169.2015380859375,
+        1537.5
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.6317678899684883,
+      "cpu_decode_ms": 8.159201,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-22.svg",
+      "logical": [
+        400.0,
+        224.0
+      ],
+      "natural": [
+        400.0,
+        224.0
+      ],
+      "physical": [
+        1600,
+        896
+      ],
+      "required_maximum_physical": [
+        1205.357177734375,
+        675.0
+      ],
+      "scale": 4.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.713242360452239,
+      "cpu_decode_ms": 7.481608,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-23.svg",
+      "logical": [
+        400.0,
+        186.0
+      ],
+      "natural": [
+        400.0,
+        186.0
+      ],
+      "physical": [
+        1600,
+        744
+      ],
+      "required_maximum_physical": [
+        1209.677490234375,
+        562.5
+      ],
+      "scale": 4.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.737460548293392,
+      "cpu_decode_ms": 4.348882,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-24.svg",
+      "logical": [
+        400.0,
+        300.0
+      ],
+      "natural": [
+        400.0,
+        300.0
+      ],
+      "physical": [
+        1200,
+        900
+      ],
+      "required_maximum_physical": [
+        1200.0,
+        900.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.4375339424902867,
+      "cpu_decode_ms": 25.595112,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-tree-1.svg",
+      "logical": [
+        192.0,
+        370.0
+      ],
+      "natural": [
+        192.0,
+        370.0
+      ],
+      "physical": [
+        768,
+        1480
+      ],
+      "required_maximum_physical": [
+        622.7027587890625,
+        1200.0
+      ],
+      "scale": 4.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.5028537447602537,
+      "cpu_decode_ms": 17.91477,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-tree-2.svg",
+      "logical": [
+        194.0,
+        304.0
+      ],
+      "natural": [
+        194.0,
+        304.0
+      ],
+      "physical": [
+        776,
+        1216
+      ],
+      "required_maximum_physical": [
+        622.2039184570312,
+        975.0
+      ],
+      "scale": 4.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7861027461739144,
+      "cpu_decode_ms": 0.261802,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/orb-time-back.svg",
+      "logical": [
+        90.0,
+        90.0
+      ],
+      "natural": [
+        90.0,
+        90.0
+      ],
+      "physical": [
+        270,
+        270
+      ],
+      "required_maximum_physical": [
+        225.0,
+        225.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.4162158745528367,
+      "cpu_decode_ms": 0.200496,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/orb-time-front.svg",
+      "logical": [
+        90.0,
+        90.0
+      ],
+      "natural": [
+        90.0,
+        90.0
+      ],
+      "physical": [
+        270,
+        270
+      ],
+      "required_maximum_physical": [
+        225.0,
+        225.0
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7226871238818096,
+      "cpu_decode_ms": 0.210315,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/points-100.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        350,
+        310
+      ],
+      "required_maximum_physical": [
+        296.3709716796875,
+        262.5
+      ],
+      "scale": 5.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7226871238818096,
+      "cpu_decode_ms": 0.215125,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/points-200.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        350,
+        310
+      ],
+      "required_maximum_physical": [
+        296.3709716796875,
+        262.5
+      ],
+      "scale": 5.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.7226871238818096,
+      "cpu_decode_ms": 0.2288,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/points-300.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        350,
+        310
+      ],
+      "required_maximum_physical": [
+        296.3709716796875,
+        262.5
+      ],
+      "scale": 5.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.877225953818667,
+      "cpu_decode_ms": 0.050835,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/present-01.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        102,
+        102
+      ],
+      "required_maximum_physical": [
+        93.75,
+        93.75
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.877225953818667,
+      "cpu_decode_ms": 0.043372,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/present-02.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        102,
+        102
+      ],
+      "required_maximum_physical": [
+        93.75,
+        93.75
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.877225953818667,
+      "cpu_decode_ms": 0.043021000000000004,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/present-03.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        102,
+        102
+      ],
+      "required_maximum_physical": [
+        93.75,
+        93.75
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.877225953818667,
+      "cpu_decode_ms": 0.042370000000000005,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/present-04.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        102,
+        102
+      ],
+      "required_maximum_physical": [
+        93.75,
+        93.75
+      ],
+      "scale": 3.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.804814943728971,
+      "cpu_decode_ms": 0.044764,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/present-05.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        104,
+        104
+      ],
+      "required_maximum_physical": [
+        93.75,
+        93.75
+      ],
+      "scale": 4.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.804814943728971,
+      "cpu_decode_ms": 0.051276,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/present-06.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        104,
+        104
+      ],
+      "required_maximum_physical": [
+        93.75,
+        93.75
+      ],
+      "scale": 4.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.804814943728971,
+      "cpu_decode_ms": 0.045165,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/present-07.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        104,
+        104
+      ],
+      "required_maximum_physical": [
+        93.75,
+        93.75
+      ],
+      "scale": 4.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.804814943728971,
+      "cpu_decode_ms": 0.044504,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/present-08.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        104,
+        104
+      ],
+      "required_maximum_physical": [
+        93.75,
+        93.75
+      ],
+      "scale": 4.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.643347586093259,
+      "cpu_decode_ms": 0.337715,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/treat-candy.svg",
+      "logical": [
+        56.0,
+        34.0
+      ],
+      "natural": [
+        56.0,
+        34.0
+      ],
+      "physical": [
+        280,
+        170
+      ],
+      "required_maximum_physical": [
+        225.0,
+        136.60714721679688
+      ],
+      "scale": 5.0,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.43439748244976795,
+      "cpu_decode_ms": 1.646514,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/bg-tile-trees.svg",
+      "logical": [
+        900.0,
+        180.0
+      ],
+      "natural": [
+        900.0,
+        180.0
+      ],
+      "physical": [
+        900,
+        180
+      ],
+      "required_maximum_physical": [
+        803.5714111328125,
+        160.71429443359375
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.10567114796120927,
+      "cpu_decode_ms": 0.14365,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/cloud.svg",
+      "logical": [
+        173.0,
+        104.0
+      ],
+      "natural": [
+        173.0,
+        104.0
+      ],
+      "physical": [
+        173,
+        104
+      ],
+      "required_maximum_physical": [
+        137.49020385742188,
+        82.65306091308594
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.27251565541015954,
+      "cpu_decode_ms": 10.761441,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/glider-sprite.svg",
+      "logical": [
+        400.0,
+        600.0
+      ],
+      "natural": [
+        400.0,
+        600.0
+      ],
+      "physical": [
+        1200,
+        1800
+      ],
+      "required_maximum_physical": [
+        306.1224670410156,
+        459.1836853027344
+      ],
+      "scale": 3.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.058269226070490225,
+      "cpu_decode_ms": 0.369755,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-beam.svg",
+      "logical": [
+        214.0,
+        1200.0
+      ],
+      "natural": [
+        214.0,
+        1200.0
+      ],
+      "physical": [
+        214,
+        1200
+      ],
+      "required_maximum_physical": [
+        85.71428680419922,
+        480.6408386230469
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.09708548138356449,
+      "cpu_decode_ms": 0.7044739999999999,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-box.svg",
+      "logical": [
+        178.0,
+        1200.0
+      ],
+      "natural": [
+        178.0,
+        1200.0
+      ],
+      "physical": [
+        178,
+        1200
+      ],
+      "required_maximum_physical": [
+        85.70791625976562,
+        577.80615234375
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.7302721975582684,
+      "cpu_decode_ms": 0.695537,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-01.svg",
+      "logical": [
+        400.0,
+        212.0
+      ],
+      "natural": [
+        400.0,
+        212.0
+      ],
+      "physical": [
+        400,
+        212
+      ],
+      "required_maximum_physical": [
+        244.13265991210938,
+        129.39031982421875
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.7384253599877451,
+      "cpu_decode_ms": 0.590189,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-02.svg",
+      "logical": [
+        400.0,
+        256.0
+      ],
+      "natural": [
+        400.0,
+        256.0
+      ],
+      "physical": [
+        400,
+        256
+      ],
+      "required_maximum_physical": [
+        202.80612182617188,
+        129.79591369628906
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.7151824403028535,
+      "cpu_decode_ms": 1.444485,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-03.svg",
+      "logical": [
+        400.0,
+        202.0
+      ],
+      "natural": [
+        400.0,
+        202.0
+      ],
+      "physical": [
+        400,
+        202
+      ],
+      "required_maximum_physical": [
+        241.83673095703125,
+        122.12755584716797
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.7124548829240432,
+      "cpu_decode_ms": 0.8087390000000001,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-04.svg",
+      "logical": [
+        400.0,
+        206.0
+      ],
+      "natural": [
+        400.0,
+        206.0
+      ],
+      "physical": [
+        400,
+        206
+      ],
+      "required_maximum_physical": [
+        251.7857208251953,
+        129.66964721679688
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.7564241637831605,
+      "cpu_decode_ms": 0.637177,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-05.svg",
+      "logical": [
+        400.0,
+        340.0
+      ],
+      "natural": [
+        400.0,
+        340.0
+      ],
+      "physical": [
+        400,
+        340
+      ],
+      "required_maximum_physical": [
+        243.0972442626953,
+        206.63265991210938
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.7027200206398349,
+      "cpu_decode_ms": 0.808509,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-06.svg",
+      "logical": [
+        400.0,
+        190.0
+      ],
+      "natural": [
+        400.0,
+        190.0
+      ],
+      "physical": [
+        400,
+        190
+      ],
+      "required_maximum_physical": [
+        241.67564392089844,
+        114.7959213256836
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.6466169607843139,
+      "cpu_decode_ms": 0.795404,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-07.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        400,
+        200
+      ],
+      "required_maximum_physical": [
+        244.89796447753906,
+        122.44898223876953
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.7525639140271493,
+      "cpu_decode_ms": 0.6240030000000001,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-08.svg",
+      "logical": [
+        400.0,
+        260.0
+      ],
+      "natural": [
+        400.0,
+        260.0
+      ],
+      "physical": [
+        400,
+        260
+      ],
+      "required_maximum_physical": [
+        247.19387817382812,
+        160.676025390625
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.6524134716386552,
+      "cpu_decode_ms": 1.475613,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-09.svg",
+      "logical": [
+        400.0,
+        224.0
+      ],
+      "natural": [
+        400.0,
+        224.0
+      ],
+      "physical": [
+        400,
+        224
+      ],
+      "required_maximum_physical": [
+        244.13265991210938,
+        136.71429443359375
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.7270102923088053,
+      "cpu_decode_ms": 0.43081,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-10.svg",
+      "logical": [
+        400.0,
+        542.0
+      ],
+      "natural": [
+        400.0,
+        542.0
+      ],
+      "physical": [
+        400,
+        542
+      ],
+      "required_maximum_physical": [
+        242.8646697998047,
+        329.0816345214844
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.6845795807978362,
+      "cpu_decode_ms": 0.927152,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-11.svg",
+      "logical": [
+        400.0,
+        290.0
+      ],
+      "natural": [
+        400.0,
+        290.0
+      ],
+      "physical": [
+        400,
+        290
+      ],
+      "required_maximum_physical": [
+        263.898681640625,
+        191.3265380859375
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.5734639265962795,
+      "cpu_decode_ms": 0.736413,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-12.svg",
+      "logical": [
+        400.0,
+        234.0
+      ],
+      "natural": [
+        400.0,
+        234.0
+      ],
+      "physical": [
+        400,
+        234
+      ],
+      "required_maximum_physical": [
+        247.9591827392578,
+        145.05612182617188
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.702384879725086,
+      "cpu_decode_ms": 0.521269,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-13.svg",
+      "logical": [
+        400.0,
+        194.0
+      ],
+      "natural": [
+        400.0,
+        194.0
+      ],
+      "physical": [
+        400,
+        194
+      ],
+      "required_maximum_physical": [
+        252.47213745117188,
+        122.44898223876953
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.8025270705297044,
+      "cpu_decode_ms": 1.68184,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-14.svg",
+      "logical": [
+        400.0,
+        670.0
+      ],
+      "natural": [
+        400.0,
+        670.0
+      ],
+      "physical": [
+        400,
+        670
+      ],
+      "required_maximum_physical": [
+        242.1565704345703,
+        405.61224365234375
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.6952360739750444,
+      "cpu_decode_ms": 0.47341,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-15.svg",
+      "logical": [
+        400.0,
+        264.0
+      ],
+      "natural": [
+        400.0,
+        264.0
+      ],
+      "physical": [
+        400,
+        264
+      ],
+      "required_maximum_physical": [
+        243.3673553466797,
+        160.62245178222656
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.6642546345811049,
+      "cpu_decode_ms": 1.4645210000000002,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-16.svg",
+      "logical": [
+        400.0,
+        220.0
+      ],
+      "natural": [
+        400.0,
+        220.0
+      ],
+      "physical": [
+        400,
+        220
+      ],
+      "required_maximum_physical": [
+        250.25511169433594,
+        137.6403045654297
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.6854626486660238,
+      "cpu_decode_ms": 0.727227,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-17.svg",
+      "logical": [
+        400.0,
+        610.0
+      ],
+      "natural": [
+        400.0,
+        610.0
+      ],
+      "physical": [
+        400,
+        610
+      ],
+      "required_maximum_physical": [
+        240.88323974609375,
+        367.3469543457031
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.7113635784313727,
+      "cpu_decode_ms": 0.676281,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-18.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        400,
+        200
+      ],
+      "required_maximum_physical": [
+        244.13265991210938,
+        122.06632995605469
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.6843230023192073,
+      "cpu_decode_ms": 0.7770900000000001,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-19.svg",
+      "logical": [
+        400.0,
+        186.0
+      ],
+      "natural": [
+        400.0,
+        186.0
+      ],
+      "physical": [
+        400,
+        186
+      ],
+      "required_maximum_physical": [
+        246.87295532226562,
+        114.7959213256836
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.7113635784313727,
+      "cpu_decode_ms": 0.616178,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-20.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        400,
+        200
+      ],
+      "required_maximum_physical": [
+        244.89796447753906,
+        122.44898223876953
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.7639413628569297,
+      "cpu_decode_ms": 1.0731169999999999,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-21.svg",
+      "logical": [
+        400.0,
+        526.0
+      ],
+      "natural": [
+        400.0,
+        526.0
+      ],
+      "physical": [
+        400,
+        526
+      ],
+      "required_maximum_physical": [
+        238.61256408691406,
+        313.7755126953125
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.6317377013305321,
+      "cpu_decode_ms": 1.1395209999999998,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-22.svg",
+      "logical": [
+        400.0,
+        224.0
+      ],
+      "natural": [
+        400.0,
+        224.0
+      ],
+      "physical": [
+        400,
+        224
+      ],
+      "required_maximum_physical": [
+        245.9912567138672,
+        137.75509643554688
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.7129069154543537,
+      "cpu_decode_ms": 0.8359310000000001,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-23.svg",
+      "logical": [
+        400.0,
+        186.0
+      ],
+      "natural": [
+        400.0,
+        186.0
+      ],
+      "physical": [
+        400,
+        186
+      ],
+      "required_maximum_physical": [
+        246.87295532226562,
+        114.7959213256836
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.7374580392156863,
+      "cpu_decode_ms": 0.730843,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-house-24.svg",
+      "logical": [
+        400.0,
+        300.0
+      ],
+      "natural": [
+        400.0,
+        300.0
+      ],
+      "physical": [
+        400,
+        300
+      ],
+      "required_maximum_physical": [
+        244.89796447753906,
+        183.67347717285156
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.43797992845786843,
+      "cpu_decode_ms": 2.654217,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-tree-1.svg",
+      "logical": [
+        192.0,
+        370.0
+      ],
+      "natural": [
+        192.0,
+        370.0
+      ],
+      "physical": [
+        192,
+        370
+      ],
+      "required_maximum_physical": [
+        127.08219146728516,
+        244.89796447753906
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.5030587384166892,
+      "cpu_decode_ms": 2.105726,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/hit-tree-2.svg",
+      "logical": [
+        194.0,
+        304.0
+      ],
+      "natural": [
+        194.0,
+        304.0
+      ],
+      "physical": [
+        194,
+        304
+      ],
+      "required_maximum_physical": [
+        126.98039245605469,
+        198.97959899902344
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.7870999757927866,
+      "cpu_decode_ms": 0.104807,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/orb-time-back.svg",
+      "logical": [
+        90.0,
+        90.0
+      ],
+      "natural": [
+        90.0,
+        90.0
+      ],
+      "physical": [
+        90,
+        90
+      ],
+      "required_maximum_physical": [
+        45.91836929321289,
+        45.91836929321289
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.41559719196320527,
+      "cpu_decode_ms": 0.092514,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/orb-time-front.svg",
+      "logical": [
+        90.0,
+        90.0
+      ],
+      "natural": [
+        90.0,
+        90.0
+      ],
+      "physical": [
+        90,
+        90
+      ],
+      "required_maximum_physical": [
+        45.91836929321289,
+        45.91836929321289
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.7225517303695677,
+      "cpu_decode_ms": 0.07442,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/points-100.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        70,
+        62
+      ],
+      "required_maximum_physical": [
+        60.48387145996094,
+        53.57143020629883
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.7225517303695677,
+      "cpu_decode_ms": 0.08248499999999999,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/points-200.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        70,
+        62
+      ],
+      "required_maximum_physical": [
+        60.48387145996094,
+        53.57143020629883
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.7225517303695677,
+      "cpu_decode_ms": 0.089578,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/points-300.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        70,
+        62
+      ],
+      "required_maximum_physical": [
+        60.48387145996094,
+        53.57143020629883
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.8773526019404302,
+      "cpu_decode_ms": 0.027271,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/present-01.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        34,
+        34
+      ],
+      "required_maximum_physical": [
+        19.132654190063477,
+        19.132654190063477
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.8773526019404302,
+      "cpu_decode_ms": 0.024276,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/present-02.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        34,
+        34
+      ],
+      "required_maximum_physical": [
+        19.132654190063477,
+        19.132654190063477
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.8773526019404302,
+      "cpu_decode_ms": 0.023754,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/present-03.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        34,
+        34
+      ],
+      "required_maximum_physical": [
+        19.132654190063477,
+        19.132654190063477
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.8773526019404302,
+      "cpu_decode_ms": 0.023564,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/present-04.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        34,
+        34
+      ],
+      "required_maximum_physical": [
+        19.132654190063477,
+        19.132654190063477
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.8050585914839309,
+      "cpu_decode_ms": 0.022823000000000003,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/present-05.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        26,
+        26
+      ],
+      "required_maximum_physical": [
+        19.132654190063477,
+        19.132654190063477
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.8050585914839309,
+      "cpu_decode_ms": 0.022352,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/present-06.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        26,
+        26
+      ],
+      "required_maximum_physical": [
+        19.132654190063477,
+        19.132654190063477
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.8050585914839309,
+      "cpu_decode_ms": 0.022052000000000002,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/present-07.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        26,
+        26
+      ],
+      "required_maximum_physical": [
+        19.132654190063477,
+        19.132654190063477
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.8050585914839309,
+      "cpu_decode_ms": 0.022061,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/present-08.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        26,
+        26
+      ],
+      "required_maximum_physical": [
+        19.132654190063477,
+        19.132654190063477
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.6450321304992584,
+      "cpu_decode_ms": 0.10160100000000001,
+      "density": 2.0,
+      "effective_density": 0.6122449040412903,
+      "file": "scenes/glider/img/treat-candy.svg",
+      "logical": [
+        56.0,
+        34.0
+      ],
+      "natural": [
+        56.0,
+        34.0
+      ],
+      "physical": [
+        56,
+        34
+      ],
+      "required_maximum_physical": [
+        45.91836929321289,
+        27.879009246826172
+      ],
+      "scale": 1.0,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.43415046598887125,
+      "cpu_decode_ms": 3.216183,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/bg-tile-trees.svg",
+      "logical": [
+        900.0,
+        180.0
+      ],
+      "natural": [
+        900.0,
+        180.0
+      ],
+      "physical": [
+        1800,
+        360
+      ],
+      "required_maximum_physical": [
+        1312.5,
+        262.5
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.10568951124240641,
+      "cpu_decode_ms": 0.461356,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/cloud.svg",
+      "logical": [
+        173.0,
+        104.0
+      ],
+      "natural": [
+        173.0,
+        104.0
+      ],
+      "physical": [
+        346,
+        208
+      ],
+      "required_maximum_physical": [
+        224.56732177734375,
+        135.0
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.27251565541015954,
+      "cpu_decode_ms": 10.835419,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/glider-sprite.svg",
+      "logical": [
+        400.0,
+        600.0
+      ],
+      "natural": [
+        400.0,
+        600.0
+      ],
+      "physical": [
+        1200,
+        1800
+      ],
+      "required_maximum_physical": [
+        500.0,
+        750.0
+      ],
+      "scale": 3.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.058269226070490225,
+      "cpu_decode_ms": 0.354646,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-beam.svg",
+      "logical": [
+        214.0,
+        1200.0
+      ],
+      "natural": [
+        214.0,
+        1200.0
+      ],
+      "physical": [
+        214,
+        1200
+      ],
+      "required_maximum_physical": [
+        140.0,
+        785.0466918945312
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.09708548138356449,
+      "cpu_decode_ms": 0.705566,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-box.svg",
+      "logical": [
+        178.0,
+        1200.0
+      ],
+      "natural": [
+        178.0,
+        1200.0
+      ],
+      "physical": [
+        178,
+        1200
+      ],
+      "required_maximum_physical": [
+        139.98959350585938,
+        943.75
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.7302721975582684,
+      "cpu_decode_ms": 0.68643,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-01.svg",
+      "logical": [
+        400.0,
+        212.0
+      ],
+      "natural": [
+        400.0,
+        212.0
+      ],
+      "physical": [
+        400,
+        212
+      ],
+      "required_maximum_physical": [
+        398.75,
+        211.33750915527344
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.7384253599877451,
+      "cpu_decode_ms": 0.5927439999999999,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-02.svg",
+      "logical": [
+        400.0,
+        256.0
+      ],
+      "natural": [
+        400.0,
+        256.0
+      ],
+      "physical": [
+        400,
+        256
+      ],
+      "required_maximum_physical": [
+        331.25,
+        212.0
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.7151824403028535,
+      "cpu_decode_ms": 1.4386430000000001,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-03.svg",
+      "logical": [
+        400.0,
+        202.0
+      ],
+      "natural": [
+        400.0,
+        202.0
+      ],
+      "physical": [
+        400,
+        202
+      ],
+      "required_maximum_physical": [
+        395.0,
+        199.47500610351562
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.7126727227298687,
+      "cpu_decode_ms": 2.01735,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-04.svg",
+      "logical": [
+        400.0,
+        206.0
+      ],
+      "natural": [
+        400.0,
+        206.0
+      ],
+      "physical": [
+        800,
+        412
+      ],
+      "required_maximum_physical": [
+        411.25,
+        211.7937469482422
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.7564241637831605,
+      "cpu_decode_ms": 0.6371680000000001,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-05.svg",
+      "logical": [
+        400.0,
+        340.0
+      ],
+      "natural": [
+        400.0,
+        340.0
+      ],
+      "physical": [
+        400,
+        340
+      ],
+      "required_maximum_physical": [
+        397.058837890625,
+        337.5
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.7027200206398349,
+      "cpu_decode_ms": 0.7836120000000001,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-06.svg",
+      "logical": [
+        400.0,
+        190.0
+      ],
+      "natural": [
+        400.0,
+        190.0
+      ],
+      "physical": [
+        400,
+        190
+      ],
+      "required_maximum_physical": [
+        394.73687744140625,
+        187.5
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.6466169607843139,
+      "cpu_decode_ms": 0.7653580000000001,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-07.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        400,
+        200
+      ],
+      "required_maximum_physical": [
+        400.0,
+        200.0
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.752796823152338,
+      "cpu_decode_ms": 1.4117730000000002,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-08.svg",
+      "logical": [
+        400.0,
+        260.0
+      ],
+      "natural": [
+        400.0,
+        260.0
+      ],
+      "physical": [
+        800,
+        520
+      ],
+      "required_maximum_physical": [
+        403.75,
+        262.4375
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.6524134716386552,
+      "cpu_decode_ms": 1.5039859999999998,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-09.svg",
+      "logical": [
+        400.0,
+        224.0
+      ],
+      "natural": [
+        400.0,
+        224.0
+      ],
+      "physical": [
+        400,
+        224
+      ],
+      "required_maximum_physical": [
+        398.75,
+        223.3000030517578
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.7270102923088053,
+      "cpu_decode_ms": 0.430429,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-10.svg",
+      "logical": [
+        400.0,
+        542.0
+      ],
+      "natural": [
+        400.0,
+        542.0
+      ],
+      "physical": [
+        400,
+        542
+      ],
+      "required_maximum_physical": [
+        396.678955078125,
+        537.5
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.6845790145368511,
+      "cpu_decode_ms": 2.391523,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-11.svg",
+      "logical": [
+        400.0,
+        290.0
+      ],
+      "natural": [
+        400.0,
+        290.0
+      ],
+      "physical": [
+        800,
+        580
+      ],
+      "required_maximum_physical": [
+        431.03448486328125,
+        312.5
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.5734617165242165,
+      "cpu_decode_ms": 1.9980750000000003,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-12.svg",
+      "logical": [
+        400.0,
+        234.0
+      ],
+      "natural": [
+        400.0,
+        234.0
+      ],
+      "physical": [
+        800,
+        468
+      ],
+      "required_maximum_physical": [
+        405.0,
+        236.92498779296875
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.702382213968061,
+      "cpu_decode_ms": 1.159498,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-13.svg",
+      "logical": [
+        400.0,
+        194.0
+      ],
+      "natural": [
+        400.0,
+        194.0
+      ],
+      "physical": [
+        800,
+        388
+      ],
+      "required_maximum_physical": [
+        412.37115478515625,
+        200.0
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.8025270705297044,
+      "cpu_decode_ms": 1.6428269999999998,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-14.svg",
+      "logical": [
+        400.0,
+        670.0
+      ],
+      "natural": [
+        400.0,
+        670.0
+      ],
+      "physical": [
+        400,
+        670
+      ],
+      "required_maximum_physical": [
+        395.52239990234375,
+        662.5
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.6952360739750444,
+      "cpu_decode_ms": 0.464423,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-15.svg",
+      "logical": [
+        400.0,
+        264.0
+      ],
+      "natural": [
+        400.0,
+        264.0
+      ],
+      "physical": [
+        400,
+        264
+      ],
+      "required_maximum_physical": [
+        397.5,
+        262.3500061035156
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.6643177139037431,
+      "cpu_decode_ms": 3.64033,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-16.svg",
+      "logical": [
+        400.0,
+        220.0
+      ],
+      "natural": [
+        400.0,
+        220.0
+      ],
+      "physical": [
+        800,
+        440
+      ],
+      "required_maximum_physical": [
+        408.75,
+        224.8125
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.6854626486660238,
+      "cpu_decode_ms": 0.7187,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-17.svg",
+      "logical": [
+        400.0,
+        610.0
+      ],
+      "natural": [
+        400.0,
+        610.0
+      ],
+      "physical": [
+        400,
+        610
+      ],
+      "required_maximum_physical": [
+        393.442626953125,
+        600.0
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.7113635784313727,
+      "cpu_decode_ms": 0.6877219999999999,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-18.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        400,
+        200
+      ],
+      "required_maximum_physical": [
+        398.75,
+        199.375
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.6843363509382251,
+      "cpu_decode_ms": 2.0280799999999997,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-19.svg",
+      "logical": [
+        400.0,
+        186.0
+      ],
+      "natural": [
+        400.0,
+        186.0
+      ],
+      "physical": [
+        800,
+        372
+      ],
+      "required_maximum_physical": [
+        403.225830078125,
+        187.5
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.7113635784313727,
+      "cpu_decode_ms": 0.623221,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-20.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        400,
+        200
+      ],
+      "required_maximum_physical": [
+        400.0,
+        200.0
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.7639413628569297,
+      "cpu_decode_ms": 1.068348,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-21.svg",
+      "logical": [
+        400.0,
+        526.0
+      ],
+      "natural": [
+        400.0,
+        526.0
+      ],
+      "physical": [
+        400,
+        526
+      ],
+      "required_maximum_physical": [
+        389.7338562011719,
+        512.5
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.6317627801120445,
+      "cpu_decode_ms": 2.685336,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-22.svg",
+      "logical": [
+        400.0,
+        224.0
+      ],
+      "natural": [
+        400.0,
+        224.0
+      ],
+      "physical": [
+        800,
+        448
+      ],
+      "required_maximum_physical": [
+        401.78570556640625,
+        225.0
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.7132319075479654,
+      "cpu_decode_ms": 2.234168,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-23.svg",
+      "logical": [
+        400.0,
+        186.0
+      ],
+      "natural": [
+        400.0,
+        186.0
+      ],
+      "physical": [
+        800,
+        372
+      ],
+      "required_maximum_physical": [
+        403.225830078125,
+        187.5
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.7374580392156863,
+      "cpu_decode_ms": 0.740121,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-house-24.svg",
+      "logical": [
+        400.0,
+        300.0
+      ],
+      "natural": [
+        400.0,
+        300.0
+      ],
+      "physical": [
+        400,
+        300
+      ],
+      "required_maximum_physical": [
+        400.0,
+        300.0
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.4378258313460511,
+      "cpu_decode_ms": 7.442814,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-tree-1.svg",
+      "logical": [
+        192.0,
+        370.0
+      ],
+      "natural": [
+        192.0,
+        370.0
+      ],
+      "physical": [
+        384,
+        740
+      ],
+      "required_maximum_physical": [
+        207.5675811767578,
+        400.0
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.5028664867330531,
+      "cpu_decode_ms": 5.517667,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/hit-tree-2.svg",
+      "logical": [
+        194.0,
+        304.0
+      ],
+      "natural": [
+        194.0,
+        304.0
+      ],
+      "physical": [
+        388,
+        608
+      ],
+      "required_maximum_physical": [
+        207.40130615234375,
+        325.0
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.7870999757927866,
+      "cpu_decode_ms": 0.10600899999999999,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/orb-time-back.svg",
+      "logical": [
+        90.0,
+        90.0
+      ],
+      "natural": [
+        90.0,
+        90.0
+      ],
+      "physical": [
+        90,
+        90
+      ],
+      "required_maximum_physical": [
+        75.0,
+        75.0
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.41559719196320527,
+      "cpu_decode_ms": 0.09258400000000001,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/orb-time-front.svg",
+      "logical": [
+        90.0,
+        90.0
+      ],
+      "natural": [
+        90.0,
+        90.0
+      ],
+      "physical": [
+        90,
+        90
+      ],
+      "required_maximum_physical": [
+        75.0,
+        75.0
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.7226398301255957,
+      "cpu_decode_ms": 0.12242000000000001,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/points-100.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        140,
+        124
+      ],
+      "required_maximum_physical": [
+        98.79032135009766,
+        87.5
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.7226398301255957,
+      "cpu_decode_ms": 0.115507,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/points-200.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        140,
+        124
+      ],
+      "required_maximum_physical": [
+        98.79032135009766,
+        87.5
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.7226398301255957,
+      "cpu_decode_ms": 0.12175799999999999,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/points-300.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        140,
+        124
+      ],
+      "required_maximum_physical": [
+        98.79032135009766,
+        87.5
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.8773526019404302,
+      "cpu_decode_ms": 0.02678,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/present-01.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        34,
+        34
+      ],
+      "required_maximum_physical": [
+        31.25,
+        31.25
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.8773526019404302,
+      "cpu_decode_ms": 0.024887,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/present-02.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        34,
+        34
+      ],
+      "required_maximum_physical": [
+        31.25,
+        31.25
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.8773526019404302,
+      "cpu_decode_ms": 0.024546,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/present-03.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        34,
+        34
+      ],
+      "required_maximum_physical": [
+        31.25,
+        31.25
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.8773526019404302,
+      "cpu_decode_ms": 0.024226,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/present-04.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        34,
+        34
+      ],
+      "required_maximum_physical": [
+        31.25,
+        31.25
+      ],
+      "scale": 1.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.8048961596472909,
+      "cpu_decode_ms": 0.030127,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/present-05.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        52,
+        52
+      ],
+      "required_maximum_physical": [
+        31.25,
+        31.25
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.8048961596472909,
+      "cpu_decode_ms": 0.028754,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/present-06.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        52,
+        52
+      ],
+      "required_maximum_physical": [
+        31.25,
+        31.25
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.8048961596472909,
+      "cpu_decode_ms": 0.028232999999999998,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/present-07.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        52,
+        52
+      ],
+      "required_maximum_physical": [
+        31.25,
+        31.25
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.8048961596472909,
+      "cpu_decode_ms": 0.034525,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/present-08.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        52,
+        52
+      ],
+      "required_maximum_physical": [
+        31.25,
+        31.25
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.6441979733069705,
+      "cpu_decode_ms": 0.159951,
+      "density": 1.25,
+      "effective_density": 1.0,
+      "file": "scenes/glider/img/treat-candy.svg",
+      "logical": [
+        56.0,
+        34.0
+      ],
+      "natural": [
+        56.0,
+        34.0
+      ],
+      "physical": [
+        112,
+        68
+      ],
+      "required_maximum_physical": [
+        75.0,
+        45.53571319580078
+      ],
+      "scale": 2.0,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.43408354985342235,
+      "cpu_decode_ms": 5.478103,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/bg-tile-trees.svg",
+      "logical": [
+        900.0,
+        180.0
+      ],
+      "natural": [
+        900.0,
+        180.0
+      ],
+      "physical": [
+        2700,
+        540
+      ],
+      "required_maximum_physical": [
+        2520.0,
+        504.0000305175781
+      ],
+      "scale": 3.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.10571251226638013,
+      "cpu_decode_ms": 0.963871,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/cloud.svg",
+      "logical": [
+        173.0,
+        104.0
+      ],
+      "natural": [
+        173.0,
+        104.0
+      ],
+      "physical": [
+        519,
+        312
+      ],
+      "required_maximum_physical": [
+        431.1692810058594,
+        259.20001220703125
+      ],
+      "scale": 3.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.27251565541015954,
+      "cpu_decode_ms": 10.681981,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/glider-sprite.svg",
+      "logical": [
+        400.0,
+        600.0
+      ],
+      "natural": [
+        400.0,
+        600.0
+      ],
+      "physical": [
+        1200,
+        1800
+      ],
+      "required_maximum_physical": [
+        960.0000610351562,
+        1440.0
+      ],
+      "scale": 3.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.05826808457027665,
+      "cpu_decode_ms": 0.8070269999999999,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-beam.svg",
+      "logical": [
+        214.0,
+        1200.0
+      ],
+      "natural": [
+        214.0,
+        1200.0
+      ],
+      "physical": [
+        428,
+        2400
+      ],
+      "required_maximum_physical": [
+        268.8000183105469,
+        1507.2896728515625
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.09692976610119731,
+      "cpu_decode_ms": 1.501552,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-box.svg",
+      "logical": [
+        178.0,
+        1200.0
+      ],
+      "natural": [
+        178.0,
+        1200.0
+      ],
+      "physical": [
+        356,
+        2400
+      ],
+      "required_maximum_physical": [
+        268.780029296875,
+        1812.0001220703125
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.730274613854976,
+      "cpu_decode_ms": 1.995209,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-01.svg",
+      "logical": [
+        400.0,
+        212.0
+      ],
+      "natural": [
+        400.0,
+        212.0
+      ],
+      "physical": [
+        800,
+        424
+      ],
+      "required_maximum_physical": [
+        765.6000366210938,
+        405.7680358886719
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.7386910041360295,
+      "cpu_decode_ms": 1.307306,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-02.svg",
+      "logical": [
+        400.0,
+        256.0
+      ],
+      "natural": [
+        400.0,
+        256.0
+      ],
+      "physical": [
+        800,
+        512
+      ],
+      "required_maximum_physical": [
+        636.0,
+        407.0400085449219
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.7155165987186952,
+      "cpu_decode_ms": 3.498834,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-03.svg",
+      "logical": [
+        400.0,
+        202.0
+      ],
+      "natural": [
+        400.0,
+        202.0
+      ],
+      "physical": [
+        800,
+        404
+      ],
+      "required_maximum_physical": [
+        758.4000244140625,
+        382.9920349121094
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.7126727227298687,
+      "cpu_decode_ms": 2.0063899999999997,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-04.svg",
+      "logical": [
+        400.0,
+        206.0
+      ],
+      "natural": [
+        400.0,
+        206.0
+      ],
+      "physical": [
+        800,
+        412
+      ],
+      "required_maximum_physical": [
+        789.6000366210938,
+        406.6440124511719
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.7564228517877737,
+      "cpu_decode_ms": 1.441558,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-05.svg",
+      "logical": [
+        400.0,
+        340.0
+      ],
+      "natural": [
+        400.0,
+        340.0
+      ],
+      "physical": [
+        800,
+        680
+      ],
+      "required_maximum_physical": [
+        762.35302734375,
+        648.0
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.7027179437564498,
+      "cpu_decode_ms": 2.1287900000000004,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-06.svg",
+      "logical": [
+        400.0,
+        190.0
+      ],
+      "natural": [
+        400.0,
+        190.0
+      ],
+      "physical": [
+        800,
+        380
+      ],
+      "required_maximum_physical": [
+        757.8948364257812,
+        360.0
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.6467772058823531,
+      "cpu_decode_ms": 1.973949,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-07.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        800,
+        400
+      ],
+      "required_maximum_physical": [
+        768.0,
+        384.0
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.752796823152338,
+      "cpu_decode_ms": 1.415249,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-08.svg",
+      "logical": [
+        400.0,
+        260.0
+      ],
+      "natural": [
+        400.0,
+        260.0
+      ],
+      "physical": [
+        800,
+        520
+      ],
+      "required_maximum_physical": [
+        775.2000122070312,
+        503.8800048828125
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.6525309108018202,
+      "cpu_decode_ms": 3.755126,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-09.svg",
+      "logical": [
+        400.0,
+        224.0
+      ],
+      "natural": [
+        400.0,
+        224.0
+      ],
+      "physical": [
+        800,
+        448
+      ],
+      "required_maximum_physical": [
+        765.6000366210938,
+        428.73602294921875
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.7270179301425367,
+      "cpu_decode_ms": 0.824119,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-10.svg",
+      "logical": [
+        400.0,
+        542.0
+      ],
+      "natural": [
+        400.0,
+        542.0
+      ],
+      "physical": [
+        800,
+        1084
+      ],
+      "required_maximum_physical": [
+        761.6235961914062,
+        1032.0
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.6845796972428788,
+      "cpu_decode_ms": 4.723025,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-11.svg",
+      "logical": [
+        400.0,
+        290.0
+      ],
+      "natural": [
+        400.0,
+        290.0
+      ],
+      "physical": [
+        1200,
+        870
+      ],
+      "required_maximum_physical": [
+        827.5862426757812,
+        600.0
+      ],
+      "scale": 3.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.5734617165242165,
+      "cpu_decode_ms": 2.02821,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-12.svg",
+      "logical": [
+        400.0,
+        234.0
+      ],
+      "natural": [
+        400.0,
+        234.0
+      ],
+      "physical": [
+        800,
+        468
+      ],
+      "required_maximum_physical": [
+        777.6000366210938,
+        454.89599609375
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.702382213968061,
+      "cpu_decode_ms": 1.144331,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-13.svg",
+      "logical": [
+        400.0,
+        194.0
+      ],
+      "natural": [
+        400.0,
+        194.0
+      ],
+      "physical": [
+        800,
+        388
+      ],
+      "required_maximum_physical": [
+        791.7526245117188,
+        384.0
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.8025259218612827,
+      "cpu_decode_ms": 4.77349,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-14.svg",
+      "logical": [
+        400.0,
+        670.0
+      ],
+      "natural": [
+        400.0,
+        670.0
+      ],
+      "physical": [
+        800,
+        1340
+      ],
+      "required_maximum_physical": [
+        759.4030151367188,
+        1272.0
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.6953016191325012,
+      "cpu_decode_ms": 1.162955,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-15.svg",
+      "logical": [
+        400.0,
+        264.0
+      ],
+      "natural": [
+        400.0,
+        264.0
+      ],
+      "physical": [
+        800,
+        528
+      ],
+      "required_maximum_physical": [
+        763.2000122070312,
+        503.7120361328125
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.6643177139037431,
+      "cpu_decode_ms": 4.018911,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-16.svg",
+      "logical": [
+        400.0,
+        220.0
+      ],
+      "natural": [
+        400.0,
+        220.0
+      ],
+      "physical": [
+        800,
+        440
+      ],
+      "required_maximum_physical": [
+        784.800048828125,
+        431.6400146484375
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.6854696721311478,
+      "cpu_decode_ms": 1.752834,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-17.svg",
+      "logical": [
+        400.0,
+        610.0
+      ],
+      "natural": [
+        400.0,
+        610.0
+      ],
+      "physical": [
+        800,
+        1220
+      ],
+      "required_maximum_physical": [
+        755.4098510742188,
+        1152.0
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.7113612622549025,
+      "cpu_decode_ms": 1.916521,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-18.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        800,
+        400
+      ],
+      "required_maximum_physical": [
+        765.6000366210938,
+        382.8000183105469
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.6843363509382251,
+      "cpu_decode_ms": 1.9990960000000002,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-19.svg",
+      "logical": [
+        400.0,
+        186.0
+      ],
+      "natural": [
+        400.0,
+        186.0
+      ],
+      "physical": [
+        800,
+        372
+      ],
+      "required_maximum_physical": [
+        774.193603515625,
+        360.0
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.7113612622549025,
+      "cpu_decode_ms": 1.680818,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-20.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        800,
+        400
+      ],
+      "required_maximum_physical": [
+        768.0,
+        384.0
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.7639424485573697,
+      "cpu_decode_ms": 3.116475,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-21.svg",
+      "logical": [
+        400.0,
+        526.0
+      ],
+      "natural": [
+        400.0,
+        526.0
+      ],
+      "physical": [
+        800,
+        1052
+      ],
+      "required_maximum_physical": [
+        748.2890625,
+        984.0000610351562
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.6317627801120445,
+      "cpu_decode_ms": 2.6741550000000003,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-22.svg",
+      "logical": [
+        400.0,
+        224.0
+      ],
+      "natural": [
+        400.0,
+        224.0
+      ],
+      "physical": [
+        800,
+        448
+      ],
+      "required_maximum_physical": [
+        771.4285888671875,
+        432.0000305175781
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.7132319075479654,
+      "cpu_decode_ms": 2.25704,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-23.svg",
+      "logical": [
+        400.0,
+        186.0
+      ],
+      "natural": [
+        400.0,
+        186.0
+      ],
+      "physical": [
+        800,
+        372
+      ],
+      "required_maximum_physical": [
+        774.193603515625,
+        360.0
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.737455939542484,
+      "cpu_decode_ms": 2.081541,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-house-24.svg",
+      "logical": [
+        400.0,
+        300.0
+      ],
+      "natural": [
+        400.0,
+        300.0
+      ],
+      "physical": [
+        800,
+        600
+      ],
+      "required_maximum_physical": [
+        768.0,
+        576.0
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.4374689027262604,
+      "cpu_decode_ms": 15.145567999999999,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-tree-1.svg",
+      "logical": [
+        192.0,
+        370.0
+      ],
+      "natural": [
+        192.0,
+        370.0
+      ],
+      "physical": [
+        576,
+        1110
+      ],
+      "required_maximum_physical": [
+        398.52978515625,
+        768.0
+      ],
+      "scale": 3.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.5028508033104166,
+      "cpu_decode_ms": 10.920519,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/hit-tree-2.svg",
+      "logical": [
+        194.0,
+        304.0
+      ],
+      "natural": [
+        194.0,
+        304.0
+      ],
+      "physical": [
+        582,
+        912
+      ],
+      "required_maximum_physical": [
+        398.21051025390625,
+        624.0
+      ],
+      "scale": 3.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.7866146211571023,
+      "cpu_decode_ms": 0.182593,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/orb-time-back.svg",
+      "logical": [
+        90.0,
+        90.0
+      ],
+      "natural": [
+        90.0,
+        90.0
+      ],
+      "physical": [
+        180,
+        180
+      ],
+      "required_maximum_physical": [
+        144.0,
+        144.0
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.41570951343500123,
+      "cpu_decode_ms": 0.144671,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/orb-time-front.svg",
+      "logical": [
+        90.0,
+        90.0
+      ],
+      "natural": [
+        90.0,
+        90.0
+      ],
+      "physical": [
+        180,
+        180
+      ],
+      "required_maximum_physical": [
+        144.0,
+        144.0
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.7226420890937001,
+      "cpu_decode_ms": 0.146505,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/points-100.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        210,
+        186
+      ],
+      "required_maximum_physical": [
+        189.67742919921875,
+        168.0
+      ],
+      "scale": 3.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.7226420890937001,
+      "cpu_decode_ms": 0.14869,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/points-200.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        210,
+        186
+      ],
+      "required_maximum_physical": [
+        189.67742919921875,
+        168.0
+      ],
+      "scale": 3.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.7226420890937001,
+      "cpu_decode_ms": 0.153819,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/points-300.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        210,
+        186
+      ],
+      "required_maximum_physical": [
+        189.67742919921875,
+        168.0
+      ],
+      "scale": 3.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.8772576158491078,
+      "cpu_decode_ms": 0.036177999999999995,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/present-01.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        68,
+        68
+      ],
+      "required_maximum_physical": [
+        60.000003814697266,
+        60.000003814697266
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.8772576158491078,
+      "cpu_decode_ms": 0.033664,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/present-02.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        68,
+        68
+      ],
+      "required_maximum_physical": [
+        60.000003814697266,
+        60.000003814697266
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.8772576158491078,
+      "cpu_decode_ms": 0.03213,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/present-03.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        68,
+        68
+      ],
+      "required_maximum_physical": [
+        60.000003814697266,
+        60.000003814697266
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.8772576158491078,
+      "cpu_decode_ms": 0.03193,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/present-04.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        68,
+        68
+      ],
+      "required_maximum_physical": [
+        60.000003814697266,
+        60.000003814697266
+      ],
+      "scale": 2.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.8048420157017441,
+      "cpu_decode_ms": 0.037721,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/present-05.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        78,
+        78
+      ],
+      "required_maximum_physical": [
+        60.000003814697266,
+        60.000003814697266
+      ],
+      "scale": 3.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.8048420157017441,
+      "cpu_decode_ms": 0.036588999999999997,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/present-06.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        78,
+        78
+      ],
+      "required_maximum_physical": [
+        60.000003814697266,
+        60.000003814697266
+      ],
+      "scale": 3.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.8048420157017441,
+      "cpu_decode_ms": 0.036419,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/present-07.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        78,
+        78
+      ],
+      "required_maximum_physical": [
+        60.000003814697266,
+        60.000003814697266
+      ],
+      "scale": 3.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.8048420157017441,
+      "cpu_decode_ms": 0.036649,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/present-08.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        78,
+        78
+      ],
+      "required_maximum_physical": [
+        60.000003814697266,
+        60.000003814697266
+      ],
+      "scale": 3.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.6435521594258602,
+      "cpu_decode_ms": 0.221165,
+      "density": 2.0,
+      "effective_density": 1.9200000762939453,
+      "file": "scenes/glider/img/treat-candy.svg",
+      "logical": [
+        56.0,
+        34.0
+      ],
+      "natural": [
+        56.0,
+        34.0
+      ],
+      "physical": [
+        168,
+        102
+      ],
+      "required_maximum_physical": [
+        144.0,
+        87.42857360839844
+      ],
+      "scale": 3.0,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.43401441781651656,
+      "cpu_decode_ms": 14.748802,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/bg-tile-trees.svg",
+      "logical": [
+        900.0,
+        180.0
+      ],
+      "natural": [
+        900.0,
+        180.0
+      ],
+      "physical": [
+        4500,
+        900
+      ],
+      "required_maximum_physical": [
+        3937.5,
+        787.5
+      ],
+      "scale": 5.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.10571931751853339,
+      "cpu_decode_ms": 2.74593,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/cloud.svg",
+      "logical": [
+        173.0,
+        104.0
+      ],
+      "natural": [
+        173.0,
+        104.0
+      ],
+      "physical": [
+        692,
+        416
+      ],
+      "required_maximum_physical": [
+        673.7019653320312,
+        405.0
+      ],
+      "scale": 4.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.2725040635210929,
+      "cpu_decode_ms": 31.201916999999998,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/glider-sprite.svg",
+      "logical": [
+        400.0,
+        600.0
+      ],
+      "natural": [
+        400.0,
+        600.0
+      ],
+      "physical": [
+        1600,
+        2400
+      ],
+      "required_maximum_physical": [
+        1500.0,
+        2250.0
+      ],
+      "scale": 4.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.05826808457027665,
+      "cpu_decode_ms": 1.00027,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-beam.svg",
+      "logical": [
+        214.0,
+        1200.0
+      ],
+      "natural": [
+        214.0,
+        1200.0
+      ],
+      "physical": [
+        428,
+        2400
+      ],
+      "required_maximum_physical": [
+        420.0,
+        2355.14013671875
+      ],
+      "scale": 2.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.09688020897081316,
+      "cpu_decode_ms": 3.2412199999999998,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-box.svg",
+      "logical": [
+        178.0,
+        1200.0
+      ],
+      "natural": [
+        178.0,
+        1200.0
+      ],
+      "physical": [
+        534,
+        3600
+      ],
+      "required_maximum_physical": [
+        419.9687805175781,
+        2831.25
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.7302733999260104,
+      "cpu_decode_ms": 4.073574,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-01.svg",
+      "logical": [
+        400.0,
+        212.0
+      ],
+      "natural": [
+        400.0,
+        212.0
+      ],
+      "physical": [
+        1200,
+        636
+      ],
+      "required_maximum_physical": [
+        1196.25,
+        634.0125122070312
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.7386214128880733,
+      "cpu_decode_ms": 2.616606,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-02.svg",
+      "logical": [
+        400.0,
+        256.0
+      ],
+      "natural": [
+        400.0,
+        256.0
+      ],
+      "physical": [
+        1200,
+        768
+      ],
+      "required_maximum_physical": [
+        993.75,
+        636.0
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.715424879742877,
+      "cpu_decode_ms": 6.756184999999999,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-03.svg",
+      "logical": [
+        400.0,
+        202.0
+      ],
+      "natural": [
+        400.0,
+        202.0
+      ],
+      "physical": [
+        1200,
+        606
+      ],
+      "required_maximum_physical": [
+        1185.0,
+        598.425048828125
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.712676732343417,
+      "cpu_decode_ms": 6.4291599999999995,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-04.svg",
+      "logical": [
+        400.0,
+        206.0
+      ],
+      "natural": [
+        400.0,
+        206.0
+      ],
+      "physical": [
+        1600,
+        824
+      ],
+      "required_maximum_physical": [
+        1233.75,
+        635.3812255859375
+      ],
+      "scale": 4.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.7564268870947077,
+      "cpu_decode_ms": 2.713679,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-05.svg",
+      "logical": [
+        400.0,
+        340.0
+      ],
+      "natural": [
+        400.0,
+        340.0
+      ],
+      "physical": [
+        1200,
+        1020
+      ],
+      "required_maximum_physical": [
+        1191.176513671875,
+        1012.5
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.7027367503726589,
+      "cpu_decode_ms": 4.175616,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-06.svg",
+      "logical": [
+        400.0,
+        190.0
+      ],
+      "natural": [
+        400.0,
+        190.0
+      ],
+      "physical": [
+        1200,
+        570
+      ],
+      "required_maximum_physical": [
+        1184.210693359375,
+        562.5
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.6466985294117603,
+      "cpu_decode_ms": 3.696045,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-07.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        1200,
+        600
+      ],
+      "required_maximum_physical": [
+        1200.0,
+        600.0
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.7528047959087479,
+      "cpu_decode_ms": 4.333272,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-08.svg",
+      "logical": [
+        400.0,
+        260.0
+      ],
+      "natural": [
+        400.0,
+        260.0
+      ],
+      "physical": [
+        1600,
+        1040
+      ],
+      "required_maximum_physical": [
+        1211.25,
+        787.3125
+      ],
+      "scale": 4.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.6524635757080612,
+      "cpu_decode_ms": 7.410524,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-09.svg",
+      "logical": [
+        400.0,
+        224.0
+      ],
+      "natural": [
+        400.0,
+        224.0
+      ],
+      "physical": [
+        1200,
+        672
+      ],
+      "required_maximum_physical": [
+        1196.25,
+        669.9000244140625
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.7270177206183833,
+      "cpu_decode_ms": 1.576773,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-10.svg",
+      "logical": [
+        400.0,
+        542.0
+      ],
+      "natural": [
+        400.0,
+        542.0
+      ],
+      "physical": [
+        1200,
+        1626
+      ],
+      "required_maximum_physical": [
+        1190.036865234375,
+        1612.5
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.6845829361054727,
+      "cpu_decode_ms": 7.89284,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-11.svg",
+      "logical": [
+        400.0,
+        290.0
+      ],
+      "natural": [
+        400.0,
+        290.0
+      ],
+      "physical": [
+        1600,
+        1160
+      ],
+      "required_maximum_physical": [
+        1293.103515625,
+        937.5
+      ],
+      "scale": 4.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.5734707374937099,
+      "cpu_decode_ms": 6.709477000000001,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-12.svg",
+      "logical": [
+        400.0,
+        234.0
+      ],
+      "natural": [
+        400.0,
+        234.0
+      ],
+      "physical": [
+        1600,
+        936
+      ],
+      "required_maximum_physical": [
+        1215.0,
+        710.7749633789062
+      ],
+      "scale": 4.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.7023926590610464,
+      "cpu_decode_ms": 3.371706,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-13.svg",
+      "logical": [
+        400.0,
+        194.0
+      ],
+      "natural": [
+        400.0,
+        194.0
+      ],
+      "physical": [
+        1600,
+        776
+      ],
+      "required_maximum_physical": [
+        1237.113525390625,
+        600.0
+      ],
+      "scale": 4.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.8025239391278902,
+      "cpu_decode_ms": 10.453903,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-14.svg",
+      "logical": [
+        400.0,
+        670.0
+      ],
+      "natural": [
+        400.0,
+        670.0
+      ],
+      "physical": [
+        1200,
+        2010
+      ],
+      "required_maximum_physical": [
+        1186.567138671875,
+        1987.5
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.6953102346999422,
+      "cpu_decode_ms": 2.2813070000000004,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-15.svg",
+      "logical": [
+        400.0,
+        264.0
+      ],
+      "natural": [
+        400.0,
+        264.0
+      ],
+      "physical": [
+        1200,
+        792
+      ],
+      "required_maximum_physical": [
+        1192.5,
+        787.050048828125
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.6643044730392167,
+      "cpu_decode_ms": 12.531676000000001,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-16.svg",
+      "logical": [
+        400.0,
+        220.0
+      ],
+      "natural": [
+        400.0,
+        220.0
+      ],
+      "physical": [
+        1600,
+        880
+      ],
+      "required_maximum_physical": [
+        1226.25,
+        674.4375
+      ],
+      "scale": 4.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.6854682095789143,
+      "cpu_decode_ms": 3.415518,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-17.svg",
+      "logical": [
+        400.0,
+        610.0
+      ],
+      "natural": [
+        400.0,
+        610.0
+      ],
+      "physical": [
+        1200,
+        1830
+      ],
+      "required_maximum_physical": [
+        1180.327880859375,
+        1800.0
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.7113678976034867,
+      "cpu_decode_ms": 3.799649,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-18.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        1200,
+        600
+      ],
+      "required_maximum_physical": [
+        1196.25,
+        598.125
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.6843485103046532,
+      "cpu_decode_ms": 6.456461,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-19.svg",
+      "logical": [
+        400.0,
+        186.0
+      ],
+      "natural": [
+        400.0,
+        186.0
+      ],
+      "physical": [
+        1600,
+        744
+      ],
+      "required_maximum_physical": [
+        1209.677490234375,
+        562.5
+      ],
+      "scale": 4.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.7113678976034867,
+      "cpu_decode_ms": 3.3176740000000002,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-20.svg",
+      "logical": [
+        400.0,
+        200.0
+      ],
+      "natural": [
+        400.0,
+        200.0
+      ],
+      "physical": [
+        1200,
+        600
+      ],
+      "required_maximum_physical": [
+        1200.0,
+        600.0
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.76394985586123,
+      "cpu_decode_ms": 6.532795,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-21.svg",
+      "logical": [
+        400.0,
+        526.0
+      ],
+      "natural": [
+        400.0,
+        526.0
+      ],
+      "physical": [
+        1200,
+        1578
+      ],
+      "required_maximum_physical": [
+        1169.2015380859375,
+        1537.5
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.6317678899684883,
+      "cpu_decode_ms": 8.124094,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-22.svg",
+      "logical": [
+        400.0,
+        224.0
+      ],
+      "natural": [
+        400.0,
+        224.0
+      ],
+      "physical": [
+        1600,
+        896
+      ],
+      "required_maximum_physical": [
+        1205.357177734375,
+        675.0
+      ],
+      "scale": 4.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.713242360452239,
+      "cpu_decode_ms": 7.482569,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-23.svg",
+      "logical": [
+        400.0,
+        186.0
+      ],
+      "natural": [
+        400.0,
+        186.0
+      ],
+      "physical": [
+        1600,
+        744
+      ],
+      "required_maximum_physical": [
+        1209.677490234375,
+        562.5
+      ],
+      "scale": 4.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.737460548293392,
+      "cpu_decode_ms": 4.226171,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-house-24.svg",
+      "logical": [
+        400.0,
+        300.0
+      ],
+      "natural": [
+        400.0,
+        300.0
+      ],
+      "physical": [
+        1200,
+        900
+      ],
+      "required_maximum_physical": [
+        1200.0,
+        900.0
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.4375339424902867,
+      "cpu_decode_ms": 25.538365,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-tree-1.svg",
+      "logical": [
+        192.0,
+        370.0
+      ],
+      "natural": [
+        192.0,
+        370.0
+      ],
+      "physical": [
+        768,
+        1480
+      ],
+      "required_maximum_physical": [
+        622.7027587890625,
+        1200.0
+      ],
+      "scale": 4.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.5028537447602537,
+      "cpu_decode_ms": 17.923768,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/hit-tree-2.svg",
+      "logical": [
+        194.0,
+        304.0
+      ],
+      "natural": [
+        194.0,
+        304.0
+      ],
+      "physical": [
+        776,
+        1216
+      ],
+      "required_maximum_physical": [
+        622.2039184570312,
+        975.0
+      ],
+      "scale": 4.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.7861027461739144,
+      "cpu_decode_ms": 0.28087799999999996,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/orb-time-back.svg",
+      "logical": [
+        90.0,
+        90.0
+      ],
+      "natural": [
+        90.0,
+        90.0
+      ],
+      "physical": [
+        270,
+        270
+      ],
+      "required_maximum_physical": [
+        225.0,
+        225.0
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.4162158745528367,
+      "cpu_decode_ms": 0.22142599999999998,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/orb-time-front.svg",
+      "logical": [
+        90.0,
+        90.0
+      ],
+      "natural": [
+        90.0,
+        90.0
+      ],
+      "physical": [
+        270,
+        270
+      ],
+      "required_maximum_physical": [
+        225.0,
+        225.0
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.7226871238818096,
+      "cpu_decode_ms": 0.203422,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/points-100.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        350,
+        310
+      ],
+      "required_maximum_physical": [
+        296.3709716796875,
+        262.5
+      ],
+      "scale": 5.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.7226871238818096,
+      "cpu_decode_ms": 0.225523,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/points-200.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        350,
+        310
+      ],
+      "required_maximum_physical": [
+        296.3709716796875,
+        262.5
+      ],
+      "scale": 5.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.7226871238818096,
+      "cpu_decode_ms": 0.221056,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/points-300.svg",
+      "logical": [
+        70.0,
+        62.0
+      ],
+      "natural": [
+        70.0,
+        62.0
+      ],
+      "physical": [
+        350,
+        310
+      ],
+      "required_maximum_physical": [
+        296.3709716796875,
+        262.5
+      ],
+      "scale": 5.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.877225953818667,
+      "cpu_decode_ms": 0.049934,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/present-01.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        102,
+        102
+      ],
+      "required_maximum_physical": [
+        93.75,
+        93.75
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.877225953818667,
+      "cpu_decode_ms": 0.043031,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/present-02.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        102,
+        102
+      ],
+      "required_maximum_physical": [
+        93.75,
+        93.75
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.877225953818667,
+      "cpu_decode_ms": 0.042911000000000005,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/present-03.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        102,
+        102
+      ],
+      "required_maximum_physical": [
+        93.75,
+        93.75
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.877225953818667,
+      "cpu_decode_ms": 0.04281,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/present-04.svg",
+      "logical": [
+        34.0,
+        34.0
+      ],
+      "natural": [
+        34.0,
+        34.0
+      ],
+      "physical": [
+        102,
+        102
+      ],
+      "required_maximum_physical": [
+        93.75,
+        93.75
+      ],
+      "scale": 3.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.804814943728971,
+      "cpu_decode_ms": 0.047039000000000004,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/present-05.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        104,
+        104
+      ],
+      "required_maximum_physical": [
+        93.75,
+        93.75
+      ],
+      "scale": 4.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.804814943728971,
+      "cpu_decode_ms": 0.044193,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/present-06.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        104,
+        104
+      ],
+      "required_maximum_physical": [
+        93.75,
+        93.75
+      ],
+      "scale": 4.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.804814943728971,
+      "cpu_decode_ms": 0.044223,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/present-07.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        104,
+        104
+      ],
+      "required_maximum_physical": [
+        93.75,
+        93.75
+      ],
+      "scale": 4.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.804814943728971,
+      "cpu_decode_ms": 0.044333,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/present-08.svg",
+      "logical": [
+        26.0,
+        26.0
+      ],
+      "natural": [
+        26.0,
+        26.0
+      ],
+      "physical": [
+        104,
+        104
+      ],
+      "required_maximum_physical": [
+        93.75,
+        93.75
+      ],
+      "scale": 4.0,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.643347586093259,
+      "cpu_decode_ms": 0.341622,
+      "density": 3.0,
+      "effective_density": 3.0,
+      "file": "scenes/glider/img/treat-candy.svg",
+      "logical": [
+        56.0,
+        34.0
+      ],
+      "natural": [
+        56.0,
+        34.0
+      ],
+      "physical": [
+        280,
+        170
+      ],
+      "required_maximum_physical": [
+        225.0,
+        136.60714721679688
+      ],
+      "scale": 5.0,
+      "width": 1920.0
+    }
+  ],
+  "scope": "45 selected original Glider SVGs across eight desktop viewport/display-density combinations: actual production CPU decoder, associated bytes, logical geometry and physical coverage. Maximum desktop CSS em1.25 policy normalized by actual source desktop scale; baseline atlas3 retained. Declaration-derived policy, not a browser/GPU raster/performance oracle. Single decode timing samples include parse/raster/allocation; independent reference excluded. No runtime upload/DPI-switch or input-latency proof. Wide stars/mountains and collision puff transform3 sampling remain unfinished.",
+  "totals": [
+    {
+      "cpu_decode_ms_sum": 73.94947700000002,
+      "density": 1.0,
+      "rgba_bytes": 36544672,
+      "width": 1500.0
+    },
+    {
+      "cpu_decode_ms_sum": 87.89916999999997,
+      "density": 1.25,
+      "rgba_bytes": 60487360,
+      "width": 1500.0
+    },
+    {
+      "cpu_decode_ms_sum": 124.50792200000004,
+      "density": 2.0,
+      "rgba_bytes": 88684880,
+      "width": 1500.0
+    },
+    {
+      "cpu_decode_ms_sum": 237.22433700000002,
+      "density": 3.0,
+      "rgba_bytes": 177524432,
+      "width": 1500.0
+    },
+    {
+      "cpu_decode_ms_sum": 39.810594000000016,
+      "density": 2.0,
+      "rgba_bytes": 23013040,
+      "width": 375.0
+    },
+    {
+      "cpu_decode_ms_sum": 61.823823,
+      "density": 1.25,
+      "rgba_bytes": 36544672,
+      "width": 980.0
+    },
+    {
+      "cpu_decode_ms_sum": 102.45327600000002,
+      "density": 2.0,
+      "rgba_bytes": 75004880,
+      "width": 1440.0
+    },
+    {
+      "cpu_decode_ms_sum": 228.629947,
+      "density": 3.0,
+      "rgba_bytes": 177524432,
+      "width": 1920.0
+    }
+  ]
+}
