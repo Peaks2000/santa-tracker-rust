@@ -169,3 +169,4 @@ pub mod music_runtime;
 pub mod raster_density;
 pub mod selfie_vector;
 pub mod selfie_face;
+pub mod lottie_layout;

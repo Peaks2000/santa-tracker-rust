@@ -1408,3 +1408,34 @@ coords.relY. Strict dryer±.3 and nose sqrt<120 with86px offset retained. Source
 Face--happy persistent; sad/delighted not added by active JS. Need actual CSS
 frames/style-flush/first-style/resize and header/nose geometry comparisons later;
 not whole-mode animation certification. Live checks still wait for user readiness.
+
+### Village module Lottie fit/DPR correction (23 November 2026)
+
+Module loop/scroll source requests xMidYMid slice; native previously reused card
+meet. Village now chooses Fit::for_village_asset, passes explicit lottie_layout
+to Clip, and samples backing density. Public Clip::rasterize preserves old meet
+arithmetic for non-village callers. Transform included in cache key (DPR changes
+can alter it without changing integer width/height). Source CanvasRenderer full
+resize method180CPU cases match; wrapper metrics supplied, native rounds its
+existing rects. Existing4096limit uniformly reduces effective DPR above limit.
+
+Actual gym1440x1300 CPU crop at.25scale: frame0 max3/255 in90channels within10px
+edge; half-frame max2/85channels within7px. Not exact pixels. Regression bounds
+edge and exact interior outside16px. Audit/probes JSON record scope/known gaps.
+All154tests140lib+14app pass; no window/GPU/input/device. Source complete module/
+village/helper/lottie wrapper read, selected index block; full component branches
+not all implemented (see ledger). No mode rating upgraded.
+
+PERFORMANCE: release CPU gym render1x~9–15ms,2x~33–60ms, three samples per size.
+Not app frame/latency measurement. 4-worker/direct-copy probes produced identical
+last-phase bytes but no consistent material gain; both discarded. App still
+ThorVG::init(0), original surface copy. Audit optional third arg workers and fourth
+raw-output directory supports CPU reproduction. Don't claim density fix improves
+smoothness: software rendering remains costly. Need efficient rendering/loading.
+
+NEXT high-priority village: replace global module loop phase with source retained
+visibility/cached-part playback; scroll/mode/load fade/DOMLoaded/safe-resize/sound
+frame lifecycle still incomplete. Live comparison/profiling waits for user readiness.
+DPI>4096, native inferred offset metrics and browser/GPU pixels remain unverified.
+
+Final release application and village_lottie_audit compile successfully; no app launched.

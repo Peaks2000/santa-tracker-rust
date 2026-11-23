@@ -1,0 +1,117 @@
+{
+  "scope": "Three release CPU render samples per density for one actual gym Lottie clip. Separate processes at nice19; not application frame pacing/input latency or browser/GPU parity. Native app worker setting and original surface conversion retained because these probes do not establish a consistent material benefit.",
+  "baseline_threads0": [
+    {
+      "cpu_render_ms_samples": [
+        15.03839,
+        11.216791,
+        9.239366
+      ],
+      "density": 1.0,
+      "layout": {
+        "height": 1296,
+        "sx": 1.0,
+        "sy": 1.0,
+        "tx": 0.0,
+        "ty": -2.0,
+        "width": 1440
+      }
+    },
+    {
+      "cpu_render_ms_samples": [
+        59.555877,
+        40.020118000000004,
+        32.774197
+      ],
+      "density": 2.0,
+      "layout": {
+        "height": 2592,
+        "sx": 2.0,
+        "sy": 2.0,
+        "tx": 0.0,
+        "ty": -4.0,
+        "width": 2880
+      }
+    }
+  ],
+  "probe_threads4": [
+    {
+      "cpu_render_ms_samples": [
+        14.558118,
+        9.436717000000002,
+        8.405009
+      ],
+      "density": 1.0,
+      "layout": {
+        "height": 1296,
+        "sx": 1.0,
+        "sy": 1.0,
+        "tx": 0.0,
+        "ty": -2.0,
+        "width": 1440
+      }
+    },
+    {
+      "cpu_render_ms_samples": [
+        55.82596,
+        38.827378,
+        31.386530000000004
+      ],
+      "density": 2.0,
+      "layout": {
+        "height": 2592,
+        "sx": 2.0,
+        "sy": 2.0,
+        "tx": 0.0,
+        "ty": -4.0,
+        "width": 2880
+      }
+    }
+  ],
+  "probe_direct_byte_copy_threads0": [
+    {
+      "cpu_render_ms_samples": [
+        14.270919,
+        9.016606999999999,
+        8.663475
+      ],
+      "density": 1.0,
+      "layout": {
+        "height": 1296,
+        "sx": 1.0,
+        "sy": 1.0,
+        "tx": 0.0,
+        "ty": -2.0,
+        "width": 1440
+      }
+    },
+    {
+      "cpu_render_ms_samples": [
+        59.549985,
+        42.172161,
+        35.260225999999996
+      ],
+      "density": 2.0,
+      "layout": {
+        "height": 2592,
+        "sx": 2.0,
+        "sy": 2.0,
+        "tx": 0.0,
+        "ty": -4.0,
+        "width": 2880
+      }
+    }
+  ],
+  "retained_threads4": false,
+  "retained_direct_byte_copy": false,
+  "last_phase_rgba_comparison": {
+    "threads4": {
+      "1x.rgba": true,
+      "2x.rgba": true
+    },
+    "direct_byte_copy": {
+      "1x.rgba": true,
+      "2x.rgba": true
+    }
+  }
+}

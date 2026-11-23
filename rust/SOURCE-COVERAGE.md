@@ -3614,3 +3614,65 @@ rounding, high-DPI/resizing and every effect phase still need live verification.
 All152tests pass138lib+14app. Release app and selfie_vector_audit compile; neither
 app nor GPU/window/device/input test launched. Existing cloth/render sampling/
 audio rules unchanged. User feedback/scene ratings unchanged; not whole-mode1:1.
+
+### Village Lottie slice fitting and physical canvas layout (23 November 2026)
+
+Read complete modvil-module.js (all _loadPart branches, shouldUpdate cache/load/
+mode/ratio reconciliation, resize, render), complete module stylesheet/shared
+constants, modvil-village.js, helpers.js and src/deps/lottie.js. Selected index
+adjustment block read; earlier host/card coverage remains above. Bundled actual
+CanvasRenderer DPR selection and complete updateContainerSize method inspected.
+Source module loop/scroll uses xMidYMid slice explicitly; cards use default meet.
+The previous shared native Clip method always met the bounds, which letterboxed
+rather than cropping module art when module aspect differs (especially min-height
+or narrow layouts). Native Village now chooses slice for module paths and meet
+for card paths. Clip::rasterize_layout applies explicit source scale/translation;
+public Clip::rasterize retains its previous f32 meet arithmetic for other callers.
+
+Source canvas uses integer wrapper offsetWidth/Height, DPR and integer canvas
+attribute conversion; transform math uses pre-truncation dimensions. New
+lottie_layout follows these separately. Original complete CanvasRenderer resize
+method in CPU VM matches180 intrinsic/wrapper/DPR/meet/slice cases, tolerance1e-10
+for transform and exact backing dimensions. reset/context transform/clip/render
+are recorders; supplied wrapper metrics are not browser layout acquisition.
+Hash of full original engine and complete selected method recorded. none/other
+alignments/default-invalid branches read but are inactive for these selected
+source options and are not native-certified.
+
+Village derives integer wrapper metrics by rounding its existing logical rect,
+uses current display density, and tracks all four transform values in its cache
+as well as frame/dimensions. Existing Clip4096 limit retained: effective density
+is reduced uniformly above it. This is explicitly a remaining fidelity limit,
+not matching arbitrary high-DPI source canvases. Source browser offset metrics,
+CSS layout rounding, resize task ordering and device presentation still require
+live comparison. Other static image paths and simulation/input clocks unchanged.
+
+Original gym clip is1440x1300. CPU center-crop check uses360x325 full render and
+180x325 slice at equal.25 scale. Initial test incorrectly used320x289 (a slightly
+different ratio), corrected after reading actual JSON dimensions. Even at equal
+scale, native clipping is not byte-exact: frame0 has90 changed channels,max3/255,
+within10px of edge; half-frame8 has85,max2 within7px. Regression requires selected
+frame0 interior outside16px to match and records an explicit <=3/<=128-channel
+edge bound. It does NOT certify source pixel parity or hide those differences.
+`village-lottie-audit.json` records both frames and1x/2x associated-alpha smoke.
+
+Performance evidence changes next work: source-sized gym1440x1296 render costs
+roughly9–15ms at1x and33–60ms at2x across three release CPU samples/size (nice19).
+These are render-call samples, not application frame pacing or input latency.
+Four-worker probe and direct surface-copy experiment kept final1x/2x bytes equal
+but did not establish a consistent material timing gain; neither product change
+retained. Native still initializes ThorVG0 workers and uses original word-to-byte
+copy. Optional audit worker count exists only for CPU diagnostic reproduction.
+`village-lottie-probes.json` retains before/probe samples and byte equality.
+Higher density improves sampling but increases software work; smoothness remains
+unresolved and no performance improvement is claimed. Need efficient rendering/
+loading without reducing source fidelity, followed by live profiling when allowed.
+
+Unfinished component paths remain: source loop phase retention on visibility
+pause/cached parts versus native global time, scroll endpoints/ratio timing,
+mobile/small/parts reconciliation and async loading opacity. safe-resize rAF,
+DOMLoaded scheduling and onEnterFrame sound dispatch also remain unverified or
+incomplete. Reading the whole component does not mean those branches were ported.
+All154tests pass140lib+14app. No app/window/GPU/device/input used while user plays.
+
+Final release application and village_lottie_audit compile successfully; no app launched.

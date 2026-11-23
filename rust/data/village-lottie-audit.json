@@ -1,0 +1,74 @@
+{
+  "asset": "scenes/modvil/img/modules/gym/1.json",
+  "crop_rows": [
+    {
+      "changed_channels": 90,
+      "crop": [
+        180,
+        325
+      ],
+      "farthest_edge_distance": 10,
+      "frame": 0.0,
+      "full": [
+        360,
+        325
+      ],
+      "maximum_channel_difference": 3
+    },
+    {
+      "changed_channels": 85,
+      "crop": [
+        180,
+        325
+      ],
+      "farthest_edge_distance": 7,
+      "frame": 8.0,
+      "full": [
+        360,
+        325
+      ],
+      "maximum_channel_difference": 2
+    }
+  ],
+  "intrinsic": [
+    1440.0,
+    1300.0
+  ],
+  "profile": "release",
+  "sampling": [
+    {
+      "cpu_render_ms_samples": [
+        15.03839,
+        11.216791,
+        9.239366
+      ],
+      "density": 1.0,
+      "layout": {
+        "height": 1296,
+        "sx": 1.0,
+        "sy": 1.0,
+        "tx": 0.0,
+        "ty": -2.0,
+        "width": 1440
+      }
+    },
+    {
+      "cpu_render_ms_samples": [
+        59.555877,
+        40.020118000000004,
+        32.774197
+      ],
+      "density": 2.0,
+      "layout": {
+        "height": 2592,
+        "sx": 2.0,
+        "sy": 2.0,
+        "tx": 0.0,
+        "ty": -4.0,
+        "width": 2880
+      }
+    }
+  ],
+  "scope": "Native CPU clipping comparison and backing-density/associated-alpha smoke only. Not original/browser pixels, GPU presentation, resize event ordering, frame pacing or input latency. CPU timings are three diagnostic render samples per size, not application frame pacing or input latency.",
+  "threads": 0
+}

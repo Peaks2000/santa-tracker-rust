@@ -1,0 +1,3967 @@
+{
+  "scope": "Exact complete bundled CanvasRenderer.updateContainerSize, wrapper metrics supplied; backend reset/transform/clip/renderFrame are recorders. Selected xMidYMid meet/slice and DPR only; not browser offsetWidth acquisition, resize task ordering or pixels. Canvas attribute integer conversion recorded. Unsupported none/xMin/xMax/YMin/YMax/default-invalid branches not native-certified.",
+  "source_sha256": "d0178ef3d07269e1da0ac141bf7e0ce1b24384043f4f7c26a1ddaa610d8c8145",
+  "method_sha256": "1d2c63f142db85e0319654a86ebe99cd54bc8e627774dbc01ac4c6db91890069",
+  "cases": [
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 1,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1920,
+        "height": 1728,
+        "sx": 1,
+        "sy": 1,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 1,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1920,
+        "height": 1728,
+        "sx": 1,
+        "sy": 1,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 1.25,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 2400,
+        "height": 2160,
+        "sx": 1.25,
+        "sy": 1.25,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 1.25,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 2400,
+        "height": 2160,
+        "sx": 1.25,
+        "sy": 1.25,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 1.5,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 2880,
+        "height": 2592,
+        "sx": 1.5,
+        "sy": 1.5,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 1.5,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 2880,
+        "height": 2592,
+        "sx": 1.5,
+        "sy": 1.5,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 2,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 3840,
+        "height": 3456,
+        "sx": 2,
+        "sy": 2,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 2,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 3840,
+        "height": 3456,
+        "sx": 2,
+        "sy": 2,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 3,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 5760,
+        "height": 5184,
+        "sx": 3,
+        "sy": 3,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 3,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 5760,
+        "height": 5184,
+        "sx": 3,
+        "sy": 3,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 1,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1440,
+        "height": 800,
+        "sx": 0.46296296296296297,
+        "sy": 0.46296296296296297,
+        "tx": 275.55555555555554,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 1,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1440,
+        "height": 800,
+        "sx": 0.75,
+        "sy": 0.75,
+        "tx": 0,
+        "ty": -248
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 1.25,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1800,
+        "height": 1000,
+        "sx": 0.5787037037037037,
+        "sy": 0.5787037037037037,
+        "tx": 344.44444444444446,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 1.25,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1800,
+        "height": 1000,
+        "sx": 0.9375,
+        "sy": 0.9375,
+        "tx": 0,
+        "ty": -310
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 1.5,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 2160,
+        "height": 1200,
+        "sx": 0.6944444444444444,
+        "sy": 0.6944444444444444,
+        "tx": 413.3333333333333,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 1.5,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 2160,
+        "height": 1200,
+        "sx": 1.125,
+        "sy": 1.125,
+        "tx": 0,
+        "ty": -372
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 2,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 2880,
+        "height": 1600,
+        "sx": 0.9259259259259259,
+        "sy": 0.9259259259259259,
+        "tx": 551.1111111111111,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 2,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 2880,
+        "height": 1600,
+        "sx": 1.5,
+        "sy": 1.5,
+        "tx": 0,
+        "ty": -496
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 3,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 4320,
+        "height": 2400,
+        "sx": 1.3888888888888888,
+        "sy": 1.3888888888888888,
+        "tx": 826.6666666666666,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 3,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 4320,
+        "height": 2400,
+        "sx": 2.25,
+        "sy": 2.25,
+        "tx": 0,
+        "ty": -744
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 1,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 414,
+        "height": 800,
+        "sx": 0.215625,
+        "sy": 0.215625,
+        "tx": 0,
+        "ty": 213.7
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 1,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 414,
+        "height": 800,
+        "sx": 0.46296296296296297,
+        "sy": 0.46296296296296297,
+        "tx": -237.44444444444446,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 1.25,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 517,
+        "height": 1000,
+        "sx": 0.26953125,
+        "sy": 0.26953125,
+        "tx": 0,
+        "ty": 267.125
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 1.25,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 517,
+        "height": 1000,
+        "sx": 0.5787037037037037,
+        "sy": 0.5787037037037037,
+        "tx": -296.80555555555554,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 1.5,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 621,
+        "height": 1200,
+        "sx": 0.3234375,
+        "sy": 0.3234375,
+        "tx": 0,
+        "ty": 320.54999999999995
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 1.5,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 621,
+        "height": 1200,
+        "sx": 0.6944444444444444,
+        "sy": 0.6944444444444444,
+        "tx": -356.1666666666667,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 2,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 828,
+        "height": 1600,
+        "sx": 0.43125,
+        "sy": 0.43125,
+        "tx": 0,
+        "ty": 427.4
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 2,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 828,
+        "height": 1600,
+        "sx": 0.9259259259259259,
+        "sy": 0.9259259259259259,
+        "tx": -474.8888888888889,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 3,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1242,
+        "height": 2400,
+        "sx": 0.646875,
+        "sy": 0.646875,
+        "tx": 0,
+        "ty": 641.0999999999999
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 3,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1242,
+        "height": 2400,
+        "sx": 1.3888888888888888,
+        "sy": 1.3888888888888888,
+        "tx": -712.3333333333334,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 1,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 980,
+        "height": 882,
+        "sx": 0.5104166666666666,
+        "sy": 0.5104166666666666,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 1,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 980,
+        "height": 882,
+        "sx": 0.5104166666666666,
+        "sy": 0.5104166666666666,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 1.25,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1225,
+        "height": 1102,
+        "sx": 0.6380208333333333,
+        "sy": 0.6380208333333333,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 1.25,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1225,
+        "height": 1102,
+        "sx": 0.6380208333333333,
+        "sy": 0.6380208333333333,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 1.5,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1470,
+        "height": 1323,
+        "sx": 0.765625,
+        "sy": 0.765625,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 1.5,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1470,
+        "height": 1323,
+        "sx": 0.765625,
+        "sy": 0.765625,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 2,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1960,
+        "height": 1764,
+        "sx": 1.0208333333333333,
+        "sy": 1.0208333333333333,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 2,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1960,
+        "height": 1764,
+        "sx": 1.0208333333333333,
+        "sy": 1.0208333333333333,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 3,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 2940,
+        "height": 2646,
+        "sx": 1.53125,
+        "sy": 1.53125,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 3,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 2940,
+        "height": 2646,
+        "sx": 1.53125,
+        "sy": 1.53125,
+        "tx": 0,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 1,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 281,
+        "height": 127,
+        "sx": 0.07349537037037036,
+        "sy": 0.07349537037037036,
+        "tx": 69.94444444444446,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 1,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 281,
+        "height": 127,
+        "sx": 0.14635416666666667,
+        "sy": 0.14635416666666667,
+        "tx": 0,
+        "ty": -62.95
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 1.25,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 351,
+        "height": 158,
+        "sx": 0.09186921296296295,
+        "sy": 0.09186921296296295,
+        "tx": 87.43055555555557,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 1.25,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 351,
+        "height": 158,
+        "sx": 0.18294270833333334,
+        "sy": 0.18294270833333334,
+        "tx": 0,
+        "ty": -78.6875
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 1.5,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 421,
+        "height": 190,
+        "sx": 0.11024305555555555,
+        "sy": 0.11024305555555555,
+        "tx": 104.91666666666669,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 1.5,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 421,
+        "height": 190,
+        "sx": 0.21953125,
+        "sy": 0.21953125,
+        "tx": 0,
+        "ty": -94.42500000000001
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 2,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 562,
+        "height": 254,
+        "sx": 0.14699074074074073,
+        "sy": 0.14699074074074073,
+        "tx": 139.8888888888889,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 2,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 562,
+        "height": 254,
+        "sx": 0.29270833333333335,
+        "sy": 0.29270833333333335,
+        "tx": 0,
+        "ty": -125.9
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 3,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 843,
+        "height": 381,
+        "sx": 0.2204861111111111,
+        "sy": 0.2204861111111111,
+        "tx": 209.83333333333337,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 3,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 843,
+        "height": 381,
+        "sx": 0.4390625,
+        "sy": 0.4390625,
+        "tx": 0,
+        "ty": -188.85000000000002
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 1,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 800,
+        "height": 800,
+        "sx": 0.4166666666666667,
+        "sy": 0.4166666666666667,
+        "tx": 0,
+        "ty": 40
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 1,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 800,
+        "height": 800,
+        "sx": 0.46296296296296297,
+        "sy": 0.46296296296296297,
+        "tx": -44.44444444444446,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 1.25,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1000,
+        "height": 1000,
+        "sx": 0.5208333333333334,
+        "sy": 0.5208333333333334,
+        "tx": 0,
+        "ty": 50
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 1.25,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1000,
+        "height": 1000,
+        "sx": 0.5787037037037037,
+        "sy": 0.5787037037037037,
+        "tx": -55.55555555555557,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 1.5,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1200,
+        "height": 1200,
+        "sx": 0.625,
+        "sy": 0.625,
+        "tx": 0,
+        "ty": 60
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 1.5,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1200,
+        "height": 1200,
+        "sx": 0.6944444444444444,
+        "sy": 0.6944444444444444,
+        "tx": -66.66666666666669,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 2,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1600,
+        "height": 1600,
+        "sx": 0.8333333333333334,
+        "sy": 0.8333333333333334,
+        "tx": 0,
+        "ty": 80
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 2,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1600,
+        "height": 1600,
+        "sx": 0.9259259259259259,
+        "sy": 0.9259259259259259,
+        "tx": -88.88888888888891,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 3,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 2400,
+        "height": 2400,
+        "sx": 1.25,
+        "sy": 1.25,
+        "tx": 0,
+        "ty": 120
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          1920,
+          1728
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 3,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 2400,
+        "height": 2400,
+        "sx": 1.3888888888888888,
+        "sy": 1.3888888888888888,
+        "tx": -133.33333333333337,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 1,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1920,
+        "height": 1728,
+        "sx": 5.97923875432526,
+        "sy": 5.97923875432526,
+        "tx": 3.3217993079584858,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 1,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1920,
+        "height": 1728,
+        "sx": 6,
+        "sy": 6,
+        "tx": 0,
+        "ty": -3
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 1.25,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 2400,
+        "height": 2160,
+        "sx": 7.474048442906574,
+        "sy": 7.474048442906574,
+        "tx": 4.152249134948107,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 1.25,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 2400,
+        "height": 2160,
+        "sx": 7.5,
+        "sy": 7.5,
+        "tx": 0,
+        "ty": -3.75
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 1.5,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 2880,
+        "height": 2592,
+        "sx": 8.96885813148789,
+        "sy": 8.96885813148789,
+        "tx": 4.982698961937729,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 1.5,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 2880,
+        "height": 2592,
+        "sx": 9,
+        "sy": 9,
+        "tx": 0,
+        "ty": -4.5
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 2,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 3840,
+        "height": 3456,
+        "sx": 11.95847750865052,
+        "sy": 11.95847750865052,
+        "tx": 6.6435986159169715,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 2,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 3840,
+        "height": 3456,
+        "sx": 12,
+        "sy": 12,
+        "tx": 0,
+        "ty": -6
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 3,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 5760,
+        "height": 5184,
+        "sx": 17.93771626297578,
+        "sy": 17.93771626297578,
+        "tx": 9.965397923875457,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 3,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 5760,
+        "height": 5184,
+        "sx": 18,
+        "sy": 18,
+        "tx": 0,
+        "ty": -9
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 1,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1440,
+        "height": 800,
+        "sx": 2.7681660899653977,
+        "sy": 2.7681660899653977,
+        "tx": 277.09342560553637,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 1,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1440,
+        "height": 800,
+        "sx": 4.5,
+        "sy": 4.5,
+        "tx": 0,
+        "ty": -250.25
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 1.25,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1800,
+        "height": 1000,
+        "sx": 3.4602076124567476,
+        "sy": 3.4602076124567476,
+        "tx": 346.36678200692046,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 1.25,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1800,
+        "height": 1000,
+        "sx": 5.625,
+        "sy": 5.625,
+        "tx": 0,
+        "ty": -312.8125
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 1.5,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 2160,
+        "height": 1200,
+        "sx": 4.152249134948097,
+        "sy": 4.152249134948097,
+        "tx": 415.64013840830455,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 1.5,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 2160,
+        "height": 1200,
+        "sx": 6.75,
+        "sy": 6.75,
+        "tx": 0,
+        "ty": -375.375
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 2,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 2880,
+        "height": 1600,
+        "sx": 5.536332179930795,
+        "sy": 5.536332179930795,
+        "tx": 554.1868512110727,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 2,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 2880,
+        "height": 1600,
+        "sx": 9,
+        "sy": 9,
+        "tx": 0,
+        "ty": -500.5
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 3,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 4320,
+        "height": 2400,
+        "sx": 8.304498269896195,
+        "sy": 8.304498269896195,
+        "tx": 831.2802768166091,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 3,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 4320,
+        "height": 2400,
+        "sx": 13.5,
+        "sy": 13.5,
+        "tx": 0,
+        "ty": -750.75
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 1,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 414,
+        "height": 800,
+        "sx": 1.29375,
+        "sy": 1.29375,
+        "tx": 0,
+        "ty": 213.053125
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 1,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 414,
+        "height": 800,
+        "sx": 2.7681660899653977,
+        "sy": 2.7681660899653977,
+        "tx": -235.90657439446363,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 1.25,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 517,
+        "height": 1000,
+        "sx": 1.6171875,
+        "sy": 1.6171875,
+        "tx": 0,
+        "ty": 266.31640625
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 1.25,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 517,
+        "height": 1000,
+        "sx": 3.4602076124567476,
+        "sy": 3.4602076124567476,
+        "tx": -294.88321799307954,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 1.5,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 621,
+        "height": 1200,
+        "sx": 1.9406249999999998,
+        "sy": 1.9406249999999998,
+        "tx": 0,
+        "ty": 319.5796875
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 1.5,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 621,
+        "height": 1200,
+        "sx": 4.152249134948097,
+        "sy": 4.152249134948097,
+        "tx": -353.85986159169545,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 2,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 828,
+        "height": 1600,
+        "sx": 2.5875,
+        "sy": 2.5875,
+        "tx": 0,
+        "ty": 426.10625
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 2,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 828,
+        "height": 1600,
+        "sx": 5.536332179930795,
+        "sy": 5.536332179930795,
+        "tx": -471.81314878892726,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 3,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1242,
+        "height": 2400,
+        "sx": 3.8812499999999996,
+        "sy": 3.8812499999999996,
+        "tx": 0,
+        "ty": 639.159375
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 3,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1242,
+        "height": 2400,
+        "sx": 8.304498269896195,
+        "sy": 8.304498269896195,
+        "tx": -707.7197231833909,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 1,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 980,
+        "height": 882,
+        "sx": 3.0519031141868513,
+        "sy": 3.0519031141868513,
+        "tx": 1.6955017301037856,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 1,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 980,
+        "height": 882,
+        "sx": 3.0625,
+        "sy": 3.0625,
+        "tx": 0,
+        "ty": -1.53125
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 1.25,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1225,
+        "height": 1102,
+        "sx": 3.814878892733564,
+        "sy": 3.814878892733564,
+        "tx": 2.119377162629732,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 1.25,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1225,
+        "height": 1102,
+        "sx": 3.828125,
+        "sy": 3.828125,
+        "tx": 0,
+        "ty": -1.9140625
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 1.5,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1470,
+        "height": 1323,
+        "sx": 4.577854671280277,
+        "sy": 4.577854671280277,
+        "tx": 2.5432525951556784,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 1.5,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1470,
+        "height": 1323,
+        "sx": 4.59375,
+        "sy": 4.59375,
+        "tx": 0,
+        "ty": -2.296875
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 2,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1960,
+        "height": 1764,
+        "sx": 6.103806228373703,
+        "sy": 6.103806228373703,
+        "tx": 3.391003460207571,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 2,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1960,
+        "height": 1764,
+        "sx": 6.125,
+        "sy": 6.125,
+        "tx": 0,
+        "ty": -3.0625
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 3,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 2940,
+        "height": 2646,
+        "sx": 9.155709342560554,
+        "sy": 9.155709342560554,
+        "tx": 5.086505190311357,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 3,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 2940,
+        "height": 2646,
+        "sx": 9.1875,
+        "sy": 9.1875,
+        "tx": 0,
+        "ty": -4.59375
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 1,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 281,
+        "height": 127,
+        "sx": 0.43944636678200694,
+        "sy": 0.43944636678200694,
+        "tx": 70.18858131487889,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 1,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 281,
+        "height": 127,
+        "sx": 0.878125,
+        "sy": 0.878125,
+        "tx": 0,
+        "ty": -63.38906250000001
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 1.25,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 351,
+        "height": 158,
+        "sx": 0.5493079584775087,
+        "sy": 0.5493079584775087,
+        "tx": 87.73572664359861,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 1.25,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 351,
+        "height": 158,
+        "sx": 1.09765625,
+        "sy": 1.09765625,
+        "tx": 0,
+        "ty": -79.23632812500001
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 1.5,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 421,
+        "height": 190,
+        "sx": 0.6591695501730104,
+        "sy": 0.6591695501730104,
+        "tx": 105.28287197231833,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 1.5,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 421,
+        "height": 190,
+        "sx": 1.3171875,
+        "sy": 1.3171875,
+        "tx": 0,
+        "ty": -95.08359375
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 2,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 562,
+        "height": 254,
+        "sx": 0.8788927335640139,
+        "sy": 0.8788927335640139,
+        "tx": 140.37716262975778,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 2,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 562,
+        "height": 254,
+        "sx": 1.75625,
+        "sy": 1.75625,
+        "tx": 0,
+        "ty": -126.77812500000002
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 3,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 843,
+        "height": 381,
+        "sx": 1.3183391003460208,
+        "sy": 1.3183391003460208,
+        "tx": 210.56574394463667,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 3,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 843,
+        "height": 381,
+        "sx": 2.634375,
+        "sy": 2.634375,
+        "tx": 0,
+        "ty": -190.1671875
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 1,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 800,
+        "height": 800,
+        "sx": 2.5,
+        "sy": 2.5,
+        "tx": 0,
+        "ty": 38.75
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 1,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 800,
+        "height": 800,
+        "sx": 2.7681660899653977,
+        "sy": 2.7681660899653977,
+        "tx": -42.90657439446363,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 1.25,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1000,
+        "height": 1000,
+        "sx": 3.125,
+        "sy": 3.125,
+        "tx": 0,
+        "ty": 48.4375
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 1.25,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1000,
+        "height": 1000,
+        "sx": 3.4602076124567476,
+        "sy": 3.4602076124567476,
+        "tx": -53.63321799307954,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 1.5,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1200,
+        "height": 1200,
+        "sx": 3.75,
+        "sy": 3.75,
+        "tx": 0,
+        "ty": 58.125
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 1.5,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1200,
+        "height": 1200,
+        "sx": 4.152249134948097,
+        "sy": 4.152249134948097,
+        "tx": -64.35986159169545,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 2,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1600,
+        "height": 1600,
+        "sx": 5,
+        "sy": 5,
+        "tx": 0,
+        "ty": 77.5
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 2,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1600,
+        "height": 1600,
+        "sx": 5.536332179930795,
+        "sy": 5.536332179930795,
+        "tx": -85.81314878892726,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 3,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 2400,
+        "height": 2400,
+        "sx": 7.5,
+        "sy": 7.5,
+        "tx": 0,
+        "ty": 116.25
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          320,
+          289
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 3,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 2400,
+        "height": 2400,
+        "sx": 8.304498269896195,
+        "sy": 8.304498269896195,
+        "tx": -128.7197231833909,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 1,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1920,
+        "height": 1728,
+        "sx": 15,
+        "sy": 15,
+        "tx": 0,
+        "ty": 114
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 1,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1920,
+        "height": 1728,
+        "sx": 17.28,
+        "sy": 17.28,
+        "tx": -145.92000000000007,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 1.25,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 2400,
+        "height": 2160,
+        "sx": 18.75,
+        "sy": 18.75,
+        "tx": 0,
+        "ty": 142.5
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 1.25,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 2400,
+        "height": 2160,
+        "sx": 21.6,
+        "sy": 21.6,
+        "tx": -182.4000000000001,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 1.5,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 2880,
+        "height": 2592,
+        "sx": 22.5,
+        "sy": 22.5,
+        "tx": 0,
+        "ty": 171
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 1.5,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 2880,
+        "height": 2592,
+        "sx": 25.919999999999998,
+        "sy": 25.919999999999998,
+        "tx": -218.8800000000001,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 2,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 3840,
+        "height": 3456,
+        "sx": 30,
+        "sy": 30,
+        "tx": 0,
+        "ty": 228
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 2,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 3840,
+        "height": 3456,
+        "sx": 34.56,
+        "sy": 34.56,
+        "tx": -291.84000000000015,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 3,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 5760,
+        "height": 5184,
+        "sx": 45,
+        "sy": 45,
+        "tx": 0,
+        "ty": 342
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1920,
+          1728
+        ],
+        "density": 3,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 5760,
+        "height": 5184,
+        "sx": 51.839999999999996,
+        "sy": 51.839999999999996,
+        "tx": -437.7600000000002,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 1,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1440,
+        "height": 800,
+        "sx": 8,
+        "sy": 8,
+        "tx": 208,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 1,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1440,
+        "height": 800,
+        "sx": 11.25,
+        "sy": 11.25,
+        "tx": 0,
+        "ty": -162.5
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 1.25,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1800,
+        "height": 1000,
+        "sx": 10,
+        "sy": 10,
+        "tx": 260,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 1.25,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1800,
+        "height": 1000,
+        "sx": 14.0625,
+        "sy": 14.0625,
+        "tx": 0,
+        "ty": -203.125
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 1.5,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 2160,
+        "height": 1200,
+        "sx": 12,
+        "sy": 12,
+        "tx": 312,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 1.5,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 2160,
+        "height": 1200,
+        "sx": 16.875,
+        "sy": 16.875,
+        "tx": 0,
+        "ty": -243.75
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 2,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 2880,
+        "height": 1600,
+        "sx": 16,
+        "sy": 16,
+        "tx": 416,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 2,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 2880,
+        "height": 1600,
+        "sx": 22.5,
+        "sy": 22.5,
+        "tx": 0,
+        "ty": -325
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 3,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 4320,
+        "height": 2400,
+        "sx": 24,
+        "sy": 24,
+        "tx": 624,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          1440,
+          800
+        ],
+        "density": 3,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 4320,
+        "height": 2400,
+        "sx": 33.75,
+        "sy": 33.75,
+        "tx": 0,
+        "ty": -487.5
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 1,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 414,
+        "height": 800,
+        "sx": 3.234375,
+        "sy": 3.234375,
+        "tx": 0,
+        "ty": 238.28125
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 1,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 414,
+        "height": 800,
+        "sx": 8,
+        "sy": 8,
+        "tx": -305,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 1.25,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 517,
+        "height": 1000,
+        "sx": 4.04296875,
+        "sy": 4.04296875,
+        "tx": 0,
+        "ty": 297.8515625
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 1.25,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 517,
+        "height": 1000,
+        "sx": 10,
+        "sy": 10,
+        "tx": -381.25,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 1.5,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 621,
+        "height": 1200,
+        "sx": 4.8515625,
+        "sy": 4.8515625,
+        "tx": 0,
+        "ty": 357.421875
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 1.5,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 621,
+        "height": 1200,
+        "sx": 12,
+        "sy": 12,
+        "tx": -457.5,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 2,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 828,
+        "height": 1600,
+        "sx": 6.46875,
+        "sy": 6.46875,
+        "tx": 0,
+        "ty": 476.5625
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 2,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 828,
+        "height": 1600,
+        "sx": 16,
+        "sy": 16,
+        "tx": -610,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 3,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1242,
+        "height": 2400,
+        "sx": 9.703125,
+        "sy": 9.703125,
+        "tx": 0,
+        "ty": 714.84375
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          414,
+          800
+        ],
+        "density": 3,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1242,
+        "height": 2400,
+        "sx": 24,
+        "sy": 24,
+        "tx": -915,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 1,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 980,
+        "height": 882,
+        "sx": 7.65625,
+        "sy": 7.65625,
+        "tx": 0,
+        "ty": 58.1875
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 1,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 980,
+        "height": 882,
+        "sx": 8.82,
+        "sy": 8.82,
+        "tx": -74.48000000000002,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 1.25,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1225,
+        "height": 1102,
+        "sx": 9.5703125,
+        "sy": 9.5703125,
+        "tx": 0,
+        "ty": 72.734375
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 1.25,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1225,
+        "height": 1102,
+        "sx": 11.025,
+        "sy": 11.025,
+        "tx": -93.10000000000002,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 1.5,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1470,
+        "height": 1323,
+        "sx": 11.484375,
+        "sy": 11.484375,
+        "tx": 0,
+        "ty": 87.28125
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 1.5,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1470,
+        "height": 1323,
+        "sx": 13.229999999999999,
+        "sy": 13.229999999999999,
+        "tx": -111.72000000000003,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 2,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1960,
+        "height": 1764,
+        "sx": 15.3125,
+        "sy": 15.3125,
+        "tx": 0,
+        "ty": 116.375
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 2,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1960,
+        "height": 1764,
+        "sx": 17.64,
+        "sy": 17.64,
+        "tx": -148.96000000000004,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 3,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 2940,
+        "height": 2646,
+        "sx": 22.96875,
+        "sy": 22.96875,
+        "tx": 0,
+        "ty": 174.5625
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          980,
+          882
+        ],
+        "density": 3,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 2940,
+        "height": 2646,
+        "sx": 26.459999999999997,
+        "sy": 26.459999999999997,
+        "tx": -223.44000000000005,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 1,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 281,
+        "height": 127,
+        "sx": 1.27,
+        "sy": 1.27,
+        "tx": 59.22,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 1,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 281,
+        "height": 127,
+        "sx": 2.1953125,
+        "sy": 2.1953125,
+        "tx": 0,
+        "ty": -46.265625
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 1.25,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 351,
+        "height": 158,
+        "sx": 1.5875,
+        "sy": 1.5875,
+        "tx": 74.025,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 1.25,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 351,
+        "height": 158,
+        "sx": 2.744140625,
+        "sy": 2.744140625,
+        "tx": 0,
+        "ty": -57.83203125
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 1.5,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 421,
+        "height": 190,
+        "sx": 1.9049999999999998,
+        "sy": 1.9049999999999998,
+        "tx": 88.83,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 1.5,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 421,
+        "height": 190,
+        "sx": 3.29296875,
+        "sy": 3.29296875,
+        "tx": 0,
+        "ty": -69.3984375
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 2,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 562,
+        "height": 254,
+        "sx": 2.54,
+        "sy": 2.54,
+        "tx": 118.44,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 2,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 562,
+        "height": 254,
+        "sx": 4.390625,
+        "sy": 4.390625,
+        "tx": 0,
+        "ty": -92.53125
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 3,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 843,
+        "height": 381,
+        "sx": 3.8099999999999996,
+        "sy": 3.8099999999999996,
+        "tx": 177.66,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          281,
+          127
+        ],
+        "density": 3,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 843,
+        "height": 381,
+        "sx": 6.5859375,
+        "sy": 6.5859375,
+        "tx": 0,
+        "ty": -138.796875
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 1,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 800,
+        "height": 800,
+        "sx": 6.25,
+        "sy": 6.25,
+        "tx": 0,
+        "ty": 87.5
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 1,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 800,
+        "height": 800,
+        "sx": 8,
+        "sy": 8,
+        "tx": -112,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 1.25,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1000,
+        "height": 1000,
+        "sx": 7.8125,
+        "sy": 7.8125,
+        "tx": 0,
+        "ty": 109.375
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 1.25,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1000,
+        "height": 1000,
+        "sx": 10,
+        "sy": 10,
+        "tx": -140,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 1.5,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1200,
+        "height": 1200,
+        "sx": 9.375,
+        "sy": 9.375,
+        "tx": 0,
+        "ty": 131.25
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 1.5,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1200,
+        "height": 1200,
+        "sx": 12,
+        "sy": 12,
+        "tx": -168,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 2,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 1600,
+        "height": 1600,
+        "sx": 12.5,
+        "sy": 12.5,
+        "tx": 0,
+        "ty": 175
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 2,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 1600,
+        "height": 1600,
+        "sx": 16,
+        "sy": 16,
+        "tx": -224,
+        "ty": 0
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 3,
+        "fit": "meet"
+      },
+      "output": {
+        "width": 2400,
+        "height": 2400,
+        "sx": 18.75,
+        "sy": 18.75,
+        "tx": 0,
+        "ty": 262.5
+      }
+    },
+    {
+      "input": {
+        "intrinsic": [
+          128,
+          100
+        ],
+        "wrapper": [
+          800,
+          800
+        ],
+        "density": 3,
+        "fit": "slice"
+      },
+      "output": {
+        "width": 2400,
+        "height": 2400,
+        "sx": 24,
+        "sy": 24,
+        "tx": -336,
+        "ty": 0
+      }
+    }
+  ]
+}

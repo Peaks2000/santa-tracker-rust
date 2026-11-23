@@ -32,6 +32,7 @@ struct AnimatedTexture<'a> {
     last_frame: f32,
     width: u32,
     height: u32,
+    matrix: [f64; 4],
 }
 pub struct Village<'a> {
     engine: &'a Thorvg,
@@ -295,6 +296,7 @@ impl<'a> Village<'a> {
                             last_frame: -1.,
                             width: 0,
                             height: 0,
+                            matrix: [f64::NAN; 4],
                         },
                     );
                 }
@@ -311,14 +313,26 @@ impl<'a> Village<'a> {
         } else {
             (self.time / anim.clip.duration).fract() * anim.clip.frames
         };
-        let width = r.w.ceil().clamp(1., 1920.) as u32;
-        let height = r.h.ceil().clamp(1., 1920.) as u32;
+        // Source Lottie uses wrapper.offsetWidth/Height and truncates canvas
+        // attributes after multiplying DPR. Keep these metrics separate.
+        let logical = [r.w.round().max(1.) as f64, r.h.round().max(1.) as f64];
+        let density = (screen_dpi_scale() as f64).min(4096. / logical[0].max(logical[1]));
+        let fit = santa_tracker::lottie_layout::Fit::for_village_asset(key);
+        let layout = santa_tracker::lottie_layout::layout(
+            [anim.clip.intrinsic.0 as f64, anim.clip.intrinsic.1 as f64],
+            logical,
+            density,
+            fit,
+        );
+        let (width, height) = (layout.width, layout.height);
+        let matrix = [layout.sx, layout.sy, layout.tx, layout.ty];
         if (anim.last_frame - frame).abs() >= 0.001
             || anim.width != width
             || anim.height != height
+            || anim.matrix != matrix
             || anim.texture.is_none()
         {
-            match anim.clip.rasterize(width, height, frame) {
+            match anim.clip.rasterize_layout(&layout, frame) {
                 Ok(bytes) => {
                     if anim.width != width || anim.height != height || anim.texture.is_none() {
                         let t = Texture2D::from_rgba8(width as u16, height as u16, &bytes);
@@ -334,6 +348,7 @@ impl<'a> Village<'a> {
                     anim.width = width;
                     anim.height = height;
                     anim.last_frame = frame;
+                    anim.matrix = matrix;
                 }
                 Err(error) => {
                     eprintln!("{key}: {error}");
