@@ -27,13 +27,32 @@ use std::collections::{HashMap, HashSet};
 use thorvg::Thorvg;
 
 struct ModuleClock {
-    state: santa_tracker::module_playback::State,
+    loading: santa_tracker::module_playback::Loading,
     ratio: Option<f64>,
     seen: bool,
 }
 impl ModuleClock {
+    fn new(
+        kind: santa_tracker::module_playback::Kind,
+        timing: santa_tracker::module_playback::Timing,
+        ratio: Option<f64>,
+    ) -> Self {
+        let mut loading = santa_tracker::module_playback::Loading::new(kind);
+        // Original shouldUpdate sends the ratio before asynchronous configAnimation.
+        loading.state.ratio(ratio);
+        // Native decode is synchronous. Preserve that initial raw frame and play state.
+        loading.configure(timing, true, true);
+        Self {
+            loading,
+            ratio,
+            seen: false,
+        }
+    }
     fn begin(&mut self, delta_ms: f64) {
-        self.state.advance(delta_ms);
+        // Explicit native frame delivery; browser task/RAF timing is not emulated.
+        self.loading.dom_task();
+        self.loading.resize_task();
+        self.loading.state.advance(delta_ms);
         self.seen = false;
     }
     fn show(&mut self, ratio: f64) {
@@ -47,7 +66,7 @@ impl ModuleClock {
     }
     fn ratio(&mut self, value: Option<f64>) {
         if value != self.ratio {
-            self.state.ratio(value);
+            self.loading.state.ratio(value);
             self.ratio = value;
         }
     }
@@ -316,18 +335,15 @@ impl<'a> Village<'a> {
             let path = assets.root.join(key);
             let module = if key.starts_with("scenes/modvil/img/modules/") {
                 match santa_tracker::module_playback::Timing::from_file(&path) {
-                    Ok(timing) => Some(ModuleClock {
-                        state: santa_tracker::module_playback::State::new(
-                            if ratio.is_some() {
-                                santa_tracker::module_playback::Kind::Scroll
-                            } else {
-                                santa_tracker::module_playback::Kind::Loop
-                            },
-                            timing,
-                        ),
-                        ratio: None,
-                        seen: false,
-                    }),
+                    Ok(timing) => Some(ModuleClock::new(
+                        if ratio.is_some() {
+                            santa_tracker::module_playback::Kind::Scroll
+                        } else {
+                            santa_tracker::module_playback::Kind::Loop
+                        },
+                        timing,
+                        Some(ratio.unwrap_or(0.)),
+                    )),
                     Err(error) => {
                         eprintln!("{key}: {error}");
                         self.failed.insert(key.into());
@@ -362,7 +378,7 @@ impl<'a> Village<'a> {
         let anim = self.animations.get_mut(key).unwrap();
         let frame = if let Some(module) = &mut anim.module {
             module.show(ratio.unwrap_or(0.));
-            module.state.frame as f32
+            module.loading.state.frame as f32
         } else if let Some(ratio) = ratio {
             (ratio as f32).clamp(0., 1.) * (anim.clip.frames - 0.001)
         } else {
@@ -1471,31 +1487,28 @@ mod module_clock_tests {
     use super::*;
     #[test]
     fn visible_frame_pipeline_retains_offscreen_phase_and_starts_new_parts_at_zero() {
-        use santa_tracker::module_playback::{Kind, State, Timing};
-        let mut clock = ModuleClock {
-            state: State::new(
-                Kind::Loop,
-                Timing {
-                    frames: 16.,
-                    frame_rate: 16.,
-                    first_frame: 0.,
-                },
-            ),
-            ratio: None,
-            seen: false,
-        };
+        use santa_tracker::module_playback::{Kind, Timing};
+        let mut clock = ModuleClock::new(
+            Kind::Loop,
+            Timing {
+                frames: 16.,
+                frame_rate: 16.,
+                first_frame: 0.,
+            },
+            None,
+        );
         clock.begin(12345.);
         clock.show(0.);
         clock.end();
-        assert_eq!(clock.state.frame, 0.);
+        assert_eq!(clock.loading.state.frame, 0.);
         clock.begin(100.);
         clock.show(0.);
         clock.end();
-        assert_eq!(clock.state.frame, 1.6);
+        assert_eq!(clock.loading.state.frame, 1.6);
         clock.begin(100.);
         clock.end();
-        assert_eq!(clock.state.frame, 3.2);
-        assert!(clock.state.paused);
+        assert_eq!(clock.loading.state.frame, 3.2);
+        assert!(clock.loading.state.paused);
         for _ in 0..10 {
             clock.begin(1000.);
             clock.end();
@@ -1503,10 +1516,33 @@ mod module_clock_tests {
         clock.begin(1000.);
         clock.show(0.);
         clock.end();
-        assert_eq!(clock.state.frame, 3.2);
+        assert_eq!(clock.loading.state.frame, 3.2);
         clock.begin(100.);
         clock.show(0.);
         clock.end();
-        assert!((clock.state.frame - 4.8).abs() < 1e-12);
+        assert!((clock.loading.state.frame - 4.8).abs() < 1e-12);
+    }
+    #[test]
+    fn initial_scroll_ratio_is_not_replayed_after_configuration() {
+        use santa_tracker::module_playback::{Kind, Timing};
+        let mut clock = ModuleClock::new(
+            Kind::Scroll,
+            Timing {
+                frames: 100.,
+                frame_rate: 24.,
+                first_frame: 0.,
+            },
+            Some(0.75),
+        );
+        assert!(clock.loading.state.loaded);
+        assert_eq!(clock.loading.state.frame, 0.);
+        clock.begin(100.);
+        clock.show(0.75);
+        clock.end();
+        assert_eq!(clock.loading.state.frame, 0.);
+        clock.begin(100.);
+        clock.show(0.8);
+        clock.end();
+        assert_eq!(clock.loading.state.frame, 80.);
     }
 }

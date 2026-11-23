@@ -1465,3 +1465,23 @@ reconciliation still pending. Frame events modeled but SOUND DISPATCH UNWIRED.
 Hero global/CSS time unchanged. ThorVG final frame-.001 clamp and tiny-update
 threshold remain; nonzero-ip binding unverified (all20active modules ip0).
 Keep high-DPI CPU cost/4096cap/edge errors explicit; no whole-mode1:1 claim.
+
+
+### Village initial ratio/configuration NOW corrected (23 November 2026)
+
+Supersedes NEXT initial-seek gap above. ModuleClock now uses Loading pending
+metadata and applies initial ratio before configure; scroll retains raw0 until
+ratio property changes, loop play survives config. No duplicate ratio replay.
+Logical font/image/DOM/safe-resize readiness matches actual original methods:
+module-loading-reference.json72seq/1800actions, three timings including negative
+half/nonzero ip. No source patch; readiness/backend/task-delivery stubs explicit
+in fixture/coverage. Native initial.75→config→same.75 stays0; changed.8 seeks80.
+All159tests143lib+16app pass; release app compiles; no windows/devices opened.
+
+NEXT: source loading opacity .125s, actual asynchronous asset delivery/task/RAF
+interleaving, persistent component cache reconciliation and frame sound dispatch.
+Native still decodes synchronously, assumes fonts/images ready after native
+load, drains logical DOM/resize on next home frame; actual resize uses draw
+metrics. Don't claim browser scheduling or whole-mode1:1. ThorVG endpoint clamp,
+DPI4096cap, clipped-edge differences and CPU2x cost remain. While user plays,
+continue only source/CPU/saved-capture work: no launch/focus/GPU/audio/input.

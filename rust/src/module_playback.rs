@@ -1,5 +1,5 @@
 //! Selected original modvil module ratio callbacks + Lottie AnimationItem clock.
-//! Fully loaded, forward, subframe-enabled boolean loops; no queued segments.
+//! Pending/ready lifecycle and subframe-enabled boolean loops; no queued segments.
 use serde::{Deserialize, Serialize};
 #[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "lowercase")]
@@ -27,14 +27,29 @@ impl Timing {
         if d.segments.is_some_and(|v| !v.is_empty()) {
             return Err("Queued animation segments require source lifecycle support".into());
         }
-        let frames = (d.op - d.ip).floor();
-        if frames <= 0. || d.fr <= 0. {
+        Self::from_data(d.ip, d.op, d.fr)
+    }
+    pub fn from_data(ip: f64, op: f64, frame_rate: f64) -> Result<Self, String> {
+        let frames = (op - ip).floor();
+        if frames <= 0.
+            || frame_rate <= 0.
+            || !frames.is_finite()
+            || !frame_rate.is_finite()
+            || !ip.is_finite()
+        {
             return Err("Invalid module timing".into());
         }
+        let floor = ip.floor();
+        let rounded = if ip - floor >= 0.5 { floor + 1. } else { floor };
+        let first_frame = if rounded == 0. {
+            0f64.copysign(ip)
+        } else {
+            rounded
+        };
         Ok(Self {
             frames,
-            frame_rate: d.fr,
-            first_frame: d.ip.round(),
+            frame_rate,
+            first_frame,
         })
     }
 }
@@ -59,6 +74,15 @@ pub enum Event {
     Render { frame: f64 },
     LoopComplete,
     Complete,
+    ConfigReady,
+    DataReady,
+    LoadedImages,
+    InitItems,
+    DomScheduled,
+    DomLoaded,
+    FontScheduled,
+    ResizeScheduled,
+    Resize,
 }
 impl State {
     pub fn new(kind: Kind, timing: Timing) -> Self {
@@ -73,6 +97,18 @@ impl State {
             play_count: 0,
             completed_loop: false,
         }
+    }
+    pub fn pending(kind: Kind) -> Self {
+        let mut state = Self::new(
+            kind,
+            Timing {
+                frames: 0.,
+                frame_rate: 0.,
+                first_frame: 0.,
+            },
+        );
+        state.loaded = false;
+        state
     }
     fn set_raw(&mut self, raw: f64, events: &mut Vec<Event>) {
         self.raw = raw;
@@ -179,6 +215,98 @@ impl State {
         events
     }
 }
+/// Logical JSON/image/font/DOM readiness. Callback delivery is explicit; this
+/// does not run a browser task scheduler or decode assets.
+#[derive(Debug, Serialize)]
+pub struct Loading {
+    pub state: State,
+    pub configured: bool,
+    pub images_ready: bool,
+    pub fonts_ready: bool,
+    pub dom_pending: bool,
+    pub dom_loaded: bool,
+    pub font_pending: u64,
+    pub resize_pending: bool,
+}
+impl Loading {
+    pub fn new(kind: Kind) -> Self {
+        Self {
+            state: State::pending(kind),
+            configured: false,
+            images_ready: false,
+            fonts_ready: true,
+            dom_pending: false,
+            dom_loaded: false,
+            font_pending: 0,
+            resize_pending: false,
+        }
+    }
+    pub fn configure(&mut self, timing: Timing, images: bool, fonts: bool) -> Vec<Event> {
+        self.state.timing = timing;
+        self.configured = true;
+        self.images_ready = images;
+        self.fonts_ready = fonts;
+        let mut events = vec![Event::ConfigReady, Event::DataReady];
+        events.extend(self.wait_fonts());
+        events
+    }
+    fn wait_fonts(&mut self) -> Vec<Event> {
+        if self.fonts_ready {
+            self.check()
+        } else {
+            self.font_pending += 1;
+            vec![Event::FontScheduled]
+        }
+    }
+    pub fn font_task(&mut self) -> Vec<Event> {
+        if self.font_pending == 0 {
+            return vec![];
+        }
+        self.font_pending -= 1;
+        self.wait_fonts()
+    }
+    pub fn images(&mut self, ready: bool) -> Vec<Event> {
+        self.images_ready = ready;
+        let mut events = vec![Event::LoadedImages];
+        events.extend(self.check());
+        events
+    }
+    pub fn check(&mut self) -> Vec<Event> {
+        if !self.configured || self.state.loaded || !self.images_ready || !self.fonts_ready {
+            return vec![];
+        }
+        self.state.loaded = true;
+        self.dom_pending = true;
+        let mut events = vec![Event::InitItems, Event::DomScheduled];
+        self.state.set_raw(self.state.raw, &mut events);
+        events
+    }
+    pub fn dom_task(&mut self) -> Vec<Event> {
+        if !self.dom_pending {
+            return vec![];
+        }
+        self.dom_pending = false;
+        self.dom_loaded = true;
+        let mut events = vec![Event::DomLoaded];
+        events.extend(self.request_resize());
+        events
+    }
+    pub fn request_resize(&mut self) -> Vec<Event> {
+        if !self.configured || self.resize_pending {
+            return vec![];
+        }
+        self.resize_pending = true;
+        vec![Event::ResizeScheduled]
+    }
+    pub fn resize_task(&mut self) -> Vec<Event> {
+        if !self.resize_pending {
+            return vec![];
+        }
+        self.resize_pending = false;
+        vec![Event::Resize]
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -191,6 +319,51 @@ mod tests {
                 a.len() == b.len() && a.iter().all(|(k, v)| b.get(k).is_some_and(|b| equal(v, b)))
             }
             _ => a == b,
+        }
+    }
+    #[test]
+    fn original_loading_callbacks_and_readiness_match() {
+        let fixture: serde_json::Value =
+            serde_json::from_str(include_str!("../data/module-loading-reference.json")).unwrap();
+        for case in fixture["cases"].as_array().unwrap() {
+            let mut loading = Loading::new(serde_json::from_value(case["kind"].clone()).unwrap());
+            let metadata = &case["metadata"];
+            for (index, action) in case["actions"].as_array().unwrap().iter().enumerate() {
+                let events = match action["type"].as_str().unwrap() {
+                    "configure" => loading.configure(
+                        Timing::from_data(
+                            metadata["ip"].as_f64().unwrap(),
+                            metadata["op"].as_f64().unwrap(),
+                            metadata["fr"].as_f64().unwrap(),
+                        )
+                        .unwrap(),
+                        action["images"].as_bool().unwrap(),
+                        action["fonts"].as_bool().unwrap(),
+                    ),
+                    "ratio" => loading.state.ratio(action["value"].as_f64()),
+                    "advance" => loading.state.advance(action["ms"].as_f64().unwrap()),
+                    "images" => loading.images(action["value"].as_bool().unwrap()),
+                    "fonts" => {
+                        loading.fonts_ready = action["value"].as_bool().unwrap();
+                        vec![]
+                    }
+                    "check" => loading.check(),
+                    "font_task" => loading.font_task(),
+                    "dom_task" => loading.dom_task(),
+                    "request_resize" => loading.request_resize(),
+                    "resize_task" => loading.resize_task(),
+                    "play" => loading.state.play(),
+                    "pause" => loading.state.pause(),
+                    other => panic!("{other}"),
+                };
+                let actual = serde_json::json!({"state":loading,"events":events});
+                assert!(
+                    equal(&actual, &case["outputs"][index]),
+                    "{} step{index} {action}: {actual} != {}",
+                    case["name"],
+                    case["outputs"][index]
+                );
+            }
         }
     }
     #[test]

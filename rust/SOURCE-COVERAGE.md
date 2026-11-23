@@ -3750,3 +3750,47 @@ resolve CPU high-density cost,4096cap or known clipped-edge pixel differences.
 
 All157tests pass142lib+15app; release app/audit compile. No window, device, GPU,
 audible sound or input automation while user plays. No mode rating upgraded.
+
+
+### Village initial metadata/readiness follow-up (23 November 2026)
+
+Supersedes the previous initial-scroll/configuration gap, not the remaining
+browser scheduling/opacity/render limitations. Re-read complete selected
+AnimationItem configAnimation, preloadImages, loadSegments/loadNextSegment,
+updaFrameModifier, waitForFontsLoaded, imagesLoaded, checkLoaded, resize,
+gotoFrame/renderFrame and the complete module _loadPart/shouldUpdate paths and
+shared buildSafeResize wrapper. Source c.ratio executes immediately after part
+creation, before asynchronous JSON config: getDuration(true) is initially0.
+checkLoaded renders that retained raw0 and does not reapply the scroll ratio.
+Native ModuleClock now applies its initial ratio while metadata is pending,
+configures without replaying it, then suppresses duplicate property ratios.
+A changed ratio seeks normally; loop play requests survive configuration.
+
+module_playback::Loading expresses pending metadata, font/image readiness,
+config/data/loaded-images events, renderer-init/enter/render ordering, explicit
+DOM task delivery, font polling and safe-resize RAF deduplication. Timing reader
+now matches Math.round negative half ties (including signed0), unlike Rust round.
+Original actual methods run unmodified in module-loading-reference.cjs:
+72sequences/1800actions, loop+scroll, three metadata sets including synthetic
+negative/nonzero ip, ratios0/.75/1, immediate/image/font/both readiness,
+font rescheduling, duplicate readiness, DOM task, before-config resize,
+resize deduplication/delivery, hidden/visible changes and advances. Full native
+state and ordered event records match within1e-10. Existing20asset metadata and
+60sequence clock checks still pass. Native pipeline regression specifically
+checks initial .75 stays0 after config and unchanged ratio, then .8 seeks80.
+
+Harness boundaries: initial engine constructor defaults supplied; image/font
+backend readiness are input flags, timer/RAF queues delivered by explicit test
+actions. Renderer/dataManager are call recorders, not pixel/asset decoding
+or expression evaluation. SVG/autoplay/queued-segment paths are inactive for
+selected module options/assets and not certified. No transport failures,
+destruction/reentrant event-listener effects or whole browser scheduling claim.
+Native decode remains synchronous; fonts/images are considered ready after
+native load. DOM and resize logical tasks drain at next home frame, not a
+browser-equivalent scheduler. The .125s loading opacity is still missing;
+actual native resize uses draw dimensions. Sound dispatch, retained-node type
+reconciliation, route lifetime, RAF/scroll interleaving, final-frame pixels and
+high-DPI CPU cost remain as previously recorded. No clarity/smoothness claim
+from these lifecycle tests alone. All159tests pass143lib+16app; release app
+compiles. No app/window/browser/GPU/audio-device/input automation; user game
+remains undisturbed. README categories and user feedback unchanged.
