@@ -1,0 +1,215 @@
+{
+  "method": "Analytic source-over coverage algebra at 25 coverage pairs using opacity read from original CSS. This is a design/compositing calculation, NOT execution of native renderer, browser, GPU or font rasterization. Previous per-layer opacity and default font-alpha blending formulas follow inspected native/Macroquad blend configuration.",
+  "source_sha256": {
+    "static/scenes/jetpack/sass/_background.scss": "3d13693101e66cfcb643c15ad22cbec83fe81292750463ee13a1cd6104e88385",
+    "static/scenes/jetpack/js/background.js": "f88e0970a22ca92ea3c93ed6d1abc724e7dd3f6d19ba958d10dc5b3754f56af4",
+    "static/scenes/jetpack/index.html": "8e98096813a96d2a5b09c451d1b06ed819593aaaee30cda04fa4b781f2a216c8"
+  },
+  "opacity": 0.3,
+  "samples": [
+    {
+      "cloud_coverage": 0,
+      "glyph_coverage": 0,
+      "group_opacity_alpha": 0.0,
+      "previous_separate_opacity_alpha": 0.0,
+      "default_font_alpha_over_cloud": 0,
+      "correct_font_alpha_over_cloud": 0
+    },
+    {
+      "cloud_coverage": 0,
+      "glyph_coverage": 0.25,
+      "group_opacity_alpha": 0.075,
+      "previous_separate_opacity_alpha": 0.075,
+      "default_font_alpha_over_cloud": 0.0625,
+      "correct_font_alpha_over_cloud": 0.25
+    },
+    {
+      "cloud_coverage": 0,
+      "glyph_coverage": 0.5,
+      "group_opacity_alpha": 0.15,
+      "previous_separate_opacity_alpha": 0.15,
+      "default_font_alpha_over_cloud": 0.25,
+      "correct_font_alpha_over_cloud": 0.5
+    },
+    {
+      "cloud_coverage": 0,
+      "glyph_coverage": 0.75,
+      "group_opacity_alpha": 0.22499999999999998,
+      "previous_separate_opacity_alpha": 0.22499999999999998,
+      "default_font_alpha_over_cloud": 0.5625,
+      "correct_font_alpha_over_cloud": 0.75
+    },
+    {
+      "cloud_coverage": 0,
+      "glyph_coverage": 1,
+      "group_opacity_alpha": 0.3,
+      "previous_separate_opacity_alpha": 0.3,
+      "default_font_alpha_over_cloud": 1,
+      "correct_font_alpha_over_cloud": 1
+    },
+    {
+      "cloud_coverage": 0.25,
+      "glyph_coverage": 0,
+      "group_opacity_alpha": 0.075,
+      "previous_separate_opacity_alpha": 0.075,
+      "default_font_alpha_over_cloud": 0.25,
+      "correct_font_alpha_over_cloud": 0.25
+    },
+    {
+      "cloud_coverage": 0.25,
+      "glyph_coverage": 0.25,
+      "group_opacity_alpha": 0.13125,
+      "previous_separate_opacity_alpha": 0.144375,
+      "default_font_alpha_over_cloud": 0.25,
+      "correct_font_alpha_over_cloud": 0.4375
+    },
+    {
+      "cloud_coverage": 0.25,
+      "glyph_coverage": 0.5,
+      "group_opacity_alpha": 0.1875,
+      "previous_separate_opacity_alpha": 0.21375,
+      "default_font_alpha_over_cloud": 0.375,
+      "correct_font_alpha_over_cloud": 0.625
+    },
+    {
+      "cloud_coverage": 0.25,
+      "glyph_coverage": 0.75,
+      "group_opacity_alpha": 0.24375,
+      "previous_separate_opacity_alpha": 0.28312499999999996,
+      "default_font_alpha_over_cloud": 0.625,
+      "correct_font_alpha_over_cloud": 0.8125
+    },
+    {
+      "cloud_coverage": 0.25,
+      "glyph_coverage": 1,
+      "group_opacity_alpha": 0.3,
+      "previous_separate_opacity_alpha": 0.3525,
+      "default_font_alpha_over_cloud": 1.0,
+      "correct_font_alpha_over_cloud": 1.0
+    },
+    {
+      "cloud_coverage": 0.5,
+      "glyph_coverage": 0,
+      "group_opacity_alpha": 0.15,
+      "previous_separate_opacity_alpha": 0.15,
+      "default_font_alpha_over_cloud": 0.5,
+      "correct_font_alpha_over_cloud": 0.5
+    },
+    {
+      "cloud_coverage": 0.5,
+      "glyph_coverage": 0.25,
+      "group_opacity_alpha": 0.1875,
+      "previous_separate_opacity_alpha": 0.21375,
+      "default_font_alpha_over_cloud": 0.4375,
+      "correct_font_alpha_over_cloud": 0.625
+    },
+    {
+      "cloud_coverage": 0.5,
+      "glyph_coverage": 0.5,
+      "group_opacity_alpha": 0.22499999999999998,
+      "previous_separate_opacity_alpha": 0.27749999999999997,
+      "default_font_alpha_over_cloud": 0.5,
+      "correct_font_alpha_over_cloud": 0.75
+    },
+    {
+      "cloud_coverage": 0.5,
+      "glyph_coverage": 0.75,
+      "group_opacity_alpha": 0.2625,
+      "previous_separate_opacity_alpha": 0.34124999999999994,
+      "default_font_alpha_over_cloud": 0.6875,
+      "correct_font_alpha_over_cloud": 0.875
+    },
+    {
+      "cloud_coverage": 0.5,
+      "glyph_coverage": 1,
+      "group_opacity_alpha": 0.3,
+      "previous_separate_opacity_alpha": 0.40499999999999997,
+      "default_font_alpha_over_cloud": 1.0,
+      "correct_font_alpha_over_cloud": 1.0
+    },
+    {
+      "cloud_coverage": 0.75,
+      "glyph_coverage": 0,
+      "group_opacity_alpha": 0.22499999999999998,
+      "previous_separate_opacity_alpha": 0.22499999999999998,
+      "default_font_alpha_over_cloud": 0.75,
+      "correct_font_alpha_over_cloud": 0.75
+    },
+    {
+      "cloud_coverage": 0.75,
+      "glyph_coverage": 0.25,
+      "group_opacity_alpha": 0.24375,
+      "previous_separate_opacity_alpha": 0.28312499999999996,
+      "default_font_alpha_over_cloud": 0.625,
+      "correct_font_alpha_over_cloud": 0.8125
+    },
+    {
+      "cloud_coverage": 0.75,
+      "glyph_coverage": 0.5,
+      "group_opacity_alpha": 0.2625,
+      "previous_separate_opacity_alpha": 0.34124999999999994,
+      "default_font_alpha_over_cloud": 0.625,
+      "correct_font_alpha_over_cloud": 0.875
+    },
+    {
+      "cloud_coverage": 0.75,
+      "glyph_coverage": 0.75,
+      "group_opacity_alpha": 0.28125,
+      "previous_separate_opacity_alpha": 0.3993749999999999,
+      "default_font_alpha_over_cloud": 0.75,
+      "correct_font_alpha_over_cloud": 0.9375
+    },
+    {
+      "cloud_coverage": 0.75,
+      "glyph_coverage": 1,
+      "group_opacity_alpha": 0.3,
+      "previous_separate_opacity_alpha": 0.45749999999999996,
+      "default_font_alpha_over_cloud": 1.0,
+      "correct_font_alpha_over_cloud": 1.0
+    },
+    {
+      "cloud_coverage": 1,
+      "glyph_coverage": 0,
+      "group_opacity_alpha": 0.3,
+      "previous_separate_opacity_alpha": 0.3,
+      "default_font_alpha_over_cloud": 1,
+      "correct_font_alpha_over_cloud": 1
+    },
+    {
+      "cloud_coverage": 1,
+      "glyph_coverage": 0.25,
+      "group_opacity_alpha": 0.3,
+      "previous_separate_opacity_alpha": 0.35250000000000004,
+      "default_font_alpha_over_cloud": 0.8125,
+      "correct_font_alpha_over_cloud": 1.0
+    },
+    {
+      "cloud_coverage": 1,
+      "glyph_coverage": 0.5,
+      "group_opacity_alpha": 0.3,
+      "previous_separate_opacity_alpha": 0.405,
+      "default_font_alpha_over_cloud": 0.75,
+      "correct_font_alpha_over_cloud": 1.0
+    },
+    {
+      "cloud_coverage": 1,
+      "glyph_coverage": 0.75,
+      "group_opacity_alpha": 0.3,
+      "previous_separate_opacity_alpha": 0.45749999999999996,
+      "default_font_alpha_over_cloud": 0.8125,
+      "correct_font_alpha_over_cloud": 1.0
+    },
+    {
+      "cloud_coverage": 1,
+      "glyph_coverage": 1,
+      "group_opacity_alpha": 0.3,
+      "previous_separate_opacity_alpha": 0.51,
+      "default_font_alpha_over_cloud": 1,
+      "correct_font_alpha_over_cloud": 1
+    }
+  ],
+  "limits": [
+    "No shader compilation/runtime/GPU validation occurred.",
+    "Does not verify line boxes, source font rasterization, browser computed layout, current/completed background layer visibility, target orientation or filtering/resampling."
+  ]
+}

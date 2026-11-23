@@ -1031,3 +1031,27 @@ Levelcloud/number group alpha and touchpad pending. Do not open windows or injec
 input/audio while user plays. All-mode 1:1 remains unachieved; keep ratings.
 
 Release app and Jetpack capture compile successfully; neither launched.
+
+### Jetpack level-cloud group opacity (23 November 2026)
+
+Supersedes separate cloud/number opacity implementation: LevelLayer caches full-
+opacity cloud+number into associated RGBA target, then opacity .3 once. Cache key
+viewport width/DPI/number; constructed only on key changes, moves as one texture.
+Retains prior native logical positions/font metrics, original assets and SVG
+raster density; targets allocate at display density. No live GPU verification.
+
+Font atlas is STRAIGHT white RGB + coverage. Default Macroquad blend squares
+source alpha into a transparent target. New straight_alpha_source_over_material
+uses color SRC_ALPHA/ONE_MINUS_SRC_ALPHA and alpha ONE/ONE_MINUS_SRC_ALPHA; font
+output target becomes associated RGBA. Existing premultiplied material remains
+unchanged for cloud and final group. Don't use premultiplied-input shader on a
+straight font atlas. Camera/material restored; cache texture flip follows existing
+render-target convention. Group analysis JSON is algebra, NOT pixel oracle.
+
+125 existing tests pass. NEXT: new GPU shader/target orientation/DPI/resampling/
+performance unverified; source line box/baseline/clipping and resting/completed
+background art still need full layout/capture comparison. Goal entrance, clocks/
+route lifecycle and mobile touchpad remain open. No interactive testing, windows,
+input or audio while user is playing. Do not upgrade mode/README ratings.
+
+Release app and Jetpack capture build pass; compiled only, neither launched.

@@ -310,6 +310,35 @@ void main(){vec4 c=texture2D(Texture,uv);gl_FragColor=vec4(c.rgb*tint.rgb*tint.a
     Ok(material)
 }
 
+/// Straight RGBA input (including the font atlas) into an associated-alpha
+/// offscreen surface. Default macroquad blending squares source alpha coverage.
+pub fn straight_alpha_source_over_material() -> Result<Material, String> {
+    load_material(
+        ShaderSource::Glsl {
+            vertex: r#"#version 100
+attribute vec3 position;attribute vec2 texcoord;attribute vec4 color0;uniform mat4 Model;uniform mat4 Projection;varying vec2 uv;varying vec4 tint;
+void main(){gl_Position=Projection*Model*vec4(position,1.0);uv=texcoord;tint=color0/255.0;}"#,
+            fragment: r#"#version 100
+precision highp float;varying vec2 uv;varying vec4 tint;uniform sampler2D Texture;
+void main(){gl_FragColor=texture2D(Texture,uv)*tint;}"#,
+        },
+        MaterialParams {
+            pipeline_params: PipelineParams {
+                color_blend: Some(BlendState::new(
+                    Equation::Add, BlendFactor::Value(BlendValue::SourceAlpha),
+                    BlendFactor::OneMinusValue(BlendValue::SourceAlpha),
+                )),
+                alpha_blend: Some(BlendState::new(
+                    Equation::Add, BlendFactor::One,
+                    BlendFactor::OneMinusValue(BlendValue::SourceAlpha),
+                )),
+                ..Default::default()
+            },
+            ..Default::default()
+        },
+    ).map_err(|e| e.to_string())
+}
+
 /// The native window is opaque, like the original page. Default sprite/font
 /// blending can lower destination alpha; don't let a desktop compositor or PNG
 /// reader apply that alpha to already-composited scene RGB a second time.

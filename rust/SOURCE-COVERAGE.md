@@ -2856,3 +2856,47 @@ also need full comparisons. Levelcloud group opacity, mobile touchpad and textur
 clarity across other scenes remain open. No interactive checks while user plays.
 
 Release app and Jetpack capture compile successfully; neither launched.
+
+## Elf Jetpack level-cloud group opacity (23 November 2026)
+
+Source `_background.scss` puts both the cloud background image and level-number
+text in one ::after element with opacity .3. Both source objects paint at their
+full own opacity before the containing element fades. Original own-scene JS,
+HTML/styles were read completely before the alpha pass; re-read background
+partial, Background methods and active native draw path for this change.
+
+Native previously faded each independently: two opaque overlapping pixels
+contribute .3 + .3*(1-.3) = .51 instead of source group .3. JetpackView now caches
+one transparent offscreen group per numeral, viewport width and display density.
+It draws the associated cloud and full-opacity white text into the group, then
+composites the result using the existing associated-image pipeline at opacity .3.
+Cache construction happens only on key change, not each animation frame; drawing
+translates the cached group. Target dimensions include the existing glyph/cloud
+bounds and one logical guard pixel; prior logical positions, text size, original
+art and SVG raster density are retained. Target is allocated at display density.
+Camera state/material are restored after construction; render-target texture is
+flipped vertically using the existing native render-to-texture convention.
+
+Important supporting path: Macroquad 0.4.16 font atlas stores white RGB with
+coverage alpha. Its default blending uses source-alpha for BOTH color and alpha,
+which squares glyph alpha on a transparent target. New local-view-owned
+straight_alpha_source_over_material uses SRC_ALPHA/ONE_MINUS_SRC_ALPHA for RGB
+and ONE/ONE_MINUS_SRC_ALPHA for alpha, yielding associated target data. Cloud
+and cached-layer use the existing premultiplied material unchanged. Default font
+and sky draws outside this group remain unchanged. This source trace follows
+actual locked text::cache_glyph/draw_text_ex and QuadGl pipeline configuration.
+
+`jetpack-level-group-analysis.json` records source hashes and 25 coverage pairs
+for the above compositing algebra. This is analysis, NOT a pixel oracle, shader
+execution or GPU/browser comparison. All existing 125 tests pass (111 lib +14
+app); application/capture compile checks pass. They do not execute this renderer.
+No new mirror-of-implementation pixel test was added. No graphics context/window/
+input/audio was created; user's running game remains untouched.
+
+Remaining verification: new shader runtime compilation, target orientation,
+DPI/resize and fractional translation/filtering, saved matched raster captures,
+frame performance, source normal line-box height/baseline/clipping and resting/
+completed-background art. Prior native geometry is retained, not certified as
+CSS layout. Full mode remains partial; existing user README category unchanged.
+
+Release app and Jetpack capture build pass; compiled only, neither launched.

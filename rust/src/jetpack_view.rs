@@ -8,16 +8,26 @@ use santa_tracker::{
 
 pub struct JetpackView {
     images: crate::ui_render::PremultipliedMaterial,
+    layer_text: Material,
+    level_layer: Option<LevelLayer>,
     font: Font,
     title: Font,
     touch: Option<Vec2>,
     fire: Transition<1>,
     last_time: f64,
 }
+struct LevelLayer {
+    key: (u32, u32, u32),
+    target: RenderTarget,
+    size: Vec2,
+    top: f32,
+}
 impl JetpackView {
     pub fn new() -> Result<Self, String> {
         Ok(Self {
             images: crate::ui_render::premultiplied_material()?,
+            layer_text: crate::ui_render::straight_alpha_source_over_material()?,
+            level_layer: None,
             font: load_ttf_font_from_bytes(include_bytes!(
                 "../assets/fonts/OpenSans-ExtraBold.ttf"
             ))
@@ -32,6 +42,89 @@ impl JetpackView {
     fn image(&self, texture: &Texture2D, x: f32, y: f32, tint: Color, params: DrawTextureParams) {
         gl_use_material(&self.images);
         draw_texture_ex(texture, x, y, tint, params);
+    }
+    fn level_layer(&mut self, assets: &Assets, level: u32, progress: f64) {
+        let viewport = screen_width();
+        let dpi = screen_dpi_scale();
+        let key = (viewport.to_bits(), dpi.to_bits(), level);
+        let (cloud_width, font_size) = if viewport >= 1025. {
+            (3000., 400.)
+        } else if viewport >= 661. {
+            (2000., 280.)
+        } else {
+            (1150., 160.)
+        };
+        if self
+            .level_layer
+            .as_ref()
+            .is_none_or(|layer| layer.key != key)
+        {
+            let cloud = assets.scene("jetpack", "levelclouds.svg");
+            let cloud_height = cloud_width * cloud.height() / cloud.width();
+            let text = level.to_string();
+            let metrics = measure_text(&text, Some(&self.title), font_size as u16, 1.);
+            // Guard the existing glyph/cloud bounds without moving either.
+            let top = (font_size - metrics.offset_y).min(0.).floor() - 1.;
+            let bottom = cloud_height
+                .max(font_size - metrics.offset_y + metrics.height)
+                .ceil()
+                + 1.;
+            let size = vec2(viewport, bottom - top);
+            let target = render_target((size.x * dpi).ceil() as u32, (size.y * dpi).ceil() as u32);
+            target.texture.set_filter(FilterMode::Linear);
+            push_camera_state();
+            let mut camera = Camera2D::from_display_rect(Rect::new(0., 0., size.x, size.y));
+            camera.render_target = Some(target.clone());
+            set_camera(&camera);
+            clear_background(BLANK);
+            self.image(
+                cloud,
+                (viewport - cloud_width) / 2.,
+                -top,
+                WHITE,
+                DrawTextureParams {
+                    dest_size: Some(vec2(cloud_width, cloud_height)),
+                    ..Default::default()
+                },
+            );
+            // Font atlas RGB is white, alpha is glyph coverage; use straight
+            // RGB blending plus source-over ALPHA into the associated target.
+            gl_use_material(&self.layer_text);
+            draw_text_ex(
+                &text,
+                (viewport - metrics.width) / 2.,
+                font_size - top,
+                TextParams {
+                    font: Some(&self.title),
+                    font_size: font_size as u16,
+                    color: WHITE,
+                    ..Default::default()
+                },
+            );
+            gl_use_default_material();
+            pop_camera_state();
+            self.level_layer = Some(LevelLayer {
+                key,
+                target,
+                size,
+                top,
+            });
+        }
+        let layer = self.level_layer.as_ref().unwrap();
+        let y = (-1. + progress as f32) * screen_height() * 2. + screen_height() * 1.5
+            - 0.75 * font_size;
+        // CSS opacity belongs to the entire ::after subtree, applied once.
+        self.image(
+            &layer.target.texture,
+            0.,
+            y + layer.top,
+            Color::new(1., 1., 1., 0.3),
+            DrawTextureParams {
+                dest_size: Some(layer.size),
+                flip_y: true,
+                ..Default::default()
+            },
+        );
     }
     pub fn draw_sky(background_level: u32, transition: Option<f64>) {
         let colors = [
@@ -106,54 +199,7 @@ impl JetpackView {
         gl_use_default_material();
         Self::draw_sky(game.background_level, game.transition);
         if let Some(progress) = game.transition {
-            let y = (-1. + progress as f32) * screen_height() * 2.;
-            let cloud = assets.scene("jetpack", "levelclouds.svg");
-            let w = if screen_width() >= 1025. {
-                3000.
-            } else if screen_width() >= 661. {
-                2000.
-            } else {
-                1150.
-            };
-            self.image(
-                cloud,
-                (screen_width() - w) / 2.,
-                y + screen_height() * 1.5
-                    - 0.75
-                        * if screen_width() > 1024. {
-                            400.
-                        } else if screen_width() > 660. {
-                            280.
-                        } else {
-                            160.
-                        },
-                Color::new(1., 1., 1., 0.3),
-                DrawTextureParams {
-                    dest_size: Some(vec2(w, w * cloud.height() / cloud.width())),
-                    ..Default::default()
-                },
-            );
-            let size = if screen_width() > 1024. {
-                400.
-            } else if screen_width() > 660. {
-                280.
-            } else {
-                160.
-            };
-            let text = (game.background_level + 2).to_string();
-            let width = measure_text(&text, Some(&self.title), size as u16, 1.).width;
-            gl_use_default_material();
-            draw_text_ex(
-                &text,
-                (screen_width() - width) / 2.,
-                y + screen_height() * 1.5 - 0.75 * size + size,
-                TextParams {
-                    font: Some(&self.title),
-                    font_size: size as u16,
-                    color: Color::new(1., 1., 1., 0.3),
-                    ..Default::default()
-                },
-            );
+            self.level_layer(assets, game.background_level + 2, progress);
         }
         // The goal and scene share z-index 2; the later scene paints above it.
         // CSS goal dimensions are viewport pixels, independent of scene scale.
