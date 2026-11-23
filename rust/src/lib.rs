@@ -170,3 +170,5 @@ pub mod raster_density;
 pub mod selfie_vector;
 pub mod selfie_face;
 pub mod lottie_layout;
+pub mod module_playback;
+pub mod module_viewport;

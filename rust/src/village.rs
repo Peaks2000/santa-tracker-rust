@@ -26,6 +26,32 @@ use santa_tracker::{
 use std::collections::{HashMap, HashSet};
 use thorvg::Thorvg;
 
+struct ModuleClock {
+    state: santa_tracker::module_playback::State,
+    ratio: Option<f64>,
+    seen: bool,
+}
+impl ModuleClock {
+    fn begin(&mut self, delta_ms: f64) {
+        self.state.advance(delta_ms);
+        self.seen = false;
+    }
+    fn show(&mut self, ratio: f64) {
+        self.seen = true;
+        self.ratio(Some(ratio));
+    }
+    fn end(&mut self) {
+        if !self.seen {
+            self.ratio(None);
+        }
+    }
+    fn ratio(&mut self, value: Option<f64>) {
+        if value != self.ratio {
+            self.state.ratio(value);
+            self.ratio = value;
+        }
+    }
+}
 struct AnimatedTexture<'a> {
     clip: Clip<'a>,
     texture: Option<Texture2D>,
@@ -33,6 +59,7 @@ struct AnimatedTexture<'a> {
     width: u32,
     height: u32,
     matrix: [f64; 4],
+    module: Option<ModuleClock>,
 }
 pub struct Village<'a> {
     engine: &'a Thorvg,
@@ -281,12 +308,36 @@ impl<'a> Village<'a> {
         }
         Some(assets.texture(key))
     }
-    fn animation(&mut self, assets: &Assets, key: &str, r: Rect, ratio: Option<f32>) {
+    fn animation(&mut self, assets: &Assets, key: &str, r: Rect, ratio: Option<f64>, paint: bool) {
         if self.failed.contains(key) {
             return;
         }
         if !self.animations.contains_key(key) {
-            match Clip::load(self.engine, &assets.root.join(key)) {
+            let path = assets.root.join(key);
+            let module = if key.starts_with("scenes/modvil/img/modules/") {
+                match santa_tracker::module_playback::Timing::from_file(&path) {
+                    Ok(timing) => Some(ModuleClock {
+                        state: santa_tracker::module_playback::State::new(
+                            if ratio.is_some() {
+                                santa_tracker::module_playback::Kind::Scroll
+                            } else {
+                                santa_tracker::module_playback::Kind::Loop
+                            },
+                            timing,
+                        ),
+                        ratio: None,
+                        seen: false,
+                    }),
+                    Err(error) => {
+                        eprintln!("{key}: {error}");
+                        self.failed.insert(key.into());
+                        return;
+                    }
+                }
+            } else {
+                None
+            };
+            match Clip::load(self.engine, &path) {
                 Ok(clip) => {
                     self.animations.insert(
                         key.into(),
@@ -297,6 +348,7 @@ impl<'a> Village<'a> {
                             width: 0,
                             height: 0,
                             matrix: [f64::NAN; 4],
+                            module,
                         },
                     );
                 }
@@ -308,11 +360,17 @@ impl<'a> Village<'a> {
             }
         }
         let anim = self.animations.get_mut(key).unwrap();
-        let frame = if let Some(ratio) = ratio {
-            ratio.clamp(0., 1.) * (anim.clip.frames - 0.001)
+        let frame = if let Some(module) = &mut anim.module {
+            module.show(ratio.unwrap_or(0.));
+            module.state.frame as f32
+        } else if let Some(ratio) = ratio {
+            (ratio as f32).clamp(0., 1.) * (anim.clip.frames - 0.001)
         } else {
             (self.time / anim.clip.duration).fract() * anim.clip.frames
         };
+        if !paint {
+            return;
+        }
         // Source Lottie uses wrapper.offsetWidth/Height and truncates canvas
         // attributes after multiplying DPR. Keep these metrics separate.
         let logical = [r.w.round().max(1.) as f64, r.h.round().max(1.) as f64];
@@ -994,7 +1052,7 @@ impl<'a> Village<'a> {
                 .player
                 .set(now, hover || now < state.auto_until, duration);
             let frame = state.player.frame(now, duration);
-            self.animation(assets, &animation, art, Some(frame));
+            self.animation(assets, &animation, art, Some(frame as f64), true);
         } else {
             let preferred = format!("img/scenes/{}_1x.png", card.id);
             let key = if assets.root.join(&preferred).is_file() {
@@ -1143,6 +1201,15 @@ impl<'a> Village<'a> {
         }
     }
     pub fn draw(&mut self, assets: &mut Assets) -> Option<String> {
+        // Advance previously playing modules once, before the next visibility
+        // callback batch. Newly loaded modules begin at frame0 this draw.
+        let delta_ms = get_frame_time() as f64 * 1000.;
+        for animation in self.animations.values_mut() {
+            if let Some(module) = &mut animation.module {
+                module.begin(delta_ms);
+            }
+        }
+        let mode = santa_tracker::module_viewport::Mode::for_width(screen_width().round() as f64);
         let width = screen_width().min(1920.);
         let base = (screen_width() - width) / 2.;
         let hero = if screen_width() <= 1024. { 720. } else { 1050. };
@@ -1190,35 +1257,72 @@ impl<'a> Village<'a> {
                 (width * 0.9).max(800.)
             };
             let rect = Rect::new(base, y, width, h);
-            if y < screen_height() && y + h > 0. {
-                clip(Some(Rect::new(
-                    base,
-                    y.max(0.),
-                    width,
-                    (y + h).min(screen_height()) - y.max(0.),
-                )));
-                draw_rectangle(base, y, width, h, color(&module.color));
-                for (idx, part) in module.parts.iter().enumerate() {
+            let element_height = h + if module.no_divider { 0. } else { 72. };
+            let absolute_top = y + self.scroll;
+            let loaded = santa_tracker::module_viewport::visible(
+                self.scroll as f64,
+                screen_height() as f64,
+                absolute_top as f64,
+                element_height as f64,
+            );
+            let paint = y < screen_height() && y + h > 0.;
+            if loaded {
+                if paint {
+                    clip(Some(Rect::new(
+                        base,
+                        y.max(0.),
+                        width,
+                        (y + h).min(screen_height()) - y.max(0.),
+                    )));
+                }
+                if paint {
+                    draw_rectangle(base, y, width, h, color(&module.color));
+                }
+                let desired =
+                    santa_tracker::module_viewport::wanted(&module.parts, mode, true, false);
+                for (idx, part) in desired.iter().enumerate() {
+                    let Some(part) = part else { continue };
                     let key = format!("scenes/modvil/img/modules/{}/{idx}", module.id);
                     match part.as_str() {
                         "static-png" | "static-svg" => {
                             let key = format!("{key}.{}", part.trim_start_matches("static-"));
                             if let Some(t) = self.texture(assets, &key) {
-                                cover(t, rect);
+                                if paint {
+                                    cover(t, rect);
+                                }
                             }
                         }
-                        "loop" => self.animation(assets, &format!("{key}.json"), rect, None),
+                        "mobile" => {
+                            if let Some(t) = self.texture(
+                                assets,
+                                &format!("scenes/modvil/img/modules/{}/mobile.png", module.id),
+                            ) {
+                                if paint {
+                                    cover(t, rect);
+                                }
+                            }
+                        }
+                        "loop" => self.animation(assets, &format!("{key}.json"), rect, None, paint),
                         "scroll" => {
-                            let top = (self.scroll + y - screen_height()).max(0.);
-                            let bottom = (self.scroll + y + h).min(total - screen_height());
-                            let ratio = if bottom > top {
-                                (self.scroll - top) / (bottom - top)
-                            } else {
-                                0.
-                            };
-                            self.animation(assets, &format!("{key}.json"), rect, Some(ratio));
+                            let ratio = santa_tracker::module_viewport::ratio(
+                                self.scroll as f64,
+                                screen_height() as f64,
+                                total as f64,
+                                absolute_top as f64,
+                                element_height as f64,
+                            );
+                            self.animation(
+                                assets,
+                                &format!("{key}.json"),
+                                rect,
+                                Some(ratio),
+                                paint,
+                            );
                         }
                         "cards" => {
+                            if !paint {
+                                continue;
+                            }
                             for (i, card) in module.cards.iter().enumerate() {
                                 let [x, cy, w, ch] = santa_tracker::ui::card_rect(
                                     &module.id,
@@ -1268,6 +1372,11 @@ impl<'a> Village<'a> {
             let (target, _) = self.pending_route.take().unwrap();
             self.play_active = false;
             route = Some(target);
+        }
+        for animation in self.animations.values_mut() {
+            if let Some(module) = &mut animation.module {
+                module.end();
+            }
         }
         route.or_else(|| self.notice.take())
     }
@@ -1354,5 +1463,50 @@ impl<'a> Village<'a> {
             }
         }
         result
+    }
+}
+
+#[cfg(test)]
+mod module_clock_tests {
+    use super::*;
+    #[test]
+    fn visible_frame_pipeline_retains_offscreen_phase_and_starts_new_parts_at_zero() {
+        use santa_tracker::module_playback::{Kind, State, Timing};
+        let mut clock = ModuleClock {
+            state: State::new(
+                Kind::Loop,
+                Timing {
+                    frames: 16.,
+                    frame_rate: 16.,
+                    first_frame: 0.,
+                },
+            ),
+            ratio: None,
+            seen: false,
+        };
+        clock.begin(12345.);
+        clock.show(0.);
+        clock.end();
+        assert_eq!(clock.state.frame, 0.);
+        clock.begin(100.);
+        clock.show(0.);
+        clock.end();
+        assert_eq!(clock.state.frame, 1.6);
+        clock.begin(100.);
+        clock.end();
+        assert_eq!(clock.state.frame, 3.2);
+        assert!(clock.state.paused);
+        for _ in 0..10 {
+            clock.begin(1000.);
+            clock.end();
+        }
+        clock.begin(1000.);
+        clock.show(0.);
+        clock.end();
+        assert_eq!(clock.state.frame, 3.2);
+        clock.begin(100.);
+        clock.show(0.);
+        clock.end();
+        assert!((clock.state.frame - 4.8).abs() < 1e-12);
     }
 }

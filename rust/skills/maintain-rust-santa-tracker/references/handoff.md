@@ -1439,3 +1439,29 @@ frame lifecycle still incomplete. Live comparison/profiling waits for user readi
 DPI>4096, native inferred offset metrics and browser/GPU pixels remain unverified.
 
 Final release application and village_lottie_audit compile successfully; no app launched.
+
+### Village retained clock/scroll/part policy NOW implemented (23 November 2026)
+
+ModuleState in Village now uses module_playback source loop/scroll clock, not
+global self.time. begin advances prior playing state once per home draw; show
+applies deduped ratio, end pauses unseen parts. New loops frame0, hidden retain,
+resume no jump. Actual source callbacks/engine methods60seq/500actions match,
+including long-update count once, negative-delta count, loaded guards/NaN.
+20actual module metadata records checked; floor(op-ip) matters for toymaking.
+
+module_viewport implements source sine scroll ratio,24px margin with divider
+height, <=414mobile / <=768small desired parts. Mobile originalPNG then cards;
+small statics then cards, no Lottie. Cached clocks survive modes. Native root-
+margin load skips raster/draw outside main viewport. Source ratio72cases and
+actual shouldUpdate72fresh-cache policy cases pass; supplied DOM geometry/nodes.
+All157tests142lib+15app pass; release app/audit compile. No window/GPU/input/device.
+
+NEXT async lifecycle: source c.ratio may seek while totalFrames0 before JSON
+loads; native synchronous readiness seeks known ratio immediately. Need source
+config/checkLoaded/DOMLoaded/first-seek timing (not yet matched), image/font/load
+opacity.125s and safe-resize ordering. Full manager RAF/scroll ordering/native
+get_frame_time acquisition, route/document lifetime and persistent node/type
+reconciliation still pending. Frame events modeled but SOUND DISPATCH UNWIRED.
+Hero global/CSS time unchanged. ThorVG final frame-.001 clamp and tiny-update
+threshold remain; nonzero-ip binding unverified (all20active modules ip0).
+Keep high-DPI CPU cost/4096cap/edge errors explicit; no whole-mode1:1 claim.

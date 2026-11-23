@@ -1,0 +1,2303 @@
+{
+  "scope": "Exact original ratio function and complete module shouldUpdate with node/ratio/resize recorders. Supplied offsets/document/window; no browser layout, async loading, cached type mutation or Lit property/RAF scheduling. Visibility expression recorded from source root-margin conditions for ordered positive-height modules. Fresh parts cache per case.",
+  "source_sha256": {
+    "static/scenes/modvil/index.html": "9c617e99d6cc27d09f6f7238cf749613d1172e4cb958b902a5d788ef5b809597",
+    "static/scenes/modvil/elements/modvil-module.js": "acd7c15d6a24eecb5a9391b93c7fc4c639e9a428cd58a8b834ed5aa12665f5d7"
+  },
+  "ratios": [
+    {
+      "input": {
+        "scroll": 0,
+        "viewport": 800,
+        "document": 12000,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": -824,
+        "viewport": 800,
+        "document": 12000,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": -823.999,
+        "viewport": 800,
+        "document": 12000,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": -800,
+        "viewport": 800,
+        "document": 12000,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 0,
+        "viewport": 800,
+        "document": 12000,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 896,
+        "viewport": 800,
+        "document": 12000,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 896.001,
+        "viewport": 800,
+        "document": 12000,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 11200,
+        "viewport": 800,
+        "document": 12000,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 0,
+        "viewport": 800,
+        "document": 12000,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 298,
+        "viewport": 800,
+        "document": 12000,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 298.001,
+        "viewport": 800,
+        "document": 12000,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 322,
+        "viewport": 800,
+        "document": 12000,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 1122,
+        "viewport": 800,
+        "document": 12000,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 0.4662048114900835,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 2018,
+        "viewport": 800,
+        "document": 12000,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 2018.001,
+        "viewport": 800,
+        "document": 12000,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 11200,
+        "viewport": 800,
+        "document": 12000,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 0,
+        "viewport": 800,
+        "document": 12000,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 10304,
+        "viewport": 800,
+        "document": 12000,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 10304.001,
+        "viewport": 800,
+        "document": 12000,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 10328,
+        "viewport": 800,
+        "document": 12000,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 11128,
+        "viewport": 800,
+        "document": 12000,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 0.983272339368022,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 12024,
+        "viewport": 800,
+        "document": 12000,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 12024.001,
+        "viewport": 800,
+        "document": 12000,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 11200,
+        "viewport": 800,
+        "document": 12000,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 0,
+        "viewport": 400,
+        "document": 5000,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": -424,
+        "viewport": 400,
+        "document": 5000,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": -423.999,
+        "viewport": 400,
+        "document": 5000,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": -400,
+        "viewport": 400,
+        "document": 5000,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 0,
+        "viewport": 400,
+        "document": 5000,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 896,
+        "viewport": 400,
+        "document": 5000,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 896.001,
+        "viewport": 400,
+        "document": 5000,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 4600,
+        "viewport": 400,
+        "document": 5000,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 0,
+        "viewport": 400,
+        "document": 5000,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 698,
+        "viewport": 400,
+        "document": 5000,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 698.001,
+        "viewport": 400,
+        "document": 5000,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 722,
+        "viewport": 400,
+        "document": 5000,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 1122,
+        "viewport": 400,
+        "document": 5000,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 0.22478712271287082,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 2018,
+        "viewport": 400,
+        "document": 5000,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 2018.001,
+        "viewport": 400,
+        "document": 5000,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 4600,
+        "viewport": 400,
+        "document": 5000,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 0,
+        "viewport": 400,
+        "document": 5000,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 10704,
+        "viewport": 400,
+        "document": 5000,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 0.00003784593554562177,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 10704.001,
+        "viewport": 400,
+        "document": 5000,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 0.00003784278182317191,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 10728,
+        "viewport": 400,
+        "document": 5000,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 11128,
+        "viewport": 400,
+        "document": 5000,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 12024,
+        "viewport": 400,
+        "document": 5000,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 12024.001,
+        "viewport": 400,
+        "document": 5000,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 4600,
+        "viewport": 400,
+        "document": 5000,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 0,
+        "viewport": 800,
+        "document": 800,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": null,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": -824,
+        "viewport": 800,
+        "document": 800,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": -823.999,
+        "viewport": 800,
+        "document": 800,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": -800,
+        "viewport": 800,
+        "document": 800,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 0,
+        "viewport": 800,
+        "document": 800,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": null,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 896,
+        "viewport": 800,
+        "document": 800,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 896.001,
+        "viewport": 800,
+        "document": 800,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 0,
+        "viewport": 800,
+        "document": 800,
+        "top": 0,
+        "height": 872
+      },
+      "ratio": null,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 0,
+        "viewport": 800,
+        "document": 800,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 298,
+        "viewport": 800,
+        "document": 800,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 0.013644739799356709,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 298.001,
+        "viewport": 800,
+        "document": 800,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 0.013643607960939885,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 322,
+        "viewport": 800,
+        "document": 800,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 1122,
+        "viewport": 800,
+        "document": 800,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 2018,
+        "viewport": 800,
+        "document": 800,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 2018.001,
+        "viewport": 800,
+        "document": 800,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 0,
+        "viewport": 800,
+        "document": 800,
+        "top": 1122,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 0,
+        "viewport": 800,
+        "document": 800,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 10304,
+        "viewport": 800,
+        "document": 800,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 0.000013323792181441085,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 10304.001,
+        "viewport": 800,
+        "document": 800,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 0.000013322681893523924,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 10328,
+        "viewport": 800,
+        "document": 800,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 11128,
+        "viewport": 800,
+        "document": 800,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 12024,
+        "viewport": 800,
+        "document": 800,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": true
+    },
+    {
+      "input": {
+        "scroll": 12024.001,
+        "viewport": 800,
+        "document": 800,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 0,
+      "visible": false
+    },
+    {
+      "input": {
+        "scroll": 0,
+        "viewport": 800,
+        "document": 800,
+        "top": 11128,
+        "height": 872
+      },
+      "ratio": 1,
+      "visible": false
+    }
+  ],
+  "parts": [
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 375,
+        "load": true,
+        "desktop": true
+      },
+      "output": [
+        "static-png",
+        "cards",
+        "loop",
+        "scroll",
+        null
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 375,
+        "load": true,
+        "desktop": true
+      },
+      "output": [
+        "static-svg",
+        "loop",
+        "scroll",
+        "cards",
+        null
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 375,
+        "load": true,
+        "desktop": true
+      },
+      "output": [
+        "static-png",
+        "loop",
+        "static-png",
+        "loop",
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 375,
+        "load": true,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        "mobile",
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 375,
+        "load": true,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        "mobile",
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 375,
+        "load": true,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        "mobile",
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 375,
+        "load": false,
+        "desktop": true
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 375,
+        "load": false,
+        "desktop": true
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 375,
+        "load": false,
+        "desktop": true
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 375,
+        "load": false,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 375,
+        "load": false,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 375,
+        "load": false,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 414,
+        "load": true,
+        "desktop": true
+      },
+      "output": [
+        "static-png",
+        "cards",
+        "loop",
+        "scroll",
+        null
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 414,
+        "load": true,
+        "desktop": true
+      },
+      "output": [
+        "static-svg",
+        "loop",
+        "scroll",
+        "cards",
+        null
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 414,
+        "load": true,
+        "desktop": true
+      },
+      "output": [
+        "static-png",
+        "loop",
+        "static-png",
+        "loop",
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 414,
+        "load": true,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        "mobile",
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 414,
+        "load": true,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        "mobile",
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 414,
+        "load": true,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        "mobile",
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 414,
+        "load": false,
+        "desktop": true
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 414,
+        "load": false,
+        "desktop": true
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 414,
+        "load": false,
+        "desktop": true
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 414,
+        "load": false,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 414,
+        "load": false,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 414,
+        "load": false,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 415,
+        "load": true,
+        "desktop": true
+      },
+      "output": [
+        "static-png",
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 415,
+        "load": true,
+        "desktop": true
+      },
+      "output": [
+        "static-svg",
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 415,
+        "load": true,
+        "desktop": true
+      },
+      "output": [
+        "static-png",
+        null,
+        "static-png",
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 415,
+        "load": true,
+        "desktop": false
+      },
+      "output": [
+        "static-png",
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 415,
+        "load": true,
+        "desktop": false
+      },
+      "output": [
+        "static-svg",
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 415,
+        "load": true,
+        "desktop": false
+      },
+      "output": [
+        "static-png",
+        null,
+        "static-png",
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 415,
+        "load": false,
+        "desktop": true
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 415,
+        "load": false,
+        "desktop": true
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 415,
+        "load": false,
+        "desktop": true
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 415,
+        "load": false,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 415,
+        "load": false,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 415,
+        "load": false,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 768,
+        "load": true,
+        "desktop": true
+      },
+      "output": [
+        "static-png",
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 768,
+        "load": true,
+        "desktop": true
+      },
+      "output": [
+        "static-svg",
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 768,
+        "load": true,
+        "desktop": true
+      },
+      "output": [
+        "static-png",
+        null,
+        "static-png",
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 768,
+        "load": true,
+        "desktop": false
+      },
+      "output": [
+        "static-png",
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 768,
+        "load": true,
+        "desktop": false
+      },
+      "output": [
+        "static-svg",
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 768,
+        "load": true,
+        "desktop": false
+      },
+      "output": [
+        "static-png",
+        null,
+        "static-png",
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 768,
+        "load": false,
+        "desktop": true
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 768,
+        "load": false,
+        "desktop": true
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 768,
+        "load": false,
+        "desktop": true
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 768,
+        "load": false,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 768,
+        "load": false,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 768,
+        "load": false,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 769,
+        "load": true,
+        "desktop": true
+      },
+      "output": [
+        "static-png",
+        "cards",
+        "loop",
+        "scroll",
+        null
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 769,
+        "load": true,
+        "desktop": true
+      },
+      "output": [
+        "static-svg",
+        "loop",
+        "scroll",
+        "cards",
+        null
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 769,
+        "load": true,
+        "desktop": true
+      },
+      "output": [
+        "static-png",
+        "loop",
+        "static-png",
+        "loop",
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 769,
+        "load": true,
+        "desktop": false
+      },
+      "output": [
+        "static-png",
+        "cards",
+        "loop",
+        "scroll",
+        null
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 769,
+        "load": true,
+        "desktop": false
+      },
+      "output": [
+        "static-svg",
+        "loop",
+        "scroll",
+        "cards",
+        null
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 769,
+        "load": true,
+        "desktop": false
+      },
+      "output": [
+        "static-png",
+        "loop",
+        "static-png",
+        "loop",
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 769,
+        "load": false,
+        "desktop": true
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 769,
+        "load": false,
+        "desktop": true
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 769,
+        "load": false,
+        "desktop": true
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 769,
+        "load": false,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 769,
+        "load": false,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 769,
+        "load": false,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 1440,
+        "load": true,
+        "desktop": true
+      },
+      "output": [
+        "static-png",
+        "cards",
+        "loop",
+        "scroll",
+        null
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 1440,
+        "load": true,
+        "desktop": true
+      },
+      "output": [
+        "static-svg",
+        "loop",
+        "scroll",
+        "cards",
+        null
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 1440,
+        "load": true,
+        "desktop": true
+      },
+      "output": [
+        "static-png",
+        "loop",
+        "static-png",
+        "loop",
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 1440,
+        "load": true,
+        "desktop": false
+      },
+      "output": [
+        "static-png",
+        "cards",
+        "loop",
+        "scroll",
+        null
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 1440,
+        "load": true,
+        "desktop": false
+      },
+      "output": [
+        "static-svg",
+        "loop",
+        "scroll",
+        "cards",
+        null
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 1440,
+        "load": true,
+        "desktop": false
+      },
+      "output": [
+        "static-png",
+        "loop",
+        "static-png",
+        "loop",
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 1440,
+        "load": false,
+        "desktop": true
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 1440,
+        "load": false,
+        "desktop": true
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 1440,
+        "load": false,
+        "desktop": true
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "cards",
+          "loop",
+          "scroll"
+        ],
+        "width": 1440,
+        "load": false,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-svg",
+          "loop",
+          "scroll",
+          "cards"
+        ],
+        "width": 1440,
+        "load": false,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    },
+    {
+      "input": {
+        "parts": [
+          "static-png",
+          "loop",
+          "static-png",
+          "loop"
+        ],
+        "width": 1440,
+        "load": false,
+        "desktop": false
+      },
+      "output": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "cards"
+      ]
+    }
+  ]
+}

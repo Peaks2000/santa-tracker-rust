@@ -3676,3 +3676,77 @@ incomplete. Reading the whole component does not mean those branches were ported
 All154tests pass140lib+14app. No app/window/GPU/device/input used while user plays.
 
 Final release application and village_lottie_audit compile successfully; no app launched.
+
+### Village retained module playback, scroll and responsive part policy (23 November 2026)
+
+Continued complete modvil-module component reading from prior pass; re-read its
+ratio/parts/cache reconciliation and root index ratioForElement/prepareModules
+adjustment blocks, shared module styles, active metadata handling and complete
+selected bundled AnimationItem play/pause/advanceTime/setCurrentRawFrameValue/
+gotoFrame/renderFrame/checkSegments/goToAndStop/getDuration methods. Constructor
+defaults, configAnimation, segment-loading, checkLoaded and animation-manager
+first/resume scheduling inspected to identify limits, not claimed fully ported.
+All20module JSONs have ip0 and no segments; one toymaking op178.00001785566
+requires original Math.floor(op-ip) rather than raw ThorVG total. Timing parser
+uses source frame rate/first-frame defaults and rejects new queued asset segments
+for explicit review. Source subframe mode is true and module speed/direction1;
+finite numeric loop counts, reverse speed and nonempty runtime segments are
+inactive for these selected component options and not native-certified.
+
+`module_playback.rs` translates selected loop/scroll ratio callbacks and engine
+clock, including loaded/paused guard, raw/current frame, idle/active state, loop
+counter, completed-loop flag and ordered enter/render/loop/complete calls. Long
+elapsed update increments playCount once even across multiple cycles; negative
+elapsed boolean-loop quirk decrements it. Scroll null retains frame; finite ratio
+clamps to exact[0,totalFrames], seeks and pauses. NaN ratio propagates like source.
+Typed model exposes events, but native frame-triggered sound dispatch remains
+unwired. Render backend and event emitter are recorders in source comparisons.
+
+`module-playback-reference.cjs` evaluates complete actual _loadPart closures and
+complete selected engine methods.60sequences/500actions cover retained visibility,
+loaded flag changes, all selected boundary/large/negative deltas, exact frames,
+manual play/pause and invalid ratio. Actual20file timing/hash metadata checked
+by Rust too. Synthetic firstFrame10/render offsets and manually playing scroll
+extend beyond active module usage; loaded flag is directly supplied, not full
+checkLoaded/DOMLoaded/image loader execution. Native State mathematical fields
+and ordered calls match1e-10; no source body patched.
+
+`module_viewport.rs` ports source sine ratio, inclusive lower/exclusive upper
+24px margin, and desired-parts policy at<=414mobile/<=768small. Native small
+mode hides animations, preserves statics and moves cards after them. Mobile
+mode uses original mobile.png (all module files verified present) then cards,
+retaining cached desktop clocks/images. Source desktop property is undefined/
+false in active markup; synthetic desktop=true policy also checked. Normal
+layer order remains. Root scroll normalization includes module divider height,
+not just main artwork height. Native inferred geometry is still not a DOM oracle.
+
+`module-viewport-reference.cjs`: actual source ratio function72offset/window cases,
+including degenerate NaN; complete source shouldUpdate72fresh-cache part cases,
+with node/ratio/resize recorders. Visibility predicate is the source root-margin
+conditions for ordered positive-height modules, not a whole browser observer.
+Persistent type-change errors/cache nodes/Lit scheduling are not certified by
+fresh-cache policy cases. Mode/viewport calculations still use existing native
+rectangles and rounded native window width; full CSS offsets/rounding pending.
+
+Village now advances previously playing module states once per home draw, then
+applies current visibility/parts and pauses unseen ones. New loops start frame0;
+retained hidden loops resume phase. Root-margin parts load without rasterizing
+or drawing if their main artwork is outside the viewport. Per-part duplicate
+ratio callbacks suppressed; cards retain their prior separate CardPlayer path.
+Native frame-pipeline regression covers initial12345ms with paused state, showing,
+leaving, ten long hidden ticks, resuming without global-time jump and continued
+advance. This validates the selected callback order, not actual browser RAF order.
+
+Remaining async gap: original c.ratio can run before JSON config (totalFrames0),
+so a newly loaded scroll part can remain frame0 until ratio changes again. Native
+synchronous metadata/clip readiness currently applies known ratio immediately;
+this initial loader/seek lifecycle is NOT matched. Image/font/DOMLoaded delays,
+resize-task ordering, load-opacity.125s and route/document lifetime need matching.
+Native begin-before-visibility order and get_frame_time(f32) acquisition are not
+verified against manager RAF task interleaving. Hero CSS/global time untouched.
+ThorVG renderer still clamps to total-.001/skips tiny frame updates; exact scroll
+endpoint pixels and nonzero-ip binding unverified. Retained source clocks do not
+resolve CPU high-density cost,4096cap or known clipped-edge pixel differences.
+
+All157tests pass142lib+15app; release app/audit compile. No window, device, GPU,
+audible sound or input automation while user plays. No mode rating upgraded.
