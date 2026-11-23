@@ -1226,3 +1226,27 @@ opened while user plays. Prior early fade cancellation window, touch targets,
 Date/frame clock and GPU/texture comparisons remain unresolved; goal stays broad.
 
 Release app and Jetpack capture compile successfully; neither launched.
+
+### Shared music Source.play control layer (23 November 2026)
+
+New music_source State.play ports selected music AudioSource.play metadata and
+ordered operation planning. Original complete play/removeUnused/createBuffer and
+actual getters in CPU VM:206 states, return-this/undefined, metadata and all ops
+match1e-10. Source scripts untouched; method/config hashes/specs retained. All136
+tests pass (122lib+14app). No device/window/audio/input; release build only.
+
+Native main/mixer NOT connected yet. GainHold is symbolic (read_at supplied
+context time), not WebAudio automation. Metadata is supplied; constructor/init,
+AudioNode validation/PCM/priority/random ranges/optional callback not certified.
+Current five music configs checked to keep unsupported priority/random settings
+inactive. Max-source integer guard ported. Key quirks: cleanup strict<; metadata
+clock updates before buffer-reuse guards; stopping nonretrig play returns early
+without clearing fading; offsets equal duration don't wrap; requested duration
+and reported endTime differ. Buffer refs outlive actual audio and vice versa.
+
+NEXT stop/fade/timer state + transport. Ret rig play clears stopping without
+clearing old timeout; callback checks shared flag, so don't add generation guards.
+Preserve before-vs-after-early-return startOffset and clock fields. Existing
+music_transition planner303cases + this source layer are foundations; game-over
+global Stop remains incorrect until wired. Parent gain, phase-pause, muted launch,
+prior graphics/touch/clock gaps remain; no whole-site/mode completion claim.

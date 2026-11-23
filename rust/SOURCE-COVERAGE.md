@@ -3265,3 +3265,53 @@ Music-start pattern/bus side effects outside the transition process are unported
 No AudioContext/SDL/graphics/device/input/audio tests; user's game untouched.
 
 Release app and Jetpack capture compile successfully; neither launched.
+
+## Shared music Source.play bookkeeping/call planning (23 November 2026)
+
+Read complete AudioSource.play/removeUnusedSources/createBufferSource, actual
+playing/paused/duration/loop getters, source constructor fields and selected five
+music configs. New music_source module ports selected music playback bookkeeping
+and emits node/gain operations; it does not play audio or replace the runtime
+music path yet. This is the transport foundation required by music_transition.
+
+Preserved branches/order: cleanup before limits/load/late checks; explicit source
+limit uses >, not >=; missing buffer requests init then returns; nonzero when at
+least10ms late is rejected; zero when becomes current time. Gain cancel/set and
+pause/start/loop-clock metadata updates happen BEFORE some no-retrigger returns.
+Stopping non-retrig source clears its timer and requests a .25s gain ramp without
+creating a buffer, preserving the earlier fading flag. Other paths clear fading,
+apply the source loop/nonloop guards, and use JS millisecond rounding for duplicate
+suppression. Stop flag can clear without cancelling the timer in retrig paths.
+Node creation/rate/buffer/loop/connect/start calls preserve order. Offset >duration
+wraps but equal offset does not; nonloop node's requested duration can differ from
+endTime bookkeeping, which uses buffer duration. Buffer references remain distinct
+from audible voice lifetime; expired nonloop cleanup is strict <, not <=.
+
+`music-source-reference.cjs` executes the exact original full methods and getters
+in CPU VM; dummy node methods record calls. Gain.value read is a symbolic hold
+with original read time, not fake numerical WebAudio automation. Missing-buffer
+init is a recorder/no-op. 206 supplied-state cases cover loop/retrig combinations,
+fresh/active/future/stopping/fading/paused/missing/limited/expired/null-buffer
+states, late boundaries, offsets/durations and rounded duplicate thresholds.
+Rust compares post-call state, return-this versus undefined and complete ordered
+operation lists at1e-10 numeric tolerance. Fixture includes method/engine/config
+hashes and selected music source specs. Generator refuses newly active priority/
+random-volume/pitch/max-source overrides in those five configs. Integer max-source
+check is implemented anyway; arbitrary JS dynamic values are not certified.
+
+Node/gain API validation, AudioParam timeline/cancellation/current-value evaluation,
+actual buffer binding/init/constructor defaults, optional source scheduling hook,
+priority/global limit and random ranges, live mid-call context time changes,
+actual Source.play execution on a device, PCM/filter/resampling remain outside
+this comparison. Node identity is a stable recorder label; no physical source
+node is created. The module requires supplied metadata; it is not a complete
+AudioSource constructor or entire Klang engine implementation.
+
+Runtime music remains uncorrected until fade/stop/callback state and transport
+integration are complete. Important next callback quirk: retrig play can clear
+_stopping without clearTimeout; a later old callback reads the source's shared
+flag, not a generation token. Do not silently remove or generation-guard those
+callbacks. Also retain source metadata timing even when buffers weren't restarted.
+All136 tests pass (122 library +14 application), release app/capture compile only.
+No window, graphics/audio context, device, audible sound or input automation while
+user plays. No new scene/whole-mode 1:1 certification.
