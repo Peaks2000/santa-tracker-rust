@@ -79,6 +79,8 @@ pub struct State {
 pub struct Call {
     pub track: usize,
     pub op: Op,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub timer_id: Option<usize>,
 }
 impl State {
     /// Selected initialized sources with buffers already bound. The caller must
@@ -135,6 +137,13 @@ impl State {
         let plan = music_transition::music(&sources, to, now);
         let mut calls = vec![];
         for action in plan.actions {
+            let index = match &action {
+                Action::Stop { track }
+                | Action::Play { track, .. }
+                | Action::FadeOut { track, .. }
+                | Action::FadeIn { track, .. } => *track,
+            };
+            let old_timer = self.sources[index].stopping_id;
             let (track, result) = match action {
                 Action::Stop { track } => (track, self.sources[track].stop(now, 0.)),
                 Action::Play {
@@ -179,16 +188,33 @@ impl State {
                     )
                 }
             };
-            calls.extend(result.ops.into_iter().map(|op| Call { track, op }));
+            calls.extend(result.ops.into_iter().map(|op| Call {
+                track,
+                timer_id: if matches!(&op, Op::ClearTimer) {
+                    old_timer
+                } else {
+                    None
+                },
+                op,
+            }));
         }
         calls
     }
     pub fn fire(&mut self, now: f64, track: usize, id: usize) -> Vec<Call> {
+        let old_timer = self.sources[track].stopping_id;
         self.sources[track]
             .fire(now, id)
             .ops
             .into_iter()
-            .map(|op| Call { track, op })
+            .map(|op| Call {
+                track,
+                timer_id: if matches!(&op, Op::ClearTimer) {
+                    old_timer
+                } else {
+                    None
+                },
+                op,
+            })
             .collect()
     }
 }

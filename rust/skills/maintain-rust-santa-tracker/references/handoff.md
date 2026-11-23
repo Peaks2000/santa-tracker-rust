@@ -1304,3 +1304,39 @@ integration. All unsupported loading/Edge/graph/clock/PCM/rendering/other-scene
 work remains explicit; no scene rating upgraded. No app/device/input launched.
 
 Release app and jetpack_background_capture compile successfully; neither launched.
+
+### Shared music NOW wired to native mixer (23 November 2026)
+
+This supersedes earlier 'not connected' notes for the five current music tracks.
+`music_runtime.rs` executes source ops into separate physical voices, gain timelines
+and wall deadlines; Mixer owns it and Sound routes five current music events.
+Game-over no longer sends globalStop, preserving Jetpack ambience fade/phase.
+Original music/village bus gains applied. Music pause changes parent gain instead
+of freezing buffers. Explicit routeStop hard-clears physical music, not evidence
+that every original route callback matches. Silent village or7J/FHaZ disco graph
+and _old music processes remain outside the five-track runtime.
+
+`audio_param.rs`: selected set/linear/cancel,float32 inputs and separate quantum
+getter snapshots. Scheduling doesn't immediately change getter; old ramps survive
+curveParamLin (which never cancels). Chrome helper current-value branch is app
+default; Firefox startValue0 branch implemented/tested via with_browser. Do not
+silently replace append-only bus curves by cancellable envelopes. Source call
+ClearTimer now carries exact call-time timer_id; regenerated original fixture
+records ID. Don't look it up from final control state when executing batched ops.
+
+All148tests134lib+14app pass, including original source/transition/lifecycle and
+assembled225sequences, plus CPU runtime/automation checks. CPU music_state_smoke
+loads actual five stereo44100HzOggs and renders12s finite/nonzero; output summary
+music-native-smoke.json. No audio device/context/window/input or audible sound.
+Renderer/mixer smoke isn't browser PCM or full audio equivalence.
+
+NEXT compare/complete backend fidelity: rendered frame context versus Instant
+wall clock, SDL callback delivery vs browser task/quantum ordering, interpolation/
+Vorbis/browser PCM and low-pass graph; first-use decoding still main-thread.
+Extend lifecycle/timing to Jetpack ambience/legacy voices: they STILL have old
+cancellation-window and frozen-pause mismatch. Muted launch still drops events
+and device creation doesn't restore loops. Live checks remain prohibited while
+user plays; use CPU/source/saved captures until invited. Textures/other scenes
+still incomplete; no mode rating upgraded. Preserve public native-only GitHub.
+
+Final release app and jetpack_background_capture compile successfully; neither launched.

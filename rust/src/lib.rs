@@ -164,3 +164,5 @@ pub mod music_transition;
 pub mod music_source;
 pub mod music_lifecycle;
 pub mod music_control;
+pub mod audio_param;
+pub mod music_runtime;

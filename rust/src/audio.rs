@@ -58,6 +58,13 @@ impl LoopEnvelope {
     }
 }
 pub enum Command {
+    MusicLoad {
+        samples: [Arc<Sample>; 5],
+        specs: [crate::music_control::Spec; 5],
+    },
+    MusicTransition {
+        event: crate::music_runtime::Event,
+    },
     Play {
         pausable: bool,
         id: String,
@@ -119,6 +126,9 @@ pub struct Mixer {
     gain: f32,
     pans: std::collections::HashMap<String, f32>,
     bus_gains: std::collections::HashMap<String, f32>,
+    music: Option<crate::music_runtime::Runtime>,
+    rendered_frames: u64,
+    wall_origin: std::time::Instant,
 }
 impl Mixer {
     pub fn new(commands: Receiver<Command>) -> Self {
@@ -129,11 +139,29 @@ impl Mixer {
             gain: 1.,
             pans: std::collections::HashMap::new(),
             bus_gains: std::collections::HashMap::new(),
+            music: None,
+            rendered_frames: 0,
+            wall_origin: std::time::Instant::now(),
         }
     }
     pub fn mix(&mut self, output: &mut [f32]) {
+        let now = self.rendered_frames as f64 / 48000.;
+        let wall = self.wall_origin.elapsed().as_secs_f64();
+        if let Some(music) = &mut self.music {
+            music.timers(now, wall);
+        }
         for command in self.commands.try_iter() {
             match command {
+                Command::MusicLoad { samples, specs } => {
+                    if self.music.is_none() {
+                        self.music = Some(crate::music_runtime::Runtime::new(samples, specs, now));
+                    }
+                }
+                Command::MusicTransition { event } => {
+                    if let Some(music) = &mut self.music {
+                        music.event(now, wall, event);
+                    }
+                }
                 Command::GroupBusGain { ids, gain } => {
                     for id in ids {
                         for voice in self.voices.iter_mut().filter(|v| v.id == id) {
@@ -156,7 +184,12 @@ impl Mixer {
                         v.volume = volume;
                     }
                 }
-                Command::Stop => self.voices.clear(),
+                Command::Stop => {
+                    self.voices.clear();
+                    if let Some(music) = &mut self.music {
+                        music.stop_all(now, wall);
+                    }
+                }
                 Command::PanSource { id, pan } => {
                     let pan = pan.clamp(-1., 1.);
                     for voice in self.voices.iter_mut().filter(|v| v.id == id) {
@@ -181,7 +214,12 @@ impl Mixer {
                         }
                     }
                 }
-                Command::Paused(p) => self.paused = p,
+                Command::Paused(p) => {
+                    self.paused = p;
+                    if let Some(music) = &mut self.music {
+                        music.paused(now, p);
+                    }
+                }
                 Command::Gain(g) => self.gain = g,
                 Command::Play {
                     pausable,
@@ -277,6 +315,16 @@ impl Mixer {
         }
         output.fill(0.);
         for frame in output.chunks_exact_mut(2) {
+            if let Some(music) = &mut self.music {
+                let now = self.rendered_frames as f64 / 48000.;
+                if self.rendered_frames % 128 == 0 {
+                    music.begin_quantum(now);
+                }
+                let stereo = music.frame(now, 1. / 48000.);
+                frame[0] += stereo[0] * self.gain;
+                frame[1] += stereo[1] * self.gain;
+            }
+            self.rendered_frames += 1;
             for voice in &mut self.voices {
                 if self.paused && voice.pausable {
                     continue;
@@ -349,6 +397,9 @@ impl Mixer {
                 voice.position += voice.step;
             }
         }
+        if let Some(music) = &mut self.music {
+            music.collect_finished();
+        }
         self.voices.retain(|v| {
             !matches!(v.fade_out, Some((0, _)))
                 && v.loop_envelope
@@ -360,6 +411,62 @@ impl Mixer {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn gameover_music_transition_keeps_unrelated_game_voices() {
+        use crate::{music_control::Spec, music_runtime::Event};
+        let (tx, rx) = std::sync::mpsc::channel();
+        let mut mixer = Mixer::new(rx);
+        let sample = Arc::new(Sample {
+            samples: vec![0.1; 48000],
+            channels: 1,
+            rate: 48000,
+        });
+        tx.send(Command::Play {
+            pausable: true,
+            id: "jetpack-ambience".into(),
+            policy: PlayPolicy::Retrigger,
+            delay: 0.,
+            fade_in: 0.,
+            sample: sample.clone(),
+            volume: 1.,
+            rate: 1.,
+            loop_start: Some(0.),
+            offset: 0.,
+            end: None,
+        })
+        .unwrap();
+        tx.send(Command::MusicLoad {
+            samples: std::array::from_fn(|_| sample.clone()),
+            specs: std::array::from_fn(|i| Spec {
+                volume: 1.,
+                rate: 1.,
+                offset: 0.,
+                duration: 0.,
+                looping: i != 4,
+                retrigger: i == 4,
+                loop_start: 0.,
+                loop_end: 0.,
+                max_sources: -1,
+            }),
+        })
+        .unwrap();
+        tx.send(Command::MusicTransition { event: Event::Game })
+            .unwrap();
+        mixer.mix(&mut vec![0.; 960]);
+        let phase = mixer.voices[0].position;
+        tx.send(Command::MusicTransition {
+            event: Event::GameOver,
+        })
+        .unwrap();
+        mixer.mix(&mut []);
+        assert_eq!(mixer.voices.len(), 1);
+        assert_eq!(mixer.voices[0].position, phase);
+        mixer.mix(&mut vec![0.; 960]);
+        assert!(mixer.voices[0].position > phase);
+        tx.send(Command::Stop).unwrap();
+        mixer.mix(&mut []);
+        assert!(mixer.voices.is_empty());
+    }
     #[test]
     fn original_jetpack_loop_reentry_decisions_preserve_phase() {
         let data: serde_json::Value =

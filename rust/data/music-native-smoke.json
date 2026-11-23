@@ -1,0 +1,226 @@
+{
+  "final_control": {
+    "sources": [
+      {
+        "audio": {
+          "base_offset": 0.0,
+          "buffer_duration": 40.39691609977324,
+          "fading": false,
+          "looping": true,
+          "max_sources": -1,
+          "next_node": 1,
+          "nodes": [],
+          "pause_start_time": 0.0,
+          "pause_time": 0.0,
+          "paused": false,
+          "rate": 1.0,
+          "source": {
+            "buffers": 0,
+            "duration": 40.39691609977324,
+            "end_time": 1.1093333333333333,
+            "loop_end": 40.396,
+            "loop_start": 2.3762376237624,
+            "loop_start_time": 40.39691609977324,
+            "retrigger": false,
+            "start_offset": 0.0,
+            "start_time": -1.0,
+            "stopping": false
+          },
+          "volume": 0.70794578438414
+        },
+        "loop_playing": false,
+        "next_timer": 1,
+        "schedule_ahead": 0.2,
+        "stopping_id": 0,
+        "timers": []
+      },
+      {
+        "audio": {
+          "base_offset": 0.0,
+          "buffer_duration": 40.39691609977324,
+          "fading": false,
+          "looping": true,
+          "max_sources": -1,
+          "next_node": 2,
+          "nodes": [],
+          "pause_start_time": 5.615638486925615,
+          "pause_time": 0.0,
+          "paused": false,
+          "rate": 1.0,
+          "source": {
+            "buffers": 0,
+            "duration": 40.39691609977324,
+            "end_time": 9.088,
+            "loop_end": 0.0,
+            "loop_start": 2.3762376237624,
+            "loop_start_time": 46.012554586698855,
+            "retrigger": false,
+            "start_offset": 1.188118811881188,
+            "start_time": -1.0,
+            "stopping": false
+          },
+          "volume": 1.0
+        },
+        "loop_playing": false,
+        "next_timer": 2,
+        "schedule_ahead": 0.2,
+        "stopping_id": 1,
+        "timers": []
+      },
+      {
+        "audio": {
+          "base_offset": 0.0,
+          "buffer_duration": 18.4627664399093,
+          "fading": false,
+          "looping": true,
+          "max_sources": -1,
+          "next_node": 1,
+          "nodes": [],
+          "pause_start_time": 3.564356435643564,
+          "pause_time": 0.0,
+          "paused": false,
+          "rate": 1.0,
+          "source": {
+            "buffers": 0,
+            "duration": 18.4627664399093,
+            "end_time": 5.525333333333333,
+            "loop_end": 0.0,
+            "loop_start": 2.0512820512821,
+            "loop_start_time": 22.027122875552863,
+            "retrigger": false,
+            "start_offset": 0.0,
+            "start_time": -1.0,
+            "stopping": false
+          },
+          "volume": 1.0
+        },
+        "loop_playing": false,
+        "next_timer": 1,
+        "schedule_ahead": 0.2,
+        "stopping_id": 0,
+        "timers": []
+      },
+      {
+        "audio": {
+          "base_offset": 0.0,
+          "buffer_duration": 40.39691609977324,
+          "fading": false,
+          "looping": true,
+          "max_sources": -1,
+          "next_node": 1,
+          "nodes": [
+            {
+              "buffer_duration": 40.39691609977324,
+              "id": 0,
+              "start_time": 12.744351358212743
+            }
+          ],
+          "pause_start_time": 9.179994922569179,
+          "pause_time": 0.0,
+          "paused": false,
+          "rate": 1.0,
+          "source": {
+            "buffers": 1,
+            "duration": 40.39691609977324,
+            "end_time": -1.0,
+            "loop_end": 0.0,
+            "loop_start": 2.3762376237624,
+            "loop_start_time": 49.57691102234242,
+            "retrigger": false,
+            "start_offset": 0.0,
+            "start_time": 9.179994922569179,
+            "stopping": false
+          },
+          "volume": 1.0
+        },
+        "loop_playing": false,
+        "next_timer": 0,
+        "schedule_ahead": 0.2,
+        "stopping_id": null,
+        "timers": []
+      },
+      {
+        "audio": {
+          "base_offset": 0.0,
+          "buffer_duration": 8.912108843537416,
+          "fading": false,
+          "looping": false,
+          "max_sources": -1,
+          "next_node": 1,
+          "nodes": [
+            {
+              "buffer_duration": 8.912108843537416,
+              "id": 0,
+              "start_time": 5.615638486925615
+            }
+          ],
+          "pause_start_time": 5.615638486925615,
+          "pause_time": 0.0,
+          "paused": false,
+          "rate": 1.0,
+          "source": {
+            "buffers": 1,
+            "duration": 8.912108843537416,
+            "end_time": 14.527747330463031,
+            "loop_end": 0.0,
+            "loop_start": 0.0,
+            "loop_start_time": 14.527747330463031,
+            "retrigger": true,
+            "start_offset": 0.0,
+            "start_time": 5.615638486925615,
+            "stopping": false
+          },
+          "volume": 1.0
+        },
+        "loop_playing": false,
+        "next_timer": 0,
+        "schedule_ahead": 0.2,
+        "stopping_id": null,
+        "timers": []
+      }
+    ]
+  },
+  "nonzero_samples": 988797,
+  "output_frames": 576000,
+  "peak": 1.03143310546875,
+  "rms": 0.10077648275513627,
+  "samples": [
+    {
+      "channels": 2,
+      "duration": 40.39691609977324,
+      "frames": 1781504,
+      "id": "it5v",
+      "rate": 44100
+    },
+    {
+      "channels": 2,
+      "duration": 40.39691609977324,
+      "frames": 1781504,
+      "id": "TcWr",
+      "rate": 44100
+    },
+    {
+      "channels": 2,
+      "duration": 18.4627664399093,
+      "frames": 814208,
+      "id": "R5CC",
+      "rate": 44100
+    },
+    {
+      "channels": 2,
+      "duration": 40.39691609977324,
+      "frames": 1781504,
+      "id": "OckO",
+      "rate": 44100
+    },
+    {
+      "channels": 2,
+      "duration": 8.912108843537416,
+      "frames": 393024,
+      "id": "z9yE",
+      "rate": 44100
+    }
+  ],
+  "scope": "CPU-only native decode/render stability. Not original/browser PCM, audible, device, timer-task or whole-scene parity.",
+  "seconds": 12
+}

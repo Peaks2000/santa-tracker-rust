@@ -128,6 +128,7 @@ pub struct Sound {
     samples: HashMap<String, Arc<Sample>>,
     commands: Sender<Command>,
     muted: bool,
+    music_loaded: bool,
 }
 impl Sound {
     pub fn new(muted: bool) -> Self {
@@ -152,6 +153,7 @@ impl Sound {
             samples: HashMap::new(),
             commands,
             muted,
+            music_loaded: false,
         }
     }
     fn source(&self, key: &str, depth: usize) -> Option<String> {
@@ -368,6 +370,34 @@ impl Sound {
             self.play_source(id, root, 0., 0., false);
         }
     }
+    fn music(&mut self, event: santa_tracker::music_runtime::Event, root: &Path) {
+        use santa_tracker::{music_control::Spec, music_transition::TRACKS};
+        if !self.music_loaded {
+            self.preload_keys(&TRACKS, root);
+            let Some(samples) = TRACKS
+                .iter()
+                .map(|id| self.samples.get(*id).cloned())
+                .collect::<Option<Vec<_>>>()
+            else {
+                return;
+            };
+            let specs = match Spec::music() {
+                Ok(specs) => specs,
+                Err(error) => {
+                    eprintln!("Music config: {error}");
+                    return;
+                }
+            };
+            self.commands
+                .send(Command::MusicLoad {
+                    samples: samples.try_into().ok().unwrap(),
+                    specs,
+                })
+                .ok();
+            self.music_loaded = true;
+        }
+        self.commands.send(Command::MusicTransition { event }).ok();
+    }
     pub fn trigger(&mut self, event: &str, root: &Path) {
         if matches!(event, "computer_walk_stop" | "computer_rewind_stop") {
             self.commands
@@ -412,6 +442,10 @@ impl Sound {
         if self.device.is_none() {
             return;
         }
+        if let Some(music) = santa_tracker::music_runtime::Event::named(event) {
+            self.music(music, root);
+            return;
+        }
         // Native translations of the original focused scenes' Klang actions.
         // An empty action stays empty; stop actions never restart their sources.
         let actions: Option<&[(&str, bool, f64, f64)]> = match event {
@@ -424,8 +458,6 @@ impl Sound {
             "pnd_restart" => Some(&[("Sr1v", true, 0., 0.)]),
             "pnd_slide_start" => Some(&[("YN6Y", true, 0., 0.)]),
             "pnd_slide_stop" => Some(&[("YN6Y", false, 0., 0.)]),
-            "music_start_ingame" => Some(&[("TcWr", true, 0., 0.2)]),
-            "music_start_scene" => Some(&[("OckO", true, 0., 0.2)]),
             "elfmaker_switch_type" => Some(&[("h54h", true, 0., 0.)]),
             "elfmaker_switch_color" => Some(&[("Cc2y", true, 0., 0.)]),
             "elfmaker_photo" => Some(&[("HQfD", true, 0., 0.)]),
@@ -537,9 +569,6 @@ impl Sound {
         ) {
             return;
         }
-        if event == "music_ingame_gameover" {
-            self.commands.send(Command::Stop).ok();
-        }
         let Some(process) = self.config["events"][event].as_str() else {
             return;
         };
@@ -638,6 +667,7 @@ impl Sound {
                 Ok(device) => {
                     self.device = Some(device);
                     self.commands = commands;
+                    self.music_loaded = false;
                 }
                 Err(error) => {
                     eprintln!("Audio device: {error}");

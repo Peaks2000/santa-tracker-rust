@@ -3408,3 +3408,71 @@ unchanged. This is not audible end-to-end parity. Full138 tests pass (124lib+14a
 No window, device, sound playback or input automation while the user plays.
 
 Release app and jetpack_background_capture compile successfully; neither launched.
+
+### Shared music native backend connection (23 November 2026)
+
+`music_runtime.rs` now executes `music_control` calls: absolute source/node starts
+and stops, buffer binding/rate/loop/connect state, per-source gains, early callback
+wall deadlines and retained physical buffers independent from source arrays.
+`audio.rs` owns that runtime alongside ordinary effects; `sound.rs` loads/caches
+the five original samples and routes Village/Game/Hurry/Lounge/GameOver events.
+The old music game-over global Stop is removed. Native explicit route Stop still
+hard-clears physical music voices after source cleanup; route cleanup is a native
+policy, not certification of every original route/sound process.
+
+Complete selected config music actions read, including legacy _old variants,
+plus n6Xc (empty), global pause/unpause, complete Util.curveParamLin (897–906)
+and previously covered constructor/init/play/lifecycle/transition methods. Five
+current-event target mappings and curves are implemented; old-track variants
+still use the preexisting generic path and remain incomplete. Actual village
+process also starts or7J into muted FHaZ (output_vol0), then cancels/sets that bus0;
+this separate disco graph is explicitly unfinished, not claimed covered by the
+five-track runtime. Original Jd9u input gain .56234132519035 and village wkQ_
+output .3981071705535 are applied. Parent output and game-music bus output curves
+append events without cancelling prior ramps. Both Chrome current-value and
+Firefox explicit-startValue branches exist; application currently defaults Chrome.
+
+`audio_param.rs` implements selected float32 set/linear/cancel events with separate
+quantum getter snapshots. Native source gain readback is no longer a fake immediate
+setter. `music_control::Call` now retains the exact timer identity at cancellation,
+so future state mutations cannot redirect a clear. Original assembled fixture
+regenerated with recorded clearTimeout IDs; all225sequences/925action snapshots
+still match source methods. Old source/lifecycle/transition fixtures also pass.
+
+The [W3C Web Audio specification](https://www.w3.org/TR/webaudio-1.0/#AudioParam)
+was consulted for selected event ordering, parameter getter snapshots, linear
+ramps and cancellation, and its buffer-source playback section for loop/start/
+duration semantics. This is a selected native implementation, not a general
+Web Audio engine. Browser getter/control-thread timing and output samples have
+not been compared. Negative/invalid API inputs, target/exponential/value curves,
+parameter modulation, dynamic loop/rate updates and arbitrary source configs are
+not certified; current five source specs keep these paths inactive.
+
+CPU tests now cover physical buffer survival past source-array removal/early
+callback, original202BPM start at1.188118811881188 and stop at1.288118811881188,
+phase retention under reuse/pause, game-over preserving unrelated mixer voices,
+control/backend deadline identity agreement, getter snapshots, cancellation,
+float32 coercion, and both curve-helper branches. A test expectation incorrectly
+assumed pause removed the old start-game ramp; source curveParamLin does not
+cancel it. Corrected the expectation and separately retained/tested this quirk.
+These are selected source/analytic/synthetic mixer tests, not original PCM capture.
+
+`music_state_smoke` loads all five original stereo44100Hz Oggs, CPU-renders12s
+with transitions/rapid restart/pause/resume and checks finite nonzero output.
+`music-native-smoke.json` records durations, peak/RMS and final control state.
+No sound is played or audio device/context/window/input opened. Scope is decode/
+render stability, not resampler, loudness, browser PCM or audible equivalence.
+
+Remaining: timers dispatch at SDL callback boundaries using Instant wall time,
+while source context uses rendered frame count. Browser task scheduling, clamping,
+quantum/control-message order, device latency and audible buffer lifetime remain
+unverified. Linear interpolation and native Vorbis decoding remain different/
+uncompared to browser decoding/resampling. Full parent graph low-pass/filtering,
+other bus effects and source-local API exceptions are unfinished. Legacy non-music
+voices still freeze on pause; Jetpack ambience still has the older cancellation
+window mismatch. Muted launch drops events and does not reconstruct current audio
+on device creation. Loading five music files initially still occurs on the main
+thread and can stall; no smoothness/input-latency claim. Graphics/texture clarity
+is unchanged. All148tests pass (134lib+14app); no scene rating upgraded.
+
+Final release app and jetpack_background_capture compile successfully; neither launched.
