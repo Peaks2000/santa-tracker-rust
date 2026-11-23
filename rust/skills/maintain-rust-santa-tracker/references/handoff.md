@@ -1364,3 +1364,26 @@ and performance once user invites window tests. Increased sampling adds work;
 no smoothness or whole-texture fix claim. Preserve scene ratings/user feedback.
 
 Release application and elfmaker_density_audit compile successfully; no app launched.
+
+### Santa Selfie CSS vector sampling (23 November 2026)
+
+Selfie face/body CSS SVGs now sample at fitted logical bounds*screenDpi rather
+than enlarging intrinsic rasters (25px eye→35em box). `selfie_vector.rs` selected
+only face/*.svg and santa/*.svg; SelfieView vector_texture cache stores parsed
+Tree + one current-size Texture per name, rebuilding on physical-size changes.
+Existing contain geometry, poses/animation, premult blend and nose scaleY remain.
+Other art/tool/background paths unchanged. CPU32actual-SVG scale/density cases
+pass; data/selfie-vector-audit.json, examples/selfie_vector_audit. All150tests
+136lib+14app and release build pass; no window/GPU/device/input/live sound.
+
+Important source distinction: hairCanvas53*scale/52*scale and beardCanvas1200*scale/
+1400*scale intentionally omit devicePixelRatio. Those native paths are unchanged.
+Do not apply the prior Elf Maker high-DPI correction to all canvases. Full hair
+shape/draw and Point draw methods, Mouse scale, full Santa/expressions styles
+re-read; earlier complete own-scene ledger remains. No browser JS/CSS execution.
+
+NEXT live GPU/browser pixel, fractional filter/alpha, resize/DPI cache checks and
+first-use/per-frame performance when user invites testing. Current evidence is
+CPU dimensions/coverage/associated-alpha, not renderer/whole-mode certification.
+First use parses/rasterizes/uploads each selected SVG; parsed trees then persist.
+Still broader texture/scene/audio issues; preserve ratings/public Rust-only repo.

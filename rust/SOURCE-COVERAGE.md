@@ -3523,3 +3523,49 @@ Existing normal-density analytical coverage and prior captures remain historical
 not proof that current high-density output matches. No mode rating upgraded.
 
 Release application and elfmaker_density_audit compile successfully; no app launched.
+
+### Santa Selfie face/body SVG sampling (23 November 2026)
+
+Current source review distinguishes two image paths. Complete hair shape and
+cloth draw bodies in cloth.js268–355, complete Point drawHair/Spray/Decoration
+bodies, Mouse.calculateScale_, and complete _santa.scss/_expressions.scss re-read;
+previous full own-scene source review remains above. Original hair canvas is
+53*scale by52*scale; beard canvas is1200*scale by1400*scale with integer canvas
+conversion, no devicePixelRatio multiplier. Native beard/hair sizing is preserved.
+Do not 'fix' that intentional source canvas policy by applying Elf Maker's DPI
+rule indiscriminately. Original spray/decorative canvas compositing unchanged.
+
+Source face/body/eye/nose/mouth artwork is CSS background SVG, fitted by contain
+in em-sized boxes. Source eye25x25 renders in35em square; face421x375 into558x497em,
+body797x809 into1052x1068em. Native intrinsic raster upload could therefore be
+magnified even at ordinary1x density (eye1.12x at scale.8), and2.24x on a2x display.
+`selfie_vector.rs` now directly renders only face/*.svg and santa/*.svg at the
+existing fitted logical bounds times display density. Image tree is parsed once,
+with one current-size GPU bitmap per name, replaced when physical size changes.
+Pixels retain associated RGBA and existing premultiplied draw pipeline. Geometry,
+contain fit, animation/mouse formulas and nose scaleY-after-fit stay unchanged.
+Nose sampling is chosen before scaleY, as with the original transform. Original
+asset uploads still supply intrinsic geometry; the new sampler supplies pixels.
+
+Other backgrounds, cheek PNG, tools/decorations and hair.svg are excluded.
+Shared scene compositor, beard offscreen cache/size/shaders and exports remain
+unchanged. This is a targeted vector raster correction, not a blanket sharpening
+filter or proof that all thin-edge/clarity complaints are fixed. Runtime source
+JS/CSS is not used; unchanged SVG artwork is interpreted by Rust/resvg.
+
+CPU `selfie_vector_audit` reads eight actual original SVGs and uses the production
+sampler at scale.8/1 and density1/2. All32 cases have expected covering dimensions,
+associated channels RGB<=A and normalized alpha coverage variation below.01.
+Example eye is28x28 instead of enlarged25x25 at scale.8/density1;56x56 at density2.
+`selfie-vector-audit.json` records scope and prior magnification. Library selected-
+path test covers exclusion of logical-canvas/raster inputs and normalized source
+geometry under target-resolution rendering. These are CPU sampling checks, not
+browser/rendered-frame pixel comparisons or live cache/window tests.
+
+Initial checks required explicit Option<f64> annotations for diagnostic coverage
+accumulators; fixed before successful audit/full checks. All150tests pass136lib+
+14app. Release app and audit compile. No window/device/input/GPU screenshot or
+sound was opened while user plays. Still need actual browser/native comparisons,
+GPU interpolation/alpha boundaries, DPI/resize/cache interaction and performance.
+Cold per-image parsing/raster/upload occurs on first draw; no latency/smoothness
+claim. Existing mode ratings/user feedback unchanged; whole-site1:1 remains open.

@@ -34,7 +34,48 @@ const DECORATIONS: [(&str, f32, f32); 4] = [
     ("holly", 120., 138.),
 ];
 
+struct VectorImage {
+    raster: santa_tracker::selfie_vector::Raster,
+    texture: Option<Texture2D>,
+    size: (u32, u32),
+}
+type Vectors = std::rc::Rc<std::cell::RefCell<std::collections::HashMap<String, VectorImage>>>;
+fn vector_texture(
+    cache: &Vectors,
+    root: &std::path::Path,
+    name: &str,
+    logical: Vec2,
+    density: f32,
+) -> Texture2D {
+    let size = santa_tracker::raster_density::size(logical.x, logical.y, density);
+    let mut cache = cache.borrow_mut();
+    let entry = cache.entry(name.into()).or_insert_with(|| {
+        let path = root.join("scenes/santaselfie/img").join(name);
+        let data = std::fs::read(&path).expect("Preloaded original SVG");
+        VectorImage {
+            raster: santa_tracker::selfie_vector::Raster::new(&data).expect("Original Selfie SVG"),
+            texture: None,
+            size: (0, 0),
+        }
+    });
+    if entry.size != size {
+        let image = Image {
+            bytes: entry
+                .raster
+                .pixels(size.0, size.1)
+                .expect("Selfie SVG raster"),
+            width: size.0 as u16,
+            height: size.1 as u16,
+        };
+        let texture = Texture2D::from_image(&image);
+        texture.set_filter(FilterMode::Linear);
+        entry.texture = Some(texture);
+        entry.size = size;
+    }
+    entry.texture.as_ref().unwrap().clone()
+}
 pub struct SelfieView {
+    vectors: Vectors,
     hair: Texture2D,
     hair_scale: f32,
     target: Option<RenderTarget>,
@@ -158,6 +199,7 @@ impl SelfieView {
             export_pending: false,
             export_message: String::new(),
             tool_used: -100.,
+            vectors: std::rc::Rc::new(std::cell::RefCell::new(std::collections::HashMap::new())),
             button_motion: std::array::from_fn(|_| Transition::new([0.])),
             button_held: None,
             shapes: Shapes::new()?,
@@ -470,6 +512,8 @@ impl SelfieView {
         let time = game.wall_time as f32;
         clear_background(Color::from_hex(0x00adeb));
         let material = self.image_material.clone();
+        let vectors = self.vectors.clone();
+        let density = screen_dpi_scale();
         let draw = |name: &str, r: Rect| {
             let texture = assets.scene("santaselfie", name);
             // External SVG backgrounds preserve their viewBox aspect inside
@@ -490,11 +534,16 @@ impl SelfieView {
                 size.x,
                 size.y,
             );
+            let sampled = if santa_tracker::selfie_vector::selected(name) {
+                Some(vector_texture(&vectors, &assets.root, name, size, density))
+            } else {
+                None
+            };
             if is_nose {
                 fitted.y = viewport.center().y + (fitted.y - viewport.center().y) * sy;
                 fitted.h *= sy;
             }
-            premult_image(&material, texture, fitted);
+            premult_image(&material, sampled.as_ref().unwrap_or(texture), fitted);
         };
         let mirror = Rect::new(w / 2. - 1092.4 * s / 2., h - 852. * s, 1092.4 * s, 732. * s);
         draw("background/mirror.svg", mirror);

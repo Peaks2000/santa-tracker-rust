@@ -1,0 +1,614 @@
+{
+  "original_beard_canvas_retained": true,
+  "rows": [
+    {
+      "alpha_coverage": 0.7808073229291725,
+      "density": 1.0,
+      "fitted_logical": [
+        28.0,
+        28.0
+      ],
+      "name": "face/eye.svg",
+      "old_magnification": 1.1200000047683716,
+      "physical": [
+        28,
+        28
+      ],
+      "scale": 0.800000011920929,
+      "source_natural": [
+        25.0,
+        25.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7843212284913971,
+      "density": 2.0,
+      "fitted_logical": [
+        28.0,
+        28.0
+      ],
+      "name": "face/eye.svg",
+      "old_magnification": 2.240000009536743,
+      "physical": [
+        56,
+        56
+      ],
+      "scale": 0.800000011920929,
+      "source_natural": [
+        25.0,
+        25.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7806738695478207,
+      "density": 1.0,
+      "fitted_logical": [
+        35.0,
+        35.0
+      ],
+      "name": "face/eye.svg",
+      "old_magnification": 1.399999976158142,
+      "physical": [
+        35,
+        35
+      ],
+      "scale": 1.0,
+      "source_natural": [
+        25.0,
+        25.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7845202080832343,
+      "density": 2.0,
+      "fitted_logical": [
+        35.0,
+        35.0
+      ],
+      "name": "face/eye.svg",
+      "old_magnification": 2.799999952316284,
+      "physical": [
+        70,
+        70
+      ],
+      "scale": 1.0,
+      "source_natural": [
+        25.0,
+        25.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7817762399077277,
+      "density": 1.0,
+      "fitted_logical": [
+        28.0,
+        16.799999237060547
+      ],
+      "name": "face/eye--blink.svg",
+      "old_magnification": 1.1200000047683716,
+      "physical": [
+        28,
+        17
+      ],
+      "scale": 0.800000011920929,
+      "source_natural": [
+        25.0,
+        15.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.784200444883837,
+      "density": 2.0,
+      "fitted_logical": [
+        28.0,
+        16.799999237060547
+      ],
+      "name": "face/eye--blink.svg",
+      "old_magnification": 2.240000009536743,
+      "physical": [
+        56,
+        34
+      ],
+      "scale": 0.800000011920929,
+      "source_natural": [
+        25.0,
+        15.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.780947045484861,
+      "density": 1.0,
+      "fitted_logical": [
+        35.0,
+        21.0
+      ],
+      "name": "face/eye--blink.svg",
+      "old_magnification": 1.399999976158142,
+      "physical": [
+        35,
+        21
+      ],
+      "scale": 1.0,
+      "source_natural": [
+        25.0,
+        15.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7839535814325743,
+      "density": 2.0,
+      "fitted_logical": [
+        35.0,
+        21.0
+      ],
+      "name": "face/eye--blink.svg",
+      "old_magnification": 2.799999952316284,
+      "physical": [
+        70,
+        42
+      ],
+      "scale": 1.0,
+      "source_natural": [
+        25.0,
+        15.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.2790116046418566,
+      "density": 1.0,
+      "fitted_logical": [
+        28.0,
+        14.0
+      ],
+      "name": "face/eye--closed.svg",
+      "old_magnification": 0.9333333373069763,
+      "physical": [
+        28,
+        14
+      ],
+      "scale": 0.800000011920929,
+      "source_natural": [
+        30.0,
+        15.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.2704781912765105,
+      "density": 2.0,
+      "fitted_logical": [
+        28.0,
+        14.0
+      ],
+      "name": "face/eye--closed.svg",
+      "old_magnification": 1.8666666746139526,
+      "physical": [
+        56,
+        28
+      ],
+      "scale": 0.800000011920929,
+      "source_natural": [
+        30.0,
+        15.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.27089947089947075,
+      "density": 1.0,
+      "fitted_logical": [
+        35.0,
+        17.5
+      ],
+      "name": "face/eye--closed.svg",
+      "old_magnification": 1.1666666269302368,
+      "physical": [
+        35,
+        18
+      ],
+      "scale": 1.0,
+      "source_natural": [
+        30.0,
+        15.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.270509803921569,
+      "density": 2.0,
+      "fitted_logical": [
+        35.0,
+        17.5
+      ],
+      "name": "face/eye--closed.svg",
+      "old_magnification": 2.3333332538604736,
+      "physical": [
+        70,
+        35
+      ],
+      "scale": 1.0,
+      "source_natural": [
+        30.0,
+        15.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.784457785003915,
+      "density": 1.0,
+      "fitted_logical": [
+        101.5999984741211,
+        82.93877410888672
+      ],
+      "name": "face/nose.svg",
+      "old_magnification": 1.036734700202942,
+      "physical": [
+        102,
+        83
+      ],
+      "scale": 0.800000011920929,
+      "source_natural": [
+        98.0,
+        80.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7855699615069234,
+      "density": 2.0,
+      "fitted_logical": [
+        101.5999984741211,
+        82.93877410888672
+      ],
+      "name": "face/nose.svg",
+      "old_magnification": 2.073469400405884,
+      "physical": [
+        204,
+        166
+      ],
+      "scale": 0.800000011920929,
+      "source_natural": [
+        98.0,
+        80.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7845853968480142,
+      "density": 1.0,
+      "fitted_logical": [
+        127.0,
+        103.67346954345703
+      ],
+      "name": "face/nose.svg",
+      "old_magnification": 1.295918345451355,
+      "physical": [
+        127,
+        104
+      ],
+      "scale": 1.0,
+      "source_natural": [
+        98.0,
+        80.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7855617065117957,
+      "density": 2.0,
+      "fitted_logical": [
+        127.0,
+        103.67346954345703
+      ],
+      "name": "face/nose.svg",
+      "old_magnification": 2.59183669090271,
+      "physical": [
+        254,
+        208
+      ],
+      "scale": 1.0,
+      "source_natural": [
+        98.0,
+        80.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7845009081137183,
+      "density": 1.0,
+      "fitted_logical": [
+        45.60000228881836,
+        45.60000228881836
+      ],
+      "name": "face/mouth--breath.svg",
+      "old_magnification": 1.4709677696228027,
+      "physical": [
+        46,
+        46
+      ],
+      "scale": 0.800000011920929,
+      "source_natural": [
+        31.0,
+        31.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7843999036287497,
+      "density": 2.0,
+      "fitted_logical": [
+        45.60000228881836,
+        45.60000228881836
+      ],
+      "name": "face/mouth--breath.svg",
+      "old_magnification": 2.9419355392456055,
+      "physical": [
+        92,
+        92
+      ],
+      "scale": 0.800000011920929,
+      "source_natural": [
+        31.0,
+        31.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7848665351028077,
+      "density": 1.0,
+      "fitted_logical": [
+        57.0,
+        57.0
+      ],
+      "name": "face/mouth--breath.svg",
+      "old_magnification": 1.8387097120285034,
+      "physical": [
+        57,
+        57
+      ],
+      "scale": 1.0,
+      "source_natural": [
+        31.0,
+        31.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7843939915147307,
+      "density": 2.0,
+      "fitted_logical": [
+        57.0,
+        57.0
+      ],
+      "name": "face/mouth--breath.svg",
+      "old_magnification": 3.677419424057007,
+      "physical": [
+        114,
+        114
+      ],
+      "scale": 1.0,
+      "source_natural": [
+        31.0,
+        31.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7843238887557997,
+      "density": 1.0,
+      "fitted_logical": [
+        72.00000762939453,
+        36.000003814697266
+      ],
+      "name": "face/mouth--smile.svg",
+      "old_magnification": 1.0285714864730835,
+      "physical": [
+        73,
+        37
+      ],
+      "scale": 0.800000011920929,
+      "source_natural": [
+        70.0,
+        35.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7839932571989571,
+      "density": 2.0,
+      "fitted_logical": [
+        72.00000762939453,
+        36.000003814697266
+      ],
+      "name": "face/mouth--smile.svg",
+      "old_magnification": 2.057142972946167,
+      "physical": [
+        145,
+        73
+      ],
+      "scale": 0.800000011920929,
+      "source_natural": [
+        70.0,
+        35.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7841016702977491,
+      "density": 1.0,
+      "fitted_logical": [
+        90.0,
+        45.0
+      ],
+      "name": "face/mouth--smile.svg",
+      "old_magnification": 1.2857142686843872,
+      "physical": [
+        90,
+        45
+      ],
+      "scale": 1.0,
+      "source_natural": [
+        70.0,
+        35.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7850123456790075,
+      "density": 2.0,
+      "fitted_logical": [
+        90.0,
+        45.0
+      ],
+      "name": "face/mouth--smile.svg",
+      "old_magnification": 2.5714285373687744,
+      "physical": [
+        180,
+        90
+      ],
+      "scale": 1.0,
+      "source_natural": [
+        70.0,
+        35.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.6983745547053571,
+      "density": 1.0,
+      "fitted_logical": [
+        446.3722839355469,
+        397.60003662109375
+      ],
+      "name": "santa/face.svg",
+      "old_magnification": 1.0602667331695557,
+      "physical": [
+        447,
+        398
+      ],
+      "scale": 0.800000011920929,
+      "source_natural": [
+        421.0,
+        375.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.698543736401523,
+      "density": 2.0,
+      "fitted_logical": [
+        446.3722839355469,
+        397.60003662109375
+      ],
+      "name": "santa/face.svg",
+      "old_magnification": 2.1205334663391113,
+      "physical": [
+        893,
+        796
+      ],
+      "scale": 0.800000011920929,
+      "source_natural": [
+        421.0,
+        375.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.6983767387514362,
+      "density": 1.0,
+      "fitted_logical": [
+        557.96533203125,
+        497.0
+      ],
+      "name": "santa/face.svg",
+      "old_magnification": 1.3253333568572998,
+      "physical": [
+        558,
+        497
+      ],
+      "scale": 1.0,
+      "source_natural": [
+        421.0,
+        375.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.6985353508357752,
+      "density": 2.0,
+      "fitted_logical": [
+        557.96533203125,
+        497.0
+      ],
+      "name": "santa/face.svg",
+      "old_magnification": 2.6506667137145996,
+      "physical": [
+        1116,
+        994
+      ],
+      "scale": 1.0,
+      "source_natural": [
+        421.0,
+        375.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7777548882063575,
+      "density": 1.0,
+      "fitted_logical": [
+        841.60009765625,
+        854.2716064453125
+      ],
+      "name": "santa/body.svg",
+      "old_magnification": 1.055959939956665,
+      "physical": [
+        842,
+        855
+      ],
+      "scale": 0.800000011920929,
+      "source_natural": [
+        797.0,
+        809.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7777497790574794,
+      "density": 2.0,
+      "fitted_logical": [
+        841.60009765625,
+        854.2716064453125
+      ],
+      "name": "santa/body.svg",
+      "old_magnification": 2.11191987991333,
+      "physical": [
+        1684,
+        1709
+      ],
+      "scale": 0.800000011920929,
+      "source_natural": [
+        797.0,
+        809.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7777554079264181,
+      "density": 1.0,
+      "fitted_logical": [
+        1052.0,
+        1067.8394775390625
+      ],
+      "name": "santa/body.svg",
+      "old_magnification": 1.3199498653411865,
+      "physical": [
+        1052,
+        1068
+      ],
+      "scale": 1.0,
+      "source_natural": [
+        797.0,
+        809.0
+      ]
+    },
+    {
+      "alpha_coverage": 0.7777505711309595,
+      "density": 2.0,
+      "fitted_logical": [
+        1052.0,
+        1067.8394775390625
+      ],
+      "name": "santa/body.svg",
+      "old_magnification": 2.639899730682373,
+      "physical": [
+        2104,
+        2136
+      ],
+      "scale": 1.0,
+      "source_natural": [
+        797.0,
+        809.0
+      ]
+    }
+  ],
+  "scope": "Actual original SVGs rendered by production native CPU sampler. Dimensions/associated alpha/normalized coverage only; not browser pixels, GPU interpolation, runtime cache interaction or performance."
+}
