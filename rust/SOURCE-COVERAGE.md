@@ -3315,3 +3315,46 @@ callbacks. Also retain source metadata timing even when buffers weren't restarte
 All136 tests pass (122 library +14 application), release app/capture compile only.
 No window, graphics/audio context, device, audible sound or input automation while
 user plays. No new scene/whole-mode 1:1 certification.
+
+### Shared AudioSource lifecycle control (23 November 2026)
+
+`music_lifecycle.rs` wraps the source-play control layer with complete selected
+original `stop`, `deschedule`, `pause`, `unpause`, `fadeInAndPlay`,
+`fadeOutAndStop`, `scheduledToPlay` and the fade-out timer closure. Complete
+methods read from bundled Klang lines 3499–3667 and 3939–3941; shared play and
+getters retain the previously recorded scope. No original method body changed.
+Original JS/HTML/styles/config scene reading from earlier Jetpack passes still
+applies; this pass changes shared audio control only.
+
+`music-lifecycle-reference.cjs` executes those actual complete methods plus play,
+cleanup/create and getters in a CPU VM. 536 sequences, 1,144 action snapshots:
+loop/nonloop, retrigger/retained nodes, 0/1/3 refs, active/ended/future metadata,
+past/zero/future stop times, omitted-vs-explicit-zero fade time, gain zero/nonzero,
+fade reentry before/after early callback, superseded and stale callback delivery,
+deschedule strict future test, repeated pause/unpause. Rust compares each complete
+post-state, return-this/undefined and ordered node/gain/timer operations at1e-10.
+Method and engine hashes retained. Raw timer delay and captured stop time recorded.
+
+Preserved quirks: non-retrigger stop replaces reported end with now even when
+buffer stop is future; retrigger stop removes only newest ref; no-ref stop leaves
+end unchanged; deschedule disconnects twice and leaves metadata clocks; pause's
+finite-end guard excludes indefinite loops; unpause temporarily adds pauseTime
+to offset. Fades use the shared stopping flag; play can clear it without cancelling
+an old timer, and that callback can stop a newer fade. Fading gain zero falls back
+to source volume. Explicit zero fade time differs from omitted time. Timer fires
+schedule buffer stop rather than immediately deleting an audible node in a mixer.
+
+This is control bookkeeping, NOT live audio integration. Gain.value is supplied
+per invocation; AudioParam evaluation/cancellation, PCM, physical buffers, backend
+validation/exceptions, graph/filter/resampling, initialization/binding and advancing
+clock within a method remain unverified. Timer callbacks are explicitly delivered
+(including intentionally early/late/stale); browser task/clamping/order is not
+simulated. Native music/game-over/loop mixer behaviour is unchanged and still has
+the documented early-stop cancellation mismatch. Source-local pause methods here
+are distinct from original global parent-bus fades; native global pause still
+freezes voices. No mode/scene rating upgraded. Full137 tests pass (123lib+14app).
+No window, device or input opened while the user plays; compilation only.
+
+Release application and `jetpack_background_capture` compile successfully; neither
+was launched. The first build command named a nonexistent `jetpack_capture`
+example; corrected to the actual target before the successful release check.

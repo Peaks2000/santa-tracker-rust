@@ -1250,3 +1250,29 @@ Preserve before-vs-after-early-return startOffset and clock fields. Existing
 music_transition planner303cases + this source layer are foundations; game-over
 global Stop remains incorrect until wired. Parent gain, phase-pause, muted launch,
 prior graphics/touch/clock gaps remain; no whole-site/mode completion claim.
+
+### Shared Source stop/fade/callback control (23 November 2026)
+
+`music_lifecycle.rs` adds stop/deschedule/pause/unpause/fadeIn/fadeOut/explicit
+callback delivery around music_source. Actual complete original methods/getters
+executed in CPU VM match536sequences/1144action snapshots, 1e-10 state/ops checks.
+All137 tests pass (123lib+14app). No app/audio/input/device opened. Node stop and
+raw timer operations added to music_source::Op; existing206 play cases unchanged.
+
+IMPORTANT still NOT connected to native playback. Source current_gain is supplied
+per call, not AudioParam evaluation. Timers are delivered explicitly byID; runtime
+must schedule separately with wall/context clocks and host rules. State stores
+queued callbacks separately from stopping_id, retaining stale callbacks when play
+clears only _stopping. Callback consumes its own entry, checks shared flag, then
+uses captured stop_at with stop's retrig/nonretrig metadata quirks. Don't add a
+generation guard or discard all callbacks on restart. Deschedule double-disconnect
+is source behaviour. Local pause excludes indefinite loops and is not global
+parent-bus pause. No constructor/init, graph, real context/node validation, live
+clock changes, automation/PCM or OS timer equivalence certified.
+
+NEXT connect transition planner/lifecycle to transport with exact scheduled node
+handles and gain timelines. Native game-over globalStop, early fade-reversal gap,
+phase-pause/muted-launch and missing parent music bus gain remain unresolved.
+Textures/rendering/input/other scenes still need work; no scene rating upgraded.
+
+Release app + jetpack_background_capture compile successfully, neither launched.

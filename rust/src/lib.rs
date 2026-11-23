@@ -162,3 +162,4 @@ pub mod jetpack_input;
 pub mod jetpack_audio;
 pub mod music_transition;
 pub mod music_source;
+pub mod music_lifecycle;

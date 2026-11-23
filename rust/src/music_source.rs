@@ -54,6 +54,15 @@ pub enum Op {
         at: f64,
     },
     ClearTimer,
+    Stop {
+        node: usize,
+        at: f64,
+    },
+    SetTimer {
+        id: usize,
+        delay_ms: f64,
+        stop_at: f64,
+    },
     Create {
         node: usize,
     },
