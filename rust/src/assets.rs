@@ -142,6 +142,7 @@ fn decode_image(root: &Path, key: &str) -> Result<Image, String> {
     };
     let premultiplied = key.starts_with("scenes/santaselfie/")
         || key.starts_with("scenes/_shared/img/button/")
+        || key.starts_with("scenes/jetpack/img/")
         || key.starts_with("scenes/boatload/")
         || key.starts_with("img/sleigh/")
         || snowball_css_image(key);
@@ -323,6 +324,7 @@ pub fn configure_texture(key: &str, texture: &Texture2D) {
     }
     if key.starts_with("scenes/elfski/")
         || key.starts_with("scenes/snowball/")
+        || key.starts_with("scenes/jetpack/img/")
         || key.starts_with("scenes/boatload/")
         || key.starts_with("scenes/codeboogie/img/choose-mode/")
         || key.starts_with("scenes/codeboogie/img/icons_")
@@ -370,6 +372,67 @@ fn svg_raster_scale(key: &str) -> f32 {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn jetpack_uploads_preserve_source_coverage_and_associate_color_once() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../static");
+        for name in [
+            "birds.png",
+            "clock.png",
+            "clouds.png",
+            "danger.png",
+            "fire.png",
+            "goal.png",
+            "items.png",
+            "player.png",
+            "touchpad.png",
+        ] {
+            let key = format!("scenes/jetpack/img/{name}");
+            let raw = Image::from_file_with_format(&std::fs::read(root.join(&key)).unwrap(), None)
+                .unwrap();
+            let upload = decode_image(&root, &key).unwrap();
+            assert_eq!((raw.width, raw.height), (upload.width, upload.height));
+            for (source, result) in raw.bytes.chunks_exact(4).zip(upload.bytes.chunks_exact(4)) {
+                assert_eq!(source[3], result[3], "{name}: source coverage changed");
+                for c in 0..3 {
+                    assert_eq!(
+                        result[c],
+                        ((u16::from(source[c]) * u16::from(source[3]) + 127) / 255) as u8,
+                        "{name}: source color must be associated exactly once"
+                    );
+                }
+            }
+        }
+        for name in ["levelclouds.svg", "player-hit.svg", "player-overlay.svg"] {
+            let key = format!("scenes/jetpack/img/{name}");
+            let data = std::fs::read(root.join(&key)).unwrap();
+            let tree = resvg::usvg::Tree::from_data(&data, &Default::default()).unwrap();
+            let size = tree
+                .size()
+                .to_int_size()
+                .scale_by(svg_raster_scale(&key))
+                .unwrap();
+            let mut raster = resvg::tiny_skia::Pixmap::new(size.width(), size.height()).unwrap();
+            resvg::render(
+                &tree,
+                resvg::tiny_skia::Transform::from_scale(
+                    svg_raster_scale(&key),
+                    svg_raster_scale(&key),
+                ),
+                &mut raster.as_mut(),
+            );
+            let upload = decode_image(&root, &key).unwrap();
+            assert_eq!(
+                (upload.width as u32, upload.height as u32),
+                (size.width(), size.height())
+            );
+            assert_eq!(
+                upload.bytes,
+                raster.data(),
+                "{name}: preserve original associated SVG coverage"
+            );
+        }
+    }
 
     #[test]
     fn snowball_css_uploads_are_premultiplied_and_world_maps_stay_straight() {

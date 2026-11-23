@@ -969,3 +969,22 @@ interrupting their game. Keep whole-site goal and conservative README ratings.
 All three new tests also pass optimized release mode. Application/capture release
 builds pass; neither launched. CPU180s smoke completes (100 connected,99
 controllers,50 slots,26 active,74KO), not source match/graphics/latency proof.
+
+### Jetpack image alpha pass (23 November 2026)
+
+Jetpack CSS image decoder now premultiplies PNG once and retains resvg associated
+SVG bytes. JetpackView uses shared premult material for all images, defaults for
+text/sky/end; same-pipeline sprite batching retained. Original artwork/filter/
+density/crops/layout unchanged. CPU nine-PNG audit includes OLD edge bleeding:
+items/hazards/player/goal/touchpad worst analytic errors now <.5/255. Clouds
+unchanged; fire incurs <=.448 byte rounding versus previously exact samples.
+No browser/GPU verification or whole-scene clarity claim. New test covers nine
+PNGs and three active SVGs. 123 tests pass; release app/capture compile only.
+
+Full own-scene source read, branch scope/unfinished work in SOURCE-COVERAGE.
+NEXT clear source defects: goal CSS contain-fit (412x452 image in 452x412 box),
+outside scene scale and before scene paint; independent 3s CSS/3.5s wall timer
+currently pauses incorrectly. Levelcloud/number opacity belongs to one group,
+not two separate .3 source-over draws. Mobile touchpad presentation incomplete.
+Do not launch tests/windows or inject input/audio while user is playing. Texture
+clarity across other modes, display density/minification remain open.

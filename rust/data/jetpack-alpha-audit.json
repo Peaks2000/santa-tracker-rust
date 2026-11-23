@@ -1,0 +1,122 @@
+{
+  "images": [
+    {
+      "after_max_error_per_255": 0.40882352941174926,
+      "after_mean_error_per_255": 0.015338565299892326,
+      "before_max_error_per_255": 7.643382352941177,
+      "before_mean_error_per_255": 0.05811678530546208,
+      "file": "scenes/jetpack/img/birds.png",
+      "fractional_samples": 6417,
+      "rgb_components": 77004,
+      "size": [
+        86,
+        400
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.327205882352945,
+      "after_mean_error_per_255": 0.022904182843747196,
+      "before_max_error_per_255": 5.909007352941183,
+      "before_mean_error_per_255": 0.050381957480221735,
+      "file": "scenes/jetpack/img/clock.png",
+      "fractional_samples": 2409,
+      "rgb_components": 28908,
+      "size": [
+        70,
+        116
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.0,
+      "after_mean_error_per_255": 0.0,
+      "before_max_error_per_255": 0.0,
+      "before_mean_error_per_255": 0.0,
+      "file": "scenes/jetpack/img/clouds.png",
+      "fractional_samples": 69471,
+      "rgb_components": 833652,
+      "size": [
+        435,
+        81
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.361764705882367,
+      "after_mean_error_per_255": 0.04033509497549053,
+      "before_max_error_per_255": 22.052757352941192,
+      "before_mean_error_per_255": 0.08920277750215747,
+      "file": "scenes/jetpack/img/danger.png",
+      "fractional_samples": 6336,
+      "rgb_components": 76032,
+      "size": [
+        175,
+        123
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.4477941176470579,
+      "after_mean_error_per_255": 0.04635710379192879,
+      "before_max_error_per_255": 5.6621374255882984e-14,
+      "before_mean_error_per_255": 2.8469715393704077e-15,
+      "file": "scenes/jetpack/img/fire.png",
+      "fractional_samples": 2178,
+      "rgb_components": 26136,
+      "size": [
+        81,
+        98
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.4656862745098189,
+      "after_mean_error_per_255": 0.05174247542460715,
+      "before_max_error_per_255": 37.2921568627451,
+      "before_mean_error_per_255": 0.8911993170024237,
+      "file": "scenes/jetpack/img/goal.png",
+      "fractional_samples": 20178,
+      "rgb_components": 242136,
+      "size": [
+        412,
+        452
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.4235294117647237,
+      "after_mean_error_per_255": 0.031102879957620667,
+      "before_max_error_per_255": 33.37077205882353,
+      "before_mean_error_per_255": 0.3007493928898188,
+      "file": "scenes/jetpack/img/items.png",
+      "fractional_samples": 19818,
+      "rgb_components": 237816,
+      "size": [
+        400,
+        400
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.37499999999999867,
+      "after_mean_error_per_255": 0.030610567151796157,
+      "before_max_error_per_255": 34.4953125,
+      "before_mean_error_per_255": 0.28930726754499825,
+      "file": "scenes/jetpack/img/player.png",
+      "fractional_samples": 15108,
+      "rgb_components": 181296,
+      "size": [
+        286,
+        216
+      ]
+    },
+    {
+      "after_max_error_per_255": 0.32794117647058807,
+      "after_mean_error_per_255": 0.013179836948043712,
+      "before_max_error_per_255": 58.25000000000002,
+      "before_mean_error_per_255": 1.9063365421184626,
+      "file": "scenes/jetpack/img/touchpad.png",
+      "fractional_samples": 28275,
+      "rgb_components": 339300,
+      "size": [
+        334,
+        258
+      ]
+    }
+  ],
+  "method": "Actual native CPU decoder bytes compared with analytic exact-float premultiplication-before-bilinear-filtering/source-over. Three subpixel phases, two source Jetpack sky backgrounds and two opacities. Baseline includes actual prior two-pass edge bleeding. Not a browser/GPU screenshot or minification/mipmap oracle; does not prove whole-scene texture clarity."
+}

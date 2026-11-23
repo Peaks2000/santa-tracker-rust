@@ -2721,3 +2721,48 @@ full component/host/numeric/visual and cross-restart pooling remain unfinished.
 All three new tests also pass optimized release mode. Application/capture release
 builds pass; neither launched. CPU180s smoke completes (100 connected,99
 controllers,50 slots,26 active,74KO), not source match/graphics/latency proof.
+
+## Elf Jetpack image-edge alpha pass (23 November 2026)
+
+Read all own-scene JS (background, cloud, constants, controls, danger-item,
+ game, goal, item, player, score-item, time-item), index HTML, scene SCSS and
+all five Sass partials before this pass. Active CSS image references feed the
+native Assets decoder and JetpackView sprite calls. This is an alpha correction,
+not certification of all the behavior reviewed. Source hashes are retained in
+`data/jetpack-alpha-provenance.json`.
+
+Native Jetpack PNG uploads now associate RGB with alpha once; SVG uploads retain
+resvg's associated coverage instead of unassociating and bleeding it. Every
+Jetpack sprite draw uses the existing shared premultiplied pipeline, including
+opacity on player-hit overlays/fire/level-cloud/goal. Restore the default before
+sky and font draws and at the scene boundary. Consecutive image draws retain the
+same pipeline (no forced per-sprite switches). Artwork bytes, dimensions, crops,
+linear filter and SVG density are unchanged; no sharpening or added outlines.
+
+CPU evidence: `jetpack_alpha_audit` runs the actual production decoder against
+exact-float association before bilinear interpolation/source-over, at three
+subpixel phases, two source sky backgrounds and two opacities. Prior baseline
+includes the actual old two-pass edge bleed. Worst RGB error per 255 falls from
+33.37 to .424 for items, 22.05 to .362 for hazards, 34.50 to .375 for player,
+37.29 to .466 for goal and 58.25 to .328 for touchpad. Clouds remain exact;
+fire's formerly exact samples incur <=.448/255 byte-rounding error. Touchpad is
+an upload check, not proof it is currently drawn. Results are not GPU/browser
+screenshots, mipmap/minification tests, or whole-scene clarity measurements.
+The new CPU test checks all nine PNGs' source dimensions/coverage/color and
+three active SVGs' unchanged raster density and associated bytes.
+
+Source branch accounting for this limited pass:
+
+| Source | Current scope / unfinished behavior |
+| --- | --- |
+| HTML, scene SCSS, all Sass partials | Image alpha path corrected; all transforms, responsive geometry, stacking and animation phases still need full comparison. Level-cloud plus number use separate .3 opacity draws, unlike one source group. |
+| background constructor/reset/endTransition/transition/onFrame | Existing model/continuous sky fix retained. Full level-cloud group composition and pause/resize transitions unfinished. |
+| cloud constructor/reset/onFrame; item reset/onFrame/hit/triggerHit; score/time/danger constructors and triggers | Existing native spawn/movement/crops/score logic retained; only image sampling representation changed. Full RNG/lifecycle/collision/score text/audio branch oracle unfinished. |
+| player constructor/reset/input/onFrame/hit; controls constructor/start/reset/key/touch/orientation handlers | Existing transforms/animation/input retained; sprite alpha corrected. Full source event lifecycle, mobile touchpad/orientation and timing/audio parity unfinished. |
+| game constructor/start/restart/update/onFrame/pause/resume/gameover/dispose and constants | Existing integration retained. Callback ordering, pooling, pause/restart overlap and sound timing require complete original execution checks. |
+| goal constructor/reset/transition | Explicit mismatch: source goal is outside scaled scene and below scene paint; native scales/stretches/draws it last. Source contain-fit 412x452 art in 452x412 box and independent 3s CSS/3.5s wall timer remain to fix. Native goal_time currently freezes on pause. |
+
+All 123 tests pass (109 library, 14 application). Release application and Jetpack
+capture are compiled only; neither launched. No windows, injected input, focus
+changes or audio while the user plays. Keep existing README user ratings and
+mode partial status; no new 1:1 claim.

@@ -1,0 +1,79 @@
+{
+  "scope": "Jetpack image alpha representation only. Complete own-scene JS, HTML and stylesheet read; not full behavior or browser/GPU raster certification.",
+  "source_files": [
+    {
+      "path": "static/scenes/jetpack/js/background.js",
+      "sha256": "f88e0970a22ca92ea3c93ed6d1abc724e7dd3f6d19ba958d10dc5b3754f56af4"
+    },
+    {
+      "path": "static/scenes/jetpack/js/cloud.js",
+      "sha256": "5a3380283e9ebdc5c08405f9932081ca58948fac10ab986a512631d58b77fedb"
+    },
+    {
+      "path": "static/scenes/jetpack/js/constants.js",
+      "sha256": "f9e9061eccbe3d4bbec86fe0e472d1c7ca594708b7413ec73dd8df8246b70a88"
+    },
+    {
+      "path": "static/scenes/jetpack/js/controls.js",
+      "sha256": "1d0130df2a3db4bd8cd4fe5c265e56e925afac697fa1b9fab25352bafddc4ea2"
+    },
+    {
+      "path": "static/scenes/jetpack/js/danger-item.js",
+      "sha256": "a18080d23add5f24e91ded1bad865b84b76a28592e088280956d164ac4e2b601"
+    },
+    {
+      "path": "static/scenes/jetpack/js/game.js",
+      "sha256": "26e00a980e4ab431e3c4f16c0a561ca57df4a234ad162fbd1efa003e316248c5"
+    },
+    {
+      "path": "static/scenes/jetpack/js/goal.js",
+      "sha256": "3e00f1b1537f0cac98b27d7032231fa25188785775b75036702f5f081b04ed48"
+    },
+    {
+      "path": "static/scenes/jetpack/js/item.js",
+      "sha256": "f89f35a4d0fcf27079f584aee6cd6d89d2a921168d970405dbae3cfbb4f5c534"
+    },
+    {
+      "path": "static/scenes/jetpack/js/player.js",
+      "sha256": "076f87ee7b07ef8dd97afa77added4a7132ceabc9c1ec1efba61d990a322aa88"
+    },
+    {
+      "path": "static/scenes/jetpack/js/score-item.js",
+      "sha256": "054cd856ff1eb855d55a0c157cc11e574e31463dc4d74fa64d32659db3ddaafa"
+    },
+    {
+      "path": "static/scenes/jetpack/js/time-item.js",
+      "sha256": "b0575a2347c50006b1d700fc8f0b9640edb3a874e632aaa284c679d4fceb45a2"
+    },
+    {
+      "path": "static/scenes/jetpack/index.html",
+      "sha256": "8e98096813a96d2a5b09c451d1b06ed819593aaaee30cda04fa4b781f2a216c8"
+    },
+    {
+      "path": "static/scenes/jetpack/jetpack-scene.scss",
+      "sha256": "9547c1507dbecb0726a01b69528081b3eb98475bfb70d793355e16290fe5f1f0"
+    },
+    {
+      "path": "static/scenes/jetpack/sass/_background.scss",
+      "sha256": "3d13693101e66cfcb643c15ad22cbec83fe81292750463ee13a1cd6104e88385"
+    },
+    {
+      "path": "static/scenes/jetpack/sass/_environment.scss",
+      "sha256": "4159ecea982484eb7fbe8edd1b0b19ca74add21abd075eec0aa9a2e12339e423"
+    },
+    {
+      "path": "static/scenes/jetpack/sass/_goal.scss",
+      "sha256": "15a72eab8e6b1faa2059839667ab2ec89f2aeab68bfd4207d4d559313f10d0e7"
+    },
+    {
+      "path": "static/scenes/jetpack/sass/_items.scss",
+      "sha256": "e698cf880a4a39859f52afc0770566db3af3c0556076e3d78dca5b737c601579"
+    },
+    {
+      "path": "static/scenes/jetpack/sass/_player.scss",
+      "sha256": "d3fcd86bb4e55cd352bd47167414fba9e182b58a8ae7196623c89b943d151a62"
+    }
+  ],
+  "evidence": "jetpack-alpha-audit.json",
+  "constraints": "CPU only; no native/browser windows, input injection, audio or focus changes. All original image files, source dimensions, crop coordinates, linear filter and SVG raster densities unchanged."
+}

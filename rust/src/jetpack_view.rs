@@ -7,6 +7,7 @@ use santa_tracker::{
 };
 
 pub struct JetpackView {
+    images: crate::ui_render::PremultipliedMaterial,
     font: Font,
     title: Font,
     touch: Option<Vec2>,
@@ -16,6 +17,7 @@ pub struct JetpackView {
 impl JetpackView {
     pub fn new() -> Result<Self, String> {
         Ok(Self {
+            images: crate::ui_render::premultiplied_material()?,
             font: load_ttf_font_from_bytes(include_bytes!(
                 "../assets/fonts/OpenSans-ExtraBold.ttf"
             ))
@@ -26,6 +28,10 @@ impl JetpackView {
             fire: Transition::new([1.]),
             last_time: 0.,
         })
+    }
+    fn image(&self, texture: &Texture2D, x: f32, y: f32, tint: Color, params: DrawTextureParams) {
+        gl_use_material(&self.images);
+        draw_texture_ex(texture, x, y, tint, params);
     }
     pub fn draw_sky(background_level: u32, transition: Option<f64>) {
         let colors = [
@@ -97,6 +103,7 @@ impl JetpackView {
         self.fire
             .set(game.time, [game.player.fire_scale], 0.2, Ease::Default);
         let fire_scale = self.fire.value(game.time)[0] as f32;
+        gl_use_default_material();
         Self::draw_sky(game.background_level, game.transition);
         if let Some(progress) = game.transition {
             let y = (-1. + progress as f32) * screen_height() * 2.;
@@ -108,7 +115,7 @@ impl JetpackView {
             } else {
                 1150.
             };
-            draw_texture_ex(
+            self.image(
                 cloud,
                 (screen_width() - w) / 2.,
                 y + screen_height() * 1.5
@@ -135,6 +142,7 @@ impl JetpackView {
             };
             let text = (game.background_level + 2).to_string();
             let width = measure_text(&text, Some(&self.title), size as u16, 1.).width;
+            gl_use_default_material();
             draw_text_ex(
                 &text,
                 (screen_width() - width) / 2.,
@@ -157,7 +165,7 @@ impl JetpackView {
                     flip: bool,
                     alpha: f32,
                     pivot: Option<Vec2>| {
-            draw_texture_ex(
+            self.image(
                 assets.scene("jetpack", name),
                 anchor.x + x * scale,
                 anchor.y + y * scale,
@@ -199,6 +207,7 @@ impl JetpackView {
                 let text = &e.message;
                 let size = 40. * scale;
                 let width = measure_text(text, Some(&self.font), size as u16, 1.).width;
+                gl_use_default_material();
                 draw_text_ex(
                     text,
                     anchor.x + e.x as f32 * scale - width / 2.,
@@ -471,7 +480,7 @@ impl JetpackView {
             let target = (game.height as f32 - 412. - game.height as f32 * 0.1) * scale;
             let width = 452f32.min(game.width as f32 / 2.) * scale;
             let progress = (game.goal_time as f32 / 3.).clamp(0., 1.);
-            draw_texture_ex(
+            self.image(
                 assets.scene("jetpack", "goal.png"),
                 screen_width() - width,
                 -412. * scale + (target + 412. * scale) * progress,
@@ -482,5 +491,6 @@ impl JetpackView {
                 },
             );
         }
+        gl_use_default_material();
     }
 }
