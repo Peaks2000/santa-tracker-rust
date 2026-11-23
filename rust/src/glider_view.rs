@@ -248,22 +248,25 @@ impl GliderView {
                             (1.5, 0.5 * (1. - (p - 0.66) / 0.34))
                         };
                         let center = vec2(x + 4.5 * e, y + 5. * e);
-                        sprite(
-                            &self.images,
-                            a,
-                            Rect::new(
-                                center.x - 4.5 * e * sc,
-                                center.y - 5. * e * sc,
-                                9. * e * sc,
-                                10. * e * sc,
-                            ),
-                            210.,
-                            400.,
-                            90.,
-                            100.,
-                            0.,
-                            alpha,
+                        let r = Rect::new(
+                            center.x - 4.5 * e * sc,
+                            center.y - 5. * e * sc,
+                            9. * e * sc,
+                            10. * e * sc,
                         );
+                        gl_use_material(&self.images);
+                        draw_texture_ex(
+                            a.texture(santa_tracker::glider_sampling::COLLISION_KEY),
+                            r.x,
+                            r.y,
+                            Color::new(1., 1., 1., alpha),
+                            DrawTextureParams {
+                                dest_size: Some(r.size()),
+                                pivot: Some(r.center()),
+                                ..Default::default()
+                            },
+                        );
+                        gl_use_default_material();
                     }
                     Kind::Item => {
                         if obj.hit {

@@ -71,7 +71,7 @@ fn main() {
             serde_json::json!({"width":width,"density":density,"rgba_bytes":bytes,"cpu_decode_ms_sum":elapsed}),
         );
     }
-    let report = serde_json::json!({"scope":"45 selected original Glider SVGs across eight desktop viewport/display-density combinations: actual production CPU decoder, associated bytes, logical geometry and physical coverage. Maximum desktop CSS em1.25 policy normalized by actual source desktop scale; baseline atlas3 retained. Declaration-derived policy, not a browser/GPU raster/performance oracle. Single decode timing samples include parse/raster/allocation; independent reference excluded. No runtime upload/DPI-switch or input-latency proof. Wide stars/mountains and collision puff transform3 sampling remain unfinished.","totals":totals,"rows":rows});
+    let report = serde_json::json!({"scope":"45 selected original Glider SVGs across eight desktop viewport/display-density combinations: actual production CPU decoder, associated bytes, logical geometry and physical coverage. Maximum desktop CSS em1.25 policy normalized by actual source desktop scale; baseline atlas3 retained. Declaration-derived policy, not a browser/GPU raster/performance oracle. Single decode timing samples include parse/raster/allocation; independent reference excluded. No runtime upload/DPI-switch or input-latency proof. Wide stars/mountains remain unfinished; dedicated collision crop is audited separately.","totals":totals,"rows":rows});
     if let Some(out) = std::env::args().nth(1) {
         std::fs::write(out, serde_json::to_string_pretty(&report).unwrap() + "\n").unwrap();
     }

@@ -244,7 +244,12 @@ fn decode_with_metrics(
     key: &str,
     density: Option<f32>,
 ) -> Result<DecodedImage, String> {
-    let path = root.join(key);
+    let collision = key == santa_tracker::glider_sampling::COLLISION_KEY;
+    let path = root.join(if collision {
+        santa_tracker::glider_sampling::collision_source()
+    } else {
+        key
+    });
     let data = if key == "native/tutorial/elfski.png" {
         include_bytes!("../assets/tutorial/elfski.png").to_vec()
     } else {
@@ -265,6 +270,30 @@ fn decode_with_metrics(
         };
         let tree =
             resvg::usvg::Tree::from_data(&data, &options).map_err(|e| format!("{key}: {e}"))?;
+        if collision {
+            let background = santa_tracker::glider_sampling::collision_background();
+            if [tree.size().width(), tree.size().height()] != background {
+                return Err("Review changed Glider atlas/background dimensions".into());
+            }
+            let crop = santa_tracker::glider_sampling::collision_crop();
+            let scale = density.map_or(svg_raster_scale(key), |d| {
+                santa_tracker::glider_sampling::scale(
+                    key,
+                    [crop[2], crop[3]],
+                    d,
+                    svg_raster_scale(key),
+                )
+            });
+            let sampled = santa_tracker::svg_crop::rasterize(&tree, crop, scale)?;
+            return Ok(DecodedImage {
+                image: Image {
+                    bytes: sampled.rgba,
+                    width: sampled.width as u16,
+                    height: sampled.height as u16,
+                },
+                logical_size: vec2(crop[2], crop[3]),
+            });
+        }
         let render_scale = if let Some(density) = density {
             santa_tracker::glider_sampling::scale(
                 key,
@@ -367,6 +396,9 @@ fn decode_with_metrics(
 }
 fn scene_keys(root: &Path, scene: &str) -> Result<Vec<String>, String> {
     let mut keys = vec![];
+    if scene == "glider" {
+        keys.push(santa_tracker::glider_sampling::COLLISION_KEY.into());
+    }
     let tutorials: &[&str] = match scene {
         "penguindash" => &["keys-arrows", "device-tilt"],
         "glider" => &["keys-arrows", "keys-space", "device-tilt"],
@@ -472,6 +504,9 @@ pub fn configure_texture(key: &str, texture: &Texture2D) {
 }
 
 fn svg_raster_scale(key: &str) -> f32 {
+    if key == santa_tracker::glider_sampling::COLLISION_KEY {
+        return 3.;
+    }
     if key.starts_with("scenes/codeboogie/img/choose-mode/")
         || key.starts_with("scenes/codeboogie/img/icons_")
     {
@@ -504,7 +539,7 @@ mod tests {
     #[test]
     fn glider_density_worker_preserves_layout_and_survives_decode_errors() {
         let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../static");
-        let keys: Vec<String> = [
+        let mut keys: Vec<String> = [
             "cloud.svg",
             "missing.svg",
             "present-05.svg",
@@ -512,6 +547,7 @@ mod tests {
         ]
         .map(|n| format!("scenes/glider/img/{n}"))
         .into();
+        keys.push(santa_tracker::glider_sampling::COLLISION_KEY.into());
         let rx = sampling_stream(root.clone(), keys.clone(), 2.);
         for key in keys {
             let (actual, decoded) = rx.recv_timeout(std::time::Duration::from_secs(10)).unwrap();

@@ -1,5 +1,5 @@
 {
-  "scope": "Original CSS declarations at BASE_FONT_SIZE10 and desktop MAX_SCALE. Integer backing multiplier covers fitted logical viewport times effective density. Effective density includes actual desktop em/MAX_SCALE; 44cases execute complete actual watchSceneSize_,setScale,px2em with supplied width/height, no-op restartAnimation/CSS setters/jQuery listener backend. Not a scheduler or raster oracle. Full SVG atlas covers ordinary source-size cells; collision puff transform up to3 is not covered. Wide stars/mountains need tiled rendering and are excluded. Other inactive image names excluded.",
+  "scope": "Original CSS declarations at BASE_FONT_SIZE10 and desktop MAX_SCALE. Integer backing multiplier covers fitted logical viewport times effective density. Effective density includes actual desktop em/MAX_SCALE; 44cases execute complete actual watchSceneSize_,setScale,px2em with supplied width/height, no-op restartAnimation/CSS setters/jQuery listener backend. Not a scheduler or raster oracle. Full SVG atlas covers ordinary source-size cells; collision puff gets separate crop backing covering its declared peak transform. Wide stars/mountains need tiled rendering and are excluded. Other inactive image names excluded.",
   "base_font_size": 10,
   "max_scale": 1.25,
   "boxes": {
@@ -184,6 +184,20 @@
       210
     ]
   },
+  "collision": {
+    "source": "scenes/glider/img/glider-sprite.svg",
+    "background": [
+      400,
+      600
+    ],
+    "crop": [
+      210,
+      400,
+      90,
+      100
+    ],
+    "peak_scale": 3
+  },
   "source_files": [
     {
       "path": "static/scenes/glider/js/game.js",
@@ -192,6 +206,10 @@
     {
       "path": "static/scenes/glider/js/constants.js",
       "sha256": "b267cec5ac3bd1669ea686dd690a35f8cfca1581dd92a692f84d4f58a41c473e"
+    },
+    {
+      "path": "static/scenes/glider/sass/_collisions.scss",
+      "sha256": "2926f431d4794ff2b492e5d7ab2ac6698d6505b926e99e63a6f05c9d975c9275"
     },
     {
       "path": "static/scenes/glider/sass/_buildings.scss",

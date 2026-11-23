@@ -1,0 +1,213 @@
+{
+  "crop": [
+    210.0,
+    400.0,
+    90.0,
+    100.0
+  ],
+  "rows": [
+    {
+      "alpha_coverage": 0.12323771483905838,
+      "backing_scale": 3.0,
+      "cpu_decode_ms": 3.406367,
+      "density": 2.0,
+      "edge_alpha": 0,
+      "effective_density": 0.6122449040412903,
+      "full_atlas_same_scale_rgba_bytes": 8640000,
+      "logical_crop": [
+        210.0,
+        400.0,
+        90.0,
+        100.0
+      ],
+      "peak_physical_required": [
+        206.63265991210938,
+        229.5918426513672
+      ],
+      "physical": [
+        270,
+        300
+      ],
+      "rgba_bytes": 324000,
+      "width": 375.0
+    },
+    {
+      "alpha_coverage": 0.12323771483905838,
+      "backing_scale": 3.0,
+      "cpu_decode_ms": 2.41668,
+      "density": 1.0,
+      "edge_alpha": 0,
+      "effective_density": 0.800000011920929,
+      "full_atlas_same_scale_rgba_bytes": 8640000,
+      "logical_crop": [
+        210.0,
+        400.0,
+        90.0,
+        100.0
+      ],
+      "peak_physical_required": [
+        270.0,
+        300.0
+      ],
+      "physical": [
+        270,
+        300
+      ],
+      "rgba_bytes": 324000,
+      "width": 980.0
+    },
+    {
+      "alpha_coverage": 0.1232076797385891,
+      "backing_scale": 4.0,
+      "cpu_decode_ms": 4.056253,
+      "density": 1.25,
+      "edge_alpha": 0,
+      "effective_density": 1.0,
+      "full_atlas_same_scale_rgba_bytes": 15360000,
+      "logical_crop": [
+        210.0,
+        400.0,
+        90.0,
+        100.0
+      ],
+      "peak_physical_required": [
+        337.5,
+        375.0
+      ],
+      "physical": [
+        360,
+        400
+      ],
+      "rgba_bytes": 576000,
+      "width": 1200.0
+    },
+    {
+      "alpha_coverage": 0.1232076797385891,
+      "backing_scale": 4.0,
+      "cpu_decode_ms": 2.7127980000000003,
+      "density": 1.0,
+      "edge_alpha": 0,
+      "effective_density": 0.9600000381469727,
+      "full_atlas_same_scale_rgba_bytes": 15360000,
+      "logical_crop": [
+        210.0,
+        400.0,
+        90.0,
+        100.0
+      ],
+      "peak_physical_required": [
+        324.0,
+        360.0
+      ],
+      "physical": [
+        360,
+        400
+      ],
+      "rgba_bytes": 576000,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.12324633033758814,
+      "backing_scale": 8.0,
+      "cpu_decode_ms": 7.556668,
+      "density": 2.0,
+      "edge_alpha": 0,
+      "effective_density": 1.9200000762939453,
+      "full_atlas_same_scale_rgba_bytes": 61440000,
+      "logical_crop": [
+        210.0,
+        400.0,
+        90.0,
+        100.0
+      ],
+      "peak_physical_required": [
+        648.0,
+        720.0
+      ],
+      "physical": [
+        720,
+        800
+      ],
+      "rgba_bytes": 2304000,
+      "width": 1440.0
+    },
+    {
+      "alpha_coverage": 0.12324633033758814,
+      "backing_scale": 8.0,
+      "cpu_decode_ms": 4.306626,
+      "density": 2.0,
+      "edge_alpha": 0,
+      "effective_density": 2.0,
+      "full_atlas_same_scale_rgba_bytes": 61440000,
+      "logical_crop": [
+        210.0,
+        400.0,
+        90.0,
+        100.0
+      ],
+      "peak_physical_required": [
+        675.0,
+        750.0
+      ],
+      "physical": [
+        720,
+        800
+      ],
+      "rgba_bytes": 2304000,
+      "width": 1500.0
+    },
+    {
+      "alpha_coverage": 0.12319782437727332,
+      "backing_scale": 12.0,
+      "cpu_decode_ms": 12.657801999999998,
+      "density": 3.0,
+      "edge_alpha": 0,
+      "effective_density": 3.0,
+      "full_atlas_same_scale_rgba_bytes": 138240000,
+      "logical_crop": [
+        210.0,
+        400.0,
+        90.0,
+        100.0
+      ],
+      "peak_physical_required": [
+        1012.5,
+        1125.0
+      ],
+      "physical": [
+        1080,
+        1200
+      ],
+      "rgba_bytes": 5184000,
+      "width": 1920.0
+    },
+    {
+      "alpha_coverage": 0.12319782437727332,
+      "backing_scale": 12.0,
+      "cpu_decode_ms": 6.843191,
+      "density": 3.0,
+      "edge_alpha": 0,
+      "effective_density": 3.0,
+      "full_atlas_same_scale_rgba_bytes": 138240000,
+      "logical_crop": [
+        210.0,
+        400.0,
+        90.0,
+        100.0
+      ],
+      "peak_physical_required": [
+        1012.5,
+        1125.0
+      ],
+      "physical": [
+        1080,
+        1200
+      ],
+      "rgba_bytes": 5184000,
+      "width": 3440.0
+    }
+  ],
+  "scope": "Actual production cropped Glider SVG decoder at eight desktop width/DPR pairs, independent translated resvg raster, associated bytes, unchanged logical crop, transparent outer edges, peak-scale coverage and resource estimates. Full atlas crop equality at scales1/3/4 is checked separately by svg_crop unit test. Not browser/GPU pixels, compositor animation raster policy, runtime cache swaps, frame pacing or input latency. No window/device/input/focus/audio.",
+  "source": "scenes/glider/img/glider-sprite.svg",
+  "source_peak_scale": 3.0
+}

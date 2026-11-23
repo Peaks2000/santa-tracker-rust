@@ -1540,3 +1540,28 @@ windows/GPU/audio/focus/input while user plays. Root README ratings unchanged;
 full-mode1:1 not certified. glider_alpha_audit remains a fixed-backing alpha
 baseline; new density audit is current sampling evidence. Source CJS stays out
 of native distribution. See coverage for exact scope and remaining limitations.
+
+
+### Glider puff now uses original SVG crop backing (23 November 2026)
+
+Supersedes collision backing-capacity gap above. Virtual native/glider/collision.svg
+resolves to original glider-sprite.svg, uses source-derived crop210,400,90,100 and
+background400x600. Source scale3 peak now included in backing request; full atlas
+retains ordinary policy. Actual collision rectangle/centre/pivot/phase/fade/clock
+unchanged. Initial scene loader preloads virtual crop; same quality worker/cache
+handles higher width/DPR. No on-hit decode or asset replacement/retracing.
+
+svg_crop generic CPU viewport helper introduced; finite/size/origin-overflow
+validation. Full-atlas vs crop exact at1/3/4x; original puff outer edge alpha0.
+DON'T assume other SVG regions have transparent edges: tiling needs guard pixels.
+Eight production crop/DPR cases and extended worker/error test pass. AtDPR2
+720x800~2.3MB vs enlarging whole atlas to8x~61.4MB; full ordinary atlas still loaded.
+Actual GPU minification/compositor raster policy/live animation pixels unverified.
+All166tests148lib+18app pass; release app/reference compile; no app/windows/devices.
+
+Source collision JS/SCSS fully re-read; glider-svg-sampling.cjs now derives crop/
+peak metadata with hash. glider-collision-audit.json records exact CPU scope.
+Existing360case density audit is45original SVGs, separate from virtual crop.
+NEXT: wide stars/mountains tiled physical sampling, using overlap/guard pixels
+and original UV/world geometry. Browser/GL comparisons still wait for user readiness;
+other source behavior/sound/input/host gaps remain. Keep whole-mode rating partial.

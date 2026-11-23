@@ -3906,3 +3906,57 @@ user allows window checks. Existing historical captures/perf are not current
 visual certification. All163tests145lib+18app pass; release app/glider_reference
 compile;360CPU audit cases pass. No window/browser/GPU/audio-device/focus/input;
 README ratings and user feedback preserved. Whole-mode/site1:1 remains unproven.
+
+
+### Glider collision puff source-crop backing (23 November 2026)
+
+Supersedes ordinary-atlas puff-capacity gap above; does not establish browser
+compositor raster-scale equivalence. Re-read complete Collision JS and53-line
+collision stylesheet. Source hit-cloud viewport9em10em, background40em60em at
+-21em -40em; scale1→3→1.5→1.5 over.5s with existing source33/66percent opacity
+phases. Only backing image changed; current wall animation clock/cancellation,
+source centre/offset/size, fades/phase math and source-over material unchanged.
+No new animation/scheduling equivalence claim from these bitmap checks.
+
+Source sampling exporter now includes complete collision partial/hash and derives
+source SVG path, background size400x600, crop210,400,90,100 and peak scale3. The
+virtual native/glider/collision.svg key resolves to the same original full SVG;
+no replacement/retraced asset or duplicate file. Decoder checks source natural
+size still agrees with background coordinate system, parses with original
+resource parent, and renders selected viewport using svg_crop::rasterize. This
+keeps resvg associated RGBA and logical90x100. Backing factor covers peak3 times
+current desktop em/DPR, minimum3; the full atlas keeps ordinary sampling policy.
+Scene keys preload the virtual crop, so first hit does not rasterize art. Initial
+async/sync paths and higher-step background cache use the same native decoder.
+Actual native collision quad retains prior rectangle/pivot/opacity, samples the
+whole dedicated texture instead of an atlas source rectangle. Other sprites
+remain on the original full atlas; no other entity/clock/event changes.
+
+svg_crop validates finite positive scales/viewport, finite scaled origins and
+16384pixel limit before allocating. Original puff crop compared byte-for-byte
+with full independently rendered atlas rows at scales1/3/4; no missing/invented
+pixels in these CPU comparisons. All outer-edge alpha bytes are0, so this crop
+needs no padding to avoid clamped-edge sampling. That is specific to this source
+region: future general scenery tiling still needs proper overlap/guard pixels.
+Invalid/oversized/origin-overflow paths checked. Source background/crop/peak
+invariants explicitly asserted so source changes require review.
+
+Extended actual sampling-worker regression includes virtual crop, checks its
+larger backing and unchanged logical metrics after a deliberately bad source,
+plus terminal channel closure. glider_collision_audit: eight actual production
+width/DPR decodes, independent translated resvg render, exact bytes, associated
+color, transparent edge, normalized alpha coverage and peak physical bounds.
+At1500px/DPR2 crop720x800=2,304,000bytes vs full atlas at same8x factor61,440,000.
+At1920/DPR3 crop1080x1200=5,184,000 vs same-scale full atlas138,240,000. Ordinary
+atlas is still loaded; this is avoided full-sheet enlargement, NOT an overall
+app memory reduction. Eight single CPU decode samples2.4–12.7ms include parse/
+raster/allocation; not GPU upload/frame/input latency. Browser SVG antialiasing,
+CSS compositor peak-raster choice, minification/opacity and live swaps remain
+unverified. Capacity to sample the authored peak does not prove identical pixels.
+
+Current45original SVG density audit remains valid for its declared set; its scope
+now points to separate puff audit. Historical alpha audit uses fixed legacy
+sampling. All166tests148lib+18app pass; release app/glider_reference compile. No
+app/browser/window/GPU/audio-device/focus/input calls while user plays. Wide
+stars/mountains tiling and all previously recorded audio/input/host gaps remain.
+No README/user approval changes or whole-mode/site1:1 claim.

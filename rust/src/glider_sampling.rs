@@ -4,7 +4,28 @@ use std::{collections::HashMap, sync::LazyLock};
 #[derive(serde::Deserialize)]
 struct Policy {
     max_scale: f32,
+    collision: Collision,
     boxes: HashMap<String, [Option<f32>; 2]>,
+}
+#[derive(serde::Deserialize)]
+struct Collision {
+    source: String,
+    crop: [f32; 4],
+    background: [f32; 2],
+    peak_scale: f32,
+}
+pub const COLLISION_KEY: &str = "native/glider/collision.svg";
+pub fn collision_source() -> &'static str {
+    &POLICY.collision.source
+}
+pub fn collision_background() -> [f32; 2] {
+    POLICY.collision.background
+}
+pub fn collision_crop() -> [f32; 4] {
+    POLICY.collision.crop
+}
+pub fn collision_peak_scale() -> f32 {
+    POLICY.collision.peak_scale
 }
 static POLICY: LazyLock<Policy> = LazyLock::new(|| {
     serde_json::from_str(include_str!("../data/glider-svg-sampling.json")).unwrap()
@@ -16,10 +37,16 @@ pub fn density_for_viewport(width: f32, density: f32) -> f32 {
     density * (em / 10.) as f32 / POLICY.max_scale
 }
 pub fn selected(key: &str) -> bool {
+    if key == COLLISION_KEY {
+        return true;
+    }
     key.strip_prefix("scenes/glider/img/")
         .is_some_and(|name| POLICY.boxes.contains_key(name))
 }
 pub fn fitted_maximum(key: &str, natural: [f32; 2]) -> Option<[f32; 2]> {
+    if key == COLLISION_KEY {
+        return Some(natural.map(|n| n * POLICY.collision.peak_scale * POLICY.max_scale));
+    }
     let name = key.strip_prefix("scenes/glider/img/")?;
     let bounds = POLICY.boxes.get(name)?;
     let fit = bounds[0]
@@ -38,6 +65,24 @@ pub fn scale(key: &str, natural: [f32; 2], density: f32, baseline: f32) -> f32 {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn collision_crop_scale_covers_source_peak_without_growing_the_full_atlas() {
+        assert_eq!(POLICY.collision.background, [400., 600.]);
+        assert_eq!(collision_crop(), [210., 400., 90., 100.]);
+        assert_eq!(collision_peak_scale(), 3.);
+        assert!(selected(COLLISION_KEY));
+        for density in [0.25, 0.5, 1., 1.5, 2., 3.] {
+            let factor = scale(COLLISION_KEY, [90., 100.], density, 3.);
+            assert!(factor >= 3.75 * density);
+            let atlas_factor = scale(
+                "scenes/glider/img/glider-sprite.svg",
+                [400., 600.],
+                density,
+                3.,
+            );
+            assert!(factor >= atlas_factor);
+        }
+    }
     #[test]
     fn viewport_sampling_multiplier_matches_actual_source_methods() {
         let source: serde_json::Value =
