@@ -1,0 +1,138 @@
+{
+  "rows": [
+    {
+      "changed_full_reference_channels": 0,
+      "cpu_all_strip_raster_ms": 12.659052999999998,
+      "full_physical": [
+        5500,
+        530
+      ],
+      "full_reference_compared": true,
+      "largest_uploaded_surface_bytes": 1093792,
+      "maximum_full_reference_error": 0,
+      "maximum_seam_error": 0,
+      "scale": 1,
+      "seam_channels_compared": 42560,
+      "source": "stars-tile.svg",
+      "strips": 11
+    },
+    {
+      "changed_full_reference_channels": 0,
+      "cpu_all_strip_raster_ms": 29.076729,
+      "full_physical": [
+        11000,
+        1060
+      ],
+      "full_reference_compared": true,
+      "largest_uploaded_surface_bytes": 2183472,
+      "maximum_full_reference_error": 0,
+      "maximum_seam_error": 0,
+      "scale": 2,
+      "seam_channels_compared": 178416,
+      "source": "stars-tile.svg",
+      "strips": 22
+    },
+    {
+      "changed_full_reference_channels": null,
+      "cpu_all_strip_raster_ms": 51.821211999999996,
+      "full_physical": [
+        16500,
+        1590
+      ],
+      "full_reference_compared": false,
+      "largest_uploaded_surface_bytes": 3273152,
+      "maximum_full_reference_error": null,
+      "maximum_seam_error": 0,
+      "scale": 3,
+      "seam_channels_compared": 407552,
+      "source": "stars-tile.svg",
+      "strips": 33
+    },
+    {
+      "changed_full_reference_channels": null,
+      "cpu_all_strip_raster_ms": 82.783716,
+      "full_physical": [
+        22000,
+        2120
+      ],
+      "full_reference_compared": false,
+      "largest_uploaded_surface_bytes": 4362832,
+      "maximum_full_reference_error": null,
+      "maximum_seam_error": 0,
+      "scale": 4,
+      "seam_channels_compared": 712992,
+      "source": "stars-tile.svg",
+      "strips": 43
+    },
+    {
+      "changed_full_reference_channels": 0,
+      "cpu_all_strip_raster_ms": 47.883048,
+      "full_physical": [
+        10000,
+        564
+      ],
+      "full_reference_compared": true,
+      "largest_uploaded_surface_bytes": 1163696,
+      "maximum_full_reference_error": 0,
+      "maximum_seam_error": 0,
+      "scale": 1,
+      "seam_channels_compared": 86032,
+      "source": "bg-mountains.svg",
+      "strips": 20
+    },
+    {
+      "changed_full_reference_channels": 10,
+      "cpu_all_strip_raster_ms": 204.84285999999997,
+      "full_physical": [
+        20000,
+        1128
+      ],
+      "full_reference_compared": true,
+      "largest_uploaded_surface_bytes": 2323280,
+      "maximum_full_reference_error": 2,
+      "maximum_seam_error": 0,
+      "scale": 2,
+      "seam_channels_compared": 352560,
+      "source": "bg-mountains.svg",
+      "strips": 40
+    },
+    {
+      "changed_full_reference_channels": null,
+      "cpu_all_strip_raster_ms": 431.54778900000014,
+      "full_physical": [
+        30000,
+        1692
+      ],
+      "full_reference_compared": false,
+      "largest_uploaded_surface_bytes": 3482864,
+      "maximum_full_reference_error": null,
+      "maximum_seam_error": 0,
+      "scale": 3,
+      "seam_channels_compared": 786016,
+      "source": "bg-mountains.svg",
+      "strips": 59
+    },
+    {
+      "changed_full_reference_channels": null,
+      "cpu_all_strip_raster_ms": 780.3911889999999,
+      "full_physical": [
+        40000,
+        2256
+      ],
+      "full_reference_compared": false,
+      "largest_uploaded_surface_bytes": 4642448,
+      "maximum_full_reference_error": null,
+      "maximum_seam_error": 0,
+      "scale": 4,
+      "seam_channels_compared": 1408992,
+      "source": "bg-mountains.svg",
+      "strips": 79
+    }
+  ],
+  "scope": "Actual production worker-owned cached narrow/full-height SVG strip rasterizer for original stars/mountains, all horizontal joins at scales1/2/3/4, associated bytes, root clamp and resource sizes. Full independent resvg surface compared at1/2 only. Higher-scale full surfaces not allocated. All strips rendered here for audit; runtime requests visible strips. Times single CPU samples include render/allocation/copy, exclude independent reference and GPU/driver/cache/runtime/focus/input. No claim of Chromium/native GPU pixel equivalence.",
+  "uncached_comparison_single_run_ms": {
+    "stars_scale4": 157.7629,
+    "mountains_scale4": 1495.872536,
+    "scope": "Previous stateless two-strip-per-request implementation, same source/sample traversal in this session. Single release CPU samples; not a controlled multi-run benchmark or app latency proof. Cached output equivalence is separately unit-tested."
+  }
+}

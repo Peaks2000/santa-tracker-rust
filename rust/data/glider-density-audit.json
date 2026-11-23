@@ -9001,7 +9001,7 @@
       "width": 1920.0
     }
   ],
-  "scope": "45 selected original Glider SVGs across eight desktop viewport/display-density combinations: actual production CPU decoder, associated bytes, logical geometry and physical coverage. Maximum desktop CSS em1.25 policy normalized by actual source desktop scale; baseline atlas3 retained. Declaration-derived policy, not a browser/GPU raster/performance oracle. Single decode timing samples include parse/raster/allocation; independent reference excluded. No runtime upload/DPI-switch or input-latency proof. Wide stars/mountains remain unfinished; dedicated collision crop is audited separately.",
+  "scope": "45 selected original Glider SVGs across eight desktop viewport/display-density combinations: actual production CPU decoder, associated bytes, logical geometry and physical coverage. Maximum desktop CSS em1.25 policy normalized by actual source desktop scale; baseline atlas3 retained. Declaration-derived policy, not a browser/GPU raster/performance oracle. Single decode timing samples include parse/raster/allocation; independent reference excluded. No runtime upload/DPI-switch or input-latency proof. Wide stars/mountains and dedicated collision crop have separate audits.",
   "totals": [
     {
       "cpu_decode_ms_sum": 73.94947700000002,

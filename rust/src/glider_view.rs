@@ -4,6 +4,7 @@ use macroquad::prelude::*;
 use santa_tracker::glider::{Glider, Kind};
 use santa_tracker::ui::Ease;
 pub struct GliderView {
+    scenery: std::cell::RefCell<crate::glider_scenery::Scenery>,
     images: crate::ui_render::PremultipliedMaterial,
     font: Font,
     buildings: Vec<(f32, f32)>,
@@ -93,6 +94,7 @@ impl GliderView {
         let data: serde_json::Value =
             serde_json::from_str(include_str!("../data/glider-layout-reference.json")).unwrap();
         Ok(Self {
+            scenery: Default::default(),
             images: crate::ui_render::premultiplied_material()?,
             font: load_ttf_font_from_bytes(include_bytes!(
                 "../assets/fonts/OpenSans-ExtraBold.ttf"
@@ -159,6 +161,10 @@ impl GliderView {
             self.keys[4],
         )
     }
+    #[allow(dead_code)] // Comparison diagnostic waits for target-resolution scenery.
+    pub fn scenery_ready(&self) -> bool {
+        self.scenery.borrow().ready()
+    }
     pub fn draw(&self, a: &Assets, g: &Glider) {
         let (w, h) = (screen_width(), screen_height());
         let (_, _, em) = Glider::dimensions(w as f64, h as f64);
@@ -175,6 +181,8 @@ impl GliderView {
             indices: vec![0, 1, 2, 0, 2, 3],
             texture: None,
         });
+        let mut scenery = self.scenery.borrow_mut();
+        scenery.begin();
         for (name, width, height, duration) in [
             ("stars-tile.svg", w * 2., h, 1000.),
             ("bg-mountains.svg", w * 10., 50. * e, 500.),
@@ -187,22 +195,31 @@ impl GliderView {
             let shift = -(width * 0.5) * (g.bg_time as f32 / duration).fract();
             let x = shift.rem_euclid(tw) - tw;
             let mut xx = x;
+            let mut rects = Vec::with_capacity(3);
             while xx < w {
-                gl_use_material(&self.images);
-                draw_texture_ex(
-                    t,
-                    xx,
-                    h - height,
-                    WHITE,
-                    DrawTextureParams {
-                        dest_size: Some(vec2(tw, th)),
-                        ..Default::default()
-                    },
-                );
-                gl_use_default_material();
+                rects.push(Rect::new(xx, h - height, tw, th));
                 xx += tw;
             }
+            if name == "stars-tile.svg" || name == "bg-mountains.svg" {
+                scenery.draw(&a.root, name, logical, t, &rects, &self.images);
+            } else {
+                gl_use_material(&self.images);
+                for r in rects {
+                    draw_texture_ex(
+                        t,
+                        r.x,
+                        r.y,
+                        WHITE,
+                        DrawTextureParams {
+                            dest_size: Some(r.size()),
+                            ..Default::default()
+                        },
+                    );
+                }
+                gl_use_default_material();
+            }
         }
+        scenery.end();
         for kind in [
             Kind::Cloud,
             Kind::Collision,

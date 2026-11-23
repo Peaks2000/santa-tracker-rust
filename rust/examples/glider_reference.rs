@@ -4,6 +4,8 @@
 mod assets;
 #[path = "../src/capture.rs"]
 mod capture;
+#[path = "../src/glider_scenery.rs"]
+mod glider_scenery;
 #[path = "../src/glider_view.rs"]
 mod glider_view;
 #[path = "../src/ui_render.rs"]
@@ -39,14 +41,21 @@ fn main() {
             game.advance(time);
             let view = glider_view::GliderView::new().unwrap();
             request_new_screen_size(w as f32, h as f32);
-            for i in 0..8 {
+            let mut captured = false;
+            for i in 0..720 {
                 view.draw(&assets, &game);
-                if i == 7 {
+                if i >= 7 && view.scenery_ready() {
                     assert_eq!((screen_width() as i32, screen_height() as i32), (w, h));
                     capture::save_png(&get_screen_data(), std::path::Path::new(&output)).unwrap();
+                    captured = true;
+                    break;
                 }
                 next_frame().await;
             }
+            assert!(
+                captured,
+                "Scenery sampling did not finish within 720 frames"
+            );
         },
     )
 }

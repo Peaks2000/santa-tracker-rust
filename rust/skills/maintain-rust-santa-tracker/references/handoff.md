@@ -1565,3 +1565,40 @@ Existing360case density audit is45original SVGs, separate from virtual crop.
 NEXT: wide stars/mountains tiled physical sampling, using overlap/guard pixels
 and original UV/world geometry. Browser/GL comparisons still wait for user readiness;
 other source behavior/sound/input/host gaps remain. Keep whole-mode rating partial.
+
+
+### Glider wide scenery strip path NOW implemented (23 November 2026)
+
+Stars/mountains now use glider_scenery + svg_tiles. Original layer geometry,
+periods and source animation clocks unchanged; only physical backing changes.
+Full-height strips preserve Y raster coords,1pixel guards share exact original
+right-neighbour SVG samples. Discarded2D probe produced a vertical AA seam; raw
+4x strips also disagreed at one horizontal join. Final every-join audit1–4x
+passes. Full1/2x reference: mountains2x10channels differ<=2/255, others exact;
+not full higher-scale/browser/GL pixel certification. No nearest-filter hacks,
+removed outlines or art replacement. Preserve that known AA gap explicitly.
+
+Worker owns parsed SVG and one next raw strip per layer, caches sequential work;
+source trees immutable.16task/two-result queues, one upload per draw frame,
+visible strips+one neighbour prefetch. Whole layer switches when all visible
+strips ready, otherwise old full quads. Soft64MiB cache can exceed budget for
+current/prefetched strips; inactive route may retain GPU/source/raw data and
+blocked producer. Old1x full-size fallback still loaded. GPU driver stalls,
+actual cache/DPI swaps and input latency unverified; don't claim smoothness.
+
+CPU artifact glider-scenery-audit.json includes every strip/seam at scales1–4,
+independent full1/2 surfaces, resource/timing scope. Largest4x GPU upload estimate
+514x2258~4.64MB; full logical surface40000x2256 never uploaded whole. Cached full
+4x CPU traversal~83ms stars/~780ms mountains vs prior single~158/~1496ms; not a
+controlled benchmark or app latency result.172tests153lib+19app pass; release
+app/reference compile. No app/window/GPU/audio/focus/input during user game.
+
+NEXT: live GPU/minification/whole-scene/DPI validation only once user is ready;
+continue source/CPU work meanwhile. Other scene logic, audio, input, tracker/
+missing-mode gaps remain active. Source policy/model scopes now refer to separate
+scenery/collision audits; no README faithfulness or user-approval upgrade.
+
+Glider reference diagnostic now waits>=8frames AND scenery_ready(), with720frame
+failure bound. Previous blind8frame captures could show cold fallback. It was
+compiled only, not launched. Production screenshots do not wait on this cache;
+use readiness when validating later and verify actual image/window dimensions.

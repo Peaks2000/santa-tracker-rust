@@ -5,6 +5,7 @@ mod chrome;
 mod coding_view;
 mod elf_shadow;
 mod elfmaker_view;
+mod glider_scenery;
 mod glider_view;
 mod interlude;
 mod jamband_view;

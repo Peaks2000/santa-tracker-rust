@@ -3960,3 +3960,80 @@ sampling. All166tests148lib+18app pass; release app/glider_reference compile. No
 app/browser/window/GPU/audio-device/focus/input calls while user plays. Wide
 stars/mountains tiling and all previously recorded audio/input/host gaps remain.
 No README/user approval changes or whole-mode/site1:1 claim.
+
+
+### Glider wide scenery strip rendering (23 November 2026)
+
+Supersedes wide stars/mountains backing gap. Rechecked complete environment SCSS
+and retained the previously source-reviewed Game background lifecycle. Existing
+source1000/500s slide clocks, loop phase, 200/1000percent layer widths, height,
+fit and offsets are unchanged; GliderView only passes those same rectangles to
+a native cache. Both original SVGs remain assets. No original JS/HTML/CSS runs.
+
+svg_tiles::Plan creates narrow512pixel-wide/full-height strips with1pixel guard.
+Integer physical scale covers the current logical rectangle times DPR; scale1
+uses the exact previous full-image draw. Core visibility clips to screen, and
+shared boundaries use the same expression instead of accumulating widths. Plan
+constructor checks dimensions, overflow and16382pixel height limit. Private
+fields enforce validated construction. Existing1x fallback textures remain
+loaded; this does not eliminate their old10000pixel-wide upload or prove support
+for every GPU limit. Only high-density surfaces are split into narrow textures.
+
+Initial2D tile probe found independent raster origins could disagree by2/255,
+including a vertical join. Full-height strips retain original Y raster coords
+and remove horizontal joins. A further4x probe found a horizontal neighbour
+mismatch; final strips share the right neighbour's original SVG-rasterized last/
+first pixel pair. No averaging, edge removal or duplicate alpha compositing.
+Extra render margin keeps those samples away from surface clipping; root guards
+replicate the full texture's clamp edge. This is a renderer strategy, not a claim
+that browser compositor tiling/raster policy is ported. Source engine f32/AA
+rounding remains: all strips vs full reference at2x mountains differ in10channels
+by<=2/255. Other compared1/2x full references match. Higher-scale full surfaces
+were not allocated/compared; all joins tested at1/2/3/4x match exactly.
+
+Worker-owned Rasterizer caches one next raw strip per immutable source; sequential
+requests avoid a duplicate neighbouring render. Out-of-order and scale changes
+miss safely; cached/uncached pixels compared after both. No game clocks/RNG or
+callbacks involved. Per-layer source parse cache lives on one CPU thread, with
+16task/two-result bounded channels. Actual worker test checks order, surface
+size/associated bytes, invalid strip error and terminal channel closure.
+
+Native glider_scenery uses that worker. At most one strip upload per frame;
+visible requests precede one neighbouring strip of prefetch at either edge.
+A whole visible background layer switches together when its required strips
+are ready; until then original full-image quads remain, preventing mixed-AA
+joins or doubled transparency. Cache has a soft64MiB budget, evicts old unseen
+strips first, retains current/prefetched strips even if this exceeds budget.
+Failed sources keep the old draw. Inactive views can retain cached GPU surfaces,
+source trees, two raw next strips and a producer waiting on bounded results until
+return/drop. Live GPU/cache/eviction/resize/focus or input effects remain untested.
+
+New renderer only changes stars/mountains. Trees keep prior dense-image path;
+all entity atlas/crop rendering and source simulation remain. Diagnostic example
+imports the same scenery module and compiles without being launched.
+
+CPU glider_scenery_audit traverses all strips of both actual SVGs at scales1–4,
+checks every join, associated color and resource dimensions. Independent full
+reference at1/2 measures the noted AA limit. Largest4x upload is514x2258,
+4,642,448bytes, rather than a40000x2256 GPU texture. It does not claim total app
+memory reduction: old fallback and cached/prefetched surfaces are retained.
+Cached full4x traversal~82.8ms stars/~780.4ms mountains; prior uncached samples
+~157.8/~1495.9ms. These are single release CPU loops over ALL strips, unlike
+runtime visible requests; not GPU/frame/input latency or consistent speedup
+proof. A newly needed4x mountain strip can still cost CPU time and its upload
+can stall the driver. No smoothness or end-to-end latency certification.
+
+All172tests153lib+19app pass; release app/glider_reference compile. No windows,
+browser/GPU/audio contexts, focus or input touched. Historical scene captures
+predate these rendering changes. Actual driver minification/rasterization and
+DPI swaps require later comparison when user permits live checks; all previously
+recorded source sound/input/host/route gaps remain. README/user ratings unchanged;
+whole-mode/site1:1 remains unproven.
+
+
+Comparison diagnostic follow-up: glider_reference now waits at least8frames and
+for target-resolution visible scenery readiness, bounded at720frames with an
+explicit failure instead of capturing a cold fallback. No diagnostic launched.
+Readiness is per complete visible layer and excluded from product UI/game logic.
+User-triggered production screenshots can still capture a cold fallback; use
+the controlled diagnostic readiness when later comparing GPU results.

@@ -1,5 +1,5 @@
 {
-  "scope": "Original CSS declarations at BASE_FONT_SIZE10 and desktop MAX_SCALE. Integer backing multiplier covers fitted logical viewport times effective density. Effective density includes actual desktop em/MAX_SCALE; 44cases execute complete actual watchSceneSize_,setScale,px2em with supplied width/height, no-op restartAnimation/CSS setters/jQuery listener backend. Not a scheduler or raster oracle. Full SVG atlas covers ordinary source-size cells; collision puff gets separate crop backing covering its declared peak transform. Wide stars/mountains need tiled rendering and are excluded. Other inactive image names excluded.",
+  "scope": "Original CSS declarations at BASE_FONT_SIZE10 and desktop MAX_SCALE. Integer backing multiplier covers fitted logical viewport times effective density. Effective density includes actual desktop em/MAX_SCALE; 44cases execute complete actual watchSceneSize_,setScale,px2em with supplied width/height, no-op restartAnimation/CSS setters/jQuery listener backend. Not a scheduler or raster oracle. Full SVG atlas covers ordinary source-size cells; collision puff gets separate crop backing covering its declared peak transform. Wide stars/mountains use a separate strip cache and are excluded here. Other inactive image names excluded.",
   "base_font_size": 10,
   "max_scale": 1.25,
   "boxes": {

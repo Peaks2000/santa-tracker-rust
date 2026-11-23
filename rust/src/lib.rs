@@ -176,3 +176,5 @@ pub mod module_viewport;
 pub mod glider_sampling;
 
 pub mod svg_crop;
+
+pub mod svg_tiles;
