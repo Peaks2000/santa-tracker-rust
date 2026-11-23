@@ -18,8 +18,8 @@ void main(){float a=0.0;for(int y=-6;y<=6;y++){for(int x=-6;x<=6;x++){vec2 p=vec
         Ok(Self { material })
     }
     pub fn draw(&mut self, texture: &Texture2D, r: Rect, _premult: &Material) {
-        self.material
-            .set_uniform("Texel", vec2(1. / texture.width(), 1. / texture.height()));
+        let step = santa_tracker::raster_density::logical_texel(r.w, r.h);
+        self.material.set_uniform("Texel", vec2(step.0, step.1));
         gl_use_material(&self.material);
         draw_texture_ex(
             texture,

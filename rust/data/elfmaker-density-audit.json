@@ -1,0 +1,96 @@
+{
+  "one_x_character_bitmap_unchanged": true,
+  "photo_export_remains": [
+    640,
+    1000
+  ],
+  "rows": [
+    {
+      "alpha_coverage": 0.15575672441816074,
+      "density": 1.0,
+      "logical": [
+        450,
+        630
+      ],
+      "logical_shadow_step": [
+        0.002222222276031971,
+        0.0015873016091063619
+      ],
+      "physical": [
+        450,
+        630
+      ],
+      "pixels": 283500
+    },
+    {
+      "alpha_coverage": 0.15576864226589632,
+      "density": 1.25,
+      "logical": [
+        450,
+        630
+      ],
+      "logical_shadow_step": [
+        0.002222222276031971,
+        0.0015873016091063619
+      ],
+      "physical": [
+        563,
+        788
+      ],
+      "pixels": 443644
+    },
+    {
+      "alpha_coverage": 0.15579254955754454,
+      "density": 1.5,
+      "logical": [
+        450,
+        630
+      ],
+      "logical_shadow_step": [
+        0.002222222276031971,
+        0.0015873016091063619
+      ],
+      "physical": [
+        675,
+        945
+      ],
+      "pixels": 637875
+    },
+    {
+      "alpha_coverage": 0.15584321679289098,
+      "density": 2.0,
+      "logical": [
+        450,
+        630
+      ],
+      "logical_shadow_step": [
+        0.002222222276031971,
+        0.0015873016091063619
+      ],
+      "physical": [
+        900,
+        1260
+      ],
+      "pixels": 1134000
+    },
+    {
+      "alpha_coverage": 0.1558399173112367,
+      "density": 3.0,
+      "logical": [
+        450,
+        630
+      ],
+      "logical_shadow_step": [
+        0.002222222276031971,
+        0.0015873016091063619
+      ],
+      "physical": [
+        1350,
+        1890
+      ],
+      "pixels": 2551500
+    }
+  ],
+  "scope": "Production CPU vector raster dimensions, normalized coverage and associated-alpha check. No GPU/filter/shadow output, browser/native screenshot or whole-mode parity measured.",
+  "seed": "test1234"
+}

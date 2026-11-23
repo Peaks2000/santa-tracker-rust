@@ -3476,3 +3476,50 @@ thread and can stall; no smoothness/input-latency claim. Graphics/texture clarit
 is unchanged. All148tests pass (134lib+14app); no scene rating upgraded.
 
 Final release app and jetpack_background_capture compile successfully; neither launched.
+
+### Elf Maker dynamic vector bitmap density (23 November 2026)
+
+Follow-up to user's unclear-texture report. Earlier complete Elf Maker source
+review remains recorded above. Re-read current complete maker-elf.js (constructor,
+callbacks, fixed-size export, degree/pose/dance functions, inline SVG render and
+style), index.html, elfmaker.scss, maker-chooser.js/scss and selected maker-control
+render/style blocks. The source main character and previews are inline SVGs sized
+by logical layout; its photo canvas is separately fixed to defs.width/height*2.
+No original source/style/art changed or shipped as an execution engine.
+
+The native main character previously rasterized at logical ew/eh, then presented
+inside the production density-scaled scene target. At2x a450x630 bitmap was
+therefore enlarged to900x1260 physical pixels. The preview cache similarly kept
+120x140 bitmaps at every display density. `raster_density::size` now chooses
+ceil(logical*density) for both dimensions. Main cache compares both physical
+dimensions; preview cache is cleared/rebuilt on backing-size changes. Logical
+rectangles, viewport/pose/motion formulas, art, filters and photo640x1000 remain
+as before. This specifically covers dynamic elf/preview rasters, not static
+backgrounds/category icons or every mode's images.
+
+The existing shader shadow used1/textureSize for its Gaussian tap. Increasing
+backing density would have shrunk the logical sigma. Its UV tap is now1/logical
+rectangle size, preserving the source4px offset / sigma2 logical-pixel intent.
+Shader kernel, blend state and opacity unchanged; actual GPU output remains
+unverified. At fractional logical sizes the tap definition also stops coupling
+blur to integer texture rounding. Do not claim whole-frame1x identity: only the
+CPU character bitmap is proven byte-identical for the selected1x case.
+
+`elfmaker_density_audit` calls the actual production CPU SVG renderer with fixed
+seed test1234 and450x630 logical bounds at1/1.25/1.5/2/3x. It checks exact backing
+dimensions, RGB<=alpha, normalized alpha coverage within.001 and1x bytes matching
+the prior dimensions/path. Sizes450x630,563x788,675x945,900x1260,1350x1890; normalized
+coverage.1557567–.1558432. `elfmaker-density-audit.json` records this bounded scope.
+The library regression also covers fractional logical dimensions and invariant
+logical shadow-step distances. No source/browser raster oracle in this pass.
+
+Initial compile caught an ambiguous ph float after the earlier use of max; typed
+that existing logical height as f32, then reran audit/full checks. All149tests
+pass135lib+14app. No app/window/device/input/GPU screenshot was opened while the
+user plays. CPU evidence does not prove browser pixel, GPU filtering/shadow,
+DPI-switch interaction or frame/input performance equivalence. Higher density
+necessarily uses more raster/upload work; no optimization/performance claim.
+Existing normal-density analytical coverage and prior captures remain historical,
+not proof that current high-density output matches. No mode rating upgraded.
+
+Release application and elfmaker_density_audit compile successfully; no app launched.

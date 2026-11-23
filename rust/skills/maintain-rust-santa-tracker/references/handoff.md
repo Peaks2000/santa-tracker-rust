@@ -1340,3 +1340,27 @@ user plays; use CPU/source/saved captures until invited. Textures/other scenes
 still incomplete; no mode rating upgraded. Preserve public native-only GitHub.
 
 Final release app and jetpack_background_capture compile successfully; neither launched.
+
+### Elf Maker vector density correction (23 November 2026)
+
+Latest work returns to user's unclear textures without touching their live game.
+Main elf and preview bitmaps were logical-pixel rasters enlarged by high-DPI scene
+presentation. ElfMakerView now uses raster_density::size(logicalW,H,screenDpi)
+and keeps logical rectangles/pose/art. Main cache checks both physical dimensions;
+preview cache clears on physical-size changes. Export remains640x1000 independent
+of display density. Other static assets/other scenes unchanged.
+
+ElfShadow taps now1/logicalRect dimension instead of1/textureSize, retaining
+logical sigma2/offset4 as backing density increases. Kernel/blending unchanged;
+GPU output UNVERIFIED. 1x character CPU bitmap identical for selected450x630;
+whole-frame/shadow1x identity not asserted (fractional rounding can differ).
+
+CPU elfmaker_density_audit production renderer:1/1.25/1.5/2/3x dimensions/associated
+alpha/normalized coverage pass; data/elfmaker-density-audit.json. All149tests
+135lib+14app pass after typing existing preview height f32. No app/GPU/device/input.
+Prior complete source coverage remains; current selected SVG/layout/export blocks
+re-read. Need live high-DPI/native-browser captures, monitor-switch cache checks
+and performance once user invites window tests. Increased sampling adds work;
+no smoothness or whole-texture fix claim. Preserve scene ratings/user feedback.
+
+Release application and elfmaker_density_audit compile successfully; no app launched.

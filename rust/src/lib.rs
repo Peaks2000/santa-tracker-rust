@@ -166,3 +166,4 @@ pub mod music_lifecycle;
 pub mod music_control;
 pub mod audio_param;
 pub mod music_runtime;
+pub mod raster_density;

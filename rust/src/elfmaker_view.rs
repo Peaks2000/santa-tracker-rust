@@ -87,6 +87,7 @@ fn cover(t: &Texture2D, r: Rect) {
 pub struct ElfMakerView {
     texture: Option<Texture2D>,
     previews: HashMap<String, Texture2D>,
+    preview_size: Option<(u32, u32)>,
     pub scroll: f32,
     pub category_scroll: f32,
     pub footer_scroll: f32,
@@ -108,6 +109,7 @@ impl ElfMakerView {
         Ok(Self {
             texture: None,
             previews: HashMap::new(),
+            preview_size: None,
             scroll: 0.,
             category_scroll: 0.,
             footer_scroll: 0.,
@@ -142,6 +144,7 @@ impl ElfMakerView {
     }
     pub fn draw(&mut self, a: &Assets, g: &mut ElfMaker, input: bool) {
         let (w, h) = (screen_width(), screen_height());
+        let density = screen_dpi_scale();
         let mobile = w < 768.;
         let fy = if mobile { h * 0.5 } else { h - 138. };
         let main = Rect::new(0., 0., w, fy);
@@ -179,13 +182,14 @@ impl ElfMakerView {
         let ew = eh * 400. / 560.;
         let er = Rect::new((w - ew) / 2., 16., ew, eh);
         let svg = g.svg("-40 -100 400 560", None);
+        let raster_size = santa_tracker::raster_density::size(ew, eh, density);
         if svg != self.last_svg
             || self
                 .texture
                 .as_ref()
-                .is_none_or(|t| (t.height() - eh).abs() > 1.)
+                .is_none_or(|t| (t.width() as u32, t.height() as u32) != raster_size)
         {
-            let im = raster_premult(&svg, ew.ceil() as u32, eh.ceil() as u32);
+            let im = raster_premult(&svg, raster_size.0, raster_size.1);
             if let Some(t) = self
                 .texture
                 .as_ref()
@@ -323,7 +327,7 @@ impl ElfMakerView {
         }
         let mut px = catw;
         let mut py = cy + 6.;
-        let mut ph = 126.;
+        let mut ph: f32 = 126.;
         if mobile {
             cy += 71.;
             px = 0.;
@@ -423,6 +427,11 @@ impl ElfMakerView {
         } else {
             80.
         };
+        let preview_size = santa_tracker::raster_density::size(120., ph.max(140.), density);
+        if self.preview_size != Some(preview_size) {
+            self.previews.clear();
+            self.preview_size = Some(preview_size);
+        }
         for i in 0..count {
             let r = Rect::new(
                 if mobile {
@@ -479,7 +488,7 @@ impl ElfMakerView {
                         format!("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"64 {indent} 192 {}\">{}<style>{}{}</style><g transform=\"translate(55)\"><g class=\"{}\">{pre}</g>{head}<g class=\"{}\">{post}</g></g></svg>",345-indent,g.art["baseSvgDefs"].as_str().unwrap(),g.art["baseSvgStyle"].as_str().unwrap(),g.style(),CATEGORIES[g.category],CATEGORIES[g.category])
                     };
                     self.previews
-                        .insert(key.clone(), upload(&svg, 120, ph.max(140.) as u32));
+                        .insert(key.clone(), upload(&svg, preview_size.0, preview_size.1));
                 }
                 let t = &self.previews[&key];
                 let rr = Rect::new(inner.center().x - 60., inner.y, 120., inner.h.max(140.));
