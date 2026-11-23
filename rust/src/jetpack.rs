@@ -409,6 +409,78 @@ pub fn goal_image_rect(viewport_width: f64, top: f64) -> [f64; 4] {
 mod goal_tests {
     use super::*;
     #[test]
+    fn original_player_frames_match_variable_intervals_and_hit_expiry() {
+        let fixture: serde_json::Value =
+            serde_json::from_str(include_str!("../data/jetpack-player-frames.json")).unwrap();
+        for case in fixture["cases"].as_array().unwrap() {
+            let mut game = Jetpack::new("player-frames", 1440., 800.);
+            game.next_item = f64::INFINITY;
+            game.next_danger = f64::INFINITY;
+            game.next_clock = f64::INFINITY;
+            game.next_cloud = f64::INFINITY;
+            game.next_level = f64::INFINITY;
+            let mut keys = [false; 4];
+            for frame in case["frames"].as_array().unwrap() {
+                let input = &frame["input"];
+                if input["keys"].is_array() {
+                    keys = serde_json::from_value(input["keys"].clone()).unwrap();
+                }
+                if let Some(place) = input["place"].as_array() {
+                    game.player.x = place[0].as_f64().unwrap();
+                    game.player.y = place[1].as_f64().unwrap();
+                }
+                if input["hit"] == true {
+                    game.player.hit = true;
+                }
+                game.step(
+                    frame["delta"].as_f64().unwrap(),
+                    (
+                        f64::from(keys[2]) - f64::from(keys[0]),
+                        f64::from(keys[3]) - f64::from(keys[1]),
+                    ),
+                );
+                let actual = serde_json::to_value(&game.player).unwrap();
+                let expected = &frame["output"];
+                for key in [
+                    "x",
+                    "y",
+                    "vx",
+                    "vy",
+                    "shake",
+                    "hit_duration",
+                    "fire_scale",
+                    "rotation",
+                ] {
+                    assert!(
+                        (actual[key].as_f64().unwrap() - expected[key].as_f64().unwrap()).abs()
+                            < 1e-9,
+                        "{} {input}: {key} {} != {}",
+                        case["name"],
+                        actual[key],
+                        expected[key]
+                    );
+                }
+                for key in ["hit", "going_up"] {
+                    assert_eq!(actual[key], expected[key], "{} {input}", case["name"]);
+                }
+                let boundary: Vec<_> = game
+                    .sounds
+                    .drain(..)
+                    .filter(|s| matches!(*s, "jp_out_of_screen" | "jp_back_to_screen"))
+                    .collect();
+                let source: Vec<_> = frame["sound_events"]
+                    .as_array()
+                    .unwrap()
+                    .iter()
+                    .filter_map(|e| e["payload"].as_str())
+                    .filter(|s| matches!(*s, "jp_out_of_screen" | "jp_back_to_screen"))
+                    .collect();
+                assert_eq!(boundary, source, "{} {input}", case["name"]);
+            }
+        }
+    }
+
+    #[test]
     fn source_goal_wall_callbacks_survive_pause_restart_and_prior_gameover() {
         let reference: serde_json::Value =
             serde_json::from_str(include_str!("../data/jetpack-goal-clock-reference.json"))

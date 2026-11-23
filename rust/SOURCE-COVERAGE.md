@@ -3043,3 +3043,59 @@ and main-loop callback timing. No live event injection, window/graphics context,
 input automation or audio. Current user game untouched; no 1:1 rating change.
 
 Release app and Jetpack capture compile successfully; neither launched.
+
+## Elf Jetpack frame cadence and player integration (23 November 2026)
+
+Read full Player.js, Game onFrame/start/freeze/unfreeze (complete Game already
+read), selected complete SmartValue class, Controls frame path and source player
+constants before change. Player movement formulas were already close for a
+supplied delta; the main application supplied the wrong update schedule.
+Original Game.onFrame_ runs Controls/Player once per requestAnimationFrame using
+now-lastFrame. Native main previously queued 1/60s steps, displaying unchanged
+positions between ticks on high-refresh renders and multiple physics steps at
+low refresh. Jetpack now uses the existing per-render-frame branch (like native
+Glider/Boatload) with one step(get_frame_time,input); removed its accumulator arm.
+No acceleration, speed, shake, collision radius, duration, cap or smoothing change.
+
+`jetpack-player-frames.cjs` executes unmodified Game.onFrame_, actual Controls,
+Player constructor/reset/frame/collision scan/updateSound and actual shared
+SmartValue in CPU VM. Date is supplied at fixed epoch 2026-11-23T12:00Z, preserving
+millisecond and large-epoch subtraction arithmetic in fixture deltas. Empty items;
+background/scoreboard/spawn/level updates stubbed; rAF queued but explicitly run.
+DOM records actual fire scale and rotation. Four cases/223 frames: 144Hz/30Hz,
+irregular/duplicate timestamps and boundary restoration, hit duration crossing
+one second (input remains zero for the entire expiry frame). Native real step
+uses source deltas with spawns suppressed; checks all Player numeric fields at
+1e-9 absolute, hit/up flags and boundary sound-event names. Does NOT compare
+parameter sound events, item collisions or complete Game stage/host ordering.
+
+Controlled old-schedule analysis: 144 source calls versus 60 accumulator ticks,
+84 displayed frames without a player update. At 30Hz, 60 source calls versus120
+native old ticks, 40 frames with multiple updates. These are CPU supplied-clock
+schedule counts, not a desktop run/benchmark, input latency or observed smoothness.
+Main wiring is source-traced and compiled; this state oracle supplies the deltas
+rather than executing native window/frame acquisition. New tests confirm existing
+movement formulas under these deltas; do not claim a red/green physics fix.
+
+First oracle run caught its event-log array aliasing (each frame pointed to the
+final frame's events); snapshot copying fixed the reference recorder without
+changing original source or weakening event assertions. Source hashes retained.
+
+Function accounting: Player constructor/reset and boundary/hit/velocity/position/
+shake/rotation/fire/up branches are represented and selected finite traces pass.
+checkCollisions scans empty items in this oracle: multi-item/danger ordering still
+needs dedicated source comparison. updateSound executes and records real source
+parameter values but native does not port SmartValue velocity/pan updates or
+frameCounter%3; Sound currently ignores jp_player_moving/position event names.
+Do not infer audio parity from boundary-event matching. SmartValue typed finite
+movement is matched; invalid dynamic-JS values/general NaN cases not certified.
+
+All130 tests pass (116 library +14 application). Remaining: actual high-refresh
+capture/performance, source Date-clock quantization versus native high-resolution
+frame time, pause/unfreeze/initial frame timestamp acquisition, suspension/clock
+jumps, CSS transition clocks (fire scale can continue while paused in source),
+collision and audio/host paths. CPU advance diagnostics still subdivide supplied
+seconds into1/60 for reproducibility; they do not model the interactive render
+schedule. No live windows/GPU/input/audio tests while user plays; no 1:1 upgrade.
+
+Release app and Jetpack capture compile successfully; neither launched.

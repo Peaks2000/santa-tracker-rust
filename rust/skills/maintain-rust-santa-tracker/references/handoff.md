@@ -1128,3 +1128,28 @@ preventDefault, mixed mouse+touch, within-batch DPI change and event timing rema
 unverified. No live OS/window/GPU/input/audio tests while user is playing.
 
 Release app and Jetpack capture compile successfully; neither launched.
+
+### Jetpack per-render-frame movement (23 November 2026)
+
+Main Jetpack now step(get_frame_time,input) ONCE per rendered frame, not queued
+60Hz ticks. Original Game rAF runs Player/Controls once. Old controlled144-frame
+schedule had84 frames with no player update; new path removes that scheduling
+mismatch without altering physics constants/smoothing. Actual smoothness/latency
+not measured; no live graphics/input/audio tests.
+
+Original Game/Controls/Player/SmartValue CPU oracle223 frames across144Hz/30Hz/
+irregular/boundary/hit expiry. Fixed2026 epoch Date math; fake empty-items and
+background/scoreboard/spawn/level; actual DOM fire/rotation recorded. Native step
+numeric fields tolerance1e-9, hit/up flags and boundary event names pass. New
+state test confirms formulas; main event-loop wiring is compiled/source-traced,
+not run. Reference event-log aliasing caught/fixed via per-frame copy. All130
+tests pass (116lib+14app).
+
+NEXT clocks still differ: native high-res frame elapsed vs source millisecond
+Date/epoch subtraction, unfreeze/initial-frame/suspension not matched. CPU advance
+still subdivides for diagnostics, not actual interactive cadence. Fire CSS
+transition clock during pause remains different. Player.updateSound parameter
+velocity/pan and frameCounter%3 are NOT ported (native Sound ignores those names).
+Collision ordering and prior target-specific touch/GPU/layout work remain open.
+
+Release app and Jetpack capture compile successfully; neither launched.

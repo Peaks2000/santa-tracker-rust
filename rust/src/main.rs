@@ -568,6 +568,8 @@ async fn run(opts: Options) {
                     glider.step(get_frame_time() as f64);
                 } else if route == "boatload" {
                     boat.step(get_frame_time() as f64);
+                } else if route == "jetpack" {
+                    jetpack.step(get_frame_time() as f64, jet_input);
                 } else {
                     accumulated += if route == "santaselfie" {
                         (get_frame_time() as f64).min(1.)
@@ -584,7 +586,6 @@ async fn run(opts: Options) {
             while accumulated > tick {
                 match route.as_str() {
                     "runner" => runner.step(tick),
-                    "jetpack" => jetpack.step(tick, jet_input),
                     "glider" => glider.step(tick),
                     "penguindash" => penguin.step(),
                     "presentdrop" => drop_game.step(tick),
